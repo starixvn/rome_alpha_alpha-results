@@ -54,6 +54,8 @@ namespace Alpha.Results.Controllers
         /// <returns>The object of ActionResult.</returns>
         public ActionResult GetResult(ResultRequest resultRequest)
         {
+            RedirectToAction("Index", "Tab");
+
             SetDefaultRequestValues(resultRequest);
             GetReportMinMaxDateRange(resultRequest);
 

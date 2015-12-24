@@ -3,13 +3,13 @@
     ViewBag.Title = "Outright";
 }
 
-@section Nav {
-        <li role="presentation"><a href="#normal" aria-controls="normal" role="tab" data-toggle="tab">Normal</a></li>
-        <li role="presentation"  class="active"><a href="#outright" aria-controls="outright" role="tab" data-toggle="tab">Outright</a></li>
-        <li role="presentation"><a href="#keno" aria-controls="keno" role="tab" data-toggle="tab">Keno</a></li>
-}
+@*@section Nav {
+        @Html.Action("Index", "Tab", new { tabName = "outright" })
+}*@
 
-<div role="tabpanel" class="tab-pane" id="outright">
+
+Outright
+<div role="tabpanel" class="tab-pane active" id="outright">
     <div class="row filter">
         <div class="col-sm-12">
             <span class="txt">From</span>

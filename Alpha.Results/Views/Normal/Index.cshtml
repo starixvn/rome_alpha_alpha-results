@@ -3,11 +3,10 @@
     ViewBag.Title = "Normal";
 }
 
-@section Nav {
-        <li role="presentation" class="active"><a href="#normal" aria-controls="normal" role="tab" data-toggle="tab">Normal</a></li>
-        <li role="presentation"><a href="#outright" aria-controls="outright" role="tab" data-toggle="tab">Outright</a></li>
-        <li role="presentation"><a href="#keno" aria-controls="keno" role="tab" data-toggle="tab">Keno</a></li>
-}
+@*@section Nav {
+
+    @Html.Action("Index", "Tab", new { tabName = "normal" })
+}*@
 
 <div role="tabpanel" class="tab-pane active" id="normal">
     <div class="row filter">

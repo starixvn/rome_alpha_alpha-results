@@ -15,7 +15,7 @@
             <div class="container-fluid">
                 <div class="">
                     <ul class="nav nav-tabs" role="tablist">
-                        @RenderSection("Nav")
+                        @Html.Action("Index", "Tab", new { tabName = ViewContext.RouteData.Values["controller"] })
                     </ul>
                     <div class="tab-content">
                         @RenderBody()

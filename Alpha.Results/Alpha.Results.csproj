@@ -283,6 +283,7 @@
     <Compile Include="Controllers\NormalController.cs" />
     <Compile Include="Controllers\OutrightController.cs" />
     <Compile Include="Controllers\ResultController.cs" />
+    <Compile Include="Controllers\TabController.cs" />
     <Compile Include="Criteria\GetBalanceUpDateCriteria.cs" />
     <Compile Include="Criteria\GetGoldDeluxePopupResultCriteria.cs" />
     <Compile Include="Criteria\GetLiveCasinoPopupResultCriteria.cs" />
@@ -364,6 +365,7 @@
     <Compile Include="Services\ISportsbookPopupResultService.cs" />
     <Compile Include="Services\ISportsbookResultService.cs" />
     <Compile Include="Services\IVirtualRacingResultService.cs" />
+    <Compile Include="ViewModels\TabViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -396,6 +398,7 @@
     <Content Include="Views\Normal\Index.cshtml" />
     <Content Include="Views\Outright\Index.cshtml" />
     <Content Include="Views\Keno\Index.cshtml" />
+    <Content Include="Views\Tab\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -403,9 +406,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModels\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="LocalResources\ResultLang.ja-JP.resx" />
     <EmbeddedResource Include="LocalResources\ResultLang.ko-KR.resx" />
