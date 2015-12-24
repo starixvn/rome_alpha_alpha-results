@@ -8,7 +8,6 @@ namespace Alpha.Results.Controllers
     using Fanex.Result.Core.Sportsbook.DTO;
     using Sunplus.Agent.Model.BL.Cache;
     using Sunplus.Agent.Model.BL.Definitions;
-    using Sunplus.Agent.Model.BL.Reports;
     using Sunplus.Agent.Model.Entities;
     using Sunplus.Agent.Model.Entities.Permission;
     using Sunplus.Agent.Utilities;
@@ -19,7 +18,8 @@ namespace Alpha.Results.Controllers
     using System.Linq;
     using System.Threading;
     using System.Web.Mvc;
-
+    using Services;
+    using Services.Impl;
     public class ResultController : BaseController
     {
         private DateTime _minReportDate = DateTime.Today;
@@ -29,19 +29,22 @@ namespace Alpha.Results.Controllers
         private Dictionary<int, Action<ResultRequest>> _resultHandlers = new Dictionary<int, Action<ResultRequest>>();
         private Dictionary<int, Func<ResultRequest, ActionResult>> _exportExcelHandlers = new Dictionary<int, Func<ResultRequest, ActionResult>>();
 
+        private IResultService _resultService;
+
+        public ResultController() : this(null)
+        {
+        }
+
+        public ResultController(IResultService resultService)
+        {
+            _resultService = resultService ?? new ResultService();
+        }
+
         private string _MinReportDateString
         {
             get
             {
                 return _minReportDate.ToString("MM/dd/yyyy");
-            }
-        }
-
-        private ReportsBO _ReportBO
-        {
-            get
-            {
-                return new ReportsBO(UserSession.Current.NetSessionId);
             }
         }
 
@@ -246,7 +249,7 @@ namespace Alpha.Results.Controllers
 
         private void GetReportMinMaxDateRange(ResultRequest resultRequest)
         {
-            _minReportDate = ReportsBO.BalanceUpDate;
+            _minReportDate = _resultService.GetBalanceUpDate().BalanceUpDay;
             ViewBag.MinReportDate = _minReportDate.ToShortDateString();
         }
 
@@ -327,61 +330,10 @@ namespace Alpha.Results.Controllers
                 {
                     this.RenderOutrightSportCriteria(resultRequest);
                 }
-                else
-                {
-                    this.RenderNormalSportCriteria(resultRequest);
-                }
-            }
-        }
-
-        /// <summary>
-        /// Render sport and league dropdown list for normal result.
-        /// </summary>
-        /// <param name="resultRequest">The result request.</param>
-        private void RenderNormalSportCriteria(ResultRequest resultRequest)
-        {
-            DataTable sportList = (this._reportData as Dictionary<string, DataTable>)["SportList"];
-            DataTable leagueList = (this._reportData as Dictionary<string, DataTable>)["LeagueList"];
-
-            if (sportList.Rows.Count == 0)
-            {
-                ViewBag.IsVisibleSportCriteria = false;
-            }
-            else
-            {
-                string sportOptions = string.Empty;
-                string leagueOptions = string.Empty;
-
-                foreach (DataRow dr in sportList.Rows)
-                {
-                    int sportId = Convert.ToInt32(dr["sporttype"]);
-
-                    if (sportId == 180 && !UserPermission.IsShowVirtualSports)
-                    {
-                        continue;
-                    }
-
-                    sportOptions += string.Format(
-                        "<option {0} value=\"{1}\">{2}</option>",
-                        resultRequest.SportId == sportId ? "selected" : string.Empty,
-                        sportId.ToString(),
-                        Sunplus.Agent.Model.BL.Cache.CacheRef.GetSportName(sportId));
-                }
-
-                ViewBag.SportOption = sportOptions;
-
-                foreach (DataRow dr in leagueList.Rows)
-                {
-                    int leagueId = Convert.ToInt32(dr["leagueid"]);
-
-                    leagueOptions += string.Format(
-                        "<option {0} value=\"{1}\">{2}</option>",
-                        resultRequest.LeagueId == leagueId ? "selected" : string.Empty,
-                        leagueId.ToString(),
-                        Sunplus.Agent.Model.BL.Cache.CacheRef.GetLeagueName(leagueId));
-                }
-
-                ViewBag.LeagueOption = leagueOptions;
+                ////else
+                ////{
+                ////    this.RenderNormalSportCriteria(resultRequest);
+                ////}
             }
         }
 
@@ -487,17 +439,17 @@ namespace Alpha.Results.Controllers
             }
             else
             {
-                this.GetSportListForNormalResults(viewData, resultRequest);
-                this.GetLeagueListForNormalResults(viewData, resultRequest);
+                //// Wait for view model, please ignore
+                ViewBag.Sports = GetSportsResult(resultRequest.FromDate.Value);
+
+                ViewBag.Leagues = _resultService.GetLeague(
+                                resultRequest.FromDate.Value,
+                                resultRequest.SportId,
+                                UserSession.Current.Language,
+                                AppSettings.Disable151_31);
             }
 
             return viewData;
-        }
-
-        private void GetLeagueListForNormalResults(Dictionary<string, DataTable> viewData, ResultRequest resultRequest)
-        {
-            DataTable leagueList = _ReportBO.GetResultLeagueByDate(resultRequest.FromDate.Value, resultRequest.SportId);
-            viewData.Add("LeagueList", leagueList);
         }
 
         /// <summary>
@@ -505,52 +457,18 @@ namespace Alpha.Results.Controllers
         /// </summary>
         /// <param name="viewData">The view data.</param>
         /// <param name="resultRequest">The result request.</param>
-        private void GetSportListForNormalResults(Dictionary<string, DataTable> viewData, ResultRequest resultRequest)
+        private IEnumerable<Sport> GetSportsResult(DateTime resultDate)
         {
-            DataTable sportList = _ReportBO.GetResultSportByDate(resultRequest.FromDate.Value);
-
-            // Delete number game if IsShowNumberGame=false
-            if (!UserPermission.IsShowNumberGame)
+            var sportsStatus = new Dictionary<int, bool>
             {
-                DataRow[] numberGame = sportList.Select("sporttype=" + ((int)SportType.NumberGame).ToString());
-                foreach (DataRow dr in numberGame)
-                {
-                    sportList.Rows.Remove(dr);
-                }
-            }
+                { (int)SportType.NumberGame,  UserPermission.IsShowNumberGame },
+                { (int)SportType.LiveCasino,  UserPermission.IsShowLiveCasino },
+                { (int)SportType.GoldDeluxe,  UserPermission.IsShowGoldDeluxeSettingForCredit },
+                { (int)SportType.NumberGame,  UserPermission.IsShowNumberGame },
+                { (int)SportType.NumberGame,  UserPermission.IsShowNumberGame }
+            };
 
-            if (!UserPermission.IsShowLiveCasino)
-            {
-                DataRow[] liveCasino = sportList.Select("sporttype=" + ((int)SportType.LiveCasino).ToString());
-                foreach (DataRow dr in liveCasino)
-                {
-                    sportList.Rows.Remove(dr);
-                }
-            }
-
-            if (!UserPermission.IsShowGoldDeluxeSettingForCredit)
-            {
-                DataRow[] goldDeluxe = sportList.Select("sporttype=" + ((int)SportType.GoldDeluxe).ToString());
-                foreach (DataRow dr in goldDeluxe)
-                {
-                    sportList.Rows.Remove(dr);
-                }
-            }
-
-            viewData.Add("SportList", sportList);
-
-            if (ShouldSetDefaultSportId(resultRequest, sportList))
-            {
-                resultRequest.SportId = Convert.ToInt32(sportList.Rows[0]["sporttype"]);
-                resultRequest.LeagueId = 0;
-                resultRequest.IsChangeSportType = false;
-            }
-        }
-
-        private bool ShouldSetDefaultSportId(ResultRequest resultRequest, DataTable sportList)
-        {
-            return (!IsViewMatchResultPopup(resultRequest.MatchId) && (!resultRequest.IsChangeSportType && sportList.Rows.Count > 0))
-                || (resultRequest.SportId == 0 && sportList.Rows.Count > 0);
+            return _resultService.GetSports(resultDate, sportsStatus);
         }
 
         /// <summary>

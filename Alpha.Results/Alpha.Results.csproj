@@ -195,14 +195,11 @@
       <HintPath>..\packages\Sunplus.Agent.Model.RemotingRef.3.0.0.1-beta\lib\net40\Sunplus.Agent.Model.RemotingRef.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Sunplus.Agent.Model.Reports, Version=3.0.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sunplus.Agent.Model.Reports.3.0.0.1-beta\lib\net40\Sunplus.Agent.Model.Reports.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Sunplus.Agent.Utilities, Version=3.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Sunplus.Agent.Utilities.3.0.0.1-beta\lib\net40\Sunplus.Agent.Utilities.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -219,6 +216,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
       <Private>True</Private>
@@ -283,6 +281,7 @@
     <Compile Include="Controllers\NormalController.cs" />
     <Compile Include="Controllers\OutrightController.cs" />
     <Compile Include="Controllers\ResultController.cs" />
+    <Compile Include="Criteria\GetBalanceUpDateCriteria.cs" />
     <Compile Include="Criteria\GetGoldDeluxePopupResultCriteria.cs" />
     <Compile Include="Criteria\GetLiveCasinoPopupResultCriteria.cs" />
     <Compile Include="Criteria\GetMetricGamingResultCriteria.cs" />
@@ -292,6 +291,8 @@
     <Compile Include="Criteria\GetParlayPopupResultCriteria.cs" />
     <Compile Include="Criteria\GetRacingPopupResultCriteria.cs" />
     <Compile Include="Criteria\GetRacingResultCriteria.cs" />
+    <Compile Include="Criteria\GetResultLeaguesByDateCriteria.cs" />
+    <Compile Include="Criteria\GetResultSportsByDateCriteria.cs" />
     <Compile Include="Criteria\GetSportsbookPopupResultCriteria.cs" />
     <Compile Include="Criteria\GetSportsbookResultCriteria.cs" />
     <Compile Include="Criteria\GetVirtualRacingResultCriteria.cs" />
@@ -303,8 +304,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Models\Dtos\BalanceUpDateDto.cs" />
+    <Compile Include="Models\League.cs" />
     <Compile Include="Models\Result.cs" />
     <Compile Include="Models\ResultRequest.cs" />
+    <Compile Include="Models\Sport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IGoldDeluxePopupResultDataAccess.cs" />
     <Compile Include="Repositories\ILiveCasinoPopupResultDataAccess.cs" />
@@ -344,6 +348,7 @@
     <Compile Include="Services\Impl\ParlayPopupResultService.cs" />
     <Compile Include="Services\Impl\RacingPopupResultService.cs" />
     <Compile Include="Services\Impl\RacingResultService.cs" />
+    <Compile Include="Services\Impl\ResultService.cs" />
     <Compile Include="Services\Impl\SportsbookPopupResultService.cs" />
     <Compile Include="Services\Impl\SportsbookResultService.cs" />
     <Compile Include="Services\Impl\VirtualRacingResultService.cs" />
@@ -353,6 +358,7 @@
     <Compile Include="Services\IParlayPopupResultService.cs" />
     <Compile Include="Services\IRacingPopupResultService.cs" />
     <Compile Include="Services\IRacingResultService.cs" />
+    <Compile Include="Services\IResultService.cs" />
     <Compile Include="Services\ISportsbookPopupResultService.cs" />
     <Compile Include="Services\ISportsbookResultService.cs" />
     <Compile Include="Services\IVirtualRacingResultService.cs" />
