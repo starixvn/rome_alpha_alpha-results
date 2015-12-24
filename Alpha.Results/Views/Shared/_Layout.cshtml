@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@Html.Raw(ViewBag.ResultTitle)</title>
+
+    <link href="~/Content/Fanex.Result/fanex.result.css" rel="stylesheet" />
+
+    <link href="~/Content/Fanex.Result/fanex.result-customized.css" rel="stylesheet" />
+    <link href="/site-contents/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/result.css" rel="stylesheet" />
+</head>
+<body>
+    <form id="frmmain" method="get">
+        <div id="page_main">
+            <div id="page_main">
+                <div class="container-fluid">
+                    <div class="">
+                        <ul class="nav nav-tabs" role="tablist">
+                            @RenderSection("Nav")
+                        </ul>
+                        <div class="tab-content">
+                            @RenderBody()
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <input type="hidden" id="isOutright" name="isOutright" value="@Model.IsOutright.ToString()" />
+        @Html.Hidden("RootURL", Url.Content("~/"))
+    </form>
+</body>
+</html>
+
+
