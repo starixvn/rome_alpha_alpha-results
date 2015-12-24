@@ -440,13 +440,13 @@ namespace Alpha.Results.Controllers
             else
             {
                 //// Wait for view model, please ignore
-                ViewBag.Sports = GetSportsResult(resultRequest.FromDate.Value);
+                ////ViewBag.Sports = GetSportsResult(resultRequest.FromDate.Value);
 
-                ViewBag.Leagues = _resultService.GetLeague(
-                                resultRequest.FromDate.Value,
-                                resultRequest.SportId,
-                                UserSession.Current.Language,
-                                AppSettings.Disable151_31);
+                ////ViewBag.Leagues = _resultService.GetLeague(
+                ////                resultRequest.FromDate.Value,
+                ////                resultRequest.SportId,
+                ////                UserSession.Current.Language,
+                ////                AppSettings.Disable151_31);
             }
 
             return viewData;
@@ -463,9 +463,7 @@ namespace Alpha.Results.Controllers
             {
                 { (int)SportType.NumberGame,  UserPermission.IsShowNumberGame },
                 { (int)SportType.LiveCasino,  UserPermission.IsShowLiveCasino },
-                { (int)SportType.GoldDeluxe,  UserPermission.IsShowGoldDeluxeSettingForCredit },
-                { (int)SportType.NumberGame,  UserPermission.IsShowNumberGame },
-                { (int)SportType.NumberGame,  UserPermission.IsShowNumberGame }
+                { (int)SportType.GoldDeluxe,  UserPermission.IsShowGoldDeluxeSettingForCredit }
             };
 
             return _resultService.GetSports(resultDate, sportsStatus);
