@@ -96,7 +96,8 @@ table.fn-rs .cl-ko-time, table.fn-rs .cl-ko-time {
   border: none; }
 
 .input-group.date .form-control {
-  box-shadow: 0 2px 0px 0 rgba(0, 0, 0, 0.1), 0 2px 0px 0 rgba(0, 0, 0, 0.02); }
+  box-shadow: 0 2px 0px 0 rgba(0, 0, 0, 0.1), 0 2px 0px 0 rgba(0, 0, 0, 0.02);
+  font-size: 12px; }
 
 .width-150 {
   width: 150px; }
