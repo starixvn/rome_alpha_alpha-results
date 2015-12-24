@@ -1,4 +1,9 @@
-﻿@model ResultRequest
+﻿
+@model ResultRequest
+@{
+    Layout = null;
+}
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -7,8 +12,8 @@
     <link href="~/Content/Fanex.Result/fanex.result.css" rel="stylesheet" />
 
     <link href="~/Content/Fanex.Result/fanex.result.css" rel="stylesheet" />
-    <link href="/css/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="/components/datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    <link href="/contents/css/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/contents/components/datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
     <link href="~/Content/result.css" rel="stylesheet" />
 
 </head>
@@ -19,9 +24,9 @@
                 <div class="container-fluid">
                     <div class="">
                         <ul class="nav nav-tabs" role="tablist">
-                            <li role="presentation" class="active"><a href="#normal" aria-controls="normal" role="tab" data-toggle="tab">Normal</a></li>
-                            <li role="presentation"><a href="#outright" aria-controls="outright" role="tab" data-toggle="tab">Outright</a></li>
-                            <li role="presentation"><a href="#keno" aria-controls="keno" role="tab" data-toggle="tab">Keno</a></li>
+                            <li role="presentation" class="active"><a href="~/normal/">Normal</a></li>
+                            <li role="presentation"><a href="~/outright/index">Outright</a></li>
+                            <li role="presentation"><a href="~/keno/index" aria-controls="keno" role="tab" data-toggle="tab">Keno</a></li>
                         </ul>
                         <div class="tab-content">
                             <div role="tabpanel" class="tab-pane active" id="normal">
@@ -181,25 +186,25 @@
         <input type="hidden" id="isOutright" name="isOutright" value="@Model.IsOutright.ToString()" />
         @Html.Hidden("RootURL", Url.Content("~/"))
     </form>
-
+    <script type="text/javascript" src="/contents/libs/jquery/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="/contents/libs/moment/moment.js"></script>
+    <script type="text/javascript" src="/contents/css/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/contents/components/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript">
+    $(function () {
+        $('#datetimepicker1').datetimepicker();
+        $('#datetimepicker_from').datetimepicker();
+        $('#datetimepicker_to').datetimepicker({
+            useCurrent: false //Important! See issue #1075
+        });
+        $("#datetimepicker_from").on("dp.change", function (e) {
+            $('#datetimepicker_from').data("DateTimePicker").minDate(e.date);
+        });
+        $("#datetimepicker_to").on("dp.change", function (e) {
+            $('#datetimepicker_to').data("DateTimePicker").maxDate(e.date);
+        });
+    });
+    </script>
 </body>
 </html>
-<script type="text/javascript" src="/libs/jquery/jquery-1.11.3.min.js"></script>
-<script type="text/javascript" src="/libs/moment/moment.js"></script>
-<script type="text/javascript" src="/css/bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/components/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
-<script type="text/javascript">
-            $(function () {
-                $('#datetimepicker1').datetimepicker();
-                $('#datetimepicker_from').datetimepicker();
-                $('#datetimepicker_to').datetimepicker({
-                    useCurrent: false //Important! See issue #1075
-                });
-                $("#datetimepicker_from").on("dp.change", function (e) {
-                    $('#datetimepicker_from').data("DateTimePicker").minDate(e.date);
-                });
-                $("#datetimepicker_to").on("dp.change", function (e) {
-                    $('#datetimepicker_to').data("DateTimePicker").maxDate(e.date);
-                });
-            });
-</script>
+
