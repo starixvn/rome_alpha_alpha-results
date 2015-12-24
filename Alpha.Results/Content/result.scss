@@ -59,7 +59,44 @@
 }
 
 .main-content {
+    thead th{
+            background: #822b34;
+            color: #fff;
+        }
+    tbody {
+        td {
+            padding: 5px;
+            vertical-align: middle;
+            &.cl-league {
+                background: #f4f5e0;
+                text-transform: uppercase;
+                color: #333333;
+                font-weight: bold;
+            }
+        }
+    }
 }
+
+table.fn-rs tbody tr.even {
+    background: #eaeaed;
+}
+table.fn-rs tbody td,
+table.fn-rs thead th {
+    padding: 6px;
+}
+table.fn-rs thead th {
+    border-bottom: none;
+    font-weight: bold;
+}
+table.fn-rs, table.fn-rs {
+    .cl-ht-score, .cl-f-score {
+        width: 100px;
+    }
+    .cl-ko-time {
+        width: 120px;
+    }
+}
+
 
 .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
     border: none;

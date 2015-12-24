@@ -41,6 +41,36 @@
     min-width: 200px;
     font-size: 12px; }
 
+.main-content thead th {
+  background: #822b34;
+  color: #fff; }
+
+.main-content tbody td {
+  padding: 5px;
+  vertical-align: middle; }
+  .main-content tbody td.cl-league {
+    background: #f4f5e0;
+    text-transform: uppercase;
+    color: #333333;
+    font-weight: bold; }
+
+table.fn-rs tbody tr.even {
+  background: #eaeaed; }
+
+table.fn-rs tbody td,
+table.fn-rs thead th {
+  padding: 6px; }
+
+table.fn-rs thead th {
+  border-bottom: none;
+  font-weight: bold; }
+
+table.fn-rs .cl-ht-score, table.fn-rs .cl-f-score, table.fn-rs .cl-ht-score, table.fn-rs .cl-f-score {
+  width: 100px; }
+
+table.fn-rs .cl-ko-time, table.fn-rs .cl-ko-time {
+  width: 120px; }
+
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
   border: none; }
 

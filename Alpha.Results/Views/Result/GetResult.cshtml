@@ -4,153 +4,153 @@
 <head>
     <title>@Html.Raw(ViewBag.ResultTitle)</title>
 
-    <link href="~/Content/Fanex.Result/fanex.result.css" rel="stylesheet"/>
+    <link href="~/Content/Fanex.Result/fanex.result.css" rel="stylesheet" />
 
-    <link href="~/Content/Fanex.Result/fanex.result-customized.css" rel="stylesheet"/>
+    <link href="~/Content/Fanex.Result/fanex.result.css" rel="stylesheet" />
     <link href="/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/result.css" rel="stylesheet" />
 
 </head>
 <body>
-<form id="frmmain" method="get">
-    <div id="page_main">
+    <form id="frmmain" method="get">
         <div id="page_main">
-            <div class="container-fluid">
-                <div class="">
-                    <ul class="nav nav-tabs" role="tablist">
-                        <li role="presentation" class="active"><a href="#normal" aria-controls="normal" role="tab" data-toggle="tab">Normal</a></li>
-                        <li role="presentation"><a href="#outright" aria-controls="outright" role="tab" data-toggle="tab">Outright</a></li>
-                        <li role="presentation"><a href="#keno" aria-controls="keno" role="tab" data-toggle="tab">Keno</a></li>
-                    </ul>
-                    <div class="tab-content">
-                        <div role="tabpanel" class="tab-pane active" id="normal">
-                            <div class="row filter">
-                                <div class="col-sm-12">
-                                    <span class="txt">From</span>
-                                    <div class="control">
-                                        <div class="input-group date" id="datetimepicker1">
-                                            <input type="text" class="form-control" />
-                                            <span class="input-group-addon">
-                                                <span class="calendar"></span>
-                                            </span>
+            <div id="page_main">
+                <div class="container-fluid">
+                    <div class="">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#normal" aria-controls="normal" role="tab" data-toggle="tab">Normal</a></li>
+                            <li role="presentation"><a href="#outright" aria-controls="outright" role="tab" data-toggle="tab">Outright</a></li>
+                            <li role="presentation"><a href="#keno" aria-controls="keno" role="tab" data-toggle="tab">Keno</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="normal">
+                                <div class="row filter">
+                                    <div class="col-sm-12">
+                                        <span class="txt">From</span>
+                                        <div class="control">
+                                            <div class="input-group date" id="datetimepicker1">
+                                                <input type="text" class="form-control" />
+                                                <span class="input-group-addon">
+                                                    <span class="calendar"></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <input type="button" value="12/23/2015" class="btn btn-default" />
+                                        <input type="button" value="12/22/2015" class="btn btn-default" />
+                                        <input type="button" value="Submit" class="btn btn-submit" />
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <span class="txt-red">*</span> You can view report data from 12/20/2015
+                                    </div>
+                                    <div class="col-sm-12 sport-info">
+                                        <span class="txt">Sport</span>
+                                        <div class="dropdown control">
+                                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                Soccer
+                                                <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                                <li><a href="#">Basketball</a></li>
+                                                <li><a href="#">Tennis</a></li>
+                                                <li><a href="#">Volley ball</a></li>
+                                            </ul>
+                                        </div>
+                                        <span class="txt">League</span>
+                                        <div class="dropdown control league-content">
+                                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                *...* Show All League *...*
+                                                <span class="caret"></span>
+                                            </button>
                                         </div>
                                     </div>
-                                    <input type="button" value="12/23/2015" class="btn btn-default" />
-                                    <input type="button" value="12/22/2015" class="btn btn-default" />
-                                    <input type="button" value="Submit" class="btn btn-submit" />
                                 </div>
-                                <div class="col-sm-12">
-                                    <span class="txt-red">*</span> You can view report data from 12/20/2015
-                                </div>
-                                <div class="col-sm-12 sport-info">
-                                    <span class="txt">Sport</span>
-                                    <div class="dropdown control">
-                                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                            Soccer
-                                            <span class="caret"></span>
-                                        </button>
-                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                            <li><a href="#">Basketball</a></li>
-                                            <li><a href="#">Tennis</a></li>
-                                            <li><a href="#">Volley ball</a></li>
-                                        </ul>
+                                <div class="main-content">
+                                    <div class="fn-rs-content-header">
+                                        <table class="fn-rs">
+                                            <thead>
+                                                <tr class="header">
+                                                    <th class="cl-ko-time">Kick Off. Time</th>
+                                                    <th class="cl-match home ">Match</th>
+                                                    <th class="cl-ht-score">HT Score</th>
+                                                    <th class="cl-f-score">Final Score</th>
+                                                    <th class="cl-status ">Status</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
                                     </div>
-                                    <span class="txt">League</span>
-                                    <div class="dropdown control league-content">
-                                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                            *...* Show All League *...*
-                                            <span class="caret"></span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="main-content">
-                                <div class="fn-rs-content-header">
-                                    <table class="fn-rs">
-                                        <thead>
-                                            <tr class="header">
-                                                <th class="">Kick Off. Time</th>
-                                                <th>Match</th>
-                                                <th class="">HT Score</th>
-                                                <th class="">Final Score</th>
-                                                <th class="">Status</th>
-                                            </tr>
-                                        </thead>
-                                    </table>
-                                </div>
-                                <div class="fn-rs-content-scroll">
-                                    <table class="fn-rs">
-                                        <tbody>
-                                            <tr class="data">
-                                                <td colspan="5" class="cl-league">Japan Empress women cup</td>
-                                            </tr>
-                                            <tr class="data odd">
-                                                <td rowspan="2">12/23/2015</td>
-                                                <td>NTV Beleza(W)(N)</td>
-                                                <td class="text-center">1</td>
-                                                <td class="text-center">-</td>
-                                                <td rowspan="2" class="text-center">Running</td>
-                                            </tr>
-                                            <tr class="data odd">
-                                                <td>Albirex Niigata (W)</td>
-                                                <td class="text-center">1</td>
-                                                <td class="text-center">-</td>
-                                            </tr>
-                                            <tr class="data">
-                                                <td colspan="5" class="cl-league">Japan Empress women cup-Corners</td>
-                                            </tr>
-                                            <tr class="data odd">
-                                                <td rowspan="2">12/23/2015</td>
-                                                <td>NTV Beleza(W)(N)</td>
-                                                <td class="text-center">1</td>
-                                                <td class="text-center">-</td>
-                                                <td rowspan="2" class="text-center">Completed</td>
-                                            </tr>
-                                            <tr class="data odd">
-                                                <td>Albirex Niigata (W)</td>
-                                                <td class="text-center">1</td>
-                                                <td class="text-center">-</td>
-                                            </tr>
-                                            <tr class="data even">
-                                                <td rowspan="2">12/23/2015</td>
-                                                <td>NTV Beleza(W)(N)</td>
-                                                <td class="text-center">1</td>
-                                                <td class="text-center">-</td>
-                                                <td rowspan="2" class="text-center">Completed</td>
-                                            </tr>
-                                            <tr class="data even">
-                                                <td>Albirex Niigata (W)</td>
-                                                <td class="text-center">1</td>
-                                                <td class="text-center">-</td>
-                                            </tr>
-                                            <tr class="data odd">
-                                                <td rowspan="2">12/23/2015</td>
-                                                <td>NTV Beleza(W)(N)</td>
-                                                <td class="text-center">1</td>
-                                                <td class="text-center">-</td>
-                                                <td rowspan="2" class="text-center">Completed</td>
-                                            </tr>
-                                            <tr class="data odd">
-                                                <td>Albirex Niigata (W)</td>
-                                                <td class="text-center">1</td>
-                                                <td class="text-center">-</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                    <div class="fn-rs-content-scroll">
+                                        <table class="fn-rs">
+                                            <tbody>
+                                                <tr class="data">
+                                                    <td colspan="5" class="cl-league">Japan Empress women cup</td>
+                                                </tr>
+                                                <tr class="data odd">
+                                                    <td rowspan="2" class="cl-ko-time">12/23/2015</td>
+                                                    <td class="cl-match home">NTV Beleza(W)(N)</td>
+                                                    <td class="cl-ht-score">1</td>
+                                                    <td class="cl-f-score">-</td>
+                                                    <td rowspan="2" class="cl-status ">Running</td>
+                                                </tr>
+                                                <tr class="data odd">
+                                                    <td class="cl-match home">Albirex Niigata (W)</td>
+                                                    <td class="cl-ht-score">1</td>
+                                                    <td class="cl-f-score">-</td>
+                                                </tr>
+                                                <tr class="data">
+                                                    <td colspan="5" class="cl-league">Japan Empress women cup-Corners</td>
+                                                </tr>
+                                                <tr class="data odd">
+                                                    <td rowspan="2" class="cl-ko-time">12/23/2015</td>
+                                                    <td class="cl-match home">NTV Beleza(W)(N)</td>
+                                                    <td class="cl-ht-score">1</td>
+                                                    <td class="cl-f-score">-</td>
+                                                    <td rowspan="2" class="cl-status ">Completed</td>
+                                                </tr>
+                                                <tr class="data odd">
+                                                    <td class="cl-match home">Albirex Niigata (W)</td>
+                                                    <td class="cl-ht-score">1</td>
+                                                    <td class="cl-f-score">-</td>
+                                                </tr>
+                                                <tr class="data even">
+                                                    <td rowspan="2" class="cl-ko-time">12/23/2015</td>
+                                                    <td class="cl-match home">NTV Beleza(W)(N)</td>
+                                                    <td class="cl-ht-score">1</td>
+                                                    <td class="cl-f-score">-</td>
+                                                    <td rowspan="2" class="cl-status ">Completed</td>
+                                                </tr>
+                                                <tr class="data even">
+                                                    <td class="cl-match home">Albirex Niigata (W)</td>
+                                                    <td class="cl-ht-score">1</td>
+                                                    <td class="cl-f-score">-</td>
+                                                </tr>
+                                                <tr class="data odd">
+                                                    <td rowspan="2" class="cl-ko-time">12/23/2015</td>
+                                                    <td class="cl-match home">NTV Beleza(W)(N)</td>
+                                                    <td class="cl-ht-score">1</td>
+                                                    <td class="cl-f-score">-</td>
+                                                    <td rowspan="2" class="cl-status ">Completed</td>
+                                                </tr>
+                                                <tr class="data odd">
+                                                    <td class="cl-match home">Albirex Niigata (W)</td>
+                                                    <td class="cl-ht-score">1</td>
+                                                    <td class="cl-f-score">-</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
 
+                                    </div>
                                 </div>
                             </div>
+                            <div role="tabpanel" class="tab-pane" id="outright"></div>
+                            <div role="tabpanel" class="tab-pane" id="keno"></div>
                         </div>
-                        <div role="tabpanel" class="tab-pane" id="outright"></div>
-                        <div role="tabpanel" class="tab-pane" id="keno"></div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <input type="hidden" id="isOutright" name="isOutright" value="@Model.IsOutright.ToString()"/>
-    @Html.Hidden("RootURL", Url.Content("~/"))
-</form>
+        <input type="hidden" id="isOutright" name="isOutright" value="@Model.IsOutright.ToString()" />
+        @Html.Hidden("RootURL", Url.Content("~/"))
+    </form>
 
 </body>
 </html>
