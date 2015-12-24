@@ -42,7 +42,7 @@
             return balanceUpDateDtoCached;
         }
 
-        public IEnumerable<League> GetLeague(DateTime resultDate, int sportId, string language, bool disableHouseRacingWin)
+        public IEnumerable<League> GetLeagues(DateTime resultDate, int sportId, string language, bool disableHouseRacingWin)
         {
             Check.Argument.IsNotNull(resultDate, "resultDate");
             Check.Argument.IsNotNegativeOrZero(sportId, "sportId");
@@ -75,7 +75,7 @@
 
             if (sports.Any())
             {
-                sports.RemoveAll(sport => sportsStatus.Keys.Contains(sport.Id) && sportsStatus[sport.Id]);
+                sports.RemoveAll(sport => sportsStatus.Keys.Contains(sport.Id) && !sportsStatus[sport.Id]);
             }
 
             return sports;

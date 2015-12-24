@@ -9,7 +9,7 @@
     {
         IEnumerable<Sport> GetSports(DateTime resultDate, IDictionary<int, bool> sportsStatus);
 
-        IEnumerable<League> GetLeague(DateTime resultDate, int sportId, string language, bool disableHouseRacingWin);
+        IEnumerable<League> GetLeagues(DateTime resultDate, int sportId, string language, bool disableHouseRacingWin);
 
         BalanceUpDateDto GetBalanceUpDate();
     }
