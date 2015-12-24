@@ -1,25 +1,24 @@
 namespace Alpha.Results.Controllers
 {
-    using Alpha.Results.Criteria;
-    using Alpha.Results.Models;
-    using Alpha.Results.LocalResources;
-    using Alpha.Results.Services.Implement;
-    using Alpha.Results.Services.Impl.Result;
-    using Fanex.Result.Core.Sportsbook.DTO;
-    using Sunplus.Agent.Model.BL.Cache;
-    using Sunplus.Agent.Model.BL.Definitions;
-    using Sunplus.Agent.Model.Entities;
-    using Sunplus.Agent.Model.Entities.Permission;
-    using Sunplus.Agent.Utilities;
     using System;
     using System.Collections.Generic;
     using System.Data;
     using System.IO;
     using System.Linq;
-    using System.Threading;
     using System.Web.Mvc;
+    using Alpha.Results.Criteria;
+    using Alpha.Results.LocalResources;
+    using Alpha.Results.Models;
+    using Alpha.Results.Services.Impl.Result;
+    using Alpha.Results.Services.Implement;
+    using Fanex.Result.Core.Sportsbook.DTO;
     using Services;
     using Services.Impl;
+    using Sunplus.Agent.Model.BL.Cache;
+    using Sunplus.Agent.Model.BL.Definitions;
+    using Sunplus.Agent.Model.Entities;
+    using Sunplus.Agent.Model.Entities.Permission;
+
     public class ResultController : BaseController
     {
         private DateTime _minReportDate = DateTime.Today;
