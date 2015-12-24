@@ -1,0 +1,27 @@
+namespace Alpha.Results.Criteria
+{
+    using Fanex.Data.Repository;
+    using System;
+
+    /// <summary>
+    /// The criteria GetNumberGameResultCriteria.
+    /// </summary>
+    public class GetNumberGameResultCriteria : CriteriaBase
+    {
+        public DateTime FromDate { get; set; }
+
+        public int LeagueID { get; set; }
+
+        public string Language { get; set; }
+
+        public override string GetSettingKey()
+        {
+            return "Age_Result_MatchSelNumberGameByLeague";
+        }
+
+        public override bool IsValid()
+        {
+            return FromDate > DateTime.MinValue && LeagueID > 0;
+        }
+    }
+}

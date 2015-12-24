@@ -1,0 +1,104 @@
+﻿body {
+    font-size: 12px;
+}
+.tab-content {
+    padding: 15px 0;
+    .control {
+        display: inline-block;
+        width: 200px;
+        vertical-align: middle;
+        margin: 0 15px 0 5px;
+    }
+    .btn {
+        margin-right: 15px;
+        min-width: 80px;
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 2px 1px 0 rgba(0, 0, 0, 0.12);
+        font-size: 12px;
+        font-weight: bold;
+    }
+    .btn-default {
+        background: #e1e1e1;
+        color: #4c4c4c;
+    }
+    .btn-submit {
+        background: #0b599c;
+        color: #fff;
+    }
+    .filter {
+        [class^="col-"]{
+            margin-bottom: 15px;
+        }
+        .txt-red {
+            color: #f00;
+        }
+        .sport-info {
+            .btn {
+                width: 100%;
+                text-align: left;
+                background: #fff;
+                position: relative;
+                .caret {
+                    position: absolute;
+                    right: 10px;
+                    top: 13px;
+                }
+            }
+        }
+    }
+    .dropdown .btn {
+        font-weight: normal;
+    }
+    .league-content {
+        width: 300px;
+    }
+    .dropdown .dropdown-menu {
+        min-width: 200px;
+        font-size: 12px;
+    }
+
+}
+
+.main-content {
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+    border: none;
+}
+.nav.nav-tabs > li > a {
+    padding: 10px 20px;
+}
+
+.nav-tabs>li>a {
+    color: #5c1218;
+    font-weight: bold;
+    outline: none;
+}
+
+.nav-tabs>li.active>a {
+    border-bottom: 3px solid #5c1218;
+}
+
+#datetimepicker1 {
+    .calendar {
+        background: url('Images/sprite.png') no-repeat -3px -3px;
+	    width: 18px;
+	    height: 20px;
+        display: inline-block;
+    }
+    .input-group-addon {
+        background: #fff;
+        border: none;
+    
+    }
+    .form-control {
+        box-shadow: 0 2px 0px 0 rgba(0, 0, 0, 0.1), 0 2px 0px 0 rgba(0, 0, 0, 0.02);
+    }
+}
+
+
+.width-150 {
+    width: 150px;
+}
+.width-200 {
+    width: 200px;
+}
