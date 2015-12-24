@@ -7,8 +7,8 @@
     <link href="~/Content/Fanex.Result/fanex.result.css" rel="stylesheet" />
 
     <link href="~/Content/Fanex.Result/fanex.result.css" rel="stylesheet" />
-    <link href="/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="/Scripts/datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    <link href="/css/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/components/datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
     <link href="~/Content/result.css" rel="stylesheet" />
 
 </head>
@@ -142,7 +142,36 @@
                                     </div>
                                 </div>
                             </div>
-                            <div role="tabpanel" class="tab-pane" id="outright"></div>
+                            <div role="tabpanel" class="tab-pane" id="outright">
+                                <div class="row filter">
+                                    <div class="col-sm-12">
+                                        <span class="txt">From</span>
+                                        <div class="control">
+                                            <div class="input-group date" id="datetimepicker_from">
+                                                <input type="text" class="form-control" />
+                                                <span class="input-group-addon">
+                                                    <span class="calendar"></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <span class="txt">To</span>
+                                        <div class="control">
+                                            <div class="input-group date" id="datetimepicker_to">
+                                                <input type="text" class="form-control" />
+                                                <span class="input-group-addon">
+                                                    <span class="calendar"></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <input type="button" value="12/23/2015" class="btn btn-default" />
+                                        <input type="button" value="12/22/2015" class="btn btn-default" />
+                                        <input type="button" value="Submit" class="btn btn-submit" />
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <span class="txt-red">*</span> You can view report data from 12/20/2015
+                                    </div>
+                                </div>
+                            </div>
                             <div role="tabpanel" class="tab-pane" id="keno"></div>
                         </div>
                     </div>
@@ -155,7 +184,22 @@
 
 </body>
 </html>
-<script type="text/javascript" src="/Scripts/jquery-2.1.4.min.js"></script>
-<script type="text/javascript" src="/Scripts/moment.js"></script>
-<script type="text/javascript" src="/Content/bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/Scripts/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="/libs/jquery/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/libs/moment/moment.js"></script>
+<script type="text/javascript" src="/css/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/components/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript">
+            $(function () {
+                $('#datetimepicker1').datetimepicker();
+                $('#datetimepicker_from').datetimepicker();
+                $('#datetimepicker_to').datetimepicker({
+                    useCurrent: false //Important! See issue #1075
+                });
+                $("#datetimepicker_from").on("dp.change", function (e) {
+                    $('#datetimepicker_from').data("DateTimePicker").minDate(e.date);
+                });
+                $("#datetimepicker_to").on("dp.change", function (e) {
+                    $('#datetimepicker_to').data("DateTimePicker").maxDate(e.date);
+                });
+            });
+</script>

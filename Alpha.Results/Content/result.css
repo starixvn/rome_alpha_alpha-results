@@ -85,17 +85,17 @@ table.fn-rs .cl-ko-time, table.fn-rs .cl-ko-time {
 .nav-tabs > li.active > a {
   border-bottom: 3px solid #5c1218; }
 
-#datetimepicker1 .calendar {
+.input-group.date .calendar {
   background: url("Images/sprite.png") no-repeat -3px -3px;
   width: 18px;
   height: 20px;
   display: inline-block; }
 
-#datetimepicker1 .input-group-addon {
+.input-group.date .input-group-addon {
   background: #fff;
   border: none; }
 
-#datetimepicker1 .form-control {
+.input-group.date .form-control {
   box-shadow: 0 2px 0px 0 rgba(0, 0, 0, 0.1), 0 2px 0px 0 rgba(0, 0, 0, 0.02); }
 
 .width-150 {
