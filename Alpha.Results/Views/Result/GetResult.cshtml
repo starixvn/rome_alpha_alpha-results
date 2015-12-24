@@ -13,7 +13,6 @@
 
     <link href="~/Content/Fanex.Result/fanex.result.css" rel="stylesheet" />
     <link href="/contents/css/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="/contents/components/datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
     <link href="~/Content/result.css" rel="stylesheet" />
 
 </head>
@@ -203,6 +202,7 @@
         $("#datetimepicker_to").on("dp.change", function (e) {
             $('#datetimepicker_to').data("DateTimePicker").maxDate(e.date);
         });
+                $.material.init();
     });
     </script>
 </body>
