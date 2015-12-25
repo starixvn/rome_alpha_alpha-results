@@ -159,4 +159,7 @@
   <data name="league" xml:space="preserve">
     <value>League</value>
   </data>
+  <data name="ShowAllLeagues" xml:space="preserve">
+    <value>*...* Show All League *...*</value>
+  </data>
 </root>

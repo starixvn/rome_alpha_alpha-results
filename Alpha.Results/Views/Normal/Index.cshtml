@@ -1,53 +1,55 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Normal";
 }
 
-@*@section Nav {
-
-    @Html.Action("Index", "Tab", new { tabName = "normal" })
-}*@
+@model NormalResultViewModel
 
 <div role="tabpanel" class="tab-pane active" id="normal">
     <div class="row filter">
-        <div class="col-sm-12">
-            <span class="txt">From</span>
-            <div class="control">
-                <div class="input-group date" id="datetimepicker1">
-                    <input type="text" class="form-control" />
-                    <span class="input-group-addon">
-                        <span class="calendar"></span>
-                    </span>
+        @using (Html.BeginForm("Index", "Normal", FormMethod.Get))
+        {
+            @Html.AntiForgeryToken()
+
+                <div class="col-sm-12">
+                    <span class="txt">From</span>
+                    <div class="control">
+                        <div class="input-group date" id="dpkContainer">
+                            @Html.EditorFor(model => model.ResultDate, new { htmlAttributes = new { @class = "form-control" } })
+                            <span class="input-group-addon">
+                                <span class="calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                    @Html.HiddenFor(model => model.MinResultDate)
+
+                    <input type="submit" value="@Model.Today" class="btn btn-default btn-other-day" />
+                    <input type="submit" value="@Model.Yesterday" class="btn btn-default btn-other-day" />
+                    <input type="submit" value="@ResultLang.submit" class="btn btn-submit" />
                 </div>
-            </div>
-            <input type="button" value="12/23/2015" class="btn btn-default" />
-            <input type="button" value="12/22/2015" class="btn btn-default" />
-            <input type="button" value="Submit" class="btn btn-submit" />
-        </div>
-        <div class="col-sm-12">
-            <span class="txt-red">*</span> You can view report data from 12/20/2015
-        </div>
-        <div class="col-sm-12 sport-info">
-            <span class="txt">Sport</span>
-            <div class="dropdown control">
-                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                    Soccer
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <li><a href="#">Basketball</a></li>
-                    <li><a href="#">Tennis</a></li>
-                    <li><a href="#">Volley ball</a></li>
-                </ul>
-            </div>
-            <span class="txt">League</span>
-            <div class="dropdown control league-content">
-                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                    *...* Show All League *...*
-                    <span class="caret"></span>
-                </button>
-            </div>
-        </div>
+
+                <div class="col-sm-12">
+                    <span class="txt-red">*</span> @Model.MinResultDateMessage
+                </div>
+
+                if (Model.Sports.Any())
+                {
+                    <div class="col-sm-12 sport-info">
+                        <span class="txt">@ResultLang.sport</span>
+                        <div class="dropdown control">
+                            @Html.DropDownListFor(model => model.SportId, Model.Sports, new { @class = "form-control", @onchange = "this.form.submit()" })
+                        </div>
+
+                        <span class="txt">@ResultLang.league</span>
+                        <div class="dropdown control league-content">
+                            @Html.DropDownListFor(model => model.LeagueId, Model.Leagues, ResultLang.ShowAllLeagues, new { @class = "form-control", @onchange = "this.form.submit()" })
+                        </div>
+
+                    </div>
+                }
+        }
+
+        
+
     </div>
     <div class="main-content">
         <div class="fn-rs-content-header">
@@ -126,4 +128,10 @@
         </div>
     </div>
 </div>
+
+
+@section scripts
+{
+    @Scripts.Render(BundleConfig.NormalResultJavascriptBundleUrl)
+}
 

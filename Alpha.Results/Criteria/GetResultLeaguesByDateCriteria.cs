@@ -5,7 +5,7 @@
 
     public class GetResultLeaguesByDateCriteria : CriteriaBase
     {
-        public DateTime EventDate { get; set; }
+        public string EventDate { get; set; }
 
         public int SportId { get; set; }
 

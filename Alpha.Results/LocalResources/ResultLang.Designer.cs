@@ -151,6 +151,15 @@ namespace Alpha.Results.LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to *...* Show All League *...*.
+        /// </summary>
+        public static string ShowAllLeagues {
+            get {
+                return ResourceManager.GetString("ShowAllLeagues", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sport.
         /// </summary>
         public static string sport {

@@ -17,7 +17,8 @@
 
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            //ValidateSecurityCode(filterContext);
+            //// Should check authentication here
+            //// Base controller should separate into another dll for re-using.
             base.OnActionExecuting(filterContext);
         }
 
@@ -69,19 +70,5 @@
 
             base.Initialize(requestContext);
         }
-
-        ////private void ValidateSecurityCode(ActionExecutingContext filterContext)
-        ////{
-        ////    string redirectURL = SecurityCodeChecker.GetRedirectUrl();
-        ////    if (redirectURL != null)
-        ////    {
-        ////        if (Request.IsAjaxRequest())
-        ////        {
-        ////            throw new SecurityException();
-        ////        }
-
-        ////        filterContext.Result = new RedirectResult(redirectURL);
-        ////    }
-        ////}
     }
 }

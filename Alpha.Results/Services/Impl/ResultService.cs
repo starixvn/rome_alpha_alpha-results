@@ -56,7 +56,7 @@
 
             var leagues = _dynamicRepository.Fetch<League>(new GetResultLeaguesByDateCriteria
             {
-                EventDate = resultDate,
+                EventDate = resultDate.ToShortDateString(),
                 Language = language,
                 SportId = sportId
             });
@@ -70,7 +70,7 @@
 
             var sports = _dynamicRepository.Fetch<Sport>(new GetResultSportsByDateCriteria
             {
-                EventDate = resultDate
+                EventDate = resultDate.ToShortDateString()
             }).ToList();
 
             if (sports.Any())

@@ -140,4 +140,5 @@ var resultReportManager;
 jQuery(document).ready(function () {
     resultReportManager = new ResultReportManager();
     resultReportManager.initPage();
+
 });

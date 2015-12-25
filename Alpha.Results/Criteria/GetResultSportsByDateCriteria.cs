@@ -5,7 +5,7 @@
 
     public class GetResultSportsByDateCriteria : CriteriaBase
     {
-        public DateTime EventDate { get; set; }
+        public string EventDate { get; set; }
 
         public override string GetSettingKey()
         {
