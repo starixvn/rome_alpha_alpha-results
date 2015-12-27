@@ -1,19 +1,20 @@
 namespace Alpha.Results.Services.Impl.Result
 {
+    using System.Linq;
     using Alpha.Results.Criteria;
-    using Alpha.Results.Repositories.Impl.Result;
-    using Alpha.Results.Repositories;
     using Alpha.Results.Services.Result;
+    using Fanex.Data.Repository;
     using Fanex.Result.Core;
     using Fanex.Result.Core.Base;
+    using Fanex.Result.Core.MetricGaming.DTO;
 
     public class MetricGamingResultService : IMetricGamingResultService
     {
-        private IMetricGamingResultDataAccess _resultDataAccess;
+        private IDynamicRepository _dynamicRepository;
 
-        public MetricGamingResultService(IMetricGamingResultDataAccess resultDataAccess)
+        public MetricGamingResultService(IDynamicRepository dynamicRepository)
         {
-            this._resultDataAccess = resultDataAccess ?? new MetricGamingResultDataAccess();
+            this._dynamicRepository = dynamicRepository ?? new DynamicRepository();
         }
 
         public MetricGamingResultService()
@@ -23,18 +24,8 @@ namespace Alpha.Results.Services.Impl.Result
 
         public string GetResult(GetMetricGamingResultCriteria criteria)
         {
-            var resultData = this._resultDataAccess.GetResult(criteria);
-            if (resultData != null && resultData.Count > 0)
-            {
-                return ResultEngine.HtmlParser(resultData, GetFanexResultSetting());
-            }
-
-            return string.Empty;
-        }
-
-        private static ResultSetting GetFanexResultSetting()
-        {
-            return new ResultSetting
+            var resultData = this._dynamicRepository.Fetch<MetricGaming>(criteria).ToList();
+            var resultSetting = new ResultSetting
             {
                 SportType = SportType.Soccer,
                 IsOutRight = false,
@@ -45,6 +36,13 @@ namespace Alpha.Results.Services.Impl.Result
                 VisiblePopUpTitle = true,
                 HighlightWinnerTeam = true
             };
+
+            if (resultData != null && resultData.Count > 0)
+            {
+                return ResultEngine.HtmlParser(resultData, resultSetting);
+            }
+
+            return string.Empty;
         }
     }
 }

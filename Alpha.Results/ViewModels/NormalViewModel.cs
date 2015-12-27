@@ -4,7 +4,7 @@
     using System.Collections.Generic;
     using Models;
     using System.Web.Mvc;
-    public class NormalResultViewModel
+    public class NormalViewModel
     {
         public DateTime MinResultDate { get; set; }
 
@@ -23,6 +23,8 @@
         public IEnumerable<SelectListItem> Leagues { get; set; }
 
         public int LeagueId { get; set; }
+
+        public string HtmlResults { get; set; }
 
     }
 }

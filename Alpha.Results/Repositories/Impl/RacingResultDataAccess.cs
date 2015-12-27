@@ -32,5 +32,23 @@ namespace Alpha.Results.Repositories.Impl.Result
 
             return result;
         }
+
+        public IList<Racing> GetRacingPopupResult(GetRacingPopupResultCriteria criteria)
+        {
+            var result = new List<Racing>();
+
+            using (var db = new ObjectDb(criteria.GetSettingKey()))
+            {
+                using (var reader = db.ExecuteReader(criteria.GetSpParams()))
+                {
+                    while (reader.Read())
+                    {
+                        result.Add(BindingUtilities.BindRacing(reader));
+                    }
+                }
+            }
+
+            return result;
+        }
     }
 }

@@ -3,32 +3,35 @@
     using Alpha.Results.Criteria;
     using Alpha.Results.Repositories.Impl.Result;
     using Alpha.Results.Repositories;
+    using System.Linq;
     using Alpha.Results.Services.Result;
     using Fanex.Result.Core;
     using Fanex.Result.Core.Base;
     using Fanex.Result.Core.GoldDeluxe.DTO;
     using Sunplus.Agent.Model.Entities;
-
+    using Fanex.Data.Repository;
     public class GoldDeluxePopupResultService : IGoldDeluxePopupResultService
     {
-        private IGoldDeluxePopupResultDataAccess _goldDeluxeDataAccess;
+        private IDynamicRepository _dynamicRepository;
 
-        public GoldDeluxePopupResultService(IGoldDeluxePopupResultDataAccess goldDeluxeDataAccess = null)
+        public GoldDeluxePopupResultService(IDynamicRepository dynamicRepository = null)
         {
-            _goldDeluxeDataAccess = goldDeluxeDataAccess ?? new GoldDeluxePopupResultDataAccess();
+            _dynamicRepository = dynamicRepository ?? new DynamicRepository();
         }
 
         public string GetPopupResult(long transId, int betType)
         {
             var criteria = new GetGoldDeluxePopupResultCriteria { TransId = transId, BetType = betType };
-            var goldDeluxes = _goldDeluxeDataAccess.GetGoldDeluxePopupResult(criteria);
 
-            return ResultEngine.HtmlParser<GoldDeluxe>(goldDeluxes, GetGoldDeluxeResultPopupSettings());
-        }
+            var goldDeluxeResults = _dynamicRepository
+                .Fetch<GoldDeluxe>(criteria)
+                .Select(result =>
+                {
+                    result.Bettype = betType;
+                    return result;
+                }).ToList();
 
-        private ResultSetting GetGoldDeluxeResultPopupSettings()
-        {
-            return new ResultSetting
+            var resultSetting = new ResultSetting
             {
                 SportType = SportType.GoldDeluxe,
                 IsOutRight = false,
@@ -38,6 +41,8 @@
                 VisibleMatchCodeIDColumn = false,
                 HighlightWinnerTeam = true
             };
+
+            return ResultEngine.HtmlParser(goldDeluxeResults, resultSetting);
         }
     }
 }

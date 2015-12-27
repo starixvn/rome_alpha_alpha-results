@@ -10,5 +10,7 @@ namespace Alpha.Results.Repositories
     public interface IRacingResultDataAccess
     {
         IList<Racing> GetRacingResult(GetRacingResultCriteria criteria);
+
+        IList<Racing> GetRacingPopupResult(GetRacingPopupResultCriteria criteria);
     }
 }

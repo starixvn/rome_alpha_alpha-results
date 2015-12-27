@@ -14,7 +14,7 @@ namespace Alpha.Results.Services.Impl.Result
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
-
+    using Models;
     /// <summary>
     /// The class SportsBookResultService.
     /// </summary>
@@ -103,6 +103,48 @@ namespace Alpha.Results.Services.Impl.Result
             string leagueName = leagueId == 0 ? "Show All Leagues" : CacheRef.GetLeagueName(leagueId);
             return ResultLang.result + " - " + fromDate.ToString("MM/dd/yyyy")
                 + " | " + CacheRef.GetSportName(sportType) + " - " + leagueName;
+        }
+
+        public string GetResultDetails(ResultRequest resultRequest)
+        {
+            var criteria = GetResultDetailsCriteria(resultRequest);
+            List<Sportsbook> sportsbooks = this._scoreInformationDataAccess.GetScoreInformation(ref criteria);
+            ResultSetting resultSetting = GetResultDetailsSetting(criteria);
+
+            return resultRequest.ViewDetail ?
+                ResultEngine.HtmlGameDetailParser(sportsbooks[0], resultSetting).Replace("original-title", " title ") :
+                ResultEngine.HtmlParser(sportsbooks, resultSetting).Replace("original-title", " title ");
+        }
+
+        private static GetSportsbookPopupResultCriteria GetResultDetailsCriteria(ResultRequest resultRequest)
+        {
+            return new GetSportsbookPopupResultCriteria()
+            {
+                MatchId = resultRequest.MatchId,
+                BetType = resultRequest.BetType,
+                SportType = resultRequest.SportId,
+                BetId = resultRequest.BetId,
+                IsViewDetail = resultRequest.ViewDetail
+            };
+        }
+
+        /// <summary>
+        /// Gets the FANEX result setting.
+        /// </summary>
+        /// <param name="criteria">The criteria.</param>
+        /// <returns>The object of ResultSetting.</returns>
+        private static ResultSetting GetResultDetailsSetting(GetSportsbookPopupResultCriteria criteria)
+        {
+            return new ResultSetting
+            {
+                SportType = (SportType)criteria.SportType,
+                IsOutRight = false,
+                IsParlayPopUp = false,
+                IsPopUp = true,
+                LanguageCode = UserSession.Current.Language,
+                VisibleMatchCodeIDColumn = false,
+                HighlightWinnerTeam = true
+            };
         }
     }
 }

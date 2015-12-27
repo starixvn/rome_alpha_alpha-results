@@ -11,5 +11,9 @@ namespace Alpha.Results.Services.Result
         string GetResult(DateTime fromDate, int sportType, int leagueId);
 
         MemoryStream ExportExcel(DateTime fromDate, int sportType, int leagueId, string excelTemplatePath);
+
+        string GetResultDetails(int matchId, int raceNumber, int sportType);
+
+        string GetResultForVirtualRacing(int matchId, int raceNumber, int sportType);
     }
 }

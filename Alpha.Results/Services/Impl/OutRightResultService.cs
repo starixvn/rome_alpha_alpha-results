@@ -1,30 +1,29 @@
 namespace Alpha.Results.Services.Impl.Result
 {
-    using Alpha.Results.LocalResources;
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
     using Alpha.Results.Criteria;
-    using Alpha.Results.Repositories.Impl.Result;
-    using Alpha.Results.Repositories;
+    using Alpha.Results.LocalResources;
     using Alpha.Results.Services.Result;
+    using Fanex.Data.Repository;
     using Fanex.Result.Core;
     using Fanex.Result.Core.Base;
     using Fanex.Result.Core.Sportsbook.DTO;
     using Sunplus.Agent.Model.BL.Cache;
     using Sunplus.Agent.Model.Entities;
-    using System;
-    using System.Collections.Generic;
-    using System.IO;
-    using System.Linq;
 
     /// <summary>
     /// The class OutRightResultService.
     /// </summary>
     public class OutRightResultService : IOutRightResultService
     {
-        private IOutRightResultDataAccess _outRightResultDataAccess;
+        private IDynamicRepository _dynamicRepository;
 
-        public OutRightResultService(IOutRightResultDataAccess outRightResultDataAccess)
+        public OutRightResultService(IDynamicRepository dynamicRepository)
         {
-            this._outRightResultDataAccess = outRightResultDataAccess ?? new OutRightResultDataAccess();
+            this._dynamicRepository = dynamicRepository ?? new DynamicRepository();
         }
 
         public OutRightResultService()
@@ -46,17 +45,17 @@ namespace Alpha.Results.Services.Impl.Result
         public string GetResult(DateTime fromDate, DateTime toDate, int sportId, int leagueId, out List<OutRight> outRights)
         {
             var criteria = GetCriteria(fromDate, toDate);
-            var result = this._outRightResultDataAccess.GetOutRightResult(criteria);
+            var result = this._dynamicRepository.Fetch<OutRight>(criteria);
             outRights = result.ToList();
 
             if (sportId != 0)
             {
-                result = result.Where(o => o.SportType == sportId).ToList();
+                result = result.Where(o => o.SportType == sportId);
             }
 
             if (leagueId != 0)
             {
-                result = result.Where(o => o.LeagueId == leagueId).ToList();
+                result = result.Where(o => o.LeagueId == leagueId);
             }
 
             ResultSetting resultSetting = GetFanexResultSetting();
@@ -74,16 +73,16 @@ namespace Alpha.Results.Services.Impl.Result
         /// <returns>The MemoryStream object.</returns>
         public MemoryStream ExportExcel(DateTime fromDate, DateTime toDate, int sportId, int leagueId, string excelTemplatePath)
         {
-            var result = this._outRightResultDataAccess.GetOutRightResult(GetCriteria(fromDate, toDate));
+            var result = this._dynamicRepository.Fetch<OutRight>(GetCriteria(fromDate, toDate));
 
             if (sportId != 0)
             {
-                result = result.Where(o => o.SportType == sportId).ToList();
+                result = result.Where(o => o.SportType == sportId);
             }
 
             if (leagueId != 0)
             {
-                result = result.Where(o => o.LeagueId == leagueId).ToList();
+                result = result.Where(o => o.LeagueId == leagueId);
             }
 
             return ResultEngine.ExcelParser<OutRight>(

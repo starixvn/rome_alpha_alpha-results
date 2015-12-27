@@ -10,5 +10,7 @@ namespace Alpha.Results.Repositories
     public interface ISportsbookResultDataAccess
     {
         IList<Sportsbook> GetSportbookResult(GetSportsbookResultCriteria criteria);
+
+        List<Sportsbook> GetScoreInformation(ref GetSportsbookPopupResultCriteria criteria);
     }
 }

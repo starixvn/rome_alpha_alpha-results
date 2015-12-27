@@ -28,15 +28,15 @@ namespace Alpha.Results.Controllers
         private Dictionary<int, Action<ResultRequest>> _resultHandlers = new Dictionary<int, Action<ResultRequest>>();
         private Dictionary<int, Func<ResultRequest, ActionResult>> _exportExcelHandlers = new Dictionary<int, Func<ResultRequest, ActionResult>>();
 
-        private IResultService _resultService;
+        private INormalService _resultService;
 
         public ResultController() : this(null)
         {
         }
 
-        public ResultController(IResultService resultService)
+        public ResultController(INormalService resultService)
         {
-            _resultService = resultService ?? new ResultService();
+            _resultService = resultService ?? new NormalService();
         }
 
         private string _MinReportDateString
@@ -603,7 +603,7 @@ namespace Alpha.Results.Controllers
         private void RenderBadminton(ResultRequest resultRequest)
         {
             string result = resultRequest.MatchId > 0 ?
-                new SportsbookPopupResultService().GetResult(resultRequest) :
+                new SportsbookResultService().GetResultDetails(resultRequest) :
                 new SportsbookResultService().GetResult(resultRequest.FromDate.Value, resultRequest.SportId, resultRequest.LeagueId);
 
             ViewBag.Result = result;
@@ -639,7 +639,7 @@ namespace Alpha.Results.Controllers
             else
             {
                 result = resultRequest.MatchId > 0 ?
-                   new SportsbookPopupResultService().GetResult(resultRequest) :
+                   new SportsbookResultService().GetResultDetails(resultRequest) :
                    new SportsbookResultService().GetResult(resultRequest.FromDate.Value, resultRequest.SportId, resultRequest.LeagueId);
             }
 
@@ -653,7 +653,7 @@ namespace Alpha.Results.Controllers
         private void RenderBasketBall(ResultRequest resultRequest)
         {
             string result = resultRequest.MatchId > 0 ?
-                new SportsbookPopupResultService().GetResult(resultRequest) :
+                new SportsbookResultService().GetResultDetails(resultRequest) :
                 new SportsbookResultService().GetResult(resultRequest.FromDate.Value, resultRequest.SportId, resultRequest.LeagueId);
 
             ViewBag.Result = result;
@@ -666,7 +666,7 @@ namespace Alpha.Results.Controllers
         private void RenderHockey(ResultRequest resultRequest)
         {
             string result = resultRequest.MatchId > 0 ?
-                new SportsbookPopupResultService().GetResult(resultRequest) :
+                new SportsbookResultService().GetResultDetails(resultRequest) :
                 new SportsbookResultService().GetResult(resultRequest.FromDate.Value, resultRequest.SportId, resultRequest.LeagueId);
 
             ViewBag.Result = result;
@@ -679,7 +679,7 @@ namespace Alpha.Results.Controllers
         private void RenderTennis(ResultRequest resultRequest)
         {
             string result = resultRequest.MatchId > 0 ?
-                new SportsbookPopupResultService().GetResult(resultRequest) :
+                new SportsbookResultService().GetResultDetails(resultRequest) :
                 new SportsbookResultService().GetResult(resultRequest.FromDate.Value, resultRequest.SportId, resultRequest.LeagueId);
 
             ViewBag.Result = result;
@@ -692,7 +692,7 @@ namespace Alpha.Results.Controllers
         private void RenderBaseBall(ResultRequest resultRequest)
         {
             string result = resultRequest.MatchId > 0 ?
-                 new SportsbookPopupResultService().GetResult(resultRequest) :
+                 new SportsbookResultService().GetResultDetails(resultRequest) :
                  new SportsbookResultService().GetResult(resultRequest.FromDate.Value, resultRequest.SportId, resultRequest.LeagueId);
 
             ViewBag.Result = result;
@@ -705,7 +705,7 @@ namespace Alpha.Results.Controllers
         private void RenderBilliard(ResultRequest resultRequest)
         {
             string result = resultRequest.MatchId > 0 ?
-                new SportsbookPopupResultService().GetResult(resultRequest) :
+                new SportsbookResultService().GetResultDetails(resultRequest) :
                 new SportsbookResultService().GetResult(resultRequest.FromDate.Value, resultRequest.SportId, resultRequest.LeagueId);
 
             ViewBag.Result = result;
@@ -718,7 +718,7 @@ namespace Alpha.Results.Controllers
         private void RenderHorseRacing(ResultRequest resultRequest)
         {
             string result = resultRequest.MatchId > 0 ?
-                new RacingPopupResultService().GetResult(resultRequest.MatchId, this.GetRaceNumber(resultRequest.Race), resultRequest.SportId) :
+                new RacingResultService().GetResultDetails(resultRequest.MatchId, this.GetRaceNumber(resultRequest.Race), resultRequest.SportId) :
                 new RacingResultService().GetResult(resultRequest.FromDate.Value, resultRequest.SportId, resultRequest.LeagueId);
 
             ViewBag.Result = result;
@@ -741,7 +741,7 @@ namespace Alpha.Results.Controllers
         private void RenderOtherSport(ResultRequest resultRequest)
         {
             ViewBag.Result = resultRequest.MatchId > 0 ?
-                new SportsbookPopupResultService().GetResult(resultRequest) :
+                new SportsbookResultService().GetResultDetails(resultRequest) :
                 new SportsbookResultService().GetResult(resultRequest.FromDate.Value, resultRequest.SportId, resultRequest.LeagueId);
         }
 
@@ -762,7 +762,7 @@ namespace Alpha.Results.Controllers
         private void RenderNumberGame(ResultRequest resultRequest)
         {
             string result = resultRequest.MatchId > 0 ?
-                new NumberGamePopupResultService().GetResult(resultRequest.MatchId) :
+                new NumberGameResultService().GetResultDetails(resultRequest.MatchId) :
                 new NumberGameResultService().GetResult(resultRequest.FromDate.Value, resultRequest.LeagueId, resultRequest.SportId);
             ViewBag.Result = result;
         }
@@ -784,7 +784,7 @@ namespace Alpha.Results.Controllers
         private void RenderVirtualHorsesRacing(ResultRequest resultRequest)
         {
             string result = resultRequest.MatchId > 0 ?
-                new RacingPopupResultService().GetResultForVirtualRacing(resultRequest.MatchId, this.GetRaceNumber(resultRequest.Race), resultRequest.SportId) :
+                new RacingResultService().GetResultForVirtualRacing(resultRequest.MatchId, this.GetRaceNumber(resultRequest.Race), resultRequest.SportId) :
                 new VirtualRacingResultService().GetResult(resultRequest.FromDate.Value, resultRequest.SportId, resultRequest.LeagueId);
 
             ViewBag.Result = result;
@@ -807,7 +807,7 @@ namespace Alpha.Results.Controllers
         private void RenderVirtualTennis(ResultRequest resultRequest)
         {
             string result = resultRequest.MatchId > 0 ?
-                new SportsbookPopupResultService().GetResult(resultRequest) :
+                new SportsbookResultService().GetResultDetails(resultRequest) :
                 new SportsbookResultService().GetResult(resultRequest.FromDate.Value, resultRequest.SportId, resultRequest.LeagueId);
 
             ViewBag.Result = result;
@@ -820,7 +820,7 @@ namespace Alpha.Results.Controllers
         private void RenderVirtualSoccer(ResultRequest resultRequest)
         {
             string result = resultRequest.MatchId > 0 ?
-                new SportsbookPopupResultService().GetResult(resultRequest) :
+                new SportsbookResultService().GetResultDetails(resultRequest) :
                 new SportsbookResultService().GetResult(resultRequest.FromDate.Value, resultRequest.SportId, resultRequest.LeagueId);
 
             ViewBag.Result = result;
@@ -833,7 +833,7 @@ namespace Alpha.Results.Controllers
         private void RenderVirtualCycling(ResultRequest resultRequest)
         {
             string result = resultRequest.MatchId > 0 ?
-                new RacingPopupResultService().GetResultForVirtualRacing(resultRequest.MatchId, this.GetRaceNumber(resultRequest.Race), resultRequest.SportId) :
+                new RacingResultService().GetResultForVirtualRacing(resultRequest.MatchId, this.GetRaceNumber(resultRequest.Race), resultRequest.SportId) :
                 new VirtualRacingResultService().GetResult(resultRequest.FromDate.Value, resultRequest.SportId, resultRequest.LeagueId);
 
             ViewBag.Result = result;
@@ -846,7 +846,7 @@ namespace Alpha.Results.Controllers
         private void RenderVirtualSpeedway(ResultRequest resultRequest)
         {
             string result = resultRequest.MatchId > 0 ?
-                new RacingPopupResultService().GetResultForVirtualRacing(resultRequest.MatchId, this.GetRaceNumber(resultRequest.Race), resultRequest.SportId) :
+                new RacingResultService().GetResultForVirtualRacing(resultRequest.MatchId, this.GetRaceNumber(resultRequest.Race), resultRequest.SportId) :
                 new VirtualRacingResultService().GetResult(resultRequest.FromDate.Value, resultRequest.SportId, resultRequest.LeagueId);
 
             ViewBag.Result = result;

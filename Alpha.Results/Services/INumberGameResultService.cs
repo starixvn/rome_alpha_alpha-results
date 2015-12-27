@@ -11,5 +11,7 @@ namespace Alpha.Results.Services.Result
         string GetResult(DateTime fromDate, int leagueId, int sportType);
 
         MemoryStream ExportExcel(DateTime fromDate, int sportType, int leagueId, string excelTemplatePath);
+
+        string GetResultDetails(int matchId);
     }
 }

@@ -6,18 +6,19 @@ namespace Alpha.Results.Services.Impl.Result
     using Alpha.Results.Services.Result;
     using Fanex.Result.Core;
     using Fanex.Result.Core.Base;
+    using System.Linq;
     using Sunplus.Agent.Model.Entities;
-
-    /// <summary>
-    /// The class LiveCasinoPopupResultService.
-    /// </summary>
+    using Fanex.Data.Repository;
+    using Fanex.Result.Core.LiveCasino.DTO;    /// <summary>
+                                               /// The class LiveCasinoPopupResultService.
+                                               /// </summary>
     public class LiveCasinoPopupResultService : ILiveCasinoPopupResultService
     {
-        private ILiveCasinoPopupResultDataAccess _liveCasinoPopupResultDataAccess;
+        private IDynamicRepository _dynamicRepository;
 
-        public LiveCasinoPopupResultService(ILiveCasinoPopupResultDataAccess liveCasinoPopupResultDataAccess)
+        public LiveCasinoPopupResultService(IDynamicRepository dynamicRepository)
         {
-            this._liveCasinoPopupResultDataAccess = liveCasinoPopupResultDataAccess ?? new LiveCasinoPopupResultDataAccess();
+            this._dynamicRepository = dynamicRepository ?? new DynamicRepository();
         }
 
         public LiveCasinoPopupResultService()
@@ -34,16 +35,7 @@ namespace Alpha.Results.Services.Impl.Result
                 League = league
             };
 
-            return ResultEngine.HtmlParser(this._liveCasinoPopupResultDataAccess.GetLiveCasinoPopupResult(criteria), GetFanexResultSetting());
-        }
-
-        /// <summary>
-        /// Gets the FANEX result setting.
-        /// </summary>
-        /// <returns>The object of ResultSetting.</returns>
-        private static ResultSetting GetFanexResultSetting()
-        {
-            return new ResultSetting
+            var resultSetting = new ResultSetting
             {
                 SportType = SportType.LiveCasino,
                 IsOutRight = false,
@@ -56,6 +48,16 @@ namespace Alpha.Results.Services.Impl.Result
                 VisibleDetailedLink = true,
                 HighlightWinnerTeam = true
             };
+
+            var liveCasinoResults = this._dynamicRepository
+                                        .Fetch<LiveCasino>(criteria)
+                                        .Select<LiveCasino, LiveCasino>(result =>
+                                        {
+                                            result.Bettype = betType;
+                                            return result;
+                                        }).ToList();
+
+            return ResultEngine.HtmlParser(liveCasinoResults, resultSetting);
         }
     }
 }

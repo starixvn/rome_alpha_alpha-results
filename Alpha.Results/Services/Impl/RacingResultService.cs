@@ -103,5 +103,35 @@ namespace Alpha.Results.Services.Impl.Result
             return ResultLang.result + " - " + fromDate.ToString("MM/dd/yyyy")
                 + " | " + CacheRef.GetSportName(sportType) + " - " + leagueName;
         }
+
+        public string GetResultDetails(int matchId, int raceNumber, int sportType)
+        {
+            var criteria = new GetRacingPopupResultCriteria()
+            {
+                MatchId = matchId,
+                RaceNo = raceNumber
+            };
+            var results = this._racingResultDataAccess.GetRacingPopupResult(criteria);
+            ResultSetting resultSetting = new ResultSetting
+            {
+                SportType = (SportType)sportType,
+                IsOutRight = false,
+                IsParlayPopUp = false,
+                IsPopUp = true,
+                VisiblePopUpTitle = false,
+                LanguageCode = UserSession.Current.Language,
+                VisibleMatchCodeIDColumn = false,
+                VisibleFreeHeader = true,
+                VisibleDetailedLink = true,
+                HighlightWinnerTeam = true
+            };
+
+            return ResultEngine.HtmlParser(results, resultSetting);
+        }
+
+        public string GetResultForVirtualRacing(int matchId, int raceNumber, int sportType)
+        {
+            return this.GetResultDetails(matchId, raceNumber, sportType);
+        }
     }
 }

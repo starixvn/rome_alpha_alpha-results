@@ -17,7 +17,7 @@ namespace Alpha.Results.Services.Impl.Result
 
     /// <summary>
     /// The class VirtualRacingResultService.
-    /// </summary>
+    /// </summary>R
     public class VirtualRacingResultService : IVirtualRacingResultService
     {
         private IVirtualRacingResultDataAccess _racingResultDataAccess;

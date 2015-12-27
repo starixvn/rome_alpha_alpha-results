@@ -98,5 +98,29 @@ namespace Alpha.Results.Services.Impl.Result
             return ResultLang.result + " - " + fromDate.ToString("MM/dd/yyyy")
                 + " | " + CacheRef.GetSportName(sportType) + " - " + leagueName;
         }
+
+        public string GetResultDetails(int matchId)
+        {
+            var criteria = new GetNumberGamePopupResultCriteria()
+            {
+                MatchID = matchId
+            };
+
+            return ResultEngine.HtmlParser(
+                this._numberGameResultDataAccess.GetNumberGamePopupResult(criteria),
+                new ResultSetting
+                {
+                    SportType = SportType.NumberGame,
+                    IsOutRight = false,
+                    IsParlayPopUp = false,
+                    IsPopUp = true,
+                    VisiblePopUpTitle = false,
+                    LanguageCode = UserSession.Current.Language,
+                    VisibleMatchCodeIDColumn = false,
+                    VisibleFreeHeader = true,
+                    VisibleDetailedLink = true,
+                    HighlightWinnerTeam = true
+                });
+        }
     }
 }
