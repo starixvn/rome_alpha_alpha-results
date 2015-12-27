@@ -2,37 +2,38 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Web.Mvc;
     using LocalResources;
-    using System.Linq;
     using Models;
     using Services;
     using Services.Impl;
-    using Sunplus.Agent.Model.Entities.Permission;
-    using ViewModels;
-    using Sunplus.Agent.Model.Entities;
     using Sunplus.Agent.Model.BL.Cache;
     using Sunplus.Agent.Model.BL.Definitions;
-    using Services.Impl.Result;
+    using Sunplus.Agent.Model.Entities;
+    using Sunplus.Agent.Model.Entities.Permission;
+    using ViewModels;
+
     public class NormalController : BaseController
     {
         private readonly INormalService _normalService;
-        
+        private readonly IReportService _reportService;
 
-        public NormalController() : this(null)
+        public NormalController() : this(null, null)
         {
         }
 
-        public NormalController(INormalService normalService)
+        public NormalController(INormalService normalService, IReportService reportService)
         {
             _normalService = normalService ?? new NormalService();
+            _reportService = reportService ?? new ReportService();
         }
 
         [HttpGet]
         public ActionResult Index(NormalRequest request = null)
         {
             request = request ?? new NormalRequest();
-            var balanceUpDate = _normalService.GetBalanceUpDate().BalanceUpDay;
+            var balanceUpDate = _reportService.GetBalanceUpDate().BalanceUpDay;
             var sports = GetSportsResult(request.ResultDate);
 
             var viewModel = new NormalViewModel
@@ -42,15 +43,15 @@
                 Yesterday = DateTime.Now.AddDays(-1).ToShortDateString(),
                 MinResultDate = balanceUpDate,
                 MinResultDateMessage = string.Format(ResultLang.ViewDataFromDate, balanceUpDate.ToShortDateString()),
-                Sports = sports,
-                SportId = request.SportId > 0 ? request.SportId : int.Parse(sports.First().Value)
+                Sports = sports
             };
 
-            if(viewModel.Sports.Any())
+            if (viewModel.Sports.Any())
             {
+                viewModel.SportId = request.SportId > 0 ? request.SportId : int.Parse(sports.First().Value);
                 viewModel.Leagues = GetLeaguesResult(request.ResultDate, viewModel.SportId);
                 viewModel.LeagueId = request.LeagueId;
-                viewModel.HtmlResults = _normalService.GetHtmlResults(new NormalRequest
+                viewModel.HtmlResults = _normalService.GetResults(new NormalRequest
                 {
                     ResultDate = viewModel.ResultDate,
                     SportId = viewModel.SportId,
@@ -60,7 +61,6 @@
 
             return View(viewModel);
         }
-
 
         private IEnumerable<SelectListItem> GetSportsResult(DateTime resultDate)
         {
@@ -94,7 +94,5 @@
                 Value = league.Id.ToString()
             });
         }
-
-        
     }
 }

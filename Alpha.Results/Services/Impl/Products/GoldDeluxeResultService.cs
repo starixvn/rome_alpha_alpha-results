@@ -1,16 +1,17 @@
-﻿namespace Alpha.Results.Services.Impl.Result
+﻿namespace Alpha.Results.Services.Impl.Products
 {
-    using Alpha.Results.Criteria;
-    using Alpha.Results.Repositories.Impl.Result;
-    using Alpha.Results.Repositories;
+    using System;
+    using System.IO;
     using System.Linq;
-    using Alpha.Results.Services.Result;
+    using Alpha.Results.Criteria;
+    using Fanex.Data.Repository;
     using Fanex.Result.Core;
     using Fanex.Result.Core.Base;
     using Fanex.Result.Core.GoldDeluxe.DTO;
+    using Models;
     using Sunplus.Agent.Model.Entities;
-    using Fanex.Data.Repository;
-    public class GoldDeluxePopupResultService : IGoldDeluxePopupResultService
+
+    public class GoldDeluxePopupResultService : IProductResultService
     {
         private IDynamicRepository _dynamicRepository;
 
@@ -19,15 +20,25 @@
             _dynamicRepository = dynamicRepository ?? new DynamicRepository();
         }
 
-        public string GetPopupResult(long transId, int betType)
+        public MemoryStream ExportExcel(NormalRequest request, string excelTemplatePath)
         {
-            var criteria = new GetGoldDeluxePopupResultCriteria { TransId = transId, BetType = betType };
+            throw new NotImplementedException();
+        }
+
+        public string GetResult(NormalRequest request)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string GetResultDetails(NormalDetailsRequest detailsRequest)
+        {
+            var criteria = new GetGoldDeluxePopupResultCriteria { TransId = detailsRequest.RefNum, BetType = detailsRequest.BetTypeId };
 
             var goldDeluxeResults = _dynamicRepository
                 .Fetch<GoldDeluxe>(criteria)
                 .Select(result =>
                 {
-                    result.Bettype = betType;
+                    result.Bettype = detailsRequest.BetTypeId;
                     return result;
                 }).ToList();
 

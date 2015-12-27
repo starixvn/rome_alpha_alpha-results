@@ -162,4 +162,7 @@
   <data name="ShowAllLeagues" xml:space="preserve">
     <value>*...* Show All League *...*</value>
   </data>
+  <data name="ThereIsNoData" xml:space="preserve">
+    <value>There is no data</value>
+  </data>
 </root>

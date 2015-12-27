@@ -1,4 +1,4 @@
-namespace Alpha.Results.Services.Result
+namespace Alpha.Results.Services
 {
     using Fanex.Result.Core.Sportsbook.DTO;
     using System;

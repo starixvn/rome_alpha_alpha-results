@@ -2,7 +2,7 @@ namespace Alpha.Results.Models
 {
     using System;
 
-    public class ResultRequest
+    public class OldResultRequest
     {
         public int MatchId { get; set; }
 

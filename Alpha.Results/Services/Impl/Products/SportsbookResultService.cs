@@ -1,24 +1,23 @@
-namespace Alpha.Results.Services.Impl.Result
+namespace Alpha.Results.Services.Impl.Products
 {
-    using Alpha.Results.LocalResources;
-    using Alpha.Results.Criteria;
-    using Alpha.Results.Repositories.Impl.Result;
-    using Alpha.Results.Repositories;
-    using Alpha.Results.Services.Result;
-    using Fanex.Result.Core;
-    using Fanex.Result.Core.Base;
-    using Fanex.Result.Core.Sportsbook.DTO;
-    using Sunplus.Agent.Model.BL.Cache;
-    using Sunplus.Agent.Model.Entities;
-    using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
+    using Alpha.Results.Criteria;
+    using Alpha.Results.LocalResources;
+    using Alpha.Results.Repositories;
+    using Alpha.Results.Repositories.Impl.Result;
+    using Fanex.Result.Core;
+    using Fanex.Result.Core.Base;
+    using Fanex.Result.Core.Sportsbook.DTO;
     using Models;
+    using Sunplus.Agent.Model.BL.Cache;
+    using Sunplus.Agent.Model.Entities;
+
     /// <summary>
     /// The class SportsBookResultService.
     /// </summary>
-    public class SportsbookResultService : ISportsbookResultService
+    public class SportsbookResultService : IProductResultService
     {
         private ISportsbookResultDataAccess _scoreInformationDataAccess;
 
@@ -32,30 +31,30 @@ namespace Alpha.Results.Services.Impl.Result
         {
         }
 
-        public string GetResult(DateTime fromDate, int sportType, int leagueId)
+        public string GetResult(NormalRequest request)
         {
-            var criteria = GetCriteria(fromDate, sportType, leagueId);
+            var criteria = GetCriteria(request);
             IList<Sportsbook> sportsbooks = this._scoreInformationDataAccess.GetSportbookResult(criteria);
             ResultSetting resultSetting = GetFanexResultSetting(criteria.SportType > 0 ? criteria.SportType : (int)SportType.Others);
 
             return ResultEngine.HtmlParser<Sportsbook>(sportsbooks.ToList(), resultSetting).Replace("original-title", " title ");
         }
 
-        public MemoryStream ExportExcel(DateTime fromDate, int sportType, int leagueId, string excelTemplatePath)
+        public MemoryStream ExportExcel(NormalRequest request, string excelTemplatePath)
         {
             return ResultEngine.ExcelParser(
-                this._scoreInformationDataAccess.GetSportbookResult(GetCriteria(fromDate, sportType, leagueId)).ToList(),
-                GetExportExcelSetting(sportType, excelTemplatePath, GetExcelTitle(sportType, fromDate, leagueId)));
+                this._scoreInformationDataAccess.GetSportbookResult(GetCriteria(request)).ToList(),
+                GetExportExcelSetting(request.SportId, excelTemplatePath, GetExcelTitle(request)));
         }
 
-        private static GetSportsbookResultCriteria GetCriteria(DateTime fromDate, int sportType, int leagueId)
+        private static GetSportsbookResultCriteria GetCriteria(NormalRequest request)
         {
             return new GetSportsbookResultCriteria()
             {
-                FromDate = fromDate,
-                SportType = sportType,
+                FromDate = request.ResultDate,
+                SportType = request.SportId,
                 IsShowAll = Sunplus.Agent.Model.BL.Definitions.AppSettings.LocalTest,
-                LeagueID = leagueId
+                LeagueID = request.LeagueId
             };
         }
 
@@ -98,33 +97,33 @@ namespace Alpha.Results.Services.Impl.Result
             };
         }
 
-        private static string GetExcelTitle(int sportType, DateTime fromDate, int leagueId)
+        private static string GetExcelTitle(NormalRequest request)
         {
-            string leagueName = leagueId == 0 ? "Show All Leagues" : CacheRef.GetLeagueName(leagueId);
-            return ResultLang.result + " - " + fromDate.ToString("MM/dd/yyyy")
-                + " | " + CacheRef.GetSportName(sportType) + " - " + leagueName;
+            string leagueName = request.LeagueId == 0 ? "Show All Leagues" : CacheRef.GetLeagueName(request.LeagueId);
+            return ResultLang.result + " - " + request.ResultDate.ToString("MM/dd/yyyy")
+                + " | " + CacheRef.GetSportName(request.SportId) + " - " + leagueName;
         }
 
-        public string GetResultDetails(ResultRequest resultRequest)
+        public string GetResultDetails(NormalDetailsRequest detailsRequest)
         {
-            var criteria = GetResultDetailsCriteria(resultRequest);
+            var criteria = GetResultDetailsCriteria(detailsRequest);
             List<Sportsbook> sportsbooks = this._scoreInformationDataAccess.GetScoreInformation(ref criteria);
             ResultSetting resultSetting = GetResultDetailsSetting(criteria);
 
-            return resultRequest.ViewDetail ?
+            return detailsRequest.ViewDetail ?
                 ResultEngine.HtmlGameDetailParser(sportsbooks[0], resultSetting).Replace("original-title", " title ") :
                 ResultEngine.HtmlParser(sportsbooks, resultSetting).Replace("original-title", " title ");
         }
 
-        private static GetSportsbookPopupResultCriteria GetResultDetailsCriteria(ResultRequest resultRequest)
+        private static GetSportsbookPopupResultCriteria GetResultDetailsCriteria(NormalDetailsRequest detailsRequest)
         {
             return new GetSportsbookPopupResultCriteria()
             {
-                MatchId = resultRequest.MatchId,
-                BetType = resultRequest.BetType,
-                SportType = resultRequest.SportId,
-                BetId = resultRequest.BetId,
-                IsViewDetail = resultRequest.ViewDetail
+                MatchId = detailsRequest.MatchId,
+                BetType = detailsRequest.BetType,
+                SportType = detailsRequest.SportId,
+                BetId = detailsRequest.BetId,
+                IsViewDetail = detailsRequest.ViewDetail
             };
         }
 

@@ -1,18 +1,20 @@
-namespace Alpha.Results.Services.Impl.Result
+namespace Alpha.Results.Services.Impl.Products
 {
+    using System;
+    using System.IO;
+    using System.Linq;
     using Alpha.Results.Criteria;
-    using Alpha.Results.Repositories.Impl.Result;
-    using Alpha.Results.Repositories;
-    using Alpha.Results.Services.Result;
+    using Fanex.Data.Repository;
     using Fanex.Result.Core;
     using Fanex.Result.Core.Base;
-    using System.Linq;
+    using Fanex.Result.Core.LiveCasino.DTO;
+    using Models;
     using Sunplus.Agent.Model.Entities;
-    using Fanex.Data.Repository;
-    using Fanex.Result.Core.LiveCasino.DTO;    /// <summary>
-                                               /// The class LiveCasinoPopupResultService.
-                                               /// </summary>
-    public class LiveCasinoPopupResultService : ILiveCasinoPopupResultService
+
+    /// <summary>
+    /// The class LiveCasinoPopupResultService.
+    /// </summary>
+    public class LiveCasinoPopupResultService : IProductResultService
     {
         private IDynamicRepository _dynamicRepository;
 
@@ -26,13 +28,13 @@ namespace Alpha.Results.Services.Impl.Result
         {
         }
 
-        public string GetResult(int matchId, int betType, string league)
+        public string GetResultDetails(NormalDetailsRequest detailsRequest)
         {
             var criteria = new GetLiveCasinoPopupResultCriteria()
             {
-                MatchId = matchId,
-                BetType = betType,
-                League = league
+                MatchId = detailsRequest.MatchId,
+                BetType = detailsRequest.BetTypeId,
+                League = detailsRequest.LeagueId.ToString()
             };
 
             var resultSetting = new ResultSetting
@@ -51,13 +53,23 @@ namespace Alpha.Results.Services.Impl.Result
 
             var liveCasinoResults = this._dynamicRepository
                                         .Fetch<LiveCasino>(criteria)
-                                        .Select<LiveCasino, LiveCasino>(result =>
+                                        .Select(result =>
                                         {
-                                            result.Bettype = betType;
+                                            result.Bettype = detailsRequest.BetTypeId;
                                             return result;
                                         }).ToList();
 
             return ResultEngine.HtmlParser(liveCasinoResults, resultSetting);
+        }
+
+        public string GetResult(NormalRequest request)
+        {
+            throw new NotImplementedException();
+        }
+
+        public MemoryStream ExportExcel(NormalRequest request, string excelTemplatePath)
+        {
+            throw new NotImplementedException();
         }
     }
 }

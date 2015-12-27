@@ -1,8 +1,7 @@
-namespace Alpha.Results.Services.Impl.Result
+namespace Alpha.Results.Services.Impl.Products
 {
     using System.Linq;
     using Alpha.Results.Criteria;
-    using Alpha.Results.Services.Result;
     using Fanex.Data.Repository;
     using Fanex.Result.Core;
     using Fanex.Result.Core.Base;

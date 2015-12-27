@@ -1,18 +1,20 @@
-namespace Alpha.Results.Services.Impl.Result
+namespace Alpha.Results.Services.Impl
 {
+    using System;
+    using System.IO;
+    using System.Linq;
     using Alpha.Results.Criteria;
-    using Alpha.Results.Repositories.Impl.Result;
     using Alpha.Results.Repositories;
-    using Alpha.Results.Services.Result;
+    using Alpha.Results.Repositories.Impl.Result;
     using Fanex.Result.Core;
     using Fanex.Result.Core.Base;
+    using Models;
     using Sunplus.Agent.Model.Entities;
-    using System.Linq;
 
     /// <summary>
     /// The class ParlayPopupResultService.
     /// </summary>
-    public class ParlayPopupResultService : IParlayPopupResultService
+    public class ParlayPopupResultService : IProductResultService
     {
         private IParlayPopupResultDataAccess _parlayResultDataAccess;
 
@@ -26,11 +28,11 @@ namespace Alpha.Results.Services.Impl.Result
         {
         }
 
-        public string GetResult(long refNo)
+        public string GetResultDetails(NormalDetailsRequest detailsRequest)
         {
             var parlayData = this._parlayResultDataAccess.GetParlayResult(new GetParlayPopupResultCriteria
             {
-                RefNo = refNo
+                RefNo = detailsRequest.RefNum
             });
 
             return ResultEngine.HtmlParser(parlayData.ToList(), this.GetFanexResultSetting());
@@ -54,6 +56,16 @@ namespace Alpha.Results.Services.Impl.Result
                 VisibleDetailedLink = true,
                 HighlightWinnerTeam = true
             };
+        }
+
+        public string GetResult(NormalRequest request)
+        {
+            throw new NotImplementedException();
+        }
+
+        public MemoryStream ExportExcel(NormalRequest request, string excelTemplatePath)
+        {
+            throw new NotImplementedException();
         }
     }
 }

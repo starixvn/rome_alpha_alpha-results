@@ -1,4 +1,4 @@
-﻿namespace Alpha.Results.Services.Implement
+﻿namespace Alpha.Results.Services.Impl
 {
     using Alpha.Results.Constants;
 

@@ -3,7 +3,6 @@
     using System;
     using System.Collections.Generic;
     using Models;
-    using Models.Dtos;
 
     public interface INormalService
     {
@@ -11,11 +10,9 @@
 
         IEnumerable<League> GetLeagues(DateTime resultDate, int sportId, string language, bool disableHouseRacingWin);
 
-        BalanceUpDateDto GetBalanceUpDate();
+        string GetResults(NormalRequest request);
 
-        string GetHtmlResults(NormalRequest request);
-
-        string GetHtmlResultDetails(NormalDetailRequest detailRequest);
+        string GetResultDetails(NormalDetailsRequest detailRequest);
 
         byte[] GetExcelResults(NormalRequest request, string templatePath);
     }

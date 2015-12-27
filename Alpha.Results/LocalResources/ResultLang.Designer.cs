@@ -178,6 +178,15 @@ namespace Alpha.Results.LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There is no data.
+        /// </summary>
+        public static string ThereIsNoData {
+            get {
+                return ResourceManager.GetString("ThereIsNoData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to To.
         /// </summary>
         public static string to {

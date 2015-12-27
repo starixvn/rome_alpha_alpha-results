@@ -45,12 +45,17 @@
                 </div>
             }
         }
-
-
-
     </div>
     <div class="main-content">
-        <div class="fn-rs-content-header">
+        @if(!string.IsNullOrEmpty(Model.HtmlResults))
+        {
+            @Html.Raw(Model.HtmlResults)
+        }
+        else
+        {
+            <div class="no-info">@ResultLang.ThereIsNoData</div>
+        }
+        @*<div class="fn-rs-content-header">
             <table class="fn-rs">
                 <thead>
                     <tr class="header">
@@ -123,7 +128,7 @@
                 </tbody>
             </table>
 
-        </div>
+        </div>*@
     </div>
 </div>
 

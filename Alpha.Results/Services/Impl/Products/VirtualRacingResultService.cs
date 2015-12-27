@@ -1,61 +1,61 @@
-namespace Alpha.Results.Services.Impl.Result
+namespace Alpha.Results.Services.Impl.Products
 {
-    using Alpha.Results.LocalResources;
-    using Alpha.Results.Criteria;
-    using Alpha.Results.Repositories.Impl.Result;
-    using Alpha.Results.Repositories;
-    using Alpha.Results.Services.Result;
-    using Fanex.Result.Core;
-    using Fanex.Result.Core.Base;
-    using Fanex.Result.Core.Racing.DTO;
-    using Sunplus.Agent.Model.BL.Cache;
-    using Sunplus.Agent.Model.Entities;
     using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
+    using Alpha.Results.Criteria;
+    using Alpha.Results.LocalResources;
+    using Alpha.Results.Repositories;
+    using Alpha.Results.Repositories.Impl.Result;
+    using Fanex.Result.Core;
+    using Fanex.Result.Core.Base;
+    using Fanex.Result.Core.Racing.DTO;
+    using Models;
+    using Sunplus.Agent.Model.BL.Cache;
+    using Sunplus.Agent.Model.Entities;
 
     /// <summary>
-    /// The class RacingResultService.
-    /// </summary>
-    public class RacingResultService : IRacingResultService
+    /// The class VirtualRacingResultService.
+    /// </summary>R
+    public class VirtualRacingResultService : IProductResultService
     {
-        private IRacingResultDataAccess _racingResultDataAccess;
+        private IVirtualRacingResultDataAccess _racingResultDataAccess;
 
-        public RacingResultService(IRacingResultDataAccess racingResultDataAccess)
+        public VirtualRacingResultService(IVirtualRacingResultDataAccess racingResultDataAccess)
         {
-            this._racingResultDataAccess = racingResultDataAccess ?? new RacingResultDataAccess();
+            this._racingResultDataAccess = racingResultDataAccess ?? new VirtualRacingResultDataAccess();
         }
 
-        public RacingResultService()
+        public VirtualRacingResultService()
             : this(null)
         {
         }
 
-        public string GetResult(DateTime fromDate, int sportType, int leagueId)
+        public string GetResult(NormalRequest request)
         {
-            var criteria = GetCriteria(fromDate, sportType, leagueId);
-            IList<Racing> racings = this._racingResultDataAccess.GetRacingResult(criteria);
+            var criteria = GetCriteria(request);
+            IList<Racing> racings = this._racingResultDataAccess.GetVirtualRacingResult(criteria);
             ResultSetting resultSetting = GetFanexResultSetting(criteria.SportType);
 
             return ResultEngine.HtmlParser<Racing>(racings.ToList(), resultSetting);
         }
 
-        public MemoryStream ExportExcel(DateTime fromDate, int sportType, int leagueId, string excelTemplatePath)
+        public MemoryStream ExportExcel(NormalRequest request, string excelTemplatePath)
         {
             return ResultEngine.ExcelParser(
-                this._racingResultDataAccess.GetRacingResult(GetCriteria(fromDate, sportType, leagueId)).ToList(),
-                GetExportExcelSetting(sportType, excelTemplatePath, GetExcelTitle(sportType, fromDate, leagueId)));
+                this._racingResultDataAccess.GetVirtualRacingResult(GetCriteria(request)).ToList(),
+                GetExportExcelSetting(request.SportId, excelTemplatePath, GetExcelTitle(request)));
         }
 
-        private static GetRacingResultCriteria GetCriteria(DateTime fromDate, int sportType, int leagueId)
+        private static GetVirtualRacingResultCriteria GetCriteria(NormalRequest request)
         {
-            return new GetRacingResultCriteria()
+            return new GetVirtualRacingResultCriteria()
             {
-                FromDate = fromDate,
-                SportType = sportType,
+                FromDate = request.ResultDate,
+                SportType = request.SportId,
                 IsShowAll = true,
-                LeagueID = leagueId
+                LeagueID = request.LeagueId
             };
         }
 
@@ -97,24 +97,24 @@ namespace Alpha.Results.Services.Impl.Result
             };
         }
 
-        private static string GetExcelTitle(int sportType, DateTime fromDate, int leagueId)
+        private static string GetExcelTitle(NormalRequest request)
         {
-            string leagueName = leagueId == 0 ? "Show All Leagues" : CacheRef.GetLeagueName(leagueId);
-            return ResultLang.result + " - " + fromDate.ToString("MM/dd/yyyy")
-                + " | " + CacheRef.GetSportName(sportType) + " - " + leagueName;
+            string leagueName = request.LeagueId == 0 ? "Show All Leagues" : CacheRef.GetLeagueName(request.LeagueId);
+            return ResultLang.result + " - " + request.ResultDate.ToString("MM/dd/yyyy")
+                + " | " + CacheRef.GetSportName(request.SportId) + " - " + leagueName;
         }
 
-        public string GetResultDetails(int matchId, int raceNumber, int sportType)
+        public string GetResultDetails(NormalDetailsRequest detailsRequest)
         {
             var criteria = new GetRacingPopupResultCriteria()
             {
-                MatchId = matchId,
-                RaceNo = raceNumber
+                MatchId = detailsRequest.MatchId,
+                RaceNo = GetRaceNumber(detailsRequest.Race)
             };
-            var results = this._racingResultDataAccess.GetRacingPopupResult(criteria);
+            var results = this._racingResultDataAccess.GetVirtualRacingPopupResult(criteria);
             ResultSetting resultSetting = new ResultSetting
             {
-                SportType = (SportType)sportType,
+                SportType = (SportType)detailsRequest.SportId,
                 IsOutRight = false,
                 IsParlayPopUp = false,
                 IsPopUp = true,
@@ -129,9 +129,26 @@ namespace Alpha.Results.Services.Impl.Result
             return ResultEngine.HtmlParser(results, resultSetting);
         }
 
-        public string GetResultForVirtualRacing(int matchId, int raceNumber, int sportType)
+        private int GetRaceNumber(string raceNumber)
         {
-            return this.GetResultDetails(matchId, raceNumber, sportType);
+            if (string.IsNullOrEmpty(raceNumber) || raceNumber == "0")
+            {
+                return 0;
+            }
+
+            try
+            {
+                return int.Parse(raceNumber);
+            }
+            catch (Exception exception)
+            {
+                if (exception is NotFiniteNumberException || exception is FormatException)
+                {
+                    return 0;
+                }
+
+                throw;
+            }
         }
     }
 }

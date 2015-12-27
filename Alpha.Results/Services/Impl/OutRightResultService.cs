@@ -1,4 +1,4 @@
-namespace Alpha.Results.Services.Impl.Result
+namespace Alpha.Results.Services.Impl
 {
     using System;
     using System.Collections.Generic;
@@ -6,7 +6,6 @@ namespace Alpha.Results.Services.Impl.Result
     using System.Linq;
     using Alpha.Results.Criteria;
     using Alpha.Results.LocalResources;
-    using Alpha.Results.Services.Result;
     using Fanex.Data.Repository;
     using Fanex.Result.Core;
     using Fanex.Result.Core.Base;

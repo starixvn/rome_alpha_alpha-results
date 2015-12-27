@@ -1,22 +1,21 @@
-namespace Alpha.Results.Services.Impl.Result
+namespace Alpha.Results.Services.Impl.Products
 {
-    using Alpha.Results.LocalResources;
-    using Alpha.Results.Criteria;
-    using Alpha.Results.Repositories.Impl.Result;
-    using Alpha.Results.Repositories;
-    using Alpha.Results.Services.Result;
-    using Fanex.Result.Core;
-    using Fanex.Result.Core.Base;
-    using Sunplus.Agent.Model.BL.Cache;
-    using Sunplus.Agent.Model.Entities;
-    using System;
     using System.IO;
     using System.Linq;
+    using Alpha.Results.Criteria;
+    using Alpha.Results.LocalResources;
+    using Alpha.Results.Repositories;
+    using Alpha.Results.Repositories.Impl.Result;
+    using Fanex.Result.Core;
+    using Fanex.Result.Core.Base;
+    using Models;
+    using Sunplus.Agent.Model.BL.Cache;
+    using Sunplus.Agent.Model.Entities;
 
     /// <summary>
     /// The class NumberGameResultService.
     /// </summary>
-    public class NumberGameResultService : INumberGameResultService
+    public class NumberGameResultService : IProductResultService
     {
         private INumberGameResultDataAccess _numberGameResultDataAccess;
 
@@ -30,26 +29,26 @@ namespace Alpha.Results.Services.Impl.Result
         {
         }
 
-        public string GetResult(DateTime fromDate, int leagueId, int sportType)
+        public string GetResult(NormalRequest request)
         {
             return ResultEngine.HtmlParser(
-                this._numberGameResultDataAccess.GetNumberGameResult(GetCriteria(fromDate, leagueId)).ToList(),
-                GetFanexResultSetting(sportType));
+                this._numberGameResultDataAccess.GetNumberGameResult(GetCriteria(request)).ToList(),
+                GetFanexResultSetting(request.SportId));
         }
 
-        public MemoryStream ExportExcel(DateTime fromDate, int sportType, int leagueId, string excelTemplatePath)
+        public MemoryStream ExportExcel(NormalRequest request, string excelTemplatePath)
         {
             return ResultEngine.ExcelParser(
-                this._numberGameResultDataAccess.GetNumberGameResult(GetCriteria(fromDate, leagueId)).ToList(),
-                GetExportExcelSetting(sportType, excelTemplatePath, GetExcelTitle(sportType, fromDate, leagueId)));
+                this._numberGameResultDataAccess.GetNumberGameResult(GetCriteria(request)).ToList(),
+                GetExportExcelSetting(request.SportId, excelTemplatePath, GetExcelTitle(request)));
         }
 
-        private static GetNumberGameResultCriteria GetCriteria(DateTime fromDate, int leagueId)
+        private static GetNumberGameResultCriteria GetCriteria(NormalRequest request)
         {
             return new GetNumberGameResultCriteria()
             {
-                FromDate = fromDate,
-                LeagueID = leagueId,
+                FromDate = request.ResultDate,
+                LeagueID = request.LeagueId,
                 Language = UserSession.Current.Language
             };
         }
@@ -92,18 +91,18 @@ namespace Alpha.Results.Services.Impl.Result
             };
         }
 
-        private static string GetExcelTitle(int sportType, DateTime fromDate, int leagueId)
+        private static string GetExcelTitle(NormalRequest request)
         {
-            string leagueName = leagueId == 0 ? "Show All Leagues" : CacheRef.GetLeagueName(leagueId);
-            return ResultLang.result + " - " + fromDate.ToString("MM/dd/yyyy")
-                + " | " + CacheRef.GetSportName(sportType) + " - " + leagueName;
+            string leagueName = request.LeagueId == 0 ? "Show All Leagues" : CacheRef.GetLeagueName(request.LeagueId);
+            return ResultLang.result + " - " + request.ResultDate.ToString("MM/dd/yyyy")
+                + " | " + CacheRef.GetSportName(request.SportId) + " - " + leagueName;
         }
 
-        public string GetResultDetails(int matchId)
+        public string GetResultDetails(NormalDetailsRequest detailsRequest)
         {
             var criteria = new GetNumberGamePopupResultCriteria()
             {
-                MatchID = matchId
+                MatchID = detailsRequest.MatchId
             };
 
             return ResultEngine.HtmlParser(
