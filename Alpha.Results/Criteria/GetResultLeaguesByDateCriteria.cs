@@ -7,7 +7,9 @@
     {
         public string EventDate { get; set; }
 
-        public int SportId { get; set; }
+        public int SportType { get; set; }
+
+        public string IsShowAll { get; set; }
 
         public string Language { get; set; }
 

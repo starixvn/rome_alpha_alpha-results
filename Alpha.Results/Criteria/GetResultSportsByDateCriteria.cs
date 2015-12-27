@@ -7,6 +7,8 @@
     {
         public string EventDate { get; set; }
 
+        public bool IsShowAll { get; set; }
+
         public override string GetSettingKey()
         {
             return "Age_Result_SportSelByDate";
