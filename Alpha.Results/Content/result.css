@@ -56,7 +56,8 @@
     font-size: 12px; }
   .tab-content .icon-excel {
     float: right;
-    margin-top: 14px; }
+    margin-top: 14px;
+    cursor: pointer; }
 
 .main-content .fn-rs-content-header {
   padding-right: 0; }
