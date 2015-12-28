@@ -66,6 +66,7 @@
   max-height: initial;
   overflow: hidden; }
 
+/********************** Table ***************************/
 table.fn-rs thead th {
   background: #822b34;
   color: #fff; }
@@ -109,6 +110,7 @@ table.fn-rs tbody .cl-match div.first-half-first-goal {
 table.fn-rs tbody .cl-match div.first-half-last-goal {
   background: url("images/goal-icon.png") no-repeat no-repeat -9px -83px; }
 
+/************************************** Tabs ************************************/
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
   border: none;
   color: #5c1218; }
@@ -138,6 +140,7 @@ table.fn-rs tbody .cl-match div.first-half-last-goal {
   font-weight: bold;
   outline: none; }
 
+/************************** Textbox **********************************/
 .input-group.date .calendar {
   background: url("Images/sprite.png") no-repeat -3px -3px;
   width: 18px;
@@ -151,6 +154,9 @@ table.fn-rs tbody .cl-match div.first-half-last-goal {
 .input-group.date .form-control {
   box-shadow: 0 2px 0px 0 rgba(0, 0, 0, 0.1), 0 2px 0px 0 rgba(0, 0, 0, 0.02);
   font-size: 12px; }
+
+.form-control[readonly], fieldset[disabled] .form-control {
+  background: inherit; }
 
 .width-150 {
   width: 150px; }

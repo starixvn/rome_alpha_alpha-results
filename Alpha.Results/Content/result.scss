@@ -92,7 +92,7 @@ body {
     }
 
 }
-
+/********************** Table ***************************/
 table.fn-rs {
     thead th{
         background: #822b34;
@@ -151,6 +151,8 @@ table.fn-rs tbody .cl-match div {
     }
 }
 
+
+/************************************** Tabs ************************************/
 .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
     border: none;
     color: $primary-color;
@@ -184,7 +186,7 @@ table.fn-rs tbody .cl-match div {
 }
 
 
-
+/************************** Textbox **********************************/
 .input-group.date{
     .calendar {
         background: url('Images/sprite.png') no-repeat -3px -3px;
@@ -201,6 +203,9 @@ table.fn-rs tbody .cl-match div {
         box-shadow: 0 2px 0px 0 rgba(0, 0, 0, 0.1), 0 2px 0px 0 rgba(0, 0, 0, 0.02);
         font-size: 12px;
     }
+}
+.form-control[readonly], fieldset[disabled] .form-control {
+    background: inherit;
 }
 
 
