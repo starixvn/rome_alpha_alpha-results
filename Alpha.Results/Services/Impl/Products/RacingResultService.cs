@@ -20,11 +20,11 @@ namespace Alpha.Results.Services.Impl.Products
     /// </summary>
     public class RacingResultService : IProductResultService
     {
-        private IRacingResultDataAccess _racingResultDataAccess;
+        private IRacingResultDataAccess _dataAccess;
 
-        public RacingResultService(IRacingResultDataAccess racingResultDataAccess)
+        public RacingResultService(IRacingResultDataAccess dataAccess)
         {
-            this._racingResultDataAccess = racingResultDataAccess ?? new RacingResultDataAccess();
+            this._dataAccess = dataAccess ?? new RacingResultDataAccess();
         }
 
         public RacingResultService()
@@ -35,7 +35,7 @@ namespace Alpha.Results.Services.Impl.Products
         public string GetResult(NormalRequest request)
         {
             var criteria = GetCriteria(request);
-            IList<Racing> racings = this._racingResultDataAccess.GetRacingResult(criteria);
+            IList<Racing> racings = _dataAccess.GetRacingResult(criteria);
             ResultSetting resultSetting = GetFanexResultSetting(criteria.SportType);
 
             return ResultEngine.HtmlParser<Racing>(racings.ToList(), resultSetting);
@@ -44,7 +44,7 @@ namespace Alpha.Results.Services.Impl.Products
         public MemoryStream ExportExcel(NormalRequest request, string excelTemplatePath)
         {
             return ResultEngine.ExcelParser(
-                this._racingResultDataAccess.GetRacingResult(GetCriteria(request)).ToList(),
+                this._dataAccess.GetRacingResult(GetCriteria(request)).ToList(),
                 GetExportExcelSetting(request.SportId, excelTemplatePath, GetExcelTitle(request)));
         }
 
@@ -111,7 +111,7 @@ namespace Alpha.Results.Services.Impl.Products
                 MatchId = detailsRequest.MatchId,
                 RaceNo = GetRaceNumber(detailsRequest.Race)
             };
-            var results = this._racingResultDataAccess.GetRacingPopupResult(criteria);
+            var results = this._dataAccess.GetRacingPopupResult(criteria);
             ResultSetting resultSetting = new ResultSetting
             {
                 SportType = (SportType)detailsRequest.SportId,

@@ -51,13 +51,15 @@
                 viewModel.SportId = request.SportId > 0 ? request.SportId : int.Parse(sports.First().Value);
                 viewModel.Leagues = GetLeaguesResult(request.ResultDate, viewModel.SportId);
                 viewModel.LeagueId = request.LeagueId;
-                viewModel.HtmlResults = _normalService.GetResults(new NormalRequest
-                {
-                    ResultDate = viewModel.ResultDate,
-                    SportId = viewModel.SportId,
-                    LeagueId = viewModel.LeagueId
-                });
+                
             }
+
+            viewModel.HtmlResults = _normalService.GetResults(new NormalRequest
+            {
+                ResultDate = viewModel.ResultDate,
+                SportId = viewModel.SportId,
+                LeagueId = viewModel.LeagueId
+            });
 
             return View(viewModel);
         }

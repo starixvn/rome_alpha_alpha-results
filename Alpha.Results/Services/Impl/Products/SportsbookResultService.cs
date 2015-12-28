@@ -19,11 +19,11 @@ namespace Alpha.Results.Services.Impl.Products
     /// </summary>
     public class SportsbookResultService : IProductResultService
     {
-        private ISportsbookResultDataAccess _scoreInformationDataAccess;
+        private ISportsbookResultDataAccess _dataAccess;
 
-        public SportsbookResultService(ISportsbookResultDataAccess scoreInformationDataAccess)
+        public SportsbookResultService(ISportsbookResultDataAccess dataAccess)
         {
-            this._scoreInformationDataAccess = scoreInformationDataAccess ?? new SportsbookResultDataAccess();
+            this._dataAccess = dataAccess ?? new SportsbookResultDataAccess();
         }
 
         public SportsbookResultService()
@@ -34,7 +34,12 @@ namespace Alpha.Results.Services.Impl.Products
         public string GetResult(NormalRequest request)
         {
             var criteria = GetCriteria(request);
-            IList<Sportsbook> sportsbooks = this._scoreInformationDataAccess.GetSportbookResult(criteria);
+
+            IList<Sportsbook> sportsbooks = 
+                request.SportId == 0 ? 
+                new List<Sportsbook>() : 
+                _dataAccess.GetSportbookResult(criteria);
+
             ResultSetting resultSetting = GetFanexResultSetting(criteria.SportType > 0 ? criteria.SportType : (int)SportType.Others);
 
             return ResultEngine.HtmlParser<Sportsbook>(sportsbooks.ToList(), resultSetting).Replace("original-title", " title ");
@@ -43,7 +48,7 @@ namespace Alpha.Results.Services.Impl.Products
         public MemoryStream ExportExcel(NormalRequest request, string excelTemplatePath)
         {
             return ResultEngine.ExcelParser(
-                this._scoreInformationDataAccess.GetSportbookResult(GetCriteria(request)).ToList(),
+                this._dataAccess.GetSportbookResult(GetCriteria(request)).ToList(),
                 GetExportExcelSetting(request.SportId, excelTemplatePath, GetExcelTitle(request)));
         }
 
@@ -107,7 +112,7 @@ namespace Alpha.Results.Services.Impl.Products
         public string GetResultDetails(NormalDetailsRequest detailsRequest)
         {
             var criteria = GetResultDetailsCriteria(detailsRequest);
-            List<Sportsbook> sportsbooks = this._scoreInformationDataAccess.GetScoreInformation(ref criteria);
+            List<Sportsbook> sportsbooks = this._dataAccess.GetScoreInformation(ref criteria);
             ResultSetting resultSetting = GetResultDetailsSetting(criteria);
 
             return detailsRequest.ViewDetail ?

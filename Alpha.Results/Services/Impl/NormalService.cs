@@ -67,7 +67,6 @@
         {
             Check.Argument.IsNotNull(request, "request");
             Check.Argument.IsNotNull(request.ResultDate, "request.ResultDate");
-            Check.Argument.IsNotNegativeOrZero(request.SportId, "request.SportId");
 
             var resultService = GetResultService((SportType)request.SportId);
 

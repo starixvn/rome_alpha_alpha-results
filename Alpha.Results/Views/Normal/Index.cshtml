@@ -47,14 +47,7 @@
         }
     </div>
     <div class="main-content">
-        @if(!string.IsNullOrEmpty(Model.HtmlResults))
-        {
-            @Html.Raw(Model.HtmlResults)
-        }
-        else
-        {
-            <div class="no-info">@ResultLang.ThereIsNoData</div>
-        }
+        @Html.Raw(Model.HtmlResults)
         @*<div class="fn-rs-content-header">
             <table class="fn-rs">
                 <thead>
