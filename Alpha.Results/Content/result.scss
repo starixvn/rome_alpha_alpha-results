@@ -82,13 +82,21 @@ body {
 }
 
 .main-content {
+    .fn-rs-content-header {
+        padding-right: 0;
+    }
     .fn-rs-content-scroll {
         max-height: initial;
+        overflow: hidden;
     }
+
+}
+
+table.fn-rs {
     thead th{
-            background: #822b34;
-            color: #fff;
-        }
+        background: #822b34;
+        color: #fff;
+    }
     tbody {
         td {
             padding: 5px;

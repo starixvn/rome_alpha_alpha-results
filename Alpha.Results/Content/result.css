@@ -58,17 +58,21 @@
     float: right;
     margin-top: 14px; }
 
-.main-content .fn-rs-content-scroll {
-  max-height: initial; }
+.main-content .fn-rs-content-header {
+  padding-right: 0; }
 
-.main-content thead th {
+.main-content .fn-rs-content-scroll {
+  max-height: initial;
+  overflow: hidden; }
+
+table.fn-rs thead th {
   background: #822b34;
   color: #fff; }
 
-.main-content tbody td {
+table.fn-rs tbody td {
   padding: 5px;
   vertical-align: middle; }
-  .main-content tbody td.cl-league {
+  table.fn-rs tbody td.cl-league {
     background: #f4f5e0;
     text-transform: uppercase;
     color: #333333;
