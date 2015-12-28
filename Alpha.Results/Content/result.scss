@@ -1,5 +1,6 @@
 ﻿body {
     font-size: 12px;
+    overflow: hidden;
 }
 .tab-content {
     padding: 15px 0;
@@ -68,8 +69,14 @@
     }
 
 }
+.main-container {
+    position: absolute;
+    top: 200px;
+    bottom: 0;
+}
 
 .main-content {
+    height: 100%;
     thead th{
             background: #822b34;
             color: #fff;
