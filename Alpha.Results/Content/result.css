@@ -58,6 +58,9 @@
     float: right;
     margin-top: 14px; }
 
+.main-content .fn-rs-content-scroll {
+  max-height: initial; }
+
 .main-content thead th {
   background: #822b34;
   color: #fff; }
@@ -87,6 +90,18 @@ table.fn-rs .cl-ht-score, table.fn-rs .cl-f-score, table.fn-rs .cl-ht-score, tab
 
 table.fn-rs .cl-ko-time, table.fn-rs .cl-ko-time {
   width: 120px; }
+
+table.fn-rs tbody .cl-match div.first-goal {
+  background: url("images/goal-icon.png") no-repeat -9px -32px; }
+
+table.fn-rs tbody .cl-match div.last-goal {
+  background: url("images/goal-icon.png") no-repeat -9px -16px; }
+
+table.fn-rs tbody .cl-match div.first-half-first-goal {
+  background: url("images/goal-icon.png") no-repeat -9px -65px; }
+
+table.fn-rs tbody .cl-match div.first-half-last-goal {
+  background: url("images/goal-icon.png") no-repeat no-repeat -9px -83px; }
 
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
   border: none;

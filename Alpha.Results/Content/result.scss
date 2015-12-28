@@ -1,4 +1,6 @@
-﻿body {
+﻿
+$goal-icon: "images/goal-icon.png";
+body {
     font-size: 12px;
 }
 .icon-excel {
@@ -81,6 +83,7 @@
 
 .main-content {
     .fn-rs-content-scroll {
+        max-height: initial;
     }
     thead th{
             background: #822b34;
@@ -120,6 +123,23 @@ table.fn-rs, table.fn-rs {
     }
 }
 
+table.fn-rs tbody .cl-match div {
+    &.first-goal {
+        background: url($goal-icon) no-repeat -9px -32px;
+    }
+    &.last-goal
+    {
+        background: url($goal-icon) no-repeat -9px -16px;
+	}
+    &.first-half-first-goal
+    {
+        background: url($goal-icon) no-repeat -9px -65px;
+    }
+    &.first-half-last-goal
+    {
+        background: url($goal-icon) no-repeat no-repeat -9px -83px;
+    }
+}
 
 .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
     border: none;
