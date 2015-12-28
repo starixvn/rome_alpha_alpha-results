@@ -75,7 +75,7 @@
 
             var sports = _normalService.GetSports(resultDate, sportsStatus);
 
-            return sports.Select<Sport, SelectListItem>(sport => new SelectListItem
+            return sports.Select(sport => new SelectListItem
             {
                 Text = CacheRef.GetSportName(sport.Id),
                 Value = sport.Id.ToString()
@@ -88,13 +88,26 @@
                                 resultDate,
                                 sportTypeId,
                                 UserSession.Current.Language,
-                                Sunplus.Agent.Model.BL.Definitions.AppSettings.Disable151_31);
+                                AppSettings.Disable151_31);
 
-            return leagues.Select<League, SelectListItem>(league => new SelectListItem
+            return leagues.Select(league => new SelectListItem
             {
                 Text = CacheRef.GetLeagueName(league.Id),
                 Value = league.Id.ToString()
             });
         }
+
+        [HttpGet]
+        public ActionResult ResultDetails(NormalDetailsRequest request)
+        {
+            var viewModel = new NormalDetailViewModel
+            {
+                Title = "Result Title",
+                Results = _normalService.GetResultDetails(request)
+            };
+
+            return View(viewModel);
+        }
+
     }
 }

@@ -24,26 +24,13 @@
         </div>
     </div>
     @Html.Hidden("RootURL", Url.Content("~/"))
+
     <script type="text/javascript" src="/contents/libs/jquery/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="/contents/libs/moment/moment.js"></script>
     <script type="text/javascript" src="/contents/css/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/contents/components/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+
     @RenderSection("scripts", false)
-    <script type="text/javascript">
-    ////$(function () {
-    ////    $('#datetimepicker1').datetimepicker();
-    ////    $('#datetimepicker_from').datetimepicker();
-    ////    $('#datetimepicker_to').datetimepicker({
-    ////        useCurrent: false //Important! See issue #1075
-    ////    });
-    ////    $("#datetimepicker_from").on("dp.change", function (e) {
-    ////        $('#datetimepicker_from').data("DateTimePicker").minDate(e.date);
-    ////    });
-    ////    $("#datetimepicker_to").on("dp.change", function (e) {
-    ////        $('#datetimepicker_to').data("DateTimePicker").maxDate(e.date);
-    ////    });
-    ////});
-    </script>
 </body>
 </html>
 
