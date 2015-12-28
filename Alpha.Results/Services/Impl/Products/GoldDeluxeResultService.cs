@@ -9,7 +9,6 @@
     using Fanex.Result.Core.Base;
     using Fanex.Result.Core.GoldDeluxe.DTO;
     using Models;
-    using Sunplus.Agent.Model.Entities;
 
     public class GoldDeluxePopupResultService : IProductResultService
     {
@@ -48,7 +47,7 @@
                 IsOutRight = false,
                 IsParlayPopUp = false,
                 IsPopUp = true,
-                LanguageCode = UserSession.Current.Language,
+                LanguageCode = detailsRequest.Language,
                 VisibleMatchCodeIDColumn = false,
                 HighlightWinnerTeam = true
             };

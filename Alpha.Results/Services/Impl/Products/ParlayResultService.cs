@@ -9,7 +9,6 @@ namespace Alpha.Results.Services.Impl
     using Fanex.Result.Core;
     using Fanex.Result.Core.Base;
     using Models;
-    using Sunplus.Agent.Model.Entities;
 
     /// <summary>
     /// The class ParlayPopupResultService.
@@ -35,14 +34,14 @@ namespace Alpha.Results.Services.Impl
                 RefNo = detailsRequest.RefNum
             });
 
-            return ResultEngine.HtmlParser(parlayData.ToList(), this.GetFanexResultSetting());
+            return ResultEngine.HtmlParser(parlayData.ToList(), this.GetFanexResultSetting(detailsRequest));
         }
 
         /// <summary>
         /// Gets the FANEX result setting.
         /// </summary>
         /// <returns>The object of ResultSetting.</returns>
-        private ResultSetting GetFanexResultSetting()
+        private ResultSetting GetFanexResultSetting(NormalRequest request)
         {
             return new ResultSetting
             {
@@ -50,7 +49,7 @@ namespace Alpha.Results.Services.Impl
                 IsParlayPopUp = true,
                 IsPopUp = true,
                 VisiblePopUpTitle = false,
-                LanguageCode = UserSession.Current.Language,
+                LanguageCode = request.Language,
                 VisibleMatchCodeIDColumn = false,
                 VisibleFreeHeader = true,
                 VisibleDetailedLink = true,

@@ -3,14 +3,11 @@ namespace Alpha.Results.Services.Impl.Products
     using System.IO;
     using System.Linq;
     using Alpha.Results.Criteria;
-    using Alpha.Results.LocalResources;
     using Alpha.Results.Repositories;
     using Alpha.Results.Repositories.Impl.Result;
     using Fanex.Result.Core;
     using Fanex.Result.Core.Base;
     using Models;
-    using Sunplus.Agent.Model.BL.Cache;
-    using Sunplus.Agent.Model.Entities;
 
     /// <summary>
     /// The class NumberGameResultService.
@@ -34,7 +31,7 @@ namespace Alpha.Results.Services.Impl.Products
             var resultSetting = new ResultSetting
             {
                 SportType = (SportType)request.SportId,
-                LanguageCode = UserSession.Current.Language,
+                LanguageCode = request.Language,
                 VisibleDetailedLink = true,
                 VisibleFreeHeader = true,
                 VisibleMatchCodeIDColumn = false,
@@ -51,8 +48,8 @@ namespace Alpha.Results.Services.Impl.Products
             var resultSetting = new ResultSetting
             {
                 SportType = (SportType)request.SportId,
-                LanguageCode = UserSession.Current.Language,
-                ExcelTitle = GetExcelTitle(request),
+                LanguageCode = request.Language,
+                ExcelTitle = request.ToExcelTitle(),
                 ExcelTemplatePath = excelTemplatePath,
                 VisibleMatchCodeIDColumn = false,
                 HighlightWinnerTeam = true
@@ -69,15 +66,8 @@ namespace Alpha.Results.Services.Impl.Products
             {
                 FromDate = request.ResultDate,
                 LeagueID = request.LeagueId,
-                Language = UserSession.Current.Language
+                Language = request.Language
             };
-        }
-
-        private static string GetExcelTitle(NormalRequest request)
-        {
-            string leagueName = request.LeagueId == 0 ? "Show All Leagues" : CacheRef.GetLeagueName(request.LeagueId);
-            return ResultLang.result + " - " + request.ResultDate.ToString("MM/dd/yyyy")
-                + " | " + CacheRef.GetSportName(request.SportId) + " - " + leagueName;
         }
 
         public string GetResultDetails(NormalDetailsRequest detailsRequest)
@@ -94,7 +84,7 @@ namespace Alpha.Results.Services.Impl.Products
                 IsParlayPopUp = false,
                 IsPopUp = true,
                 VisiblePopUpTitle = false,
-                LanguageCode = UserSession.Current.Language,
+                LanguageCode = detailsRequest.Language,
                 VisibleMatchCodeIDColumn = false,
                 VisibleFreeHeader = true,
                 VisibleDetailedLink = true,

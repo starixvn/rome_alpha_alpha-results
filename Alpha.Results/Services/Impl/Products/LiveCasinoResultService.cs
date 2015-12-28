@@ -9,7 +9,6 @@ namespace Alpha.Results.Services.Impl.Products
     using Fanex.Result.Core.Base;
     using Fanex.Result.Core.LiveCasino.DTO;
     using Models;
-    using Sunplus.Agent.Model.Entities;
 
     /// <summary>
     /// The class LiveCasinoPopupResultService.
@@ -44,7 +43,7 @@ namespace Alpha.Results.Services.Impl.Products
                 IsParlayPopUp = false,
                 IsPopUp = true,
                 VisiblePopUpTitle = false,
-                LanguageCode = UserSession.Current.Language,
+                LanguageCode = detailsRequest.Language,
                 VisibleMatchCodeIDColumn = false,
                 VisibleFreeHeader = true,
                 VisibleDetailedLink = true,

@@ -44,7 +44,7 @@ namespace Alpha.Results.Services.Impl.Products
                 SportType = detailsRequest.SportId
             };
 
-            var resultData = this._dynamicRepository.Fetch<MetricGaming>(criteria).ToList();
+            var resultData = _dynamicRepository.Fetch<MetricGaming>(criteria).ToList();
             var resultSetting = new ResultSetting
             {
                 SportType = SportType.Soccer,

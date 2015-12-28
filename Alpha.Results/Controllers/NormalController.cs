@@ -4,14 +4,13 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Web.Mvc;
-    using LocalResources;
     using Models;
     using Services;
     using Services.Impl;
-    using Sunplus.Agent.Model.BL.Cache;
     using Sunplus.Agent.Model.BL.Definitions;
     using Sunplus.Agent.Model.Entities;
     using Sunplus.Agent.Model.Entities.Permission;
+    using Sunplus.Agent.Model.RemotingRef;
     using ViewModels;
 
     public class NormalController : BaseController
@@ -54,7 +53,8 @@
             {
                 ResultDate = viewModel.ResultDate,
                 SportId = viewModel.SportId,
-                LeagueId = viewModel.LeagueId
+                LeagueId = viewModel.LeagueId,
+                Language = UserSession.Current.Language
             });
 
             return View(viewModel);
@@ -73,7 +73,7 @@
 
             return sports.Select(sport => new SelectListItem
             {
-                Text = CacheRef.GetSportName(sport.Id),
+                Text = CacheRefFactory.CacheRef.GetSportName(sport.Id),
                 Value = sport.Id.ToString()
             });
         }
@@ -88,7 +88,7 @@
 
             return leagues.Select(league => new SelectListItem
             {
-                Text = CacheRef.GetLeagueName(league.Id),
+                Text = CacheRefFactory.CacheRef.GetLeagueName(league.Id),
                 Value = league.Id.ToString()
             });
         }
@@ -96,9 +96,11 @@
         [HttpGet]
         public ActionResult ResultDetails(NormalDetailsRequest request)
         {
+            request.Language = UserSession.Current.Language;
+
             var viewModel = new NormalDetailViewModel
             {
-                Title = string.Format("{0} - {1}", CacheRef.GetSportName(request.SportId), CacheRef.GetLeagueName(request.LeagueId)),
+                Title = string.Format("{0} - {1}", CacheRefFactory.CacheRef.GetSportName(request.SportId), CacheRefFactory.CacheRef.GetLeagueName(request.LeagueId)),
                 HtmlResults = _normalResultService.GetResultDetails(request)
             };
 
@@ -108,6 +110,8 @@
         [HttpGet]
         public ActionResult ExcelResults(NormalRequest request)
         {
+            request.Language = UserSession.Current.Language;
+
             var excelResult = _normalResultService.GetExcelResults(request, Server.MapPath(@"~/App_Data/Fanex.Result/"));
 
             return File(excelResult, "application/vnd.ms-excel", "Result.xls");

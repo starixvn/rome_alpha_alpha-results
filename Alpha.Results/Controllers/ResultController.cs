@@ -3,7 +3,6 @@ namespace Alpha.Results.Controllers
     using System;
     using System.Collections.Generic;
     using System.Web.Mvc;
-    using Alpha.Results.Models;
     using Fanex.Result.Core.Sportsbook.DTO;
     using Services;
     using Services.Impl;
@@ -67,10 +66,10 @@ namespace Alpha.Results.Controllers
         ////    return new string[]
         ////    {
         ////        "<strong><span class=\"bl_stype\">",
-        ////        CacheRef.GetSportName(resultRequest.SportId),
+        ////        CacheRefFactory.CacheRef.GetSportName(resultRequest.SportId),
         ////        "</span></strong>",
         ////        " - ",
-        ////        resultRequest.LeagueId == 0 ? CacheRef.GetBettype(resultRequest.BetType) : CacheRef.GetLeagueName(resultRequest.LeagueId)
+        ////        resultRequest.LeagueId == 0 ? CacheRefFactory.CacheRef.GetBettype(resultRequest.BetType) : CacheRefFactory.CacheRef.GetLeagueName(resultRequest.LeagueId)
         ////    };
         ////}
 
@@ -364,7 +363,7 @@ namespace Alpha.Results.Controllers
         ////            "<option {0} value=\"{1}\">{2}</option>",
         ////            resultRequest.LeagueId == leagueId ? "selected" : string.Empty,
         ////            leagueId.ToString(),
-        ////            Sunplus.Agent.Model.BL.Cache.CacheRef.GetLeagueName(leagueId));
+        ////            Sunplus.Agent.Model.BL.Cache.CacheRefFactory.CacheRef.GetLeagueName(leagueId));
         ////            leagueIdList.Add(leagueId);
         ////        }
         ////    }
@@ -396,7 +395,7 @@ namespace Alpha.Results.Controllers
         ////            "<option {0} value=\"{1}\">{2}</option>",
         ////            resultRequest.SportId == sportId ? "selected" : string.Empty,
         ////            sportId.ToString(),
-        ////            Sunplus.Agent.Model.BL.Cache.CacheRef.GetSportName(sportId));
+        ////            Sunplus.Agent.Model.BL.Cache.CacheRefFactory.CacheRef.GetSportName(sportId));
         ////            sportIdList.Add(sportId);
         ////        }
         ////    }

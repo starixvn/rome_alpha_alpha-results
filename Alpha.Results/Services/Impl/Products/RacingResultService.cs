@@ -5,15 +5,12 @@ namespace Alpha.Results.Services.Impl.Products
     using System.IO;
     using System.Linq;
     using Alpha.Results.Criteria;
-    using Alpha.Results.LocalResources;
     using Alpha.Results.Repositories;
     using Alpha.Results.Repositories.Impl.Result;
     using Fanex.Result.Core;
     using Fanex.Result.Core.Base;
     using Fanex.Result.Core.Racing.DTO;
     using Models;
-    using Sunplus.Agent.Model.BL.Cache;
-    using Sunplus.Agent.Model.Entities;
 
     /// <summary>
     /// The class RacingResultService.
@@ -36,16 +33,26 @@ namespace Alpha.Results.Services.Impl.Products
         {
             var criteria = GetCriteria(request);
             IList<Racing> racings = _dataAccess.GetRacingResult(criteria);
-            ResultSetting resultSetting = GetFanexResultSetting(criteria.SportType);
+            ResultSetting resultSetting = GetFanexResultSetting(criteria.SportType, request.Language);
 
             return ResultEngine.HtmlParser<Racing>(racings.ToList(), resultSetting);
         }
 
         public MemoryStream ExportExcel(NormalRequest request, string excelTemplatePath)
         {
+            var resultSetting = new ResultSetting
+            {
+                SportType = (SportType)request.SportId,
+                LanguageCode = request.Language,
+                ExcelTitle = request.ToExcelTitle(),
+                ExcelTemplatePath = excelTemplatePath,
+                VisibleMatchCodeIDColumn = false,
+                HighlightWinnerTeam = true
+            };
+
             return ResultEngine.ExcelParser(
-                this._dataAccess.GetRacingResult(GetCriteria(request)).ToList(),
-                GetExportExcelSetting(request.SportId, excelTemplatePath, GetExcelTitle(request)));
+                _dataAccess.GetRacingResult(GetCriteria(request)).ToList(),
+                resultSetting);
         }
 
         private static GetRacingResultCriteria GetCriteria(NormalRequest request)
@@ -64,44 +71,17 @@ namespace Alpha.Results.Services.Impl.Products
         /// </summary>
         /// <param name="sportType">Type of the sport.</param>
         /// <returns>Result Setting Model.</returns>
-        private static ResultSetting GetFanexResultSetting(int sportType)
+        private static ResultSetting GetFanexResultSetting(int sportType, string language)
         {
             return new ResultSetting
             {
                 SportType = (SportType)sportType,
-                LanguageCode = UserSession.Current.Language,
+                LanguageCode = language,
                 VisibleDetailedLink = true,
                 VisibleFreeHeader = true,
                 VisibleMatchCodeIDColumn = false,
                 HighlightWinnerTeam = true
             };
-        }
-
-        /// <summary>
-        /// Gets the export excel setting.
-        /// </summary>
-        /// <param name="sportType">Type of the sport.</param>
-        /// <param name="excelTemplatePath">The excel template path.</param>
-        /// <param name="excelTitle">The excel title.</param>
-        /// <returns>Result Setting Model.</returns>
-        private static ResultSetting GetExportExcelSetting(int sportType, string excelTemplatePath, string excelTitle)
-        {
-            return new ResultSetting
-            {
-                SportType = (SportType)sportType,
-                LanguageCode = UserSession.Current.Language,
-                ExcelTitle = excelTitle,
-                ExcelTemplatePath = excelTemplatePath,
-                VisibleMatchCodeIDColumn = false,
-                HighlightWinnerTeam = true
-            };
-        }
-
-        private static string GetExcelTitle(NormalRequest request)
-        {
-            string leagueName = request.LeagueId == 0 ? "Show All Leagues" : CacheRef.GetLeagueName(request.LeagueId);
-            return ResultLang.result + " - " + request.ResultDate.ToString("MM/dd/yyyy")
-                + " | " + CacheRef.GetSportName(request.SportId) + " - " + leagueName;
         }
 
         public string GetResultDetails(NormalDetailsRequest detailsRequest)
@@ -119,7 +99,7 @@ namespace Alpha.Results.Services.Impl.Products
                 IsParlayPopUp = false,
                 IsPopUp = true,
                 VisiblePopUpTitle = false,
-                LanguageCode = UserSession.Current.Language,
+                LanguageCode = detailsRequest.Language,
                 VisibleMatchCodeIDColumn = false,
                 VisibleFreeHeader = true,
                 VisibleDetailedLink = true,

@@ -4,15 +4,12 @@ namespace Alpha.Results.Services.Impl.Products
     using System.IO;
     using System.Linq;
     using Alpha.Results.Criteria;
-    using Alpha.Results.LocalResources;
     using Alpha.Results.Repositories;
     using Alpha.Results.Repositories.Impl.Result;
     using Fanex.Result.Core;
     using Fanex.Result.Core.Base;
     using Fanex.Result.Core.Sportsbook.DTO;
     using Models;
-    using Sunplus.Agent.Model.BL.Cache;
-    using Sunplus.Agent.Model.Entities;
 
     /// <summary>
     /// The class SportsBookResultService.
@@ -40,7 +37,9 @@ namespace Alpha.Results.Services.Impl.Products
                 new List<Sportsbook>() :
                 _dataAccess.GetSportbookResult(criteria);
 
-            ResultSetting resultSetting = GetFanexResultSetting(criteria.SportType > 0 ? criteria.SportType : (int)SportType.Others);
+            var sportId = criteria.SportType > 0 ? criteria.SportType : (int)SportType.Others;
+
+            ResultSetting resultSetting = GetFanexResultSetting(sportId, request.Language);
 
             return ResultEngine.HtmlParser(sportsbooks.ToList(), resultSetting).Replace("original-title", " title ");
         }
@@ -50,8 +49,8 @@ namespace Alpha.Results.Services.Impl.Products
             var exportExcelSetting = new ResultSetting
             {
                 SportType = (SportType)request.SportId,
-                LanguageCode = UserSession.Current.Language,
-                ExcelTitle = GetExcelTitle(request),
+                LanguageCode = request.Language,
+                ExcelTitle = request.ToExcelTitle(),
                 ExcelTemplatePath = excelTemplatePath,
                 VisibleMatchCodeIDColumn = false,
                 HighlightWinnerTeam = true
@@ -68,7 +67,7 @@ namespace Alpha.Results.Services.Impl.Products
             {
                 FromDate = request.ResultDate,
                 SportType = request.SportId,
-                IsShowAll = Sunplus.Agent.Model.BL.Definitions.AppSettings.LocalTest,
+                IsShowAll = false,
                 LeagueID = request.LeagueId
             };
         }
@@ -78,25 +77,18 @@ namespace Alpha.Results.Services.Impl.Products
         /// </summary>
         /// <param name="sportType">Type of the sport.</param>
         /// <returns>Result Setting Model.</returns>
-        private static ResultSetting GetFanexResultSetting(int sportType)
+        private static ResultSetting GetFanexResultSetting(int sportType, string language)
         {
             SportType type = (SportType)sportType;
             return new ResultSetting
             {
                 SportType = type,
-                LanguageCode = UserSession.Current.Language,
+                LanguageCode = language,
                 VisibleDetailedLink = type == SportType.Soccer || type == SportType.Tennis,
                 VisibleFreeHeader = true,
                 VisibleMatchCodeIDColumn = false,
                 HighlightWinnerTeam = true
             };
-        }
-
-        private static string GetExcelTitle(NormalRequest request)
-        {
-            string leagueName = request.LeagueId == 0 ? "Show All Leagues" : CacheRef.GetLeagueName(request.LeagueId);
-            return ResultLang.result + " - " + request.ResultDate.ToString("MM/dd/yyyy")
-                + " | " + CacheRef.GetSportName(request.SportId) + " - " + leagueName;
         }
 
         public string GetResultDetails(NormalDetailsRequest detailsRequest)
@@ -112,7 +104,7 @@ namespace Alpha.Results.Services.Impl.Products
 
             List<Sportsbook> sportsbooks = _dataAccess.GetScoreInformation(ref criteria);
 
-            ResultSetting resultSetting = GetResultDetailsSetting(criteria);
+            ResultSetting resultSetting = GetResultDetailsSetting(detailsRequest);
 
             return ResultEngine.HtmlGameDetailParser(sportsbooks[0], resultSetting)
                 .Replace("original-title", " title ");
@@ -123,15 +115,15 @@ namespace Alpha.Results.Services.Impl.Products
         /// </summary>
         /// <param name="criteria">The criteria.</param>
         /// <returns>The object of ResultSetting.</returns>
-        private static ResultSetting GetResultDetailsSetting(GetSportsbookPopupResultCriteria criteria)
+        private static ResultSetting GetResultDetailsSetting(NormalRequest request)
         {
             return new ResultSetting
             {
-                SportType = (SportType)criteria.SportType,
+                SportType = (SportType)request.SportId,
                 IsOutRight = false,
                 IsParlayPopUp = false,
                 IsPopUp = true,
-                LanguageCode = UserSession.Current.Language,
+                LanguageCode = request.Language,
                 VisibleMatchCodeIDColumn = false,
                 HighlightWinnerTeam = true
             };
