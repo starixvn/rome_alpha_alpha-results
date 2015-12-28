@@ -5,12 +5,12 @@
 @model OutrightViewModel
 <div role="tabpanel" class="tab-pane active" id="outright">
     <div class="row filter">
-        @using (Html.BeginForm("Index", "Outright", FormMethod.Get, new { id = "formOutright" }))
+        @using (Html.BeginForm("Index", "Outright", FormMethod.Get, new { id = "frm-outright" }))
         {
             <div class="col-sm-12">
                 <span class="txt">@ResultLang.from</span>
                 <div class="control">
-                    <div class="input-group date" id="dpkFromDate">
+                    <div class="input-group date" id="dpk-fromdate">
                         @Html.EditorFor(model => model.FromDate, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
                         <span class="input-group-addon">
                             <span class="calendar"></span>
@@ -19,16 +19,16 @@
                 </div>
                 <span class="txt">@ResultLang.to</span>
                 <div class="control">
-                    <div class="input-group date" id="dpkToDate">
+                    <div class="input-group date" id="dpk-todate">
                         @Html.EditorFor(model => model.ToDate, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
                         <span class="input-group-addon">
                             <span class="calendar"></span>
                         </span>
                     </div>
                 </div>
-                <input type="submit" value="@Model.Today" class="btn btn-default btn-other-day" />
-                <input type="submit" value="@Model.Yesterday" class="btn btn-default btn-other-day" />
-                <input type="submit" value="@ResultLang.submit" class="btn btn-submit" />
+                <input type="submit" value="@Model.Today" class="btn btn-default btn-other-day" id="btn-today" />
+                <input type="submit" value="@Model.Yesterday" class="btn btn-default btn-other-day" id="btn-yesterday" />
+                <input type="submit" value="@ResultLang.submit" class="btn btn-submit" id="btn-submit" />
             </div>
             <div class="col-sm-12">
                 <span class="txt-red">*</span> @Model.MinResultDateMessage
@@ -45,26 +45,19 @@
                     <div class="dropdown control league-content">
                         @Html.DropDownListFor(model => model.LeagueId, Model.Leagues, ResultLang.ShowAllLeagues, new { @class = "form-control", @onchange = "this.form.submit()" })
                     </div>
-                    <span class="icon-excel" id="excel-btn"></span>
+                    <span class="icon-excel" id="btn-excel"></span>
                 </div>
             }
         }
     </div>
     <div class="main-content">
-        @if (!string.IsNullOrEmpty(Model.HtmlResults))
-        {
-            @Html.Raw(Model.HtmlResults)
-        }
-        else
-        {
-            <div class="no-info">@ResultLang.ThereIsNoData</div>
-        }
+       @Html.Raw(Model.HtmlResults)
     </div>
 
     @Html.HiddenFor(model => model.MinResultDate)
     @Html.HiddenFor(model => model.MaxResultDate)
 </div>
-
+<iframe src="#" frameborder="0" scrolling="no" id="ifrm-exportExcel" name="ifrm-exportExcel" style="display:none;"></iframe>
 @section scripts
 {
     @Scripts.Render(BundleConfig.OutrightResultJavascriptBundleUrl)

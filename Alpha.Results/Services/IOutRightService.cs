@@ -15,6 +15,6 @@ namespace Alpha.Results.Services
 
 		string GetResults(IEnumerable<OutRight> outrights, int sportId, int leagueId);
 
-		MemoryStream ExportExcel(OutrightRequest request, string excelTemplatePath);
+		MemoryStream GetExcelResults(IEnumerable<OutRight> outrights, OutrightRequest request, string excelTemplatePath);
 	}
 }

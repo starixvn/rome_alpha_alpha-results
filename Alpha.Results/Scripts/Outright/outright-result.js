@@ -9,7 +9,7 @@
     function initializeDatepicker() {
         var dpkSettings = {
             allowInputToggle: false,
-            calendarWeeks: true,
+            calendarWeeks: false,
             dayViewHeaderFormat: 'MMM YYYY',
             format: 'MM/DD/YYYY',
             showTodayButton: true,
@@ -21,13 +21,13 @@
         fromdatepicker = $('#dpk-fromdate').datetimepicker(dpkSettings);
         todatepicker = $('#dpk-todate').datetimepicker(dpkSettings);
 
-        /*fromdatepicker.on('dp.change', function (e) {
+        fromdatepicker.on('dp.change', function (e) {
             todatepicker.data('DateTimePicker').minDate(e.date);
         });
 
         todatepicker.on('dp.change', function (e) {
             fromdatepicker.data('DateTimePicker').maxDate(e.date);
-        });*/
+        });
     }
 
     function registerEvents() {
@@ -44,8 +44,6 @@
                 sportId: $('#SportId').val(),
                 leagueId: $('#LeagueId').val()
             };
-
-            console.dir(requestParams);
 
             var downloadUrl = rootUrl + 'Outright/ExcelResults?' + $.param(requestParams);
 

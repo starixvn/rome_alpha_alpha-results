@@ -59,8 +59,10 @@
 		[HttpGet]
 		public ActionResult ExcelResults(OutrightRequest request)
 		{
-			var excelResult = _outrightService.ExportExcel(request, Server.MapPath(@"~/App_Data/Fanex.Result/"));
-			return File(excelResult, "application/vnd.ms-excel", "Result.xls");
+			var outrights = _outrightService.GetOutRights(request.FromDate, request.ToDate);
+
+			var excelResult = _outrightService.GetExcelResults(outrights, request, Server.MapPath(@"~/App_Data/Fanex.Result/"));
+			return File(excelResult.ToArray(), "application/vnd.ms-excel", "Result.xls");
 		}
 
 		[NonAction]

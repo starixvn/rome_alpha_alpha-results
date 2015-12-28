@@ -44,33 +44,13 @@ namespace Alpha.Results.Services.Impl
 
 		public string GetResults(IEnumerable<OutRight> outrights, int sportId, int leagueId)
 		{
-			if (sportId != 0)
-			{
-				outrights = outrights.Where(o => o.SportType == sportId);
-			}
-
-			if (leagueId != 0)
-			{
-				outrights = outrights.Where(o => o.LeagueId == leagueId);
-			}
-
+			outrights = FilterOutright(outrights, sportId, leagueId);
 			return ResultEngine.HtmlParser<OutRight>(outrights.ToList(), OutrightResultSetting);
 		}
 
-		public MemoryStream ExportExcel(OutrightRequest request, string excelTemplatePath)
+		public MemoryStream GetExcelResults(IEnumerable<OutRight> outrights, OutrightRequest request, string excelTemplatePath)
 		{
-			Check.Argument.IsNotNull(request, "request");
-
-			var outrights = GetOutRights(request.FromDate, request.ToDate);
-			if (request.SportId != 0)
-			{
-				outrights = outrights.Where(o => o.SportType == request.SportId);
-			}
-
-			if (request.LeagueId != 0)
-			{
-				outrights = outrights.Where(o => o.LeagueId == request.LeagueId);
-			}
+			outrights = FilterOutright(outrights, request.SportId, request.LeagueId);
 
 			string excelTitle = GetExcelTitle(request.FromDate, request.ToDate, request.SportId, request.LeagueId);
 			return ResultEngine.ExcelParser(outrights.ToList(), OutrightExcelSetting(excelTemplatePath, excelTitle));
@@ -85,6 +65,21 @@ namespace Alpha.Results.Services.Impl
 				IsShowAll = AppSettings.LocalTest
 			};
         }
+
+		private IEnumerable<OutRight> FilterOutright(IEnumerable<OutRight> outrights, int sportId, int leagueId)
+		{
+			if (sportId != 0)
+			{
+				outrights = outrights.Where(o => o.SportType == sportId);
+			}
+
+			if (leagueId != 0)
+			{
+				outrights = outrights.Where(o => o.LeagueId == leagueId);
+			}
+
+			return outrights;
+		}
 
         private ResultSetting OutrightResultSetting
 		{
@@ -120,8 +115,8 @@ namespace Alpha.Results.Services.Impl
 			return string.Format(
 				"{0} - {1} -> {2} | {3} - {4}",
 				ResultLang.lblOutrightResult.ToUpper(),
-				fromDate.ToString("MM/dd/yyyy"),
-				toDate.ToString("MM/dd/yyyy"),
+				fromDate.ToShortDateString(),
+				toDate.ToShortDateString(),
 				CacheRef.GetSportName(sportType),
 				leagueName
 			);
