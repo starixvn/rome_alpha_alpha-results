@@ -16,7 +16,10 @@ var normalResult =
             mainResult: null,
             rootUrl: null,
             resultDetails: null,
-            excelBtn: null
+            excelBtn: null,
+            ddlSports: null,
+            ddlLeagues: null,
+            filterForm: null
         },
     init: function () {
         normalResult.cacheElements();
@@ -31,10 +34,20 @@ var normalResult =
         normalResult.domElements.rootUrl = $('#RootURL');
         normalResult.domElements.resultDetails = $('#result-details');
         normalResult.domElements.excelBtn = $('#excel-btn');
+        normalResult.domElements.ddlSports = $('#SportId');
+        normalResult.domElements.ddlLeagues = $('#LeagueId');
+        normalResult.domElements.filterForm = $('#result-filter');
+
     },
     registerEvents: function () {
         normalResult.domElements.dpkContainer.datetimepicker({
-            minDate: normalResult.domElements.txtMinResultDate.val()
+            minDate: normalResult.domElements.txtMinResultDate.val(),
+            allowInputToggle: false,
+            calendarWeeks: true,
+            dayViewHeaderFormat: 'MMM YYYY',
+            format: 'MM/DD/YYYY',
+            showTodayButton: true,
+            ignoreReadonly: true,
         });
 
         normalResult.domElements.btnOtherDay
@@ -43,6 +56,13 @@ var normalResult =
                 var $this = $(this);
 
                 normalResult.domElements.dpkContainer.data("DateTimePicker").date($this.attr('value'));
+            });
+
+        normalResult.domElements.ddlSports
+            .off('change.normalResult')
+            .on('change.normalResult', function () {
+                normalResult.domElements.ddlLeagues.val('0');
+                normalResult.domElements.filterForm.submit();
             });
 
         normalResult.domElements.mainResult
