@@ -77,14 +77,15 @@ table.fn-rs tbody td {
     background: #f4f5e0;
     text-transform: uppercase;
     color: #333333;
-    font-weight: bold; }
+    font-weight: bold;
+    line-height: initial; }
 
 table.fn-rs tbody tr.even {
   background: #eaeaed; }
 
 table.fn-rs tbody td,
 table.fn-rs thead th {
-  padding: 6px; }
+  padding: 8px; }
 
 table.fn-rs thead th {
   border-bottom: none;

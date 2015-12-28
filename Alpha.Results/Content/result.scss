@@ -1,5 +1,5 @@
-﻿
-$goal-icon: "images/goal-icon.png";
+﻿@import "variables";
+
 body {
     font-size: 12px;
 }
@@ -107,6 +107,7 @@ table.fn-rs {
                 text-transform: uppercase;
                 color: #333333;
                 font-weight: bold;
+                line-height:initial;
             }
         }
     }
@@ -117,7 +118,7 @@ table.fn-rs tbody tr.even {
 }
 table.fn-rs tbody td,
 table.fn-rs thead th {
-    padding: 6px;
+    padding: 8px;
 }
 table.fn-rs thead th {
     border-bottom: none;
@@ -152,7 +153,7 @@ table.fn-rs tbody .cl-match div {
 
 .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
     border: none;
-    color: #5c1218;
+    color: $primary-color;
 }
 .nav-tabs > li > a:hover {
     background: none;
@@ -173,11 +174,11 @@ table.fn-rs tbody .cl-match div {
 }
 .nav.nav-tabs > li.active:after {
     width: 100%;
-    background: #5c1218;
+    background: $primary-color;
 
 }
 .nav-tabs>li>a {
-    color: #5c1218;
+    color: $primary-color;
     font-weight: bold;
     outline: none;
 }
