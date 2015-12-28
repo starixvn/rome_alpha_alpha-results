@@ -14,8 +14,8 @@ namespace Alpha.Results.Controllers
         private string _outRightResult = string.Empty;
         private List<OutRight> _outRights = null;
         private object _reportData = null;
-        private Dictionary<int, Action<OldResultRequest>> _resultHandlers = new Dictionary<int, Action<OldResultRequest>>();
-        private Dictionary<int, Func<OldResultRequest, ActionResult>> _exportExcelHandlers = new Dictionary<int, Func<OldResultRequest, ActionResult>>();
+        ////private Dictionary<int, Action<OldResultRequest>> _resultHandlers = new Dictionary<int, Action<OldResultRequest>>();
+        ////private Dictionary<int, Func<OldResultRequest, ActionResult>> _exportExcelHandlers = new Dictionary<int, Func<OldResultRequest, ActionResult>>();
 
         private INormalService _resultService;
 
@@ -41,7 +41,7 @@ namespace Alpha.Results.Controllers
         /// </summary>
         /// <param name="resultRequest">The result request.</param>
         /// <returns>The object of ActionResult.</returns>
-        public ActionResult GetResult(OldResultRequest resultRequest)
+        public ActionResult GetResult()
         {
             return RedirectToAction("Index", "Normal");
 

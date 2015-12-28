@@ -31,16 +31,36 @@ namespace Alpha.Results.Services.Impl.Products
 
         public string GetResult(NormalRequest request)
         {
+            var resultSetting = new ResultSetting
+            {
+                SportType = (SportType)request.SportId,
+                LanguageCode = UserSession.Current.Language,
+                VisibleDetailedLink = true,
+                VisibleFreeHeader = true,
+                VisibleMatchCodeIDColumn = false,
+                HighlightWinnerTeam = true
+            };
+
             return ResultEngine.HtmlParser(
-                this._numberGameResultDataAccess.GetNumberGameResult(GetCriteria(request)).ToList(),
-                GetFanexResultSetting(request.SportId));
+                _numberGameResultDataAccess.GetNumberGameResult(GetCriteria(request)).ToList(),
+                resultSetting);
         }
 
         public MemoryStream ExportExcel(NormalRequest request, string excelTemplatePath)
         {
+            var resultSetting = new ResultSetting
+            {
+                SportType = (SportType)request.SportId,
+                LanguageCode = UserSession.Current.Language,
+                ExcelTitle = GetExcelTitle(request),
+                ExcelTemplatePath = excelTemplatePath,
+                VisibleMatchCodeIDColumn = false,
+                HighlightWinnerTeam = true
+            };
+
             return ResultEngine.ExcelParser(
-                this._numberGameResultDataAccess.GetNumberGameResult(GetCriteria(request)).ToList(),
-                GetExportExcelSetting(request.SportId, excelTemplatePath, GetExcelTitle(request)));
+                _numberGameResultDataAccess.GetNumberGameResult(GetCriteria(request)).ToList(),
+                resultSetting);
         }
 
         private static GetNumberGameResultCriteria GetCriteria(NormalRequest request)
@@ -53,44 +73,6 @@ namespace Alpha.Results.Services.Impl.Products
             };
         }
 
-        /// <summary>
-        /// Gets the FANEX result setting.
-        /// </summary>
-        /// <param name="sportType">Type of the sport.</param>
-        /// <returns>Result Setting Model.</returns>
-        private static ResultSetting GetFanexResultSetting(int sportType)
-        {
-            return new ResultSetting
-            {
-                SportType = (SportType)sportType,
-                LanguageCode = UserSession.Current.Language,
-                VisibleDetailedLink = true,
-                VisibleFreeHeader = true,
-                VisibleMatchCodeIDColumn = false,
-                HighlightWinnerTeam = true
-            };
-        }
-
-        /// <summary>
-        /// Gets the export excel setting.
-        /// </summary>
-        /// <param name="sportType">Type of the sport.</param>
-        /// <param name="excelTemplatePath">The excel template path.</param>
-        /// <param name="excelTitle">The excel title.</param>
-        /// <returns>Result Setting Model.</returns>
-        private static ResultSetting GetExportExcelSetting(int sportType, string excelTemplatePath, string excelTitle)
-        {
-            return new ResultSetting
-            {
-                SportType = (SportType)sportType,
-                LanguageCode = UserSession.Current.Language,
-                ExcelTitle = excelTitle,
-                ExcelTemplatePath = excelTemplatePath,
-                VisibleMatchCodeIDColumn = false,
-                HighlightWinnerTeam = true
-            };
-        }
-
         private static string GetExcelTitle(NormalRequest request)
         {
             string leagueName = request.LeagueId == 0 ? "Show All Leagues" : CacheRef.GetLeagueName(request.LeagueId);
@@ -100,26 +82,28 @@ namespace Alpha.Results.Services.Impl.Products
 
         public string GetResultDetails(NormalDetailsRequest detailsRequest)
         {
-            var criteria = new GetNumberGamePopupResultCriteria()
+            var criteria = new GetNumberGamePopupResultCriteria
             {
                 MatchID = detailsRequest.MatchId
             };
 
+            var resultSetting = new ResultSetting
+            {
+                SportType = SportType.NumberGame,
+                IsOutRight = false,
+                IsParlayPopUp = false,
+                IsPopUp = true,
+                VisiblePopUpTitle = false,
+                LanguageCode = UserSession.Current.Language,
+                VisibleMatchCodeIDColumn = false,
+                VisibleFreeHeader = true,
+                VisibleDetailedLink = true,
+                HighlightWinnerTeam = true
+            };
+
             return ResultEngine.HtmlParser(
-                this._numberGameResultDataAccess.GetNumberGamePopupResult(criteria),
-                new ResultSetting
-                {
-                    SportType = SportType.NumberGame,
-                    IsOutRight = false,
-                    IsParlayPopUp = false,
-                    IsPopUp = true,
-                    VisiblePopUpTitle = false,
-                    LanguageCode = UserSession.Current.Language,
-                    VisibleMatchCodeIDColumn = false,
-                    VisibleFreeHeader = true,
-                    VisibleDetailedLink = true,
-                    HighlightWinnerTeam = true
-                });
+                _numberGameResultDataAccess.GetNumberGamePopupResult(criteria),
+                resultSetting);
         }
     }
 }

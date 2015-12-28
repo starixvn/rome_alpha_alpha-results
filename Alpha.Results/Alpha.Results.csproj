@@ -318,7 +318,6 @@
     <Compile Include="Models\League.cs" />
     <Compile Include="Models\NormalDetailsRequest.cs" />
     <Compile Include="Models\NormalRequest.cs" />
-    <Compile Include="Models\OldResultRequest.cs" />
     <Compile Include="Models\Sport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Impl\BindingUtilities.cs" />

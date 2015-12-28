@@ -9,7 +9,7 @@
         @using (Html.BeginForm("Index", "Normal", FormMethod.Get))
         {
             <div class="col-sm-12">
-                <span class="txt">From</span>
+                <span class="txt">@ResultLang.from</span>
                 <div class="control">
                     <div class="input-group date" id="dpkContainer">
                         @Html.EditorFor(model => model.ResultDate, new { htmlAttributes = new { @class = "form-control" } })
@@ -19,9 +19,9 @@
                     </div>
                 </div>
                 @Html.HiddenFor(model => model.MinResultDate)
-                <input type="submit" value="@Model.Today" class="btn btn-default btn-other-day" />
-                <input type="submit" value="@Model.Yesterday" class="btn btn-default btn-other-day" />
-                <input type="submit" value="@ResultLang.submit" class="btn btn-submit" />
+                <input type="submit" value="@Model.Today" id="today-results" class="btn btn-default btn-other-day" />
+                <input type="submit" value="@Model.Yesterday" id="yesterday-results" class="btn btn-default btn-other-day" />
+                <input type="submit" value="@ResultLang.submit" id="selected-day-results" class="btn btn-submit" />
             </div>
 
             <div class="col-sm-12">

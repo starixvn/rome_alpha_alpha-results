@@ -42,14 +42,24 @@ namespace Alpha.Results.Services.Impl.Products
 
             ResultSetting resultSetting = GetFanexResultSetting(criteria.SportType > 0 ? criteria.SportType : (int)SportType.Others);
 
-            return ResultEngine.HtmlParser<Sportsbook>(sportsbooks.ToList(), resultSetting).Replace("original-title", " title ");
+            return ResultEngine.HtmlParser(sportsbooks.ToList(), resultSetting).Replace("original-title", " title ");
         }
 
         public MemoryStream ExportExcel(NormalRequest request, string excelTemplatePath)
         {
+            var exportExcelSetting = new ResultSetting
+            {
+                SportType = (SportType)request.SportId,
+                LanguageCode = UserSession.Current.Language,
+                ExcelTitle = GetExcelTitle(request),
+                ExcelTemplatePath = excelTemplatePath,
+                VisibleMatchCodeIDColumn = false,
+                HighlightWinnerTeam = true
+            };
+
             return ResultEngine.ExcelParser(
                 this._dataAccess.GetSportbookResult(GetCriteria(request)).ToList(),
-                GetExportExcelSetting(request.SportId, excelTemplatePath, GetExcelTitle(request)));
+                exportExcelSetting);
         }
 
         private static GetSportsbookResultCriteria GetCriteria(NormalRequest request)
@@ -82,26 +92,6 @@ namespace Alpha.Results.Services.Impl.Products
             };
         }
 
-        /// <summary>
-        /// Gets the export excel setting.
-        /// </summary>
-        /// <param name="sportType">Type of the sport.</param>
-        /// <param name="excelTemplatePath">The excel template path.</param>
-        /// <param name="excelTitle">The excel title.</param>
-        /// <returns>Result Setting Model.</returns>
-        private static ResultSetting GetExportExcelSetting(int sportType, string excelTemplatePath, string excelTitle)
-        {
-            return new ResultSetting
-            {
-                SportType = (SportType)sportType,
-                LanguageCode = UserSession.Current.Language,
-                ExcelTitle = excelTitle,
-                ExcelTemplatePath = excelTemplatePath,
-                VisibleMatchCodeIDColumn = false,
-                HighlightWinnerTeam = true
-            };
-        }
-
         private static string GetExcelTitle(NormalRequest request)
         {
             string leagueName = request.LeagueId == 0 ? "Show All Leagues" : CacheRef.GetLeagueName(request.LeagueId);
@@ -111,25 +101,21 @@ namespace Alpha.Results.Services.Impl.Products
 
         public string GetResultDetails(NormalDetailsRequest detailsRequest)
         {
-            var criteria = GetResultDetailsCriteria(detailsRequest);
-            List<Sportsbook> sportsbooks = this._dataAccess.GetScoreInformation(ref criteria);
-            ResultSetting resultSetting = GetResultDetailsSetting(criteria);
-
-            return detailsRequest.ViewDetail ?
-                ResultEngine.HtmlGameDetailParser(sportsbooks[0], resultSetting).Replace("original-title", " title ") :
-                ResultEngine.HtmlParser(sportsbooks, resultSetting).Replace("original-title", " title ");
-        }
-
-        private static GetSportsbookPopupResultCriteria GetResultDetailsCriteria(NormalDetailsRequest detailsRequest)
-        {
-            return new GetSportsbookPopupResultCriteria()
+            var criteria = new GetSportsbookPopupResultCriteria()
             {
                 MatchId = detailsRequest.MatchId,
-                BetType = detailsRequest.BetType,
+                BetType = detailsRequest.BetTypeId,
                 SportType = detailsRequest.SportId,
                 BetId = detailsRequest.BetId,
-                IsViewDetail = detailsRequest.ViewDetail
+                IsViewDetail = true
             };
+
+            List<Sportsbook> sportsbooks = _dataAccess.GetScoreInformation(ref criteria);
+
+            ResultSetting resultSetting = GetResultDetailsSetting(criteria);
+
+            return ResultEngine.HtmlGameDetailParser(sportsbooks[0], resultSetting)
+                .Replace("original-title", " title ");
         }
 
         /// <summary>

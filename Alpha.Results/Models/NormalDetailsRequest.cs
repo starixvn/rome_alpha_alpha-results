@@ -8,8 +8,6 @@ namespace Alpha.Results.Models
 
         public bool ViewDetail { get; set; }
 
-        public int BetType { get; set; }
-
         public long BetId { get; set; }
 
         public string Race { get; set; }

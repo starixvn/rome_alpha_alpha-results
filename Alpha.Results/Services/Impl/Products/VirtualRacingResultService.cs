@@ -111,8 +111,10 @@ namespace Alpha.Results.Services.Impl.Products
                 MatchId = detailsRequest.MatchId,
                 RaceNo = GetRaceNumber(detailsRequest.Race)
             };
+
             var results = this._racingResultDataAccess.GetVirtualRacingPopupResult(criteria);
-            ResultSetting resultSetting = new ResultSetting
+
+            var resultSetting = new ResultSetting
             {
                 SportType = (SportType)detailsRequest.SportId,
                 IsOutRight = false,
