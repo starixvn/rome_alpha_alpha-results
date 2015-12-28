@@ -50,10 +50,17 @@
 				viewModel.SportId = request.SportId > 0 ? request.SportId : outrights.First().SportType;
 				viewModel.LeagueId = request.LeagueId;
 				viewModel = GetSportsAndLeagues(viewModel, outrights, viewModel.SportId, viewModel.LeagueId);
-				viewModel.HtmlResults = _outrightService.GetResults(outrights, viewModel.SportId, viewModel.LeagueId);
 			}
 
+			viewModel.HtmlResults = _outrightService.GetResults(outrights, viewModel.SportId, viewModel.LeagueId);
 			return View(viewModel);
+		}
+
+		[HttpGet]
+		public ActionResult ExcelResults(OutrightRequest request)
+		{
+			var excelResult = _outrightService.ExportExcel(request, Server.MapPath(@"~/App_Data/Fanex.Result/"));
+			return File(excelResult, "application/vnd.ms-excel", "Result.xls");
 		}
 
 		[NonAction]

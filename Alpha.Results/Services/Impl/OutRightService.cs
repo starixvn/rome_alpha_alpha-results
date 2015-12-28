@@ -7,10 +7,13 @@ namespace Alpha.Results.Services.Impl
 	using Fanex.Result.Core;
 	using Fanex.Result.Core.Base;
 	using Fanex.Result.Core.Sportsbook.DTO;
+	using Models;
 	using Sunplus.Agent.Model.BL.Cache;
+	using Sunplus.Agent.Model.BL.Definitions;
 	using Sunplus.Agent.Model.Entities;
 	using System;
 	using System.Collections.Generic;
+	using System.IO;
 	using System.Linq;
 
 	public class OutRightService : ReportService, IOutRightService
@@ -51,39 +54,39 @@ namespace Alpha.Results.Services.Impl
 				outrights = outrights.Where(o => o.LeagueId == leagueId);
 			}
 
-			return ResultEngine.HtmlParser<OutRight>(outrights.ToList(), CoreResultSetting);
+			return ResultEngine.HtmlParser<OutRight>(outrights.ToList(), OutrightResultSetting);
 		}
 
-  //      public MemoryStream ExportExcel(DateTime fromDate, DateTime toDate, int sportId, int leagueId, string excelTemplatePath)
-  //      {
-  //          var result = this._dynamicRepository.Fetch<OutRight>(GetCriteria(fromDate, toDate));
+		public MemoryStream ExportExcel(OutrightRequest request, string excelTemplatePath)
+		{
+			Check.Argument.IsNotNull(request, "request");
 
-  //          if (sportId != 0)
-  //          {
-  //              result = result.Where(o => o.SportType == sportId);
-  //          }
+			var outrights = GetOutRights(request.FromDate, request.ToDate);
+			if (request.SportId != 0)
+			{
+				outrights = outrights.Where(o => o.SportType == request.SportId);
+			}
 
-  //          if (leagueId != 0)
-  //          {
-  //              result = result.Where(o => o.LeagueId == leagueId);
-  //          }
+			if (request.LeagueId != 0)
+			{
+				outrights = outrights.Where(o => o.LeagueId == request.LeagueId);
+			}
 
-  //          return ResultEngine.ExcelParser<OutRight>(
-  //              result.ToList(),
-  //              GetExportExcelSetting(excelTemplatePath, GetExcelTitle(sportId, fromDate, toDate, leagueId)));
-  //      }
+			string excelTitle = GetExcelTitle(request.FromDate, request.ToDate, request.SportId, request.LeagueId);
+			return ResultEngine.ExcelParser(outrights.ToList(), OutrightExcelSetting(excelTemplatePath, excelTitle));
+		}
 
-        private GetOutRightResultCriteria GetCriteria(DateTime fromDate, DateTime toDate)
+		private GetOutRightResultCriteria GetCriteria(DateTime fromDate, DateTime toDate)
         {
             return new GetOutRightResultCriteria
             {
                 FromDate = fromDate,
                 ToDate = toDate,
-				IsShowAll = true
+				IsShowAll = AppSettings.LocalTest
 			};
         }
 
-        private ResultSetting CoreResultSetting
+        private ResultSetting OutrightResultSetting
 		{
 			get
 			{
@@ -98,24 +101,30 @@ namespace Alpha.Results.Services.Impl
 			}
         }
 
-        private static ResultSetting GetExportExcelSetting(string excelTemplatePath, string excelTitle)
+        private ResultSetting OutrightExcelSetting(string excelTemplatePath, string excelTitle)
         {
             return new ResultSetting
             {
                 LanguageCode = UserSession.Current.Language,
                 IsOutRight = true,
                 IsPopUp = false,
-                ExcelTitle = excelTitle,
-                ExcelTemplatePath = excelTemplatePath,
-                HighlightWinnerTeam = true
-            };
+                HighlightWinnerTeam = true,
+				ExcelTitle = excelTitle,
+				ExcelTemplatePath = excelTemplatePath
+			};
         }
 
-        private static string GetExcelTitle(int sportType, DateTime fromDate, DateTime toDate, int leagueId)
+        private string GetExcelTitle(DateTime fromDate, DateTime toDate, int sportType, int leagueId)
         {
             string leagueName = leagueId == 0 ? "Show All Leagues" : CacheRef.GetLeagueName(leagueId);
-            return ResultLang.lblOutrightResult.ToUpper() + " - " + fromDate.ToString("MM/dd/yyyy") + " -> "
-               + toDate.ToString("MM/dd/yyyy") + " | " + CacheRef.GetSportName(sportType) + " - " + leagueName;
+			return string.Format(
+				"{0} - {1} -> {2} | {3} - {4}",
+				ResultLang.lblOutrightResult.ToUpper(),
+				fromDate.ToString("MM/dd/yyyy"),
+				toDate.ToString("MM/dd/yyyy"),
+				CacheRef.GetSportName(sportType),
+				leagueName
+			);
         }
 	}
 }

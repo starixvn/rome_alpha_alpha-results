@@ -1,9 +1,11 @@
 namespace Alpha.Results.Services
 {
 	using Fanex.Result.Core.Sportsbook.DTO;
+	using Models;
 	using Models.Dtos;
 	using System;
 	using System.Collections.Generic;
+	using System.IO;
 
 	public interface IOutRightService
     {
@@ -13,8 +15,6 @@ namespace Alpha.Results.Services
 
 		string GetResults(IEnumerable<OutRight> outrights, int sportId, int leagueId);
 
-		//string GetResults(DateTime fromDate, DateTime toDate, int sportId, int leagueId, out List<OutRight> outRights);
-
-        //MemoryStream ExportExcel(DateTime fromDate, DateTime toDate, int sportId, int leagueId, string excelTemplatePath);
-    }
+		MemoryStream ExportExcel(OutrightRequest request, string excelTemplatePath);
+	}
 }
