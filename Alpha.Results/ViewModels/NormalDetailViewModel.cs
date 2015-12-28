@@ -4,6 +4,6 @@
     {
         public string Title { get; set; }
 
-        public string Results { get; set; }
+        public string HtmlResults { get; set; }
     }
 }

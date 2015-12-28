@@ -30,7 +30,7 @@ namespace Alpha.Results.Services.Impl
 
         public string GetResultDetails(NormalDetailsRequest detailsRequest)
         {
-            var parlayData = this._parlayResultDataAccess.GetParlayResult(new GetParlayPopupResultCriteria
+            var parlayData = _parlayResultDataAccess.GetParlayResult(new GetParlayPopupResultCriteria
             {
                 RefNo = detailsRequest.RefNum
             });

@@ -39,10 +39,7 @@
             var viewModel = new NormalViewModel
             {
                 ResultDate = request.ResultDate,
-                Today = DateTime.Now.ToShortDateString(),
-                Yesterday = DateTime.Now.AddDays(-1).ToShortDateString(),
                 MinResultDate = balanceUpDate,
-                MinResultDateMessage = string.Format(ResultLang.ViewDataFromDate, balanceUpDate.ToShortDateString()),
                 Sports = sports
             };
 
@@ -51,7 +48,6 @@
                 viewModel.SportId = request.SportId > 0 ? request.SportId : int.Parse(sports.First().Value);
                 viewModel.Leagues = GetLeaguesResult(request.ResultDate, viewModel.SportId);
                 viewModel.LeagueId = request.LeagueId;
-                
             }
 
             viewModel.HtmlResults = _normalService.GetResults(new NormalRequest
@@ -102,12 +98,22 @@
         {
             var viewModel = new NormalDetailViewModel
             {
-                Title = string.Format("{0} - {1}", CacheRef.GetSportName(request.SportId), CacheRef.GetLeagueName(request.LeagueId)),
-                Results = _normalService.GetResultDetails(request)
+                Title = string.Format(
+                    "{0} - {1}", 
+                    CacheRef.GetSportName(request.SportId), 
+                    CacheRef.GetLeagueName(request.LeagueId)),
+                HtmlResults = _normalService.GetResultDetails(request)
             };
 
             return View(viewModel);
         }
 
+        [HttpGet]
+        public ActionResult ExcelResults(NormalRequest request)
+        {
+            var excelResult = _normalService.GetExcelResults(request, Server.MapPath(@"~/App_Data/Fanex.Result/"));
+
+            return File(excelResult, "application/vnd.ms-excel", "Result.xls");
+        }
     }
 }

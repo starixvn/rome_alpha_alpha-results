@@ -5,6 +5,7 @@
 var normalResult =
 {
     resultDetailsUrl: 'Normal/ResultDetails?',
+    excelResultsUrl: 'Normal/ExcelResults?',
     domElements:
         {
             txtResultDate: null,
@@ -14,7 +15,8 @@ var normalResult =
             resultForm: null,
             mainResult: null,
             rootUrl: null,
-            resultDetails: null
+            resultDetails: null,
+            excelBtn: null
         },
     init: function () {
         normalResult.cacheElements();
@@ -28,6 +30,7 @@ var normalResult =
         normalResult.domElements.mainResult = $('#main-result');
         normalResult.domElements.rootUrl = $('#RootURL');
         normalResult.domElements.resultDetails = $('#result-details');
+        normalResult.domElements.excelBtn = $('#excel-btn');
     },
     registerEvents: function () {
         normalResult.domElements.dpkContainer.datetimepicker({
@@ -59,6 +62,27 @@ var normalResult =
                 normalResult.domElements.resultDetails.load(resultDetailsUrl, function () {
                     normalResult.domElements.resultDetails.modal({});
                 });
+            });
+
+        normalResult.domElements.excelBtn
+            .off('click.normalResult')
+            .on('click.normalResult', function () {
+                var requestParams = {
+                    resultDate: normalResult.domElements.txtResultDate.val(),
+                    leagueId: $('#LeagueId').val(),
+                    sportId: $('#SportId').val()
+                },
+                downloadUrl = normalResult.domElements.rootUrl.val()
+                    + normalResult.excelResultsUrl
+                    + $.param(requestParams);
+
+                var iframe = $('body #iframeExportExcelFile');
+                if (iframe.length === 0) {
+                    iframe = $('<iframe id="iframeExportExcelFile" width="0" height="0" class="display-none"></iframe>');
+                    iframe.appendTo('body');
+                }
+
+                iframe.attr('src', downloadUrl);
             });
     }
 };
