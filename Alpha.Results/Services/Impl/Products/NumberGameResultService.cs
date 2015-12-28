@@ -14,11 +14,11 @@ namespace Alpha.Results.Services.Impl.Products
     /// </summary>
     public class NumberGameResultService : IProductResultService
     {
-        private INumberGameResultDataAccess _numberGameResultDataAccess;
+        private readonly INumberGameResultDataAccess _numberGameResultDataAccess;
 
         public NumberGameResultService(INumberGameResultDataAccess numberGameResultDataAccess)
         {
-            this._numberGameResultDataAccess = numberGameResultDataAccess ?? new NumberGameResultDataAccess();
+            _numberGameResultDataAccess = numberGameResultDataAccess ?? new NumberGameResultDataAccess();
         }
 
         public NumberGameResultService()
@@ -38,9 +38,9 @@ namespace Alpha.Results.Services.Impl.Products
                 HighlightWinnerTeam = true
             };
 
-            return ResultEngine.HtmlParser(
-                _numberGameResultDataAccess.GetNumberGameResult(GetCriteria(request)).ToList(),
-                resultSetting);
+            var results = _numberGameResultDataAccess.GetNumberGameResults(GetCriteria(request)).ToList();
+
+            return ResultEngine.HtmlParser(results, resultSetting);
         }
 
         public MemoryStream ExportExcel(NormalRequest request, string excelTemplatePath)
@@ -55,9 +55,9 @@ namespace Alpha.Results.Services.Impl.Products
                 HighlightWinnerTeam = true
             };
 
-            return ResultEngine.ExcelParser(
-                _numberGameResultDataAccess.GetNumberGameResult(GetCriteria(request)).ToList(),
-                resultSetting);
+            var results = _numberGameResultDataAccess.GetNumberGameResults(GetCriteria(request)).ToList();
+
+            return ResultEngine.ExcelParser(results, resultSetting);
         }
 
         private static GetNumberGameResultCriteria GetCriteria(NormalRequest request)
@@ -72,7 +72,7 @@ namespace Alpha.Results.Services.Impl.Products
 
         public string GetResultDetails(NormalDetailsRequest detailsRequest)
         {
-            var criteria = new GetNumberGamePopupResultCriteria
+            var criteria = new GetNumberGameResultDetailsCriteria
             {
                 MatchID = detailsRequest.MatchId
             };
@@ -91,9 +91,9 @@ namespace Alpha.Results.Services.Impl.Products
                 HighlightWinnerTeam = true
             };
 
-            return ResultEngine.HtmlParser(
-                _numberGameResultDataAccess.GetNumberGamePopupResult(criteria),
-                resultSetting);
+            var results = _numberGameResultDataAccess.GetNumberGameResultDetails(criteria);
+
+            return ResultEngine.HtmlParser(results, resultSetting);
         }
     }
 }

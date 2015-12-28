@@ -15,7 +15,7 @@ namespace Alpha.Results.Services.Impl
     /// </summary>
     public class ParlayResultService : IProductResultService
     {
-        private IParlayResultDataAccess _parlayResultDataAccess;
+        private readonly IParlayResultDataAccess _parlayResultDataAccess;
 
         public ParlayResultService(IParlayResultDataAccess parlayResultDataAccess)
         {
@@ -29,32 +29,25 @@ namespace Alpha.Results.Services.Impl
 
         public string GetResultDetails(NormalDetailsRequest detailsRequest)
         {
-            var parlayData = _parlayResultDataAccess.GetParlayResult(new GetParlayPopupResultCriteria
+            var results = _parlayResultDataAccess.GetParlayResults(new GetParlayResultCriteria
             {
                 RefNo = detailsRequest.RefNum
-            });
+            }).ToList();
 
-            return ResultEngine.HtmlParser(parlayData.ToList(), this.GetFanexResultSetting(detailsRequest));
-        }
-
-        /// <summary>
-        /// Gets the FANEX result setting.
-        /// </summary>
-        /// <returns>The object of ResultSetting.</returns>
-        private ResultSetting GetFanexResultSetting(NormalRequest request)
-        {
-            return new ResultSetting
+            var resultSetting = new ResultSetting
             {
                 IsOutRight = false,
                 IsParlayPopUp = true,
                 IsPopUp = true,
                 VisiblePopUpTitle = false,
-                LanguageCode = request.Language,
+                LanguageCode = detailsRequest.Language,
                 VisibleMatchCodeIDColumn = false,
                 VisibleFreeHeader = true,
                 VisibleDetailedLink = true,
                 HighlightWinnerTeam = true
             };
+
+            return ResultEngine.HtmlParser(results, resultSetting);
         }
 
         public string GetResult(NormalRequest request)

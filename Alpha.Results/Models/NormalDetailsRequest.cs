@@ -1,7 +1,5 @@
 ﻿namespace Alpha.Results.Models
 {
-    using System;
-
     public class NormalDetailsRequest : NormalRequest
     {
         public int MatchId { get; set; }

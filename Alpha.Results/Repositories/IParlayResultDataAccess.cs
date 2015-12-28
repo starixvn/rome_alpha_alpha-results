@@ -9,6 +9,6 @@ namespace Alpha.Results.Repositories
     /// </summary>
     public interface IParlayResultDataAccess
     {
-        IList<Parlay> GetParlayResult(GetParlayPopupResultCriteria criteria);
+        IList<Parlay> GetParlayResults(GetParlayResultCriteria criteria);
     }
 }

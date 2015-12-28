@@ -19,7 +19,7 @@ namespace Alpha.Results.Repositories.Impl.Result
         /// </summary>
         /// <param name="criteria">The criterion.</param>
         /// <returns>The number game data.</returns>
-        public IList<NumberGame> GetNumberGameResult(GetNumberGameResultCriteria criteria)
+        public IList<NumberGame> GetNumberGameResults(GetNumberGameResultCriteria criteria)
         {
             var result = new List<NumberGame>();
             using (var db = new ObjectDb(criteria.GetSettingKey()))
@@ -89,7 +89,7 @@ namespace Alpha.Results.Repositories.Impl.Result
         /// </summary>
         /// <param name="criteria">The criteria.</param>
         /// <returns>The list of number games.</returns>
-        public IList<NumberGame> GetNumberGamePopupResult(GetNumberGamePopupResultCriteria criteria)
+        public IList<NumberGame> GetNumberGameResultDetails(GetNumberGameResultDetailsCriteria criteria)
         {
             var result = new List<NumberGame>();
             using (var db = new ObjectDb(criteria.GetSettingKey()))

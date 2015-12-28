@@ -9,8 +9,8 @@ namespace Alpha.Results.Repositories
     /// </summary>
     public interface INumberGameResultDataAccess
     {
-        IList<NumberGame> GetNumberGameResult(GetNumberGameResultCriteria criteria);
+        IList<NumberGame> GetNumberGameResults(GetNumberGameResultCriteria criteria);
 
-        IList<NumberGame> GetNumberGamePopupResult(GetNumberGamePopupResultCriteria criteria);
+        IList<NumberGame> GetNumberGameResultDetails(GetNumberGameResultDetailsCriteria criteria);
     }
 }

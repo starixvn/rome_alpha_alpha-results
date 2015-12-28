@@ -5,7 +5,7 @@ namespace Alpha.Results.Criteria
     /// <summary>
     /// The criteria GetNumberGamePopupResultCriteria.
     /// </summary>
-    public class GetNumberGamePopupResultCriteria : CriteriaBase
+    public class GetNumberGameResultDetailsCriteria : CriteriaBase
     {
         public int MatchID { get; set; }
 

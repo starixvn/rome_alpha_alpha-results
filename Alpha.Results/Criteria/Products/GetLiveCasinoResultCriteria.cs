@@ -5,7 +5,7 @@ namespace Alpha.Results.Criteria
     /// <summary>
     /// The criteria GetLiveCasinoPopupResultCriteria.
     /// </summary>
-    public class GetLiveCasinoPopupResultCriteria : CriteriaBase
+    public class GetLiveCasinoResultCriteria : CriteriaBase
     {
         public int MatchId { get; set; }
 

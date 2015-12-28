@@ -292,20 +292,20 @@
     <Compile Include="Controllers\ResultController.cs" />
     <Compile Include="Controllers\TabController.cs" />
     <Compile Include="Criteria\GetBalanceUpDateCriteria.cs" />
-    <Compile Include="Criteria\GetGoldDeluxePopupResultCriteria.cs" />
-    <Compile Include="Criteria\GetLiveCasinoPopupResultCriteria.cs" />
-    <Compile Include="Criteria\GetMetricGamingResultCriteria.cs" />
-    <Compile Include="Criteria\GetNumberGamePopupResultCriteria.cs" />
-    <Compile Include="Criteria\GetNumberGameResultCriteria.cs" />
-    <Compile Include="Criteria\GetOutRightResultCriteria.cs" />
-    <Compile Include="Criteria\GetParlayPopupResultCriteria.cs" />
-    <Compile Include="Criteria\GetRacingPopupResultCriteria.cs" />
-    <Compile Include="Criteria\GetRacingResultCriteria.cs" />
+    <Compile Include="Criteria\Products\GetGoldDeluxeResultCriteria.cs" />
+    <Compile Include="Criteria\Products\GetLiveCasinoResultCriteria.cs" />
+    <Compile Include="Criteria\Products\GetMetricGamingResultCriteria.cs" />
+    <Compile Include="Criteria\Products\GetNumberGameResultDetailsCriteria.cs" />
+    <Compile Include="Criteria\Products\GetNumberGameResultCriteria.cs" />
+    <Compile Include="Criteria\Products\GetOutRightResultCriteria.cs" />
+    <Compile Include="Criteria\Products\GetParlayResultCriteria.cs" />
+    <Compile Include="Criteria\Products\GetRacingResultDetailsCriteria.cs" />
+    <Compile Include="Criteria\Products\GetRacingResultCriteria.cs" />
     <Compile Include="Criteria\GetResultLeaguesByDateCriteria.cs" />
     <Compile Include="Criteria\GetResultSportsByDateCriteria.cs" />
-    <Compile Include="Criteria\GetSportsbookPopupResultCriteria.cs" />
-    <Compile Include="Criteria\GetSportsbookResultCriteria.cs" />
-    <Compile Include="Criteria\GetVirtualRacingResultCriteria.cs" />
+    <Compile Include="Criteria\Products\GetSportsbookResultDetailsCriteria.cs" />
+    <Compile Include="Criteria\Products\GetSportsbookResultCriteria.cs" />
+    <Compile Include="Criteria\Products\GetVirtualRacingResultCriteria.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -342,10 +342,12 @@
     <Compile Include="Services\Impl\ReportService.cs" />
     <Compile Include="Services\Impl\Products\SportsbookResultService.cs" />
     <Compile Include="Services\Impl\Products\VirtualRacingResultService.cs" />
+    <Compile Include="Services\Impl\ResultServiceFactory.cs" />
     <Compile Include="Services\INormalResultService.cs" />
     <Compile Include="Services\IOutRightService.cs" />
     <Compile Include="Services\IReportService.cs" />
     <Compile Include="Services\IProductResultService.cs" />
+    <Compile Include="Services\IResultServiceFactory.cs" />
     <Compile Include="ViewModels\NormalDetailViewModel.cs" />
     <Compile Include="ViewModels\NormalViewModel.cs" />
     <Compile Include="ViewModels\OutrightViewModel.cs" />

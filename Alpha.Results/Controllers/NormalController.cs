@@ -100,7 +100,7 @@
 
             var viewModel = new NormalDetailViewModel
             {
-                Title = string.Format("{0} - {1}", CacheRefFactory.CacheRef.GetSportName(request.SportId), CacheRefFactory.CacheRef.GetLeagueName(request.LeagueId)),
+                Title = $"{CacheRefFactory.CacheRef.GetSportName(request.SportId)} - {CacheRefFactory.CacheRef.GetLeagueName(request.LeagueId)}",
                 HtmlResults = _normalResultService.GetResultDetails(request)
             };
 

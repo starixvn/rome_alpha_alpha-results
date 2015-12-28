@@ -17,11 +17,11 @@ namespace Alpha.Results.Services.Impl.Products
     /// </summary>
     public class RacingResultService : IProductResultService
     {
-        private IRacingResultDataAccess _dataAccess;
+        private readonly IRacingResultDataAccess _dataAccess;
 
         public RacingResultService(IRacingResultDataAccess dataAccess)
         {
-            this._dataAccess = dataAccess ?? new RacingResultDataAccess();
+            _dataAccess = dataAccess ?? new RacingResultDataAccess();
         }
 
         public RacingResultService()
@@ -32,10 +32,20 @@ namespace Alpha.Results.Services.Impl.Products
         public string GetResult(NormalRequest request)
         {
             var criteria = GetCriteria(request);
-            IList<Racing> racings = _dataAccess.GetRacingResult(criteria);
-            ResultSetting resultSetting = GetFanexResultSetting(criteria.SportType, request.Language);
 
-            return ResultEngine.HtmlParser<Racing>(racings.ToList(), resultSetting);
+            var results = _dataAccess.GetRacingResults(criteria).ToList();
+
+            var resultSetting = new ResultSetting
+            {
+                SportType = (SportType)request.SportId,
+                LanguageCode = request.Language,
+                VisibleDetailedLink = true,
+                VisibleFreeHeader = true,
+                VisibleMatchCodeIDColumn = false,
+                HighlightWinnerTeam = true
+            };
+
+            return ResultEngine.HtmlParser(results, resultSetting);
         }
 
         public MemoryStream ExportExcel(NormalRequest request, string excelTemplatePath)
@@ -50,9 +60,9 @@ namespace Alpha.Results.Services.Impl.Products
                 HighlightWinnerTeam = true
             };
 
-            return ResultEngine.ExcelParser(
-                _dataAccess.GetRacingResult(GetCriteria(request)).ToList(),
-                resultSetting);
+            var results = _dataAccess.GetRacingResults(GetCriteria(request)).ToList();
+
+            return ResultEngine.ExcelParser(results, resultSetting);
         }
 
         private static GetRacingResultCriteria GetCriteria(NormalRequest request)
@@ -66,32 +76,16 @@ namespace Alpha.Results.Services.Impl.Products
             };
         }
 
-        /// <summary>
-        /// Gets the FANEX result setting.
-        /// </summary>
-        /// <param name="sportType">Type of the sport.</param>
-        /// <returns>Result Setting Model.</returns>
-        private static ResultSetting GetFanexResultSetting(int sportType, string language)
-        {
-            return new ResultSetting
-            {
-                SportType = (SportType)sportType,
-                LanguageCode = language,
-                VisibleDetailedLink = true,
-                VisibleFreeHeader = true,
-                VisibleMatchCodeIDColumn = false,
-                HighlightWinnerTeam = true
-            };
-        }
-
         public string GetResultDetails(NormalDetailsRequest detailsRequest)
         {
-            var criteria = new GetRacingPopupResultCriteria()
+            var criteria = new GetRacingResultDetailsCriteria()
             {
                 MatchId = detailsRequest.MatchId,
                 RaceNo = GetRaceNumber(detailsRequest.Race)
             };
-            var results = this._dataAccess.GetRacingPopupResult(criteria);
+
+            var results = _dataAccess.GetRacingResultDetails(criteria);
+
             ResultSetting resultSetting = new ResultSetting
             {
                 SportType = (SportType)detailsRequest.SportId,

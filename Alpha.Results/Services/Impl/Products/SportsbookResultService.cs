@@ -16,7 +16,7 @@ namespace Alpha.Results.Services.Impl.Products
     /// </summary>
     public class SportsbookResultService : IProductResultService
     {
-        private ISportsbookResultDataAccess _dataAccess;
+        private readonly ISportsbookResultDataAccess _dataAccess;
 
         public SportsbookResultService(ISportsbookResultDataAccess dataAccess)
         {
@@ -32,16 +32,23 @@ namespace Alpha.Results.Services.Impl.Products
         {
             var criteria = GetCriteria(request);
 
-            IList<Sportsbook> sportsbooks =
-                request.SportId == 0 ?
-                new List<Sportsbook>() :
-                _dataAccess.GetSportbookResult(criteria);
+            var results = request.SportId == 0 ? new List<Sportsbook>() : _dataAccess.GetSportbookResults(criteria).ToList();
 
-            var sportId = criteria.SportType > 0 ? criteria.SportType : (int)SportType.Others;
+            var sportId = request.SportId > 0 ? request.SportId : (int)SportType.Others;
 
-            ResultSetting resultSetting = GetFanexResultSetting(sportId, request.Language);
+            var sportType = (SportType)sportId;
 
-            return ResultEngine.HtmlParser(sportsbooks.ToList(), resultSetting).Replace("original-title", " title ");
+            var resultSetting = new ResultSetting
+            {
+                SportType = sportType,
+                LanguageCode = request.Language,
+                VisibleDetailedLink = sportType == SportType.Soccer || sportType == SportType.Tennis,
+                VisibleFreeHeader = true,
+                VisibleMatchCodeIDColumn = false,
+                HighlightWinnerTeam = true
+            };
+
+            return ResultEngine.HtmlParser(results, resultSetting).Replace("original-title", " title ");
         }
 
         public MemoryStream ExportExcel(NormalRequest request, string excelTemplatePath)
@@ -56,9 +63,9 @@ namespace Alpha.Results.Services.Impl.Products
                 HighlightWinnerTeam = true
             };
 
-            return ResultEngine.ExcelParser(
-                this._dataAccess.GetSportbookResult(GetCriteria(request)).ToList(),
-                exportExcelSetting);
+            var results = _dataAccess.GetSportbookResults(GetCriteria(request)).ToList();
+
+            return ResultEngine.ExcelParser(results, exportExcelSetting);
         }
 
         private static GetSportsbookResultCriteria GetCriteria(NormalRequest request)
@@ -72,28 +79,9 @@ namespace Alpha.Results.Services.Impl.Products
             };
         }
 
-        /// <summary>
-        /// Gets the FANEX result setting.
-        /// </summary>
-        /// <param name="sportType">Type of the sport.</param>
-        /// <returns>Result Setting Model.</returns>
-        private static ResultSetting GetFanexResultSetting(int sportType, string language)
-        {
-            SportType type = (SportType)sportType;
-            return new ResultSetting
-            {
-                SportType = type,
-                LanguageCode = language,
-                VisibleDetailedLink = type == SportType.Soccer || type == SportType.Tennis,
-                VisibleFreeHeader = true,
-                VisibleMatchCodeIDColumn = false,
-                HighlightWinnerTeam = true
-            };
-        }
-
         public string GetResultDetails(NormalDetailsRequest detailsRequest)
         {
-            var criteria = new GetSportsbookPopupResultCriteria()
+            var criteria = new GetSportsbookResultDetailsCriteria()
             {
                 MatchId = detailsRequest.MatchId,
                 BetType = detailsRequest.BetTypeId,
@@ -102,31 +90,21 @@ namespace Alpha.Results.Services.Impl.Products
                 IsViewDetail = true
             };
 
-            List<Sportsbook> sportsbooks = _dataAccess.GetScoreInformation(ref criteria);
+            var results = _dataAccess.GetScoreInformation(ref criteria);
 
-            ResultSetting resultSetting = GetResultDetailsSetting(detailsRequest);
-
-            return ResultEngine.HtmlGameDetailParser(sportsbooks[0], resultSetting)
-                .Replace("original-title", " title ");
-        }
-
-        /// <summary>
-        /// Gets the FANEX result setting.
-        /// </summary>
-        /// <param name="criteria">The criteria.</param>
-        /// <returns>The object of ResultSetting.</returns>
-        private static ResultSetting GetResultDetailsSetting(NormalRequest request)
-        {
-            return new ResultSetting
+            var resultSetting = new ResultSetting
             {
-                SportType = (SportType)request.SportId,
+                SportType = (SportType)detailsRequest.SportId,
                 IsOutRight = false,
                 IsParlayPopUp = false,
                 IsPopUp = true,
-                LanguageCode = request.Language,
+                LanguageCode = detailsRequest.Language,
                 VisibleMatchCodeIDColumn = false,
                 HighlightWinnerTeam = true
             };
+
+            return ResultEngine.HtmlGameDetailParser(results[0], resultSetting).Replace("original-title", " title ");
         }
+
     }
 }

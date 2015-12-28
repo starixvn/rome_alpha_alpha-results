@@ -15,7 +15,7 @@ namespace Alpha.Results.Services.Impl.Products
     /// </summary>
     public class LiveCasinoPopupResultService : IProductResultService
     {
-        private IDynamicRepository _dynamicRepository;
+        private readonly IDynamicRepository _dynamicRepository;
 
         public LiveCasinoPopupResultService(IDynamicRepository dynamicRepository)
         {
@@ -29,7 +29,7 @@ namespace Alpha.Results.Services.Impl.Products
 
         public string GetResultDetails(NormalDetailsRequest detailsRequest)
         {
-            var criteria = new GetLiveCasinoPopupResultCriteria()
+            var criteria = new GetLiveCasinoResultCriteria()
             {
                 MatchId = detailsRequest.MatchId,
                 BetType = detailsRequest.BetTypeId,

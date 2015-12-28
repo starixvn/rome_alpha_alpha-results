@@ -12,11 +12,11 @@ namespace Alpha.Results.Services.Impl.Products
 
     public class MetricGamingResultService : IProductResultService
     {
-        private IDynamicRepository _dynamicRepository;
+        private readonly IDynamicRepository _dynamicRepository;
 
         public MetricGamingResultService(IDynamicRepository dynamicRepository)
         {
-            this._dynamicRepository = dynamicRepository ?? new DynamicRepository();
+            _dynamicRepository = dynamicRepository ?? new DynamicRepository();
         }
 
         public MetricGamingResultService()
@@ -45,6 +45,7 @@ namespace Alpha.Results.Services.Impl.Products
             };
 
             var resultData = _dynamicRepository.Fetch<MetricGaming>(criteria).ToList();
+
             var resultSetting = new ResultSetting
             {
                 SportType = SportType.Soccer,
@@ -57,12 +58,7 @@ namespace Alpha.Results.Services.Impl.Products
                 HighlightWinnerTeam = true
             };
 
-            if (resultData != null && resultData.Count > 0)
-            {
-                return ResultEngine.HtmlParser(resultData, resultSetting);
-            }
-
-            return string.Empty;
+            return resultData.Any() ? ResultEngine.HtmlParser(resultData, resultSetting) : string.Empty;
         }
     }
 }

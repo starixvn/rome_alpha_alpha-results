@@ -28,7 +28,7 @@ namespace Alpha.Results.Repositories.Impl.Result
         /// </summary>
         /// <param name="criteria">The criteria.</param>
         /// <returns>The list of Parlays.</returns>
-        public IList<Parlay> GetParlayResult(GetParlayPopupResultCriteria criteria)
+        public IList<Parlay> GetParlayResults(GetParlayResultCriteria criteria)
         {
             List<Parlay> results = null;
 

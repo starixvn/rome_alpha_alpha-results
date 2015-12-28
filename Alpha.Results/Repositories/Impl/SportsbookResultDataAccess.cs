@@ -19,7 +19,7 @@
         /// </summary>
         /// <param name="criteria">The criterion.</param>
         /// <returns>The SPORTBOOK data.</returns>
-        public IList<Sportsbook> GetSportbookResult(GetSportsbookResultCriteria criteria)
+        public IList<Sportsbook> GetSportbookResults(GetSportsbookResultCriteria criteria)
         {
             var results = new List<Sportsbook>();
             var gameDetails = new List<GameDetail>();
@@ -127,7 +127,7 @@
             return string.Empty;
         }
 
-        public List<Sportsbook> GetScoreInformation(ref GetSportsbookPopupResultCriteria criteria)
+        public List<Sportsbook> GetScoreInformation(ref GetSportsbookResultDetailsCriteria criteria)
         {
             var result = new List<Sportsbook>();
 
@@ -188,7 +188,7 @@
         /// <returns>
         /// The object of SPORTSBOOK.
         /// </returns>
-        private Sportsbook BindSportsbookDetails(IDataReader reader, ref GetSportsbookPopupResultCriteria criteria)
+        private Sportsbook BindSportsbookDetails(IDataReader reader, ref GetSportsbookResultDetailsCriteria criteria)
         {
             criteria.SportType = reader["sporttype"] != DBNull.Value ? Convert.ToInt32(reader["sporttype"]) : 0;
 

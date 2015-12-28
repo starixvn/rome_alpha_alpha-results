@@ -18,7 +18,7 @@
                         </span>
                     </div>
                 </div>
-                @Html.HiddenFor(model => model.MinResultDate)
+
                 <input type="submit" value="@Model.Today" id="today-results" class="btn btn-default btn-other-day" />
                 <input type="submit" value="@Model.Yesterday" id="yesterday-results" class="btn btn-default btn-other-day" />
                 <input type="submit" value="@ResultLang.submit" id="selected-day-results" class="btn btn-submit" />
@@ -48,14 +48,12 @@
 
     <div class="main-content" id="main-result">
         @Html.Raw(Model.HtmlResults)
-        </div>
-    
+    </div>
+    @Html.HiddenFor(model => model.MinResultDate)
 </div>
 
 <div class="modal fade" id="result-details" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 </div>
-
-<iframe src="#" frameborder="0" scrolling="no" id="frFooter" name="frFooter" style="display:none;"></iframe>
 
 @section scripts
 {

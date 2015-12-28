@@ -15,7 +15,7 @@ namespace Alpha.Results.Repositories.Impl.Result
         /// </summary>
         /// <param name="criteria">The criterion.</param>
         /// <returns>The racing data.</returns>
-        public IList<Racing> GetRacingResult(GetRacingResultCriteria criteria)
+        public IList<Racing> GetRacingResults(GetRacingResultCriteria criteria)
         {
             var result = new List<Racing>();
             using (var db = new ObjectDb(criteria.GetSettingKey()))
@@ -32,7 +32,7 @@ namespace Alpha.Results.Repositories.Impl.Result
             return result;
         }
 
-        public IList<Racing> GetRacingPopupResult(GetRacingPopupResultCriteria criteria)
+        public IList<Racing> GetRacingResultDetails(GetRacingResultDetailsCriteria criteria)
         {
             var result = new List<Racing>();
 

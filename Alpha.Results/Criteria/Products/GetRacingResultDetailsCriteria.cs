@@ -5,7 +5,7 @@ namespace Alpha.Results.Criteria
     /// <summary>
     /// The criteria GetRacingPopupResultCriteria.
     /// </summary>
-    public class GetRacingPopupResultCriteria : CriteriaBase
+    public class GetRacingResultDetailsCriteria : CriteriaBase
     {
         [SpParam(SqlParamName = "MatchID")]
         public int MatchId { get; set; }

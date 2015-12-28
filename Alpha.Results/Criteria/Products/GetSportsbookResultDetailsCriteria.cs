@@ -5,7 +5,7 @@
     /// <summary>
     /// The criteria GetSportsBookPopupResultCriteria.
     /// </summary>
-    public class GetSportsbookPopupResultCriteria : CriteriaBase
+    public class GetSportsbookResultDetailsCriteria : CriteriaBase
     {
         public int MatchId { get; set; }
 

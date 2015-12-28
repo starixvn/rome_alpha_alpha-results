@@ -12,7 +12,7 @@
 
     public class GoldDeluxePopupResultService : IProductResultService
     {
-        private IDynamicRepository _dynamicRepository;
+        private readonly IDynamicRepository _dynamicRepository;
 
         public GoldDeluxePopupResultService(IDynamicRepository dynamicRepository = null)
         {
@@ -31,7 +31,7 @@
 
         public string GetResultDetails(NormalDetailsRequest detailsRequest)
         {
-            var criteria = new GetGoldDeluxePopupResultCriteria { TransId = detailsRequest.RefNum, BetType = detailsRequest.BetTypeId };
+            var criteria = new GetGoldDeluxeResultCriteria { TransId = detailsRequest.RefNum, BetType = detailsRequest.BetTypeId };
 
             var goldDeluxeResults = _dynamicRepository
                 .Fetch<GoldDeluxe>(criteria)

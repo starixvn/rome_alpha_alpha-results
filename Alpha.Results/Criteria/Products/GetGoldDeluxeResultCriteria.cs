@@ -2,7 +2,7 @@
 {
     using Fanex.Data.Repository;
 
-    public class GetGoldDeluxePopupResultCriteria : CriteriaBase
+    public class GetGoldDeluxeResultCriteria : CriteriaBase
     {
         public long TransId { get; set; }
 

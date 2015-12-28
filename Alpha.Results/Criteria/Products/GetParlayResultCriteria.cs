@@ -5,7 +5,7 @@ namespace Alpha.Results.Criteria
     /// <summary>
     /// The criteria GetParlayPopupResultCriteria.
     /// </summary>
-    public class GetParlayPopupResultCriteria : CriteriaBase
+    public class GetParlayResultCriteria : CriteriaBase
     {
         public long RefNo { get; set; }
 

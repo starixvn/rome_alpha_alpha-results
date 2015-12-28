@@ -23,14 +23,10 @@
 
         public string ToExcelTitle()
         {
-            string leagueName = LeagueId == 0 ? ResultLang.ShowAllLeagues : CacheRefFactory.CacheRef.GetLeagueName(LeagueId);
+            var leagueName = LeagueId == 0 ? ResultLang.ShowAllLeagues : CacheRefFactory.CacheRef.GetLeagueName(LeagueId);
+            var resultDate = ResultDate.ToString("MM/dd/yyyy");
 
-            return string.Format(
-                "{0} - {1} | {2} {3}",
-                ResultLang.result,
-                ResultDate.ToString("MM/dd/yyyy"),
-                CacheRefFactory.CacheRef.GetSportName(SportId),
-                leagueName);
+            return $"{ResultLang.result} - {resultDate} | {CacheRefFactory.CacheRef.GetSportName(SportId)} {leagueName}";
         }
     }
 }

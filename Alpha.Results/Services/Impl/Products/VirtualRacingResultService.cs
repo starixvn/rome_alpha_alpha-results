@@ -8,16 +8,14 @@ namespace Alpha.Results.Services.Impl.Products
     using Alpha.Results.Repositories.Impl.Result;
     using Fanex.Result.Core;
     using Fanex.Result.Core.Base;
-    using Fanex.Result.Core.Racing.DTO;
     using Models;
-    using Sunplus.Agent.Model.Entities;
 
     /// <summary>
     /// The class VirtualRacingResultService.
     /// </summary>R
     public class VirtualRacingResultService : IProductResultService
     {
-        private IVirtualRacingResultDataAccess _racingResultDataAccess;
+        private readonly IVirtualRacingResultDataAccess _racingResultDataAccess;
 
         public VirtualRacingResultService(IVirtualRacingResultDataAccess racingResultDataAccess)
         {
@@ -32,7 +30,9 @@ namespace Alpha.Results.Services.Impl.Products
         public string GetResult(NormalRequest request)
         {
             var criteria = GetCriteria(request);
-            var racings = _racingResultDataAccess.GetVirtualRacingResult(criteria);
+
+            var results = _racingResultDataAccess.GetVirtualRacingResults(criteria).ToList();
+
             var resultSetting = new ResultSetting
             {
                 SportType = (SportType)request.SportId,
@@ -43,7 +43,7 @@ namespace Alpha.Results.Services.Impl.Products
                 HighlightWinnerTeam = true
             };
 
-            return ResultEngine.HtmlParser<Racing>(racings.ToList(), resultSetting);
+            return ResultEngine.HtmlParser(results, resultSetting);
         }
 
         public MemoryStream ExportExcel(NormalRequest request, string excelTemplatePath)
@@ -58,9 +58,9 @@ namespace Alpha.Results.Services.Impl.Products
                 HighlightWinnerTeam = true
             };
 
-            return ResultEngine.ExcelParser(
-                _racingResultDataAccess.GetVirtualRacingResult(GetCriteria(request)).ToList(),
-                resultSetting);
+            var results = _racingResultDataAccess.GetVirtualRacingResults(GetCriteria(request)).ToList();
+
+            return ResultEngine.ExcelParser(results, resultSetting);
         }
 
         private static GetVirtualRacingResultCriteria GetCriteria(NormalRequest request)
@@ -76,13 +76,13 @@ namespace Alpha.Results.Services.Impl.Products
 
         public string GetResultDetails(NormalDetailsRequest detailsRequest)
         {
-            var criteria = new GetRacingPopupResultCriteria()
+            var criteria = new GetRacingResultDetailsCriteria()
             {
                 MatchId = detailsRequest.MatchId,
                 RaceNo = GetRaceNumber(detailsRequest.Race)
             };
 
-            var results = this._racingResultDataAccess.GetVirtualRacingPopupResult(criteria);
+            var results = _racingResultDataAccess.GetVirtualRacingResultDetails(criteria);
 
             var resultSetting = new ResultSetting
             {
