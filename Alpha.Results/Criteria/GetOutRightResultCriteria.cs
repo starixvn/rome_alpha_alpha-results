@@ -1,12 +1,9 @@
 namespace Alpha.Results.Criteria
 {
-    using System;
-    using Fanex.Data.Repository;
+	using Fanex.Data.Repository;
+	using System;
 
-    /// <summary>
-    /// The criteria GetOutRightResultCriteria.
-    /// </summary>
-    public class GetOutRightResultCriteria : CriteriaBase
+	public class GetOutRightResultCriteria : CriteriaBase
     {
         public DateTime FromDate { get; set; }
 
