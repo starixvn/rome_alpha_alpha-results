@@ -271,6 +271,7 @@
     <Content Include="Scripts\jquery-1.11.3.js" />
     <Content Include="Scripts\jquery-1.11.3.min.js" />
     <Content Include="Scripts\Normal\normal-result.js" />
+    <Content Include="Scripts\Outright\outright-result.js" />
     <Content Include="Views\Result\Scripts\Result.js" />
     <Content Include="Content\result.css">
       <DependentUpon>result.scss</DependentUpon>
@@ -317,6 +318,7 @@
     <Compile Include="Models\League.cs" />
     <Compile Include="Models\NormalDetailsRequest.cs" />
     <Compile Include="Models\NormalRequest.cs" />
+    <Compile Include="Models\OutrightRequest.cs" />
     <Compile Include="Models\Sport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Impl\NumberGameResultDataAccess.cs" />
@@ -329,23 +331,24 @@
     <Compile Include="Repositories\IRacingResultDataAccess.cs" />
     <Compile Include="Repositories\ISportsbookResultDataAccess.cs" />
     <Compile Include="Repositories\IVirtualRacingResultDataAccess.cs" />
+    <Compile Include="Services\Impl\OutRightService.cs" />
     <Compile Include="Services\Impl\Products\GoldDeluxeResultService.cs" />
     <Compile Include="Services\Impl\Products\LiveCasinoResultService.cs" />
     <Compile Include="Services\Impl\Products\MetricGamingResultService.cs" />
     <Compile Include="Services\Impl\Products\NumberGameResultService.cs" />
-    <Compile Include="Services\Impl\OutRightResultService.cs" />
     <Compile Include="Services\Impl\Products\ParlayResultService.cs" />
     <Compile Include="Services\Impl\Products\RacingResultService.cs" />
     <Compile Include="Services\Impl\NormalResultService.cs" />
     <Compile Include="Services\Impl\ReportService.cs" />
     <Compile Include="Services\Impl\Products\SportsbookResultService.cs" />
     <Compile Include="Services\Impl\Products\VirtualRacingResultService.cs" />
-    <Compile Include="Services\IOutRightResultService.cs" />
     <Compile Include="Services\INormalResultService.cs" />
+    <Compile Include="Services\IOutRightService.cs" />
     <Compile Include="Services\IReportService.cs" />
     <Compile Include="Services\IProductResultService.cs" />
     <Compile Include="ViewModels\NormalDetailViewModel.cs" />
     <Compile Include="ViewModels\NormalViewModel.cs" />
+    <Compile Include="ViewModels\OutrightViewModel.cs" />
     <Compile Include="ViewModels\TabViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
