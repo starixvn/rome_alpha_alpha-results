@@ -1,6 +1,11 @@
 ﻿body {
     font-size: 12px;
-    overflow: hidden;
+}
+.icon-excel {
+    background: url('Images/sprite.png') no-repeat -26px -4px;
+	width: 16px;
+	height: 19px;
+    display: inline-block;
 }
 .tab-content {
     padding: 15px 0;
@@ -67,16 +72,16 @@
         min-width: 200px;
         font-size: 12px;
     }
+    .icon-excel {
+        float: right;
+        margin-top: 14px;
+    }
 
-}
-.main-container {
-    position: absolute;
-    top: 200px;
-    bottom: 0;
 }
 
 .main-content {
-    height: 100%;
+    .fn-rs-content-scroll {
+    }
     thead th{
             background: #822b34;
             color: #fff;

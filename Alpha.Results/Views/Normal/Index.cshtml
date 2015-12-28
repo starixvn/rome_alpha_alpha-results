@@ -40,17 +40,15 @@
                     <div class="dropdown control league-content">
                         @Html.DropDownListFor(model => model.LeagueId, Model.Leagues, ResultLang.ShowAllLeagues, new { @class = "form-control", @onchange = "this.form.submit()" })
                     </div>
-
+                    <span class="icon-excel"></span>
                 </div>
             }
         }
     </div>
-    <div class="main-container">
 
     <div class="main-content" id="main-result">
         @Html.Raw(Model.HtmlResults)
         </div>
-    </div>
     
 </div>
 

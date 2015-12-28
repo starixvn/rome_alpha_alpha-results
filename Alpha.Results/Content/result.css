@@ -1,6 +1,11 @@
 ﻿body {
-  font-size: 12px;
-  overflow: hidden; }
+  font-size: 12px; }
+
+.icon-excel {
+  background: url("Images/sprite.png") no-repeat -26px -4px;
+  width: 16px;
+  height: 19px;
+  display: inline-block; }
 
 .tab-content {
   padding: 15px 0; }
@@ -49,25 +54,22 @@
   .tab-content .dropdown .dropdown-menu {
     min-width: 200px;
     font-size: 12px; }
+  .tab-content .icon-excel {
+    float: right;
+    margin-top: 14px; }
 
-.main-container {
-  position: absolute;
-  top: 200px;
-  bottom: 0; }
+.main-content thead th {
+  background: #822b34;
+  color: #fff; }
 
-.main-content {
-  height: 100%; }
-  .main-content thead th {
-    background: #822b34;
-    color: #fff; }
-  .main-content tbody td {
-    padding: 5px;
-    vertical-align: middle; }
-    .main-content tbody td.cl-league {
-      background: #f4f5e0;
-      text-transform: uppercase;
-      color: #333333;
-      font-weight: bold; }
+.main-content tbody td {
+  padding: 5px;
+  vertical-align: middle; }
+  .main-content tbody td.cl-league {
+    background: #f4f5e0;
+    text-transform: uppercase;
+    color: #333333;
+    font-weight: bold; }
 
 table.fn-rs tbody tr.even {
   background: #eaeaed; }
