@@ -1,13 +1,13 @@
 ﻿namespace Alpha.Results.Repositories.Impl.Result
 {
-    using Fanex.Data;
-    using Alpha.Results.Criteria;
-    using Alpha.Results.Repositories;
-    using Fanex.Result.Core.Sportsbook.DTO;
     using System;
     using System.Collections.Generic;
     using System.Data;
     using System.Linq;
+    using Alpha.Results.Criteria;
+    using Alpha.Results.Repositories;
+    using Fanex.Data;
+    using Fanex.Result.Core.Sportsbook.DTO;
 
     /// <summary>
     /// The class SportsBookResultDataAccess.
@@ -62,7 +62,7 @@
         /// </summary>
         /// <param name="reader">The IDATAREADER.</param>
         /// <returns>The SPORTBOOK DTO.</returns>
-        private static Sportsbook BindSportbook(IDataReader reader)
+        private Sportsbook BindSportbook(IDataReader reader)
         {
             var item = new Sportsbook
             {
@@ -79,7 +79,7 @@
                         : new int?(),
                 HtAwayScore =
                     reader["htawayscore"] != DBNull.Value ? int.Parse(reader["htawayscore"].ToString()) : new int?(),
-                Color = BindingUtilities.ColumnExisted(reader, "lcolor") && reader["lcolor"] != DBNull.Value ? reader["lcolor"].ToString() : string.Empty,
+                Color = ColumnExisted(reader, "lcolor") && reader["lcolor"] != DBNull.Value ? reader["lcolor"].ToString() : string.Empty,
                 FinalHomeScore =
                     reader["finalhomescore"] != DBNull.Value
                         ? int.Parse(reader["finalhomescore"].ToString())
@@ -105,10 +105,10 @@
             return item;
         }
 
-        private static int GetBetTypeFromToken(IDataReader reader)
+        private int GetBetTypeFromToken(IDataReader reader)
         {
             const string BettypeColumn = "bettype";
-            if (BindingUtilities.ColumnExisted(reader, BettypeColumn) && reader[BettypeColumn] != DBNull.Value)
+            if (ColumnExisted(reader, BettypeColumn) && reader[BettypeColumn] != DBNull.Value)
             {
                 return int.Parse(reader[BettypeColumn].ToString());
             }
@@ -116,10 +116,10 @@
             return 0;
         }
 
-        private static string GetBetIDFromToken(IDataReader reader)
+        private string GetBetIDFromToken(IDataReader reader)
         {
             const string BetcheckColumn = "betcheck";
-            if (BindingUtilities.ColumnExisted(reader, BetcheckColumn) && reader[BetcheckColumn] != DBNull.Value)
+            if (ColumnExisted(reader, BetcheckColumn) && reader[BetcheckColumn] != DBNull.Value)
             {
                 return reader[BetcheckColumn].ToString();
             }
@@ -166,7 +166,7 @@
         /// <returns>
         /// The game detail value.
         /// </returns>
-        private static GameDetail BindGameDetail(IDataReader reader, int matchId)
+        private GameDetail BindGameDetail(IDataReader reader, int matchId)
         {
             return new GameDetail
             {
@@ -188,7 +188,7 @@
         /// <returns>
         /// The object of SPORTSBOOK.
         /// </returns>
-        private static Sportsbook BindSportsbookDetails(IDataReader reader, ref GetSportsbookPopupResultCriteria criteria)
+        private Sportsbook BindSportsbookDetails(IDataReader reader, ref GetSportsbookPopupResultCriteria criteria)
         {
             criteria.SportType = reader["sporttype"] != DBNull.Value ? Convert.ToInt32(reader["sporttype"]) : 0;
 
@@ -218,6 +218,19 @@
                 Bettype = criteria.BetType,
                 GameDetails = new List<GameDetail>()
             };
+        }
+
+        private bool ColumnExisted(IDataReader reader, string columnName)
+        {
+            for (int i = 0; i < reader.FieldCount; i++)
+            {
+                if (reader.GetName(i).Equals(columnName, StringComparison.OrdinalIgnoreCase))
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

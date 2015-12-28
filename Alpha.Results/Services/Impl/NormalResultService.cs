@@ -10,22 +10,24 @@
     using Products;
     using Sunplus.Agent.Model.BL.Definitions;
 
-    public class NormalService : INormalService
+    public class NormalResultService : INormalResultService
     {
+        public const int MetricGaming60sofKick = 801;
+        public const int MetricGamingEndBetType = 899;
+
         private IDynamicRepository _dynamicRepository;
 
-        public NormalService() : this(null)
+        public NormalResultService() : this(null)
         {
         }
 
-        public NormalService(IDynamicRepository dynamicRepository)
+        public NormalResultService(IDynamicRepository dynamicRepository)
         {
             _dynamicRepository = dynamicRepository ?? new DynamicRepository();
         }
 
         public IEnumerable<League> GetLeagues(DateTime resultDate, int sportId, string language, bool disableHouseRacingWin)
         {
-            Check.Argument.IsNotNull(resultDate, "resultDate");
             Check.Argument.IsNotNegativeOrZero(sportId, "sportId");
             Check.Argument.IsNotEmpty(language, "language");
 
@@ -47,8 +49,6 @@
 
         public IEnumerable<Sport> GetSports(DateTime resultDate, IDictionary<int, bool> sportsStatus)
         {
-            Check.Argument.IsNotNull(resultDate, "resultDate");
-
             var sports = _dynamicRepository.Fetch<Sport>(new GetResultSportsByDateCriteria
             {
                 EventDate = resultDate.ToShortDateString(),
@@ -66,18 +66,24 @@
         public string GetResults(NormalRequest request)
         {
             Check.Argument.IsNotNull(request, "request");
-            Check.Argument.IsNotNull(request.ResultDate, "request.ResultDate");
 
-            var resultService = GetResultService((SportType)request.SportId);
+            var resultService = GetResultService((SportType)request.SportId, request.BetTypeId);
 
             return resultService.GetResult(request);
         }
 
-        private IProductResultService GetResultService(SportType sportType)
+        private IProductResultService GetResultService(SportType sportType, int betTypeId)
         {
             switch (sportType)
             {
                 case SportType.Soccer:
+                    if (MetricGaming60sofKick <= betTypeId && betTypeId <= MetricGamingEndBetType)
+                    {
+                        return new MetricGamingResultService();
+                    }
+
+                    return new SportsbookResultService();
+
                 case SportType.BasketBall:
                 case SportType.Netball:
                 case SportType.FootBall:
@@ -107,6 +113,13 @@
                 case SportType.ESports:
                 case SportType.VirtualSports:
                 case SportType.VirtualTennis:
+
+                    if (betTypeId == (int)BetType.Mix_Parlay
+                        || betTypeId == (int)BetType.Combine_Mix_Parlay)
+                    {
+                        return new ParlayResultService();
+                    }
+
                     return new SportsbookResultService();
 
                 case SportType.HorseRacing:
@@ -135,70 +148,12 @@
             }
         }
 
-        ////private string RenderSportsbookResults(NormalRequest request)
-        ////{
-        ////    //string result = resultRequest.MatchId > 0 ?
-        ////    //    new SportsbookPopupResultService().GetResult(resultRequest) :
-        ////    //    new SportsbookResultService().GetResult(resultRequest.FromDate.Value, resultRequest.SportId, resultRequest.LeagueId);
-        ////    ////if (BetListHelperService.IsMetricGamingBetType(resultRequest.BetType))
-        ////    ////{
-        ////    ////    result = new MetricGamingResultService().GetResult(new GetMetricGamingResultCriteria
-        ////    ////    {
-        ////    ////        TransId = resultRequest.RefNum,
-        ////    ////        BetType = resultRequest.BetType,
-        ////    ////        BetId = resultRequest.BetId,
-        ////    ////        SportType = resultRequest.SportId
-        ////    ////    });
-        ////    ////}
-
-        ////    return new SportsbookResultService().GetResult(request.ResultDate, request.SportId, request.LeagueId);
-        ////}
-
-        ////private string RenderLiveCasinoResults(NormalRequest request)
-        ////{
-        ////    return string.Empty;
-        ////    //return new LiveCasinoPopupResultService().GetResult(resultRequest.MatchId, resultRequest.BetType, resultRequest.LeagueId.ToString());
-        ////}
-
-        ////private string RenderGoldDeluxeResults(NormalRequest request)
-        ////{
-        ////    //string result = IsViewMatchResultPopup(resultRequest.MatchId) ?
-        ////    //     :
-        ////    //    null;
-
-        ////    return new GoldDeluxePopupResultService().GetPopupResult(/*request.RefNum*/0, request.BetTypeId);
-        ////}
-
-        ////private string RenderRacingResults(NormalRequest request)
-        ////{
-        ////    //string result = resultRequest.MatchId > 0 ?
-        ////    //    new RacingPopupResultService().GetResult(resultRequest.MatchId, this.GetRaceNumber(resultRequest.Race), resultRequest.SportId) :
-        ////    //    new RacingResultService().GetResult(resultRequest.FromDate.Value, resultRequest.SportId, resultRequest.LeagueId);
-        ////    return new RacingResultService().GetResult(request.ResultDate, request.SportId, request.LeagueId);
-        ////}
-
-        ////private string RenderNumberGameResults(NormalRequest request)
-        ////{
-        ////    //string result = resultRequest.MatchId > 0 ?
-        ////    //   new NumberGamePopupResultService().GetResult(resultRequest.MatchId) :
-        ////    //   new NumberGameResultService().GetResult(resultRequest.FromDate.Value, resultRequest.LeagueId, resultRequest.SportId);
-        ////    return new NumberGameResultService().GetResult(request.ResultDate, request.SportId, request.LeagueId);
-        ////}
-
-        ////private string RenderVirtualRacingResults(NormalRequest request)
-        ////{
-        ////    //string result = resultRequest.MatchId > 0 ?
-        ////    //    new RacingPopupResultService().GetResultForVirtualRacing(resultRequest.MatchId, this.GetRaceNumber(resultRequest.Race), resultRequest.SportId) :
-        ////       return new VirtualRacingResultService().GetResult(request.ResultDate, request.SportId, request.LeagueId);
-        ////}
-
         public byte[] GetExcelResults(NormalRequest request, string templatePath)
         {
             Check.Argument.IsNotNull(request, "request");
-            Check.Argument.IsNotNull(request.ResultDate, "request.ResultDate");
             Check.Argument.IsNotNegativeOrZero(request.SportId, "request.SportId");
 
-            var resultService = GetResultService((SportType)request.SportId);
+            var resultService = GetResultService((SportType)request.SportId, request.BetTypeId);
 
             var memoryResult = resultService.ExportExcel(request, templatePath);
 
@@ -209,7 +164,7 @@
         {
             Check.Argument.IsNotNull(detailRequest, "detailRequest");
 
-            var resultService = GetResultService((SportType)detailRequest.SportId);
+            var resultService = GetResultService((SportType)detailRequest.SportId, detailRequest.BetTypeId);
 
             return resultService.GetResultDetails(detailRequest);
         }

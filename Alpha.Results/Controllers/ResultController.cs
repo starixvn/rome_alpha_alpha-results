@@ -17,15 +17,15 @@ namespace Alpha.Results.Controllers
         ////private Dictionary<int, Action<OldResultRequest>> _resultHandlers = new Dictionary<int, Action<OldResultRequest>>();
         ////private Dictionary<int, Func<OldResultRequest, ActionResult>> _exportExcelHandlers = new Dictionary<int, Func<OldResultRequest, ActionResult>>();
 
-        private INormalService _resultService;
+        private INormalResultService _resultService;
 
         public ResultController() : this(null)
         {
         }
 
-        public ResultController(INormalService resultService)
+        public ResultController(INormalResultService resultService)
         {
-            _resultService = resultService ?? new NormalService();
+            _resultService = resultService ?? new NormalResultService();
         }
 
         private string _MinReportDateString

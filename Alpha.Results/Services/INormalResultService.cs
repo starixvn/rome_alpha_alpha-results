@@ -4,7 +4,7 @@
     using System.Collections.Generic;
     using Models;
 
-    public interface INormalService
+    public interface INormalResultService
     {
         IEnumerable<Sport> GetSports(DateTime resultDate, IDictionary<int, bool> sportsStatus);
 

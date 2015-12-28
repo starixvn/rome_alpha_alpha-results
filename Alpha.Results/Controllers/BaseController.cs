@@ -30,26 +30,8 @@
                 ContentType = contentType,
                 ContentEncoding = contentEncoding,
                 JsonRequestBehavior = behavior,
-                MaxJsonLength = Int32.MaxValue
+                MaxJsonLength = int.MaxValue
             };
-        }
-
-        protected static List<string> GetActionListByController<T>()
-        {
-            var listAction = new List<string>();
-
-            Type t = typeof(T);
-            MethodInfo[] mi = t.GetMethods();
-            foreach (MethodInfo m in mi)
-            {
-                if (m.IsPublic)
-                    if (m.ReturnParameter != null && typeof(ActionResult).IsAssignableFrom(m.ReturnParameter.ParameterType))
-                    {
-                        listAction.Add(m.Name);
-                    }
-            }
-
-            return listAction;
         }
 
         protected override void Initialize(RequestContext requestContext)

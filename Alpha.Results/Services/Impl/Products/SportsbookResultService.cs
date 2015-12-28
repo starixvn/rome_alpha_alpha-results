@@ -35,9 +35,9 @@ namespace Alpha.Results.Services.Impl.Products
         {
             var criteria = GetCriteria(request);
 
-            IList<Sportsbook> sportsbooks = 
-                request.SportId == 0 ? 
-                new List<Sportsbook>() : 
+            IList<Sportsbook> sportsbooks =
+                request.SportId == 0 ?
+                new List<Sportsbook>() :
                 _dataAccess.GetSportbookResult(criteria);
 
             ResultSetting resultSetting = GetFanexResultSetting(criteria.SportType > 0 ? criteria.SportType : (int)SportType.Others);

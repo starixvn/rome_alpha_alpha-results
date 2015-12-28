@@ -22,7 +22,6 @@
                 <input type="submit" value="@Model.Today" id="today-results" class="btn btn-default btn-other-day" />
                 <input type="submit" value="@Model.Yesterday" id="yesterday-results" class="btn btn-default btn-other-day" />
                 <input type="submit" value="@ResultLang.submit" id="selected-day-results" class="btn btn-submit" />
-                <input type="button" value="Export Excel" id="excel-btn" />
             </div>
 
             <div class="col-sm-12">
@@ -41,7 +40,7 @@
                     <div class="dropdown control league-content">
                         @Html.DropDownListFor(model => model.LeagueId, Model.Leagues, ResultLang.ShowAllLeagues, new { @class = "form-control", @onchange = "this.form.submit()" })
                     </div>
-                    <span class="icon-excel"></span>
+                    <span class="icon-excel" id="excel-btn"></span>
                 </div>
             }
         }

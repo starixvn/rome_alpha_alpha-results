@@ -14,16 +14,16 @@ namespace Alpha.Results.Services.Impl
     /// <summary>
     /// The class ParlayPopupResultService.
     /// </summary>
-    public class ParlayPopupResultService : IProductResultService
+    public class ParlayResultService : IProductResultService
     {
-        private IParlayPopupResultDataAccess _parlayResultDataAccess;
+        private IParlayResultDataAccess _parlayResultDataAccess;
 
-        public ParlayPopupResultService(IParlayPopupResultDataAccess parlayResultDataAccess)
+        public ParlayResultService(IParlayResultDataAccess parlayResultDataAccess)
         {
-            this._parlayResultDataAccess = parlayResultDataAccess ?? new ParlayPopupResultDataAccess();
+            _parlayResultDataAccess = parlayResultDataAccess ?? new ParlayResultDataAccess();
         }
 
-        public ParlayPopupResultService()
+        public ParlayResultService()
             : this(null)
         {
         }

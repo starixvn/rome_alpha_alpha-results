@@ -1,6 +1,7 @@
 ﻿namespace Alpha.Results.Criteria
 {
     using Fanex.Data.Repository;
+
     public class GetGoldDeluxePopupResultCriteria : CriteriaBase
     {
         public long TransId { get; set; }

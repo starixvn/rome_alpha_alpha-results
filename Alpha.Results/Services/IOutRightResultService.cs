@@ -1,9 +1,9 @@
 namespace Alpha.Results.Services
 {
-    using Fanex.Result.Core.Sportsbook.DTO;
     using System;
     using System.Collections.Generic;
     using System.IO;
+    using Fanex.Result.Core.Sportsbook.DTO;
 
     /// <summary>
     /// The interface IOutRightResultService.

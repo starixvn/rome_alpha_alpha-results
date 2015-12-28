@@ -1,7 +1,7 @@
 namespace Alpha.Results.Criteria
 {
-    using Fanex.Data.Repository;
     using System;
+    using Fanex.Data.Repository;
 
     /// <summary>
     /// The criteria GetNumberGameResultCriteria.

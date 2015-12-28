@@ -1,13 +1,16 @@
 namespace Alpha.Results.Services.Impl.Products
 {
+    using System;
+    using System.IO;
     using System.Linq;
     using Alpha.Results.Criteria;
     using Fanex.Data.Repository;
     using Fanex.Result.Core;
     using Fanex.Result.Core.Base;
     using Fanex.Result.Core.MetricGaming.DTO;
+    using Models;
 
-    public class MetricGamingResultService : IMetricGamingResultService
+    public class MetricGamingResultService : IProductResultService
     {
         private IDynamicRepository _dynamicRepository;
 
@@ -21,8 +24,26 @@ namespace Alpha.Results.Services.Impl.Products
         {
         }
 
-        public string GetResult(GetMetricGamingResultCriteria criteria)
+        public string GetResult(NormalRequest request)
         {
+            throw new NotImplementedException();
+        }
+
+        public MemoryStream ExportExcel(NormalRequest request, string excelTemplatePath)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string GetResultDetails(NormalDetailsRequest detailsRequest)
+        {
+            var criteria = new GetMetricGamingResultCriteria
+            {
+                TransId = detailsRequest.RefNum,
+                BetType = detailsRequest.BetTypeId,
+                BetId = detailsRequest.BetId,
+                SportType = detailsRequest.SportId
+            };
+
             var resultData = this._dynamicRepository.Fetch<MetricGaming>(criteria).ToList();
             var resultSetting = new ResultSetting
             {

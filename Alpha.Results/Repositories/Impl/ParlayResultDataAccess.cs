@@ -9,19 +9,19 @@
 
 namespace Alpha.Results.Repositories.Impl.Result
 {
-    using Fanex.Data;
-    using Alpha.Results.Criteria;
-    using Alpha.Results.Repositories;
-    using Fanex.Result.Core.Sportsbook.DTO;
     using System;
     using System.Collections.Generic;
     using System.Data;
     using System.Linq;
+    using Alpha.Results.Criteria;
+    using Alpha.Results.Repositories;
+    using Fanex.Data;
+    using Fanex.Result.Core.Sportsbook.DTO;
 
     /// <summary>
     /// The class ParlayPopupResultDataAccess.
     /// </summary>
-    public class ParlayPopupResultDataAccess : IParlayPopupResultDataAccess
+    public class ParlayResultDataAccess : IParlayResultDataAccess
     {
         /// <summary>
         /// Gets the parlay result.

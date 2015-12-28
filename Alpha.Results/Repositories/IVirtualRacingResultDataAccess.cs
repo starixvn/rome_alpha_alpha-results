@@ -1,8 +1,8 @@
 namespace Alpha.Results.Repositories
 {
+    using System.Collections.Generic;
     using Alpha.Results.Criteria;
     using Fanex.Result.Core.Racing.DTO;
-    using System.Collections.Generic;
 
     /// <summary>
     /// The interface IVirtualRacingResultDataAccess.

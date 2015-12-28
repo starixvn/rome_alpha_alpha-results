@@ -16,16 +16,16 @@
 
     public class NormalController : BaseController
     {
-        private readonly INormalService _normalService;
+        private readonly INormalResultService _normalResultService;
         private readonly IReportService _reportService;
 
         public NormalController() : this(null, null)
         {
         }
 
-        public NormalController(INormalService normalService, IReportService reportService)
+        public NormalController(INormalResultService normalResultService, IReportService reportService)
         {
-            _normalService = normalService ?? new NormalService();
+            _normalResultService = normalResultService ?? new NormalResultService();
             _reportService = reportService ?? new ReportService();
         }
 
@@ -50,7 +50,7 @@
                 viewModel.LeagueId = request.LeagueId;
             }
 
-            viewModel.HtmlResults = _normalService.GetResults(new NormalRequest
+            viewModel.HtmlResults = _normalResultService.GetResults(new NormalRequest
             {
                 ResultDate = viewModel.ResultDate,
                 SportId = viewModel.SportId,
@@ -69,7 +69,7 @@
                 { (int)SportType.GoldDeluxe,  UserPermission.IsShowGoldDeluxeSettingForCredit }
             };
 
-            var sports = _normalService.GetSports(resultDate, sportsStatus);
+            var sports = _normalResultService.GetSports(resultDate, sportsStatus);
 
             return sports.Select(sport => new SelectListItem
             {
@@ -80,7 +80,7 @@
 
         public IEnumerable<SelectListItem> GetLeaguesResult(DateTime resultDate, int sportTypeId)
         {
-            var leagues = _normalService.GetLeagues(
+            var leagues = _normalResultService.GetLeagues(
                                 resultDate,
                                 sportTypeId,
                                 UserSession.Current.Language,
@@ -98,11 +98,8 @@
         {
             var viewModel = new NormalDetailViewModel
             {
-                Title = string.Format(
-                    "{0} - {1}", 
-                    CacheRef.GetSportName(request.SportId), 
-                    CacheRef.GetLeagueName(request.LeagueId)),
-                HtmlResults = _normalService.GetResultDetails(request)
+                Title = string.Format("{0} - {1}", CacheRef.GetSportName(request.SportId), CacheRef.GetLeagueName(request.LeagueId)),
+                HtmlResults = _normalResultService.GetResultDetails(request)
             };
 
             return View(viewModel);
@@ -111,7 +108,7 @@
         [HttpGet]
         public ActionResult ExcelResults(NormalRequest request)
         {
-            var excelResult = _normalService.GetExcelResults(request, Server.MapPath(@"~/App_Data/Fanex.Result/"));
+            var excelResult = _normalResultService.GetExcelResults(request, Server.MapPath(@"~/App_Data/Fanex.Result/"));
 
             return File(excelResult, "application/vnd.ms-excel", "Result.xls");
         }

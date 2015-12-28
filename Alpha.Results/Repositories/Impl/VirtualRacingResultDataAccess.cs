@@ -1,14 +1,11 @@
 namespace Alpha.Results.Repositories.Impl.Result
 {
-    using Fanex.Data;
+    using System.Collections.Generic;
     using Alpha.Results.Criteria;
     using Alpha.Results.Repositories;
+    using Fanex.Data;
     using Fanex.Result.Core.Racing.DTO;
-    using System.Collections.Generic;
 
-    /// <summary>
-    /// The class VirtualRacingResultDataAccess.
-    /// </summary>
     public class VirtualRacingResultDataAccess : IVirtualRacingResultDataAccess
     {
         /// <summary>
@@ -25,7 +22,7 @@ namespace Alpha.Results.Repositories.Impl.Result
                 {
                     while (reader.Read())
                     {
-                        result.Add(BindingUtilities.BindRacing(reader));
+                        result.Add(RacingResultDataAccess.BindRacing(reader));
                     }
                 }
             }
@@ -43,7 +40,7 @@ namespace Alpha.Results.Repositories.Impl.Result
                 {
                     while (reader.Read())
                     {
-                        result.Add(BindingUtilities.BindRacing(reader));
+                        result.Add(RacingResultDataAccess.BindRacing(reader));
                     }
                 }
             }
