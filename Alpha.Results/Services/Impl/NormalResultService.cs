@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using Commands;
     using Criteria;
     using Fanex.Common.Helper;
     using Fanex.Data.Repository;
@@ -60,7 +61,7 @@
             return sports;
         }
 
-        public string GetResults(NormalRequest request)
+        public string GetResults(ViewNormalResultCommand request)
         {
             Check.Argument.IsNotNull(request, "request");
 
@@ -69,7 +70,7 @@
             return resultService.GetResult(request);
         }
 
-        public byte[] GetExcelResults(NormalRequest request, string templatePath)
+        public byte[] GetExcelResults(ViewNormalResultCommand request, string templatePath)
         {
             Check.Argument.IsNotNull(request, "request");
             Check.Argument.IsNotNegativeOrZero(request.SportId, "request.SportId");
@@ -82,7 +83,7 @@
             return memoryResult.ToArray();
         }
 
-        public string GetResultDetails(NormalDetailsRequest detailRequest)
+        public string GetResultDetails(ViewNormalResultDetailsCommand detailRequest)
         {
             Check.Argument.IsNotNull(detailRequest, "detailRequest");
 

@@ -3,11 +3,11 @@ namespace Alpha.Results.Services.Impl.Products
     using System;
     using System.IO;
     using Alpha.Results.Criteria;
+    using Commands;
     using DataAccesses;
     using DataAccesses.Impl;
     using Fanex.Result.Core;
     using Fanex.Result.Core.Base;
-    using Models;
 
     public class MetricGamingResultService : IProductResultService
     {
@@ -23,17 +23,17 @@ namespace Alpha.Results.Services.Impl.Products
         {
         }
 
-        public string GetResult(NormalRequest request)
+        public string GetResult(ViewNormalResultCommand request)
         {
             throw new NotImplementedException();
         }
 
-        public MemoryStream ExportExcel(NormalRequest request, string excelTemplatePath)
+        public MemoryStream ExportExcel(ViewNormalResultCommand request, string excelTemplatePath)
         {
             throw new NotImplementedException();
         }
 
-        public string GetResultDetails(NormalDetailsRequest detailsRequest)
+        public string GetResultDetails(ViewNormalResultDetailsCommand detailsRequest)
         {
             var criteria = new GetMetricGamingResultCriteria
             {

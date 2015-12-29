@@ -6,9 +6,9 @@ namespace Alpha.Results.Services.Impl
     using Alpha.Results.Criteria;
     using Alpha.Results.DataAccesses;
     using Alpha.Results.DataAccesses.Impl.Result;
+    using Commands;
     using Fanex.Result.Core;
     using Fanex.Result.Core.Base;
-    using Models;
 
     /// <summary>
     /// The class ParlayPopupResultService.
@@ -27,7 +27,7 @@ namespace Alpha.Results.Services.Impl
         {
         }
 
-        public string GetResultDetails(NormalDetailsRequest detailsRequest)
+        public string GetResultDetails(ViewNormalResultDetailsCommand detailsRequest)
         {
             var results = _parlayResultDataAccess.GetParlayResults(new GetParlayResultCriteria
             {
@@ -50,12 +50,12 @@ namespace Alpha.Results.Services.Impl
             return ResultEngine.HtmlParser(results, resultSetting);
         }
 
-        public string GetResult(NormalRequest request)
+        public string GetResult(ViewNormalResultCommand request)
         {
             throw new NotImplementedException();
         }
 
-        public MemoryStream ExportExcel(NormalRequest request, string excelTemplatePath)
+        public MemoryStream ExportExcel(ViewNormalResultCommand request, string excelTemplatePath)
         {
             throw new NotImplementedException();
         }

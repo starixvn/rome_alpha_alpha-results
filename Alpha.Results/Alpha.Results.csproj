@@ -325,16 +325,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="LocalResources\ResultLang.Designer.cs">
+    <Compile Include="App_GlobalResources\ResultLang.Designer.cs">
       <DependentUpon>ResultLang.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Models\Dtos\BalanceUpDateDto.cs" />
     <Compile Include="Models\League.cs" />
-    <Compile Include="Models\NormalDetailsRequest.cs" />
-    <Compile Include="Models\NormalRequest.cs" />
-    <Compile Include="Models\OutrightRequest.cs" />
+    <Compile Include="Commands\ViewNormalResultDetailsCommand.cs" />
+    <Compile Include="Commands\ViewNormalResultCommand.cs" />
+    <Compile Include="Commands\ViewOutrightResultCommand.cs" />
     <Compile Include="Models\Sport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DataAccesses\IMetricGamingResultDataAccess.cs" />
@@ -410,19 +410,21 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <EmbeddedResource Include="LocalResources\ResultLang.ja-JP.resx" />
-    <EmbeddedResource Include="LocalResources\ResultLang.ko-KR.resx" />
-    <EmbeddedResource Include="LocalResources\ResultLang.resx">
+    <Folder Include="Handlers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="App_GlobalResources\ResultLang.ja-JP.resx" />
+    <EmbeddedResource Include="App_GlobalResources\ResultLang.ko-KR.resx" />
+    <EmbeddedResource Include="App_GlobalResources\ResultLang.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ResultLang.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="LocalResources\ResultLang.th-TH.resx" />
-    <EmbeddedResource Include="LocalResources\ResultLang.vi-VN.resx" />
-    <EmbeddedResource Include="LocalResources\ResultLang.zh-CN.resx" />
-    <EmbeddedResource Include="LocalResources\ResultLang.zh-TW.resx" />
+    <EmbeddedResource Include="App_GlobalResources\ResultLang.th-TH.resx" />
+    <EmbeddedResource Include="App_GlobalResources\ResultLang.vi-VN.resx" />
+    <EmbeddedResource Include="App_GlobalResources\ResultLang.zh-CN.resx" />
+    <EmbeddedResource Include="App_GlobalResources\ResultLang.zh-TW.resx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -435,7 +437,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>55509</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

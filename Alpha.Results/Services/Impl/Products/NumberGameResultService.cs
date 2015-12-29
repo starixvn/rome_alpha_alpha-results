@@ -5,6 +5,7 @@ namespace Alpha.Results.Services.Impl.Products
     using Alpha.Results.Criteria;
     using Alpha.Results.DataAccesses;
     using Alpha.Results.DataAccesses.Impl.Result;
+    using Commands;
     using Fanex.Result.Core;
     using Fanex.Result.Core.Base;
     using Models;
@@ -26,7 +27,7 @@ namespace Alpha.Results.Services.Impl.Products
         {
         }
 
-        public string GetResult(NormalRequest request)
+        public string GetResult(ViewNormalResultCommand request)
         {
             var resultSetting = new ResultSetting
             {
@@ -43,7 +44,7 @@ namespace Alpha.Results.Services.Impl.Products
             return ResultEngine.HtmlParser(results, resultSetting);
         }
 
-        public MemoryStream ExportExcel(NormalRequest request, string excelTemplatePath)
+        public MemoryStream ExportExcel(ViewNormalResultCommand request, string excelTemplatePath)
         {
             var resultSetting = new ResultSetting
             {
@@ -60,7 +61,7 @@ namespace Alpha.Results.Services.Impl.Products
             return ResultEngine.ExcelParser(results, resultSetting);
         }
 
-        private static GetNumberGameResultCriteria GetCriteria(NormalRequest request)
+        private static GetNumberGameResultCriteria GetCriteria(ViewNormalResultCommand request)
         {
             return new GetNumberGameResultCriteria()
             {
@@ -70,7 +71,7 @@ namespace Alpha.Results.Services.Impl.Products
             };
         }
 
-        public string GetResultDetails(NormalDetailsRequest detailsRequest)
+        public string GetResultDetails(ViewNormalResultDetailsCommand detailsRequest)
         {
             var criteria = new GetNumberGameResultDetailsCriteria
             {

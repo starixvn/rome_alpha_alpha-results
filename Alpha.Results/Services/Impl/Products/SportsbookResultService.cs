@@ -6,6 +6,7 @@ namespace Alpha.Results.Services.Impl.Products
     using Alpha.Results.Criteria;
     using Alpha.Results.DataAccesses;
     using Alpha.Results.DataAccesses.Impl.Result;
+    using Commands;
     using Fanex.Result.Core;
     using Fanex.Result.Core.Base;
     using Fanex.Result.Core.Sportsbook.DTO;
@@ -28,7 +29,7 @@ namespace Alpha.Results.Services.Impl.Products
         {
         }
 
-        public string GetResult(NormalRequest request)
+        public string GetResult(ViewNormalResultCommand request)
         {
             var criteria = GetCriteria(request);
 
@@ -49,7 +50,7 @@ namespace Alpha.Results.Services.Impl.Products
             return ResultEngine.HtmlParser(results, resultSetting).Replace("original-title", " title ");
         }
 
-        public MemoryStream ExportExcel(NormalRequest request, string excelTemplatePath)
+        public MemoryStream ExportExcel(ViewNormalResultCommand request, string excelTemplatePath)
         {
             var exportExcelSetting = new ResultSetting
             {
@@ -66,7 +67,7 @@ namespace Alpha.Results.Services.Impl.Products
             return ResultEngine.ExcelParser(results, exportExcelSetting);
         }
 
-        private static GetSportsbookResultCriteria GetCriteria(NormalRequest request)
+        private static GetSportsbookResultCriteria GetCriteria(ViewNormalResultCommand request)
         {
             return new GetSportsbookResultCriteria()
             {
@@ -76,7 +77,7 @@ namespace Alpha.Results.Services.Impl.Products
             };
         }
 
-        public string GetResultDetails(NormalDetailsRequest detailsRequest)
+        public string GetResultDetails(ViewNormalResultDetailsCommand detailsRequest)
         {
             var criteria = new GetSportsbookResultDetailsCriteria()
             {

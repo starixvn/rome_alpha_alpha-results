@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using Commands;
     using Models;
 
     public interface INormalResultService
@@ -10,10 +11,10 @@
 
         IEnumerable<League> GetLeagues(DateTime resultDate, int sportId, string language, bool disableHorseRacingWin);
 
-        string GetResults(NormalRequest request);
+        string GetResults(ViewNormalResultCommand request);
 
-        string GetResultDetails(NormalDetailsRequest detailRequest);
+        string GetResultDetails(ViewNormalResultDetailsCommand detailRequest);
 
-        byte[] GetExcelResults(NormalRequest request, string templatePath);
+        byte[] GetExcelResults(ViewNormalResultCommand request, string templatePath);
     }
 }

@@ -5,13 +5,13 @@ namespace Alpha.Results.Services.Impl
     using System.IO;
     using System.Linq;
     using Alpha.Results.Criteria;
-    using Alpha.Results.LocalResources;
+    using App_GlobalResources;
+    using Commands;
     using Fanex.Common.Helper;
     using Fanex.Data.Repository;
     using Fanex.Result.Core;
     using Fanex.Result.Core.Base;
     using Fanex.Result.Core.Sportsbook.DTO;
-    using Models;
     using Sunplus.Agent.Model.BL.Cache;
     using Sunplus.Agent.Model.BL.Definitions;
 
@@ -47,7 +47,7 @@ namespace Alpha.Results.Services.Impl
             return _dynamicRepository.Fetch<OutRight>(criteria);
         }
 
-        public string GetResults(IEnumerable<OutRight> outrights, OutrightRequest request)
+        public string GetResults(IEnumerable<OutRight> outrights, ViewOutrightResultCommand request)
         {
             Check.Argument.IsNotNull(outrights, "outrights");
             Check.Argument.IsNotNull(request, "request");
@@ -57,7 +57,7 @@ namespace Alpha.Results.Services.Impl
             return ResultEngine.HtmlParser(outrights.ToList(), OutRightResultSetting(request.Language));
         }
 
-        public MemoryStream GetExcelResults(IEnumerable<OutRight> outrights, OutrightRequest request, string templatePath)
+        public MemoryStream GetExcelResults(IEnumerable<OutRight> outrights, ViewOutrightResultCommand request, string templatePath)
         {
             Check.Argument.IsNotNull(outrights, "outrights");
             Check.Argument.IsNotNull(request, "request");

@@ -3,8 +3,8 @@
     using System;
     using System.Collections.Generic;
     using System.Web.Mvc;
-    using LocalResources;
     using Alpha.Utilities.Extensions;
+    using App_GlobalResources;
 
     public class NormalViewModel
     {

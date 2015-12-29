@@ -3,8 +3,8 @@ namespace Alpha.Results.Services
     using System;
     using System.Collections.Generic;
     using System.IO;
+    using Commands;
     using Fanex.Result.Core.Sportsbook.DTO;
-    using Models;
     using Models.Dtos;
 
     public interface IOutrightResultService
@@ -13,8 +13,8 @@ namespace Alpha.Results.Services
 
         IEnumerable<OutRight> GetOutrights(DateTime fromDate, DateTime toDate);
 
-        string GetResults(IEnumerable<OutRight> outrights, OutrightRequest request);
+        string GetResults(IEnumerable<OutRight> outrights, ViewOutrightResultCommand request);
 
-        MemoryStream GetExcelResults(IEnumerable<OutRight> outrights, OutrightRequest request, string templatePath);
+        MemoryStream GetExcelResults(IEnumerable<OutRight> outrights, ViewOutrightResultCommand request, string templatePath);
     }
 }

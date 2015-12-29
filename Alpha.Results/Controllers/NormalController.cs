@@ -4,7 +4,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Web.Mvc;
-    using Models;
+    using Commands;
     using Services;
     using Services.Impl;
     using Sunplus.Agent.Model.BL.Definitions;
@@ -29,9 +29,9 @@
         }
 
         [HttpGet]
-        public ActionResult Index(NormalRequest request = null)
+        public ActionResult Index(ViewNormalResultCommand request = null)
         {
-            request = request ?? new NormalRequest();
+            request = request ?? new ViewNormalResultCommand();
             var balanceUpDate = _reportService.GetBalanceUpDate().BalanceUpDay;
             var sports = GetSportsResult(request.ResultDate);
 
@@ -49,7 +49,7 @@
                 viewModel.LeagueId = request.LeagueId;
             }
 
-            viewModel.HtmlResults = _normalResultService.GetResults(new NormalRequest
+            viewModel.HtmlResults = _normalResultService.GetResults(new ViewNormalResultCommand
             {
                 ResultDate = viewModel.ResultDate,
                 SportId = viewModel.SportId,
@@ -94,7 +94,7 @@
         }
 
         [HttpGet]
-        public ActionResult ResultDetails(NormalDetailsRequest request)
+        public ActionResult ResultDetails(ViewNormalResultDetailsCommand request)
         {
             request.Language = UserSession.Current.Language;
 
@@ -109,7 +109,7 @@
         }
 
         [HttpGet]
-        public ActionResult ExcelResults(NormalRequest request)
+        public ActionResult ExcelResults(ViewNormalResultCommand request)
         {
             request.Language = UserSession.Current.Language;
 

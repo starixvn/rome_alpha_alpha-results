@@ -1,6 +1,6 @@
-﻿namespace Alpha.Results.Models
+﻿namespace Alpha.Results.Commands
 {
-    public class NormalDetailsRequest : NormalRequest
+    public class ViewNormalResultDetailsCommand : ViewNormalResultCommand
     {
         public int MatchId { get; set; }
 

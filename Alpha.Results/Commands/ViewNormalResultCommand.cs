@@ -1,13 +1,13 @@
-﻿namespace Alpha.Results.Models
+﻿namespace Alpha.Results.Commands
 {
     using System;
-    using LocalResources;
-    using Sunplus.Agent.Model.RemotingRef;
     using Alpha.Utilities.Extensions;
+    using App_GlobalResources;
+    using Sunplus.Agent.Model.RemotingRef;
 
-    public class NormalRequest
+    public class ViewNormalResultCommand
     {
-        public NormalRequest()
+        public ViewNormalResultCommand()
         {
             ResultDate = DateTime.Now;
         }

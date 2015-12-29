@@ -4,11 +4,11 @@
     using System.IO;
     using System.Linq;
     using Alpha.Results.Criteria;
+    using Commands;
     using Fanex.Data.Repository;
     using Fanex.Result.Core;
     using Fanex.Result.Core.Base;
     using Fanex.Result.Core.GoldDeluxe.DTO;
-    using Models;
 
     public class GoldDeluxePopupResultService : IProductResultService
     {
@@ -19,17 +19,17 @@
             _dynamicRepository = dynamicRepository ?? new DynamicRepository();
         }
 
-        public MemoryStream ExportExcel(NormalRequest request, string excelTemplatePath)
+        public MemoryStream ExportExcel(ViewNormalResultCommand request, string excelTemplatePath)
         {
             throw new NotImplementedException();
         }
 
-        public string GetResult(NormalRequest request)
+        public string GetResult(ViewNormalResultCommand request)
         {
             throw new NotImplementedException();
         }
 
-        public string GetResultDetails(NormalDetailsRequest detailsRequest)
+        public string GetResultDetails(ViewNormalResultDetailsCommand detailsRequest)
         {
             var criteria = new GetGoldDeluxeResultCriteria { TransId = detailsRequest.RefNum, BetType = detailsRequest.BetTypeId };
 

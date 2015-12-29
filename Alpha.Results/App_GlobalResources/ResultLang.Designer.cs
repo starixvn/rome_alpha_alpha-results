@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Alpha.Results.LocalResources {
+namespace Alpha.Results.App_GlobalResources {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Alpha.Results.LocalResources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Alpha.Results.LocalResources.ResultLang", typeof(ResultLang).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Alpha.Results.App_GlobalResources.ResultLang", typeof(ResultLang).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

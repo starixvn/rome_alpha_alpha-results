@@ -4,6 +4,7 @@ namespace Alpha.Results.Services.Impl.Products
     using System.IO;
     using System.Linq;
     using Alpha.Results.Criteria;
+    using Commands;
     using Fanex.Data.Repository;
     using Fanex.Result.Core;
     using Fanex.Result.Core.Base;
@@ -27,7 +28,7 @@ namespace Alpha.Results.Services.Impl.Products
         {
         }
 
-        public string GetResultDetails(NormalDetailsRequest detailsRequest)
+        public string GetResultDetails(ViewNormalResultDetailsCommand detailsRequest)
         {
             var criteria = new GetLiveCasinoResultCriteria()
             {
@@ -61,12 +62,12 @@ namespace Alpha.Results.Services.Impl.Products
             return ResultEngine.HtmlParser(liveCasinoResults, resultSetting);
         }
 
-        public string GetResult(NormalRequest request)
+        public string GetResult(ViewNormalResultCommand request)
         {
             throw new NotImplementedException();
         }
 
-        public MemoryStream ExportExcel(NormalRequest request, string excelTemplatePath)
+        public MemoryStream ExportExcel(ViewNormalResultCommand request, string excelTemplatePath)
         {
             throw new NotImplementedException();
         }
