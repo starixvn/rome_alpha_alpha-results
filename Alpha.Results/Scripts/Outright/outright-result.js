@@ -12,7 +12,7 @@
             calendarWeeks: false,
             dayViewHeaderFormat: 'MMM YYYY',
             format: 'MM/DD/YYYY',
-            showTodayButton: true,
+            showTodayButton: false,
             ignoreReadonly: true,
             minDate: minResultDate,
             maxDate: maxResultDate

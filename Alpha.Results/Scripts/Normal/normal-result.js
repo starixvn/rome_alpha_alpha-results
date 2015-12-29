@@ -44,11 +44,12 @@ var normalResult =
         normalResult.domElements.dpkContainer.datetimepicker({
             minDate: normalResult.domElements.txtMinResultDate.val(),
             allowInputToggle: false,
-            calendarWeeks: true,
+            calendarWeeks: false,
             dayViewHeaderFormat: 'MMM YYYY',
             format: 'MM/DD/YYYY',
-            showTodayButton: true,
+            showTodayButton: false,
             ignoreReadonly: true,
+            maxDate: normalResult.domElements.txtResultDate.val()
         });
 
         normalResult.domElements.ddlSports.select2();
