@@ -2,7 +2,6 @@ namespace Alpha.Results.Services.Impl
 {
 	using Alpha.Results.Criteria;
 	using Alpha.Results.LocalResources;
-	using Fanex.Common.Helper;
 	using Fanex.Data.Repository;
 	using Fanex.Result.Core;
 	using Fanex.Result.Core.Base;
@@ -10,26 +9,22 @@ namespace Alpha.Results.Services.Impl
 	using Models;
 	using Sunplus.Agent.Model.BL.Cache;
 	using Sunplus.Agent.Model.BL.Definitions;
-	using Sunplus.Agent.Model.Entities;
 	using System;
 	using System.Collections.Generic;
 	using System.IO;
 	using System.Linq;
 
-	public class OutRightService : ReportService, IOutRightService
+	public class OutRightResultService : ReportService, IOutRightResultService
     {
         private readonly IDynamicRepository _dynamicRepository;
 
-        public OutRightService(IDynamicRepository dynamicRepository = null)
+        public OutRightResultService(IDynamicRepository dynamicRepository = null)
         {
             _dynamicRepository = dynamicRepository ?? new DynamicRepository();
         }
 
 		public IEnumerable<OutRight> GetOutRights(DateTime fromDate, DateTime toDate)
 		{
-			Check.Argument.IsNotNull(fromDate, "fromDate");
-			Check.Argument.IsNotNull(toDate, "toDate");
-
 			fromDate = fromDate.Date;
 			toDate = toDate.Date.AddDays(1).AddTicks(-1);
 
@@ -42,18 +37,18 @@ namespace Alpha.Results.Services.Impl
 			return _dynamicRepository.Fetch<OutRight>(criteria);
 		}
 
-		public string GetResults(IEnumerable<OutRight> outrights, int sportId, int leagueId)
+		public string GetResults(IEnumerable<OutRight> outrights, OutRightRequest request)
 		{
-			outrights = FilterOutright(outrights, sportId, leagueId);
-			return ResultEngine.HtmlParser<OutRight>(outrights.ToList(), OutrightResultSetting);
+			outrights = FilterOutright(outrights, request.SportType, request.LeagueId);
+			return ResultEngine.HtmlParser(outrights.ToList(), OutRightResultSetting(request.Language));
 		}
 
-		public MemoryStream GetExcelResults(IEnumerable<OutRight> outrights, OutrightRequest request, string excelTemplatePath)
+		public MemoryStream GetExcelResults(IEnumerable<OutRight> outrights, OutRightRequest request, string templatePath)
 		{
-			outrights = FilterOutright(outrights, request.SportId, request.LeagueId);
+			string excelTitle = GetExcelTitle(request.FromDate, request.ToDate, request.SportType, request.LeagueId);
 
-			string excelTitle = GetExcelTitle(request.FromDate, request.ToDate, request.SportId, request.LeagueId);
-			return ResultEngine.ExcelParser(outrights.ToList(), OutrightExcelSetting(excelTemplatePath, excelTitle));
+			outrights = FilterOutright(outrights, request.SportType, request.LeagueId);
+			return ResultEngine.ExcelParser(outrights.ToList(), OutRightExcelSetting(request.Language, templatePath, excelTitle));
 		}
 
 		private GetOutRightResultCriteria GetCriteria(DateTime fromDate, DateTime toDate)
@@ -66,46 +61,43 @@ namespace Alpha.Results.Services.Impl
 			};
         }
 
-		private IEnumerable<OutRight> FilterOutright(IEnumerable<OutRight> outrights, int sportId, int leagueId)
+		private IEnumerable<OutRight> FilterOutright(IEnumerable<OutRight> outrights, int sportType, int leagueId)
 		{
-			if (sportId != 0)
+			if (sportType != 0)
 			{
-				outrights = outrights.Where(o => o.SportType == sportId);
+				outrights = outrights.Where(outright => outright.SportType == sportType);
 			}
 
 			if (leagueId != 0)
 			{
-				outrights = outrights.Where(o => o.LeagueId == leagueId);
+				outrights = outrights.Where(outright => outright.LeagueId == leagueId);
 			}
 
 			return outrights;
 		}
 
-        private ResultSetting OutrightResultSetting
+        private ResultSetting OutRightResultSetting(string language)
 		{
-			get
+			return new ResultSetting
 			{
-				return new ResultSetting
-				{
-					LanguageCode = UserSession.Current.Language,
-					IsOutRight = true,
-					IsPopUp = false,
-					VisibleMatchCodeIDColumn = false,
-					HighlightWinnerTeam = true
-				};
-			}
+				LanguageCode = language,
+				IsOutRight = true,
+				IsPopUp = false,
+				VisibleMatchCodeIDColumn = false,
+				HighlightWinnerTeam = true
+			};
         }
 
-        private ResultSetting OutrightExcelSetting(string excelTemplatePath, string excelTitle)
+        private ResultSetting OutRightExcelSetting(string language, string templatePath, string title)
         {
             return new ResultSetting
             {
-                LanguageCode = UserSession.Current.Language,
+                LanguageCode = language,
                 IsOutRight = true,
                 IsPopUp = false,
                 HighlightWinnerTeam = true,
-				ExcelTitle = excelTitle,
-				ExcelTemplatePath = excelTemplatePath
+				ExcelTitle = title,
+				ExcelTemplatePath = templatePath
 			};
         }
 

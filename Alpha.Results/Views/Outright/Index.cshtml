@@ -2,7 +2,7 @@
     ViewBag.Title = "Outright";
 }
 
-@model OutrightViewModel
+@model OutRightViewModel
 <div role="tabpanel" class="tab-pane active" id="outright">
     <div class="row filter">
         @using (Html.BeginForm("Index", "Outright", FormMethod.Get, new { id = "frm-outright" }))
@@ -38,7 +38,7 @@
                 <div class="col-sm-12 sport-info">
                     <span class="txt">@ResultLang.sport</span>
                     <div class="dropdown control">
-                        @Html.DropDownListFor(model => model.SportId, Model.Sports, new { @class = "form-control", @onchange = "this.form.submit()" })
+                        @Html.DropDownListFor(model => model.SportType, Model.Sports, new { @class = "form-control", @onchange = "this.form.submit()" })
                     </div>
 
                     <span class="txt">@ResultLang.league</span>

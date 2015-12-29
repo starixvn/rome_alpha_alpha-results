@@ -4,7 +4,7 @@
 	using System.Collections.Generic;
 	using System.Web.Mvc;
 
-	public class OutrightViewModel
+	public class OutRightViewModel
 	{
         public DateTime MinResultDate { get; set; }
 
@@ -22,7 +22,7 @@
 
 		public IEnumerable<SelectListItem> Sports { get; set; }
 
-        public int SportId { get; set; }
+        public int SportType { get; set; }
 
         public IEnumerable<SelectListItem> Leagues { get; set; }
 

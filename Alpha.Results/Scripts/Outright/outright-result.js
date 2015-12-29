@@ -41,7 +41,7 @@
             var requestParams = {
                 fromDate: fromdatepicker.data('date'),
                 toDate: todatepicker.data('date'),
-                sportId: $('#SportId').val(),
+                sportType: $('#SportType').val(),
                 leagueId: $('#LeagueId').val()
             };
 
