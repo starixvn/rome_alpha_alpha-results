@@ -62,7 +62,7 @@ var normalResult =
         normalResult.domElements.ddlSports
             .off('change.normalResult')
             .on('change.normalResult', function () {
-                normalResult.domElements.ddlLeagues.val('0');
+                normalResult.domElements.ddlLeagues.val(normalResult.domElements.ddlLeagues.find('option:first').val());
                 normalResult.domElements.filterForm.submit();
             });
 
