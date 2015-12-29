@@ -1,11 +1,11 @@
 ﻿namespace Alpha.Results.Models
 {
-	using Sunplus.Agent.Model.Entities;
 	using System;
+	using Sunplus.Agent.Model.Entities;
 
-	public class OutRightRequest
+	public class OutrightRequest
 	{
-		public OutRightRequest()
+		public OutrightRequest()
 		{
 			DateTime currentDate = DateTime.Today;
 			FromDate = currentDate;

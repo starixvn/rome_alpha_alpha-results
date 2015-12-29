@@ -160,4 +160,7 @@
   <data name="league" xml:space="preserve">
     <value>リーグ</value>
   </data>
+  <data name="ShowAllLeaguesExcelTitle" xml:space="preserve">
+    <value>Show All Leagues</value>
+  </data>
 </root>

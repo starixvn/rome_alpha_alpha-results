@@ -160,6 +160,15 @@ namespace Alpha.Results.LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Show All Leagues.
+        /// </summary>
+        public static string ShowAllLeaguesExcelTitle {
+            get {
+                return ResourceManager.GetString("ShowAllLeaguesExcelTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sport.
         /// </summary>
         public static string sport {

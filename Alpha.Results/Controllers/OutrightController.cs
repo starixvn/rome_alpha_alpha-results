@@ -1,39 +1,39 @@
 ﻿namespace Alpha.Results.Controllers
 {
+	using System;
+	using System.Collections.Generic;
+	using System.Linq;
+	using System.Web.Mvc;
 	using Fanex.Result.Core.Sportsbook.DTO;
 	using LocalResources;
 	using Models;
 	using Services;
 	using Services.Impl;
 	using Sunplus.Agent.Model.BL.Cache;
-	using System;
-	using System.Collections.Generic;
-	using System.Linq;
-	using System.Web.Mvc;
 	using ViewModels;
 
 	public class OutrightController : BaseController
 	{
-		private readonly IOutRightResultService _outrightService;
+		private readonly IOutrightResultService _outrightService;
 
 		public OutrightController()
 			: this(null)
 		{
 		}
 
-		public OutrightController(IOutRightResultService outrightService)
+		public OutrightController(IOutrightResultService outrightService)
 		{
-			_outrightService = outrightService ?? new OutRightResultService();
+			_outrightService = outrightService ?? new OutrightResultService();
 		}
 
 		[HttpGet]
-		public ActionResult Index(OutRightRequest request = null)
+		public ActionResult Index(OutrightRequest request = null)
 		{
 			DateTime currentDate = DateTime.Today;
 			DateTime balanceUpDate = _outrightService.GetBalanceUpDate().BalanceUpDay;
 
-			request = request ?? new OutRightRequest();
-			OutRightViewModel viewModel = new OutRightViewModel
+			request = request ?? new OutrightRequest();
+			OutrightViewModel viewModel = new OutrightViewModel
 			{
 				MinResultDate = balanceUpDate,
 				MaxResultDate = currentDate,
@@ -44,7 +44,8 @@
 				ToDate = request.ToDate
 			};
 
-			var outrights = _outrightService.GetOutRights(request.FromDate, request.ToDate);
+			var outrights = _outrightService.GetOutrights(request.FromDate, request.ToDate);
+
 			if (outrights.Count() > 0)
 			{
 				viewModel.SportType = request.SportType > 0 ? request.SportType : outrights.First().SportType;
@@ -53,27 +54,28 @@
 			}
 
 			viewModel.HtmlResults = _outrightService.GetResults(outrights, request);
+
 			return View(viewModel);
 		}
 
 		[HttpGet]
-		public ActionResult ExcelResults(OutRightRequest request)
+		public ActionResult ExcelResults(OutrightRequest request)
 		{
 			const string excelTemplatePath = @"~/App_Data/Fanex.Result/";
 
-			var outrights = _outrightService.GetOutRights(request.FromDate, request.ToDate);
+			var outrights = _outrightService.GetOutrights(request.FromDate, request.ToDate);
 			var excelResult = _outrightService.GetExcelResults(outrights, request, Server.MapPath(excelTemplatePath));
 
 			return File(excelResult.ToArray(), "application/vnd.ms-excel", "Result.xls");
 		}
 
 		[NonAction]
-		private OutRightViewModel GetSportsAndLeagues(OutRightViewModel viewModel, IEnumerable<OutRight> outrights, int selectedSportType, int selectedLeagueId)
+		private OutrightViewModel GetSportsAndLeagues(OutrightViewModel viewModel, IEnumerable<OutRight> outrights, int selectedSportType, int selectedLeagueId)
 		{
 			IList<SelectListItem> sportTypes = new List<SelectListItem>();
 			IList<SelectListItem> leagues = new List<SelectListItem>();
-
 			var outrightsGroup = outrights.GroupBy(o => new { SportType = o.SportType, LeagueId = o.LeagueId });
+
 			foreach (var group in outrightsGroup)
 			{
 				var key = group.Key;
@@ -94,6 +96,7 @@
 
 			viewModel.Sports = sportTypes;
 			viewModel.Leagues = leagues;
+
 			return viewModel;
 		}
 	}

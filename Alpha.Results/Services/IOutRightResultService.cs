@@ -1,20 +1,20 @@
 namespace Alpha.Results.Services
 {
-	using Fanex.Result.Core.Sportsbook.DTO;
-	using Models;
-	using Models.Dtos;
 	using System;
 	using System.Collections.Generic;
 	using System.IO;
+	using Fanex.Result.Core.Sportsbook.DTO;
+	using Models;
+	using Models.Dtos;
 
-	public interface IOutRightResultService
+	public interface IOutrightResultService
     {
 		BalanceUpDateDto GetBalanceUpDate();
 
-		IEnumerable<OutRight> GetOutRights(DateTime fromDate, DateTime toDate);
+		IEnumerable<OutRight> GetOutrights(DateTime fromDate, DateTime toDate);
 
-		string GetResults(IEnumerable<OutRight> outrights, OutRightRequest request);
+		string GetResults(IEnumerable<OutRight> outrights, OutrightRequest request);
 
-		MemoryStream GetExcelResults(IEnumerable<OutRight> outrights, OutRightRequest request, string templatePath);
+		MemoryStream GetExcelResults(IEnumerable<OutRight> outrights, OutrightRequest request, string templatePath);
 	}
 }
