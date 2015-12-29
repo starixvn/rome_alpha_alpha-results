@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Web.Mvc;
     using LocalResources;
+    using Alpha.Utilities.Extensions;
 
     public class NormalViewModel
     {
@@ -13,7 +14,7 @@
         {
             get
             {
-                return string.Format(ResultLang.ViewDataFromDate, MinResultDate.ToShortDateString());
+                return string.Format(ResultLang.ViewDataFromDate, MinResultDate.ToShortDateFormatWithSlash());
             }
         }
 
@@ -23,7 +24,7 @@
         {
             get
             {
-                return DateTime.Now.AddDays(-1).ToShortDateString();
+                return DateTime.Now.AddDays(-1).ToShortDateFormatWithSlash();
             }
         }
 
@@ -31,7 +32,7 @@
         {
             get
             {
-                return DateTime.Now.ToShortDateString();
+                return DateTime.Now.ToShortDateFormatWithSlash();
             }
         }
 

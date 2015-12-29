@@ -75,6 +75,7 @@
         {
             Check.Argument.IsNotNull(request, "request");
             Check.Argument.IsNotNegativeOrZero(request.SportId, "request.SportId");
+            Check.Argument.IsNotEmpty(templatePath, "templatePath");
 
             var resultService = _resultServiceFactory.CreateProductResultService(request.SportId, request.BetTypeId);
 
