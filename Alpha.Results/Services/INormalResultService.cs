@@ -8,7 +8,7 @@
     {
         IEnumerable<Sport> GetSports(DateTime resultDate, IDictionary<int, bool> sportsStatus);
 
-        IEnumerable<League> GetLeagues(DateTime resultDate, int sportId, string language, bool disableHouseRacingWin);
+        IEnumerable<League> GetLeagues(DateTime resultDate, int sportId, string language, bool disableHorseRacingWin);
 
         string GetResults(NormalRequest request);
 

@@ -101,7 +101,8 @@
             var viewModel = new NormalDetailViewModel
             {
                 Title = $"{CacheRefFactory.CacheRef.GetSportName(request.SportId)} - {CacheRefFactory.CacheRef.GetLeagueName(request.LeagueId)}",
-                HtmlResults = _normalResultService.GetResultDetails(request)
+                HtmlResults = _normalResultService.GetResultDetails(request),
+                IsViewResultFromBetList = request.IsViewResultFromBetList
             };
 
             return View(viewModel);

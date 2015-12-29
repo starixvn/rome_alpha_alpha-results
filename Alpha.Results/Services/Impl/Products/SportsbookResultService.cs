@@ -4,8 +4,8 @@ namespace Alpha.Results.Services.Impl.Products
     using System.IO;
     using System.Linq;
     using Alpha.Results.Criteria;
-    using Alpha.Results.Repositories;
-    using Alpha.Results.Repositories.Impl.Result;
+    using Alpha.Results.DataAccesses;
+    using Alpha.Results.DataAccesses.Impl.Result;
     using Fanex.Result.Core;
     using Fanex.Result.Core.Base;
     using Fanex.Result.Core.Sportsbook.DTO;
@@ -84,7 +84,7 @@ namespace Alpha.Results.Services.Impl.Products
                 BetType = detailsRequest.BetTypeId,
                 SportType = detailsRequest.SportId,
                 BetId = detailsRequest.BetId,
-                IsViewDetail = true
+                IsViewResultFromBetList = detailsRequest.IsViewResultFromBetList
             };
 
             var results = _dataAccess.GetScoreInformation(ref criteria);
@@ -100,8 +100,9 @@ namespace Alpha.Results.Services.Impl.Products
                 HighlightWinnerTeam = true
             };
 
-            return ResultEngine.HtmlGameDetailParser(results[0], resultSetting).Replace("original-title", " title ");
+            return detailsRequest.IsViewResultFromBetList
+                ? ResultEngine.HtmlParser(results, resultSetting).Replace("original-title", " title ")
+                : ResultEngine.HtmlGameDetailParser(results[0], resultSetting).Replace("original-title", " title ");
         }
-
     }
 }

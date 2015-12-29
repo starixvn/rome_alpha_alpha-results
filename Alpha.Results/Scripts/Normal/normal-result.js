@@ -19,7 +19,8 @@ var normalResult =
             excelBtn: null,
             ddlSports: null,
             ddlLeagues: null,
-            filterForm: null
+            filterForm: null,
+            frmDetailsResult: null
         },
     init: function () {
         normalResult.cacheElements();
@@ -37,7 +38,7 @@ var normalResult =
         normalResult.domElements.ddlSports = $('#SportId');
         normalResult.domElements.ddlLeagues = $('#LeagueId');
         normalResult.domElements.filterForm = $('#result-filter');
-
+        normalResult.domElements.frmDetailsResult = $('#result-detail-frm');
     },
     registerEvents: function () {
         normalResult.domElements.dpkContainer.datetimepicker({
@@ -79,9 +80,8 @@ var normalResult =
                     + normalResult.resultDetailsUrl
                     + $.param(requestParams);
 
-                normalResult.domElements.resultDetails.load(resultDetailsUrl, function () {
-                    normalResult.domElements.resultDetails.modal({});
-                });
+                normalResult.domElements.frmDetailsResult.attr('src', resultDetailsUrl);
+                normalResult.domElements.resultDetails.modal({});
             });
 
         normalResult.domElements.excelBtn

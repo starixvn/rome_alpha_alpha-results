@@ -5,14 +5,30 @@
     Layout = null;
 }
 
-<div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">@Model.Title</h4>
-        </div>
-        <div class="modal-body" id="detail-result-body">
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@Html.Raw(ViewBag.Title)</title>
+    <link href="/contents/css/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Fanex.Result/fanex.result.css" rel="stylesheet" />
+    <link href="~/Content/result.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container-fluid">
+
+        @if (!Model.IsViewResultFromBetList)
+        {
+            <h5 id="detail-result-title">@Model.Title</h5>
+        }
+
+        <div class="detail-result" id="detail-result-body">
             @Html.Raw(Model.HtmlResults)
         </div>
+
     </div>
-</div>
+
+</body>
+</html>
+
+

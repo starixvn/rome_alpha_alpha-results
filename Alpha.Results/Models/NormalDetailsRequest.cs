@@ -10,10 +10,6 @@
 
         public long RefNum { get; set; }
 
-        public int CustId { get; set; }
-
-        public bool IsChangeSportType { get; set; }
-
-        public bool IsHistoryReport { get; set; }
+        public bool IsViewResultFromBetList { get; set; }
     }
 }

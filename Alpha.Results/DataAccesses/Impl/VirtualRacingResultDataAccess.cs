@@ -1,8 +1,8 @@
-namespace Alpha.Results.Repositories.Impl.Result
+namespace Alpha.Results.DataAccesses.Impl.Result
 {
     using System.Collections.Generic;
     using Alpha.Results.Criteria;
-    using Alpha.Results.Repositories;
+    using Alpha.Results.DataAccesses;
     using Fanex.Data;
     using Fanex.Result.Core.Racing.DTO;
 

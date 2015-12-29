@@ -2,21 +2,20 @@ namespace Alpha.Results.Services.Impl.Products
 {
     using System;
     using System.IO;
-    using System.Linq;
     using Alpha.Results.Criteria;
-    using Fanex.Data.Repository;
+    using DataAccesses;
+    using DataAccesses.Impl;
     using Fanex.Result.Core;
     using Fanex.Result.Core.Base;
-    using Fanex.Result.Core.MetricGaming.DTO;
     using Models;
 
     public class MetricGamingResultService : IProductResultService
     {
-        private readonly IDynamicRepository _dynamicRepository;
+        private readonly IMetricGamingResultDataAccess _dataAccess;
 
-        public MetricGamingResultService(IDynamicRepository dynamicRepository)
+        public MetricGamingResultService(IMetricGamingResultDataAccess dynamicRepository)
         {
-            _dynamicRepository = dynamicRepository ?? new DynamicRepository();
+            _dataAccess = dynamicRepository ?? new MetricGamingResultDataAccess();
         }
 
         public MetricGamingResultService()
@@ -44,7 +43,7 @@ namespace Alpha.Results.Services.Impl.Products
                 SportType = detailsRequest.SportId
             };
 
-            var resultData = _dynamicRepository.Fetch<MetricGaming>(criteria).ToList();
+            var results = _dataAccess.GetResults(criteria);
 
             var resultSetting = new ResultSetting
             {
@@ -58,7 +57,7 @@ namespace Alpha.Results.Services.Impl.Products
                 HighlightWinnerTeam = true
             };
 
-            return resultData.Any() ? ResultEngine.HtmlParser(resultData, resultSetting) : string.Empty;
+            return ResultEngine.HtmlParser(results, resultSetting);
         }
     }
 }

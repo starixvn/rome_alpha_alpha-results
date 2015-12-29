@@ -4,8 +4,8 @@ namespace Alpha.Results.Services.Impl.Products
     using System.IO;
     using System.Linq;
     using Alpha.Results.Criteria;
-    using Alpha.Results.Repositories;
-    using Alpha.Results.Repositories.Impl.Result;
+    using Alpha.Results.DataAccesses;
+    using Alpha.Results.DataAccesses.Impl.Result;
     using Fanex.Result.Core;
     using Fanex.Result.Core.Base;
     using Models;

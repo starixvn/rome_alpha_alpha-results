@@ -13,16 +13,16 @@ namespace Alpha.Results.Services.Impl.Products
     /// <summary>
     /// The class LiveCasinoPopupResultService.
     /// </summary>
-    public class LiveCasinoPopupResultService : IProductResultService
+    public class LiveCasinoResultService : IProductResultService
     {
         private readonly IDynamicRepository _dynamicRepository;
 
-        public LiveCasinoPopupResultService(IDynamicRepository dynamicRepository)
+        public LiveCasinoResultService(IDynamicRepository dynamicRepository)
         {
             this._dynamicRepository = dynamicRepository ?? new DynamicRepository();
         }
 
-        public LiveCasinoPopupResultService()
+        public LiveCasinoResultService()
             : this(null)
         {
         }

@@ -7,7 +7,6 @@
     using Fanex.Common.Helper;
     using Fanex.Data.Repository;
     using Models;
-    using Products;
     using Sunplus.Agent.Model.BL.Definitions;
 
     public class NormalResultService : INormalResultService
@@ -25,13 +24,13 @@
             _resultServiceFactory = resultServiceFactory ?? new ResultServiceFactory();
         }
 
-        public IEnumerable<League> GetLeagues(DateTime resultDate, int sportId, string language, bool disableHouseRacingWin)
+        public IEnumerable<League> GetLeagues(DateTime resultDate, int sportId, string language, bool disableHorseRacingWin)
         {
             Check.Argument.IsNotNegativeOrZero(sportId, "sportId");
             Check.Argument.IsNotEmpty(language, "language");
 
             if (sportId == (int)SportType.HorseRacing
-                && disableHouseRacingWin)
+                && disableHorseRacingWin)
             {
                 return Enumerable.Empty<League>();
             }

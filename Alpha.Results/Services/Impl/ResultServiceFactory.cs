@@ -10,7 +10,7 @@
 
         public IProductResultService CreateProductResultService(int sportId, int betTypeId)
         {
-            if (betTypeId == (int)BetType.Mix_Parlay 
+            if (betTypeId == (int)BetType.Mix_Parlay
                 || betTypeId == (int)BetType.Combine_Mix_Parlay)
             {
                 return new ParlayResultService();
@@ -19,7 +19,7 @@
             switch ((SportType)sportId)
             {
                 case SportType.Soccer:
-                    if (MetricGaming60sofKick <= betTypeId 
+                    if (MetricGaming60sofKick <= betTypeId
                         && betTypeId <= MetricGamingEndBetType)
                     {
                         return new MetricGamingResultService();
@@ -68,7 +68,7 @@
                     return new NumberGameResultService();
 
                 case SportType.LiveCasino:
-                    return new NumberGameResultService();
+                    return new LiveCasinoResultService();
 
                 case SportType.VirtualHorsesRacing:
                 case SportType.VirtualGreyhounds:

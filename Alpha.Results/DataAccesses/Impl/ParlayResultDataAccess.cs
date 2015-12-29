@@ -7,14 +7,14 @@
 //   <change who="Paul.Nguyen" date="2014.11.18">Created</change>
 // </history>
 
-namespace Alpha.Results.Repositories.Impl.Result
+namespace Alpha.Results.DataAccesses.Impl.Result
 {
     using System;
     using System.Collections.Generic;
     using System.Data;
     using System.Linq;
     using Alpha.Results.Criteria;
-    using Alpha.Results.Repositories;
+    using Alpha.Results.DataAccesses;
     using Fanex.Data;
     using Fanex.Result.Core.Sportsbook.DTO;
 
