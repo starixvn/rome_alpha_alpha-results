@@ -90,9 +90,6 @@
       <HintPath>..\packages\Fanex.Game.Keno.1.0.0.1\lib\net40\Fanex.Game.Keno.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Fanex.Game.Keno.Resources">
-      <HintPath>..\packages\Fanex.Game.Keno.Resources.1.0.0\lib\net40\Fanex.Game.Keno.Resources.dll</HintPath>
-    </Reference>
     <Reference Include="Fanex.Logging, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Logging.1.0.0.0\lib\net40\Fanex.Logging.dll</HintPath>
       <Private>True</Private>

@@ -1,8 +1,8 @@
 ﻿@using System.Threading
 @using Fanex.Game.Keno.Resources
 @{
-    //Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(Fanex.Razorbill.Module.ContextualCustomer.Utils.SessionExtension.Language);
-    //Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture;
+    Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(Sunplus.Agent.Model.Entities.UserSession.Current.Language);
+    Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture;
 
     string rootUrl = Url.Content("~");
     string deailResultUrl = string.Format("{0}/game/keno/kenoresult/resultdetail?date={1}&language={2}&customerid={3}", rootUrl, ViewBag.date, ViewBag.language, ViewBag.customerId);
@@ -17,7 +17,7 @@
 <body>
     <div>
         <form ENCTYPE="multipart/form-data" id="target" action="@deailResultUrl" target="iframeId" method="POST"></form>
-        <iframe id="iframeId" name="iframeId" width="800px" height="580px" frameborder="0"
+        <iframe id="iframeId" name="iframeId" width="100%" height="580px" frameborder="0"
                 style="overflow-x: hidden" left="0" top="0"></iframe>
     </div>
 
