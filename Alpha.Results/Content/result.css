@@ -164,6 +164,12 @@ table.fn-rs tbody .cl-match div.first-half-last-goal {
 .width-200 {
   width: 200px; }
 
+.detail-result {
+  margin-top: 15px; }
+
+.lnk {
+  color: #045ace; }
+  .lnk:hover {
     color: #045ace; }
   .lnk:focus, .lnk:visited, .lnk:active {
     outline: none; }
