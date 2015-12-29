@@ -5,12 +5,11 @@ namespace Alpha.Results.Services.Impl.Products
     using System.Linq;
     using Alpha.Results.Criteria;
     using Alpha.Results.DataAccesses;
-    using Alpha.Results.DataAccesses.Impl.Result;
     using Commands;
+    using DataAccesses.Impl;
     using Fanex.Result.Core;
     using Fanex.Result.Core.Base;
     using Fanex.Result.Core.Sportsbook.DTO;
-    using Models;
 
     /// <summary>
     /// The class SportsBookResultService.

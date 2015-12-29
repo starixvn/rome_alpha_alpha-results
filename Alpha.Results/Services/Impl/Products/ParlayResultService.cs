@@ -5,8 +5,8 @@ namespace Alpha.Results.Services.Impl
     using System.Linq;
     using Alpha.Results.Criteria;
     using Alpha.Results.DataAccesses;
-    using Alpha.Results.DataAccesses.Impl.Result;
     using Commands;
+    using DataAccesses.Impl;
     using Fanex.Result.Core;
     using Fanex.Result.Core.Base;
 

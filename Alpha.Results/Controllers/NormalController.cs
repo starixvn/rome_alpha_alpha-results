@@ -18,14 +18,10 @@
         private readonly INormalResultService _normalResultService;
         private readonly IReportService _reportService;
 
-        public NormalController() : this(null, null)
-        {
-        }
-
         public NormalController(INormalResultService normalResultService, IReportService reportService)
         {
-            _normalResultService = normalResultService ?? new NormalResultService();
-            _reportService = reportService ?? new ReportService();
+            _normalResultService = normalResultService ?? new NormalResultService(null, null);
+            _reportService = reportService ?? new ReportService(null, null);
         }
 
         [HttpGet]

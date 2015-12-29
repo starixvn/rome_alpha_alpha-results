@@ -70,6 +70,12 @@ var normalResult =
                 normalResult.domElements.filterForm.submit();
             });
 
+        normalResult.domElements.resultDetails
+            .off('hidden.bs.modal')
+            .on('hidden.bs.modal', function () {
+                normalResult.domElements.frmDetailsResult.attr('src', 'about:blank');
+            });
+
         normalResult.domElements.mainResult
             .off('click.normalResult', '.detail-link')
             .on('click.normalResult', '.detail-link', function () {

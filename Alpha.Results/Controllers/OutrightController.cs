@@ -16,14 +16,9 @@
     {
         private readonly IOutrightResultService _outrightService;
 
-        public OutrightController()
-            : this(null)
-        {
-        }
-
         public OutrightController(IOutrightResultService outrightService)
         {
-            _outrightService = outrightService ?? new OutrightResultService();
+            _outrightService = outrightService ?? new OutrightResultService(null);
         }
 
         [HttpGet]

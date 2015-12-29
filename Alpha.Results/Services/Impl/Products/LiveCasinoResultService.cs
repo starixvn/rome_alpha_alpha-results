@@ -9,7 +9,6 @@ namespace Alpha.Results.Services.Impl.Products
     using Fanex.Result.Core;
     using Fanex.Result.Core.Base;
     using Fanex.Result.Core.LiveCasino.DTO;
-    using Models;
 
     /// <summary>
     /// The class LiveCasinoPopupResultService.

@@ -19,7 +19,8 @@ namespace Alpha.Results.Services.Impl
     {
         private readonly IDynamicRepository _dynamicRepository;
 
-        public OutrightResultService(IDynamicRepository dynamicRepository = null)
+        public OutrightResultService(IDynamicRepository dynamicRepository)
+            : base(dynamicRepository, null)
         {
             _dynamicRepository = dynamicRepository ?? new DynamicRepository();
         }

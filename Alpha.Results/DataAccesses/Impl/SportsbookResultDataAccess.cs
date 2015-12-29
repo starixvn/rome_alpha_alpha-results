@@ -1,4 +1,4 @@
-﻿namespace Alpha.Results.DataAccesses.Impl.Result
+﻿namespace Alpha.Results.DataAccesses.Impl
 {
     using System;
     using System.Collections.Generic;

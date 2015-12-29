@@ -15,11 +15,9 @@
         private readonly IDynamicRepository _dynamicRepository;
         private readonly IResultServiceFactory _resultServiceFactory;
 
-        public NormalResultService() : this(null, null)
-        {
-        }
-
-        public NormalResultService(IDynamicRepository dynamicRepository, IResultServiceFactory resultServiceFactory)
+        public NormalResultService(
+            IDynamicRepository dynamicRepository,
+            IResultServiceFactory resultServiceFactory)
         {
             _dynamicRepository = dynamicRepository ?? new DynamicRepository();
             _resultServiceFactory = resultServiceFactory ?? new ResultServiceFactory();

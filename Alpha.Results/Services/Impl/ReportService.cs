@@ -9,12 +9,8 @@
     {
         private const string BalanceUpDateCacheKey = "Alpha.Results.Services.Impl.ResultService";
 
-        private IDynamicRepository _dynamicRepository;
-        private ICache _cacheManager;
-
-        public ReportService() : this(null, null)
-        {
-        }
+        private readonly IDynamicRepository _dynamicRepository;
+        private readonly ICache _cacheManager;
 
         public ReportService(IDynamicRepository dynamicRepository, ICache cacheManager)
         {
