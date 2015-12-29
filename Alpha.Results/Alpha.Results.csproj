@@ -272,7 +272,6 @@
     <Content Include="Content\Fanex.Result\images\bg_header04.jpg" />
     <Content Include="Content\Fanex.Result\images\goal-icon.png" />
     <Content Include="Content\Images\sprite.png" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Areas\Game\Views\Keno\Result.cshtml" />
     <Content Include="Areas\Game\Views\web.config" />
@@ -280,9 +279,6 @@
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="Properties\PublishProfiles\Local202.pubxml" />
     <None Include="Properties\PublishProfiles\LocalRicky.pubxml" />
     <None Include="Scripts\jquery-1.11.3.intellisense.js" />
