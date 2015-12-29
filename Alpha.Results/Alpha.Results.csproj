@@ -82,6 +82,17 @@
       <HintPath>..\packages\Fanex.Data.0.5.404.63\lib\net40\Fanex.Data.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Fanex.Game.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Game.Core.1.0.0\lib\net40\Fanex.Game.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Fanex.Game.Keno, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Game.Keno.1.0.0.1\lib\net40\Fanex.Game.Keno.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Fanex.Game.Keno.Resources">
+      <HintPath>..\packages\Fanex.Game.Keno.Resources.1.0.0\lib\net40\Fanex.Game.Keno.Resources.dll</HintPath>
+    </Reference>
     <Reference Include="Fanex.Logging, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Logging.1.0.0.0\lib\net40\Fanex.Logging.dll</HintPath>
       <Private>True</Private>
@@ -256,6 +267,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\SPNames\Results.xml" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Fanex.Result\fanex.result-customized.css" />
     <Content Include="Content\Fanex.Result\fanex.result.css" />
     <Content Include="Content\Fanex.Result\images\bg_header01.jpg" />
@@ -263,21 +276,31 @@
     <Content Include="Content\Fanex.Result\images\bg_header03.jpg" />
     <Content Include="Content\Fanex.Result\images\bg_header04.jpg" />
     <Content Include="Content\Fanex.Result\images\goal-icon.png" />
-    <Content Include="Content\Images\goal-icon.png" />
     <Content Include="Content\Images\sprite.png" />
+    <Content Include="Content\Site.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Areas\Game\Views\Keno\Result.cshtml" />
+    <Content Include="Areas\Game\Views\web.config" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
-    <Content Include="Content\Super\_variables.scss" />
-    <Content Include="Content\Agent\_variables.scss" />
-    <Content Include="Content\Master\_variables.scss" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="Properties\PublishProfiles\Local202.pubxml" />
     <None Include="Properties\PublishProfiles\LocalRicky.pubxml" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <None Include="Scripts\jquery-1.11.3.intellisense.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.11.3.js" />
     <Content Include="Scripts\jquery-1.11.3.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\Normal\normal-result.js" />
     <Content Include="Scripts\Outright\outright-result.js" />
     <Content Include="Content\result.css">
@@ -354,6 +377,7 @@
     <Compile Include="Services\IReportService.cs" />
     <Compile Include="Services\IProductResultService.cs" />
     <Compile Include="Services\IResultServiceFactory.cs" />
+    <Compile Include="ViewModels\KenoViewModel.cs" />
     <Compile Include="ViewModels\NormalDetailViewModel.cs" />
     <Compile Include="ViewModels\NormalViewModel.cs" />
     <Compile Include="ViewModels\OutrightViewModel.cs" />

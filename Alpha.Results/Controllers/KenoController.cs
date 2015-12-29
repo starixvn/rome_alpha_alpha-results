@@ -1,12 +1,23 @@
 ﻿namespace Alpha.Results.Controllers
 {
-    using System.Web.Mvc;
+	using System;
+	using System.Web.Mvc;
+	using Sunplus.Agent.Model.Entities;
+	using ViewModels;
 
-    public class KenoController : BaseController
+	public class KenoController : BaseController
     {
         public ActionResult Index()
         {
-            return View();
+			var userSession = UserSession.Current;
+			KenoViewModel viewModel = new KenoViewModel
+			{
+				ResultDate = DateTime.Today.ToString("yyyyMMdd"),
+				LanguageKey = userSession.LangKey,
+				CustomerId = userSession.CustId
+			};
+
+			return View(viewModel);
         }
     }
 }
