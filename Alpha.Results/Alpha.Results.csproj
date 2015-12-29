@@ -276,7 +276,6 @@
     <Content Include="Scripts\jquery-1.11.3.min.js" />
     <Content Include="Scripts\Normal\normal-result.js" />
     <Content Include="Scripts\Outright\outright-result.js" />
-    <Content Include="Views\Result\Scripts\Result.js" />
     <Content Include="Content\result.css">
       <DependentUpon>result.scss</DependentUpon>
     </Content>
@@ -293,7 +292,6 @@
     <Compile Include="Controllers\KenoController.cs" />
     <Compile Include="Controllers\NormalController.cs" />
     <Compile Include="Controllers\OutrightController.cs" />
-    <Compile Include="Controllers\ResultController.cs" />
     <Compile Include="Controllers\TabController.cs" />
     <Compile Include="Criteria\GetBalanceUpDateCriteria.cs" />
     <Compile Include="Criteria\Products\GetGoldDeluxeResultCriteria.cs" />
@@ -380,7 +378,6 @@
     <Content Include="App_Data\Fanex.Result\VSSpeedWay.xls" />
     <Content Include="App_Data\Fanex.Result\VSTennis.xls" />
     <Content Include="Content\Fanex.Result\fanex.result.less" />
-    <Content Include="Views\Result\GetResult.cshtml" />
     <Content Include="Scripts\jquery-1.11.3.min.map" />
     <Content Include="Content\result.scss" />
     <Content Include="Views\_ViewStart.cshtml" />
