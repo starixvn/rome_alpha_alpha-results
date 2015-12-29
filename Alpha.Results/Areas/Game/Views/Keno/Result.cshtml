@@ -13,11 +13,12 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@Message.Keno</title>
+    <link href="~/Content/result.css" rel="stylesheet">
 </head>
-<body>
+<body class="keno">
     <div>
         <form ENCTYPE="multipart/form-data" id="target" action="@deailResultUrl" target="iframeId" method="POST"></form>
-        <iframe id="iframeId" name="iframeId" width="100%" height="580px" frameborder="0"
+        <iframe id="iframeId" name="iframeId" frameborder="0"
                 style="overflow-x: hidden" left="0" top="0"></iframe>
     </div>
 
