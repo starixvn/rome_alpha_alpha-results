@@ -1,5 +1,6 @@
-﻿@import "variables";
+﻿@import "Super/variables";
 
+$goal-icon: "images/goal-icon.png";
 body {
     font-size: 12px;
 }
@@ -214,4 +215,15 @@ table.fn-rs tbody .cl-match div {
 }
 .width-200 {
     width: 200px;
+}
+
+
+.lnk {
+    color: #045ace;
+    &:hover {
+         color: #045ace;
+    }
+    &:focus, &:visited, &:active {
+        outline: none;
+    }
 }

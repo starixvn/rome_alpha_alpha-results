@@ -263,12 +263,16 @@
     <Content Include="Content\Fanex.Result\images\bg_header03.jpg" />
     <Content Include="Content\Fanex.Result\images\bg_header04.jpg" />
     <Content Include="Content\Fanex.Result\images\goal-icon.png" />
+    <Content Include="Content\Images\goal-icon.png" />
     <Content Include="Content\Images\sprite.png" />
     <Content Include="Global.asax" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
+    <Content Include="Content\Super\_variables.scss" />
+    <Content Include="Content\Agent\_variables.scss" />
+    <Content Include="Content\Master\_variables.scss" />
     <None Include="Properties\PublishProfiles\Local202.pubxml" />
     <None Include="Properties\PublishProfiles\LocalRicky.pubxml" />
     <None Include="Scripts\jquery-1.11.3.intellisense.js" />
