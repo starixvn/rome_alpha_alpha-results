@@ -38,6 +38,12 @@ namespace Alpha.Results.Services.Impl
 				return null;
 			}
 
+			DateTime balanceUpDay = GetBalanceUpDate().BalanceUpDay;
+			if (fromDate < balanceUpDay)
+			{
+				return null;
+			}
+
 			return _dynamicRepository.Fetch<OutRight>(criteria);
 		}
 
