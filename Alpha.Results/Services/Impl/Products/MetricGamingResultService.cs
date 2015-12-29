@@ -23,17 +23,17 @@ namespace Alpha.Results.Services.Impl.Products
         {
         }
 
-        public string GetResult(ViewNormalResultCommand request)
+        public string GetResult(ViewNormalResultQuery request)
         {
             throw new NotImplementedException();
         }
 
-        public MemoryStream ExportExcel(ViewNormalResultCommand request, string excelTemplatePath)
+        public MemoryStream ExportExcel(ViewNormalResultQuery request, string excelTemplatePath)
         {
             throw new NotImplementedException();
         }
 
-        public string GetResultDetails(ViewNormalResultDetailsCommand detailsRequest)
+        public string GetResultDetails(ViewNormalResultDetailsQuery detailsRequest)
         {
             var criteria = new GetMetricGamingResultCriteria
             {

@@ -74,10 +74,6 @@
       <HintPath>..\packages\Fanex.Common.1.0.404.97\lib\net40\Fanex.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Fanex.CustomerSetting.Module.KenoStatus, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.CustomerSetting.Module.KenoStatus.1.0.0.2\lib\net40\Fanex.CustomerSetting.Module.KenoStatus.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Fanex.Data, Version=0.5.404.63, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Data.0.5.404.63\lib\net40\Fanex.Data.dll</HintPath>
       <Private>True</Private>
@@ -136,6 +132,10 @@
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
       <HintPath>..\packages\NPOI.2.0.6\lib\net40\ICSharpCode.SharpZipLib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MediatR, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MediatR.2.0.2\lib\net45\MediatR.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -297,9 +297,6 @@
     <Content Include="Content\Super\_variables.scss" />
     <None Include="Properties\PublishProfiles\Local202.pubxml" />
     <None Include="Properties\PublishProfiles\LocalRicky.pubxml" />
-    <None Include="Scripts\jquery-1.11.3.intellisense.js" />
-    <Content Include="Scripts\jquery-1.11.3.js" />
-    <Content Include="Scripts\jquery-1.11.3.min.js" />
     <Content Include="Scripts\Normal\normal-result.js" />
     <Content Include="Scripts\Outright\outright-result.js" />
     <Content Include="Content\result.css">
@@ -343,10 +340,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Handlers\NormalResultHandler.cs" />
     <Compile Include="Models\Dtos\BalanceUpDateDto.cs" />
     <Compile Include="Models\League.cs" />
-    <Compile Include="Commands\ViewNormalResultDetailsCommand.cs" />
-    <Compile Include="Commands\ViewNormalResultCommand.cs" />
+    <Compile Include="Models\Requests\DownloadNormalResultExcelQuery.cs" />
+    <Compile Include="Models\Requests\ViewNormalResultDetailsQuery.cs" />
+    <Compile Include="Models\Requests\ViewNormalResultQuery.cs" />
     <Compile Include="Commands\ViewOutrightResultCommand.cs" />
     <Compile Include="Models\Sport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -381,6 +380,7 @@
     <Compile Include="Services\IResultServiceFactory.cs" />
     <Compile Include="ViewModels\KenoViewModel.cs" />
     <Compile Include="ViewModels\NormalDetailViewModel.cs" />
+    <Compile Include="ViewModels\NormalResultExcelViewModel.cs" />
     <Compile Include="ViewModels\NormalViewModel.cs" />
     <Compile Include="ViewModels\OutrightViewModel.cs" />
     <Compile Include="ViewModels\TabViewModel.cs" />
@@ -408,7 +408,6 @@
     <Content Include="App_Data\Fanex.Result\VSSpeedWay.xls" />
     <Content Include="App_Data\Fanex.Result\VSTennis.xls" />
     <Content Include="Content\Fanex.Result\fanex.result.less" />
-    <Content Include="Scripts\jquery-1.11.3.min.map" />
     <Content Include="Content\result.scss" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Normal\Index.cshtml" />
@@ -423,9 +422,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Handlers\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="App_GlobalResources\ResultLang.ja-JP.resx" />
     <EmbeddedResource Include="App_GlobalResources\ResultLang.ko-KR.resx" />

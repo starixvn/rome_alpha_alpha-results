@@ -27,7 +27,7 @@ namespace Alpha.Results.Services.Impl
         {
         }
 
-        public string GetResultDetails(ViewNormalResultDetailsCommand detailsRequest)
+        public string GetResultDetails(ViewNormalResultDetailsQuery detailsRequest)
         {
             var results = _parlayResultDataAccess.GetParlayResults(new GetParlayResultCriteria
             {
@@ -50,12 +50,12 @@ namespace Alpha.Results.Services.Impl
             return ResultEngine.HtmlParser(results, resultSetting);
         }
 
-        public string GetResult(ViewNormalResultCommand request)
+        public string GetResult(ViewNormalResultQuery request)
         {
             throw new NotImplementedException();
         }
 
-        public MemoryStream ExportExcel(ViewNormalResultCommand request, string excelTemplatePath)
+        public MemoryStream ExportExcel(ViewNormalResultQuery request, string excelTemplatePath)
         {
             throw new NotImplementedException();
         }

@@ -27,7 +27,7 @@ namespace Alpha.Results.Services.Impl.Products
         {
         }
 
-        public string GetResult(ViewNormalResultCommand request)
+        public string GetResult(ViewNormalResultQuery request)
         {
             var criteria = GetCriteria(request);
 
@@ -46,7 +46,7 @@ namespace Alpha.Results.Services.Impl.Products
             return ResultEngine.HtmlParser(results, resultSetting);
         }
 
-        public MemoryStream ExportExcel(ViewNormalResultCommand request, string excelTemplatePath)
+        public MemoryStream ExportExcel(ViewNormalResultQuery request, string excelTemplatePath)
         {
             var resultSetting = new ResultSetting
             {
@@ -63,7 +63,7 @@ namespace Alpha.Results.Services.Impl.Products
             return ResultEngine.ExcelParser(results, resultSetting);
         }
 
-        private static GetRacingResultCriteria GetCriteria(ViewNormalResultCommand request)
+        private static GetRacingResultCriteria GetCriteria(ViewNormalResultQuery request)
         {
             return new GetRacingResultCriteria()
             {
@@ -73,7 +73,7 @@ namespace Alpha.Results.Services.Impl.Products
             };
         }
 
-        public string GetResultDetails(ViewNormalResultDetailsCommand detailsRequest)
+        public string GetResultDetails(ViewNormalResultDetailsQuery detailsRequest)
         {
             var criteria = new GetRacingResultDetailsCriteria()
             {

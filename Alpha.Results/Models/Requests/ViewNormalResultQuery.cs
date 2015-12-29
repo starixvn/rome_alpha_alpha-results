@@ -3,11 +3,13 @@
     using System;
     using Alpha.Utilities.Extensions;
     using App_GlobalResources;
+    using MediatR;
     using Sunplus.Agent.Model.RemotingRef;
+    using ViewModels;
 
-    public class ViewNormalResultCommand
+    public class ViewNormalResultQuery : IRequest<NormalViewModel>
     {
-        public ViewNormalResultCommand()
+        public ViewNormalResultQuery()
         {
             ResultDate = DateTime.Now;
         }

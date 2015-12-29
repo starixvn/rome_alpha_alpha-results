@@ -59,7 +59,7 @@
             return sports;
         }
 
-        public string GetResults(ViewNormalResultCommand request)
+        public string GetResults(ViewNormalResultQuery request)
         {
             Check.Argument.IsNotNull(request, "request");
 
@@ -68,7 +68,7 @@
             return resultService.GetResult(request);
         }
 
-        public byte[] GetExcelResults(ViewNormalResultCommand request, string templatePath)
+        public byte[] GetExcelResults(ViewNormalResultQuery request, string templatePath)
         {
             Check.Argument.IsNotNull(request, "request");
             Check.Argument.IsNotNegativeOrZero(request.SportId, "request.SportId");
@@ -81,7 +81,7 @@
             return memoryResult.ToArray();
         }
 
-        public string GetResultDetails(ViewNormalResultDetailsCommand detailRequest)
+        public string GetResultDetails(ViewNormalResultDetailsQuery detailRequest)
         {
             Check.Argument.IsNotNull(detailRequest, "detailRequest");
 

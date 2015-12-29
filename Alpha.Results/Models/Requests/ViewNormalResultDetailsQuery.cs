@@ -1,6 +1,9 @@
 ﻿namespace Alpha.Results.Commands
 {
-    public class ViewNormalResultDetailsCommand : ViewNormalResultCommand
+    using Alpha.Results.ViewModels;
+    using MediatR;
+
+    public class ViewNormalResultDetailsQuery : ViewNormalResultQuery, IRequest<NormalDetailViewModel>
     {
         public int MatchId { get; set; }
 

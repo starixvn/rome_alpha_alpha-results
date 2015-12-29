@@ -11,10 +11,10 @@
 
         IEnumerable<League> GetLeagues(DateTime resultDate, int sportId, string language, bool disableHorseRacingWin);
 
-        string GetResults(ViewNormalResultCommand request);
+        string GetResults(ViewNormalResultQuery request);
 
-        string GetResultDetails(ViewNormalResultDetailsCommand detailRequest);
+        string GetResultDetails(ViewNormalResultDetailsQuery detailRequest);
 
-        byte[] GetExcelResults(ViewNormalResultCommand request, string templatePath);
+        byte[] GetExcelResults(ViewNormalResultQuery request, string templatePath);
     }
 }

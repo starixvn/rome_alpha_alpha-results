@@ -1,11 +1,16 @@
 ﻿namespace Alpha.Results.App_Start
 {
+    using System;
+    using System.Collections.Generic;
     using System.Reflection;
+    using System.Web.Compilation;
     using System.Web.Mvc;
+    using Commands;
     using DataAccesses;
     using DataAccesses.Impl;
     using Fanex.Caching;
     using Fanex.Data.Repository;
+    using MediatR;
     using Services;
     using Services.Impl;
     using SimpleInjector;
@@ -16,9 +21,10 @@
     {
         public static void Init()
         {
-            // Create the container as usual.
             var container = new Container();
             container.Options.DefaultScopedLifestyle = new WebRequestLifestyle();
+
+            RegisterMediator(container);
 
             RegisterCrossCuttingConcerns(container);
 
@@ -35,6 +41,25 @@
             container.Verify();
 
             DependencyResolver.SetResolver(new SimpleInjectorDependencyResolver(container));
+        }
+
+
+        private static void RegisterMediator(Container container)
+        {
+            var assemblies = GetAssemblies();
+            container.RegisterSingleton<IMediator, Mediator>();
+            container.Register(typeof(IRequestHandler<,>), assemblies);
+            container.Register(typeof(IAsyncRequestHandler<,>), assemblies);
+            container.RegisterCollection(typeof(INotificationHandler<>), assemblies);
+            container.RegisterCollection(typeof(IAsyncNotificationHandler<>), assemblies);
+            container.RegisterSingleton(Console.Out);
+            container.RegisterSingleton(new SingleInstanceFactory(container.GetInstance));
+            container.RegisterSingleton(new MultiInstanceFactory(container.GetAllInstances));
+        }
+
+        private static IEnumerable<Assembly> GetAssemblies()
+        {
+            yield return typeof(ViewNormalResultQuery).Assembly;
         }
 
         private static void RegisterCrossCuttingConcerns(Container container)
