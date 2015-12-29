@@ -61,6 +61,15 @@ namespace Alpha.Results.LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Date.
+        /// </summary>
+        public static string date {
+            get {
+                return ResourceManager.GetString("date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Export to Excel.
         /// </summary>
         public static string exporttoexcel {
@@ -151,7 +160,7 @@ namespace Alpha.Results.LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to *...* Show All League *...*.
+        ///   Looks up a localized string similar to *...* Show All Leagues *...*.
         /// </summary>
         public static string ShowAllLeagues {
             get {

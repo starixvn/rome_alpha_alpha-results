@@ -163,4 +163,7 @@
   <data name="ShowAllLeaguesExcelTitle" xml:space="preserve">
     <value>Show All Leagues</value>
   </data>
+  <data name="date" xml:space="preserve">
+    <value>日付</value>
+  </data>
 </root>

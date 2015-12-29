@@ -26,7 +26,7 @@
 
         public string ToExcelTitle()
         {
-            var leagueName = LeagueId == 0 ? ResultLang.ShowAllLeagues : CacheRefFactory.CacheRef.GetLeagueName(LeagueId);
+            var leagueName = LeagueId == 0 ? ResultLang.ShowAllLeaguesExcelTitle : CacheRefFactory.CacheRef.GetLeagueName(LeagueId);
             var resultDate = ResultDate.ToShortDateFormatWithSlash();
 
             return $"{ResultLang.result} - {resultDate} | {CacheRefFactory.CacheRef.GetSportName(SportId)} {leagueName}";

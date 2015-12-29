@@ -51,6 +51,9 @@ var normalResult =
             ignoreReadonly: true,
         });
 
+        normalResult.domElements.ddlSports.select2();
+        normalResult.domElements.ddlLeagues.select2();
+
         normalResult.domElements.btnOtherDay
             .off('click.normalResult')
             .on('click.normalResult', function () {

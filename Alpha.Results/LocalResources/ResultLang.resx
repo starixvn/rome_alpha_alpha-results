@@ -160,12 +160,15 @@
     <value>League</value>
   </data>
   <data name="ShowAllLeagues" xml:space="preserve">
-    <value>*...* Show All League *...*</value>
+    <value>*...* Show All Leagues *...*</value>
   </data>
   <data name="ThereIsNoData" xml:space="preserve">
     <value>There is no data</value>
   </data>
   <data name="ShowAllLeaguesExcelTitle" xml:space="preserve">
     <value>Show All Leagues</value>
+  </data>
+  <data name="date" xml:space="preserve">
+    <value>Date</value>
   </data>
 </root>

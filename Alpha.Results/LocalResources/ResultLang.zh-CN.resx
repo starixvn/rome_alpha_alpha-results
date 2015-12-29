@@ -162,4 +162,7 @@
   <data name="ShowAllLeaguesExcelTitle" xml:space="preserve">
     <value>Show All Leagues</value>
   </data>
+  <data name="date" xml:space="preserve">
+    <value>日期</value>
+  </data>
 </root>
