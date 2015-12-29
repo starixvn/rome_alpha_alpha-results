@@ -3,6 +3,7 @@
     using System;
     using LocalResources;
     using Sunplus.Agent.Model.RemotingRef;
+    using Alpha.Utilities.Extensions;
 
     public class NormalRequest
     {
@@ -21,10 +22,12 @@
 
         public string Language { get; set; }
 
+        public bool IsShowTestResults { get; set; }
+
         public string ToExcelTitle()
         {
             var leagueName = LeagueId == 0 ? ResultLang.ShowAllLeagues : CacheRefFactory.CacheRef.GetLeagueName(LeagueId);
-            var resultDate = ResultDate.ToString("MM/dd/yyyy");
+            var resultDate = ResultDate.ToShortDateFormatWithSlash();
 
             return $"{ResultLang.result} - {resultDate} | {CacheRefFactory.CacheRef.GetSportName(SportId)} {leagueName}";
         }

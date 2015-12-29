@@ -69,7 +69,6 @@ namespace Alpha.Results.Services.Impl.Products
             {
                 FromDate = request.ResultDate,
                 SportType = request.SportId,
-                IsShowAll = true,
                 LeagueID = request.LeagueId
             };
         }

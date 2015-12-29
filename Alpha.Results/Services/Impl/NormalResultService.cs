@@ -50,8 +50,7 @@
         {
             var sports = _dynamicRepository.Fetch<Sport>(new GetResultSportsByDateCriteria
             {
-                EventDate = resultDate.ToShortDateString(),
-                IsShowAll = true
+                EventDate = resultDate.ToShortDateString()
             }).ToList();
 
             if (sports.Any())

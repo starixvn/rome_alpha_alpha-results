@@ -2,6 +2,7 @@ namespace Alpha.Results.Criteria
 {
     using System;
     using Fanex.Data.Repository;
+    using Sunplus.Agent.Model.BL.Definitions;
 
     /// <summary>
     /// The criteria GetRacingResultCriteria.
@@ -14,7 +15,13 @@ namespace Alpha.Results.Criteria
 
         public int SportType { get; set; }
 
-        public bool IsShowAll { get; set; }
+        public bool IsShowAll
+        {
+            get
+            {
+                return AppSettings.LocalTest;
+            }
+        }
 
         public override string GetSettingKey()
         {

@@ -2,6 +2,7 @@
 {
     using System;
     using Fanex.Data.Repository;
+    using Sunplus.Agent.Model.BL.Definitions;
 
     /// <summary>
     /// The criteria GetSportsBookResultCriteria.
@@ -14,7 +15,13 @@
 
         public int SportType { get; set; }
 
-        public bool IsShowAll { get; set; }
+        public bool IsShowAll
+        {
+            get
+            {
+                return AppSettings.LocalTest;
+            }
+        }
 
         public override string GetSettingKey()
         {

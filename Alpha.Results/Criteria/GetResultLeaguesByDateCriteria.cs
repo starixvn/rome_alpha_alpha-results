@@ -1,6 +1,7 @@
 ﻿namespace Alpha.Results.Criteria
 {
     using Fanex.Data.Repository;
+    using Sunplus.Agent.Model.BL.Definitions;
 
     public class GetResultLeaguesByDateCriteria : CriteriaBase
     {
@@ -8,7 +9,13 @@
 
         public int SportType { get; set; }
 
-        public string IsShowAll { get; set; }
+        public bool IsShowAll
+        {
+            get
+            {
+                return AppSettings.LocalTest;
+            }
+        }
 
         public string Language { get; set; }
 
