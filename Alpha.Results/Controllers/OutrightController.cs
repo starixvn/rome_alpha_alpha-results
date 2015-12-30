@@ -29,7 +29,7 @@
         [HttpGet]
         public ActionResult ExcelResults(DownloadOutrightResultExcelQuery request)
         {
-            request.TemplatePath = Server.MapPath(@"~/App_Data/Fanex.Result/");
+            request.TemplatePath = Server.MapPath(ConfigurationSettings.ExcelResultTemplatePath);
             request.Language = UserSession.Current.Language;
 
             var viewModel = _mediator.Send<OutrightResultExcelViewModel>(request);

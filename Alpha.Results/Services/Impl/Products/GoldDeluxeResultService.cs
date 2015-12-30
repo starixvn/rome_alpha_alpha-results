@@ -31,7 +31,11 @@
 
         public string GetResultDetails(ViewNormalResultDetailsQuery detailsRequest)
         {
-            var criteria = new GetGoldDeluxeResultCriteria { TransId = detailsRequest.RefNum, BetType = detailsRequest.BetTypeId };
+            var criteria = new GetGoldDeluxeResultCriteria
+            {
+                TransId = detailsRequest.RefNum,
+                BetType = detailsRequest.BetTypeId
+            };
 
             var goldDeluxeResults = _dynamicRepository
                 .Fetch<GoldDeluxe>(criteria)
@@ -44,7 +48,7 @@
             var resultSetting = new ResultSetting
             {
                 SportType = SportType.GoldDeluxe,
-				IsOutright = false,
+                IsOutright = false,
                 IsParlayPopUp = false,
                 IsPopUp = true,
                 LanguageCode = detailsRequest.Language,

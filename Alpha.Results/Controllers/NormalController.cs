@@ -53,7 +53,7 @@
         public ActionResult ExcelResults(DownloadNormalResultExcelQuery request)
         {
             request.Language = UserSession.Current.Language;
-            request.TemplatePath = Server.MapPath(@"~/App_Data/Fanex.Result/");
+            request.TemplatePath = Server.MapPath(ConfigurationSettings.ExcelResultTemplatePath);
 
             var viewModel = _mediator.Send<NormalResultExcelViewModel>(request);
 

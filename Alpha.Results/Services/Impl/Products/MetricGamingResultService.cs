@@ -13,9 +13,9 @@ namespace Alpha.Results.Site.Services.Impl.Products
     {
         private readonly IMetricGamingResultDataAccess _dataAccess;
 
-        public MetricGamingResultService(IMetricGamingResultDataAccess dynamicRepository)
+        public MetricGamingResultService(IMetricGamingResultDataAccess dataAccess)
         {
-            _dataAccess = dynamicRepository ?? new MetricGamingResultDataAccess();
+            _dataAccess = dataAccess ?? new MetricGamingResultDataAccess();
         }
 
         public MetricGamingResultService()
@@ -48,7 +48,7 @@ namespace Alpha.Results.Site.Services.Impl.Products
             var resultSetting = new ResultSetting
             {
                 SportType = SportType.Soccer,
-				IsOutright = false,
+                IsOutright = false,
                 IsParlayPopUp = false,
                 IsPopUp = true,
                 LanguageCode = "en-US",

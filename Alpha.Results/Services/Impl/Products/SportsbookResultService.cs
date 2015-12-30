@@ -32,9 +32,13 @@ namespace Alpha.Results.Site.Services.Impl.Products
         {
             var criteria = GetCriteria(request);
 
-            var results = request.SportId == 0 ? new List<Sportsbook>() : _dataAccess.GetSportbookResults(criteria).ToList();
+            var results = request.SportId == 0
+                ? new List<Sportsbook>()
+                : _dataAccess.GetSportbookResults(criteria).ToList();
 
-            var sportType = request.SportId > 0 ? (SportType)request.SportId : SportType.Others;
+            var sportType = request.SportId > 0
+                ? (SportType)request.SportId
+                : SportType.Others;
 
             var resultSetting = new ResultSetting
             {

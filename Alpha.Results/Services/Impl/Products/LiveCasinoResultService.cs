@@ -39,7 +39,7 @@ namespace Alpha.Results.Site.Services.Impl.Products
             var resultSetting = new ResultSetting
             {
                 SportType = SportType.LiveCasino,
-				IsOutright = false,
+                IsOutright = false,
                 IsParlayPopUp = false,
                 IsPopUp = true,
                 VisiblePopUpTitle = false,
@@ -50,7 +50,7 @@ namespace Alpha.Results.Site.Services.Impl.Products
                 HighlightWinnerTeam = true
             };
 
-            var liveCasinoResults = this._dynamicRepository
+            var liveCasinoResults = _dynamicRepository
                                         .Fetch<LiveCasino>(criteria)
                                         .Select(result =>
                                         {

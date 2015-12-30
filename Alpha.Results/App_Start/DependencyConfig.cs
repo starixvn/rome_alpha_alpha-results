@@ -63,7 +63,7 @@
 
         private static void RegisterCrossCuttingConcerns(Container container)
         {
-            container.Register<ICache>(() => CacheService.CreateInstance(CacheType.MemoryCache), Lifestyle.Singleton);
+            container.Register(() => CacheService.CreateInstance(CacheType.MemoryCache), Lifestyle.Singleton);
         }
 
         private static void RegisterServices(Container container)
