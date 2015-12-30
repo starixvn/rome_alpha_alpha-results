@@ -1,6 +1,6 @@
 ﻿@model TabViewModel
 
-<li role="presentation" class="@((Model.SelectedTabName == "normal") ? "active" : string.Empty)"><a href="~/normal/" id="tabNormal">Normal</a></li>
+<li role="presentation" class="@((Model.SelectedTabName == "normal") ? "active" : string.Empty)"><a href="~/normal/" id="tabNormal">@Resources.Normal</a></li>
 <li role="presentation" class="@((Model.SelectedTabName == "outright") ? "active" : string.Empty)"><a href="~/outright/index" id="tabOutright">@Resources.OutRight</a></li>
 @if (Model.IsEnabledKenoTab)
 {

@@ -1,4 +1,4 @@
-﻿namespace Alpha.Results.Site.
+﻿namespace Alpha.Results.Site
 {
     using System.Reflection;
     using System.Web;

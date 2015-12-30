@@ -58,7 +58,7 @@ namespace Alpha.Results.Site.Services.Impl
             var resultSetting = new ResultSetting
             {
                 LanguageCode = request.Language,
-				IsOutright = true,
+                IsOutright = true,
                 IsPopUp = false,
                 VisibleMatchCodeIDColumn = false,
                 HighlightWinnerTeam = true
@@ -81,7 +81,7 @@ namespace Alpha.Results.Site.Services.Impl
             var resultSetting = new ResultSetting
             {
                 LanguageCode = request.Language,
-				IsOutright = true,
+                IsOutright = true,
                 IsPopUp = false,
                 HighlightWinnerTeam = true,
                 ExcelTitle = excelTitle,
