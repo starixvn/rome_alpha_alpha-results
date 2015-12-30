@@ -11,8 +11,9 @@
     <meta name="viewport" content="width=device-width" />
     <title>@Html.Raw(ViewBag.Title)</title>
     <link href="/contents/css/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/Content/Fanex.Result/fanex.result.css" rel="stylesheet" />
-    <link href="~/Content/result.css" rel="stylesheet" />
+
+    @Styles.Render(BundleConfig.ResultCoreStyleBundleUrl)
+
 </head>
 <body>
     <div class="container-fluid">

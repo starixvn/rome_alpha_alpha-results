@@ -4,10 +4,13 @@
     <meta name="viewport" content="width=device-width" />
     <title>@Html.Raw(ViewBag.Title)</title>
     <link href="/contents/css/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="/contents/components/datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
-    <link href="~/Content/Fanex.Result/fanex.result.css" rel="stylesheet" />
-    <link href="~/Content/result.css" rel="stylesheet" />
-    @RenderSection("styles", false)
+    
+    @RenderSection("ComponentStyles", false)
+
+    @Styles.Render(BundleConfig.ResultCoreStyleBundleUrl)
+
+    @RenderSection("Styles", false)
+
 </head>
 <body>
     <div id="page_main">
@@ -30,9 +33,8 @@
     <script type="text/javascript" src="/contents/libs/jquery/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="/contents/libs/moment/moment.js"></script>
     <script type="text/javascript" src="/contents/css/bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/contents/components/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
 
-    @RenderSection("scripts", false)
+    @RenderSection("Scripts", false)
 </body>
 </html>
 

@@ -2,6 +2,11 @@
     ViewBag.Title = "Outright";
 }
 
+@section ComponentStyles
+{
+    <link href="/contents/components/datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+}
+
 @model OutrightViewModel
 
 @section styles
@@ -14,7 +19,7 @@
         @using (Html.BeginForm("Index", "Outright", FormMethod.Get, new { id = "frm-outright" }))
         {
             <div class="col-sm-12">
-                <span class="txt">@Resources.from</span>
+                <span class="txt">@Resources.From</span>
                 <div class="control date">
                     <div class="input-group date" id="dpk-fromdate">
                         @Html.EditorFor(model => model.FromDate, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
@@ -23,7 +28,7 @@
                         </span>
                     </div>
                 </div>
-                <span class="txt">@Resources.to</span>
+                <span class="txt">@Resources.To</span>
                 <div class="control date">
                     <div class="input-group date" id="dpk-todate">
                         @Html.EditorFor(model => model.ToDate, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
@@ -34,7 +39,7 @@
                 </div>
                 <input type="submit" value="@Model.Today" class="btn btn-default btn-other-day" id="btn-today" />
                 <input type="submit" value="@Model.Yesterday" class="btn btn-default btn-other-day" id="btn-yesterday" />
-                <input type="submit" value="@Resources.submit" class="btn btn-submit" id="btn-submit" />
+                <input type="submit" value="@Resources.Submit" class="btn btn-submit" id="btn-submit" />
             </div>
             <div class="col-sm-12">
                 <span class="txt-red">*</span> @Model.MinResultDateMessage
@@ -42,12 +47,12 @@
             if (Model.Sports != null && Model.Sports.Count() > 0)
             {
                 <div class="col-sm-12 sport-info">
-                    <span class="txt">@Resources.sport</span>
+                    <span class="txt">@Resources.Sport</span>
                     <div class="dropdown control">
                         @Html.DropDownListFor(model => model.SportType, Model.Sports, new { @class = "form-control", @onchange = "this.form.submit()" })
                     </div>
 
-                    <span class="txt">@Resources.league</span>
+                    <span class="txt">@Resources.League</span>
                     <div class="dropdown control league-content">
                         @Html.DropDownListFor(model => model.LeagueId, Model.Leagues, Resources.ShowAllLeagues, new { @class = "form-control", @onchange = "this.form.submit()" })
                     </div>
@@ -67,6 +72,8 @@
 
 @section scripts
 {
+    <script type="text/javascript" src="/contents/components/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
     <script type="text/javascript" src="/contents/components/select2/js/select2.min.js"></script>
+
     @Scripts.Render(BundleConfig.OutrightResultJavascriptBundleUrl)
 }

@@ -5,8 +5,9 @@
 @model NormalViewModel
 
 
-@section styles
+@section ComponentStyles
 {
+    <link href="/contents/components/datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
     <link href="/contents/components/select2/css/select2.min.css" rel="stylesheet" />
 }
 
@@ -15,7 +16,7 @@
         @using (Html.BeginForm("Index", "Normal", FormMethod.Get, new { @id = "result-filter" }))
         {
             <div class="col-sm-12">
-                <span class="txt">@Resources.date</span>
+                <span class="txt">@Resources.Date</span>
                 <div class="control date">
                     <div class="input-group date" id="dpkContainer">
                         @Html.EditorFor(model => model.ResultDate, new { htmlAttributes = new { @class = "form-control" } })
@@ -27,7 +28,7 @@
 
                 <input type="submit" value="@Model.Today" id="today-results" class="btn btn-default btn-other-day" />
                 <input type="submit" value="@Model.Yesterday" id="yesterday-results" class="btn btn-default btn-other-day" />
-                <input type="submit" value="@Resources.submit" id="selected-day-results" class="btn btn-submit" />
+                <input type="submit" value="@Resources.Submit" id="selected-day-results" class="btn btn-submit" />
             </div>
 
             <div class="col-sm-12">
@@ -37,12 +38,12 @@
             if (Model.Sports.Any())
             {
                 <div class="col-sm-12 sport-info">
-                    <span class="txt">@Resources.sport</span>
+                    <span class="txt">@Resources.Sport</span>
                     <div class="dropdown control">
                         @Html.DropDownListFor(model => model.SportId, Model.Sports, new { @class = "form-control" })
                     </div>
 
-                    <span class="txt">@Resources.league</span>
+                    <span class="txt">@Resources.League</span>
                     <div class="dropdown control league-content">
                         @Html.DropDownListFor(model => model.LeagueId, Model.Leagues, Resources.ShowAllLeagues, new { @class = "form-control", @onchange = "this.form.submit()" })
                     </div>
@@ -63,7 +64,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">@Resources.result</h4>
+                <h4 class="modal-title" id="myModalLabel">@Resources.Results</h4>
         </div>
 
         <div class="modal-body" id="detail-result-body">
@@ -73,8 +74,9 @@
     </div>
 </div>
 
-@section scripts
+@section Scripts
 {
+    <script type="text/javascript" src="/contents/components/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
     <script type="text/javascript" src="/contents/components/select2/js/select2.min.js"></script>
     @Scripts.Render(BundleConfig.NormalResultJavascriptBundleUrl)
 }

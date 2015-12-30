@@ -1,7 +1,7 @@
-﻿@model Alpha.Results.Models.Views.TabViewModel
+﻿@model TabViewModel
 
 <li role="presentation" class="@((Model.SelectedTabName == "normal") ? "active" : string.Empty)"><a href="~/normal/" id="tabNormal">Normal</a></li>
-<li role="presentation" class="@((Model.SelectedTabName == "outright") ? "active" : string.Empty)"><a href="~/outright/index" id="tabOutright">@Resources.lblOutRight</a></li>
+<li role="presentation" class="@((Model.SelectedTabName == "outright") ? "active" : string.Empty)"><a href="~/outright/index" id="tabOutright">@Resources.OutRight</a></li>
 @if (Model.IsEnabledKenoTab)
 {
     <li role="presentation" class="@((Model.SelectedTabName == "keno") ? "active" : string.Empty)" ><a href="~/keno/index" id="tabKeno">@Resources.Keno</a></li>
