@@ -48,27 +48,47 @@ namespace Alpha.Results.Services.Impl
             return _dynamicRepository.Fetch<OutRight>(criteria);
         }
 
-        public string GetResults(IEnumerable<OutRight> outrights, ViewOutrightResultCommand request)
+        public string GetResults(IEnumerable<OutRight> outrights, ViewOutrightResultQuery request)
         {
             Check.Argument.IsNotNull(outrights, "outrights");
             Check.Argument.IsNotNull(request, "request");
 
             outrights = FilterOutright(outrights, request.SportType, request.LeagueId);
 
-            return ResultEngine.HtmlParser(outrights.ToList(), OutRightResultSetting(request.Language));
+            var resultSetting = new ResultSetting
+            {
+                LanguageCode = request.Language,
+                IsOutRight = true,
+                IsPopUp = false,
+                VisibleMatchCodeIDColumn = false,
+                HighlightWinnerTeam = true
+            };
+
+            return ResultEngine.HtmlParser(outrights.ToList(), resultSetting);
         }
 
-        public MemoryStream GetExcelResults(IEnumerable<OutRight> outrights, ViewOutrightResultCommand request, string templatePath)
+        public MemoryStream GetExcelResults(DownloadOutrightResultExcelQuery request)
         {
-            Check.Argument.IsNotNull(outrights, "outrights");
             Check.Argument.IsNotNull(request, "request");
-            Check.Argument.IsNotNull(templatePath, "templatePath");
-            Check.Argument.IsNotEmpty(templatePath, "templatePath");
+            Check.Argument.IsNotEmpty(request.TemplatePath, "templatePath");
 
             string excelTitle = GetExcelTitle(request.FromDate, request.ToDate, request.SportType, request.LeagueId);
+
+            var outrights = GetOutrights(request.FromDate, request.ToDate);
+
             outrights = FilterOutright(outrights, request.SportType, request.LeagueId);
 
-            return ResultEngine.ExcelParser(outrights.ToList(), OutRightExcelSetting(request.Language, templatePath, excelTitle));
+            var resultSetting = new ResultSetting
+            {
+                LanguageCode = request.Language,
+                IsOutRight = true,
+                IsPopUp = false,
+                HighlightWinnerTeam = true,
+                ExcelTitle = excelTitle,
+                ExcelTemplatePath = request.TemplatePath
+            };
+
+            return ResultEngine.ExcelParser(outrights.ToList(), resultSetting);
         }
 
         private GetOutRightResultCriteria GetOutrightCriteria(DateTime fromDate, DateTime toDate)
@@ -94,31 +114,6 @@ namespace Alpha.Results.Services.Impl
             }
 
             return outrights;
-        }
-
-        private ResultSetting OutRightResultSetting(string language)
-        {
-            return new ResultSetting
-            {
-                LanguageCode = language,
-                IsOutRight = true,
-                IsPopUp = false,
-                VisibleMatchCodeIDColumn = false,
-                HighlightWinnerTeam = true
-            };
-        }
-
-        private ResultSetting OutRightExcelSetting(string language, string templatePath, string title)
-        {
-            return new ResultSetting
-            {
-                LanguageCode = language,
-                IsOutRight = true,
-                IsPopUp = false,
-                HighlightWinnerTeam = true,
-                ExcelTitle = title,
-                ExcelTemplatePath = templatePath
-            };
         }
 
         private string GetExcelTitle(DateTime fromDate, DateTime toDate, int sportType, int leagueId)

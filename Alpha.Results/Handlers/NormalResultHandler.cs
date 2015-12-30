@@ -9,7 +9,6 @@
     using Models.Views;
     using Services;
     using Sunplus.Agent.Model.BL.Definitions;
-    using Sunplus.Agent.Model.Entities;
     using Sunplus.Agent.Model.Entities.Permission;
     using Sunplus.Agent.Model.RemotingRef;
 
@@ -42,7 +41,7 @@
             if (viewModel.Sports.Any())
             {
                 viewModel.SportId = message.SportId > 0 ? message.SportId : int.Parse(sports.First().Value);
-                viewModel.Leagues = GetLeaguesResult(message.ResultDate, viewModel.SportId);
+                viewModel.Leagues = GetLeaguesResult(message.ResultDate, viewModel.SportId, message.Language);
                 viewModel.LeagueId = message.LeagueId;
             }
 
@@ -75,12 +74,12 @@
             });
         }
 
-        public IEnumerable<SelectListItem> GetLeaguesResult(DateTime resultDate, int sportTypeId)
+        public IEnumerable<SelectListItem> GetLeaguesResult(DateTime resultDate, int sportTypeId, string language)
         {
             var leagues = _normalResultService.GetLeagues(
                                 resultDate,
                                 sportTypeId,
-                                UserSession.Current.Language,
+                                language,
                                 AppSettings.Disable151_31);
 
             return leagues.Select(league => new SelectListItem

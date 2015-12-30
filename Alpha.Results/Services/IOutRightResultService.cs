@@ -13,8 +13,8 @@ namespace Alpha.Results.Services
 
         IEnumerable<OutRight> GetOutrights(DateTime fromDate, DateTime toDate);
 
-        string GetResults(IEnumerable<OutRight> outrights, ViewOutrightResultCommand request);
+        string GetResults(IEnumerable<OutRight> outrights, ViewOutrightResultQuery request);
 
-        MemoryStream GetExcelResults(IEnumerable<OutRight> outrights, ViewOutrightResultCommand request, string templatePath);
+        MemoryStream GetExcelResults(DownloadOutrightResultExcelQuery request);
     }
 }

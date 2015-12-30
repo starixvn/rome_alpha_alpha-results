@@ -6,93 +6,42 @@
     using System.Web.Mvc;
     using App_GlobalResources;
     using Fanex.Result.Core.Sportsbook.DTO;
+    using MediatR;
     using Models.Requests;
     using Models.Views;
     using Services;
     using Services.Impl;
     using Sunplus.Agent.Model.BL.Cache;
-
+    using Sunplus.Agent.Model.Entities;
     public class OutrightController : BaseController
     {
-        private readonly IOutrightResultService _outrightService;
+        private readonly IMediator _mediator;
 
-        public OutrightController(IOutrightResultService outrightService)
+        public OutrightController(IMediator mediator)
         {
-            _outrightService = outrightService ?? new OutrightResultService(null);
+            _mediator = mediator;
         }
 
         [HttpGet]
-        public ActionResult Index(ViewOutrightResultCommand request = null)
+        public ActionResult Index(ViewOutrightResultQuery request = null)
         {
-            DateTime currentDate = DateTime.Today;
-            DateTime balanceUpDate = _outrightService.GetBalanceUpDate().BalanceUpDay;
+            request = request ?? new ViewOutrightResultQuery();
+            request.Language = UserSession.Current.Language;
 
-            request = request ?? new ViewOutrightResultCommand();
-            OutrightViewModel viewModel = new OutrightViewModel
-            {
-                MinResultDate = balanceUpDate,
-                MaxResultDate = currentDate,
-                Today = currentDate.ToShortDateString(),
-                Yesterday = currentDate.AddDays(-1).ToShortDateString(),
-                MinResultDateMessage = string.Format(ResultLang.ViewDataFromDate, balanceUpDate.ToShortDateString()),
-                FromDate = request.FromDate,
-                ToDate = request.ToDate
-            };
-
-            var outrights = _outrightService.GetOutrights(request.FromDate, request.ToDate);
-
-            if (outrights.Count() > 0)
-            {
-                viewModel.SportType = request.SportType > 0 ? request.SportType : outrights.First().SportType;
-                viewModel.LeagueId = request.LeagueId;
-                viewModel = GetSportsAndLeagues(viewModel, outrights, viewModel.SportType, viewModel.LeagueId);
-            }
-
-            viewModel.HtmlResults = _outrightService.GetResults(outrights, request);
+            var viewModel = _mediator.Send<OutrightViewModel>(request);
 
             return View(viewModel);
         }
 
         [HttpGet]
-        public ActionResult ExcelResults(ViewOutrightResultCommand request)
+        public ActionResult ExcelResults(DownloadOutrightResultExcelQuery request)
         {
-            const string excelTemplatePath = @"~/App_Data/Fanex.Result/";
+            request.TemplatePath = Server.MapPath(@"~/App_Data/Fanex.Result/");
+            request.Language = UserSession.Current.Language;
 
-            var outrights = _outrightService.GetOutrights(request.FromDate, request.ToDate);
-            var excelResult = _outrightService.GetExcelResults(outrights, request, Server.MapPath(excelTemplatePath));
+            var viewModel = _mediator.Send<OutrightResultExcelViewModel>(request);
 
-            return File(excelResult.ToArray(), "application/vnd.ms-excel", "Result.xls");
-        }
-
-        [NonAction]
-        private OutrightViewModel GetSportsAndLeagues(OutrightViewModel viewModel, IEnumerable<OutRight> outrights, int selectedSportType, int selectedLeagueId)
-        {
-            IList<SelectListItem> sportTypes = new List<SelectListItem>();
-            IList<SelectListItem> leagues = new List<SelectListItem>();
-            var outrightsGroup = outrights.GroupBy(o => new { SportType = o.SportType, LeagueId = o.LeagueId });
-
-            foreach (var group in outrightsGroup)
-            {
-                var key = group.Key;
-                sportTypes.Add(new SelectListItem
-                {
-                    Value = key.SportType.ToString(),
-                    Text = CacheRef.GetSportName(key.SportType),
-                    Selected = key.SportType == selectedSportType
-                });
-
-                leagues.Add(new SelectListItem
-                {
-                    Value = key.LeagueId.ToString(),
-                    Text = CacheRef.GetLeagueName(key.LeagueId),
-                    Selected = key.LeagueId == selectedLeagueId
-                });
-            }
-
-            viewModel.Sports = sportTypes;
-            viewModel.Leagues = leagues;
-
-            return viewModel;
+            return File(viewModel.ExcelResults, "application/vnd.ms-excel", viewModel.ExcelName);
         }
     }
 }

@@ -6,6 +6,7 @@
     using MediatR;
     using Sunplus.Agent.Model.RemotingRef;
     using Views;
+
     public class ViewNormalResultQuery : IRequest<NormalViewModel>
     {
         public ViewNormalResultQuery()

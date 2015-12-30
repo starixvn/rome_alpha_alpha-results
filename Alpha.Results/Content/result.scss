@@ -1,7 +1,7 @@
 ﻿//@import "Super/variables";
 
 $goal-icon: "images/goal-icon.png";
-$primary-color: #5c1218; 
+$primary-color: #5c1218;
 
 body {
     font-size: 12px;
@@ -83,7 +83,6 @@ body {
         margin-top: 14px;
         cursor: pointer;
     }
-
 }
 
 .main-content {
@@ -94,7 +93,6 @@ body {
         max-height: initial;
         overflow: hidden;
     }
-
 }
 /********************** Table ***************************/
 table.fn-rs {
@@ -155,7 +153,6 @@ table.fn-rs tbody .cl-match div {
     }
 }
 
-
 /************************************** Tabs ************************************/
 .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
     border: none;
@@ -181,14 +178,12 @@ table.fn-rs tbody .cl-match div {
 .nav.nav-tabs > li.active:after {
     width: 100%;
     background: $primary-color;
-
 }
 .nav-tabs>li>a {
     color: $primary-color;
     font-weight: bold;
     outline: none;
 }
-
 
 /************************** Textbox **********************************/
 .input-group.date{
@@ -201,7 +196,6 @@ table.fn-rs tbody .cl-match div {
     .input-group-addon {
         background: #fff;
         border: none;
-    
     }
     .form-control {
         box-shadow: 0 2px 0px 0 rgba(0, 0, 0, 0.1), 0 2px 0px 0 rgba(0, 0, 0, 0.02);
@@ -211,7 +205,6 @@ table.fn-rs tbody .cl-match div {
 .form-control[readonly], fieldset[disabled] .form-control {
     background: inherit;
 }
-
 
 .width-150 {
     width: 150px;
@@ -224,7 +217,6 @@ table.fn-rs tbody .cl-match div {
 {
     margin-top: 15px;
 }
-
 
 .lnk {
     color: #045ace;

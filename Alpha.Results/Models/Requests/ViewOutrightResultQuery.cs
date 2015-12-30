@@ -1,11 +1,12 @@
 ﻿namespace Alpha.Results.Models.Requests
 {
     using System;
-    using Sunplus.Agent.Model.Entities;
+    using MediatR;
+    using Views;
 
-    public class ViewOutrightResultCommand
+    public class ViewOutrightResultQuery : IRequest<OutrightViewModel>
     {
-        public ViewOutrightResultCommand()
+        public ViewOutrightResultQuery()
         {
             DateTime currentDate = DateTime.Today;
             FromDate = currentDate;
@@ -20,12 +21,6 @@
 
         public int LeagueId { get; set; }
 
-        public string Language
-        {
-            get
-            {
-                return UserSession.Current.Language;
-            }
-        }
+        public string Language { get; set; }
     }
 }

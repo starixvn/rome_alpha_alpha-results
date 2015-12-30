@@ -97,11 +97,11 @@ table.fn-rs tr.data td, table.fn-rs tr.row-noinfo td
     border-color: #b7b7b7;
 }
 
-table.fn-rs tr.data td.cl-ht-score, 
-table.fn-rs tr.data td.cl-f-score, 
-table.fn-rs tr.data td.cl-status, 
-table.fn-rs tr.data td.cl-totalgames, 
-table.fn-rs tr.data td.cl-totalset, 
+table.fn-rs tr.data td.cl-ht-score,
+table.fn-rs tr.data td.cl-f-score,
+table.fn-rs tr.data td.cl-status,
+table.fn-rs tr.data td.cl-totalgames,
+table.fn-rs tr.data td.cl-totalset,
 table.fn-rs tr.data td.cl-s,
 table.fn-rs tr.data td.cl-ei,
 table.fn-rs tr.row-noinfo td
@@ -141,7 +141,7 @@ table.fn-rs .cl-ht-score, table.fn-rs .cl-f-score {
     width: 690px;
 }
 
-.fn-rs-popup.parlay .sporttype .bl-sport-type 
+.fn-rs-popup.parlay .sporttype .bl-sport-type
 {
     color: #0066cc;
 }
@@ -209,7 +209,7 @@ div.fn-rs-content-scroll
     max-height: inherit;
 }
 
-div.fn-rs-content-scroll .fn-rs 
+div.fn-rs-content-scroll .fn-rs
 {
     width: 100%;
 }
@@ -242,10 +242,9 @@ table.casino .cl-match .player {
     list-style-type: none;
 }
 
-
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) 
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px)
 {
-    table.fn-rs tr.header th, table.fn-rs tr.data td, table.fn-rs tr.row-noinfo td 
+    table.fn-rs tr.header th, table.fn-rs tr.data td, table.fn-rs tr.row-noinfo td
     {
         font-size: 12px !important;
         height: 20px;

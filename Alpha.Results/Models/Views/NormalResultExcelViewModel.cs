@@ -8,7 +8,7 @@
         {
             get
             {
-                return "Result.xls";
+                return "Results.xls";
             }
         }
     }

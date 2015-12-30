@@ -21,7 +21,7 @@
             request = request ?? new ViewNormalResultQuery();
             request.Language = UserSession.Current.Language;
 
-            var viewModel = _mediator.Send<NormalViewModel>(request);
+            var viewModel = _mediator.Send(request);
 
             return View(viewModel);
         }
