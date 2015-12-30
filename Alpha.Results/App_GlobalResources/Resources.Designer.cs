@@ -124,6 +124,15 @@ namespace Alpha.Results.Site.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Click here to open Keno results.
+        /// </summary>
+        public static string OpenKenoResults {
+            get {
+                return ResourceManager.GetString("OpenKenoResults", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Outright.
         /// </summary>
         public static string OutRight {

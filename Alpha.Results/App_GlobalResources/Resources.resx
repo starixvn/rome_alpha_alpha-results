@@ -171,4 +171,7 @@
   <data name="Date" xml:space="preserve">
     <value>Date</value>
   </data>
+  <data name="OpenKenoResults" xml:space="preserve">
+    <value>Click here to open Keno results</value>
+  </data>
 </root>

@@ -171,4 +171,7 @@
   <data name="ThereIsNoData" xml:space="preserve">
     <value>没有数据</value>
   </data>
+  <data name="OpenKenoResults" xml:space="preserve">
+    <value>Click here to open Keno results</value>
+  </data>
 </root>

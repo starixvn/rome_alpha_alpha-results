@@ -1,22 +1,23 @@
 ﻿namespace Alpha.Results.Site.App_Start
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Reflection;
-    using System.Web.Mvc;
-    using DataAccesses;
-    using DataAccesses.Impl;
-    using Fanex.Caching;
-    using Fanex.Data.Repository;
-    using Handlers;
-    using MediatR;
-    using Services;
-    using Services.Impl;
-    using SimpleInjector;
-    using SimpleInjector.Integration.Web;
-    using SimpleInjector.Integration.Web.Mvc;
+	using System;
+	using System.Collections.Generic;
+	using System.Reflection;
+	using System.Web.Mvc;
+	using DataAccesses;
+	using DataAccesses.Impl;
+	using Fanex.Caching;
+	using Fanex.Data.Repository;
+	using Fanex.Game.Keno.Business;
+	using Handlers;
+	using MediatR;
+	using Services;
+	using Services.Impl;
+	using SimpleInjector;
+	using SimpleInjector.Integration.Web;
+	using SimpleInjector.Integration.Web.Mvc;
 
-    public static class DependencyConfig
+	public static class DependencyConfig
     {
         public static void Init()
         {
@@ -37,7 +38,7 @@
             // This is an extension method from the integration package as well.
             container.RegisterMvcIntegratedFilterProvider();
 
-            container.Verify();
+			container.Verify();
 
             DependencyResolver.SetResolver(new SimpleInjectorDependencyResolver(container));
         }
@@ -71,7 +72,10 @@
             container.Register<IReportService, ReportService>(Lifestyle.Scoped);
             container.Register<IOutrightResultService, OutrightResultService>(Lifestyle.Scoped);
             container.Register<INormalResultService, NormalResultService>(Lifestyle.Scoped);
-        }
+
+			// For Keno Areas.
+			container.Register<IKenoGameService, KenoGameService>(Lifestyle.Scoped);
+		}
 
         private static void RegisterDataAccesses(Container container)
         {

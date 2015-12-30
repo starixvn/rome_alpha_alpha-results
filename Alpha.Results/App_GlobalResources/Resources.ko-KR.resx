@@ -171,4 +171,7 @@
   <data name="ThereIsNoData" xml:space="preserve">
     <value>데이터가 없습니다</value>
   </data>
+  <data name="OpenKenoResults" xml:space="preserve">
+    <value>Click here to open Keno results</value>
+  </data>
 </root>

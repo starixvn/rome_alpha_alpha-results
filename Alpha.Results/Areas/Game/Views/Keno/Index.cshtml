@@ -1,0 +1,34 @@
+﻿@using Alpha.Results.App_GlobalResources
+
+@{
+    ViewBag.Title = Resources.Keno;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model Alpha.Results.Models.Views.KenoViewModel
+<div role="tabpanel" class="tab-pane active" id="keno">
+    <div class="filter">
+        @Html.ActionLink(
+            Resources.OpenKenoResults,
+            "index",
+            "kenoresult",
+            new { area = "game", date = Model.ResultDate, language = Model.LanguageKey, customerid = Model.CustomerId },
+            new { id = "link-KenoResult", @class = "lnk", target = "_blank" })
+    </div>
+</div>
+
+@section scripts
+{
+    <script type="text/javascript">
+        (function () {
+            var linkKenoResult = $('#link-KenoResult');
+            var url = linkKenoResult.attr('href');
+
+            linkKenoResult.click(function (e) {
+                e.preventDefault();
+                window.open(url, '_blank', 'width=900');
+            });
+        })();
+    </script>
+}
+

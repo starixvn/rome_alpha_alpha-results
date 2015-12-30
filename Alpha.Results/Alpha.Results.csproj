@@ -87,7 +87,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Fanex.Game.Keno, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Game.Keno.1.0.0.1\lib\net40\Fanex.Game.Keno.dll</HintPath>
+      <HintPath>..\packages\Fanex.Game.Keno.AlphaResults.3.0.0.1-beta2\lib\net40\Fanex.Game.Keno.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Fanex.Logging, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -292,6 +292,7 @@
     <Content Include="Global.asax" />
     <Content Include="Areas\Game\Views\Keno\Result.cshtml" />
     <Content Include="Areas\Game\Views\web.config" />
+    <Content Include="Areas\Game\Views\Keno\Index.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -316,8 +317,8 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\DependencyConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Game\Controllers\KenoController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
-    <Compile Include="Controllers\KenoController.cs" />
     <Compile Include="Controllers\NormalController.cs" />
     <Compile Include="Controllers\OutrightController.cs" />
     <Compile Include="Controllers\TabController.cs" />
@@ -419,7 +420,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Normal\Index.cshtml" />
     <Content Include="Views\Outright\Index.cshtml" />
-    <Content Include="Views\Keno\Index.cshtml" />
     <Content Include="Views\Tab\Index.cshtml" />
     <Content Include="Views\Normal\ResultDetails.cshtml" />
     <None Include="Web.Debug.config">
