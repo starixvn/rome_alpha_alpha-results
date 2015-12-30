@@ -1,4 +1,4 @@
-﻿namespace Alpha.Results.Commands
+﻿namespace Alpha.Results.Models.Requests
 {
     using System;
     using Sunplus.Agent.Model.Entities;

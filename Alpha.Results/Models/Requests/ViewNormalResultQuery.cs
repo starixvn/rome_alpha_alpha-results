@@ -1,12 +1,11 @@
-﻿namespace Alpha.Results.Commands
+﻿namespace Alpha.Results.Models.Requests
 {
     using System;
     using Alpha.Utilities.Extensions;
     using App_GlobalResources;
     using MediatR;
     using Sunplus.Agent.Model.RemotingRef;
-    using ViewModels;
-
+    using Views;
     public class ViewNormalResultQuery : IRequest<NormalViewModel>
     {
         public ViewNormalResultQuery()

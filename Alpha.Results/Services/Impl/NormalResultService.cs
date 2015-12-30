@@ -3,11 +3,11 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Commands;
     using Criteria;
     using Fanex.Common.Helper;
     using Fanex.Data.Repository;
     using Models;
+    using Models.Requests;
     using Sunplus.Agent.Model.BL.Definitions;
 
     public class NormalResultService : INormalResultService
@@ -68,15 +68,15 @@
             return resultService.GetResult(request);
         }
 
-        public byte[] GetExcelResults(ViewNormalResultQuery request, string templatePath)
+        public byte[] GetExcelResults(DownloadNormalResultExcelQuery request)
         {
             Check.Argument.IsNotNull(request, "request");
             Check.Argument.IsNotNegativeOrZero(request.SportId, "request.SportId");
-            Check.Argument.IsNotEmpty(templatePath, "templatePath");
+            Check.Argument.IsNotEmpty(request.TemplatePath, "request.TemplatePath");
 
             var resultService = _resultServiceFactory.CreateProductResultService(request.SportId, request.BetTypeId);
 
-            var memoryResult = resultService.ExportExcel(request, templatePath);
+            var memoryResult = resultService.ExportExcel(request);
 
             return memoryResult.ToArray();
         }

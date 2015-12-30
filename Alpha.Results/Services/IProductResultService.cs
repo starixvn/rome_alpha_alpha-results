@@ -1,13 +1,13 @@
 ﻿namespace Alpha.Results.Services
 {
     using System.IO;
-    using Commands;
+    using Models.Requests;
 
     public interface IProductResultService
     {
         string GetResult(ViewNormalResultQuery request);
 
-        MemoryStream ExportExcel(ViewNormalResultQuery request, string excelTemplatePath);
+        MemoryStream ExportExcel(DownloadNormalResultExcelQuery request);
 
         string GetResultDetails(ViewNormalResultDetailsQuery detailsRequest);
     }

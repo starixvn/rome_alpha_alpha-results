@@ -4,11 +4,11 @@
     using System.IO;
     using System.Linq;
     using Alpha.Results.Criteria;
-    using Commands;
     using Fanex.Data.Repository;
     using Fanex.Result.Core;
     using Fanex.Result.Core.Base;
     using Fanex.Result.Core.GoldDeluxe.DTO;
+    using Models.Requests;
 
     public class GoldDeluxePopupResultService : IProductResultService
     {
@@ -19,7 +19,7 @@
             _dynamicRepository = dynamicRepository ?? new DynamicRepository();
         }
 
-        public MemoryStream ExportExcel(ViewNormalResultQuery request, string excelTemplatePath)
+        public MemoryStream ExportExcel(DownloadNormalResultExcelQuery request)
         {
             throw new NotImplementedException();
         }

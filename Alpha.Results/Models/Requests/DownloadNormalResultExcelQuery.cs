@@ -1,8 +1,7 @@
 ﻿namespace Alpha.Results.Models.Requests
 {
-    using Commands;
     using MediatR;
-    using ViewModels;
+    using Views;
 
     public class DownloadNormalResultExcelQuery : ViewNormalResultQuery, IRequest<NormalResultExcelViewModel>
     {

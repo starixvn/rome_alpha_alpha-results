@@ -1,6 +1,6 @@
-﻿namespace Alpha.Results.Commands
+﻿namespace Alpha.Results.Models.Requests
 {
-    using Alpha.Results.ViewModels;
+    using Alpha.Results.Models.Views;
     using MediatR;
 
     public class ViewNormalResultDetailsQuery : ViewNormalResultQuery, IRequest<NormalDetailViewModel>

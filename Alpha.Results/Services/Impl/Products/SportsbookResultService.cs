@@ -5,11 +5,11 @@ namespace Alpha.Results.Services.Impl.Products
     using System.Linq;
     using Alpha.Results.Criteria;
     using Alpha.Results.DataAccesses;
-    using Commands;
     using DataAccesses.Impl;
     using Fanex.Result.Core;
     using Fanex.Result.Core.Base;
     using Fanex.Result.Core.Sportsbook.DTO;
+    using Models.Requests;
 
     /// <summary>
     /// The class SportsBookResultService.
@@ -49,14 +49,14 @@ namespace Alpha.Results.Services.Impl.Products
             return ResultEngine.HtmlParser(results, resultSetting).Replace("original-title", " title ");
         }
 
-        public MemoryStream ExportExcel(ViewNormalResultQuery request, string excelTemplatePath)
+        public MemoryStream ExportExcel(DownloadNormalResultExcelQuery request)
         {
             var exportExcelSetting = new ResultSetting
             {
                 SportType = (SportType)request.SportId,
                 LanguageCode = request.Language,
                 ExcelTitle = request.ToExcelTitle(),
-                ExcelTemplatePath = excelTemplatePath,
+                ExcelTemplatePath = request.TemplatePath,
                 VisibleMatchCodeIDColumn = false,
                 HighlightWinnerTeam = true
             };

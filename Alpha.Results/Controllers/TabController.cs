@@ -1,9 +1,9 @@
-﻿
-namespace Alpha.Results.Controllers
+﻿namespace Alpha.Results.Controllers
 {
     using System.Web.Mvc;
+    using Models.Views;
     using Sunplus.Agent.Model.Entities.Permission;
-    using ViewModels;
+
     public class TabController : Controller
     {
         [ChildActionOnly]

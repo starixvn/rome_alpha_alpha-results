@@ -1,11 +1,10 @@
 ﻿namespace Alpha.Results.Controllers
 {
     using System.Web.Mvc;
-    using Commands;
     using MediatR;
     using Models.Requests;
+    using Models.Views;
     using Sunplus.Agent.Model.Entities;
-    using ViewModels;
 
     public class NormalController : BaseController
     {

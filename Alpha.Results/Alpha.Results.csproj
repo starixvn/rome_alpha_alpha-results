@@ -378,12 +378,12 @@
     <Compile Include="Services\IReportService.cs" />
     <Compile Include="Services\IProductResultService.cs" />
     <Compile Include="Services\IResultServiceFactory.cs" />
-    <Compile Include="ViewModels\KenoViewModel.cs" />
-    <Compile Include="ViewModels\NormalDetailViewModel.cs" />
-    <Compile Include="ViewModels\NormalResultExcelViewModel.cs" />
-    <Compile Include="ViewModels\NormalViewModel.cs" />
-    <Compile Include="ViewModels\OutrightViewModel.cs" />
-    <Compile Include="ViewModels\TabViewModel.cs" />
+    <Compile Include="Models\Views\KenoViewModel.cs" />
+    <Compile Include="Models\Views\NormalDetailViewModel.cs" />
+    <Compile Include="Models\Views\NormalResultExcelViewModel.cs" />
+    <Compile Include="Models\Views\NormalViewModel.cs" />
+    <Compile Include="Models\Views\OutrightViewModel.cs" />
+    <Compile Include="Models\Views\TabViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />

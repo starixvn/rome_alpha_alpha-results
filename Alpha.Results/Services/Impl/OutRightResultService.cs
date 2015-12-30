@@ -6,12 +6,12 @@ namespace Alpha.Results.Services.Impl
     using System.Linq;
     using Alpha.Results.Criteria;
     using App_GlobalResources;
-    using Commands;
     using Fanex.Common.Helper;
     using Fanex.Data.Repository;
     using Fanex.Result.Core;
     using Fanex.Result.Core.Base;
     using Fanex.Result.Core.Sportsbook.DTO;
+    using Models.Requests;
     using Sunplus.Agent.Model.BL.Cache;
     using Sunplus.Agent.Model.BL.Definitions;
 

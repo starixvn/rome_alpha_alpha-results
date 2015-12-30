@@ -4,11 +4,11 @@ namespace Alpha.Results.Services.Impl.Products
     using System.IO;
     using System.Linq;
     using Alpha.Results.Criteria;
-    using Commands;
     using Fanex.Data.Repository;
     using Fanex.Result.Core;
     using Fanex.Result.Core.Base;
     using Fanex.Result.Core.LiveCasino.DTO;
+    using Models.Requests;
 
     /// <summary>
     /// The class LiveCasinoPopupResultService.
@@ -66,7 +66,7 @@ namespace Alpha.Results.Services.Impl.Products
             throw new NotImplementedException();
         }
 
-        public MemoryStream ExportExcel(ViewNormalResultQuery request, string excelTemplatePath)
+        public MemoryStream ExportExcel(DownloadNormalResultExcelQuery request)
         {
             throw new NotImplementedException();
         }

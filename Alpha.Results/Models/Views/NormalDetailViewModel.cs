@@ -1,4 +1,4 @@
-﻿namespace Alpha.Results.ViewModels
+﻿namespace Alpha.Results.Models.Views
 {
     public class NormalDetailViewModel
     {

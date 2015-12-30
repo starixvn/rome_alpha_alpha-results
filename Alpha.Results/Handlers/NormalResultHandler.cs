@@ -4,17 +4,16 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Web.Mvc;
-    using Commands;
     using MediatR;
     using Models.Requests;
+    using Models.Views;
     using Services;
     using Sunplus.Agent.Model.BL.Definitions;
     using Sunplus.Agent.Model.Entities;
     using Sunplus.Agent.Model.Entities.Permission;
     using Sunplus.Agent.Model.RemotingRef;
-    using ViewModels;
 
-    public class NormalResultHandler : 
+    public class NormalResultHandler :
         IRequestHandler<ViewNormalResultQuery, NormalViewModel>,
         IRequestHandler<ViewNormalResultDetailsQuery, NormalDetailViewModel>,
         IRequestHandler<DownloadNormalResultExcelQuery, NormalResultExcelViewModel>
@@ -105,7 +104,7 @@
 
         public NormalResultExcelViewModel Handle(DownloadNormalResultExcelQuery message)
         {
-            var excelResults = _normalResultService.GetExcelResults(message, message.TemplatePath);
+            var excelResults = _normalResultService.GetExcelResults(message);
 
             return new NormalResultExcelViewModel
             {

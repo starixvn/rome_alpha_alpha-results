@@ -5,11 +5,10 @@ namespace Alpha.Results.Services.Impl
     using System.Linq;
     using Alpha.Results.Criteria;
     using Alpha.Results.DataAccesses;
-    using Commands;
     using DataAccesses.Impl;
     using Fanex.Result.Core;
     using Fanex.Result.Core.Base;
-
+    using Models.Requests;
     /// <summary>
     /// The class ParlayPopupResultService.
     /// </summary>
@@ -55,7 +54,7 @@ namespace Alpha.Results.Services.Impl
             throw new NotImplementedException();
         }
 
-        public MemoryStream ExportExcel(ViewNormalResultQuery request, string excelTemplatePath)
+        public MemoryStream ExportExcel(DownloadNormalResultExcelQuery request)
         {
             throw new NotImplementedException();
         }

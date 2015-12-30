@@ -2,8 +2,8 @@
 {
     using System;
     using System.Collections.Generic;
-    using Commands;
     using Models;
+    using Models.Requests;
 
     public interface INormalResultService
     {
@@ -15,6 +15,6 @@
 
         string GetResultDetails(ViewNormalResultDetailsQuery detailRequest);
 
-        byte[] GetExcelResults(ViewNormalResultQuery request, string templatePath);
+        byte[] GetExcelResults(DownloadNormalResultExcelQuery request);
     }
 }

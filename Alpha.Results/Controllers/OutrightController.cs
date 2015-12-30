@@ -5,12 +5,12 @@
     using System.Linq;
     using System.Web.Mvc;
     using App_GlobalResources;
-    using Commands;
     using Fanex.Result.Core.Sportsbook.DTO;
+    using Models.Requests;
+    using Models.Views;
     using Services;
     using Services.Impl;
     using Sunplus.Agent.Model.BL.Cache;
-    using ViewModels;
 
     public class OutrightController : BaseController
     {

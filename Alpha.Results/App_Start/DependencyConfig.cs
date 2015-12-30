@@ -3,13 +3,12 @@
     using System;
     using System.Collections.Generic;
     using System.Reflection;
-    using System.Web.Compilation;
     using System.Web.Mvc;
-    using Commands;
     using DataAccesses;
     using DataAccesses.Impl;
     using Fanex.Caching;
     using Fanex.Data.Repository;
+    using Handlers;
     using MediatR;
     using Services;
     using Services.Impl;
@@ -43,7 +42,6 @@
             DependencyResolver.SetResolver(new SimpleInjectorDependencyResolver(container));
         }
 
-
         private static void RegisterMediator(Container container)
         {
             var assemblies = GetAssemblies();
@@ -59,7 +57,7 @@
 
         private static IEnumerable<Assembly> GetAssemblies()
         {
-            yield return typeof(ViewNormalResultQuery).Assembly;
+            yield return typeof(NormalResultHandler).Assembly;
         }
 
         private static void RegisterCrossCuttingConcerns(Container container)
