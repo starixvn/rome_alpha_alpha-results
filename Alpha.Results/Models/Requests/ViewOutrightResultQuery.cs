@@ -1,4 +1,4 @@
-﻿namespace Alpha.Results.Models.Requests
+﻿namespace Alpha.Results.Site.Models.Requests
 {
     using System;
     using MediatR;

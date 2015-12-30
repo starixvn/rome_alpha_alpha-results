@@ -7,10 +7,11 @@
     <ProjectGuid>{231904A0-114B-456C-8F15-32CEF577001D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Alpha.Results.Tests</RootNamespace>
-    <AssemblyName>Alpha.Results.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <RootNamespace>Alpha.Results.Site.Tests</RootNamespace>
+    <AssemblyName>Alpha.Results.Site.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
