@@ -6,7 +6,7 @@
     using Alpha.Utilities.Extensions;
     using App_GlobalResources;
 
-    public class NormalViewModel
+    public class NormalResultViewModel
     {
         public DateTime MinResultDate { get; set; }
 

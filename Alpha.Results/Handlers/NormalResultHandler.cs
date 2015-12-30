@@ -14,7 +14,7 @@
     using Sunplus.Agent.Model.RemotingRef;
 
     public class NormalResultHandler :
-        IRequestHandler<ViewNormalResultQuery, NormalViewModel>,
+        IRequestHandler<ViewNormalResultQuery, NormalResultViewModel>,
         IRequestHandler<ViewNormalResultDetailsQuery, NormalDetailViewModel>,
         IRequestHandler<DownloadNormalResultExcelQuery, NormalResultExcelViewModel>
     {
@@ -27,7 +27,7 @@
             _reportService = reportService;
         }
 
-        public NormalViewModel Handle(ViewNormalResultQuery message)
+        public NormalResultViewModel Handle(ViewNormalResultQuery message)
         {
             Check.Argument.IsNotNull(message, "message");
             Check.Argument.IsNotEmpty(message.Language, "message.Language");
@@ -35,7 +35,7 @@
             var balanceUpDate = _reportService.GetBalanceUpDate().BalanceUpDay;
             var sports = GetSportsResult(message.ResultDate, message.SportsStatus);
 
-            var viewModel = new NormalViewModel
+            var viewModel = new NormalResultViewModel
             {
                 ResultDate = message.ResultDate,
                 MinResultDate = balanceUpDate,

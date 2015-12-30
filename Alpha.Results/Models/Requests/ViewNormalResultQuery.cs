@@ -5,7 +5,7 @@
     using MediatR;
     using Views;
 
-    public class ViewNormalResultQuery : IRequest<NormalViewModel>
+    public class ViewNormalResultQuery : IRequest<NormalResultViewModel>
     {
         public ViewNormalResultQuery()
         {
