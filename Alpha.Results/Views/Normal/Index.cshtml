@@ -15,7 +15,7 @@
         @using (Html.BeginForm("Index", "Normal", FormMethod.Get, new { @id = "result-filter" }))
         {
             <div class="col-sm-12">
-                <span class="txt">@ResultLang.date</span>
+                <span class="txt">@Resources.date</span>
                 <div class="control date">
                     <div class="input-group date" id="dpkContainer">
                         @Html.EditorFor(model => model.ResultDate, new { htmlAttributes = new { @class = "form-control" } })
@@ -27,7 +27,7 @@
 
                 <input type="submit" value="@Model.Today" id="today-results" class="btn btn-default btn-other-day" />
                 <input type="submit" value="@Model.Yesterday" id="yesterday-results" class="btn btn-default btn-other-day" />
-                <input type="submit" value="@ResultLang.submit" id="selected-day-results" class="btn btn-submit" />
+                <input type="submit" value="@Resources.submit" id="selected-day-results" class="btn btn-submit" />
             </div>
 
             <div class="col-sm-12">
@@ -37,14 +37,14 @@
             if (Model.Sports.Any())
             {
                 <div class="col-sm-12 sport-info">
-                    <span class="txt">@ResultLang.sport</span>
+                    <span class="txt">@Resources.sport</span>
                     <div class="dropdown control">
                         @Html.DropDownListFor(model => model.SportId, Model.Sports, new { @class = "form-control" })
                     </div>
 
-                    <span class="txt">@ResultLang.league</span>
+                    <span class="txt">@Resources.league</span>
                     <div class="dropdown control league-content">
-                        @Html.DropDownListFor(model => model.LeagueId, Model.Leagues, ResultLang.ShowAllLeagues, new { @class = "form-control", @onchange = "this.form.submit()" })
+                        @Html.DropDownListFor(model => model.LeagueId, Model.Leagues, Resources.ShowAllLeagues, new { @class = "form-control", @onchange = "this.form.submit()" })
                     </div>
                     <span class="icon-excel" id="excel-btn"></span>
                 </div>
@@ -63,7 +63,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">@ResultLang.result</h4>
+                <h4 class="modal-title" id="myModalLabel">@Resources.result</h4>
         </div>
 
         <div class="modal-body" id="detail-result-body">

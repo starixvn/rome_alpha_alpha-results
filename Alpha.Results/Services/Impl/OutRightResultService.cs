@@ -118,7 +118,7 @@ namespace Alpha.Results.Services.Impl
 
         private string GetExcelTitle(DateTime fromDate, DateTime toDate, int sportType, int leagueId)
         {
-            string leagueName = leagueId == 0 ? ResultLang.ShowAllLeaguesExcelTitle : CacheRef.GetLeagueName(leagueId);
+            string leagueName = leagueId == 0 ? Resources.ShowAllLeaguesExcelTitle : CacheRef.GetLeagueName(leagueId);
 
             return $"{ResultLang.lblOutrightResult.ToUpper()} - {fromDate.ToShortDateString()} -> {toDate.ToShortDateString()} | {CacheRef.GetSportName(sportType)} - {leagueName}";
         }

@@ -117,52 +117,58 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lblMixParlay" xml:space="preserve">
-    <value>혼합 조합</value>
-  </data>
-  <data name="lblOutRight" xml:space="preserve">
-    <value>순위,승자 등</value>
-  </data>
-  <data name="result" xml:space="preserve">
-    <value>결과 확인</value>
-  </data>
-  <data name="lblNormal" xml:space="preserve">
-    <value>일반</value>
-  </data>
-  <data name="lblOutrightResult" xml:space="preserve">
-    <value>기타 배팅 결과보기</value>
-  </data>
-  <data name="lblSystemParlay" xml:space="preserve">
-    <value>시스템 팔레이</value>
-  </data>
   <data name="Keno" xml:space="preserve">
-    <value>케노</value>
+    <value>Keno</value>
+  </data>
+  <data name="MixParlay" xml:space="preserve">
+    <value>Cá cược tổng hợp</value>
+  </data>
+  <data name="Normal" xml:space="preserve">
+    <value>Bình thường</value>
+  </data>
+  <data name="OutRight" xml:space="preserve">
+    <value>Cược Thắng</value>
+  </data>
+  <data name="OutrightResults" xml:space="preserve">
+    <value>Kết quả của " Cược thắng "</value>
+  </data>
+  <data name="SystemParlay" xml:space="preserve">
+    <value>System Parlay</value>
+  </data>
+  <data name="Results" xml:space="preserve">
+    <value>Kết quả</value>
   </data>
   <data name="ViewDataFromDate" xml:space="preserve">
-    <value>You can view the report data from {0}.</value>
+    <value>Bạn có thể tra cứu dữ liệu báo cáo từ ngày {0}.</value>
   </data>
-  <data name="to" xml:space="preserve">
-    <value>종료일</value>
+  <data name="To" xml:space="preserve">
+    <value>đến</value>
   </data>
-  <data name="submit" xml:space="preserve">
-    <value>확인</value>
+  <data name="Submit" xml:space="preserve">
+    <value>Xác nhận</value>
   </data>
-  <data name="exporttoexcel" xml:space="preserve">
-    <value>엘셀로 내보내기</value>
+  <data name="ExportToExcel" xml:space="preserve">
+    <value>Xuất sang Excel</value>
   </data>
-  <data name="from" xml:space="preserve">
-    <value>시작일</value>
+  <data name="From" xml:space="preserve">
+    <value>Từ</value>
   </data>
-  <data name="sport" xml:space="preserve">
-    <value>스포츠</value>
+  <data name="Sport" xml:space="preserve">
+    <value>Sport</value>
   </data>
-  <data name="league" xml:space="preserve">
-    <value>리그</value>
+  <data name="League" xml:space="preserve">
+    <value>Giải</value>
   </data>
   <data name="ShowAllLeaguesExcelTitle" xml:space="preserve">
-    <value>Show All Leagues</value>
+    <value>Xem tất cả các Leagues</value>
   </data>
-  <data name="date" xml:space="preserve">
-    <value>날짜</value>
+  <data name="Date" xml:space="preserve">
+    <value>Ngày</value>
+  </data>
+  <data name="ShowAllLeagues" xml:space="preserve">
+    <value>Tất cả Leagues</value>
+  </data>
+  <data name="ThereIsNoData" xml:space="preserve">
+    <value>Không có dữ liệu</value>
   </data>
 </root>

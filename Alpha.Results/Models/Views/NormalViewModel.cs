@@ -14,7 +14,7 @@
         {
             get
             {
-                return string.Format(ResultLang.ViewDataFromDate, MinResultDate.ToShortDateFormatWithSlash());
+                return string.Format(Resources.ViewDataFromDate, MinResultDate.ToShortDateFormatWithSlash());
             }
         }
 

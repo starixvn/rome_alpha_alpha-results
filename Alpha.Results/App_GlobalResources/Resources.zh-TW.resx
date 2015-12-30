@@ -117,52 +117,58 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lblMixParlay" xml:space="preserve">
-    <value>混合过关</value>
+  <data name="MixParlay" xml:space="preserve">
+    <value>混合過關</value>
   </data>
-  <data name="lblOutRight" xml:space="preserve">
-    <value>优胜冠军</value>
+  <data name="OutRight" xml:space="preserve">
+    <value>優勝冠軍</value>
   </data>
-  <data name="result" xml:space="preserve">
-    <value>赛果</value>
+  <data name="Results" xml:space="preserve">
+    <value>賽果</value>
   </data>
-  <data name="lblNormal" xml:space="preserve">
+  <data name="Normal" xml:space="preserve">
     <value>一般</value>
   </data>
-  <data name="lblOutrightResult" xml:space="preserve">
-    <value>优胜冠军赛果</value>
+  <data name="OutrightResults" xml:space="preserve">
+    <value>優勝冠軍賽果</value>
   </data>
-  <data name="lblSystemParlay" xml:space="preserve">
-    <value>系统Parlay</value>
+  <data name="SystemParlay" xml:space="preserve">
+    <value>系統Parlay</value>
   </data>
   <data name="Keno" xml:space="preserve">
-    <value>快乐彩</value>
+    <value>快樂彩</value>
   </data>
   <data name="ViewDataFromDate" xml:space="preserve">
-    <value>您可查看报表数据从 {0}.</value>
+    <value>您可查看報表數據從 {0}.</value>
   </data>
-  <data name="to" xml:space="preserve">
+  <data name="To" xml:space="preserve">
     <value>到</value>
   </data>
-  <data name="submit" xml:space="preserve">
+  <data name="Submit" xml:space="preserve">
     <value>提交</value>
   </data>
-  <data name="exporttoexcel" xml:space="preserve">
-    <value>导出到Excel</value>
+  <data name="ExportToExcel" xml:space="preserve">
+    <value>導出到Excel</value>
   </data>
-  <data name="from" xml:space="preserve">
-    <value>从</value>
+  <data name="From" xml:space="preserve">
+    <value>從</value>
   </data>
-  <data name="sport" xml:space="preserve">
-    <value>运动</value>
+  <data name="Sport" xml:space="preserve">
+    <value>運動</value>
   </data>
-  <data name="league" xml:space="preserve">
-    <value>联赛</value>
+  <data name="League" xml:space="preserve">
+    <value>聯賽</value>
   </data>
   <data name="ShowAllLeaguesExcelTitle" xml:space="preserve">
-    <value>Show All Leagues</value>
+    <value>顯示所有聯賽</value>
   </data>
-  <data name="date" xml:space="preserve">
+  <data name="Date" xml:space="preserve">
     <value>日期</value>
+  </data>
+  <data name="ShowAllLeagues" xml:space="preserve">
+    <value>所有聯賽</value>
+  </data>
+  <data name="ThereIsNoData" xml:space="preserve">
+    <value>沒有數據</value>
   </data>
 </root>

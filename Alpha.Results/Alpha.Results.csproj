@@ -339,8 +339,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="App_GlobalResources\ResultLang.Designer.cs">
-      <DependentUpon>ResultLang.resx</DependentUpon>
+    <Compile Include="App_GlobalResources\Resources.Designer.cs">
+      <DependentUpon>Resources.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -431,17 +431,17 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <EmbeddedResource Include="App_GlobalResources\ResultLang.ja-JP.resx" />
-    <EmbeddedResource Include="App_GlobalResources\ResultLang.ko-KR.resx" />
-    <EmbeddedResource Include="App_GlobalResources\ResultLang.resx">
+    <EmbeddedResource Include="App_GlobalResources\Resources.ja-JP.resx" />
+    <EmbeddedResource Include="App_GlobalResources\Resources.ko-KR.resx" />
+    <EmbeddedResource Include="App_GlobalResources\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>ResultLang.Designer.cs</LastGenOutput>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="App_GlobalResources\ResultLang.th-TH.resx" />
-    <EmbeddedResource Include="App_GlobalResources\ResultLang.vi-VN.resx" />
-    <EmbeddedResource Include="App_GlobalResources\ResultLang.zh-CN.resx" />
-    <EmbeddedResource Include="App_GlobalResources\ResultLang.zh-TW.resx" />
+    <EmbeddedResource Include="App_GlobalResources\Resources.th-TH.resx" />
+    <EmbeddedResource Include="App_GlobalResources\Resources.vi-VN.resx" />
+    <EmbeddedResource Include="App_GlobalResources\Resources.zh-CN.resx" />
+    <EmbeddedResource Include="App_GlobalResources\Resources.zh-TW.resx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

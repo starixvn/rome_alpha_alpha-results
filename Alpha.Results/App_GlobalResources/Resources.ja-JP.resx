@@ -117,53 +117,59 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lblMixParlay" xml:space="preserve">
+  <data name="MixParlay" xml:space="preserve">
     <value>ミックスパーレー</value>
   </data>
-  <data name="lblOutRight" xml:space="preserve">
+  <data name="OutRight" xml:space="preserve">
     <value>即座</value>
   </data>
-  <data name="result" xml:space="preserve">
+  <data name="Results" xml:space="preserve">
     <value>結果</value>
   </data>
-  <data name="lblNormal" xml:space="preserve">
-    <value>Normal</value>
+  <data name="Normal" xml:space="preserve">
+    <value>ノーマル</value>
   </data>
-  <data name="lblOutrightResult" xml:space="preserve">
+  <data name="OutrightResults" xml:space="preserve">
     <value>勝者予想結果</value>
   </data>
-  <data name="lblSystemParlay" xml:space="preserve">
-    <value>System Parlay</value>
+  <data name="SystemParlay" xml:space="preserve">
+    <value>システムのParlay</value>
   </data>
   <data name="Keno" xml:space="preserve">
     <value>Keno</value>
   </data>
   <data name="ViewDataFromDate" xml:space="preserve">
-    <value>You can view the report data from {0}.</value>
+    <value>あなたはからのレポートデータを表示することができます {0}.</value>
   </data>
-  <data name="to" xml:space="preserve">
+  <data name="To" xml:space="preserve">
     <value>から
 </value>
   </data>
-  <data name="submit" xml:space="preserve">
+  <data name="Submit" xml:space="preserve">
     <value>送信</value>
   </data>
-  <data name="exporttoexcel" xml:space="preserve">
+  <data name="ExportToExcel" xml:space="preserve">
     <value>輸出をExcelに</value>
   </data>
-  <data name="from" xml:space="preserve">
+  <data name="From" xml:space="preserve">
     <value>送金元</value>
   </data>
-  <data name="sport" xml:space="preserve">
+  <data name="Sport" xml:space="preserve">
     <value>スポーツ</value>
   </data>
-  <data name="league" xml:space="preserve">
+  <data name="League" xml:space="preserve">
     <value>リーグ</value>
   </data>
   <data name="ShowAllLeaguesExcelTitle" xml:space="preserve">
-    <value>Show All Leagues</value>
+    <value>すべてのリーグを表示</value>
   </data>
-  <data name="date" xml:space="preserve">
+  <data name="Date" xml:space="preserve">
     <value>日付</value>
+  </data>
+  <data name="ShowAllLeagues" xml:space="preserve">
+    <value>すべてのリーグ</value>
+  </data>
+  <data name="ThereIsNoData" xml:space="preserve">
+    <value>データが存在しません</value>
   </data>
 </root>

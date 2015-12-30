@@ -22,14 +22,14 @@ namespace Alpha.Results.App_GlobalResources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class ResultLang {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal ResultLang() {
+        internal Resources() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Alpha.Results.App_GlobalResources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Alpha.Results.App_GlobalResources.ResultLang", typeof(ResultLang).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Alpha.Results.App_GlobalResources.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -63,27 +63,27 @@ namespace Alpha.Results.App_GlobalResources {
         /// <summary>
         ///   Looks up a localized string similar to Date.
         /// </summary>
-        public static string date {
+        public static string Date {
             get {
-                return ResourceManager.GetString("date", resourceCulture);
+                return ResourceManager.GetString("Date", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Export to Excel.
         /// </summary>
-        public static string exporttoexcel {
+        public static string ExportToExcel {
             get {
-                return ResourceManager.GetString("exporttoexcel", resourceCulture);
+                return ResourceManager.GetString("ExportToExcel", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to From.
         /// </summary>
-        public static string from {
+        public static string From {
             get {
-                return ResourceManager.GetString("from", resourceCulture);
+                return ResourceManager.GetString("From", resourceCulture);
             }
         }
         
@@ -97,70 +97,61 @@ namespace Alpha.Results.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to League.
+        /// </summary>
+        public static string League {
+            get {
+                return ResourceManager.GetString("League", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mix Parlay.
         /// </summary>
-        public static string lblMixParlay {
+        public static string MixParlay {
             get {
-                return ResourceManager.GetString("lblMixParlay", resourceCulture);
+                return ResourceManager.GetString("MixParlay", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Normal.
         /// </summary>
-        public static string lblNormal {
+        public static string Normal {
             get {
-                return ResourceManager.GetString("lblNormal", resourceCulture);
+                return ResourceManager.GetString("Normal", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Outright.
         /// </summary>
-        public static string lblOutRight {
+        public static string OutRight {
             get {
-                return ResourceManager.GetString("lblOutRight", resourceCulture);
+                return ResourceManager.GetString("OutRight", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Outright Results.
         /// </summary>
-        public static string lblOutrightResult {
+        public static string OutrightResults {
             get {
-                return ResourceManager.GetString("lblOutrightResult", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to System Parlay.
-        /// </summary>
-        public static string lblSystemParlay {
-            get {
-                return ResourceManager.GetString("lblSystemParlay", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to League.
-        /// </summary>
-        public static string league {
-            get {
-                return ResourceManager.GetString("league", resourceCulture);
+                return ResourceManager.GetString("OutrightResults", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Results.
         /// </summary>
-        public static string result {
+        public static string Results {
             get {
-                return ResourceManager.GetString("result", resourceCulture);
+                return ResourceManager.GetString("Results", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to *...* Show All Leagues *...*.
+        ///   Looks up a localized string similar to All Leagues.
         /// </summary>
         public static string ShowAllLeagues {
             get {
@@ -180,18 +171,27 @@ namespace Alpha.Results.App_GlobalResources {
         /// <summary>
         ///   Looks up a localized string similar to Sport.
         /// </summary>
-        public static string sport {
+        public static string Sport {
             get {
-                return ResourceManager.GetString("sport", resourceCulture);
+                return ResourceManager.GetString("Sport", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Submit.
         /// </summary>
-        public static string submit {
+        public static string Submit {
             get {
-                return ResourceManager.GetString("submit", resourceCulture);
+                return ResourceManager.GetString("Submit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to System Parlay.
+        /// </summary>
+        public static string SystemParlay {
+            get {
+                return ResourceManager.GetString("SystemParlay", resourceCulture);
             }
         }
         
@@ -207,9 +207,9 @@ namespace Alpha.Results.App_GlobalResources {
         /// <summary>
         ///   Looks up a localized string similar to To.
         /// </summary>
-        public static string to {
+        public static string To {
             get {
-                return ResourceManager.GetString("to", resourceCulture);
+                return ResourceManager.GetString("To", resourceCulture);
             }
         }
         

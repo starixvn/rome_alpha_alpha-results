@@ -117,22 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lblMixParlay" xml:space="preserve">
+  <data name="MixParlay" xml:space="preserve">
     <value>บอลชุดผสม</value>
   </data>
-  <data name="lblOutRight" xml:space="preserve">
+  <data name="OutRight" xml:space="preserve">
     <value>ทายผลผู้ชนะ</value>
   </data>
-  <data name="result" xml:space="preserve">
+  <data name="Results" xml:space="preserve">
     <value>ผลการแข่งขัน</value>
   </data>
-  <data name="lblNormal" xml:space="preserve">
+  <data name="Normal" xml:space="preserve">
     <value>ธรรมดา</value>
   </data>
-  <data name="lblOutrightResult" xml:space="preserve">
+  <data name="OutrightResults" xml:space="preserve">
     <value>ทายผลผู้ชนะผล</value>
   </data>
-  <data name="lblSystemParlay" xml:space="preserve">
+  <data name="SystemParlay" xml:space="preserve">
     <value>ระบบของ Parlay</value>
   </data>
   <data name="Keno" xml:space="preserve">
@@ -141,28 +141,34 @@
   <data name="ViewDataFromDate" xml:space="preserve">
     <value>ท่านสามารถดูรายงานข้อมูลได้จาก {0}.</value>
   </data>
-  <data name="to" xml:space="preserve">
+  <data name="To" xml:space="preserve">
     <value>ถึง</value>
   </data>
-  <data name="submit" xml:space="preserve">
+  <data name="Submit" xml:space="preserve">
     <value>ตกลง</value>
   </data>
-  <data name="exporttoexcel" xml:space="preserve">
+  <data name="ExportToExcel" xml:space="preserve">
     <value>ส่งออกไปที่โปรแกรมเอกเซล</value>
   </data>
-  <data name="from" xml:space="preserve">
+  <data name="From" xml:space="preserve">
     <value>จาก</value>
   </data>
-  <data name="sport" xml:space="preserve">
+  <data name="Sport" xml:space="preserve">
     <value>กีฬา</value>
   </data>
-  <data name="league" xml:space="preserve">
+  <data name="League" xml:space="preserve">
     <value>ลีค</value>
   </data>
   <data name="ShowAllLeaguesExcelTitle" xml:space="preserve">
-    <value>Show All Leagues</value>
+    <value>แสดง ลีก ทั้งหมด</value>
   </data>
-  <data name="date" xml:space="preserve">
+  <data name="Date" xml:space="preserve">
     <value>วันที่</value>
+  </data>
+  <data name="ShowAllLeagues" xml:space="preserve">
+    <value>ลีก ทั้งหมด</value>
+  </data>
+  <data name="ThereIsNoData" xml:space="preserve">
+    <value>มี ข้อมูลไม่</value>
   </data>
 </root>

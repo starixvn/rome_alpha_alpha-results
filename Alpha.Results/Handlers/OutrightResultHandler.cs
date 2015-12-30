@@ -49,7 +49,7 @@
                 MaxResultDate = currentDate,
                 Today = currentDate.ToShortDateString(),
                 Yesterday = currentDate.AddDays(-1).ToShortDateString(),
-                MinResultDateMessage = string.Format(ResultLang.ViewDataFromDate, balanceUpDate.ToShortDateString()),
+                MinResultDateMessage = string.Format(Resources.ViewDataFromDate, balanceUpDate.ToShortDateString()),
                 FromDate = message.FromDate,
                 ToDate = message.ToDate
             };
