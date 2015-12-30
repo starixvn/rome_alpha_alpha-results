@@ -3,6 +3,12 @@
 }
 
 @model OutrightViewModel
+
+@section styles
+{
+    <link href="/contents/components/select2/css/select2.min.css" rel="stylesheet" />
+}
+
 <div role="tabpanel" class="tab-pane active" id="outright">
     <div class="row filter">
         @using (Html.BeginForm("Index", "Outright", FormMethod.Get, new { id = "frm-outright" }))
@@ -58,7 +64,9 @@
     @Html.HiddenFor(model => model.MaxResultDate)
 </div>
 <iframe src="#" frameborder="0" scrolling="no" id="ifrm-exportExcel" name="ifrm-exportExcel" style="display:none;"></iframe>
+
 @section scripts
 {
+    <script type="text/javascript" src="/contents/components/select2/js/select2.min.js"></script>
     @Scripts.Render(BundleConfig.OutrightResultJavascriptBundleUrl)
 }

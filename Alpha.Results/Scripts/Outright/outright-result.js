@@ -5,6 +5,7 @@
     var minResultDate = $('#MinResultDate').val(),
         maxResultDate = $('#MaxResultDate').val();
     var fromdatepicker, todatepicker;
+    var sportTypeSelectbox, leagueSelectbox;
 
     function initializeDatepicker() {
         var dpkSettings = {
@@ -30,6 +31,11 @@
         });
     }
 
+    function initializeSelectbox() {
+        sportTypeSelectbox = $('#SportType').select2();
+        leagueSelectbox = $('#LeagueId').select2();
+    }
+
     function registerEvents() {
         $('.btn-other-day').click(function () {
             var date = $(this).attr('value');
@@ -41,8 +47,8 @@
             var requestParams = {
                 fromDate: fromdatepicker.data('date'),
                 toDate: todatepicker.data('date'),
-                sportType: $('#SportType').val(),
-                leagueId: $('#LeagueId').val()
+                sportType: sportTypeSelectbox.val(),
+                leagueId: leagueSelectbox.val()
             };
 
             var downloadUrl = rootUrl + 'Outright/ExcelResults?' + $.param(requestParams);
@@ -59,6 +65,7 @@
 
     function initialize() {
         initializeDatepicker();
+        initializeSelectbox();
         registerEvents();
     }
 
