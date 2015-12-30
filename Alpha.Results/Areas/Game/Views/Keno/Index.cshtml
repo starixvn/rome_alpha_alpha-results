@@ -1,11 +1,11 @@
-﻿@using Alpha.Results.App_GlobalResources
+﻿@using Alpha.Results.Site.App_GlobalResources
 
 @{
     ViewBag.Title = Resources.Keno;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@model Alpha.Results.Models.Views.KenoViewModel
+@model Alpha.Results.Site.Models.Views.KenoViewModel
 <div role="tabpanel" class="tab-pane active" id="keno">
     <div class="filter">
         @Html.ActionLink(
@@ -26,8 +26,10 @@
 
             linkKenoResult.click(function (e) {
                 e.preventDefault();
-                window.open(url, '_blank', 'width=900');
+                window.open(url, '_blank', 'width=900, height=700');
             });
+
+            setTimeout(function () { window.open(url, '_blank', 'width=900, height=700'); }, 300);
         })();
     </script>
 }

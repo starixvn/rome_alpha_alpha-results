@@ -1,10 +1,10 @@
 ﻿namespace Alpha.Results.Areas.Game.Controllers
 {
-	using Models.Views;
-	using Results.Controllers;
-	using Sunplus.Agent.Model.Entities;
 	using System;
 	using System.Web.Mvc;
+	using Site.Controllers;
+	using Site.Models.Views;
+	using Sunplus.Agent.Model.Entities;
 
 	public class KenoController : BaseController
     {
