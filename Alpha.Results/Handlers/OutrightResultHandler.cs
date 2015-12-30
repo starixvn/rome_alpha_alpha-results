@@ -56,7 +56,7 @@
 
             var outrights = _outrightService.GetOutrights(message.FromDate, message.ToDate);
 
-            if (outrights.Count() > 0)
+            if (outrights.Any())
             {
                 viewModel.SportType = message.SportType > 0 ? message.SportType : outrights.First().SportType;
                 viewModel.LeagueId = message.LeagueId;
