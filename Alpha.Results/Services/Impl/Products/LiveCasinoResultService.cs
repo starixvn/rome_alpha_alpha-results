@@ -39,7 +39,7 @@ namespace Alpha.Results.Services.Impl.Products
             var resultSetting = new ResultSetting
             {
                 SportType = SportType.LiveCasino,
-                IsOutRight = false,
+				IsOutright = false,
                 IsParlayPopUp = false,
                 IsPopUp = true,
                 VisiblePopUpTitle = false,

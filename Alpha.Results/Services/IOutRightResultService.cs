@@ -11,9 +11,9 @@ namespace Alpha.Results.Services
     {
         BalanceUpDateDto GetBalanceUpDate();
 
-        IEnumerable<OutRight> GetOutrights(DateTime fromDate, DateTime toDate);
+        IEnumerable<Outright> GetOutrights(DateTime fromDate, DateTime toDate);
 
-        string GetResults(IEnumerable<OutRight> outrights, ViewOutrightResultQuery request);
+        string GetResults(IEnumerable<Outright> outrights, ViewOutrightResultQuery request);
 
         MemoryStream GetExcelResults(DownloadOutrightResultExcelQuery request);
     }

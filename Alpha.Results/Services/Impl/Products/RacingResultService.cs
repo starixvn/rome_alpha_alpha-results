@@ -86,7 +86,7 @@ namespace Alpha.Results.Services.Impl.Products
             ResultSetting resultSetting = new ResultSetting
             {
                 SportType = (SportType)detailsRequest.SportId,
-                IsOutRight = false,
+				IsOutright = false,
                 IsParlayPopUp = false,
                 IsPopUp = true,
                 VisiblePopUpTitle = false,

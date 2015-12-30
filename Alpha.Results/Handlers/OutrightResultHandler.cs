@@ -68,7 +68,7 @@
             return viewModel;
         }
 
-        private OutrightViewModel GetSportsAndLeagues(OutrightViewModel viewModel, IEnumerable<OutRight> outrights, int selectedSportType, int selectedLeagueId)
+        private OutrightViewModel GetSportsAndLeagues(OutrightViewModel viewModel, IEnumerable<Outright> outrights, int selectedSportType, int selectedLeagueId)
         {
             Check.Argument.IsNotNull(viewModel, "viewModel");
             Check.Argument.IsNotNull(outrights, "outrights");

@@ -33,7 +33,7 @@ namespace Alpha.Results.Services.Impl
 
             var resultSetting = new ResultSetting
             {
-                IsOutRight = false,
+                IsOutright = false,
                 IsParlayPopUp = true,
                 IsPopUp = true,
                 VisiblePopUpTitle = false,

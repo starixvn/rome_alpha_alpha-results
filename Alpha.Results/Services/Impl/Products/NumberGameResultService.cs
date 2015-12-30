@@ -80,7 +80,7 @@ namespace Alpha.Results.Services.Impl.Products
             var resultSetting = new ResultSetting
             {
                 SportType = SportType.NumberGame,
-                IsOutRight = false,
+				IsOutright = false,
                 IsParlayPopUp = false,
                 IsPopUp = true,
                 VisiblePopUpTitle = false,

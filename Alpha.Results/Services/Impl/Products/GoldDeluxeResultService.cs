@@ -44,7 +44,7 @@
             var resultSetting = new ResultSetting
             {
                 SportType = SportType.GoldDeluxe,
-                IsOutRight = false,
+				IsOutright = false,
                 IsParlayPopUp = false,
                 IsPopUp = true,
                 LanguageCode = detailsRequest.Language,

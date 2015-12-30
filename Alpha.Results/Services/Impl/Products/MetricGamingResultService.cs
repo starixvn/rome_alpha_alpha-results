@@ -48,7 +48,7 @@ namespace Alpha.Results.Services.Impl.Products
             var resultSetting = new ResultSetting
             {
                 SportType = SportType.Soccer,
-                IsOutRight = false,
+				IsOutright = false,
                 IsParlayPopUp = false,
                 IsPopUp = true,
                 LanguageCode = "en-US",

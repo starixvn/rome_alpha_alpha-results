@@ -25,7 +25,7 @@ namespace Alpha.Results.Services.Impl
             _dynamicRepository = dynamicRepository ?? new DynamicRepository();
         }
 
-        public IEnumerable<OutRight> GetOutrights(DateTime fromDate, DateTime toDate)
+        public IEnumerable<Outright> GetOutrights(DateTime fromDate, DateTime toDate)
         {
             Check.Argument.IsNotInvalidDate(fromDate, "fromDate");
             Check.Argument.IsNotInvalidDate(toDate, "toDate");
@@ -45,10 +45,10 @@ namespace Alpha.Results.Services.Impl
                 return null;
             }
 
-            return _dynamicRepository.Fetch<OutRight>(criteria);
+            return _dynamicRepository.Fetch<Outright>(criteria);
         }
 
-        public string GetResults(IEnumerable<OutRight> outrights, ViewOutrightResultQuery request)
+        public string GetResults(IEnumerable<Outright> outrights, ViewOutrightResultQuery request)
         {
             Check.Argument.IsNotNull(outrights, "outrights");
             Check.Argument.IsNotNull(request, "request");
@@ -58,7 +58,7 @@ namespace Alpha.Results.Services.Impl
             var resultSetting = new ResultSetting
             {
                 LanguageCode = request.Language,
-                IsOutRight = true,
+				IsOutright = true,
                 IsPopUp = false,
                 VisibleMatchCodeIDColumn = false,
                 HighlightWinnerTeam = true
@@ -81,7 +81,7 @@ namespace Alpha.Results.Services.Impl
             var resultSetting = new ResultSetting
             {
                 LanguageCode = request.Language,
-                IsOutRight = true,
+				IsOutright = true,
                 IsPopUp = false,
                 HighlightWinnerTeam = true,
                 ExcelTitle = excelTitle,
@@ -101,7 +101,7 @@ namespace Alpha.Results.Services.Impl
             };
         }
 
-        private IEnumerable<OutRight> FilterOutright(IEnumerable<OutRight> outrights, int sportType, int leagueId)
+        private IEnumerable<Outright> FilterOutright(IEnumerable<Outright> outrights, int sportType, int leagueId)
         {
             if (sportType != 0)
             {
