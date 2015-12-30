@@ -106,10 +106,10 @@
         {
             Check.Argument.IsNotNull(message, "message");
 
-            var leagueName = message.LeagueId == 0 ? ResultLang.ShowAllLeaguesExcelTitle : CacheRefFactory.CacheRef.GetLeagueName(message.LeagueId);
+            var leagueName = message.LeagueId == 0 ? Resources.ShowAllLeaguesExcelTitle : CacheRefFactory.CacheRef.GetLeagueName(message.LeagueId);
             var resultDate = message.ResultDate.ToShortDateFormatWithSlash();
 
-            message.ExcelTitle = $"{ResultLang.result} - {resultDate} | {CacheRefFactory.CacheRef.GetSportName(message.SportId)} {leagueName}";
+            message.ExcelTitle = $"{Resources.Results} - {resultDate} | {CacheRefFactory.CacheRef.GetSportName(message.SportId)} {leagueName}";
 
             var excelResults = _normalResultService.GetExcelResults(message);
 
