@@ -147,7 +147,12 @@ table.fn-rs, table.fn-rs {
         width: 120px;
     }
 }
-
+table.fn-rs tbody .cl-match.home {
+    color: #1735b2;
+}
+table.fn-rs tbody .cl-match.away {
+    color: #ff5521;
+}
 table.fn-rs tbody .cl-match div {
     &.first-goal {
         background: url($goal-icon) no-repeat -9px -32px;

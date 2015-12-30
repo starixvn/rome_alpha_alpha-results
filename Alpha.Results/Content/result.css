@@ -118,6 +118,12 @@ table.fn-rs .cl-ht-score, table.fn-rs .cl-f-score, table.fn-rs .cl-ht-score, tab
 table.fn-rs .cl-ko-time, table.fn-rs .cl-ko-time {
   width: 120px; }
 
+table.fn-rs tbody .cl-match.home {
+  color: #1735b2; }
+
+table.fn-rs tbody .cl-match.away {
+  color: #ff5521; }
+
 table.fn-rs tbody .cl-match div.first-goal {
   background: url("images/goal-icon.png") no-repeat -9px -32px; }
 
