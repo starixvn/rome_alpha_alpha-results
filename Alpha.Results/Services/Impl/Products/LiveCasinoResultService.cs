@@ -27,7 +27,7 @@ namespace Alpha.Results.Site.Services.Impl.Products
         {
         }
 
-        public string GetResultDetails(ViewNormalResultDetailsQuery detailsRequest)
+        public string GetResultDetails(NormalResultDetailsQuery detailsRequest)
         {
             var criteria = new GetLiveCasinoResultCriteria()
             {
@@ -61,12 +61,12 @@ namespace Alpha.Results.Site.Services.Impl.Products
             return ResultEngine.HtmlParser(liveCasinoResults, resultSetting);
         }
 
-        public string GetResult(ViewNormalResultQuery request)
+        public string GetResult(NormalResultQuery request)
         {
             throw new NotImplementedException();
         }
 
-        public MemoryStream ExportExcel(DownloadNormalResultExcelQuery request)
+        public MemoryStream ExportExcel(ExcelNormalResultQuery request)
         {
             throw new NotImplementedException();
         }

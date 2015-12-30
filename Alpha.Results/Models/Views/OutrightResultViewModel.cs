@@ -4,7 +4,7 @@
     using System.Collections.Generic;
     using System.Web.Mvc;
 
-    public class OutrightViewModel
+    public class OutrightResultViewModel
     {
         public DateTime MinResultDate { get; set; }
 

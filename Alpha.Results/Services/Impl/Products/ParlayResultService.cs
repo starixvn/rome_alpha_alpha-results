@@ -24,7 +24,7 @@ namespace Alpha.Results.Site.Services.Impl
         {
         }
 
-        public string GetResultDetails(ViewNormalResultDetailsQuery detailsRequest)
+        public string GetResultDetails(NormalResultDetailsQuery detailsRequest)
         {
             var results = _parlayResultDataAccess.GetParlayResults(new GetParlayResultCriteria
             {
@@ -47,12 +47,12 @@ namespace Alpha.Results.Site.Services.Impl
             return ResultEngine.HtmlParser(results, resultSetting);
         }
 
-        public string GetResult(ViewNormalResultQuery request)
+        public string GetResult(NormalResultQuery request)
         {
             throw new NotImplementedException();
         }
 
-        public MemoryStream ExportExcel(DownloadNormalResultExcelQuery request)
+        public MemoryStream ExportExcel(ExcelNormalResultQuery request)
         {
             throw new NotImplementedException();
         }

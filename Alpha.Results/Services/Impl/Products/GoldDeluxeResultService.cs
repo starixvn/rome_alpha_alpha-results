@@ -19,17 +19,17 @@
             _dynamicRepository = dynamicRepository ?? new DynamicRepository();
         }
 
-        public MemoryStream ExportExcel(DownloadNormalResultExcelQuery request)
+        public MemoryStream ExportExcel(ExcelNormalResultQuery request)
         {
             throw new NotImplementedException();
         }
 
-        public string GetResult(ViewNormalResultQuery request)
+        public string GetResult(NormalResultQuery request)
         {
             throw new NotImplementedException();
         }
 
-        public string GetResultDetails(ViewNormalResultDetailsQuery detailsRequest)
+        public string GetResultDetails(NormalResultDetailsQuery detailsRequest)
         {
             var criteria = new GetGoldDeluxeResultCriteria
             {

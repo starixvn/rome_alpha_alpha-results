@@ -2,11 +2,12 @@
 {
     using System;
     using MediatR;
+    using Sunplus.Agent.Model.Entities;
     using Views;
 
-    public class ViewOutrightResultQuery : IRequest<OutrightViewModel>
+    public class OutrightResultQuery : IRequest<OutrightResultViewModel>
     {
-        public ViewOutrightResultQuery()
+        public OutrightResultQuery()
         {
             DateTime currentDate = DateTime.Today;
             FromDate = currentDate;
@@ -21,6 +22,12 @@
 
         public int LeagueId { get; set; }
 
-        public string Language { get; set; }
+        public string Language
+        {
+            get
+            {
+                return UserSession.Current.Language;
+            }
+        }
     }
 }

@@ -3,7 +3,7 @@
     using Alpha.Results.Site.Models.Views;
     using MediatR;
 
-    public class ViewNormalResultDetailsQuery : ViewNormalResultQuery, IRequest<NormalDetailViewModel>
+    public class NormalResultDetailsQuery : NormalResultQuery, IRequest<NormalDetailViewModel>
     {
         public int MatchId { get; set; }
 

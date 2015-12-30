@@ -48,7 +48,7 @@ namespace Alpha.Results.Site.Services.Impl
             return _dynamicRepository.Fetch<Outright>(criteria);
         }
 
-        public string GetResults(IEnumerable<Outright> outrights, ViewOutrightResultQuery request)
+        public string GetResults(IEnumerable<Outright> outrights, OutrightResultQuery request)
         {
             Check.Argument.IsNotNull(outrights, "outrights");
             Check.Argument.IsNotNull(request, "request");
@@ -67,7 +67,7 @@ namespace Alpha.Results.Site.Services.Impl
             return ResultEngine.HtmlParser(outrights.ToList(), resultSetting);
         }
 
-        public MemoryStream GetExcelResults(DownloadOutrightResultExcelQuery request)
+        public MemoryStream GetExcelResults(ExcelOutrightResultQuery request)
         {
             Check.Argument.IsNotNull(request, "request");
             Check.Argument.IsNotEmpty(request.TemplatePath, "templatePath");

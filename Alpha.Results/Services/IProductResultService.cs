@@ -5,10 +5,10 @@
 
     public interface IProductResultService
     {
-        string GetResult(ViewNormalResultQuery request);
+        string GetResult(NormalResultQuery request);
 
-        MemoryStream ExportExcel(DownloadNormalResultExcelQuery request);
+        MemoryStream ExportExcel(ExcelNormalResultQuery request);
 
-        string GetResultDetails(ViewNormalResultDetailsQuery detailsRequest);
+        string GetResultDetails(NormalResultDetailsQuery detailsRequest);
     }
 }

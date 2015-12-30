@@ -318,7 +318,7 @@
     <Compile Include="App_Start\DependencyConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Game\Controllers\KenoController.cs" />
-    <Compile Include="Controllers\BaseController.cs" />    
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\NormalController.cs" />
     <Compile Include="Controllers\OutrightController.cs" />
     <Compile Include="Controllers\TabController.cs" />
@@ -349,11 +349,11 @@
     <Compile Include="Handlers\OutrightResultHandler.cs" />
     <Compile Include="Models\Dtos\BalanceUpDateDto.cs" />
     <Compile Include="Models\League.cs" />
-    <Compile Include="Models\Requests\DownloadNormalResultExcelQuery.cs" />
-    <Compile Include="Models\Requests\DownloadOutrightResultExcelQuery.cs" />
-    <Compile Include="Models\Requests\ViewNormalResultDetailsQuery.cs" />
-    <Compile Include="Models\Requests\ViewNormalResultQuery.cs" />
-    <Compile Include="Models\Requests\ViewOutrightResultQuery.cs" />
+    <Compile Include="Models\Requests\ExcelNormalResultQuery.cs" />
+    <Compile Include="Models\Requests\ExcelOutrightResultQuery.cs" />
+    <Compile Include="Models\Requests\NormalResultDetailsQuery.cs" />
+    <Compile Include="Models\Requests\NormalResultQuery.cs" />
+    <Compile Include="Models\Requests\OutrightResultQuery.cs" />
     <Compile Include="Models\Sport.cs" />
     <Compile Include="Models\Views\OutrightResultExcelViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

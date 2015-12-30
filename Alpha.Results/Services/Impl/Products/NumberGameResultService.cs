@@ -26,7 +26,7 @@ namespace Alpha.Results.Site.Services.Impl.Products
         {
         }
 
-        public string GetResult(ViewNormalResultQuery request)
+        public string GetResult(NormalResultQuery request)
         {
             var resultSetting = new ResultSetting
             {
@@ -43,7 +43,7 @@ namespace Alpha.Results.Site.Services.Impl.Products
             return ResultEngine.HtmlParser(results, resultSetting);
         }
 
-        public MemoryStream ExportExcel(DownloadNormalResultExcelQuery request)
+        public MemoryStream ExportExcel(ExcelNormalResultQuery request)
         {
             var resultSetting = new ResultSetting
             {
@@ -60,7 +60,7 @@ namespace Alpha.Results.Site.Services.Impl.Products
             return ResultEngine.ExcelParser(results, resultSetting);
         }
 
-        private static GetNumberGameResultCriteria GetCriteria(ViewNormalResultQuery request)
+        private static GetNumberGameResultCriteria GetCriteria(NormalResultQuery request)
         {
             return new GetNumberGameResultCriteria()
             {
@@ -70,7 +70,7 @@ namespace Alpha.Results.Site.Services.Impl.Products
             };
         }
 
-        public string GetResultDetails(ViewNormalResultDetailsQuery detailsRequest)
+        public string GetResultDetails(NormalResultDetailsQuery detailsRequest)
         {
             var criteria = new GetNumberGameResultDetailsCriteria
             {

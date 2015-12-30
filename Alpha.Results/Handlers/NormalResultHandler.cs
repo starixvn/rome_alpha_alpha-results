@@ -14,9 +14,9 @@
     using Sunplus.Agent.Model.RemotingRef;
 
     public class NormalResultHandler :
-        IRequestHandler<ViewNormalResultQuery, NormalResultViewModel>,
-        IRequestHandler<ViewNormalResultDetailsQuery, NormalDetailViewModel>,
-        IRequestHandler<DownloadNormalResultExcelQuery, NormalResultExcelViewModel>
+        IRequestHandler<NormalResultQuery, NormalResultViewModel>,
+        IRequestHandler<NormalResultDetailsQuery, NormalDetailViewModel>,
+        IRequestHandler<ExcelNormalResultQuery, NormalResultExcelViewModel>
     {
         private readonly INormalResultService _normalResultService;
         private readonly IReportService _reportService;
@@ -27,7 +27,7 @@
             _reportService = reportService;
         }
 
-        public NormalResultViewModel Handle(ViewNormalResultQuery message)
+        public NormalResultViewModel Handle(NormalResultQuery message)
         {
             Check.Argument.IsNotNull(message, "message");
             Check.Argument.IsNotEmpty(message.Language, "message.Language");
@@ -49,12 +49,11 @@
                 viewModel.LeagueId = message.LeagueId;
             }
 
-            viewModel.HtmlResults = _normalResultService.GetResults(new ViewNormalResultQuery
+            viewModel.HtmlResults = _normalResultService.GetResults(new NormalResultQuery
             {
                 ResultDate = viewModel.ResultDate,
                 SportId = viewModel.SportId,
                 LeagueId = viewModel.LeagueId,
-                Language = message.Language
             });
 
             return viewModel;
@@ -73,7 +72,7 @@
             });
         }
 
-        public IEnumerable<SelectListItem> GetLeaguesResult(DateTime resultDate, int sportTypeId, string language, bool disableHorseRacingWin)
+        private IEnumerable<SelectListItem> GetLeaguesResult(DateTime resultDate, int sportTypeId, string language, bool disableHorseRacingWin)
         {
             var leagues = _normalResultService.GetLeagues(
                                 resultDate,
@@ -88,7 +87,7 @@
             });
         }
 
-        public NormalDetailViewModel Handle(ViewNormalResultDetailsQuery message)
+        public NormalDetailViewModel Handle(NormalResultDetailsQuery message)
         {
             Check.Argument.IsNotNull(message, "message");
 
@@ -102,7 +101,7 @@
             return viewModel;
         }
 
-        public NormalResultExcelViewModel Handle(DownloadNormalResultExcelQuery message)
+        public NormalResultExcelViewModel Handle(ExcelNormalResultQuery message)
         {
             Check.Argument.IsNotNull(message, "message");
 

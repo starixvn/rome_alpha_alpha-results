@@ -28,7 +28,7 @@ namespace Alpha.Results.Site.Services.Impl.Products
         {
         }
 
-        public string GetResult(ViewNormalResultQuery request)
+        public string GetResult(NormalResultQuery request)
         {
             var criteria = GetCriteria(request);
 
@@ -53,7 +53,7 @@ namespace Alpha.Results.Site.Services.Impl.Products
             return ResultEngine.HtmlParser(results, resultSetting).Replace("original-title", " title ");
         }
 
-        public MemoryStream ExportExcel(DownloadNormalResultExcelQuery request)
+        public MemoryStream ExportExcel(ExcelNormalResultQuery request)
         {
             var exportExcelSetting = new ResultSetting
             {
@@ -70,7 +70,7 @@ namespace Alpha.Results.Site.Services.Impl.Products
             return ResultEngine.ExcelParser(results, exportExcelSetting);
         }
 
-        private static GetSportsbookResultCriteria GetCriteria(ViewNormalResultQuery request)
+        private static GetSportsbookResultCriteria GetCriteria(NormalResultQuery request)
         {
             return new GetSportsbookResultCriteria()
             {
@@ -80,7 +80,7 @@ namespace Alpha.Results.Site.Services.Impl.Products
             };
         }
 
-        public string GetResultDetails(ViewNormalResultDetailsQuery detailsRequest)
+        public string GetResultDetails(NormalResultDetailsQuery detailsRequest)
         {
             var criteria = new GetSportsbookResultDetailsCriteria()
             {

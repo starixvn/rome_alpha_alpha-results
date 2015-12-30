@@ -4,7 +4,6 @@
     using MediatR;
     using Models.Requests;
     using Models.Views;
-    using Sunplus.Agent.Model.Entities;
 
     public class OutrightController : BaseController
     {
@@ -16,21 +15,17 @@
         }
 
         [HttpGet]
-        public ActionResult Index(ViewOutrightResultQuery request = null)
+        public ActionResult Index(OutrightResultQuery request = null)
         {
-            request = request ?? new ViewOutrightResultQuery();
-            request.Language = UserSession.Current.Language;
 
-            var viewModel = _mediator.Send<OutrightViewModel>(request);
+            var viewModel = _mediator.Send<OutrightResultViewModel>(request);
 
             return View(viewModel);
         }
 
         [HttpGet]
-        public ActionResult ExcelResults(DownloadOutrightResultExcelQuery request)
+        public ActionResult ExcelResults(ExcelOutrightResultQuery request)
         {
-            request.TemplatePath = Server.MapPath(ConfigurationSettings.ExcelResultTemplatePath);
-            request.Language = UserSession.Current.Language;
 
             var viewModel = _mediator.Send<OutrightResultExcelViewModel>(request);
 
