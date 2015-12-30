@@ -49,7 +49,7 @@ namespace Alpha.Results.Services.Impl.Products
             {
                 SportType = (SportType)request.SportId,
                 LanguageCode = request.Language,
-                ExcelTitle = request.ToExcelTitle(),
+                ExcelTitle = request.ExcelTitle,
                 ExcelTemplatePath = request.TemplatePath,
                 VisibleMatchCodeIDColumn = false,
                 HighlightWinnerTeam = true

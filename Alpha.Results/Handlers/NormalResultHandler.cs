@@ -4,12 +4,13 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Web.Mvc;
+    using Alpha.Utilities.Extensions;
+    using App_GlobalResources;
+    using Fanex.Common.Helper;
     using MediatR;
     using Models.Requests;
     using Models.Views;
     using Services;
-    using Sunplus.Agent.Model.BL.Definitions;
-    using Sunplus.Agent.Model.Entities.Permission;
     using Sunplus.Agent.Model.RemotingRef;
 
     public class NormalResultHandler :
@@ -28,8 +29,11 @@
 
         public NormalViewModel Handle(ViewNormalResultQuery message)
         {
+            Check.Argument.IsNotNull(message, "message");
+            Check.Argument.IsNotEmpty(message.Language, "message.Language");
+
             var balanceUpDate = _reportService.GetBalanceUpDate().BalanceUpDay;
-            var sports = GetSportsResult(message.ResultDate);
+            var sports = GetSportsResult(message.ResultDate, message.SportsStatus);
 
             var viewModel = new NormalViewModel
             {
@@ -41,7 +45,7 @@
             if (viewModel.Sports.Any())
             {
                 viewModel.SportId = message.SportId > 0 ? message.SportId : int.Parse(sports.First().Value);
-                viewModel.Leagues = GetLeaguesResult(message.ResultDate, viewModel.SportId, message.Language);
+                viewModel.Leagues = GetLeaguesResult(message.ResultDate, viewModel.SportId, message.Language, message.DisableHorseRacingWin);
                 viewModel.LeagueId = message.LeagueId;
             }
 
@@ -56,14 +60,9 @@
             return viewModel;
         }
 
-        private IEnumerable<SelectListItem> GetSportsResult(DateTime resultDate)
+        private IEnumerable<SelectListItem> GetSportsResult(DateTime resultDate, IDictionary<int, bool> sportsStatus)
         {
-            var sportsStatus = new Dictionary<int, bool>
-            {
-                { (int)SportType.NumberGame,  UserPermission.IsShowNumberGame },
-                { (int)SportType.LiveCasino,  UserPermission.IsShowLiveCasino },
-                { (int)SportType.GoldDeluxe,  UserPermission.IsShowGoldDeluxeSettingForCredit }
-            };
+            Check.Argument.IsNotNull(sportsStatus, "sportsStatus");
 
             var sports = _normalResultService.GetSports(resultDate, sportsStatus);
 
@@ -74,13 +73,13 @@
             });
         }
 
-        public IEnumerable<SelectListItem> GetLeaguesResult(DateTime resultDate, int sportTypeId, string language)
+        public IEnumerable<SelectListItem> GetLeaguesResult(DateTime resultDate, int sportTypeId, string language, bool disableHorseRacingWin)
         {
             var leagues = _normalResultService.GetLeagues(
                                 resultDate,
                                 sportTypeId,
                                 language,
-                                AppSettings.Disable151_31);
+                                disableHorseRacingWin);
 
             return leagues.Select(league => new SelectListItem
             {
@@ -91,6 +90,8 @@
 
         public NormalDetailViewModel Handle(ViewNormalResultDetailsQuery message)
         {
+            Check.Argument.IsNotNull(message, "message");
+
             var viewModel = new NormalDetailViewModel
             {
                 Title = $"{CacheRefFactory.CacheRef.GetSportName(message.SportId)} - {CacheRefFactory.CacheRef.GetLeagueName(message.LeagueId)}",
@@ -103,6 +104,13 @@
 
         public NormalResultExcelViewModel Handle(DownloadNormalResultExcelQuery message)
         {
+            Check.Argument.IsNotNull(message, "message");
+
+            var leagueName = message.LeagueId == 0 ? ResultLang.ShowAllLeaguesExcelTitle : CacheRefFactory.CacheRef.GetLeagueName(message.LeagueId);
+            var resultDate = message.ResultDate.ToShortDateFormatWithSlash();
+
+            message.ExcelTitle = $"{ResultLang.result} - {resultDate} | {CacheRefFactory.CacheRef.GetSportName(message.SportId)} {leagueName}";
+
             var excelResults = _normalResultService.GetExcelResults(message);
 
             return new NormalResultExcelViewModel

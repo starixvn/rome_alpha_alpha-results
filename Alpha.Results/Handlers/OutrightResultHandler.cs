@@ -5,6 +5,7 @@
     using System.Linq;
     using System.Web.Mvc;
     using App_GlobalResources;
+    using Fanex.Common.Helper;
     using Fanex.Result.Core.Sportsbook.DTO;
     using MediatR;
     using Models.Requests;
@@ -25,6 +26,8 @@
 
         public OutrightResultExcelViewModel Handle(DownloadOutrightResultExcelQuery message)
         {
+            Check.Argument.IsNotNull(message, "message");
+
             var excelResults = _outrightService.GetExcelResults(message);
 
             return new OutrightResultExcelViewModel
@@ -35,6 +38,8 @@
 
         public OutrightViewModel Handle(ViewOutrightResultQuery message)
         {
+            Check.Argument.IsNotNull(message, "message");
+
             DateTime currentDate = DateTime.Today;
             DateTime balanceUpDate = _outrightService.GetBalanceUpDate().BalanceUpDay;
 
@@ -65,6 +70,9 @@
 
         private OutrightViewModel GetSportsAndLeagues(OutrightViewModel viewModel, IEnumerable<OutRight> outrights, int selectedSportType, int selectedLeagueId)
         {
+            Check.Argument.IsNotNull(viewModel, "viewModel");
+            Check.Argument.IsNotNull(outrights, "outrights");
+
             IList<SelectListItem> sportTypes = new List<SelectListItem>();
             IList<SelectListItem> leagues = new List<SelectListItem>();
             var outrightsGroup = outrights.GroupBy(o => new { SportType = o.SportType, LeagueId = o.LeagueId });

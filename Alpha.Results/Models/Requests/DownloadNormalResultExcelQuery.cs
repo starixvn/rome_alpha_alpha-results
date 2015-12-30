@@ -5,6 +5,8 @@
 
     public class DownloadNormalResultExcelQuery : ViewNormalResultQuery, IRequest<NormalResultExcelViewModel>
     {
+        public string ExcelTitle { get; set; }
+
         public string TemplatePath { get; set; }
     }
 }

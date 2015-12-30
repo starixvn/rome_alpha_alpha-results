@@ -9,9 +9,7 @@ namespace Alpha.Results.Services.Impl
     using Fanex.Result.Core;
     using Fanex.Result.Core.Base;
     using Models.Requests;
-    /// <summary>
-    /// The class ParlayPopupResultService.
-    /// </summary>
+
     public class ParlayResultService : IProductResultService
     {
         private readonly IParlayResultDataAccess _parlayResultDataAccess;

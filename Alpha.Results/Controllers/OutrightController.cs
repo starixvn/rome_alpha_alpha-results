@@ -1,18 +1,11 @@
 ﻿namespace Alpha.Results.Controllers
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
     using System.Web.Mvc;
-    using App_GlobalResources;
-    using Fanex.Result.Core.Sportsbook.DTO;
     using MediatR;
     using Models.Requests;
     using Models.Views;
-    using Services;
-    using Services.Impl;
-    using Sunplus.Agent.Model.BL.Cache;
     using Sunplus.Agent.Model.Entities;
+
     public class OutrightController : BaseController
     {
         private readonly IMediator _mediator;

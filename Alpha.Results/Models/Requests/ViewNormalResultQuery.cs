@@ -1,10 +1,8 @@
 ﻿namespace Alpha.Results.Models.Requests
 {
     using System;
-    using Alpha.Utilities.Extensions;
-    using App_GlobalResources;
+    using System.Collections.Generic;
     using MediatR;
-    using Sunplus.Agent.Model.RemotingRef;
     using Views;
 
     public class ViewNormalResultQuery : IRequest<NormalViewModel>
@@ -24,14 +22,8 @@
 
         public string Language { get; set; }
 
-        public bool IsShowTestResults { get; set; }
+        public IDictionary<int, bool> SportsStatus { get; set; }
 
-        public string ToExcelTitle()
-        {
-            var leagueName = LeagueId == 0 ? ResultLang.ShowAllLeaguesExcelTitle : CacheRefFactory.CacheRef.GetLeagueName(LeagueId);
-            var resultDate = ResultDate.ToShortDateFormatWithSlash();
-
-            return $"{ResultLang.result} - {resultDate} | {CacheRefFactory.CacheRef.GetSportName(SportId)} {leagueName}";
-        }
+        public bool DisableHorseRacingWin { get; set; }
     }
 }
