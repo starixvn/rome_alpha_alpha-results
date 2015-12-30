@@ -1,4 +1,4 @@
-﻿namespace Alpha.Results.Services.Impl
+﻿namespace Alpha.Results.Site.Services.Impl
 {
     using Criteria;
     using Fanex.Caching;
@@ -7,7 +7,7 @@
 
     public class ReportService : IReportService
     {
-        private const string BalanceUpDateCacheKey = "Alpha.Results.Services.Impl.ResultService";
+        private const string BalanceUpDateCacheKey = "Alpha.Results.Site.Services.Impl.ResultService";
 
         private readonly IDynamicRepository _dynamicRepository;
         private readonly ICache _cacheManager;

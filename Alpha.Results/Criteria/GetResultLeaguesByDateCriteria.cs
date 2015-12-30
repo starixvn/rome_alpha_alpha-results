@@ -1,4 +1,4 @@
-﻿namespace Alpha.Results.Criteria
+﻿namespace Alpha.Results.Site.Criteria
 {
     using Fanex.Data.Repository;
     using Sunplus.Agent.Model.BL.Definitions;

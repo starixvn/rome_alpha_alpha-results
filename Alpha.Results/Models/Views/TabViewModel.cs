@@ -1,4 +1,4 @@
-﻿namespace Alpha.Results.Models.Views
+﻿namespace Alpha.Results.Site.Models.Views
 {
     public class TabViewModel
     {

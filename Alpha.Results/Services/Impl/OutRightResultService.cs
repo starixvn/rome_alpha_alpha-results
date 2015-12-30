@@ -1,10 +1,10 @@
-namespace Alpha.Results.Services.Impl
+namespace Alpha.Results.Site.Services.Impl
 {
     using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
-    using Alpha.Results.Criteria;
+    using Alpha.Results.Site.Criteria;
     using App_GlobalResources;
     using Fanex.Common.Helper;
     using Fanex.Data.Repository;

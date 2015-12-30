@@ -1,4 +1,4 @@
-﻿namespace Alpha.Results
+﻿namespace Alpha.Results.Site.
 {
     using System.Web.Mvc;
     using System.Web.Routing;

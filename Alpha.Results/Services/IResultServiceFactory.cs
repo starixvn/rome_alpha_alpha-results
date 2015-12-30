@@ -1,4 +1,4 @@
-﻿namespace Alpha.Results.Services
+﻿namespace Alpha.Results.Site.Services
 {
     public interface IResultServiceFactory
     {

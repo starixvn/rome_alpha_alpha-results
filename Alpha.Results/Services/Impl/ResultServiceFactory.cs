@@ -1,4 +1,4 @@
-﻿namespace Alpha.Results.Services.Impl
+﻿namespace Alpha.Results.Site.Services.Impl
 {
     using Products;
     using Sunplus.Agent.Model.BL.Definitions;

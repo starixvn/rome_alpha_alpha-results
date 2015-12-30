@@ -1,4 +1,4 @@
-﻿namespace Alpha.Results.Controllers
+﻿namespace Alpha.Results.Site.Controllers
 {
     using System.Collections.Generic;
     using System.Web.Mvc;

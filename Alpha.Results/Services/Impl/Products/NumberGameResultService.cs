@@ -1,9 +1,9 @@
-namespace Alpha.Results.Services.Impl.Products
+namespace Alpha.Results.Site.Services.Impl.Products
 {
     using System.IO;
     using System.Linq;
-    using Alpha.Results.Criteria;
-    using Alpha.Results.DataAccesses;
+    using Alpha.Results.Site.Criteria;
+    using Alpha.Results.Site.DataAccesses;
     using DataAccesses.Impl;
     using Fanex.Result.Core;
     using Fanex.Result.Core.Base;

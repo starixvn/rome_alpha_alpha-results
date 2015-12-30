@@ -1,4 +1,4 @@
-﻿namespace Alpha.Results.Handlers
+﻿namespace Alpha.Results.Site.Handlers
 {
     using System;
     using System.Collections.Generic;

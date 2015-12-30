@@ -1,9 +1,6 @@
-﻿namespace Alpha.Results.Controllers
+﻿namespace Alpha.Results.Site.Controllers
 {
-    using System;
-    using System.Collections.Generic;
     using System.Globalization;
-    using System.Reflection;
     using System.Threading;
     using System.Web.Mvc;
     using System.Web.Routing;

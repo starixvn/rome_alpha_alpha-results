@@ -1,4 +1,4 @@
-﻿namespace Alpha.Results.Models.Views
+﻿namespace Alpha.Results.Site.Models.Views
 {
     using System;
     using System.Collections.Generic;

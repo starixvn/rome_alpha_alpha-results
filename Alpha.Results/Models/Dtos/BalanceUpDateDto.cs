@@ -1,4 +1,4 @@
-﻿namespace Alpha.Results.Models.Dtos
+﻿namespace Alpha.Results.Site.Models.Dtos
 {
     using System;
 

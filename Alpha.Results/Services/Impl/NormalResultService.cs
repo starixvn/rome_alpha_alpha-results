@@ -1,4 +1,4 @@
-﻿namespace Alpha.Results.Services.Impl
+﻿namespace Alpha.Results.Site.Services.Impl
 {
     using System;
     using System.Collections.Generic;

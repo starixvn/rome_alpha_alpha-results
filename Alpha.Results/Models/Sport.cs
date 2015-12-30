@@ -1,4 +1,4 @@
-﻿namespace Alpha.Results.Models
+﻿namespace Alpha.Results.Site.Models
 {
     public class Sport
     {

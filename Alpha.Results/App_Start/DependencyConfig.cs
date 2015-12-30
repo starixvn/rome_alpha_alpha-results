@@ -1,4 +1,4 @@
-﻿namespace Alpha.Results.App_Start
+﻿namespace Alpha.Results.Site.App_Start
 {
     using System;
     using System.Collections.Generic;

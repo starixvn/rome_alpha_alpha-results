@@ -1,7 +1,7 @@
-namespace Alpha.Results.DataAccesses
+namespace Alpha.Results.Site.DataAccesses
 {
     using System.Collections.Generic;
-    using Alpha.Results.Criteria;
+    using Alpha.Results.Site.Criteria;
     using Fanex.Result.Core.Racing.DTO;
 
     /// <summary>

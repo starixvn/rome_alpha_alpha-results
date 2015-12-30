@@ -1,4 +1,4 @@
-﻿namespace Alpha.Results.DataAccesses
+﻿namespace Alpha.Results.Site.DataAccesses
 {
     using System.Collections.Generic;
     using Criteria;
