@@ -83,7 +83,7 @@
 
 /********************** Table ***************************/
 table.fn-rs thead th {
-  background: #822b34;
+  background: #666;
   color: #fff; }
 
 table.fn-rs tbody td {
@@ -133,7 +133,7 @@ table.fn-rs tbody .cl-match div.first-half-last-goal {
 /************************************** Tabs ************************************/
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
   border: none;
-  color: #5c1218;
+  color: #666;
   background: transparent; }
 
 .nav-tabs > li > a:hover {
@@ -154,10 +154,10 @@ table.fn-rs tbody .cl-match div.first-half-last-goal {
 
 .nav.nav-tabs > li.active:after {
   width: 100%;
-  background: #5c1218; }
+  background: #666; }
 
 .nav-tabs > li > a {
-  color: #5c1218;
+  color: #666;
   font-weight: bold;
   outline: none; }
 

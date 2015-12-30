@@ -2,7 +2,7 @@
 @import "mixins";
 
 $goal-icon: "images/goal-icon.png";
-$primary-color: #5c1218;
+$primary-color: #666;
 
 body {
     font-size: 12px;
@@ -104,7 +104,7 @@ body {
 /********************** Table ***************************/
 table.fn-rs {
     thead th{
-        background: #822b34;
+        background: $primary-color;
         color: #fff;
     }
     tbody {

@@ -300,6 +300,7 @@
     <Content Include="Content\Agent\_variables.scss" />
     <Content Include="Content\Master\_variables.scss" />
     <Content Include="Content\Super\_variables.scss" />
+    <Content Include="Content\_mixins.scss" />
     <None Include="Properties\PublishProfiles\Local202.pubxml" />
     <None Include="Properties\PublishProfiles\LocalRicky.pubxml" />
     <Content Include="Scripts\Normal\normal-result.js" />
