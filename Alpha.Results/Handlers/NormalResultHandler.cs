@@ -91,9 +91,15 @@
         {
             Check.Argument.IsNotNull(message, "message");
 
+            var sportName = CacheRefFactory.CacheRef.GetSportName(message.SportId);
+
+            var leagueName = message.LeagueId > 0
+                ? CacheRefFactory.CacheRef.GetLeagueName(message.LeagueId)
+                : CacheRefFactory.CacheRef.GetBetTypeName(message.BetTypeId);
+
             var viewModel = new NormalDetailViewModel
             {
-                Title = $"{CacheRefFactory.CacheRef.GetSportName(message.SportId)} - {CacheRefFactory.CacheRef.GetLeagueName(message.LeagueId)}",
+                Title = $"{sportName} - {leagueName}",
                 HtmlResults = _normalResultService.GetResultDetails(message),
                 IsViewResultFromBetList = message.IsViewResultFromBetList
             };

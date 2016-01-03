@@ -10,6 +10,7 @@ var normalResult =
         {
             txtResultDate: null,
             btnOtherDay: null,
+            btnTodayResults: null,
             txtMinResultDate: null,
             dpkContainer: null,
             resultForm: null,
@@ -39,6 +40,7 @@ var normalResult =
         normalResult.domElements.ddlLeagues = $('#LeagueId');
         normalResult.domElements.filterForm = $('#result-filter');
         normalResult.domElements.frmDetailsResult = $('#result-detail-frm');
+        normalResult.domElements.btnTodayResults = $('#today-results');
     },
     registerEvents: function () {
         normalResult.domElements.dpkContainer.datetimepicker({
@@ -49,7 +51,7 @@ var normalResult =
             format: 'MM/DD/YYYY',
             showTodayButton: false,
             ignoreReadonly: true,
-            maxDate: normalResult.domElements.txtResultDate.val()
+            maxDate: normalResult.domElements.btnTodayResults.val()
         });
 
         normalResult.domElements.ddlSports.select2();
