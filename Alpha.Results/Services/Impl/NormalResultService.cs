@@ -19,8 +19,8 @@
             IDynamicRepository dynamicRepository,
             IResultServiceFactory resultServiceFactory)
         {
-            _dynamicRepository = dynamicRepository ?? new DynamicRepository();
-            _resultServiceFactory = resultServiceFactory ?? new ResultServiceFactory();
+            _dynamicRepository = dynamicRepository;
+            _resultServiceFactory = resultServiceFactory;
         }
 
         public IEnumerable<League> GetLeagues(DateTime resultDate, int sportId, string language, bool disableHorseRacingWin)

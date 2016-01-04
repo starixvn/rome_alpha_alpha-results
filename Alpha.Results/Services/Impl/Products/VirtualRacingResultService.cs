@@ -12,19 +12,15 @@ namespace Alpha.Results.Site.Services.Impl.Products
 
     /// <summary>
     /// The class VirtualRacingResultService.
-    /// </summary>R
+    /// </summary>
     public class VirtualRacingResultService : IProductResultService
     {
         private readonly IVirtualRacingResultDataAccess _racingResultDataAccess;
 
-        public VirtualRacingResultService(IVirtualRacingResultDataAccess racingResultDataAccess)
+        public VirtualRacingResultService(IVirtualRacingResultDataAccess racingResultDataAccess = null)
         {
-            this._racingResultDataAccess = racingResultDataAccess ?? new VirtualRacingResultDataAccess();
-        }
-
-        public VirtualRacingResultService()
-            : this(null)
-        {
+            //// Still using poorman DI here because result service factory need to create it manual
+            _racingResultDataAccess = racingResultDataAccess ?? new VirtualRacingResultDataAccess();
         }
 
         public string GetResult(NormalResultQuery request)

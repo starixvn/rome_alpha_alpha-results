@@ -17,14 +17,10 @@ namespace Alpha.Results.Site.Services.Impl.Products
     {
         private readonly IDynamicRepository _dynamicRepository;
 
-        public LiveCasinoResultService(IDynamicRepository dynamicRepository)
+        public LiveCasinoResultService(IDynamicRepository dynamicRepository = null)
         {
-            this._dynamicRepository = dynamicRepository ?? new DynamicRepository();
-        }
-
-        public LiveCasinoResultService()
-            : this(null)
-        {
+            //// Still using poorman DI here because result service factory need to create it manual
+            _dynamicRepository = dynamicRepository ?? new DynamicRepository();
         }
 
         public string GetResultDetails(NormalResultDetailsQuery detailsRequest)

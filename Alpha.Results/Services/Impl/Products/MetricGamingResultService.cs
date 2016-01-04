@@ -13,14 +13,10 @@ namespace Alpha.Results.Site.Services.Impl.Products
     {
         private readonly IMetricGamingResultDataAccess _dataAccess;
 
-        public MetricGamingResultService(IMetricGamingResultDataAccess dataAccess)
+        public MetricGamingResultService(IMetricGamingResultDataAccess dataAccess = null)
         {
+            //// Still using poorman DI here because result service factory need to create it manual
             _dataAccess = dataAccess ?? new MetricGamingResultDataAccess();
-        }
-
-        public MetricGamingResultService()
-            : this(null)
-        {
         }
 
         public string GetResult(NormalResultQuery request)

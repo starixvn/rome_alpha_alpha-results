@@ -16,6 +16,7 @@
 
         public GoldDeluxePopupResultService(IDynamicRepository dynamicRepository = null)
         {
+            //// Still using poorman DI here because result service factory need to create it manual
             _dynamicRepository = dynamicRepository ?? new DynamicRepository();
         }
 

@@ -18,14 +18,10 @@ namespace Alpha.Results.Site.Services.Impl.Products
     {
         private readonly ISportsbookResultDataAccess _dataAccess;
 
-        public SportsbookResultService(ISportsbookResultDataAccess dataAccess)
+        public SportsbookResultService(ISportsbookResultDataAccess dataAccess = null)
         {
-            this._dataAccess = dataAccess ?? new SportsbookResultDataAccess();
-        }
-
-        public SportsbookResultService()
-            : this(null)
-        {
+            //// Still using poorman DI here because result service factory need to create it manual
+            _dataAccess = dataAccess ?? new SportsbookResultDataAccess();
         }
 
         public string GetResult(NormalResultQuery request)

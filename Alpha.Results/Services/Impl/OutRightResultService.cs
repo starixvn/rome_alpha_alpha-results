@@ -22,7 +22,7 @@ namespace Alpha.Results.Site.Services.Impl
         public OutrightResultService(IDynamicRepository dynamicRepository)
             : base(dynamicRepository, null)
         {
-            _dynamicRepository = dynamicRepository ?? new DynamicRepository();
+            _dynamicRepository = dynamicRepository;
         }
 
         public IEnumerable<Outright> GetOutrights(DateTime fromDate, DateTime toDate)

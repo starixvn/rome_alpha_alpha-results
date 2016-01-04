@@ -14,8 +14,8 @@
 
         public ReportService(IDynamicRepository dynamicRepository, ICache cacheManager)
         {
-            _dynamicRepository = dynamicRepository ?? new DynamicRepository();
-            _cacheManager = cacheManager ?? CacheService.CreateInstance(CacheType.MemoryCache);
+            _dynamicRepository = dynamicRepository;
+            _cacheManager = cacheManager;
         }
 
         public BalanceUpDateDto GetBalanceUpDate()

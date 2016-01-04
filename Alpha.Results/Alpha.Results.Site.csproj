@@ -279,7 +279,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\SPNames\Results.xml" />
+    <Content Include="App_Data\SPNames\LOCAL\Results.xml" />
+    <Content Include="App_Data\SPNames\PRO\Results.xml" />
+    <Content Include="App_Data\SPNames\UAT\Results.xml" />
     <Content Include="Content\Fanex.Result\fanex.result-customized.css" />
     <Content Include="Content\Fanex.Result\fanex.result.css" />
     <Content Include="Content\Fanex.Result\images\bg_header01.jpg" />
@@ -425,6 +427,15 @@
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+	 <Content Include="Web.local.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+	 <Content Include="Web.pro.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+	 <Content Include="Web.uat.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

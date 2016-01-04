@@ -14,14 +14,10 @@ namespace Alpha.Results.Site.Services.Impl
     {
         private readonly IParlayResultDataAccess _parlayResultDataAccess;
 
-        public ParlayResultService(IParlayResultDataAccess parlayResultDataAccess)
+        public ParlayResultService(IParlayResultDataAccess parlayResultDataAccess = null)
         {
+            //// Still using poorman DI here because result service factory need to create it manual
             _parlayResultDataAccess = parlayResultDataAccess ?? new ParlayResultDataAccess();
-        }
-
-        public ParlayResultService()
-            : this(null)
-        {
         }
 
         public string GetResultDetails(NormalResultDetailsQuery detailsRequest)

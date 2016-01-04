@@ -17,14 +17,10 @@ namespace Alpha.Results.Site.Services.Impl.Products
     {
         private readonly IRacingResultDataAccess _dataAccess;
 
-        public RacingResultService(IRacingResultDataAccess dataAccess)
+        public RacingResultService(IRacingResultDataAccess dataAccess = null)
         {
+            //// Still using poorman DI here because result service factory need to create it manual
             _dataAccess = dataAccess ?? new RacingResultDataAccess();
-        }
-
-        public RacingResultService()
-            : this(null)
-        {
         }
 
         public string GetResult(NormalResultQuery request)

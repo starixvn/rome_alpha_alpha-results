@@ -16,14 +16,10 @@ namespace Alpha.Results.Site.Services.Impl.Products
     {
         private readonly INumberGameResultDataAccess _numberGameResultDataAccess;
 
-        public NumberGameResultService(INumberGameResultDataAccess numberGameResultDataAccess)
+        public NumberGameResultService(INumberGameResultDataAccess numberGameResultDataAccess = null)
         {
+            //// Still using poorman DI here because result service factory need to create it manual
             _numberGameResultDataAccess = numberGameResultDataAccess ?? new NumberGameResultDataAccess();
-        }
-
-        public NumberGameResultService()
-            : this(null)
-        {
         }
 
         public string GetResult(NormalResultQuery request)

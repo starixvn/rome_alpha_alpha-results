@@ -1,11 +1,13 @@
 ﻿namespace Alpha.Results.Site
 {
+    using System;
     using System.Reflection;
     using System.Web;
     using System.Web.Mvc;
     using System.Web.Optimization;
     using System.Web.Routing;
     using App_Start;
+    using Sunplus.Agent.Utilities;
 
     public class MvcApplication : System.Web.HttpApplication
     {
@@ -31,6 +33,25 @@
             var appNameInfo = typeof(HttpRuntime).GetField("_appDomainAppId", BindingFlags.Instance | BindingFlags.NonPublic);
 
             appNameInfo.SetValue(theRuntime, applicationName);
+        }
+
+        /// <summary>
+        /// Application error event handler.
+        /// </summary>
+        /// <param name="sender">Event sender.</param>
+        /// <param name="e">Event arguments.</param>
+        protected void Application_Error(object sender, EventArgs e)
+        {
+            Exception ex = Server.GetLastError().GetBaseException();
+            if (ex is HttpException)
+            {
+                return;
+            }
+
+            if (!Request.IsLocal)
+            {
+                Logs.FilterInfoWarnOrError(ex);
+            }
         }
     }
 }
