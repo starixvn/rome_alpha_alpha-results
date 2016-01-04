@@ -4,6 +4,7 @@
     using System.Threading;
     using System.Web.Mvc;
     using System.Web.Routing;
+    using System.Web.Security;
     using Sunplus.Agent.Model.Entities;
 
     public class BaseController : Controller
@@ -16,6 +17,12 @@
         {
             //// Should check authentication here
             //// Base controller should separate into another dll for re-using.
+            if (UserSession.Current.CustId == 0)
+            {
+                Response.Redirect(FormsAuthentication.LoginUrl, true);
+                return;
+            }
+
             base.OnActionExecuting(filterContext);
         }
 

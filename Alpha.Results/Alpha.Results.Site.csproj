@@ -339,6 +339,18 @@
     <Compile Include="Criteria\Products\GetSportsbookResultDetailsCriteria.cs" />
     <Compile Include="Criteria\Products\GetSportsbookResultCriteria.cs" />
     <Compile Include="Criteria\Products\GetVirtualRacingResultCriteria.cs" />
+    <Compile Include="DataAccesses\IMetricGamingResultDataAccess.cs" />
+    <Compile Include="DataAccesses\Impl\MetricGamingResultDataAccess.cs" />
+    <Compile Include="DataAccesses\Impl\NumberGameResultDataAccess.cs" />
+    <Compile Include="DataAccesses\Impl\ParlayResultDataAccess.cs" />
+    <Compile Include="DataAccesses\Impl\RacingResultDataAccess.cs" />
+    <Compile Include="DataAccesses\Impl\SportsbookResultDataAccess.cs" />
+    <Compile Include="DataAccesses\Impl\VirtualRacingResultDataAccess.cs" />
+    <Compile Include="DataAccesses\INumberGameResultDataAccess.cs" />
+    <Compile Include="DataAccesses\IParlayResultDataAccess.cs" />
+    <Compile Include="DataAccesses\IRacingResultDataAccess.cs" />
+    <Compile Include="DataAccesses\ISportsbookResultDataAccess.cs" />
+    <Compile Include="DataAccesses\IVirtualRacingResultDataAccess.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -359,18 +371,6 @@
     <Compile Include="Models\Sport.cs" />
     <Compile Include="Models\Views\OutrightResultExcelViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DataAccesses\IMetricGamingResultDataAccess.cs" />
-    <Compile Include="DataAccesses\Impl\MetricGamingResultDataAccess.cs" />
-    <Compile Include="DataAccesses\Impl\NumberGameResultDataAccess.cs" />
-    <Compile Include="DataAccesses\Impl\ParlayResultDataAccess.cs" />
-    <Compile Include="DataAccesses\Impl\RacingResultDataAccess.cs" />
-    <Compile Include="DataAccesses\Impl\SportsbookResultDataAccess.cs" />
-    <Compile Include="DataAccesses\Impl\VirtualRacingResultDataAccess.cs" />
-    <Compile Include="DataAccesses\INumberGameResultDataAccess.cs" />
-    <Compile Include="DataAccesses\IParlayResultDataAccess.cs" />
-    <Compile Include="DataAccesses\IRacingResultDataAccess.cs" />
-    <Compile Include="DataAccesses\ISportsbookResultDataAccess.cs" />
-    <Compile Include="DataAccesses\IVirtualRacingResultDataAccess.cs" />
     <Compile Include="Services\Impl\OutrightResultService.cs" />
     <Compile Include="Services\Impl\Products\GoldDeluxeResultService.cs" />
     <Compile Include="Services\Impl\Products\LiveCasinoResultService.cs" />
