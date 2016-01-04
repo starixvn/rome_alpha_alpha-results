@@ -23,6 +23,8 @@
             CheatApplicationName();
         }
 
+
+
         private void CheatApplicationName()
         {
             string applicationName = "AlphaSite";
@@ -33,6 +35,26 @@
             var appNameInfo = typeof(HttpRuntime).GetField("_appDomainAppId", BindingFlags.Instance | BindingFlags.NonPublic);
 
             appNameInfo.SetValue(theRuntime, applicationName);
+
+        }
+
+        protected void Application_PostRequestHandlerExecute(object sender, EventArgs e)
+        {
+            HttpApplication context = (HttpApplication)sender;
+
+            // ASP.NET store a Session Id in cookie to specify current Session.
+            HttpCookie cookie = context.Response.Cookies["ASP.NET_SessionId"];
+
+            if (context.Session != null &&
+                !string.IsNullOrEmpty(context.Session.SessionID))
+            {
+                // Need to store current Session Id during every request.
+                cookie.Value = context.Session.SessionID;
+                cookie.Domain = context.Request.Url.Host;
+
+                // All Virtual Applications and Folders share this Cookie too.
+                cookie.Path = "/";
+            }
         }
 
         /// <summary>
