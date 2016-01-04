@@ -17,8 +17,9 @@
         [HttpGet]
         public ActionResult Index(OutrightResultQuery request = null)
         {
+            request = request ?? new OutrightResultQuery();
 
-            var viewModel = _mediator.Send<OutrightResultViewModel>(request);
+            var viewModel = _mediator.Send(request);
 
             return View(viewModel);
         }
@@ -26,7 +27,6 @@
         [HttpGet]
         public ActionResult ExcelResults(ExcelOutrightResultQuery request)
         {
-
             var viewModel = _mediator.Send<OutrightResultExcelViewModel>(request);
 
             return File(viewModel.ExcelResults, "application/vnd.ms-excel", viewModel.ExcelName);
