@@ -46,6 +46,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Alpha.Auth, Version=3.0.0.2, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Alpha.Auth.3.0.0.2\lib\net40\Alpha.Auth.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Alpha.SecurityCode, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Alpha.SecurityCode.1.0.0.0\lib\net40\Alpha.SecurityCode.dll</HintPath>
       <Private>True</Private>
@@ -309,14 +313,12 @@
     <Content Include="Content\result.css">
       <DependentUpon>result.scss</DependentUpon>
     </Content>
-    <Content Include="Content\result.min.css">
-      <DependentUpon>result.css</DependentUpon>
-    </Content>
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\CssRewriteUrlTransformWrapper.cs" />
     <Compile Include="App_Start\DependencyConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Game\Controllers\KenoController.cs" />
@@ -427,13 +429,13 @@
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-	 <Content Include="Web.local.config">
+    <Content Include="Web.local.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-	 <Content Include="Web.pro.config">
+    <Content Include="Web.pro.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-	 <Content Include="Web.uat.config">
+    <Content Include="Web.uat.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <None Include="Web.Release.config">

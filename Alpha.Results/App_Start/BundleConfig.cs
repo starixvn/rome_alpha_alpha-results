@@ -34,10 +34,9 @@
 
         private static void RegisterStyleBundles(BundleCollection bundles)
         {
-            bundles.Add(new StyleBundle(ResultCoreStyleBundleUrl).Include(
-                "~/Content/Fanex.Result/fanex.result.css",
-                "~/Content/result.css"
-                ));
+            bundles.Add(new StyleBundle(ResultCoreStyleBundleUrl)
+                .Include("~/Content/Fanex.Result/fanex.result.css", new CssRewriteUrlTransformWrapper())
+                .Include("~/Content/result.css", new CssRewriteUrlTransformWrapper()));
         }
     }
 }

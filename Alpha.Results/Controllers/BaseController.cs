@@ -13,19 +13,6 @@
 
         private static readonly CultureInfo DefaultCulture = CultureInfo.CreateSpecificCulture(DefaultLanguage);
 
-        protected override void OnActionExecuting(ActionExecutingContext filterContext)
-        {
-            //// Should check authentication here
-            //// Base controller should separate into another dll for re-using.
-            if (UserSession.Current.CustId == 0)
-            {
-                Response.Redirect(FormsAuthentication.LoginUrl, true);
-                return;
-            }
-
-            base.OnActionExecuting(filterContext);
-        }
-
         protected override JsonResult Json(object data, string contentType, System.Text.Encoding contentEncoding, JsonRequestBehavior behavior)
         {
             return new JsonResult()

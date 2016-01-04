@@ -6,6 +6,7 @@ namespace Alpha.Results.Site.Services.Impl
     using System.Linq;
     using Alpha.Results.Site.Criteria;
     using App_GlobalResources;
+    using Fanex.Caching;
     using Fanex.Common.Helper;
     using Fanex.Data.Repository;
     using Fanex.Result.Core;
@@ -19,8 +20,8 @@ namespace Alpha.Results.Site.Services.Impl
     {
         private readonly IDynamicRepository _dynamicRepository;
 
-        public OutrightResultService(IDynamicRepository dynamicRepository)
-            : base(dynamicRepository, null)
+        public OutrightResultService(IDynamicRepository dynamicRepository, ICache cacheManager)
+            : base(dynamicRepository, cacheManager)
         {
             _dynamicRepository = dynamicRepository;
         }
