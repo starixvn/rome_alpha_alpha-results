@@ -47,7 +47,7 @@
             var reportService = new ReportDateService(repository, cacheManager);
 
             // Act
-            var actual = reportService.GetBalanceUpDay();
+            var actual = reportService.GetBalanceUpDate();
 
             // Assert
             Assert.AreEqual(expectedDay, actual);
@@ -65,7 +65,7 @@
             var reportService = new ReportDateService(repository, cacheManager);
 
             // Act
-            var actual = reportService.GetBalanceUpDay();
+            var actual = reportService.GetBalanceUpDate();
 
             // Assert
             Assert.AreEqual(balanceUpDate, actual);
@@ -85,9 +85,9 @@
             var reportService = new ReportDateService(repository, cacheManager);
 
             // Act
-            Assert.Throws<Exception>(() => reportService.GetBalanceUpDay());
+            Assert.Throws<Exception>(() => reportService.GetBalanceUpDate());
             reportService
-                .Invoking(service => service.GetBalanceUpDay())
+                .Invoking(service => service.GetBalanceUpDate())
                 .ShouldThrow<Exception>()
                 .WithMessage("Cannot get balance up day");
         }
@@ -104,7 +104,7 @@
             var reportService = new ReportDateService(repository, cacheManager);
 
             // Act
-            reportService.GetBalanceUpDay();
+            reportService.GetBalanceUpDate();
 
             // Assert
             cacheManager.Received().Set(BalanceUpDateCacheKey, balanceUpDate);

@@ -291,9 +291,6 @@
     <Content Include="Content\Fanex.Result\images\goal-icon.png" />
     <Content Include="Content\Images\goal-icon.png" />
     <Content Include="Content\Images\sprite.png" />
-    <Content Include="Content\result.min.css">
-      <DependentUpon>result.css</DependentUpon>
-    </Content>
     <Content Include="Global.asax" />
     <Content Include="Areas\Game\Views\Keno\Result.cshtml" />
     <Content Include="Areas\Game\Views\web.config" />
@@ -307,6 +304,7 @@
     <Content Include="Content\Super\_variables.scss" />
     <Content Include="Content\_mixins.scss" />
     <None Include="Properties\PublishProfiles\Local202.pubxml" />
+    <None Include="Properties\PublishProfiles\Local202CookieLess.pubxml" />
     <None Include="Properties\PublishProfiles\LocalRicky.pubxml" />
     <Content Include="Scripts\Normal\normal-result.js" />
     <Content Include="Scripts\Outright\outright-result.js" />
