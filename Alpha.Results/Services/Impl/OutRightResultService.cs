@@ -24,22 +24,14 @@ namespace Alpha.Results.Site.Services.Impl
             _dynamicRepository = dynamicRepository;
         }
 
-        public IEnumerable<Outright> GetOutrights(DateTime fromDate, DateTime toDate, DateTime balanceUpDate)
+        public IEnumerable<Outright> GetOutrights(DateTime fromDate, DateTime toDate)
         {
-
-            if (fromDate < balanceUpDate)
-            {
-                return Enumerable.Empty<Outright>();
-            }
+            Check.Argument.IsNotInvalidDate(fromDate, "fromDate");
+            Check.Argument.IsNotInvalidDate(toDate, "toDate");
 
             fromDate = fromDate.Date;
             toDate = toDate.Date.AddDays(1).AddTicks(-1);
             ICriteria criteria = GetOutrightCriteria(fromDate, toDate);
-
-            if (!criteria.IsValid())
-            {
-                return Enumerable.Empty<Outright>();
-            }
 
             return _dynamicRepository.Fetch<Outright>(criteria);
         }
@@ -63,14 +55,14 @@ namespace Alpha.Results.Site.Services.Impl
             return ResultEngine.HtmlParser(outrights.ToList(), resultSetting);
         }
 
-        public MemoryStream GetExcelResults(ExcelOutrightResultQuery request, DateTime balanceUpDate)
+        public MemoryStream GetExcelResults(ExcelOutrightResultQuery request)
         {
             Check.Argument.IsNotNull(request, "request");
             Check.Argument.IsNotEmpty(request.TemplatePath, "templatePath");
 
             string excelTitle = GetExcelTitle(request.FromDate, request.ToDate, request.SportType, request.LeagueId);
 
-            var outrights = GetOutrights(request.FromDate, request.ToDate, balanceUpDate);
+            var outrights = GetOutrights(request.FromDate, request.ToDate);
 
             outrights = FilterOutright(outrights, request.SportType, request.LeagueId);
 
@@ -114,9 +106,7 @@ namespace Alpha.Results.Site.Services.Impl
 
         private string GetExcelTitle(DateTime fromDate, DateTime toDate, int sportType, int leagueId)
         {
-            string leagueName = leagueId == 0
-                ? Resources.ShowAllLeaguesExcelTitle
-                : CacheRef.GetLeagueName(leagueId);
+            string leagueName = leagueId == 0 ? Resources.ShowAllLeaguesExcelTitle : CacheRef.GetLeagueName(leagueId);
 
             return $"{Resources.OutrightResults.ToUpper()} - {fromDate.ToShortDateString()} -> {toDate.ToShortDateString()} | {CacheRef.GetSportName(sportType)} - {leagueName}";
         }

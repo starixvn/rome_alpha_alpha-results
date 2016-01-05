@@ -18,19 +18,19 @@
          IRequestHandler<ExcelOutrightResultQuery, OutrightResultExcelViewModel>
     {
         private readonly IOutrightResultService _outrightService;
-        private readonly IReportDateService _reportDateService;
+        private readonly IReportDateService _reportService;
 
-        public OutrightResultHandler(IOutrightResultService outrightService, IReportDateService reportDateService)
+        public OutrightResultHandler(IOutrightResultService outrightService, IReportDateService reportService)
         {
             _outrightService = outrightService;
-            _reportDateService = reportDateService;
+            _reportService = reportService;
         }
 
         public OutrightResultExcelViewModel Handle(ExcelOutrightResultQuery message)
         {
             Check.Argument.IsNotNull(message, "message");
 
-            var excelResults = _outrightService.GetExcelResults(message, _reportDateService.GetBalanceUpDate());
+            var excelResults = _outrightService.GetExcelResults(message);
 
             return new OutrightResultExcelViewModel
             {
@@ -43,7 +43,7 @@
             Check.Argument.IsNotNull(message, "message");
 
             DateTime currentDate = DateTime.Today;
-            DateTime balanceUpDate = _reportDateService.GetBalanceUpDate();
+            DateTime balanceUpDate = _reportService.GetBalanceUpDate().BalanceUpDay;
 
             OutrightResultViewModel viewModel = new OutrightResultViewModel
             {
@@ -56,7 +56,12 @@
                 ToDate = message.ToDate
             };
 
-            var outrights = _outrightService.GetOutrights(message.FromDate, message.ToDate, _reportDateService.GetBalanceUpDate());
+            if (message.FromDate < balanceUpDate)
+            {
+                return viewModel;
+            }
+
+            var outrights = _outrightService.GetOutrights(message.FromDate, message.ToDate);
 
             if (outrights.Any())
             {
@@ -73,11 +78,7 @@
             return viewModel;
         }
 
-        private OutrightResultViewModel GetSportsAndLeagues(
-            OutrightResultViewModel viewModel,
-            IEnumerable<Outright> outrights,
-            int selectedSportType,
-            int selectedLeagueId)
+        private OutrightResultViewModel GetSportsAndLeagues(OutrightResultViewModel viewModel, IEnumerable<Outright> outrights, int selectedSportType, int selectedLeagueId)
         {
             Check.Argument.IsNotNull(viewModel, "viewModel");
             Check.Argument.IsNotNull(outrights, "outrights");

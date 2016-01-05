@@ -8,10 +8,10 @@ namespace Alpha.Results.Site.Services
 
     public interface IOutrightResultService
     {
-        IEnumerable<Outright> GetOutrights(DateTime fromDate, DateTime toDate, DateTime balanceUpDate);
+        IEnumerable<Outright> GetOutrights(DateTime fromDate, DateTime toDate);
 
         string GetResults(IEnumerable<Outright> outrights, OutrightResultQuery request);
 
-        MemoryStream GetExcelResults(ExcelOutrightResultQuery request, DateTime balanceUpDate);
+        MemoryStream GetExcelResults(ExcelOutrightResultQuery request);
     }
 }
