@@ -9,7 +9,7 @@ namespace Alpha.Results.Site.Services
 
     public interface IOutrightResultService
     {
-        BalanceUpDateDto GetBalanceUpDate();
+        BalanceUpAndMoveBetsDate GetBalanceUpDate();
 
         IEnumerable<Outright> GetOutrights(DateTime fromDate, DateTime toDate);
 

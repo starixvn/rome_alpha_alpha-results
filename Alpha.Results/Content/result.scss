@@ -10,8 +10,8 @@ body {
 }
 .icon-excel {
     background: url('Images/sprite.png') no-repeat -26px -4px;
-	width: 16px;
-	height: 19px;
+    width: 16px;
+    height: 19px;
     display: inline-block;
 }
 .tab-content {
@@ -129,13 +129,12 @@ table.fn-rs tbody td,
 table.fn-rs thead th {
     padding: 6px;
     -webkit-box-sizing: content-box;
-            box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
 }
 
 table.fn-rs thead th {
     padding: 8px 6px;
-}
-table.fn-rs thead th {
     border-bottom: none;
     font-weight: bold;
 }
@@ -160,7 +159,7 @@ table.fn-rs tbody .cl-match div {
     &.last-goal
     {
         background: url($goal-icon) no-repeat -9px -16px;
-	}
+    }
     &.first-half-first-goal
     {
         background: url($goal-icon) no-repeat -9px -65px;
@@ -192,6 +191,9 @@ table.fn-rs tbody .cl-match div {
     height: 3px;
     width: 0;
     background: transparent;
+    -moz-transition: width .5s ease, background-color .5s ease;
+    -o-transition: width .5s ease, background-color .5s ease;
+    -webkit-transition: width .5s ease, background-color .5s ease;
     transition: width .5s ease, background-color .5s ease;
 }
 .nav.nav-tabs > li.active:after {
@@ -208,8 +210,8 @@ table.fn-rs tbody .cl-match div {
 .input-group.date{
     .calendar {
         background: url('Images/sprite.png') no-repeat -3px -3px;
-	    width: 18px;
-	    height: 20px;
+        width: 18px;
+        height: 20px;
         display: inline-block;
     }
     .input-group-addon {

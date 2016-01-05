@@ -45,6 +45,7 @@
                 return sportsStatus;
             }
         }
+
         public bool DisableHorseRacingWin
         {
             get

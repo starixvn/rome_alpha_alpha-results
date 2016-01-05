@@ -69,7 +69,7 @@
         private static void RegisterServices(Container container)
         {
             container.Register<IResultServiceFactory, ResultServiceFactory>(Lifestyle.Scoped);
-            container.Register<IReportService, ReportService>(Lifestyle.Scoped);
+            container.Register<IReportDateService, ReportDateService>(Lifestyle.Scoped);
             container.Register<IOutrightResultService, OutrightResultService>(Lifestyle.Scoped);
             container.Register<INormalResultService, NormalResultService>(Lifestyle.Scoped);
 

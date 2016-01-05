@@ -19,9 +19,9 @@
         IRequestHandler<ExcelNormalResultQuery, NormalResultExcelViewModel>
     {
         private readonly INormalResultService _normalResultService;
-        private readonly IReportService _reportService;
+        private readonly IReportDateService _reportService;
 
-        public NormalResultHandler(INormalResultService normalResultService, IReportService reportService)
+        public NormalResultHandler(INormalResultService normalResultService, IReportDateService reportService)
         {
             _normalResultService = normalResultService;
             _reportService = reportService;

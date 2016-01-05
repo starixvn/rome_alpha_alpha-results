@@ -2,7 +2,7 @@
 {
     using System;
 
-    public class BalanceUpDateDto
+    public class BalanceUpAndMoveBetsDate
     {
         public DateTime BalanceUpDay { get; set; }
 

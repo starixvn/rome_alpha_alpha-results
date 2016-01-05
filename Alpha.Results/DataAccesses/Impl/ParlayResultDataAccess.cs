@@ -43,7 +43,7 @@ namespace Alpha.Results.Site.DataAccesses.Impl
         /// <param name="results">The results.</param>
         private static void AddGameDetailsToResults(List<GameDetail> gameDetails, List<Parlay> results)
         {
-            if (gameDetails.Count > 0)
+            if (gameDetails.Any())
             {
                 foreach (var result in results)
                 {
@@ -143,7 +143,7 @@ namespace Alpha.Results.Site.DataAccesses.Impl
         /// </summary>
         /// <param name="reader">The IDATAREADER.</param>
         /// <returns>The SPORTBOOK DTO.</returns>
-        private static Sportsbook BindSportbook(System.Data.IDataReader reader)
+        private static Sportsbook BindSportbook(IDataReader reader)
         {
             var item = new Sportsbook
             {

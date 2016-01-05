@@ -103,12 +103,11 @@ table.fn-rs tbody td,
 table.fn-rs thead th {
   padding: 6px;
   -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
   box-sizing: content-box; }
 
 table.fn-rs thead th {
-  padding: 8px 6px; }
-
-table.fn-rs thead th {
+  padding: 8px 6px;
   border-bottom: none;
   font-weight: bold; }
 
@@ -156,6 +155,9 @@ table.fn-rs tbody .cl-match div.first-half-last-goal {
   height: 3px;
   width: 0;
   background: transparent;
+  -moz-transition: width .5s ease, background-color .5s ease;
+  -o-transition: width .5s ease, background-color .5s ease;
+  -webkit-transition: width .5s ease, background-color .5s ease;
   transition: width .5s ease, background-color .5s ease; }
 
 .nav.nav-tabs > li.active:after {

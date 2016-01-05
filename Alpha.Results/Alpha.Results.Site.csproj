@@ -359,7 +359,7 @@
     </Compile>
     <Compile Include="Handlers\NormalResultHandler.cs" />
     <Compile Include="Handlers\OutrightResultHandler.cs" />
-    <Compile Include="Models\Dtos\BalanceUpDateDto.cs" />
+    <Compile Include="Models\Dtos\BalanceUpAndMoveBetsDate.cs" />
     <Compile Include="Models\League.cs" />
     <Compile Include="Models\Requests\ExcelNormalResultQuery.cs" />
     <Compile Include="Models\Requests\ExcelOutrightResultQuery.cs" />
@@ -377,13 +377,13 @@
     <Compile Include="Services\Impl\Products\ParlayResultService.cs" />
     <Compile Include="Services\Impl\Products\RacingResultService.cs" />
     <Compile Include="Services\Impl\NormalResultService.cs" />
-    <Compile Include="Services\Impl\ReportService.cs" />
+    <Compile Include="Services\Impl\ReportDateService.cs" />
     <Compile Include="Services\Impl\Products\SportsbookResultService.cs" />
     <Compile Include="Services\Impl\Products\VirtualRacingResultService.cs" />
     <Compile Include="Services\Impl\ResultServiceFactory.cs" />
     <Compile Include="Services\INormalResultService.cs" />
     <Compile Include="Services\IOutrightResultService.cs" />
-    <Compile Include="Services\IReportService.cs" />
+    <Compile Include="Services\IReportDateService.cs" />
     <Compile Include="Services\IProductResultService.cs" />
     <Compile Include="Services\IResultServiceFactory.cs" />
     <Compile Include="Models\Views\KenoResultViewModel.cs" />
@@ -395,7 +395,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="App_Data\Fanex.Result\Badminton.xls" />
     <Content Include="App_Data\Fanex.Result\BaseBall.xls" />
     <Content Include="App_Data\Fanex.Result\Basketball.xls" />

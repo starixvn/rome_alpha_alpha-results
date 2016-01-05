@@ -51,7 +51,9 @@
 
             foreach (var result in results)
             {
-                result.GameDetails = gameDetails.Where(i => i.MatchId == result.MatchId).ToList();
+                result.GameDetails = gameDetails
+                    .Where(i => i.MatchId == result.MatchId)
+                    .ToList();
             }
 
             return results;
@@ -129,7 +131,7 @@
 
         public List<Sportsbook> GetScoreInformation(ref GetSportsbookResultDetailsCriteria criteria)
         {
-            var result = new List<Sportsbook>();
+            var result = new List<Sportsbook>();  
 
             using (ObjectDb objDb = new ObjectDb(criteria.GetSettingKey()))
             {
@@ -147,7 +149,7 @@
                             }
                         }
 
-                        if (result[0].GameDetails.Count == 0)
+                        if (!result[0].GameDetails.Any())
                         {
                             result[0].GameDetails.Add(new GameDetail());
                         }

@@ -16,7 +16,7 @@ namespace Alpha.Results.Site.Services.Impl
     using Sunplus.Agent.Model.BL.Cache;
     using Sunplus.Agent.Model.BL.Definitions;
 
-    public class OutrightResultService : ReportService, IOutrightResultService
+    public class OutrightResultService : ReportDateService, IOutrightResultService
     {
         private readonly IDynamicRepository _dynamicRepository;
 
