@@ -2,6 +2,10 @@
   font-size: 12px;
   background: #f4f4f4; }
 
+.ifr-result {
+  position: absolute;
+  min-width: 100%; }
+
 .icon-excel {
   background: url("Images/sprite.png") no-repeat -26px -4px;
   width: 16px;
@@ -78,8 +82,8 @@
   padding-right: 0; }
 
 .main-content .fn-rs-content-scroll {
-  max-height: initial;
-  overflow: hidden; }
+  overflow: hidden;
+  max-height: none; }
 
 /********************** Table ***************************/
 table.fn-rs thead th {

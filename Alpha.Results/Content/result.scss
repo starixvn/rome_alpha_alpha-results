@@ -8,6 +8,12 @@ body {
     font-size: 12px;
     background: #f4f4f4;
 }
+.ifr-result {
+    position: absolute;
+    min-width: 100%;
+}
+
+
 .icon-excel {
     background: url('Images/sprite.png') no-repeat -26px -4px;
     width: 16px;
@@ -97,8 +103,8 @@ body {
         padding-right: 0;
     }
     .fn-rs-content-scroll {
-        max-height: initial;
         overflow: hidden;
+        max-height: none;
     }
 }
 /********************** Table ***************************/
