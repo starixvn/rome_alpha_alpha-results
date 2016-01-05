@@ -13,8 +13,8 @@
             maxDate: maxResultDate
         };
 
-        fromdatepicker = $('#dpk-fromdate').alphadatepicker(dpkSettings);
-        todatepicker = $('#dpk-todate').alphadatepicker(dpkSettings);
+        fromdatepicker = $('#dpk-fromdate').datepicker(dpkSettings);
+        todatepicker = $('#dpk-todate').datepicker(dpkSettings);
 
         fromdatepicker.on('dp.change', function (e) {
             todatepicker.data('DateTimePicker').minDate(e.date);
