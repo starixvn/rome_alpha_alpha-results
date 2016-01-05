@@ -32,7 +32,7 @@
             Check.Argument.IsNotNull(message, "message");
             Check.Argument.IsNotEmpty(message.Language, "message.Language");
 
-            var balanceUpDate = _reportService.GetBalanceUpDate().BalanceUpDay;
+            var balanceUpDate = _reportService.GetBalanceUpDate();
             var sports = GetSportsResult(message.ResultDate, message.SportsStatus);
 
             var viewModel = new NormalResultViewModel

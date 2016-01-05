@@ -18,17 +18,19 @@
          IRequestHandler<ExcelOutrightResultQuery, OutrightResultExcelViewModel>
     {
         private readonly IOutrightResultService _outrightService;
+        private readonly IReportDateService _reportDateService;
 
-        public OutrightResultHandler(IOutrightResultService outrightService)
+        public OutrightResultHandler(IOutrightResultService outrightService, IReportDateService reportDateService)
         {
             _outrightService = outrightService;
+            _reportDateService = reportDateService;
         }
 
         public OutrightResultExcelViewModel Handle(ExcelOutrightResultQuery message)
         {
             Check.Argument.IsNotNull(message, "message");
 
-            var excelResults = _outrightService.GetExcelResults(message);
+            var excelResults = _outrightService.GetExcelResults(message, _reportDateService.GetBalanceUpDate());
 
             return new OutrightResultExcelViewModel
             {
@@ -41,7 +43,7 @@
             Check.Argument.IsNotNull(message, "message");
 
             DateTime currentDate = DateTime.Today;
-            DateTime balanceUpDate = _outrightService.GetBalanceUpDate().BalanceUpDay;
+            DateTime balanceUpDate = _reportDateService.GetBalanceUpDate();
 
             OutrightResultViewModel viewModel = new OutrightResultViewModel
             {
@@ -54,7 +56,7 @@
                 ToDate = message.ToDate
             };
 
-            var outrights = _outrightService.GetOutrights(message.FromDate, message.ToDate);
+            var outrights = _outrightService.GetOutrights(message.FromDate, message.ToDate, _reportDateService.GetBalanceUpDate());
 
             if (outrights.Any())
             {
@@ -71,7 +73,11 @@
             return viewModel;
         }
 
-        private OutrightResultViewModel GetSportsAndLeagues(OutrightResultViewModel viewModel, IEnumerable<Outright> outrights, int selectedSportType, int selectedLeagueId)
+        private OutrightResultViewModel GetSportsAndLeagues(
+            OutrightResultViewModel viewModel,
+            IEnumerable<Outright> outrights,
+            int selectedSportType,
+            int selectedLeagueId)
         {
             Check.Argument.IsNotNull(viewModel, "viewModel");
             Check.Argument.IsNotNull(outrights, "outrights");

@@ -6,7 +6,6 @@ namespace Alpha.Results.Site.Services.Impl
     using System.Linq;
     using Alpha.Results.Site.Criteria;
     using App_GlobalResources;
-    using Fanex.Caching;
     using Fanex.Common.Helper;
     using Fanex.Data.Repository;
     using Fanex.Result.Core;
@@ -16,20 +15,22 @@ namespace Alpha.Results.Site.Services.Impl
     using Sunplus.Agent.Model.BL.Cache;
     using Sunplus.Agent.Model.BL.Definitions;
 
-    public class OutrightResultService : ReportDateService, IOutrightResultService
+    public class OutrightResultService : IOutrightResultService
     {
         private readonly IDynamicRepository _dynamicRepository;
 
-        public OutrightResultService(IDynamicRepository dynamicRepository, ICache cacheManager)
-            : base(dynamicRepository, cacheManager)
+        public OutrightResultService(IDynamicRepository dynamicRepository)
         {
             _dynamicRepository = dynamicRepository;
         }
 
-        public IEnumerable<Outright> GetOutrights(DateTime fromDate, DateTime toDate)
+        public IEnumerable<Outright> GetOutrights(DateTime fromDate, DateTime toDate, DateTime balanceUpDate)
         {
-            Check.Argument.IsNotInvalidDate(fromDate, "fromDate");
-            Check.Argument.IsNotInvalidDate(toDate, "toDate");
+
+            if (fromDate < balanceUpDate)
+            {
+                return Enumerable.Empty<Outright>();
+            }
 
             fromDate = fromDate.Date;
             toDate = toDate.Date.AddDays(1).AddTicks(-1);
@@ -37,13 +38,7 @@ namespace Alpha.Results.Site.Services.Impl
 
             if (!criteria.IsValid())
             {
-                return null;
-            }
-
-            DateTime balanceUpDay = GetBalanceUpDate().BalanceUpDay;
-            if (fromDate < balanceUpDay)
-            {
-                return null;
+                return Enumerable.Empty<Outright>();
             }
 
             return _dynamicRepository.Fetch<Outright>(criteria);
@@ -68,14 +63,14 @@ namespace Alpha.Results.Site.Services.Impl
             return ResultEngine.HtmlParser(outrights.ToList(), resultSetting);
         }
 
-        public MemoryStream GetExcelResults(ExcelOutrightResultQuery request)
+        public MemoryStream GetExcelResults(ExcelOutrightResultQuery request, DateTime balanceUpDate)
         {
             Check.Argument.IsNotNull(request, "request");
             Check.Argument.IsNotEmpty(request.TemplatePath, "templatePath");
 
             string excelTitle = GetExcelTitle(request.FromDate, request.ToDate, request.SportType, request.LeagueId);
 
-            var outrights = GetOutrights(request.FromDate, request.ToDate);
+            var outrights = GetOutrights(request.FromDate, request.ToDate, balanceUpDate);
 
             outrights = FilterOutright(outrights, request.SportType, request.LeagueId);
 
@@ -119,7 +114,9 @@ namespace Alpha.Results.Site.Services.Impl
 
         private string GetExcelTitle(DateTime fromDate, DateTime toDate, int sportType, int leagueId)
         {
-            string leagueName = leagueId == 0 ? Resources.ShowAllLeaguesExcelTitle : CacheRef.GetLeagueName(leagueId);
+            string leagueName = leagueId == 0
+                ? Resources.ShowAllLeaguesExcelTitle
+                : CacheRef.GetLeagueName(leagueId);
 
             return $"{Resources.OutrightResults.ToUpper()} - {fromDate.ToShortDateString()} -> {toDate.ToShortDateString()} | {CacheRef.GetSportName(sportType)} - {leagueName}";
         }
