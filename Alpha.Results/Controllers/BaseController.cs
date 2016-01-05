@@ -21,6 +21,7 @@
             if (UserSession.Current.CustId == 0)
             {
                 Response.Redirect(FormsAuthentication.LoginUrl, true);
+
                 return;
             }
         }

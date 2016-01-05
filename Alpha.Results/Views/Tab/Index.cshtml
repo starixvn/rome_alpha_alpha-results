@@ -1,8 +1,13 @@
 ﻿@model TabViewModel
+    
+@{ 
+    var response = HttpContext.Current.Response;
+}
 
-<li role="presentation" class="@((Model.SelectedTabName == "normal") ? "active" : string.Empty)"><a href="~/normal/" id="tabNormal">@Resources.Normal</a></li>
-<li role="presentation" class="@((Model.SelectedTabName == "outright") ? "active" : string.Empty)"><a href="~/outright/index" id="tabOutright">@Resources.OutRight</a></li>
+<li role="presentation" class="@((Model.SelectedTabName == "normal") ? "active" : string.Empty)"><a href="@response.ApplyAppPathModifier("~/normal/")" id="tabNormal">@Resources.Normal</a></li>
+<li role="presentation" class="@((Model.SelectedTabName == "outright") ? "active" : string.Empty)"><a href="@response.ApplyAppPathModifier("~/outright/index")" id="tabOutright">@Resources.OutRight</a></li>
+
 @if (Model.IsEnabledKenoTab)
 {
-    <li role="presentation" class="@((Model.SelectedTabName == "keno") ? "active" : string.Empty)" ><a href="~/keno/index" id="tabKeno">@Resources.Keno</a></li>
+    <li role="presentation" class="@((Model.SelectedTabName == "keno") ? "active" : string.Empty)" ><a href="@response.ApplyAppPathModifier("~/keno/index")" id="tabKeno">@Resources.Keno</a></li>
 }
