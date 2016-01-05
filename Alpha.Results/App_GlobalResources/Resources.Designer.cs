@@ -135,9 +135,9 @@ namespace Alpha.Results.Site.App_GlobalResources {
         /// <summary>
         ///   Looks up a localized string similar to Outright.
         /// </summary>
-        public static string OutRight {
+        public static string Outright {
             get {
-                return ResourceManager.GetString("OutRight", resourceCulture);
+                return ResourceManager.GetString("Outright", resourceCulture);
             }
         }
         
