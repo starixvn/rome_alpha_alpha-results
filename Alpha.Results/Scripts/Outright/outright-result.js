@@ -9,18 +9,12 @@
 
     function initializeDatepicker() {
         var dpkSettings = {
-            allowInputToggle: false,
-            calendarWeeks: false,
-            dayViewHeaderFormat: 'MMM YYYY',
-            format: 'MM/DD/YYYY',
-            showTodayButton: false,
-            ignoreReadonly: true,
             minDate: minResultDate,
             maxDate: maxResultDate
         };
 
-        fromdatepicker = $('#dpk-fromdate').datetimepicker(dpkSettings);
-        todatepicker = $('#dpk-todate').datetimepicker(dpkSettings);
+        fromdatepicker = $('#dpk-fromdate').alphadatepicker(dpkSettings);
+        todatepicker = $('#dpk-todate').alphadatepicker(dpkSettings);
 
         fromdatepicker.on('dp.change', function (e) {
             todatepicker.data('DateTimePicker').minDate(e.date);
