@@ -27,8 +27,8 @@
                 </div>
 
                 <input type="submit" value="@Resources.Submit" id="selected-day-results" class="btn btn-submit" />
-                <input type="submit" value="@Model.Today" id="today-results" class="btn btn-default btn-other-day" />
-                <input type="submit" value="@Model.Yesterday" id="yesterday-results" class="btn btn-default btn-other-day" />
+                <input type="submit" value="@Model.Today.ToShortDateFormatWithSlash()" id="today-results" class="btn btn-default btn-other-day" />
+                <input type="submit" value="@Model.Yesterday.ToShortDateFormatWithSlash()" id="yesterday-results" class="btn btn-default btn-other-day" />
             </div>
 
             <div class="col-sm-12">
@@ -57,6 +57,7 @@
         @Html.Raw(Model.HtmlResults)
     </div>
     @Html.HiddenFor(model => model.MinResultDate)
+    @Html.HiddenFor(model => model.Today)
 </div>
 
 <div class="modal fade" id="result-details" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -64,11 +65,11 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">@Resources.Results</h4>
+                <h4 class="modal-title" id="result-detailt-title"></h4>
         </div>
 
         <div class="modal-body" id="detail-result-body">
-            <iframe src="about:blank" frameborder="0" width="100%" scrolling="yes" height="400px" id="result-detail-frm" name="result-detail-frm"></iframe>
+            <iframe src="about:blank" frameborder="0" width="100%" scrolling="yes" height="400px" id="result-detail-frm" name="result-detail-frm" style="display:none;"></iframe>
         </div>
     </div>
     </div>

@@ -3,6 +3,7 @@
     using System.Globalization;
     using System.Threading;
     using System.Web.Mvc;
+    using System.Web.Mvc.Filters;
     using System.Web.Routing;
     using System.Web.Security;
     using Sunplus.Agent.Model.Entities;
@@ -12,6 +13,17 @@
         private const string DefaultLanguage = "en-US";
 
         private static readonly CultureInfo DefaultCulture = CultureInfo.CreateSpecificCulture(DefaultLanguage);
+
+        protected override void OnAuthentication(AuthenticationContext filterContext)
+        {
+            base.OnAuthentication(filterContext);
+
+            if (UserSession.Current.CustId == 0)
+            {
+                Response.Redirect(FormsAuthentication.LoginUrl, true);
+                return;
+            }
+        }
 
         protected override JsonResult Json(object data, string contentType, System.Text.Encoding contentEncoding, JsonRequestBehavior behavior)
         {

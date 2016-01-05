@@ -20,19 +20,19 @@
 
         public DateTime ResultDate { get; set; }
 
-        public string Yesterday
+        public DateTime Yesterday
         {
             get
             {
-                return DateTime.Now.AddDays(-1).ToShortDateFormatWithSlash();
+                return DateTime.Now.AddDays(-1);
             }
         }
 
-        public string Today
+        public DateTime Today
         {
             get
             {
-                return DateTime.Now.ToShortDateFormatWithSlash();
+                return DateTime.Now;
             }
         }
 

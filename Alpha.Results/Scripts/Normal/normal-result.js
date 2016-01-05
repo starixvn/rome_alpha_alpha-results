@@ -10,7 +10,7 @@ var normalResult =
         {
             txtResultDate: null,
             btnOtherDay: null,
-            btnTodayResults: null,
+            txtToday: null,
             txtMinResultDate: null,
             dpkContainer: null,
             resultForm: null,
@@ -21,7 +21,8 @@ var normalResult =
             ddlSports: null,
             ddlLeagues: null,
             filterForm: null,
-            frmDetailsResult: null
+            frmDetailsResult: null,
+            resultDetailTitle: null
         },
     init: function () {
         normalResult.cacheElements();
@@ -40,7 +41,8 @@ var normalResult =
         normalResult.domElements.ddlLeagues = $('#LeagueId');
         normalResult.domElements.filterForm = $('#result-filter');
         normalResult.domElements.frmDetailsResult = $('#result-detail-frm');
-        normalResult.domElements.btnTodayResults = $('#today-results');
+        normalResult.domElements.txtToday = $('#Today');
+        normalResult.domElements.resultDetailTitle = $('#result-detailt-title');
     },
     registerEvents: function () {
         normalResult.domElements.dpkContainer.datetimepicker({
@@ -51,7 +53,7 @@ var normalResult =
             format: 'MM/DD/YYYY',
             showTodayButton: false,
             ignoreReadonly: true,
-            maxDate: normalResult.domElements.btnTodayResults.val()
+            maxDate: normalResult.domElements.txtToday.val()
         });
 
         normalResult.domElements.ddlSports.select2();
@@ -75,7 +77,7 @@ var normalResult =
         normalResult.domElements.resultDetails
             .off('hidden.bs.modal')
             .on('hidden.bs.modal', function () {
-                normalResult.domElements.frmDetailsResult.attr('src', 'about:blank');
+                normalResult.domElements.frmDetailsResult.hide();
             });
 
         normalResult.domElements.mainResult
@@ -95,6 +97,16 @@ var normalResult =
                 normalResult.domElements.frmDetailsResult.attr('src', resultDetailsUrl);
                 normalResult.domElements.resultDetails.modal({});
             });
+
+        normalResult.domElements.frmDetailsResult
+            .off('load.normalResult')
+            .on('load.normalResult', function () {
+                var $this = $(this);
+                var detailTitle = $this.contents().find("title").html();
+                normalResult.domElements.resultDetailTitle.html(detailTitle);
+
+                $this.show();
+        });
 
         normalResult.domElements.excelBtn
             .off('click.normalResult')

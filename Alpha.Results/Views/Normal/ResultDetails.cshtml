@@ -18,11 +18,6 @@
 <body>
     <div class="container-fluid">
 
-        @if (!Model.IsViewResultFromBetList)
-        {
-            <h5 id="detail-result-title">@Model.Title</h5>
-        }
-
         <div class="detail-result" id="detail-result-body">
             @Html.Raw(Model.HtmlResults)
         </div>

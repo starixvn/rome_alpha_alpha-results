@@ -100,8 +100,7 @@
             var viewModel = new NormalDetailViewModel
             {
                 Title = $"{sportName} - {leagueName}",
-                HtmlResults = _normalResultService.GetResultDetails(message),
-                IsViewResultFromBetList = message.IsViewResultFromBetList
+                HtmlResults = _normalResultService.GetResultDetails(message)
             };
 
             return viewModel;
