@@ -45,14 +45,8 @@ var normalResult =
         normalResult.domElements.resultDetailTitle = $('#result-detailt-title');
     },
     registerEvents: function () {
-        normalResult.domElements.dpkContainer.datetimepicker({
+        normalResult.domElements.dpkContainer.alphadatepicker({
             minDate: normalResult.domElements.txtMinResultDate.val(),
-            allowInputToggle: false,
-            calendarWeeks: false,
-            dayViewHeaderFormat: 'MMM YYYY',
-            format: 'MM/DD/YYYY',
-            showTodayButton: false,
-            ignoreReadonly: true,
             maxDate: normalResult.domElements.txtToday.val()
         });
 
