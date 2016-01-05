@@ -47,8 +47,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Alpha.SecurityCode, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Alpha.SecurityCode.1.0.0.0\lib\net40\Alpha.SecurityCode.dll</HintPath>
-      <Private>True</Private>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Alpha.SecurityCode.3.0.0.2\lib\net40\Alpha.SecurityCode.dll</HintPath>
     </Reference>
     <Reference Include="Alpha.Utilities, Version=3.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Alpha.Utilities.3.0.0.1\lib\net40\Alpha.Utilities.dll</HintPath>
@@ -305,6 +305,7 @@
     <Content Include="Content\Agent\_variables.scss" />
     <Content Include="Content\Master\_variables.scss" />
     <Content Include="Content\Super\_variables.scss" />
+    <Content Include="Content\_mixins.scss" />
     <None Include="Properties\PublishProfiles\Local202.pubxml" />
     <None Include="Properties\PublishProfiles\LocalRicky.pubxml" />
     <Content Include="Scripts\Normal\normal-result.js" />
