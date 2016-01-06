@@ -79,7 +79,8 @@
     cursor: pointer; }
 
 .main-content .fn-rs-content-header {
-  padding-right: 0; }
+  padding-right: 0;
+  border: none; }
 
 .main-content .fn-rs-content-scroll {
   overflow: hidden;
