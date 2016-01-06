@@ -46,9 +46,8 @@ var normalResult =
     },
     registerEvents: function () {
         normalResult.domElements.dpkContainer.datepicker({
-            minDate: normalResult.domElements.txtMinResultDate.val(),
-            maxDate: normalResult.domElements.txtToday.val()
-        });
+            minDate: normalResult.domElements.txtMinResultDate.val()
+        }).data("DateTimePicker").maxDate(normalResult.domElements.txtToday.val());
 
         normalResult.domElements.ddlSports.select2();
         normalResult.domElements.ddlLeagues.select2();

@@ -9,12 +9,11 @@
 
     function initializeDatepicker() {
         var dpkSettings = {
-            minDate: minResultDate,
-            maxDate: maxResultDate
+            minDate: minResultDate
         };
 
-        fromdatepicker = $('#dpk-fromdate').datepicker(dpkSettings);
-        todatepicker = $('#dpk-todate').datepicker(dpkSettings);
+        fromdatepicker = $('#dpk-fromdate').datepicker(dpkSettings).data("DateTimePicker").maxDate(maxResultDate);
+        todatepicker = $('#dpk-todate').datepicker(dpkSettings).data("DateTimePicker").maxDate(maxResultDate);
 
         fromdatepicker.on('dp.change', function (e) {
             todatepicker.data('DateTimePicker').minDate(e.date);
