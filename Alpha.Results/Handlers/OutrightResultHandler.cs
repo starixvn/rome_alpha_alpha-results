@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Web.Mvc;
+    using Alpha.Utilities.Extensions;
     using App_GlobalResources;
     using Fanex.Common.Helper;
     using Fanex.Result.Core.Sportsbook.DTO;
@@ -43,14 +44,14 @@
             Check.Argument.IsNotNull(message, "message");
 
             DateTime currentDate = DateTime.Today;
-            DateTime balanceUpDate = _reportService.GetBalanceUpDate().BalanceUpDay;
+            DateTime balanceUpDate = _reportService.GetBalanceUpDate();
 
             OutrightResultViewModel viewModel = new OutrightResultViewModel
             {
                 MinResultDate = balanceUpDate,
                 MaxResultDate = currentDate,
-                Today = currentDate.ToShortDateString(),
-                Yesterday = currentDate.AddDays(-1).ToShortDateString(),
+                Today = currentDate.ToShortDateFormatWithSlash(),
+                Yesterday = currentDate.AddDays(-1).ToShortDateFormatWithSlash(),
                 MinResultDateMessage = string.Format(Resources.ViewDataFromDate, balanceUpDate.ToShortDateString()),
                 FromDate = message.FromDate,
                 ToDate = message.ToDate
