@@ -24,10 +24,12 @@ namespace Alpha.Results.Site.Services.Impl
             _dynamicRepository = dynamicRepository;
         }
 
-        public IEnumerable<Outright> GetOutrights(DateTime fromDate, DateTime toDate)
+        public IEnumerable<Outright> GetOutrights(DateTime fromDate, DateTime toDate, DateTime balanceUpDate)
         {
-            Check.Argument.IsNotInvalidDate(fromDate, "fromDate");
-            Check.Argument.IsNotInvalidDate(toDate, "toDate");
+            if (fromDate < balanceUpDate)
+            {
+                return Enumerable.Empty<Outright>();
+            }
 
             fromDate = fromDate.Date;
             toDate = toDate.Date.AddDays(1).AddTicks(-1);
@@ -55,14 +57,14 @@ namespace Alpha.Results.Site.Services.Impl
             return ResultEngine.HtmlParser(outrights.ToList(), resultSetting);
         }
 
-        public MemoryStream GetExcelResults(ExcelOutrightResultQuery request)
+        public MemoryStream GetExcelResults(ExcelOutrightResultQuery request, DateTime balanceUpDate)
         {
             Check.Argument.IsNotNull(request, "request");
             Check.Argument.IsNotEmpty(request.TemplatePath, "templatePath");
 
             string excelTitle = GetExcelTitle(request.FromDate, request.ToDate, request.SportType, request.LeagueId);
 
-            var outrights = GetOutrights(request.FromDate, request.ToDate);
+            var outrights = GetOutrights(request.FromDate, request.ToDate, balanceUpDate);
 
             outrights = FilterOutright(outrights, request.SportType, request.LeagueId);
 

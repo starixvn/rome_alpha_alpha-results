@@ -31,7 +31,7 @@
         {
             Check.Argument.IsNotNull(message, "message");
 
-            var excelResults = _outrightService.GetExcelResults(message);
+            var excelResults = _outrightService.GetExcelResults(message, _reportService.GetBalanceUpDate());
 
             return new OutrightResultExcelViewModel
             {
@@ -57,12 +57,7 @@
                 ToDate = message.ToDate
             };
 
-            if (message.FromDate < balanceUpDate)
-            {
-                return viewModel;
-            }
-
-            var outrights = _outrightService.GetOutrights(message.FromDate, message.ToDate);
+            var outrights = _outrightService.GetOutrights(message.FromDate, message.ToDate, balanceUpDate);
 
             if (outrights.Any())
             {
