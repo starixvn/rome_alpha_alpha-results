@@ -2,6 +2,7 @@ namespace Alpha.Results.Site.Services.Impl
 {
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
     using System.IO;
     using System.Linq;
     using Alpha.Results.Site.Criteria;
@@ -38,6 +39,7 @@ namespace Alpha.Results.Site.Services.Impl
             return _dynamicRepository.Fetch<Outright>(criteria);
         }
 
+        [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "1", Justification = "Reviewed")]
         public string GetResults(IEnumerable<Outright> outrights, OutrightResultQuery request)
         {
             Check.Argument.IsNotNull(outrights, "outrights");
@@ -57,6 +59,7 @@ namespace Alpha.Results.Site.Services.Impl
             return ResultEngine.HtmlParser(outrights.ToList(), resultSetting);
         }
 
+        [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0", Justification = "Reviewed")]
         public MemoryStream GetExcelResults(ExcelOutrightResultQuery request, DateTime balanceUpDate)
         {
             Check.Argument.IsNotNull(request, "request");

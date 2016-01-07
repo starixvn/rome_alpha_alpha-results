@@ -1,10 +1,12 @@
 namespace Alpha.Results.Site.Services.Impl.Products
 {
+    using System.Diagnostics.CodeAnalysis;
     using System.IO;
     using System.Linq;
     using Alpha.Results.Site.Criteria;
     using Alpha.Results.Site.DataAccesses;
     using DataAccesses.Impl;
+    using Fanex.Common.Helper;
     using Fanex.Result.Core;
     using Fanex.Result.Core.Base;
     using Models.Requests;
@@ -22,8 +24,11 @@ namespace Alpha.Results.Site.Services.Impl.Products
             _numberGameResultDataAccess = numberGameResultDataAccess ?? new NumberGameResultDataAccess();
         }
 
+        [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0", Justification = "Reviewed")]
         public string GetResult(NormalResultQuery request)
         {
+            Check.Argument.IsNotNull(request, "request");
+
             var resultSetting = new ResultSetting
             {
                 SportType = (SportType)request.SportId,
@@ -39,8 +44,11 @@ namespace Alpha.Results.Site.Services.Impl.Products
             return ResultEngine.HtmlParser(results, resultSetting);
         }
 
+        [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0", Justification = "Reviewed")]
         public MemoryStream ExportExcel(ExcelNormalResultQuery request)
         {
+            Check.Argument.IsNotNull(request, "request");
+
             var resultSetting = new ResultSetting
             {
                 SportType = (SportType)request.SportId,
@@ -61,22 +69,25 @@ namespace Alpha.Results.Site.Services.Impl.Products
             return new GetNumberGameResultCriteria()
             {
                 FromDate = request.ResultDate,
-                LeagueID = request.LeagueId,
+                LeagueId = request.LeagueId,
                 Language = request.Language
             };
         }
 
+        [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0", Justification = "Reviewed")]
         public string GetResultDetails(NormalResultDetailsQuery detailsRequest)
         {
+            Check.Argument.IsNotNull(detailsRequest, "detailsRequest");
+
             var criteria = new GetNumberGameResultDetailsCriteria
             {
-                MatchID = detailsRequest.MatchId
+                MatchId = detailsRequest.MatchId
             };
 
             var resultSetting = new ResultSetting
             {
                 SportType = SportType.NumberGame,
-				IsOutright = false,
+                IsOutright = false,
                 IsParlayPopUp = false,
                 IsPopUp = true,
                 VisiblePopUpTitle = false,

@@ -31,6 +31,11 @@ namespace Alpha.Results.Site.Services.Impl.Products
 
         public string GetResultDetails(NormalResultDetailsQuery detailsRequest)
         {
+            if (detailsRequest == null)
+            {
+                throw new ArgumentNullException("detailsRequest", "Request cannot be null");
+            }
+
             var criteria = new GetMetricGamingResultCriteria
             {
                 TransId = detailsRequest.RefNum,

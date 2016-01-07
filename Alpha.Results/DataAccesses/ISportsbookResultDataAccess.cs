@@ -11,6 +11,6 @@ namespace Alpha.Results.Site.DataAccesses
     {
         IList<Sportsbook> GetSportbookResults(GetSportsbookResultCriteria criteria);
 
-        List<Sportsbook> GetScoreInformation(ref GetSportsbookResultDetailsCriteria criteria);
+        List<Sportsbook> GetScoreInformation(GetSportsbookResultDetailsCriteria criteria);
     }
 }

@@ -11,7 +11,7 @@
     {
         public DateTime FromDate { get; set; }
 
-        public int LeagueID { get; set; }
+        public int LeagueId { get; set; }
 
         public int SportType { get; set; }
 
@@ -31,7 +31,7 @@
         public override bool IsValid()
         {
             return FromDate > DateTime.MinValue && SportType
-                > 0 && LeagueID > 0;
+                > 0 && LeagueId > 0;
         }
     }
 }

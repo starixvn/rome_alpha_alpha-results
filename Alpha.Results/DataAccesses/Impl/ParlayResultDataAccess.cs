@@ -21,6 +21,11 @@ namespace Alpha.Results.Site.DataAccesses.Impl
         /// <returns>The list of Parlays.</returns>
         public IList<Parlay> GetParlayResults(GetParlayResultCriteria criteria)
         {
+            if (criteria == null)
+            {
+                throw new ArgumentNullException("criteria", "Criteria cannot be null");
+            }
+
             List<Parlay> results = null;
 
             using (var db = new ObjectDb(criteria.GetSettingKey(), 600))

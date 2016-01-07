@@ -5,7 +5,7 @@
 
     public class ResultServiceFactory : IResultServiceFactory
     {
-        public const int MetricGaming60sofKick = 801;
+        public const int MetricGaming60SecondOfKick = 801;
         public const int MetricGamingEndBetType = 899;
 
         public IProductResultService CreateProductResultService(int sportId, int betTypeId)
@@ -19,7 +19,7 @@
             switch ((SportType)sportId)
             {
                 case SportType.Soccer:
-                    if (MetricGaming60sofKick <= betTypeId
+                    if (MetricGaming60SecondOfKick <= betTypeId
                         && betTypeId <= MetricGamingEndBetType)
                     {
                         return new MetricGamingResultService();

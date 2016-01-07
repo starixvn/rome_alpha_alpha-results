@@ -11,7 +11,7 @@ namespace Alpha.Results.Site.Criteria
     {
         public DateTime FromDate { get; set; }
 
-        public int LeagueID { get; set; }
+        public int LeagueId { get; set; }
 
         public int SportType { get; set; }
 

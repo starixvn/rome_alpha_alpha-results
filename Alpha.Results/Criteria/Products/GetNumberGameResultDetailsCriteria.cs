@@ -7,7 +7,7 @@ namespace Alpha.Results.Site.Criteria
     /// </summary>
     public class GetNumberGameResultDetailsCriteria : CriteriaBase
     {
-        public int MatchID { get; set; }
+        public int MatchId { get; set; }
 
         public override string GetSettingKey()
         {
@@ -16,7 +16,7 @@ namespace Alpha.Results.Site.Criteria
 
         public override bool IsValid()
         {
-            return MatchID > 0;
+            return MatchId > 0;
         }
     }
 }

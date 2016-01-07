@@ -10,7 +10,7 @@ namespace Alpha.Results.Site.Criteria
     {
         public DateTime FromDate { get; set; }
 
-        public int LeagueID { get; set; }
+        public int LeagueId { get; set; }
 
         public string Language { get; set; }
 
@@ -21,7 +21,7 @@ namespace Alpha.Results.Site.Criteria
 
         public override bool IsValid()
         {
-            return FromDate > DateTime.MinValue && LeagueID > 0;
+            return FromDate > DateTime.MinValue && LeagueId > 0;
         }
     }
 }

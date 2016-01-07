@@ -4,6 +4,7 @@
     using System.IO;
     using System.Linq;
     using Alpha.Results.Site.Criteria;
+    using Fanex.Common.Helper;
     using Fanex.Data.Repository;
     using Fanex.Result.Core;
     using Fanex.Result.Core.Base;
@@ -32,6 +33,8 @@
 
         public string GetResultDetails(NormalResultDetailsQuery detailsRequest)
         {
+            Check.Argument.IsNotNull(detailsRequest, "detailsRequest");
+
             var criteria = new GetGoldDeluxeResultCriteria
             {
                 TransId = detailsRequest.RefNum,

@@ -1,5 +1,6 @@
 ﻿namespace Alpha.Results.Site.DataAccesses.Impl
 {
+    using System;
     using System.Collections.Generic;
     using Criteria;
     using Fanex.Common;
@@ -10,6 +11,11 @@
     {
         public IList<MetricGaming> GetResults(GetMetricGamingResultCriteria criteria)
         {
+            if (criteria == null)
+            {
+                throw new ArgumentNullException("criteria", "Criteria cannot be null");
+            }
+
             var result = new List<MetricGaming>();
 
             using (ObjectDb objDb = new ObjectDb(criteria.GetSettingKey()))

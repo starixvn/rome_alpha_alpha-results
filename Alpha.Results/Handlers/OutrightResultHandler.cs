@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
     using System.Linq;
     using System.Web.Mvc;
     using Alpha.Utilities.Extensions;
@@ -39,6 +40,7 @@
             };
         }
 
+        [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0", Justification = "Reviewed")]
         public OutrightResultViewModel Handle(OutrightResultQuery message)
         {
             Check.Argument.IsNotNull(message, "message");

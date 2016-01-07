@@ -1,11 +1,13 @@
 namespace Alpha.Results.Site.Services.Impl.Products
 {
     using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
     using System.IO;
     using System.Linq;
     using Alpha.Results.Site.Criteria;
     using Alpha.Results.Site.DataAccesses;
     using DataAccesses.Impl;
+    using Fanex.Common.Helper;
     using Fanex.Result.Core;
     using Fanex.Result.Core.Base;
     using Fanex.Result.Core.Sportsbook.DTO;
@@ -24,8 +26,11 @@ namespace Alpha.Results.Site.Services.Impl.Products
             _dataAccess = dataAccess ?? new SportsbookResultDataAccess();
         }
 
+        [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0", Justification = "Reviewed")]
         public string GetResult(NormalResultQuery request)
         {
+            Check.Argument.IsNotNull(request, "request");
+
             var criteria = GetCriteria(request);
 
             var results = request.SportId == 0
@@ -49,8 +54,11 @@ namespace Alpha.Results.Site.Services.Impl.Products
             return ResultEngine.HtmlParser(results, resultSetting).Replace("original-title", " title ");
         }
 
+        [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0", Justification = "Reviewed")]
         public MemoryStream ExportExcel(ExcelNormalResultQuery request)
         {
+            Check.Argument.IsNotNull(request, "request");
+
             var exportExcelSetting = new ResultSetting
             {
                 SportType = (SportType)request.SportId,
@@ -72,12 +80,15 @@ namespace Alpha.Results.Site.Services.Impl.Products
             {
                 FromDate = request.ResultDate,
                 SportType = request.SportId,
-                LeagueID = request.LeagueId
+                LeagueId = request.LeagueId
             };
         }
 
+        [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0", Justification = "Reviewed")]
         public string GetResultDetails(NormalResultDetailsQuery detailsRequest)
         {
+            Check.Argument.IsNotNull(detailsRequest, "detailsRequest");
+
             var criteria = new GetSportsbookResultDetailsCriteria()
             {
                 MatchId = detailsRequest.MatchId,
@@ -87,7 +98,7 @@ namespace Alpha.Results.Site.Services.Impl.Products
                 IsViewResultFromBetList = detailsRequest.IsViewResultFromBetList
             };
 
-            var results = _dataAccess.GetScoreInformation(ref criteria);
+            var results = _dataAccess.GetScoreInformation(criteria);
 
             var resultSetting = new ResultSetting
             {

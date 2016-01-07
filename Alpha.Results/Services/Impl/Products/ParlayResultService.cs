@@ -22,6 +22,11 @@ namespace Alpha.Results.Site.Services.Impl
 
         public string GetResultDetails(NormalResultDetailsQuery detailsRequest)
         {
+            if (detailsRequest == null)
+            {
+                throw new ArgumentNullException("detailsRequest", "Detail Request cannot be null");
+            }
+
             var results = _parlayResultDataAccess.GetParlayResults(new GetParlayResultCriteria
             {
                 RefNo = detailsRequest.RefNum

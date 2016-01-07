@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
     using System.Linq;
     using System.Web.Mvc;
     using Alpha.Utilities.Extensions;
@@ -27,6 +28,7 @@
             _reportService = reportService;
         }
 
+        [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0", Justification = "Reviewed")]
         public NormalResultViewModel Handle(NormalResultQuery message)
         {
             Check.Argument.IsNotNull(message, "message");
@@ -87,6 +89,7 @@
             });
         }
 
+        [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0", Justification = "Reviewed")]
         public NormalDetailViewModel Handle(NormalResultDetailsQuery message)
         {
             Check.Argument.IsNotNull(message, "message");
@@ -106,6 +109,7 @@
             return viewModel;
         }
 
+        [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0", Justification = "Reviewed")]
         public NormalResultExcelViewModel Handle(ExcelNormalResultQuery message)
         {
             Check.Argument.IsNotNull(message, "message");

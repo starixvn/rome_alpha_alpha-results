@@ -21,6 +21,11 @@ namespace Alpha.Results.Site.DataAccesses.Impl
         /// <returns>The number game data.</returns>
         public IList<NumberGame> GetNumberGameResults(GetNumberGameResultCriteria criteria)
         {
+            if (criteria == null)
+            {
+                throw new ArgumentNullException("criteria", "Criteria cannot be null");
+            }
+
             var result = new List<NumberGame>();
             using (var db = new ObjectDb(criteria.GetSettingKey()))
             {
@@ -67,30 +72,17 @@ namespace Alpha.Results.Site.DataAccesses.Impl
         }
 
         /// <summary>
-        /// Gets the integer value.
-        /// </summary>
-        /// <param name="input">The input.</param>
-        /// <returns>The integer value after converting.</returns>
-        private static int GetIntegerValue(string input)
-        {
-            int result = 0;
-
-            if (string.IsNullOrEmpty(input))
-            {
-                return result;
-            }
-
-            int.TryParse(input, out result);
-            return result;
-        }
-
-        /// <summary>
         /// Gets the number game popup result.
         /// </summary>
         /// <param name="criteria">The criteria.</param>
         /// <returns>The list of number games.</returns>
         public IList<NumberGame> GetNumberGameResultDetails(GetNumberGameResultDetailsCriteria criteria)
         {
+            if (criteria == null)
+            {
+                throw new ArgumentNullException("criteria", "Criteria cannot be null");
+            }
+
             var result = new List<NumberGame>();
             using (var db = new ObjectDb(criteria.GetSettingKey()))
             {

@@ -1,11 +1,13 @@
 namespace Alpha.Results.Site.Services.Impl.Products
 {
     using System;
+    using System.Diagnostics.CodeAnalysis;
     using System.IO;
     using System.Linq;
     using Alpha.Results.Site.Criteria;
     using Alpha.Results.Site.DataAccesses;
     using DataAccesses.Impl;
+    using Fanex.Common.Helper;
     using Fanex.Result.Core;
     using Fanex.Result.Core.Base;
     using Models.Requests;
@@ -23,8 +25,11 @@ namespace Alpha.Results.Site.Services.Impl.Products
             _dataAccess = dataAccess ?? new RacingResultDataAccess();
         }
 
+        [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0", Justification = "Reviewed")]
         public string GetResult(NormalResultQuery request)
         {
+            Check.Argument.IsNotNull(request, "request");
+
             var criteria = GetCriteria(request);
 
             var results = _dataAccess.GetRacingResults(criteria).ToList();
@@ -42,8 +47,11 @@ namespace Alpha.Results.Site.Services.Impl.Products
             return ResultEngine.HtmlParser(results, resultSetting);
         }
 
+        [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0", Justification = "Reviewed")]
         public MemoryStream ExportExcel(ExcelNormalResultQuery request)
         {
+            Check.Argument.IsNotNull(request, "request");
+
             var resultSetting = new ResultSetting
             {
                 SportType = (SportType)request.SportId,
@@ -65,12 +73,15 @@ namespace Alpha.Results.Site.Services.Impl.Products
             {
                 FromDate = request.ResultDate,
                 SportType = request.SportId,
-                LeagueID = request.LeagueId
+                LeagueId = request.LeagueId
             };
         }
 
+        [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0", Justification = "Reviewed")]
         public string GetResultDetails(NormalResultDetailsQuery detailsRequest)
         {
+            Check.Argument.IsNotNull(detailsRequest, "detailsRequest");
+
             var criteria = new GetRacingResultDetailsCriteria()
             {
                 MatchId = detailsRequest.MatchId,
@@ -82,7 +93,7 @@ namespace Alpha.Results.Site.Services.Impl.Products
             ResultSetting resultSetting = new ResultSetting
             {
                 SportType = (SportType)detailsRequest.SportId,
-				IsOutright = false,
+                IsOutright = false,
                 IsParlayPopUp = false,
                 IsPopUp = true,
                 VisiblePopUpTitle = false,

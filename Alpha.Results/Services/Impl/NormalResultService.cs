@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
     using System.Linq;
     using Criteria;
     using Fanex.Common.Helper;
@@ -59,6 +60,7 @@
             return sports;
         }
 
+        [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0", Justification = "Reviewed")]
         public string GetResults(NormalResultQuery request)
         {
             Check.Argument.IsNotNull(request, "request");
@@ -68,6 +70,7 @@
             return resultService.GetResult(request);
         }
 
+        [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0", Justification = "Reviewed")]
         public byte[] GetExcelResults(ExcelNormalResultQuery request)
         {
             Check.Argument.IsNotNull(request, "request");
@@ -81,6 +84,7 @@
             return memoryResult.ToArray();
         }
 
+        [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0", Justification = "Reviewed")]
         public string GetResultDetails(NormalResultDetailsQuery detailRequest)
         {
             Check.Argument.IsNotNull(detailRequest, "detailRequest");

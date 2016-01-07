@@ -1,6 +1,7 @@
 ﻿namespace Alpha.Results.Site.Services.Impl
 {
     using System;
+    using System.Diagnostics.CodeAnalysis;
     using Criteria;
     using Fanex.Caching;
     using Fanex.Data.Repository;
@@ -19,6 +20,7 @@
             _cacheManager = cacheManager ?? CacheService.CreateInstance(CacheType.MemoryCache);
         }
 
+        [SuppressMessage("Microsoft.Usage", "CA2201:DoNotRaiseReservedExceptionTypes", Justification = "Reviewed")]
         public DateTime GetBalanceUpDate()
         {
             var date = _cacheManager.Get<DateTime>(BalanceUpDateCacheKey);

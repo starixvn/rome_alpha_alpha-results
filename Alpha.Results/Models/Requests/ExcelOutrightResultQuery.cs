@@ -11,7 +11,6 @@
             get
             {
                 return HttpContext.Current.Server.MapPath(@"~/App_Data/Fanex.Result/");
-
             }
         }
     }

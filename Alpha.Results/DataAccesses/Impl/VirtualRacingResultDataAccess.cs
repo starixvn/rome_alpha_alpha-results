@@ -1,5 +1,6 @@
 namespace Alpha.Results.Site.DataAccesses.Impl
 {
+    using System;
     using System.Collections.Generic;
     using Alpha.Results.Site.Criteria;
     using Alpha.Results.Site.DataAccesses;
@@ -15,6 +16,11 @@ namespace Alpha.Results.Site.DataAccesses.Impl
         /// <returns>The racing data.</returns>
         public IList<Racing> GetVirtualRacingResults(GetVirtualRacingResultCriteria criteria)
         {
+            if (criteria == null)
+            {
+                throw new ArgumentNullException("criteria", "Criteria cannot be null");
+            }
+
             var result = new List<Racing>();
             using (var db = new ObjectDb(criteria.GetSettingKey()))
             {
@@ -32,6 +38,11 @@ namespace Alpha.Results.Site.DataAccesses.Impl
 
         public IList<Racing> GetVirtualRacingResultDetails(GetRacingResultDetailsCriteria criteria)
         {
+            if (criteria == null)
+            {
+                throw new ArgumentNullException("criteria", "Criteria cannot be null");
+            }
+
             var result = new List<Racing>();
 
             using (var db = new ObjectDb(criteria.GetSettingKey()))

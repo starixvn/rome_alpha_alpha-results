@@ -17,6 +17,11 @@ namespace Alpha.Results.Site.DataAccesses.Impl
         /// <returns>The racing data.</returns>
         public IList<Racing> GetRacingResults(GetRacingResultCriteria criteria)
         {
+            if (criteria == null)
+            {
+                throw new ArgumentNullException("criteria", "Criteria cannot be null");
+            }
+
             var result = new List<Racing>();
             using (var db = new ObjectDb(criteria.GetSettingKey()))
             {
@@ -34,6 +39,11 @@ namespace Alpha.Results.Site.DataAccesses.Impl
 
         public IList<Racing> GetRacingResultDetails(GetRacingResultDetailsCriteria criteria)
         {
+            if (criteria == null)
+            {
+                throw new ArgumentNullException("criteria", "Criteria cannot be null");
+            }
+
             var result = new List<Racing>();
 
             using (var db = new ObjectDb(criteria.GetSettingKey()))
@@ -82,7 +92,7 @@ namespace Alpha.Results.Site.DataAccesses.Impl
             {
                 string value = reader["SCR"].ToString();
 
-                if (value.EndsWith(","))
+                if (value.EndsWith(",", StringComparison.Ordinal))
                 {
                     value = value.Remove(value.Length - 1);
                 }

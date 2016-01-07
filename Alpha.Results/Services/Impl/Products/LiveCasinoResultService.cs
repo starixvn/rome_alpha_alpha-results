@@ -4,6 +4,7 @@ namespace Alpha.Results.Site.Services.Impl.Products
     using System.IO;
     using System.Linq;
     using Alpha.Results.Site.Criteria;
+    using Fanex.Common.Helper;
     using Fanex.Data.Repository;
     using Fanex.Result.Core;
     using Fanex.Result.Core.Base;
@@ -25,6 +26,8 @@ namespace Alpha.Results.Site.Services.Impl.Products
 
         public string GetResultDetails(NormalResultDetailsQuery detailsRequest)
         {
+            Check.Argument.IsNotNull(detailsRequest, "detailsRequest");
+
             var criteria = new GetLiveCasinoResultCriteria()
             {
                 MatchId = detailsRequest.MatchId,

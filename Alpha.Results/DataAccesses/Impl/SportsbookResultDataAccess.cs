@@ -21,6 +21,11 @@
         /// <returns>The SPORTBOOK data.</returns>
         public IList<Sportsbook> GetSportbookResults(GetSportsbookResultCriteria criteria)
         {
+            if (criteria == null)
+            {
+                throw new ArgumentNullException("criteria", "Criteria cannot be null");
+            }
+
             var results = new List<Sportsbook>();
             var gameDetails = new List<GameDetail>();
             using (var db = new ObjectDb(criteria.GetSettingKey()))
@@ -129,8 +134,13 @@
             return string.Empty;
         }
 
-        public List<Sportsbook> GetScoreInformation(ref GetSportsbookResultDetailsCriteria criteria)
+        public List<Sportsbook> GetScoreInformation(GetSportsbookResultDetailsCriteria criteria)
         {
+            if (criteria == null)
+            {
+                throw new ArgumentNullException("criteria", "Criteria cannot be null");
+            }
+
             var result = new List<Sportsbook>();  
 
             using (ObjectDb objDb = new ObjectDb(criteria.GetSettingKey()))
@@ -139,7 +149,7 @@
                 {
                     if (reader.Read())
                     {
-                        result.Add(BindSportsbookDetails(reader, ref criteria));
+                        result.Add(BindSportsbookDetails(reader, criteria));
 
                         if (reader.NextResult())
                         {
@@ -190,7 +200,7 @@
         /// <returns>
         /// The object of SPORTSBOOK.
         /// </returns>
-        private Sportsbook BindSportsbookDetails(IDataReader reader, ref GetSportsbookResultDetailsCriteria criteria)
+        private Sportsbook BindSportsbookDetails(IDataReader reader, GetSportsbookResultDetailsCriteria criteria)
         {
             criteria.SportType = reader["sporttype"] != DBNull.Value ? Convert.ToInt32(reader["sporttype"]) : 0;
 

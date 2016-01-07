@@ -1,5 +1,6 @@
 ﻿namespace Alpha.Results.Site.Controllers
 {
+    using System.Diagnostics.CodeAnalysis;
     using System.Web.Mvc;
     using MediatR;
     using Models.Requests;
@@ -14,6 +15,7 @@
             _mediator = mediator;
         }
 
+        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters", Justification = "Reviewed")]
         [HttpGet]
         public ActionResult Index(NormalResultQuery request = null)
         {
@@ -24,6 +26,7 @@
             return View(viewModel);
         }
 
+        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters", Justification = "Reviewed")]
         [HttpGet]
         public ActionResult ResultDetails(NormalResultDetailsQuery request)
         {
@@ -32,6 +35,7 @@
             return View(viewModel);
         }
 
+        [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters", Justification = "Reviewed")]
         [HttpGet]
         public ActionResult ExcelResults(ExcelNormalResultQuery request)
         {
