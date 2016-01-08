@@ -15,7 +15,6 @@
     public class ReportDayServiceTest
     {
         private const string BalanceUpDateCacheKey = "Alpha.Results.Site.Services.Impl.BalanceUpDate";
-        private const string MoveBetsDayCacheKey = "Alpha.Results.Site.Services.Impl.MoveBetsDate";
 
         private IDynamicRepository SetupRepositoryWithDataReturn(DateTime balanceUpDate, DateTime moveBetsDate)
         {
@@ -26,19 +25,11 @@
             return dynamicRepository;
         }
 
-        private ICache SetupCacheManager()
-        {
-            var cacheManager = Substitute.For<ICache>();
-            cacheManager.Keys.Returns(new HashSet<string>());
-
-            return cacheManager;
-        }
-
         [Test]
         public void GetBalanceUpDate_DataExistInCache_MustReturnDataGetFromCache()
         {
             // Arrange            
-            var cacheManager = SetupCacheManager();
+            var cacheManager = Substitute.For<ICache>();
             var expectedDay = DateTime.Now.AddDays(-1);
             cacheManager.Get<DateTime>(BalanceUpDateCacheKey).Returns(expectedDay);
 
@@ -57,10 +48,12 @@
         public void GetBalanceUpDate_CacheKeyDoesNotExist_ReturnsDateGetFromRepository()
         {
             // Arrange
-            var cacheManager = SetupCacheManager();
+            var cacheManager = Substitute.For<ICache>();
 
             var balanceUpDate = new DateTime(1981, 2, 15);
-            var repository = SetupRepositoryWithDataReturn(balanceUpDate, moveBetsDate: DateTime.Now);
+            var repository = Substitute.For<IDynamicRepository>();
+            var reportDays = new BalanceUpAndMoveBetsDate { BalanceUpDay = balanceUpDate, MoveBetsDay = DateTime.Now };
+            repository.Get<BalanceUpAndMoveBetsDate>(new GetBalanceUpAndMoveBetsDayCriteria()).ReturnsForAnyArgs(reportDays);
 
             var reportService = new ReportDateService(repository, cacheManager);
 
@@ -75,7 +68,7 @@
         public void GetBalanceUpDate_DataGetFromRepositoryIsNull_ThrowException()
         {
             // Arrange
-            var cacheManager = SetupCacheManager();
+            var cacheManager = Substitute.For<ICache>();
             cacheManager.Get<DateTime>(BalanceUpDateCacheKey).Returns(DateTime.MinValue);
 
             var repository = Substitute.For<IDynamicRepository>();
@@ -89,14 +82,14 @@
             reportService
                 .Invoking(service => service.GetBalanceUpDate())
                 .ShouldThrow<Exception>()
-                .WithMessage("Cannot get balance up day");
+                .WithMessage("Cannot get balance up date");
         }
 
         [Test]
         public void GetBalanceUpDate_DataGetFromRepositoryIsNotNull_MustBeSetToCache()
         {
             // Arrange
-            var cacheManager = SetupCacheManager();
+            var cacheManager = Substitute.For<ICache>();
 
             var balanceUpDate = new DateTime(1981, 2, 15);
             var repository = SetupRepositoryWithDataReturn(balanceUpDate, moveBetsDate: DateTime.Now);
