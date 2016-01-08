@@ -14,6 +14,7 @@
     using Site.Services;
     using Site.Services.Impl;
     using Sunplus.Agent.Model.BL.Definitions;
+
     [TestFixture]
     public class NormalResultServiceTest
     {
@@ -63,7 +64,7 @@
         }
 
         [Test]
-        public void GetLeagues_PreConditionsAreValid_ReturnDataGetFromRepository()
+        public void GetLeagues_AllPreConditionsAreValid_ReturnDataGetFromRepository()
         {
             // Arrange
             var expected = new List<League>();
