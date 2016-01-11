@@ -317,7 +317,9 @@
       <DependentUpon>result.scss</DependentUpon>
     </Content>
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
