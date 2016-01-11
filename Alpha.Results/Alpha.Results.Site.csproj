@@ -435,43 +435,43 @@
     <Content Include="Views\Tab\Index.cshtml" />
     <Content Include="Views\Normal\ResultDetails.cshtml" />
     <None Include="Web.AppSettings.config" />
-    <None Include="Web.AppSettings.local.config">
+    <Content Include="Web.AppSettings.local.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
-    </None>
-    <None Include="Web.AppSettings.proi1.config">
+    </Content>
+    <Content Include="Web.AppSettings.proi1.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
-    </None>
-	<None Include="Web.AppSettings.proi7.config">
+    </Content>
+    <Content Include="Web.AppSettings.proi7.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
-    </None>
-    <None Include="Web.AppSettings.sit.config">
+    </Content>
+    <Content Include="Web.AppSettings.sit.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
-    </None>
-    <None Include="Web.AppSettings.uati1.config">
+    </Content>
+    <Content Include="Web.AppSettings.uati1.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
-    </None>
-	<None Include="Web.AppSettings.uati7.config">
+    </Content>
+    <Content Include="Web.AppSettings.uati7.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
-    </None>
+    </Content>
     <None Include="Web.ConnectionStrings.config" />
-    <None Include="Web.ConnectionStrings.local.config">
+    <Content Include="Web.ConnectionStrings.local.config">
       <DependentUpon>Web.ConnectionStrings.config</DependentUpon>
-    </None>
-    <None Include="Web.ConnectionStrings.proi1.config">
+    </Content>
+    <Content Include="Web.ConnectionStrings.proi1.config">
       <DependentUpon>Web.ConnectionStrings.config</DependentUpon>
-    </None>
-	<None Include="Web.ConnectionStrings.proi7.config">
+    </Content>
+    <Content Include="Web.ConnectionStrings.proi7.config">
       <DependentUpon>Web.ConnectionStrings.config</DependentUpon>
-    </None>
-    <None Include="Web.ConnectionStrings.sit.config">
+    </Content>
+    <Content Include="Web.ConnectionStrings.sit.config">
       <DependentUpon>Web.ConnectionStrings.config</DependentUpon>
-    </None>
-    <None Include="Web.ConnectionStrings.uati1.config">
+    </Content>
+    <Content Include="Web.ConnectionStrings.uati1.config">
       <DependentUpon>Web.ConnectionStrings.config</DependentUpon>
-    </None>
-	<None Include="Web.ConnectionStrings.uati7.config">
+    </Content>
+    <Content Include="Web.ConnectionStrings.uati7.config">
       <DependentUpon>Web.ConnectionStrings.config</DependentUpon>
-    </None>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -481,13 +481,13 @@
     <Content Include="Web.proi1.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-	<Content Include="Web.proi7.config">
+    <Content Include="Web.proi7.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Web.uati1.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-	<Content Include="Web.uati7.config">
+    <Content Include="Web.uati7.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <None Include="Web.Release.config">
