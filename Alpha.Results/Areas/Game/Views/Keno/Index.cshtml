@@ -8,29 +8,8 @@
 @model Alpha.Results.Site.Models.Views.KenoViewModel
 <div role="tabpanel" class="tab-pane active" id="keno">
     <div class="filter">
-        @Html.ActionLink(
-            Resources.OpenKenoResults,
-            "index",
-            "kenoresult",
-            new { area = "game", date = Model.ResultDate, language = Model.LanguageKey, customerid = Model.CustomerId },
-            new { id = "link-KenoResult", @class = "lnk", target = "_blank" })
+        <iframe width="100%" height="100%" frameborder="0" allowtransparency="yes" marginheight="0" marginwidth="0" name="main" scrolling="auto"
+                src="@string.Format("{0}/game/keno/kenoresult/Index?date={1}&language={2}&customerid={3}",
+                    @Url.Content("~/"), Model.ResultDate, Model.LanguageKey, Model.CustomerId)"></iframe>
     </div>
 </div>
-
-@section scripts
-{
-    <script type="text/javascript">
-        (function () {
-            var linkKenoResult = $('#link-KenoResult');
-            var url = linkKenoResult.attr('href');
-
-            linkKenoResult.click(function (e) {
-                e.preventDefault();
-                window.open(url, '_blank', 'width=900, height=700');
-            });
-
-            setTimeout(function () { window.open(url, '_blank', 'width=900, height=700'); }, 300);
-        })();
-    </script>
-}
-
