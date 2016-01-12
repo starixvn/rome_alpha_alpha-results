@@ -434,7 +434,7 @@
     <Content Include="Views\Outright\Index.cshtml" />
     <Content Include="Views\Tab\Index.cshtml" />
     <Content Include="Views\Normal\ResultDetails.cshtml" />
-    <None Include="Web.AppSettings.config" />
+    <Content Include="Web.AppSettings.config" />
     <Content Include="Web.AppSettings.local.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
     </Content>
@@ -453,7 +453,7 @@
     <Content Include="Web.AppSettings.uati7.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
     </Content>
-    <None Include="Web.ConnectionStrings.config" />
+    <Content Include="Web.ConnectionStrings.config" />
     <Content Include="Web.ConnectionStrings.local.config">
       <DependentUpon>Web.ConnectionStrings.config</DependentUpon>
     </Content>
