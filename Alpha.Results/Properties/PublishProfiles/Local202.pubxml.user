@@ -1,0 +1,420 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PublishTargetUrl>\\10.18.200.202\Web\1.Rome\8.Alpha.Microsites\site-Results</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="App_Data/Fanex.Result/Badminton.xls">
+      <publishTime>12/30/2015 10:58:08</publishTime>
+    </File>
+    <File Include="App_Data/Fanex.Result/BaseBall.xls">
+      <publishTime>12/30/2015 10:58:08</publishTime>
+    </File>
+    <File Include="App_Data/Fanex.Result/Basketball.xls">
+      <publishTime>12/30/2015 10:58:08</publishTime>
+    </File>
+    <File Include="App_Data/Fanex.Result/Billiard.xls">
+      <publishTime>12/30/2015 10:58:08</publishTime>
+    </File>
+    <File Include="App_Data/Fanex.Result/GoldDeluxe.xls">
+      <publishTime>12/30/2015 10:58:08</publishTime>
+    </File>
+    <File Include="App_Data/Fanex.Result/Hockey.xls">
+      <publishTime>12/30/2015 10:58:08</publishTime>
+    </File>
+    <File Include="App_Data/Fanex.Result/HorseRacing.xls">
+      <publishTime>12/30/2015 10:58:08</publishTime>
+    </File>
+    <File Include="App_Data/Fanex.Result/LiveCasino.xls">
+      <publishTime>12/30/2015 10:58:08</publishTime>
+    </File>
+    <File Include="App_Data/Fanex.Result/MuayThai.xls">
+      <publishTime>12/30/2015 10:58:08</publishTime>
+    </File>
+    <File Include="App_Data/Fanex.Result/NumberGame.xls">
+      <publishTime>12/30/2015 10:58:08</publishTime>
+    </File>
+    <File Include="App_Data/Fanex.Result/Other.xls">
+      <publishTime>12/30/2015 10:58:08</publishTime>
+    </File>
+    <File Include="App_Data/Fanex.Result/OtherSport.xls">
+      <publishTime>12/30/2015 10:58:08</publishTime>
+    </File>
+    <File Include="App_Data/Fanex.Result/Outright.xls">
+      <publishTime>12/30/2015 10:58:08</publishTime>
+    </File>
+    <File Include="App_Data/Fanex.Result/Racing.xls">
+      <publishTime>12/30/2015 10:58:08</publishTime>
+    </File>
+    <File Include="App_Data/Fanex.Result/Soccer.xls">
+      <publishTime>12/30/2015 10:58:08</publishTime>
+    </File>
+    <File Include="App_Data/Fanex.Result/Tennis.xls">
+      <publishTime>12/30/2015 10:58:08</publishTime>
+    </File>
+    <File Include="App_Data/Fanex.Result/VSHRacing.xls">
+      <publishTime>12/30/2015 10:58:08</publishTime>
+    </File>
+    <File Include="App_Data/Fanex.Result/VSSpeedWay.xls">
+      <publishTime>12/30/2015 10:58:08</publishTime>
+    </File>
+    <File Include="App_Data/Fanex.Result/VSTennis.xls">
+      <publishTime>12/30/2015 10:58:08</publishTime>
+    </File>
+    <File Include="App_Data/SPNames/LOCAL/Results.xml">
+      <publishTime>01/04/2016 17:46:16</publishTime>
+    </File>
+    <File Include="App_Data/SPNames/PRO/Results.xml">
+      <publishTime>01/04/2016 17:46:16</publishTime>
+    </File>
+    <File Include="App_Data/SPNames/UAT/Results.xml">
+      <publishTime>01/04/2016 17:46:16</publishTime>
+    </File>
+    <File Include="Areas/Game/Views/Keno/Index.cshtml">
+      <publishTime>12/30/2015 15:16:05</publishTime>
+    </File>
+    <File Include="Areas/Game/Views/Keno/Result.cshtml">
+      <publishTime>12/30/2015 15:27:02</publishTime>
+    </File>
+    <File Include="Areas/Game/Views/web.config">
+      <publishTime>12/30/2015 14:47:18</publishTime>
+    </File>
+    <File Include="bin/Alpha.Results.Site.dll">
+      <publishTime>01/05/2016 14:23:00</publishTime>
+    </File>
+    <File Include="bin/Alpha.SecurityCode.dll">
+      <publishTime>12/30/2015 10:58:36</publishTime>
+    </File>
+    <File Include="bin/Alpha.Utilities.dll">
+      <publishTime>12/30/2015 10:58:35</publishTime>
+    </File>
+    <File Include="bin/Antlr3.Runtime.dll">
+      <publishTime>12/30/2015 10:58:38</publishTime>
+    </File>
+    <File Include="bin/Couchbase.dll">
+      <publishTime>12/30/2015 10:58:35</publishTime>
+    </File>
+    <File Include="bin/Enyim.Caching.dll">
+      <publishTime>12/30/2015 10:58:35</publishTime>
+    </File>
+    <File Include="bin/Fanex.Caching.dll">
+      <publishTime>12/30/2015 10:58:36</publishTime>
+    </File>
+    <File Include="bin/Fanex.Common.dll">
+      <publishTime>12/30/2015 10:58:36</publishTime>
+    </File>
+    <File Include="bin/Fanex.CustomerSetting.Module.KenoStatus.dll">
+      <publishTime>12/30/2015 10:58:36</publishTime>
+    </File>
+    <File Include="bin/Fanex.Data.dll">
+      <publishTime>12/30/2015 10:58:37</publishTime>
+    </File>
+    <File Include="bin/Fanex.Game.Core.dll">
+      <publishTime>12/30/2015 10:58:43</publishTime>
+    </File>
+    <File Include="bin/Fanex.Game.Keno.dll">
+      <publishTime>12/30/2015 14:51:01</publishTime>
+    </File>
+    <File Include="bin/Fanex.Logging.dll">
+      <publishTime>12/30/2015 10:58:37</publishTime>
+    </File>
+    <File Include="bin/Fanex.Result.Core.Base.dll">
+      <publishTime>12/30/2015 11:01:16</publishTime>
+    </File>
+    <File Include="bin/Fanex.Result.Core.dll">
+      <publishTime>12/30/2015 11:01:16</publishTime>
+    </File>
+    <File Include="bin/Fanex.Result.Core.GoldDeluxe.dll">
+      <publishTime>01/04/2016 09:49:26</publishTime>
+    </File>
+    <File Include="bin/Fanex.Result.Core.LiveCasino.dll">
+      <publishTime>01/04/2016 09:49:25</publishTime>
+    </File>
+    <File Include="bin/Fanex.Result.Core.MetricGaming.dll">
+      <publishTime>01/04/2016 09:49:26</publishTime>
+    </File>
+    <File Include="bin/Fanex.Result.Core.MicroGaming.dll">
+      <publishTime>12/30/2015 10:58:38</publishTime>
+    </File>
+    <File Include="bin/Fanex.Result.Core.NumberGame.dll">
+      <publishTime>01/04/2016 09:49:26</publishTime>
+    </File>
+    <File Include="bin/Fanex.Result.Core.Racing.dll">
+      <publishTime>01/04/2016 09:49:25</publishTime>
+    </File>
+    <File Include="bin/Fanex.Result.Core.Sportsbook.dll">
+      <publishTime>12/30/2015 11:01:17</publishTime>
+    </File>
+    <File Include="bin/IBCFile.dll">
+      <publishTime>12/30/2015 10:58:43</publishTime>
+    </File>
+    <File Include="bin/ICSharpCode.SharpZipLib.dll">
+      <publishTime>12/30/2015 10:58:44</publishTime>
+    </File>
+    <File Include="bin/ja-JP/Alpha.Results.Site.resources.dll">
+      <publishTime>01/05/2016 14:23:01</publishTime>
+    </File>
+    <File Include="bin/ja-JP/Fanex.Result.Core.Base.resources.dll">
+      <publishTime>12/30/2015 11:01:16</publishTime>
+    </File>
+    <File Include="bin/ko-KR/Alpha.Results.Site.resources.dll">
+      <publishTime>01/05/2016 14:23:01</publishTime>
+    </File>
+    <File Include="bin/ko-KR/Fanex.Result.Core.Base.resources.dll">
+      <publishTime>12/30/2015 11:01:16</publishTime>
+    </File>
+    <File Include="bin/MediatR.dll">
+      <publishTime>12/30/2015 10:59:00</publishTime>
+    </File>
+    <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
+      <publishTime>12/30/2015 10:58:54</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Practices.EnterpriseLibrary.Caching.dll">
+      <publishTime>12/30/2015 10:58:35</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Practices.EnterpriseLibrary.Common.dll">
+      <publishTime>12/30/2015 10:58:36</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Practices.EnterpriseLibrary.Data.dll">
+      <publishTime>12/30/2015 10:58:36</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Practices.EnterpriseLibrary.Logging.dll">
+      <publishTime>12/30/2015 10:58:36</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Practices.ServiceLocation.dll">
+      <publishTime>12/30/2015 10:58:36</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Practices.Unity.dll">
+      <publishTime>12/30/2015 10:58:36</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Practices.Unity.Interception.dll">
+      <publishTime>12/30/2015 10:58:36</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>12/30/2015 10:58:44</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>12/30/2015 10:58:43</publishTime>
+    </File>
+    <File Include="bin/NPOI.dll">
+      <publishTime>12/30/2015 10:58:44</publishTime>
+    </File>
+    <File Include="bin/RazorEngine.dll">
+      <publishTime>12/30/2015 10:58:58</publishTime>
+    </File>
+    <File Include="bin/RemotingRef.dll">
+      <publishTime>12/30/2015 10:58:49</publishTime>
+    </File>
+    <File Include="bin/RestSharp.dll">
+      <publishTime>12/30/2015 10:59:06</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.exe">
+      <publishTime>12/30/2015 10:58:59</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.Build.Tasks.CodeAnalysis.dll">
+      <publishTime>12/30/2015 10:58:59</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.dll">
+      <publishTime>12/30/2015 10:58:59</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.dll">
+      <publishTime>12/30/2015 10:58:59</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.VisualBasic.dll">
+      <publishTime>12/30/2015 10:58:59</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CSharp.Core.targets">
+      <publishTime>12/30/2015 10:58:59</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.VisualBasic.Core.targets">
+      <publishTime>12/30/2015 10:58:59</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Collections.Immutable.dll">
+      <publishTime>12/30/2015 10:58:59</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Reflection.Metadata.dll">
+      <publishTime>12/30/2015 10:58:59</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.exe">
+      <publishTime>12/30/2015 10:58:59</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe">
+      <publishTime>12/30/2015 10:58:59</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe.config">
+      <publishTime>12/30/2015 10:58:59</publishTime>
+    </File>
+    <File Include="bin/SimpleInjector.dll">
+      <publishTime>12/30/2015 10:59:04</publishTime>
+    </File>
+    <File Include="bin/SimpleInjector.Integration.Web.dll">
+      <publishTime>12/30/2015 10:59:13</publishTime>
+    </File>
+    <File Include="bin/SimpleInjector.Integration.Web.Mvc.dll">
+      <publishTime>12/30/2015 10:58:59</publishTime>
+    </File>
+    <File Include="bin/SPSRemoting.dll">
+      <publishTime>12/30/2015 10:58:48</publishTime>
+    </File>
+    <File Include="bin/Sunplus.Agent.Model.Base.dll">
+      <publishTime>12/30/2015 10:58:52</publishTime>
+    </File>
+    <File Include="bin/Sunplus.Agent.Model.DataAccessLibrary.dll">
+      <publishTime>12/30/2015 10:58:51</publishTime>
+    </File>
+    <File Include="bin/Sunplus.Agent.Model.Definitions.dll">
+      <publishTime>12/30/2015 10:58:50</publishTime>
+    </File>
+    <File Include="bin/Sunplus.Agent.Model.RemotingRef.dll">
+      <publishTime>12/30/2015 10:58:51</publishTime>
+    </File>
+    <File Include="bin/Sunplus.Agent.Utilities.dll">
+      <publishTime>12/30/2015 10:58:51</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>07/09/2013 11:04:28</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>12/30/2015 10:58:51</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>07/09/2013 11:04:28</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.WebHost.dll">
+      <publishTime>07/09/2013 11:04:28</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>12/30/2015 10:58:48</publishTime>
+    </File>
+    <File Include="bin/System.Web.Optimization.dll">
+      <publishTime>12/30/2015 10:58:48</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>12/30/2015 10:58:57</publishTime>
+    </File>
+    <File Include="bin/System.Web.Webpages.Deployment.dll">
+      <publishTime>12/30/2015 10:58:51</publishTime>
+    </File>
+    <File Include="bin/System.Web.Webpages.dll">
+      <publishTime>12/30/2015 10:58:51</publishTime>
+    </File>
+    <File Include="bin/System.Web.Webpages.Razor.dll">
+      <publishTime>12/30/2015 10:58:51</publishTime>
+    </File>
+    <File Include="bin/th-TH/Alpha.Results.Site.resources.dll">
+      <publishTime>01/05/2016 14:23:01</publishTime>
+    </File>
+    <File Include="bin/th-TH/Fanex.Result.Core.Base.resources.dll">
+      <publishTime>12/30/2015 11:01:16</publishTime>
+    </File>
+    <File Include="bin/vi-VN/Alpha.Results.Site.resources.dll">
+      <publishTime>01/05/2016 14:23:01</publishTime>
+    </File>
+    <File Include="bin/vi-VN/Fanex.Result.Core.Base.resources.dll">
+      <publishTime>12/30/2015 11:01:16</publishTime>
+    </File>
+    <File Include="bin/WebGrease.dll">
+      <publishTime>12/30/2015 10:59:02</publishTime>
+    </File>
+    <File Include="bin/zh-CN/Alpha.Results.Site.resources.dll">
+      <publishTime>01/05/2016 14:23:01</publishTime>
+    </File>
+    <File Include="bin/zh-CN/Fanex.Result.Core.Base.resources.dll">
+      <publishTime>12/30/2015 11:01:16</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/Fanex.Result.Core.Base.resources.dll">
+      <publishTime>12/30/2015 11:01:16</publishTime>
+    </File>
+    <File Include="bin/zh-TW/Alpha.Results.Site.resources.dll">
+      <publishTime>01/05/2016 14:23:01</publishTime>
+    </File>
+    <File Include="bin/zh-TW/Fanex.Result.Core.Base.resources.dll">
+      <publishTime>12/30/2015 11:01:16</publishTime>
+    </File>
+    <File Include="Content/Agent/_variables.scss">
+      <publishTime>12/30/2015 10:58:08</publishTime>
+    </File>
+    <File Include="Content/Fanex.Result/fanex.result-customized.css">
+      <publishTime>12/30/2015 10:58:08</publishTime>
+    </File>
+    <File Include="Content/Fanex.Result/fanex.result.css">
+      <publishTime>12/30/2015 10:58:08</publishTime>
+    </File>
+    <File Include="Content/Fanex.Result/fanex.result.less">
+      <publishTime>12/30/2015 10:58:08</publishTime>
+    </File>
+    <File Include="Content/Fanex.Result/images/bg_header01.jpg">
+      <publishTime>12/30/2015 10:58:08</publishTime>
+    </File>
+    <File Include="Content/Fanex.Result/images/bg_header02.jpg">
+      <publishTime>12/30/2015 10:58:08</publishTime>
+    </File>
+    <File Include="Content/Fanex.Result/images/bg_header03.jpg">
+      <publishTime>12/30/2015 10:58:08</publishTime>
+    </File>
+    <File Include="Content/Fanex.Result/images/bg_header04.jpg">
+      <publishTime>12/30/2015 10:58:08</publishTime>
+    </File>
+    <File Include="Content/Fanex.Result/images/goal-icon.png">
+      <publishTime>12/30/2015 10:58:08</publishTime>
+    </File>
+    <File Include="Content/Images/goal-icon.png">
+      <publishTime>12/30/2015 10:58:08</publishTime>
+    </File>
+    <File Include="Content/Images/sprite.png">
+      <publishTime>12/30/2015 10:58:08</publishTime>
+    </File>
+    <File Include="Content/Master/_variables.scss">
+      <publishTime>12/30/2015 10:58:08</publishTime>
+    </File>
+    <File Include="Content/result.css">
+      <publishTime>01/05/2016 14:19:56</publishTime>
+    </File>
+    <File Include="Content/result.scss">
+      <publishTime>01/05/2016 14:19:56</publishTime>
+    </File>
+    <File Include="Content/Super/_variables.scss">
+      <publishTime>12/30/2015 10:58:08</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>12/30/2015 14:40:27</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>01/05/2016 14:19:57</publishTime>
+    </File>
+    <File Include="Scripts/Normal/normal-result.js">
+      <publishTime>01/05/2016 14:40:59</publishTime>
+    </File>
+    <File Include="Scripts/Outright/outright-result.js">
+      <publishTime>01/05/2016 14:20:05</publishTime>
+    </File>
+    <File Include="Views/Normal/Index.cshtml">
+      <publishTime>01/05/2016 14:31:02</publishTime>
+    </File>
+    <File Include="Views/Normal/ResultDetails.cshtml">
+      <publishTime>01/05/2016 14:19:57</publishTime>
+    </File>
+    <File Include="Views/Outright/Index.cshtml">
+      <publishTime>01/05/2016 14:20:05</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout.cshtml">
+      <publishTime>12/30/2015 12:13:28</publishTime>
+    </File>
+    <File Include="Views/Tab/Index.cshtml">
+      <publishTime>12/30/2015 14:40:27</publishTime>
+    </File>
+    <File Include="Views/web.config">
+      <publishTime>01/05/2016 14:19:57</publishTime>
+    </File>
+    <File Include="Views/_ViewStart.cshtml">
+      <publishTime>12/30/2015 10:58:08</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>01/05/2016 14:23:02</publishTime>
+    </File>
+  </ItemGroup>
+</Project>
