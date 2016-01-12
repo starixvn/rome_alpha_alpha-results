@@ -303,9 +303,6 @@
     <Content Include="Content\Fanex.Result\images\goal-icon.png" />
     <Content Include="Content\Images\goal-icon.png" />
     <Content Include="Content\Images\sprite.png" />
-    <Content Include="Content\result.min.css">
-      <DependentUpon>result.css</DependentUpon>
-    </Content>
     <Content Include="Global.asax" />
     <Content Include="Areas\Game\Views\Keno\Result.cshtml" />
     <Content Include="Areas\Game\Views\web.config" />
