@@ -9,7 +9,7 @@
     string language = userSession.LangKey;
     int customerid = userSession.CustId;
 
-    string rootUrl = Url.Content("~");
+    string rootUrl = HttpContext.Current.Response.ApplyAppPathModifier("~");
     string deailResultUrl = string.Format("{0}/game/keno/kenoresult/resultdetail?date={1}&language={2}&customerid={3}", rootUrl, date, language, customerid);
     string extendTokenUrl = rootUrl + "game/keno/kenoresult/extendtoken?userid=" + customerid;
 }
@@ -20,7 +20,7 @@
     <title>@Resources.Keno</title>
 
     <link href="/contents/css/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/Content/result.css" rel="stylesheet">
+    <link href="~/Content/result.css?v=1" rel="stylesheet">
 </head>
 <body class="keno">
     <div id="page_main">
@@ -32,7 +32,7 @@
                             <a id="tabNormal" href="@string.Format("{0}normal", rootUrl)">@Resources.Normal</a>
                         </li>
                         <li role="presentation">
-                            <a id="tabOutright" href="@string.Format("{0}outright", rootUrl)">@Resources.Normal</a>
+                            <a id="tabOutright" href="@string.Format("{0}outright", rootUrl)">@Resources.Outright</a>
                         </li>
                         <li role="presentation" class="active">
                             @Html.ActionLink(
