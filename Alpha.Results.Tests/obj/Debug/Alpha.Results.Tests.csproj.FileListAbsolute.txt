@@ -1,5 +1,0 @@
-D:\WorkingIndividual\Agency\alpha-results\Alpha.Results.Tests\bin\Debug\Alpha.Results.Tests.dll
-D:\WorkingIndividual\Agency\alpha-results\Alpha.Results.Tests\bin\Debug\Alpha.Results.Tests.pdb
-D:\WorkingIndividual\Agency\alpha-results\Alpha.Results.Tests\obj\Debug\Alpha.Results.Tests.csprojResolveAssemblyReference.cache
-D:\WorkingIndividual\Agency\alpha-results\Alpha.Results.Tests\obj\Debug\Alpha.Results.Tests.dll
-D:\WorkingIndividual\Agency\alpha-results\Alpha.Results.Tests\obj\Debug\Alpha.Results.Tests.pdb
