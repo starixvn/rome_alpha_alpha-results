@@ -76,41 +76,47 @@
             return viewModel;
         }
 
-        private OutrightResultViewModel GetSportsAndLeagues(OutrightResultViewModel viewModel, IEnumerable<Outright> outrights, int selectedSportType, int selectedLeagueId)
+        private OutrightResultViewModel GetSportsAndLeagues(
+            OutrightResultViewModel viewModel, 
+            IEnumerable<Outright> outrights, 
+            int selectedSportType, 
+            int selectedLeagueId)
         {
             Check.Argument.IsNotNull(viewModel, "viewModel");
             Check.Argument.IsNotNull(outrights, "outrights");
 
+            bool matchedSportType = false;
             IList<SelectListItem> sportTypes = new List<SelectListItem>();
-            IList<SelectListItem> leagues = new List<SelectListItem>();
 
-            var outrightsGroup = outrights
-                .GroupBy(outright => new
-                {
-                    SportType = outright.SportType,
-                    LeagueId = outright.LeagueId
-                });
+            var outrightsGroup = outrights.GroupBy(outright => outright.SportType);
 
             foreach (var group in outrightsGroup)
             {
                 var key = group.Key;
+                matchedSportType = key == selectedSportType;
+
                 sportTypes.Add(new SelectListItem
                 {
-                    Value = key.SportType.ToString(),
-                    Text = CacheRefFactory.CacheRef.GetSportName(key.SportType),
-                    Selected = key.SportType == selectedSportType
+                    Value = key.ToString(),
+                    Text = CacheRefFactory.CacheRef.GetSportName(key),
+                    Selected = matchedSportType
                 });
 
-                leagues.Add(new SelectListItem
+                if (matchedSportType)
                 {
-                    Value = key.LeagueId.ToString(),
-                    Text = CacheRefFactory.CacheRef.GetLeagueName(key.LeagueId),
-                    Selected = key.LeagueId == selectedLeagueId
-                });
+                    viewModel.Leagues = group
+                        .Select(outright => outright.LeagueId)
+                        .Distinct()
+                        .Select(league => new SelectListItem
+                        {
+                            Value = league.ToString(),
+                            Text = CacheRefFactory.CacheRef.GetLeagueName(league),
+                            Selected = league == selectedLeagueId
+                        });
+                }
             }
 
             viewModel.Sports = sportTypes;
-            viewModel.Leagues = leagues;
 
             return viewModel;
         }

@@ -1,24 +1,56 @@
-﻿@using System.Threading
+﻿@using Alpha.Results.Site.App_GlobalResources
+@using System.Threading
 @{
-    Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(Sunplus.Agent.Model.Entities.UserSession.Current.Language);
+    var userSession = Sunplus.Agent.Model.Entities.UserSession.Current;
+    Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(userSession.Language);
     Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture;
 
+    string date = DateTime.Today.ToString("yyyyMMdd");
+    string language = userSession.LangKey;
+    int customerid = userSession.CustId;
+
     string rootUrl = Url.Content("~");
-    string deailResultUrl = string.Format("{0}/game/keno/kenoresult/resultdetail?date={1}&language={2}&customerid={3}", rootUrl, ViewBag.date, ViewBag.language, ViewBag.customerId);
-    string extendTokenUrl = rootUrl + "game/keno/kenoresult/extendtoken?userid=" + ViewBag.customerId;
+    string deailResultUrl = string.Format("{0}/game/keno/kenoresult/resultdetail?date={1}&language={2}&customerid={3}", rootUrl, date, language, customerid);
+    string extendTokenUrl = rootUrl + "game/keno/kenoresult/extendtoken?userid=" + customerid;
 }
 <!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Keno</title>
+    <title>@Resources.Keno</title>
+
+    <link href="/contents/css/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/result.css" rel="stylesheet">
 </head>
 <body class="keno">
-    <div>
-        <form ENCTYPE="multipart/form-data" id="target" action="@deailResultUrl" target="iframeId" method="POST"></form>
-        <iframe id="iframeId" name="iframeId" frameborder="0"
-                style="overflow-x: hidden" left="0" top="0"></iframe>
+    <div id="page_main">
+        <div id="page_main">
+            <div class="container-fluid">
+                <div class="">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation">
+                            <a id="tabNormal" href="@string.Format("{0}normal", rootUrl)">@Resources.Normal</a>
+                        </li>
+                        <li role="presentation">
+                            <a id="tabOutright" href="@string.Format("{0}outright", rootUrl)">@Resources.Normal</a>
+                        </li>
+                        <li role="presentation" class="active">
+                            @Html.ActionLink(
+                            Resources.Keno,
+                            "index",
+                            "kenoresult",
+                            new { area = "game", date = date, language = language, customerid = customerid },
+                            new { id = "tabKeno" })
+                        </li>
+                    </ul>
+                    <div class="row filter">
+                        <form ENCTYPE="multipart/form-data" id="target" action="@deailResultUrl" target="iframeId" method="POST"></form>
+                        <iframe id="iframeId" name="iframeId" frameborder="0"
+                                style="overflow-x: hidden" left="0" top="0"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script type="text/javascript" src="/contents/libs/jquery/jquery-1.11.3.min.js"></script>
