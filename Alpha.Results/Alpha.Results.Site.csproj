@@ -477,18 +477,18 @@
     <Content Include="Web.ConnectionStrings.uati7.config">
       <DependentUpon>Web.ConnectionStrings.config</DependentUpon>
     </Content>
-    <None Include="Web.AppSettings.napexternal.config">
+    <Content Include="Web.AppSettings.napexternal.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
-    </None>
-    <None Include="Web.AppSettings.napinternal.config">
+    </Content>
+    <Content Include="Web.AppSettings.napinternal.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
-    </None>
-    <None Include="Web.ConnectionStrings.napexternal.config">
+    </Content>
+    <Content Include="Web.ConnectionStrings.napexternal.config">
       <DependentUpon>Web.ConnectionStrings.config</DependentUpon>
-    </None>
-    <None Include="Web.ConnectionStrings.napinternal.config">
+    </Content>
+    <Content Include="Web.ConnectionStrings.napinternal.config">
       <DependentUpon>Web.ConnectionStrings.config</DependentUpon>
-    </None>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -507,12 +507,12 @@
     <Content Include="Web.uati7.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <None Include="Web.napexternal.config">
+    <Content Include="Web.napexternal.config">
       <DependentUpon>Web.config</DependentUpon>
-    </None>
-    <None Include="Web.napinternal.config">
+    </Content>
+    <Content Include="Web.napinternal.config">
       <DependentUpon>Web.config</DependentUpon>
-    </None>
+    </Content>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
