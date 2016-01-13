@@ -111,6 +111,10 @@
       <HintPath>..\packages\Fanex.Result.Core-NPOI.2.0.6.2.0.2.6\lib\net40\Fanex.Result.Core.Base.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Fanex.Result.Core.CockFighting, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Result.Core.CockFighting.1.0.0.2\lib\net40\Fanex.Result.Core.CockFighting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Fanex.Result.Core.GoldDeluxe, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core-GoldDeluxe.1.0.1.0\lib\net40\Fanex.Result.Core.GoldDeluxe.dll</HintPath>
       <Private>True</Private>
@@ -248,6 +252,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
       <Private>True</Private>
@@ -327,6 +332,8 @@
     <Content Include="Content\result.css">
       <DependentUpon>result.scss</DependentUpon>
     </Content>
+    <Content Include="Views\Cockfighting\Scripts\cock-fighting-result.js" />
+    <Content Include="Views\Cockfighting\Styles\Result.css" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -338,6 +345,7 @@
     <Compile Include="App_Start\DependencyConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Game\Controllers\KenoController.cs" />
+    <Compile Include="Configurations\CockfightSectioncs.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CockfightingController.cs" />
     <Compile Include="Controllers\NormalController.cs" />
@@ -383,6 +391,7 @@
     <Compile Include="Handlers\OutrightResultHandler.cs" />
     <Compile Include="Models\Dtos\BalanceUpAndMoveBetsDate.cs" />
     <Compile Include="Models\League.cs" />
+    <Compile Include="Models\Requests\CockfightingResultQuery.cs" />
     <Compile Include="Models\Requests\ExcelNormalResultQuery.cs" />
     <Compile Include="Models\Requests\ExcelOutrightResultQuery.cs" />
     <Compile Include="Models\Requests\NormalResultDetailsQuery.cs" />
@@ -390,6 +399,7 @@
     <Compile Include="Models\Requests\OutrightResultQuery.cs" />
     <Compile Include="Models\Sport.cs" />
     <Compile Include="Models\Views\OutrightResultExcelViewModel.cs" />
+    <Compile Include="Models\Views\ResultIframeViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ICockfightingResultService.cs" />
     <Compile Include="Services\Impl\OutrightResultService.cs" />
@@ -499,6 +509,7 @@
     <Content Include="Web.ConnectionStrings.napinternal.config">
       <DependentUpon>Web.ConnectionStrings.config</DependentUpon>
     </Content>
+    <Content Include="Views\Cockfighting\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

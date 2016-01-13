@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Alpha.Results.Site.Models.Views;
-
-namespace Alpha.Results.Site.Services
+﻿namespace Alpha.Results.Site.Services
 {
-    public class ICockfightingResultService
+    using Alpha.Results.Site.Models.Requests;
+
+    public interface ICockfightingResultService
     {
-        ResultIframeViewModel GetResult(GetResultCriteria criteria);
+        string GetResultUrl(CockfightingResultQuery request);
     }
 }

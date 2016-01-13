@@ -1,0 +1,60 @@
+﻿@using System.Threading
+@using Fanex.Game.Keno.Resources
+@using Sunplus.Agent.Model.Entities.Permission
+@using Fanex.Razorbill.Module.ThirdParty.Models.CockFighting
+@model ResultIframeModel
+@{
+    Layout = null;
+    var normalResult = Url.Content("~") + "Report/Result/GetResult";
+    var outRightResultUrl = Url.Content("~") + "Report/Result/GetResult?IsOutRight=true";
+    var kenoResultUrl = string.Format(
+        "{0}game/keno/kenoresult/index?date={1}&language={2}&customerId={3}",
+        Url.Content("~"),
+        Model.Date,
+        Model.Language,
+        Model.CustomerId);
+
+    var cockFightingResultApi = Url.Content("~") + "CockFighting/ResultContent";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@Resources.CockFighting</title>
+    <link rel="stylesheet" type="text/css" href="~/_GlobalResources/Css/Agent.css" />
+    <link rel="stylesheet" type="text/css" href="~/Areas/Report/Views/Result/CockFighting/Styles/Result.css" />
+    <link rel="stylesheet" type="text/css" href="~/_Reports/Resources/Reports.css" />
+</head>
+<body>
+    <div id="page_main">
+        <div id="header_main">
+            <div style="float: left;">@Resources.result</div>
+            <div style="float: right; width: 60%; text-align: right; margin-right: 15px;">
+                <input  type="button" class="btn" id="btnNormal" value="@Resources.lblNormal" onclick="location.href='@normalResult'"/>
+                <input  type="button" class="btn" id="btnoutRight" value="@Resources.lblOutRight" onclick="location.href='@outRightResultUrl'"/>
+                @if (UserPermission.EnableKeno)
+                {
+                    <input  type="button" class="btn" id="btnKeno" value="@Resources.Keno" onclick="location.href='@kenoResultUrl'"/>
+                }
+                <input disabled="disabled" type="button" class="btn btn2" id="btnCockFighting" value="@Resources.CockFighting" />
+            </div>
+        </div>
+    </div>
+    <div>
+        <iframe id="iframeId" name='iframeId' frameborder="0" src="" left="0" top="0"></iframe>
+    </div>
+    <script src="@Url.Content("~/Js/jQuery/jquery-1.8.2.min.js")" type="text/javascript"></script>
+    <script type="text/javascript" src="@Url.Content("~/Areas/Report/Views/Result/CockFighting/Scripts/cock-fighting-result.js")"></script>
+    <script type="text/javascript">
+        var resources = {
+            cannotConnectAPI: '@Resources.Lang.CockFightingAPI_FailedToConnect'
+        };
+
+        $(document).ready(function () {
+            var api = new cockFightingResult('@cockFightingResultApi');
+            api.Open();
+            api.extendSession();
+        });
+    </script>
+</body>
+</html>

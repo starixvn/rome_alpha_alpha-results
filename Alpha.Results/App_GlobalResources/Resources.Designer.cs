@@ -61,6 +61,24 @@ namespace Alpha.Results.Site.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cockfighting.
+        /// </summary>
+        public static string CockFighting {
+            get {
+                return ResourceManager.GetString("CockFighting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot connect to Cockfighting API! Please contact Administrator..
+        /// </summary>
+        public static string CockFightingAPI_FailedToConnect {
+            get {
+                return ResourceManager.GetString("CockFightingAPI_FailedToConnect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Date.
         /// </summary>
         public static string Date {
