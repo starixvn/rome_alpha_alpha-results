@@ -21,6 +21,8 @@
             Fanex.Data.Configuration.DbSettingProviderManager.Current.Start();
 
             ShareSession.Init();
+
+            Logs.WriteInfo("Alpha - Results - Application Start");
         }
 
         /// <summary>
