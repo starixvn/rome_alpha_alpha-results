@@ -7,8 +7,7 @@
 </li>
 @if (Model.IsEnabledKenoTab)
 {
-    <li role="presentation" class="@((Model.SelectedTabName == "keno") ? "active" : string.Empty)">
-        @*@Html.ActionLink(Resources.Keno, "index", "keno", null, new { id = "tabKeno" })*@
+    <li role="presentation" class="@((Model.SelectedTabName == "kenoresult") ? "active" : string.Empty)">
         @Html.ActionLink(
             Resources.Keno,
             "index",

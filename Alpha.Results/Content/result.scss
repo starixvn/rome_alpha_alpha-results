@@ -11,6 +11,7 @@ body {
 .ifr-result {
     position: absolute;
     min-width: 100%;
+    height: 100%;
 }
 
 
@@ -283,12 +284,9 @@ table.fn-rs tbody .cl-match div {
     }
 }
 
-body.keno {
-    padding: 0;
-    margin: 0;
-    iframe {
-        position: absolute;
-        width: 100%;
-        height: 94%;
-    }
+.iframeKeno {
+  position: absolute;
+  width: 100%;
+  height: 92%;
+  overflow-x: hidden;
 }

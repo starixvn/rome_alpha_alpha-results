@@ -4,7 +4,8 @@
 
 .ifr-result {
   position: absolute;
-  min-width: 100%; }
+  min-width: 100%;
+  height: 100%; }
 
 .icon-excel {
   background: url("Images/sprite.png") no-repeat -26px -4px;
@@ -258,11 +259,9 @@ table.fn-rs tbody .cl-match div.first-half-last-goal {
   .lnk:focus, .lnk:visited, .lnk:active {
     outline: none; }
 
-body.keno {
-  padding: 0;
-  margin: 0; }
-  body.keno iframe {
-    position: absolute;
-    width: 100%;
-    height: 94%; }
+.iframeKeno {
+  position: absolute;
+  width: 100%;
+  height: 92%;
+  overflow-x: hidden; }
 
