@@ -63,10 +63,11 @@
 
             if (outrights.Any())
             {
-                viewModel.SportType = message.SportType > 0
+                message.SportType = message.SportType > 0
                     ? message.SportType
                     : outrights.First().SportType;
 
+                viewModel.SportType = message.SportType;
                 viewModel.LeagueId = message.LeagueId;
                 viewModel = GetSportsAndLeagues(viewModel, outrights, viewModel.SportType, viewModel.LeagueId);
             }
