@@ -1,31 +1,26 @@
 ﻿@using System.Threading
-
 @{
-    ViewBag.Title = "Keno";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-
-    var userSession = Sunplus.Agent.Model.Entities.UserSession.Current;
-    Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(userSession.Language);
+    Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(Sunplus.Agent.Model.Entities.UserSession.Current.Language);
     Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture;
 
-    var date = ViewBag.date;
-    var language = ViewBag.language;
-    var customerid = ViewBag.customerId;
-
-    string rootUrl = HttpContext.Current.Response.ApplyAppPathModifier("~");
-    string deailResultUrl = string.Format("{0}/game/keno/kenoresult/resultdetail?date={1}&language={2}&customerid={3}", rootUrl, date, language, customerid);
-    string extendTokenUrl = rootUrl + "game/keno/kenoresult/extendtoken?userid=" + customerid;
+    string rootUrl = Url.Content("~");
+    string deailResultUrl = string.Format("{0}/game/keno/kenoresult/resultdetail?date={1}&language={2}&customerid={3}", rootUrl, ViewBag.date, ViewBag.language, ViewBag.customerId);
+    string extendTokenUrl = rootUrl + "game/keno/kenoresult/extendtoken?userid=" + ViewBag.customerId;
 }
-
-<div role="tabpanel" class="tab-pane active" id="keno">
-    <div class="row filter">
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Keno</title>
+    <link href="~/Content/result.css?v=2" rel="stylesheet">
+</head>
+<body class="keno">
+    <div>
         <form ENCTYPE="multipart/form-data" id="target" action="@deailResultUrl" target="iframeId" method="POST"></form>
-        <iframe id="iframeId" name="iframeId" frameborder="0" left="0" top="0" class="iframeKeno"></iframe>
+        <iframe id="iframeId" name="iframeId" frameborder="0"
+                style="overflow-x: hidden" left="0" top="0"></iframe>
     </div>
-</div>
-
-@section scripts
-{
+    <script type="text/javascript" src="/contents/libs/jquery/jquery-1.11.3.min.js"></script>
     <script type="text/javascript">
         (function () {
             function extendToken() {
@@ -48,4 +43,5 @@
             initialize();
         })();
     </script>
-}
+</body>
+</html>

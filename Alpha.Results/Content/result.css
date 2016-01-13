@@ -259,9 +259,9 @@ table.fn-rs tbody .cl-match div.first-half-last-goal {
   .lnk:focus, .lnk:visited, .lnk:active {
     outline: none; }
 
-.iframeKeno {
+body.keno iframe {
   position: absolute;
-  width: 100%;
-  height: 92%;
+  width: 98%;
+  height: 98%;
   overflow-x: hidden; }
 

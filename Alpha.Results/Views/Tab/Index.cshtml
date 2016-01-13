@@ -8,12 +8,7 @@
 @if (Model.IsEnabledKenoTab)
 {
     <li role="presentation" class="@((Model.SelectedTabName == "kenoresult") ? "active" : string.Empty)">
-        @Html.ActionLink(
-            Resources.Keno,
-            "index",
-            "kenoresult",
-            new { area = "game", date = DateTime.Today.ToString("yyyyMMdd"), language = Sunplus.Agent.Model.Entities.UserSession.Current.LangKey, customerid = Sunplus.Agent.Model.Entities.UserSession.Current.CustId },
-            new { id = "tabKeno" })
+        @Html.ActionLink(Resources.Keno, "index", "keno", null, new { id = "tabKeno" })
     </li>
 }
 
