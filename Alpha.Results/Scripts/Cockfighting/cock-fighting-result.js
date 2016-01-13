@@ -29,7 +29,7 @@ var cockFightingResult = function (resultApi) {
                 if (response.IsSuccess) {
                     var cockFightingWindow = $("#iframeId").attr("src", response.Url);
                 } else {
-                    alert(resources.cannotConnectAPI);
+                    alert($('#FailedToConnectMessage').val());
                 }
             },
             beforeSend: function () {

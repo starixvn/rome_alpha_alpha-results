@@ -177,7 +177,7 @@
   <data name="CockFighting" xml:space="preserve">
     <value>Cockfighting</value>
   </data>
-  <data name="CockFightingAPI_FailedToConnect" xml:space="preserve">
+  <data name="CockFightFailedToConnect" xml:space="preserve">
     <value>Cannot connect to Cockfighting API! Please contact Administrator.</value>
   </data>
 </root>

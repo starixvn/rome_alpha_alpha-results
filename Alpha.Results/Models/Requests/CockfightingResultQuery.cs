@@ -1,20 +1,16 @@
 ﻿namespace Alpha.Results.Site.Models.Requests
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Web;
+    using MediatR;
+    using Views;
 
-    public class CockfightingResultQuery
+    public class CockfightingResultQuery : IRequest<CockfightingResultViewModel>
     {
-        public string LanguageKey { get; set; }
-
-        public string Date { get; set; }
-
         public int CustomerId { get; set; }
 
         public int SiteId { get; set; }
 
-        public int RoleId { get; set; }
+        public bool? IsKeepAlive { get; set; }
+
+        public string LanguageKey { get; set; }
     }
 }

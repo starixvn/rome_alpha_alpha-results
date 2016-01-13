@@ -10,6 +10,8 @@
     using Fanex.Caching;
     using Fanex.Data.Repository;
     using Fanex.Game.Keno.Business;
+    using Fanex.Logging;
+    using Fanex.Result.Core.CockFighting;
     using Handlers;
     using MediatR;
     using Services;
@@ -66,6 +68,7 @@
         private static void RegisterCrossCuttingConcerns(Container container)
         {
             container.Register(() => CacheService.CreateInstance(CacheType.MemoryCache), Lifestyle.Singleton);
+            container.Register(() => Logger.Log, Lifestyle.Singleton);
         }
 
         private static void RegisterServices(Container container)
@@ -74,7 +77,9 @@
             container.Register<IReportDateService, ReportDateService>(Lifestyle.Scoped);
             container.Register<IOutrightResultService, OutrightResultService>(Lifestyle.Scoped);
             container.Register<INormalResultService, NormalResultService>(Lifestyle.Scoped);
-
+            container.Register<ICockfightingResultService, CockfightingResultService>(Lifestyle.Scoped);
+            container.Register<ICockFightingAPI, CockFightingAPI>(Lifestyle.Scoped);
+            
             // For Keno Areas.
             container.Register<IKenoGameService, KenoGameService>(Lifestyle.Scoped);
         }
