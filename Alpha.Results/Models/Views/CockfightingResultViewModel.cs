@@ -4,6 +4,6 @@
     {
         public bool IsSuccess { get; set; }
 
-        public string ResultUrl { get; set; }
+        public string Url { get; set; }
     }
 }

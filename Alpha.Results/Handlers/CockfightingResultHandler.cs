@@ -22,7 +22,7 @@
             return new CockfightingResultViewModel
             {
                 IsSuccess = !string.IsNullOrEmpty(resultUrl),
-                ResultUrl = resultUrl
+                Url = resultUrl
             };
         }
     }
