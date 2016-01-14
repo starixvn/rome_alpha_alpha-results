@@ -344,7 +344,6 @@
     <Compile Include="App_Start\DependencyConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Game\Controllers\KenoController.cs" />
-    <Compile Include="Configurations\CockfightSectioncs.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CockfightingController.cs" />
     <Compile Include="Controllers\NormalController.cs" />
