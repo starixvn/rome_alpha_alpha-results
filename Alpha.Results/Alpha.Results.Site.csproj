@@ -327,6 +327,7 @@
     <None Include="Properties\PublishProfiles\Local202.pubxml" />
     <None Include="Properties\PublishProfiles\Local202CookieLess.pubxml" />
     <None Include="Properties\PublishProfiles\LocalRicky.pubxml" />
+    <Content Include="Scripts\Cockfighting\index.js" />
     <Content Include="Scripts\Normal\normal-result.js" />
     <Content Include="Scripts\Outright\outright-result.js" />
     <Content Include="Content\result.css">

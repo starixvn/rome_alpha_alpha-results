@@ -6,16 +6,10 @@
 <iframe id="iframeId" name='iframeId' frameborder="0" src="" left="0" top="0"></iframe>
 
 @Html.Hidden("FailedToConnectMessage", @Resources.CockFightFailedToConnect)
+@Html.Hidden("CockFightingResultUrl", @cockFightingResult)
 
 @section scripts
 {
     @Scripts.Render(BundleConfig.CockfightingResultJavascriptBundleUrl)
-    <script type="text/javascript">
-        $(function () {
-            var api = new cockFightingResult('@cockFightingResult');
-            api.Open();
-            api.extendSession();
-        });
-    </script>
 }
     

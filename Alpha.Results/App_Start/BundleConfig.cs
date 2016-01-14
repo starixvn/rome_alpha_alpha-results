@@ -37,7 +37,8 @@
         private static void RegisterCockfightingResultJavascript(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle(CockfightingResultJavascriptBundleUrl).Include(
-                        "~/Scripts/Cockfighting/cock-fighting-result.js"));
+                        "~/Scripts/Cockfighting/cock-fighting-result.js",
+                        "~/Scripts/Cockfighting/index.js"));
         }
 
         private static void RegisterStyleBundles(BundleCollection bundles)
