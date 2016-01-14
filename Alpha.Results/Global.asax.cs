@@ -75,11 +75,11 @@
                                                                            null,
                                                                            runtime,
                                                                            null);
-            var shootdownMessage = string.Format("\r\n\r\n_shutDownMessage={0}\r\n\r\n_shutDownStack={1}",
+            var logMessage = string.Format("\r\n\r\n_shutDownMessage={0}\r\n\r\n_shutDownStack={1}",
                                          shutDownMessage,
                                          shutDownStack);
 
-            Logs.WriteInfo(shootdownMessage);
+            Logs.WriteInfo(logMessage);
 
             if (!EventLog.SourceExists(logSource))
             {
@@ -88,7 +88,7 @@
 
             EventLog log = new EventLog();
             log.Source = logSource;
-            log.WriteEntry(shootdownMessage, EventLogEntryType.Error);
+            log.WriteEntry(logMessage, EventLogEntryType.Error);
         }
     }
 }
