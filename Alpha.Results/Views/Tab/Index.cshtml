@@ -11,8 +11,11 @@
         @Html.ActionLink(Resources.Keno, "index", "keno", null, new { id = "tabKeno" })
     </li>
 }
-<li role="presentation" class="@((Model.SelectedTabName == "cockfighting") ? "active" : string.Empty)">
-    @Html.ActionLink(Resources.CockFighting, "index", "cockfighting", null, new { id = "tabCockfighting" })
-</li>
+@if (Model.IsEnableCockfighting)
+{
+    <li role="presentation" class="@((Model.SelectedTabName == "cockfighting") ? "active" : string.Empty)">
+        @Html.ActionLink(Resources.CockFighting, "index", "cockfighting", null, new { id = "tabCockfighting" })
+    </li>
+}
 
 

@@ -6,10 +6,17 @@
 
     public class TabController : Controller
     {
+        /// <summary>
+        /// Temporary use this constant here, will be updated when update Sunplus.Agent.Model.Definitions.
+        /// </summary>
+        private readonly int CockFightingProductId = 19;
+
         [ChildActionOnly]
         public ActionResult Index(string tabName = "Normal")
         {
-            return PartialView(new TabViewModel(tabName, UserPermission.EnableKeno));
+            var isEnableCockfighting = UserPermission.IsEnableProduct(CockFightingProductId);
+
+            return PartialView(new TabViewModel(tabName, UserPermission.EnableKeno, isEnableCockfighting));
         }
     }
 }

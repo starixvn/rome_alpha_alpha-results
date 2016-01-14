@@ -2,29 +2,25 @@
 {
     public class TabViewModel
     {
-        private string selectedTabName;
-        private bool isEnabledKenoTab;
+        private string _selectedTabName;
 
-        public TabViewModel(string selectedTabName, bool isEnabledKenoTab)
+        public TabViewModel(string selectedTabName, bool isEnabledKenoTab, bool isEnableCockfighting)
         {
-            this.selectedTabName = selectedTabName;
-            this.isEnabledKenoTab = isEnabledKenoTab;
+            _selectedTabName = selectedTabName;
+            IsEnabledKenoTab = isEnabledKenoTab;
+            IsEnableCockfighting = isEnableCockfighting;
         }
 
         public string SelectedTabName
         {
             get
             {
-                return this.selectedTabName.ToLower();
+                return _selectedTabName.ToLower();
             }
         }
 
-        public bool IsEnabledKenoTab
-        {
-            get
-            {
-                return this.isEnabledKenoTab;
-            }
-        }
+        public bool IsEnabledKenoTab { get; set; }
+
+        public bool IsEnableCockfighting { get; set; }
     }
 }
