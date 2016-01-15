@@ -269,3 +269,11 @@ body.keno iframe {
   width: 100%;
   height: 800px; }
 
+/*************************Popup*****************************/
+.modal-header {
+  border-bottom-color: #d7d7d7;
+  background: #f4f4f4; }
+
+.modal-body {
+  background-color: #f4f4f4; }
+
