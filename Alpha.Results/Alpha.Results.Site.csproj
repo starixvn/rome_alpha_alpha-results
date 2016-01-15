@@ -313,9 +313,6 @@
     <Content Include="Content\Images\goal-icon.png" />
     <Content Include="Content\Images\sprite.png" />
     <Content Include="Global.asax" />
-    <Content Include="Areas\Game\Views\Keno\Result.cshtml" />
-    <Content Include="Areas\Game\Views\web.config" />
-    <Content Include="Areas\Game\Views\Keno\Index.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -328,6 +325,7 @@
     <None Include="Properties\PublishProfiles\Local202CookieLess.pubxml" />
     <None Include="Properties\PublishProfiles\LocalRicky.pubxml" />
     <Content Include="Scripts\Cockfighting\index.js" />
+    <Content Include="Scripts\Keno\index.js" />
     <Content Include="Scripts\Normal\normal-result.js" />
     <Content Include="Scripts\Outright\outright-result.js" />
     <Content Include="Content\result.css">
@@ -344,9 +342,9 @@
     <Compile Include="App_Start\CssRewriteUrlTransformWrapper.cs" />
     <Compile Include="App_Start\DependencyConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Areas\Game\Controllers\KenoController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CockfightingController.cs" />
+    <Compile Include="Controllers\KenoController.cs" />
     <Compile Include="Controllers\NormalController.cs" />
     <Compile Include="Controllers\OutrightController.cs" />
     <Compile Include="Controllers\TabController.cs" />
@@ -387,6 +385,7 @@
     </Compile>
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Handlers\CockfightingResultHandler.cs" />
+    <Compile Include="Handlers\KenoResultHandler.cs" />
     <Compile Include="Handlers\NormalResultHandler.cs" />
     <Compile Include="Handlers\OutrightResultHandler.cs" />
     <Compile Include="Models\Dtos\BalanceUpAndMoveBetsDate.cs" />
@@ -394,6 +393,7 @@
     <Compile Include="Models\Requests\CockfightingResultQuery.cs" />
     <Compile Include="Models\Requests\ExcelNormalResultQuery.cs" />
     <Compile Include="Models\Requests\ExcelOutrightResultQuery.cs" />
+    <Compile Include="Models\Requests\KenoResultQuery.cs" />
     <Compile Include="Models\Requests\NormalResultDetailsQuery.cs" />
     <Compile Include="Models\Requests\NormalResultQuery.cs" />
     <Compile Include="Models\Requests\OutrightResultQuery.cs" />
@@ -414,11 +414,13 @@
     <Compile Include="Services\Impl\ReportDateService.cs" />
     <Compile Include="Services\Impl\Products\SportsbookResultService.cs" />
     <Compile Include="Services\Impl\Products\VirtualRacingResultService.cs" />
+    <Compile Include="Services\Impl\ResultEngineAdapter.cs" />
     <Compile Include="Services\Impl\ResultServiceFactory.cs" />
     <Compile Include="Services\INormalResultService.cs" />
     <Compile Include="Services\IOutrightResultService.cs" />
     <Compile Include="Services\IReportDateService.cs" />
     <Compile Include="Services\IProductResultService.cs" />
+    <Compile Include="Services\IResultEngineAdapter.cs" />
     <Compile Include="Services\IResultServiceFactory.cs" />
     <Compile Include="Models\Views\KenoResultViewModel.cs" />
     <Compile Include="Models\Views\NormalResultDetailsViewModel.cs" />
@@ -509,6 +511,7 @@
       <DependentUpon>Web.ConnectionStrings.config</DependentUpon>
     </Content>
     <Content Include="Views\Cockfighting\Index.cshtml" />
+    <Content Include="Views\Keno\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

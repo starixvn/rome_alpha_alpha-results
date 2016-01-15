@@ -18,11 +18,15 @@ namespace Alpha.Results.Site.Services.Impl.Products
     public class VirtualRacingResultService : IProductResultService
     {
         private readonly IVirtualRacingResultDataAccess _racingResultDataAccess;
+        private readonly IResultEngineAdapter _resultEngineAdapter;
 
-        public VirtualRacingResultService(IVirtualRacingResultDataAccess racingResultDataAccess = null)
+        public VirtualRacingResultService(
+            IVirtualRacingResultDataAccess racingResultDataAccess = null,
+            IResultEngineAdapter resultEngineAdapter = null)
         {
             //// Still using poorman DI here because result service factory need to create it manual
             _racingResultDataAccess = racingResultDataAccess ?? new VirtualRacingResultDataAccess();
+            _resultEngineAdapter = resultEngineAdapter ?? new ResultEngineAdapter();
         }
 
         [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0", Justification = "Reviewed")]
@@ -44,7 +48,7 @@ namespace Alpha.Results.Site.Services.Impl.Products
                 HighlightWinnerTeam = true
             };
 
-            return ResultEngine.HtmlParser(results, resultSetting);
+            return _resultEngineAdapter.HtmlParser(results, resultSetting);
         }
 
         [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0", Justification = "Reviewed")]
@@ -64,7 +68,7 @@ namespace Alpha.Results.Site.Services.Impl.Products
 
             var results = _racingResultDataAccess.GetVirtualRacingResults(GetCriteria(request)).ToList();
 
-            return ResultEngine.ExcelParser(results, resultSetting);
+            return _resultEngineAdapter.ExcelParser(results, resultSetting);
         }
 
         private static GetVirtualRacingResultCriteria GetCriteria(NormalResultQuery request)
@@ -104,7 +108,7 @@ namespace Alpha.Results.Site.Services.Impl.Products
                 HighlightWinnerTeam = true
             };
 
-            return ResultEngine.HtmlParser(results, resultSetting);
+            return _resultEngineAdapter.HtmlParser(results, resultSetting);
         }
 
         private int GetRaceNumber(string raceNumber)

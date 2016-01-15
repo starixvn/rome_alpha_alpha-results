@@ -14,11 +14,15 @@
     public class GoldDeluxePopupResultService : IProductResultService
     {
         private readonly IDynamicRepository _dynamicRepository;
+        private readonly IResultEngineAdapter _resultEngineAdapter;
 
-        public GoldDeluxePopupResultService(IDynamicRepository dynamicRepository = null)
+        public GoldDeluxePopupResultService(
+            IDynamicRepository dynamicRepository = null,
+            IResultEngineAdapter resultEngineAdapter = null)
         {
             //// Still using poorman DI here because result service factory need to create it manual
             _dynamicRepository = dynamicRepository ?? new DynamicRepository();
+            _resultEngineAdapter = resultEngineAdapter ?? new ResultEngineAdapter();
         }
 
         public MemoryStream ExportExcel(ExcelNormalResultQuery request)
@@ -60,7 +64,7 @@
                 HighlightWinnerTeam = true
             };
 
-            return ResultEngine.HtmlParser(goldDeluxeResults, resultSetting);
+            return _resultEngineAdapter.HtmlParser(goldDeluxeResults, resultSetting);
         }
     }
 }

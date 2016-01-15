@@ -1,16 +1,20 @@
 ﻿@model TabViewModel
+
 <li role="presentation" class="@((Model.SelectedTabName == "normal") ? "active" : string.Empty)">
     @Html.ActionLink(Resources.Normal, "index", "normal", null, new { id = "tabNormal" })
 </li>
+
 <li role="presentation" class="@((Model.SelectedTabName == "outright") ? "active" : string.Empty)">
     @Html.ActionLink(Resources.Outright, "index", "outright", null, new { id = "tabOutright" })
 </li>
+
 @if (Model.IsEnabledKenoTab)
 {
-    <li role="presentation" class="@((Model.SelectedTabName == "kenoresult") ? "active" : string.Empty)">
+    <li role="presentation" class="@((Model.SelectedTabName == "keno") ? "active" : string.Empty)">
         @Html.ActionLink(Resources.Keno, "index", "keno", null, new { id = "tabKeno" })
     </li>
 }
+
 @if (Model.IsEnableCockfighting)
 {
     <li role="presentation" class="@((Model.SelectedTabName == "cockfighting") ? "active" : string.Empty)">

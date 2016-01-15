@@ -1,11 +1,9 @@
 ﻿namespace Alpha.Results.Site.Models.Views
 {
-    public class KenoViewModel
+    public class KenoResultViewModel
     {
-        public string ResultDate { get; set; }
+        public string ResultUrl { get; set; }
 
-        public string LanguageKey { get; set; }
-
-        public int CustomerId { get; set; }
+        public string ExtendTokenUrl { get; set; }
     }
 }

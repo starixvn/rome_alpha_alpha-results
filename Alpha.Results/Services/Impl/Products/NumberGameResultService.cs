@@ -17,11 +17,15 @@ namespace Alpha.Results.Site.Services.Impl.Products
     public class NumberGameResultService : IProductResultService
     {
         private readonly INumberGameResultDataAccess _numberGameResultDataAccess;
+        private readonly IResultEngineAdapter _resultEngineAdapter;
 
-        public NumberGameResultService(INumberGameResultDataAccess numberGameResultDataAccess = null)
+        public NumberGameResultService(
+            INumberGameResultDataAccess numberGameResultDataAccess = null,
+            IResultEngineAdapter resultEngineAdapter = null)
         {
             //// Still using poorman DI here because result service factory need to create it manual
             _numberGameResultDataAccess = numberGameResultDataAccess ?? new NumberGameResultDataAccess();
+            _resultEngineAdapter = resultEngineAdapter ?? new ResultEngineAdapter();
         }
 
         [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0", Justification = "Reviewed")]
@@ -41,7 +45,7 @@ namespace Alpha.Results.Site.Services.Impl.Products
 
             var results = _numberGameResultDataAccess.GetNumberGameResults(GetCriteria(request)).ToList();
 
-            return ResultEngine.HtmlParser(results, resultSetting);
+            return _resultEngineAdapter.HtmlParser(results, resultSetting);
         }
 
         [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0", Justification = "Reviewed")]
@@ -61,7 +65,7 @@ namespace Alpha.Results.Site.Services.Impl.Products
 
             var results = _numberGameResultDataAccess.GetNumberGameResults(GetCriteria(request)).ToList();
 
-            return ResultEngine.ExcelParser(results, resultSetting);
+            return _resultEngineAdapter.ExcelParser(results, resultSetting);
         }
 
         private static GetNumberGameResultCriteria GetCriteria(NormalResultQuery request)
@@ -100,7 +104,7 @@ namespace Alpha.Results.Site.Services.Impl.Products
 
             var results = _numberGameResultDataAccess.GetNumberGameResultDetails(criteria);
 
-            return ResultEngine.HtmlParser(results, resultSetting);
+            return _resultEngineAdapter.HtmlParser(results, resultSetting);
         }
     }
 }

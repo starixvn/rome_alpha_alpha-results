@@ -17,11 +17,15 @@ namespace Alpha.Results.Site.Services.Impl.Products
     public class LiveCasinoResultService : IProductResultService
     {
         private readonly IDynamicRepository _dynamicRepository;
+        private readonly IResultEngineAdapter _resultEngineAdapter;
 
-        public LiveCasinoResultService(IDynamicRepository dynamicRepository = null)
+        public LiveCasinoResultService(
+            IDynamicRepository dynamicRepository = null,
+            IResultEngineAdapter resultEngineAdapter = null)
         {
             //// Still using poorman DI here because result service factory need to create it manual
             _dynamicRepository = dynamicRepository ?? new DynamicRepository();
+            _resultEngineAdapter = resultEngineAdapter ?? new ResultEngineAdapter();
         }
 
         public string GetResultDetails(NormalResultDetailsQuery detailsRequest)
@@ -57,7 +61,7 @@ namespace Alpha.Results.Site.Services.Impl.Products
                                             return result;
                                         }).ToList();
 
-            return ResultEngine.HtmlParser(liveCasinoResults, resultSetting);
+            return _resultEngineAdapter.HtmlParser(liveCasinoResults, resultSetting);
         }
 
         public string GetResult(NormalResultQuery request)

@@ -18,11 +18,15 @@ namespace Alpha.Results.Site.Services.Impl.Products
     public class RacingResultService : IProductResultService
     {
         private readonly IRacingResultDataAccess _dataAccess;
+        private readonly IResultEngineAdapter _resultEngineAdapter;
 
-        public RacingResultService(IRacingResultDataAccess dataAccess = null)
+        public RacingResultService(
+            IRacingResultDataAccess dataAccess = null,
+            IResultEngineAdapter resultEngineAdapter = null)
         {
             //// Still using poorman DI here because result service factory need to create it manual
             _dataAccess = dataAccess ?? new RacingResultDataAccess();
+            _resultEngineAdapter = resultEngineAdapter ?? new ResultEngineAdapter();
         }
 
         [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0", Justification = "Reviewed")]
@@ -44,7 +48,7 @@ namespace Alpha.Results.Site.Services.Impl.Products
                 HighlightWinnerTeam = true
             };
 
-            return ResultEngine.HtmlParser(results, resultSetting);
+            return _resultEngineAdapter.HtmlParser(results, resultSetting);
         }
 
         [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0", Justification = "Reviewed")]
@@ -64,7 +68,7 @@ namespace Alpha.Results.Site.Services.Impl.Products
 
             var results = _dataAccess.GetRacingResults(GetCriteria(request)).ToList();
 
-            return ResultEngine.ExcelParser(results, resultSetting);
+            return _resultEngineAdapter.ExcelParser(results, resultSetting);
         }
 
         private static GetRacingResultCriteria GetCriteria(NormalResultQuery request)
@@ -104,7 +108,7 @@ namespace Alpha.Results.Site.Services.Impl.Products
                 HighlightWinnerTeam = true
             };
 
-            return ResultEngine.HtmlParser(results, resultSetting);
+            return _resultEngineAdapter.HtmlParser(results, resultSetting);
         }
 
         private int GetRaceNumber(string raceNumber)

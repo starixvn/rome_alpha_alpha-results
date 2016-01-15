@@ -19,11 +19,15 @@ namespace Alpha.Results.Site.Services.Impl.Products
     public class SportsbookResultService : IProductResultService
     {
         private readonly ISportsbookResultDataAccess _dataAccess;
+        private readonly IResultEngineAdapter _resultEngineAdapter;
 
-        public SportsbookResultService(ISportsbookResultDataAccess dataAccess = null)
+        public SportsbookResultService(
+            ISportsbookResultDataAccess dataAccess = null,
+            IResultEngineAdapter resultEngineAdapter = null)
         {
             //// Still using poorman DI here because result service factory need to create it manual
             _dataAccess = dataAccess ?? new SportsbookResultDataAccess();
+            _resultEngineAdapter = resultEngineAdapter ?? new ResultEngineAdapter();
         }
 
         [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0", Justification = "Reviewed")]
@@ -51,7 +55,7 @@ namespace Alpha.Results.Site.Services.Impl.Products
                 HighlightWinnerTeam = true
             };
 
-            return ResultEngine.HtmlParser(results, resultSetting).Replace("original-title", " title ");
+            return _resultEngineAdapter.HtmlParser(results, resultSetting).Replace("original-title", " title ");
         }
 
         [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0", Justification = "Reviewed")]
@@ -71,7 +75,7 @@ namespace Alpha.Results.Site.Services.Impl.Products
 
             var results = _dataAccess.GetSportbookResults(GetCriteria(request)).ToList();
 
-            return ResultEngine.ExcelParser(results, exportExcelSetting);
+            return _resultEngineAdapter.ExcelParser(results, exportExcelSetting);
         }
 
         private static GetSportsbookResultCriteria GetCriteria(NormalResultQuery request)
@@ -112,8 +116,8 @@ namespace Alpha.Results.Site.Services.Impl.Products
             };
 
             return detailsRequest.IsViewResultFromBetList
-                ? ResultEngine.HtmlParser(results, resultSetting).Replace("original-title", " title ")
-                : ResultEngine.HtmlGameDetailParser(results[0], resultSetting).Replace("original-title", " title ");
+                ? _resultEngineAdapter.HtmlParser(results, resultSetting).Replace("original-title", " title ")
+                : _resultEngineAdapter.HtmlGameDetailParser(results[0], resultSetting).Replace("original-title", " title ");
         }
     }
 }

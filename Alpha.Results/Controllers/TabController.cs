@@ -9,7 +9,7 @@
         /// <summary>
         /// Temporary use this constant here, will be updated when update Sunplus.Agent.Model.Definitions.
         /// </summary>
-        private readonly int CockFightingProductId = 19;
+        private const int CockFightingProductId = 19;
 
         [ChildActionOnly]
         public ActionResult Index(string tabName = "Normal")

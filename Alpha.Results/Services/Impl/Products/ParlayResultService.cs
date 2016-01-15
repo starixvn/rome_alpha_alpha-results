@@ -13,11 +13,15 @@ namespace Alpha.Results.Site.Services.Impl
     public class ParlayResultService : IProductResultService
     {
         private readonly IParlayResultDataAccess _parlayResultDataAccess;
+        private readonly IResultEngineAdapter _resultEngineAdapter;
 
-        public ParlayResultService(IParlayResultDataAccess parlayResultDataAccess = null)
+        public ParlayResultService(
+            IParlayResultDataAccess parlayResultDataAccess = null,
+            IResultEngineAdapter resultEngineAdapter = null)
         {
             //// Still using poorman DI here because result service factory need to create it manual
             _parlayResultDataAccess = parlayResultDataAccess ?? new ParlayResultDataAccess();
+            _resultEngineAdapter = resultEngineAdapter ?? new ResultEngineAdapter();
         }
 
         public string GetResultDetails(NormalResultDetailsQuery detailsRequest)
@@ -45,7 +49,7 @@ namespace Alpha.Results.Site.Services.Impl
                 HighlightWinnerTeam = true
             };
 
-            return ResultEngine.HtmlParser(results, resultSetting);
+            return _resultEngineAdapter.HtmlParser(results, resultSetting);
         }
 
         public string GetResult(NormalResultQuery request)

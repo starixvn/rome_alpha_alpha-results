@@ -2,12 +2,14 @@
 {
     using Products;
     using Sunplus.Agent.Model.BL.Definitions;
+    using System.Diagnostics.CodeAnalysis;
 
     public class ResultServiceFactory : IResultServiceFactory
     {
         public const int MetricGaming60SecondOfKick = 801;
         public const int MetricGamingEndBetType = 899;
 
+        [SuppressMessage("StyleCop.CSharp.Nexcel.NexcelCustomRules", "SP2101:MethodMustNotContainMoreLinesThan", Justification = "Reviewed.")]
         public IProductResultService CreateProductResultService(int sportId, int betTypeId)
         {
             if (betTypeId == (int)BetType.Mix_Parlay

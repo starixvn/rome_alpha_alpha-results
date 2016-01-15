@@ -113,7 +113,8 @@ namespace Alpha.Results.Site.Services.Impl
         {
             string leagueName = leagueId == 0 ? Resources.ShowAllLeaguesExcelTitle : CacheRef.GetLeagueName(leagueId);
 
-            return $"{Resources.OutrightResults.ToUpper()} - {fromDate.ToShortDateString()} -> {toDate.ToShortDateString()} | {CacheRef.GetSportName(sportType)} - {leagueName}";
+            return $"{Resources.OutrightResults.ToUpper()} - {fromDate.ToShortDateString()} " 
+                + $"-> {toDate.ToShortDateString()} | {CacheRef.GetSportName(sportType)} - {leagueName}";
         }
     }
 }

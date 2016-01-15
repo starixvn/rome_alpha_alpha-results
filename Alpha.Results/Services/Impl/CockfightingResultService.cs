@@ -10,7 +10,7 @@
     {
         private const string DefaultLanguageKey = "EN";
 
-        private static readonly IDictionary<string, string> _languageCodes = new Dictionary<string, string>
+        private static readonly IDictionary<string, string> LanguageCodes = new Dictionary<string, string>
         {
             { "E", DefaultLanguageKey },
             { "J", "JP" },
@@ -39,8 +39,8 @@
                     return _cockfightingApi.ExtendToken(request.CustomerId.ToString());
                 }
 
-                var languageCode = _languageCodes.ContainsKey(request.LanguageKey)
-                    ? _languageCodes[request.LanguageKey]
+                var languageCode = LanguageCodes.ContainsKey(request.LanguageKey)
+                    ? LanguageCodes[request.LanguageKey]
                     : DefaultLanguageKey;
 
                 return _cockfightingApi.GetResultToken(request.CustomerId.ToString(), languageCode);

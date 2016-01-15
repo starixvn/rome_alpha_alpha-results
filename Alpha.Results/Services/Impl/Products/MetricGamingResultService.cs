@@ -12,11 +12,15 @@ namespace Alpha.Results.Site.Services.Impl.Products
     public class MetricGamingResultService : IProductResultService
     {
         private readonly IMetricGamingResultDataAccess _dataAccess;
+        private readonly IResultEngineAdapter _resultEngineAdapter;
 
-        public MetricGamingResultService(IMetricGamingResultDataAccess dataAccess = null)
+        public MetricGamingResultService(
+            IMetricGamingResultDataAccess dataAccess = null,
+            IResultEngineAdapter resultEngineAdapter = null)
         {
             //// Still using poorman DI here because result service factory need to create it manual
             _dataAccess = dataAccess ?? new MetricGamingResultDataAccess();
+            _resultEngineAdapter = resultEngineAdapter ?? new ResultEngineAdapter();
         }
 
         public string GetResult(NormalResultQuery request)
@@ -58,7 +62,7 @@ namespace Alpha.Results.Site.Services.Impl.Products
                 HighlightWinnerTeam = true
             };
 
-            return ResultEngine.HtmlParser(results, resultSetting);
+            return _resultEngineAdapter.HtmlParser(results, resultSetting);
         }
     }
 }

@@ -8,6 +8,7 @@
         public const string OutrightResultJavascriptBundleUrl = "~/bundles/scripts/outrightresult";
         public const string CockfightingResultJavascriptBundleUrl = "~/bundles/scripts/cockfightingresult";
         public const string ResultCoreStyleBundleUrl = "~/bundle/styles/resultcore";
+        public const string KenoResultStyleBundleUrl = "~/bundle/styles/kenoresult";
 
         public static void RegisterBundles(BundleCollection bundles)
         {
@@ -20,6 +21,7 @@
             RegisterNormalResultJavascript(bundles);
             RegisterOutrightResultJavascript(bundles);
             RegisterCockfightingResultJavascript(bundles);
+            RegisterKenoResultJavascript(bundles);
         }
 
         private static void RegisterNormalResultJavascript(BundleCollection bundles)
@@ -32,6 +34,12 @@
         {
             bundles.Add(new ScriptBundle(OutrightResultJavascriptBundleUrl).Include(
                         "~/Scripts/Outright/outright-result.js"));
+        }
+
+        private static void RegisterKenoResultJavascript(BundleCollection bundles)
+        {
+            bundles.Add(new ScriptBundle(KenoResultStyleBundleUrl).Include(
+                        "~/Scripts/Keno/index.js"));
         }
 
         private static void RegisterCockfightingResultJavascript(BundleCollection bundles)
