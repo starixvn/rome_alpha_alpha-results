@@ -22,7 +22,8 @@ var normalResult =
             ddlLeagues: null,
             filterForm: null,
             frmDetailsResult: null,
-            resultDetailTitle: null
+            resultDetailTitle: null,
+            loadingImage: null
         },
     init: function () {
         normalResult.cacheElements();
@@ -43,6 +44,7 @@ var normalResult =
         normalResult.domElements.frmDetailsResult = $('#result-detail-frm');
         normalResult.domElements.txtToday = $('#Today');
         normalResult.domElements.resultDetailTitle = $('#result-detailt-title');
+        normalResult.domElements.loadingImage = $('#loading-image');
     },
     registerEvents: function () {
         normalResult.domElements.dpkContainer.datepicker({
@@ -71,6 +73,7 @@ var normalResult =
             .off('hidden.bs.modal')
             .on('hidden.bs.modal', function () {
                 normalResult.domElements.frmDetailsResult.hide();
+                normalResult.domElements.loadingImage.show();
             });
 
         normalResult.domElements.mainResult
@@ -90,6 +93,10 @@ var normalResult =
                 normalResult.domElements.frmDetailsResult.attr('src', resultDetailsUrl);
                 normalResult.domElements.resultDetails.modal({});
             });
+
+        normalResult.domElements.frmDetailsResult.load(function (){
+            normalResult.domElements.loadingImage.hide();
+        });
 
         normalResult.domElements.frmDetailsResult
             .off('load.normalResult')
