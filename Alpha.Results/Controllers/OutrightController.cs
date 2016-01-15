@@ -30,6 +30,8 @@
         [HttpGet]
         public ActionResult ExcelResults(ExcelOutrightResultQuery request)
         {
+            request.TemplatePath = Server.MapPath(@"~/App_Data/Fanex.Result/");
+
             var viewModel = _mediator.Send<OutrightResultExcelViewModel>(request);
 
             return File(viewModel.ExcelResults, "application/vnd.ms-excel", viewModel.ExcelName);

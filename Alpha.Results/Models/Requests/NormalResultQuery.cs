@@ -1,18 +1,27 @@
 ﻿namespace Alpha.Results.Site.Models.Requests
 {
+    using MediatR;
+    using Services.Impl;
+    using Sunplus.Agent.Model.BL.Definitions;
+    using Sunplus.Agent.Model.Entities.Permission;
     using System;
     using System.Collections.Generic;
-    using MediatR;
-    using Sunplus.Agent.Model.BL.Definitions;
-    using Sunplus.Agent.Model.Entities;
-    using Sunplus.Agent.Model.Entities.Permission;
     using Views;
 
     public class NormalResultQuery : IRequest<NormalResultViewModel>
     {
+        private IDictionary<int, bool> _sportsStatus;
+        private bool? _disableHorseRacingWin;
+
         public NormalResultQuery()
         {
             ResultDate = DateTime.Now;
+        }
+
+        internal NormalResultQuery(IDictionary<int, bool> sportStatus, bool disableHorseRacingWin) : this()
+        {
+            _sportsStatus = sportStatus;
+            _disableHorseRacingWin = disableHorseRacingWin;
         }
 
         public DateTime ResultDate { get; set; }
@@ -27,7 +36,7 @@
         {
             get
             {
-                return UserSession.Current.Language;
+                return UserSessionFactory.CurrentSession.Language;
             }
         }
 
@@ -35,7 +44,7 @@
         {
             get
             {
-                var sportsStatus = new Dictionary<int, bool>
+                var sportsStatus = _sportsStatus ?? new Dictionary<int, bool>
                 {
                     { (int)SportType.NumberGame,  UserPermission.IsShowNumberGame },
                     { (int)SportType.LiveCasino,  UserPermission.IsShowLiveCasino },
@@ -50,7 +59,9 @@
         {
             get
             {
-                return AppSettings.Disable151_31;
+                return _disableHorseRacingWin.HasValue
+                    ? _disableHorseRacingWin.Value
+                    : AppSettings.Disable151_31;
             }
         }
     }

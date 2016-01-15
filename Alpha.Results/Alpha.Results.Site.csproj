@@ -311,6 +311,7 @@
     <Content Include="Content\Fanex.Result\images\bg_header04.jpg" />
     <Content Include="Content\Fanex.Result\images\goal-icon.png" />
     <Content Include="Content\Images\goal-icon.png" />
+    <Content Include="Content\Images\loader3.gif" />
     <Content Include="Content\Images\sprite.png" />
     <Content Include="Global.asax" />
     <None Include="compilerconfig.json" />
@@ -416,6 +417,7 @@
     <Compile Include="Services\Impl\Products\VirtualRacingResultService.cs" />
     <Compile Include="Services\Impl\ResultEngineAdapter.cs" />
     <Compile Include="Services\Impl\ResultServiceFactory.cs" />
+    <Compile Include="Services\Impl\UserSessionFactory.cs" />
     <Compile Include="Services\INormalResultService.cs" />
     <Compile Include="Services\IOutrightResultService.cs" />
     <Compile Include="Services\IReportDateService.cs" />

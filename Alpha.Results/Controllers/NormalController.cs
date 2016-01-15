@@ -39,6 +39,8 @@
         [HttpGet]
         public ActionResult ExcelResults(ExcelNormalResultQuery request)
         {
+            request.TemplatePath = Server.MapPath(@"~/App_Data/Fanex.Result/"); 
+
             var viewModel = _mediator.Send<NormalResultExcelViewModel>(request);
 
             return File(viewModel.ExcelResults, "application/vnd.ms-excel", viewModel.ExcelName);

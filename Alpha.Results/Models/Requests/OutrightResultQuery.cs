@@ -1,8 +1,8 @@
 ﻿namespace Alpha.Results.Site.Models.Requests
 {
-    using System;
     using MediatR;
-    using Sunplus.Agent.Model.Entities;
+    using Services.Impl;
+    using System;
     using Views;
 
     public class OutrightResultQuery : IRequest<OutrightResultViewModel>
@@ -26,7 +26,7 @@
         {
             get
             {
-                return UserSession.Current.Language;
+                return UserSessionFactory.CurrentSession.Language;
             }
         }
     }
