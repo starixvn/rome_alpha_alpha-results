@@ -28,7 +28,7 @@ namespace Alpha.Results.Site.Services.Impl
         {
             if (detailsRequest == null)
             {
-                throw new ArgumentNullException("detailsRequest", "Detail Request cannot be null");
+                throw new ArgumentNullException(nameof(detailsRequest), "Detail Request cannot be null");
             }
 
             var results = _parlayResultDataAccess.GetParlayResults(new GetParlayResultCriteria

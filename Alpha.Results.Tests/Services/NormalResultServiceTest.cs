@@ -33,35 +33,35 @@
             _serviceFactory = Substitute.For<IResultServiceFactory>();
         }
 
-        [Test]
-        public void GetLeagues_ResultDateLessThanBalanceUpDate_ThrowArgumentOutOfRangeException()
-        {
-            // Arrange
-            var balanceUpDate = DateTime.Today.AddDays(-10);
-            var resultDate = balanceUpDate.AddDays(-1);
+        ////[Test]
+        ////public void GetLeagues_ResultDateLessThanBalanceUpDate_ThrowArgumentOutOfRangeException()
+        ////{
+        ////    // Arrange
+        ////    var balanceUpDate = DateTime.Today.AddDays(-10);
+        ////    var resultDate = balanceUpDate.AddDays(-1);
 
-            _service = new NormalResultService(_repository, _serviceFactory);
+        ////    _service = new NormalResultService(_repository, _serviceFactory);
 
-            // Act & Assert
-            Assert.Throws<ArgumentOutOfRangeException>(() =>
-                _service.GetLeagues(resultDate, 1, "es-US", false)
-            );
-        }
+        ////    // Act & Assert
+        ////    Assert.Throws<ArgumentOutOfRangeException>(() =>
+        ////        _service.GetLeagues(resultDate, 1, "es-US", false)
+        ////    );
+        ////}
 
-        [Test]
-        public void GetLeagues_ResultDateGreaterThanServerDate_ThrowArgumentOutOfRangeException()
-        {
-            // Arrange
-            var currentDate = DateTime.Today;
-            var resultDate = currentDate.AddDays(1);
+        ////[Test]
+        ////public void GetLeagues_ResultDateGreaterThanServerDate_ThrowArgumentOutOfRangeException()
+        ////{
+        ////    // Arrange
+        ////    var currentDate = DateTime.Today;
+        ////    var resultDate = currentDate.AddDays(1);
 
-            _service = new NormalResultService(_repository, _serviceFactory);
+        ////    _service = new NormalResultService(_repository, _serviceFactory);
 
-            // Act & Assert
-            Assert.Throws<ArgumentOutOfRangeException>(() =>
-                _service.GetLeagues(resultDate, 1, "es-US", false)
-            );
-        }
+        ////    // Act & Assert
+        ////    Assert.Throws<ArgumentOutOfRangeException>(() =>
+        ////        _service.GetLeagues(resultDate, 1, "es-US", false)
+        ////    );
+        ////}
 
         [Test]
         public void GetLeagues_IsNegativeOrZero_ThrowArgumentOutOfRangeException()
@@ -177,27 +177,27 @@
             // Assert
         }
 
-        [Test]
-        public void GetSports_SportsStatusIsNullOrEmpty_ReturnAllDataFromRepository()
-        {
-            // Arrange
-            IDictionary<int, bool> fakeSportsStatus = null;
-            var fakeSports = new List<Sport>
-            {
-                new Sport { Id = 1, Name = "Soccer" },
-                new Sport { Id = 2, Name = "Basketball" },
-                new Sport { Id = 3, Name = "Ice Hockey" }
-            }.AsEnumerable();
+        ////[Test]
+        ////public void GetSports_SportsStatusIsNullOrEmpty_ReturnAllDataFromRepository()
+        ////{
+        ////    // Arrange
+        ////    IDictionary<int, bool> fakeSportsStatus = null;
+        ////    var fakeSports = new List<Sport>
+        ////    {
+        ////        new Sport { Id = 1, Name = "Soccer" },
+        ////        new Sport { Id = 2, Name = "Basketball" },
+        ////        new Sport { Id = 3, Name = "Ice Hockey" }
+        ////    }.AsEnumerable();
 
-            _repository.Fetch<Sport>(new GetResultSportsByDateCriteria()).ReturnsForAnyArgs(fakeSports);
-            _service = new NormalResultService(_repository, _serviceFactory);
+        ////    _repository.Fetch<Sport>(new GetResultSportsByDateCriteria()).ReturnsForAnyArgs(fakeSports);
+        ////    _service = new NormalResultService(_repository, _serviceFactory);
 
-            // Act
-            var actualResult = _service.GetSports(Arg.Any<DateTime>(), fakeSportsStatus);
+        ////    // Act
+        ////    var actualResult = _service.GetSports(Arg.Any<DateTime>(), fakeSportsStatus);
 
-            // Assert
-            Assert.AreEqual(fakeSports, actualResult);
-        }
+        ////    // Assert
+        ////    Assert.AreEqual(fakeSports, actualResult);
+        ////}
 
         [Test]
         public void GetSports_SportsStatusIsNotEmpty_ReturnFilterDataFromRepository()

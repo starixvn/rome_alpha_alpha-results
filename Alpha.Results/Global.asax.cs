@@ -47,7 +47,6 @@
 
         protected void Application_End()
         {
-            var logSource = ".NET Runtime";
             HttpRuntime runtime = (HttpRuntime)typeof(System.Web.HttpRuntime).InvokeMember(
                 "_theRuntime",
                 BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.GetField,

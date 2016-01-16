@@ -10,6 +10,11 @@
     {
         public KenoResultViewModel Handle(KenoResultQuery message)
         {
+            if (message == null)
+            {
+                throw new ArgumentNullException(nameof(message), "KenoResultQuery cannot be null");
+            }
+
             var resultUrl = $"{message.RootUrl}game/keno/kenoresult/resultdetail?date=" 
                 + DateTime.Today.ToString("yyyyMMdd")
                 + $"&language={message.LanguageKey}&customerid={message.CustId}";

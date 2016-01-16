@@ -2,7 +2,7 @@
 {
     using Sunplus.Agent.Model.Entities;
 
-    public static class UserSessionFactory
+    internal static class UserSessionFactory
     {
         private static IUserSession _userSession;
 
@@ -16,6 +16,11 @@
                 }
 
                 return _userSession;
+            }
+
+            internal set
+            {
+                _userSession = value;
             }
         }
     }

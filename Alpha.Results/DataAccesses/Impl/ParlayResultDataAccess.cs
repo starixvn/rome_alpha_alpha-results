@@ -23,7 +23,7 @@ namespace Alpha.Results.Site.DataAccesses.Impl
         {
             if (criteria == null)
             {
-                throw new ArgumentNullException("criteria", "Criteria cannot be null");
+                throw new ArgumentNullException(nameof(criteria), "Criteria cannot be null");
             }
 
             List<Parlay> results = null;

@@ -1,11 +1,11 @@
 ﻿namespace Alpha.Results.Site.Models.Requests
 {
+    using System;
+    using System.Collections.Generic;
     using MediatR;
     using Services.Impl;
     using Sunplus.Agent.Model.BL.Definitions;
     using Sunplus.Agent.Model.Entities.Permission;
-    using System;
-    using System.Collections.Generic;
     using Views;
 
     public class NormalResultQuery : IRequest<NormalResultViewModel>

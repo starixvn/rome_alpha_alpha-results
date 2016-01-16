@@ -1,5 +1,6 @@
 ﻿namespace Alpha.Results.Site.Handlers
 {
+    using System;
     using MediatR;
     using Models.Requests;
     using Models.Views;
@@ -17,6 +18,11 @@
 
         public CockfightingResultViewModel Handle(CockfightingResultQuery message)
         {
+            if (message == null)
+            {
+                throw new ArgumentNullException(nameof(message), "CockfightingResultQuery cannot be null");
+            }
+
             var resultUrl = _cockfightingResultService.GetResultUrl(message);
 
             return new CockfightingResultViewModel

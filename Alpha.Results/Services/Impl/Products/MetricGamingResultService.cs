@@ -37,7 +37,7 @@ namespace Alpha.Results.Site.Services.Impl.Products
         {
             if (detailsRequest == null)
             {
-                throw new ArgumentNullException("detailsRequest", "Request cannot be null");
+                throw new ArgumentNullException(nameof(detailsRequest), "Request cannot be null");
             }
 
             var criteria = new GetMetricGamingResultCriteria

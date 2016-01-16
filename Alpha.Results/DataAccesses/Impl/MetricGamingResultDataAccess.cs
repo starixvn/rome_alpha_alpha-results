@@ -13,7 +13,7 @@
         {
             if (criteria == null)
             {
-                throw new ArgumentNullException("criteria", "Criteria cannot be null");
+                throw new ArgumentNullException(nameof(criteria), "Criteria cannot be null");
             }
 
             var result = new List<MetricGaming>();
