@@ -1,19 +1,15 @@
 ﻿namespace Alpha.Results.Site.Tests.Services
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using NSubstitute;
     using NUnit.Framework;
     using Site.Services.Impl;
     using Site.Services.Impl.Products;
     using Sunplus.Agent.Model.BL.Definitions;
+
     [TestFixture]
     public class ResultServiceFactoryTests
     {
-        ResultServiceFactory _resultServiceFactory;
+        private ResultServiceFactory _resultServiceFactory;
 
         [SetUp]
         public void SetUp()
@@ -87,7 +83,7 @@
         [TestCase(SportType.HorseRacing)]
         [TestCase(SportType.Greyhound)]
         [TestCase(SportType.Harness)]
-        public void CreateProductResultService_SportIsBelongingToRacing_ReturnRacingResultService(
+        public void CreateProductResultService_SportIsBelongToRacing_ReturnRacingResultService(
             int sportId)
         {
             //// Act
@@ -122,7 +118,7 @@
         [TestCase(SportType.VirtualMotors)]
         [TestCase(SportType.VirtualCycling)]
         [TestCase(SportType.VirtualSpeedway)]
-        public void CreateProductResultService_SportIsBelongingToVirtualRacing_ReturnVirtualRacingResultService(
+        public void CreateProductResultService_SportIsBelongToVirtualRacing_ReturnVirtualRacingResultService(
             int sportId)
         {
             //// Act

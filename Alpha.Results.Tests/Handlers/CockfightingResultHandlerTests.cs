@@ -1,10 +1,6 @@
 ﻿namespace Alpha.Results.Site.Tests.Handlers
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using Models.Requests;
     using NSubstitute;
     using NUnit.Framework;
@@ -31,30 +27,52 @@
         }
 
         [Test]
-        public void HandleCockfightingResultQuery_ResultUrlIsNotEmpty_ReturnSuccessStatus()
+        public void HandleCockfightingResultQuery_ResultUrlReturnFromServiceIsNotEmpty_ReturnSuccessStatus()
         {
+            //// Arrange
             var resultUrl = "resultUrl";
             _cockfightingResultService
                 .GetResultUrl(Arg.Any<CockfightingResultQuery>())
                 .Returns(resultUrl);
             var query = new CockfightingResultQuery();
 
+            //// Act
             var viewModel = _cockfightingResultHandler.Handle(query);
 
+            //// Assert
             Assert.IsTrue(viewModel.IsSuccess);
         }
 
         [Test]
-        public void HandleCockfightingResultQuery_ResultUrlIsNotEmpty_ReturnResultUrl()
+        public void HandleCockfightingResultQuery_ResultUrlReturnFromServiceIsEmpty_ReturnFailStatus()
         {
+            //// Arrange
+            _cockfightingResultService
+                .GetResultUrl(Arg.Any<CockfightingResultQuery>())
+                .Returns(string.Empty);
+            var query = new CockfightingResultQuery();
+
+            //// Act
+            var viewModel = _cockfightingResultHandler.Handle(query);
+
+            //// Assert
+            Assert.IsFalse(viewModel.IsSuccess);
+        }
+
+        [Test]
+        public void HandleCockfightingResultQuery_WhenCalled_ReturnResultUrl()
+        {
+            //// Arrange
             var resultUrl = "resultUrl";
             _cockfightingResultService
                 .GetResultUrl(Arg.Any<CockfightingResultQuery>())
                 .Returns(resultUrl);
             var query = new CockfightingResultQuery();
 
+            //// Act
             var viewModel = _cockfightingResultHandler.Handle(query);
 
+            //// Assert
             Assert.AreEqual(resultUrl, viewModel.Url);
         }
     }

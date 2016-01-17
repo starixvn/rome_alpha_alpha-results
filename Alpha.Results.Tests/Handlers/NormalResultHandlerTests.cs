@@ -3,7 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using App_GlobalResources;
+    using Alpha.Utilities.Extensions;
     using Models;
     using Models.Requests;
     using NSubstitute;
@@ -13,7 +13,6 @@
     using Site.Services.Impl;
     using Sunplus.Agent.Model.Entities;
     using Sunplus.Agent.Model.RemotingRef;
-    using Alpha.Utilities.Extensions;
 
     [TestFixture]
     public class NormalResultHandlerTests
@@ -45,7 +44,7 @@
         }
 
         [Test]
-        public void HandleNormalResultQuery_WhenCalled_ReturnResultDateIsToday()
+        public void HandleNormalResultQuery_WhenCalled_SetResultDateIsToday()
         {
             //// Arrange
             var query = new NormalResultQuery(new Dictionary<int, bool>(), false);
@@ -67,12 +66,12 @@
             var actualViewModel = _normalResultHandler.Handle(query);
 
             //// Assert
-            var expectedMinResultDateMessage = $"You can view the report data from {actualViewModel.MinResultDate.ToShortDateFormatWithSlash()}."; 
+            var expectedMinResultDateMessage = $"You can view the report data from {actualViewModel.MinResultDate.ToShortDateFormatWithSlash()}.";
             Assert.AreEqual(expectedMinResultDateMessage, actualViewModel.MinResultDateMessage);
         }
 
         [Test]
-        public void HandleNormalResultQuery_WhenCalled_SetBalanceUpDateToMinResultDate()
+        public void HandleNormalResultQuery_WhenCalled_SetMinResultDateIsBalanceUpDate()
         {
             //// Arrange
             var query = new NormalResultQuery(new Dictionary<int, bool>(), false);
@@ -168,7 +167,7 @@
         }
 
         [Test]
-        public void HandleNormalResultQuery_NoneSportIsSelected_ReturnFirstSportIdByDefault()
+        public void HandleNormalResultQuery_NoneSportIsSelected_FirstSportIsSelectedByDefault()
         {
             //// Arrange
             var query = new NormalResultQuery(new Dictionary<int, bool>(), false)
@@ -323,7 +322,7 @@
         }
 
         [Test]
-        public void HandleNormalResultDetailsQuery_WhenCalled_BuildTitleFromSportAndLeague()
+        public void HandleNormalResultDetailsQuery_LeagueIdIsGreaterThanZero_BuildTitleFromSportAndLeague()
         {
             //// Arrange
             var query = new NormalResultDetailsQuery
@@ -391,7 +390,7 @@
             Assert.AreEqual(expectedHtmlResult, resultDetailsViewModel.HtmlResults);
         }
 
-        #endregion
+        #endregion Handle Normal Result Details Query
 
         #region Handle Excel Normal Result Query
 
@@ -422,8 +421,7 @@
 
             //// Assert
             _normalResultService.Received().GetExcelResults(Arg.Is<ExcelNormalResultQuery>(
-                excelQuery => excelQuery.ExcelTitle == string.Format(expectedExcelTitle, query.ResultDate.ToShortDateFormatWithSlash())
-                ));
+                excelQuery => excelQuery.ExcelTitle == string.Format(expectedExcelTitle, query.ResultDate.ToShortDateFormatWithSlash())));
         }
 
         [Test]
@@ -443,6 +441,6 @@
                 && "Results.xls" == excelViewModel.ExcelName);
         }
 
-        #endregion
+        #endregion Handle Excel Normal Result Query
     }
 }

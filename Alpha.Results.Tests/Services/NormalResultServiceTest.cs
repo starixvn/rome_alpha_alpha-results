@@ -1,23 +1,9 @@
 ﻿namespace Alpha.Results.Site.Tests.Services
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using Criteria;
-    using DataAccesses;
     using Fanex.Data.Repository;
-    using Fanex.Result.Core.LiveCasino.DTO;
-    using Fanex.Result.Core.NumberGame.DTO;
-    using Fanex.Result.Core.Racing.DTO;
-    using Fanex.Result.Core.Sportsbook.DTO;
-    using Models;
-    using Models.Requests;
     using NSubstitute;
     using NUnit.Framework;
     using Site.Services;
-    using Site.Services.Impl;
-    using Site.Services.Impl.Products;
-    using Sunplus.Agent.Model.BL.Definitions;
 
     [TestFixture]
     public class NormalResultServiceTest
@@ -63,307 +49,307 @@
         ////    );
         ////}
 
-        [Test]
-        public void GetLeagues_IsNegativeOrZero_ThrowArgumentOutOfRangeException()
-        {
-            // Arrange
-            _service = new NormalResultService(_repository, _serviceFactory);
+        //[Test]
+        //public void GetLeagues_IsNegativeOrZero_ThrowArgumentOutOfRangeException()
+        //{
+        //    // Arrange
+        //    _service = new NormalResultService(_repository, _serviceFactory);
 
-            // Assert
-            Assert.Throws<ArgumentOutOfRangeException>(() => _service.GetLeagues(Arg.Any<DateTime>(), -1, Arg.Any<string>(), Arg.Any<bool>()));
-        }
+        //    // Assert
+        //    Assert.Throws<ArgumentOutOfRangeException>(() => _service.GetLeagues(Arg.Any<DateTime>(), -1, Arg.Any<string>(), Arg.Any<bool>()));
+        //}
 
-        [Test]
-        public void GetLeagues_LanguageIsEmptyString_ThrowArgumentException()
-        {
-            // Arrange
-            _service = new NormalResultService(_repository, _serviceFactory);
+        //[Test]
+        //public void GetLeagues_LanguageIsEmptyString_ThrowArgumentException()
+        //{
+        //    // Arrange
+        //    _service = new NormalResultService(_repository, _serviceFactory);
 
-            // Assert
-            Assert.Throws<ArgumentException>(() => _service.GetLeagues(Arg.Any<DateTime>(), 1, string.Empty, Arg.Any<bool>()));
-        }
+        //    // Assert
+        //    Assert.Throws<ArgumentException>(() => _service.GetLeagues(Arg.Any<DateTime>(), 1, string.Empty, Arg.Any<bool>()));
+        //}
 
-        [Test]
-        public void GetLeagues_LanguageIsInvalid_ReturnResultWithDefaultLanguage()
-        {
-            // Arrange
-            var language = "12-34"; // Hindi - India
-            var fakeLeagues = new List<League>
-            {
-                new League { Id = 1, Name = "Soccer" },
-                new League { Id = 2, Name = "Basketball" },
-                new League { Id = 3, Name = "Ice Hockey" }
-            }.AsEnumerable();
+        //[Test]
+        //public void GetLeagues_LanguageIsInvalid_ReturnResultWithDefaultLanguage()
+        //{
+        //    // Arrange
+        //    var language = "12-34"; // Hindi - India
+        //    var fakeLeagues = new List<League>
+        //    {
+        //        new League { Id = 1, Name = "Soccer" },
+        //        new League { Id = 2, Name = "Basketball" },
+        //        new League { Id = 3, Name = "Ice Hockey" }
+        //    }.AsEnumerable();
 
-            _repository.Fetch<League>(new GetResultLeaguesByDateCriteria { Language = language }).ReturnsForAnyArgs(fakeLeagues);
-            _service = new NormalResultService(_repository, _serviceFactory);
+        //    _repository.Fetch<League>(new GetResultLeaguesByDateCriteria { Language = language }).ReturnsForAnyArgs(fakeLeagues);
+        //    _service = new NormalResultService(_repository, _serviceFactory);
 
-            // Act
-            var actualResult = _service.GetLeagues(Arg.Any<DateTime>(), 1, language, disableHorseRacingWin: false);
+        //    // Act
+        //    var actualResult = _service.GetLeagues(Arg.Any<DateTime>(), 1, language, disableHorseRacingWin: false);
 
-            // Assert
-            Assert.AreEqual(fakeLeagues, actualResult);
-        }
+        //    // Assert
+        //    Assert.AreEqual(fakeLeagues, actualResult);
+        //}
 
-        [Test]
-        public void GetLeagues_LanguageIsUnsupport_ReturnResultWithDefaultLanguage()
-        {
-            // Arrange
-            var language = "hi-IN"; // Hindi - India
-            var fakeLeagues = new List<League>
-            {
-                new League { Id = 1, Name = "Soccer" },
-                new League { Id = 2, Name = "Basketball" },
-                new League { Id = 3, Name = "Ice Hockey" }
-            }.AsEnumerable();
+        //[Test]
+        //public void GetLeagues_LanguageIsUnsupport_ReturnResultWithDefaultLanguage()
+        //{
+        //    // Arrange
+        //    var language = "hi-IN"; // Hindi - India
+        //    var fakeLeagues = new List<League>
+        //    {
+        //        new League { Id = 1, Name = "Soccer" },
+        //        new League { Id = 2, Name = "Basketball" },
+        //        new League { Id = 3, Name = "Ice Hockey" }
+        //    }.AsEnumerable();
 
-            _repository.Fetch<League>(new GetResultLeaguesByDateCriteria { Language = language }).ReturnsForAnyArgs(fakeLeagues);
-            _service = new NormalResultService(_repository, _serviceFactory);
+        //    _repository.Fetch<League>(new GetResultLeaguesByDateCriteria { Language = language }).ReturnsForAnyArgs(fakeLeagues);
+        //    _service = new NormalResultService(_repository, _serviceFactory);
 
-            // Act
-            var actualResult = _service.GetLeagues(Arg.Any<DateTime>(), 1, language, disableHorseRacingWin: false);
+        //    // Act
+        //    var actualResult = _service.GetLeagues(Arg.Any<DateTime>(), 1, language, disableHorseRacingWin: false);
 
-            // Assert
-            Assert.AreEqual(fakeLeagues, actualResult);
-        }
+        //    // Assert
+        //    Assert.AreEqual(fakeLeagues, actualResult);
+        //}
 
-        [Test]
-        public void GetLeagues_SportIsHorseRacingAndSettingHRWinIsDisabled_ReturnEmptyEnumerableLeague()
-        {
-            // Arrange
-            _service = new NormalResultService(_repository, _serviceFactory);
+        //[Test]
+        //public void GetLeagues_SportIsHorseRacingAndSettingHRWinIsDisabled_ReturnEmptyEnumerableLeague()
+        //{
+        //    // Arrange
+        //    _service = new NormalResultService(_repository, _serviceFactory);
 
-            // Act
-            var actualResult = _service.GetLeagues(Arg.Any<DateTime>(), (int)SportType.HorseRacing, "a language", disableHorseRacingWin: true);
+        //    // Act
+        //    var actualResult = _service.GetLeagues(Arg.Any<DateTime>(), (int)SportType.HorseRacing, "a language", disableHorseRacingWin: true);
 
-            // Assert
-            Assert.AreEqual(Enumerable.Empty<League>(), actualResult);
-        }
+        //    // Assert
+        //    Assert.AreEqual(Enumerable.Empty<League>(), actualResult);
+        //}
 
-        [Test]
-        public void GetLeagues_AllPreConditionsAreValid_ReturnDataGetFromRepository()
-        {
-            // Arrange
-            var expected = new List<League>();
-            expected.Add(new League { Id = 1, Name = "League 1" });
-            expected.Add(new League { Id = 2, Name = "League 2" });
-            _repository.Fetch<League>(new GetResultLeaguesByDateCriteria()).ReturnsForAnyArgs(expected);
-            _service = new NormalResultService(_repository, _serviceFactory);
+        //[Test]
+        //public void GetLeagues_AllPreConditionsAreValid_ReturnDataGetFromRepository()
+        //{
+        //    // Arrange
+        //    var expected = new List<League>();
+        //    expected.Add(new League { Id = 1, Name = "League 1" });
+        //    expected.Add(new League { Id = 2, Name = "League 2" });
+        //    _repository.Fetch<League>(new GetResultLeaguesByDateCriteria()).ReturnsForAnyArgs(expected);
+        //    _service = new NormalResultService(_repository, _serviceFactory);
 
-            // Act
-            var actualResult = _service.GetLeagues(Arg.Any<DateTime>(), 2, "a language", disableHorseRacingWin: false);
+        //    // Act
+        //    var actualResult = _service.GetLeagues(Arg.Any<DateTime>(), 2, "a language", disableHorseRacingWin: false);
 
-            // Assert
-            Assert.AreEqual(actualResult.ToList(), expected);
-        }
+        //    // Assert
+        //    Assert.AreEqual(actualResult.ToList(), expected);
+        //}
 
-        [Test]
-        public void GetSports_ResultDateLessThanBalanceUpDate_ThrowArgumentOutOfRangeException()
-        {
-            // Arrange
+        //[Test]
+        //public void GetSports_ResultDateLessThanBalanceUpDate_ThrowArgumentOutOfRangeException()
+        //{
+        //    // Arrange
 
-            // Act
+        //    // Act
 
-            // Assert
-        }
+        //    // Assert
+        //}
 
-        [Test]
-        public void GetSports_ResultDateGreaterThanServerDate_ThrowArgumentOutOfRangeException()
-        {
-            // Arrange
+        //[Test]
+        //public void GetSports_ResultDateGreaterThanServerDate_ThrowArgumentOutOfRangeException()
+        //{
+        //    // Arrange
 
-            // Act
+        //    // Act
 
-            // Assert
-        }
+        //    // Assert
+        //}
+
+        //////[Test]
+        //////public void GetSports_SportsStatusIsNullOrEmpty_ReturnAllDataFromRepository()
+        //////{
+        //////    // Arrange
+        //////    IDictionary<int, bool> fakeSportsStatus = null;
+        //////    var fakeSports = new List<Sport>
+        //////    {
+        //////        new Sport { Id = 1, Name = "Soccer" },
+        //////        new Sport { Id = 2, Name = "Basketball" },
+        //////        new Sport { Id = 3, Name = "Ice Hockey" }
+        //////    }.AsEnumerable();
+
+        //////    _repository.Fetch<Sport>(new GetResultSportsByDateCriteria()).ReturnsForAnyArgs(fakeSports);
+        //////    _service = new NormalResultService(_repository, _serviceFactory);
+
+        //////    // Act
+        //////    var actualResult = _service.GetSports(Arg.Any<DateTime>(), fakeSportsStatus);
+
+        //////    // Assert
+        //////    Assert.AreEqual(fakeSports, actualResult);
+        //////}
+
+        //[Test]
+        //public void GetSports_SportsStatusIsNotEmpty_ReturnFilterDataFromRepository()
+        //{
+        //    // Arrange
+        //    var fakeSportsStatus = new Dictionary<int, bool>
+        //    {
+        //        { 3, false }
+        //    };
+
+        //    var fakeSports = new List<Sport>
+        //    {
+        //        new Sport { Id = 1, Name = "Soccer" },
+        //        new Sport { Id = 2, Name = "Basketball" },
+        //        new Sport { Id = 3, Name = "Ice Hockey" }
+        //    }.AsEnumerable();
+
+        //    _repository.Fetch<Sport>(new GetResultSportsByDateCriteria()).ReturnsForAnyArgs(fakeSports);
+        //    _service = new NormalResultService(_repository, _serviceFactory);
+
+        //    // Act
+        //    var actualResult = _service.GetSports(Arg.Any<DateTime>(), fakeSportsStatus);
+
+        //    // Assert
+        //    Assert.AreEqual(2, actualResult.Count());
+        //}
+
+        //[Test]
+        //public void GetResults_RequestIsNull_ThrowArgumentNullException()
+        //{
+        //    // Arrange
+        //    NormalResultQuery request = null;
+        //    _service = new NormalResultService(_repository, _serviceFactory);
+
+        //    // Act & Assert
+        //    Assert.Throws<ArgumentNullException>(() => _service.GetResults(request));
+        //}
 
         ////[Test]
-        ////public void GetSports_SportsStatusIsNullOrEmpty_ReturnAllDataFromRepository()
+        ////public void GetResults_RequestResultDateLessThanBalanceUpDate_ThrowArgumentOutOfRangeException()
         ////{
         ////    // Arrange
-        ////    IDictionary<int, bool> fakeSportsStatus = null;
-        ////    var fakeSports = new List<Sport>
-        ////    {
-        ////        new Sport { Id = 1, Name = "Soccer" },
-        ////        new Sport { Id = 2, Name = "Basketball" },
-        ////        new Sport { Id = 3, Name = "Ice Hockey" }
-        ////    }.AsEnumerable();
+        ////    var balanceUpDate = DateTime.Today.AddDays(-10);
+        ////    var resultDate = balanceUpDate.AddDays(-1);
+        ////    var language = "en-US";
 
-        ////    _repository.Fetch<Sport>(new GetResultSportsByDateCriteria()).ReturnsForAnyArgs(fakeSports);
+        ////    _service = new NormalResultService(_repository, _serviceFactory);
+        ////    var request = new NormalResultQuery(language) { ResultDate = resultDate };
+
+        ////    // Act & Assert
+        ////    Assert.Throws<ArgumentOutOfRangeException>(() => _service.GetResults(request));
+        ////}
+
+        ////[Test]
+        ////public void GetResults_Soccer()
+        ////{
+        ////    // Arrange
+        ////    var sportId = (int)SportType.Soccer;
+        ////    var request = new NormalResultQuery("en-US") { SportId = sportId };
+
+        ////    var fakeSportsbooks = new List<Sportsbook>
+        ////    {
+        ////        new Sportsbook { },
+        ////        new Sportsbook { },
+        ////    };
+
+        ////    ISportsbookResultDataAccess dataAccess = Substitute.For<ISportsbookResultDataAccess>();
+        ////    var fakeSportbooksResult = new SportsbookResultService(dataAccess);
+
+        ////    _serviceFactory.CreateProductResultService(sportId, Arg.Any<int>()).Returns(fakeSportbooksResult);
+
+        ////    dataAccess.GetSportbookResults(new GetSportsbookResultCriteria { SportType = sportId }).ReturnsForAnyArgs(fakeSportsbooks);
+
         ////    _service = new NormalResultService(_repository, _serviceFactory);
 
         ////    // Act
-        ////    var actualResult = _service.GetSports(Arg.Any<DateTime>(), fakeSportsStatus);
+        ////    var actualResult = _service.GetResults(request);
 
         ////    // Assert
-        ////    Assert.AreEqual(fakeSports, actualResult);
+        ////    Assert.IsNotEmpty(actualResult);
         ////}
 
-        [Test]
-        public void GetSports_SportsStatusIsNotEmpty_ReturnFilterDataFromRepository()
-        {
-            // Arrange
-            var fakeSportsStatus = new Dictionary<int, bool>
-            {
-                { 3, false }
-            };
+        ////[Test]
+        ////public void GetResults_Racing()
+        ////{
+        ////    // Arrange
+        ////    var sportId = (int)SportType.HorseRacing;
+        ////    var request = new NormalResultQuery("en-US") { SportId = sportId };
 
-            var fakeSports = new List<Sport>
-            {
-                new Sport { Id = 1, Name = "Soccer" },
-                new Sport { Id = 2, Name = "Basketball" },
-                new Sport { Id = 3, Name = "Ice Hockey" }
-            }.AsEnumerable();
+        ////    var fakeSportsbooks = new List<Racing>
+        ////    {
+        ////        new Racing { },
+        ////        new Racing { },
+        ////    };
 
-            _repository.Fetch<Sport>(new GetResultSportsByDateCriteria()).ReturnsForAnyArgs(fakeSports);
-            _service = new NormalResultService(_repository, _serviceFactory);
+        ////    IRacingResultDataAccess dataAccess = Substitute.For<IRacingResultDataAccess>();
+        ////    var fakeRacingResult = new RacingResultService(dataAccess);
 
-            // Act
-            var actualResult = _service.GetSports(Arg.Any<DateTime>(), fakeSportsStatus);
+        ////    _serviceFactory.CreateProductResultService(sportId, Arg.Any<int>()).Returns(fakeRacingResult);
 
-            // Assert
-            Assert.AreEqual(2, actualResult.Count());
-        }
+        ////    dataAccess.GetRacingResults(new GetRacingResultCriteria { SportType = sportId }).ReturnsForAnyArgs(fakeSportsbooks);
 
-        [Test]
-        public void GetResults_RequestIsNull_ThrowArgumentNullException()
-        {
-            // Arrange
-            NormalResultQuery request = null;
-            _service = new NormalResultService(_repository, _serviceFactory);
+        ////    _service = new NormalResultService(_repository, _serviceFactory);
 
-            // Act & Assert
-            Assert.Throws<ArgumentNullException>(() => _service.GetResults(request));
-        }
+        ////    // Act
+        ////    var actualResult = _service.GetResults(request);
 
-        //[Test]
-        //public void GetResults_RequestResultDateLessThanBalanceUpDate_ThrowArgumentOutOfRangeException()
-        //{
-        //    // Arrange
-        //    var balanceUpDate = DateTime.Today.AddDays(-10);
-        //    var resultDate = balanceUpDate.AddDays(-1);
-        //    var language = "en-US";
+        ////    // Assert
+        ////    Assert.IsNotEmpty(actualResult);
+        ////}
 
-        //    _service = new NormalResultService(_repository, _serviceFactory);
-        //    var request = new NormalResultQuery(language) { ResultDate = resultDate };
+        ////[Test]
+        ////public void GetResults_NumberGame()
+        ////{
+        ////    // Arrange
+        ////    var sportId = (int)SportType.NumberGame;
+        ////    var request = new NormalResultQuery("en-US") { SportId = sportId };
 
-        //    // Act & Assert
-        //    Assert.Throws<ArgumentOutOfRangeException>(() => _service.GetResults(request));
-        //}
+        ////    var fakeNumberGames = new List<NumberGame>
+        ////    {
+        ////        new NumberGame { },
+        ////        new NumberGame { },
+        ////    };
 
-        //[Test]
-        //public void GetResults_Soccer()
-        //{
-        //    // Arrange
-        //    var sportId = (int)SportType.Soccer;
-        //    var request = new NormalResultQuery("en-US") { SportId = sportId };
+        ////    INumberGameResultDataAccess dataAccess = Substitute.For<INumberGameResultDataAccess>();
+        ////    var fakeRacingResult = new NumberGameResultService(dataAccess);
 
-        //    var fakeSportsbooks = new List<Sportsbook>
-        //    {
-        //        new Sportsbook { },
-        //        new Sportsbook { },
-        //    };
+        ////    _serviceFactory.CreateProductResultService(sportId, Arg.Any<int>()).Returns(fakeRacingResult);
 
-        //    ISportsbookResultDataAccess dataAccess = Substitute.For<ISportsbookResultDataAccess>();
-        //    var fakeSportbooksResult = new SportsbookResultService(dataAccess);
+        ////    dataAccess.GetNumberGameResults(new GetNumberGameResultCriteria { LeagueId = sportId }).ReturnsForAnyArgs(fakeNumberGames);
 
-        //    _serviceFactory.CreateProductResultService(sportId, Arg.Any<int>()).Returns(fakeSportbooksResult);
+        ////    _service = new NormalResultService(_repository, _serviceFactory);
 
-        //    dataAccess.GetSportbookResults(new GetSportsbookResultCriteria { SportType = sportId }).ReturnsForAnyArgs(fakeSportsbooks);
+        ////    // Act
+        ////    var actualResult = _service.GetResults(request);
 
-        //    _service = new NormalResultService(_repository, _serviceFactory);
+        ////    // Assert
+        ////    Assert.IsNotEmpty(actualResult);
+        ////}
 
-        //    // Act
-        //    var actualResult = _service.GetResults(request);
+        ////[Test]
+        ////public void GetResults_LiveCasino()
+        ////{
+        ////    // Arrange
+        ////    var sportId = (int)SportType.LiveCasino;
+        ////    var request = new NormalResultQuery("en-US") { SportId = sportId };
 
-        //    // Assert
-        //    Assert.IsNotEmpty(actualResult);
-        //}
+        ////    var fakeLiveCasinos = new List<LiveCasino>
+        ////    {
+        ////        new LiveCasino { },
+        ////        new LiveCasino { },
+        ////    };
 
-        //[Test]
-        //public void GetResults_Racing()
-        //{
-        //    // Arrange
-        //    var sportId = (int)SportType.HorseRacing;
-        //    var request = new NormalResultQuery("en-US") { SportId = sportId };
+        ////    var fakeRacingResult = new LiveCasinoResultService(_repository);
 
-        //    var fakeSportsbooks = new List<Racing>
-        //    {
-        //        new Racing { },
-        //        new Racing { },
-        //    };
+        ////    _serviceFactory.CreateProductResultService(sportId, Arg.Any<int>()).Returns(fakeRacingResult);
 
-        //    IRacingResultDataAccess dataAccess = Substitute.For<IRacingResultDataAccess>();
-        //    var fakeRacingResult = new RacingResultService(dataAccess);
+        ////    _repository.Fetch<LiveCasino>(new GetLiveCasinoResultCriteria { League = sportId.ToString() }).ReturnsForAnyArgs(fakeLiveCasinos);
 
-        //    _serviceFactory.CreateProductResultService(sportId, Arg.Any<int>()).Returns(fakeRacingResult);
+        ////    _service = new NormalResultService(_repository, _serviceFactory);
 
-        //    dataAccess.GetRacingResults(new GetRacingResultCriteria { SportType = sportId }).ReturnsForAnyArgs(fakeSportsbooks);
+        ////    // Act
+        ////    var actualResult = _service.GetResults(request);
 
-        //    _service = new NormalResultService(_repository, _serviceFactory);
-
-        //    // Act
-        //    var actualResult = _service.GetResults(request);
-
-        //    // Assert
-        //    Assert.IsNotEmpty(actualResult);
-        //}
-
-        //[Test]
-        //public void GetResults_NumberGame()
-        //{
-        //    // Arrange
-        //    var sportId = (int)SportType.NumberGame;
-        //    var request = new NormalResultQuery("en-US") { SportId = sportId };
-
-        //    var fakeNumberGames = new List<NumberGame>
-        //    {
-        //        new NumberGame { },
-        //        new NumberGame { },
-        //    };
-
-        //    INumberGameResultDataAccess dataAccess = Substitute.For<INumberGameResultDataAccess>();
-        //    var fakeRacingResult = new NumberGameResultService(dataAccess);
-
-        //    _serviceFactory.CreateProductResultService(sportId, Arg.Any<int>()).Returns(fakeRacingResult);
-
-        //    dataAccess.GetNumberGameResults(new GetNumberGameResultCriteria { LeagueId = sportId }).ReturnsForAnyArgs(fakeNumberGames);
-
-        //    _service = new NormalResultService(_repository, _serviceFactory);
-
-        //    // Act
-        //    var actualResult = _service.GetResults(request);
-
-        //    // Assert
-        //    Assert.IsNotEmpty(actualResult);
-        //}
-
-        //[Test]
-        //public void GetResults_LiveCasino()
-        //{
-        //    // Arrange
-        //    var sportId = (int)SportType.LiveCasino;
-        //    var request = new NormalResultQuery("en-US") { SportId = sportId };
-
-        //    var fakeLiveCasinos = new List<LiveCasino>
-        //    {
-        //        new LiveCasino { },
-        //        new LiveCasino { },
-        //    };
-
-        //    var fakeRacingResult = new LiveCasinoResultService(_repository);
-
-        //    _serviceFactory.CreateProductResultService(sportId, Arg.Any<int>()).Returns(fakeRacingResult);
-
-        //    _repository.Fetch<LiveCasino>(new GetLiveCasinoResultCriteria { League = sportId.ToString() }).ReturnsForAnyArgs(fakeLiveCasinos);
-
-        //    _service = new NormalResultService(_repository, _serviceFactory);
-
-        //    // Act
-        //    var actualResult = _service.GetResults(request);
-
-        //    // Assert
-        //    Assert.IsNotEmpty(actualResult);
-        //}
+        ////    // Assert
+        ////    Assert.IsNotEmpty(actualResult);
+        ////}
     }
 }

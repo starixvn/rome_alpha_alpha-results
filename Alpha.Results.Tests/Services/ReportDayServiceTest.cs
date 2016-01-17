@@ -1,7 +1,6 @@
 ﻿namespace Alpha.Results.Site.Tests.Services
 {
     using System;
-    using System.Collections.Generic;
     using Criteria;
     using Fanex.Caching;
     using Fanex.Data.Repository;
@@ -28,7 +27,7 @@
         [Test]
         public void GetBalanceUpDate_DataExistInCache_MustReturnDataGetFromCache()
         {
-            // Arrange            
+            // Arrange
             var cacheManager = Substitute.For<ICache>();
             var expectedDay = DateTime.Now.AddDays(-1);
             cacheManager.Get<DateTime>(BalanceUpDateCacheKey).Returns(expectedDay);

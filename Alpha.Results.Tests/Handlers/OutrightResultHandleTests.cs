@@ -45,7 +45,7 @@
         }
 
         [Test]
-        public void HandleOutrightResultQuery_WhenCalled_ReturnFromDateIsToday()
+        public void HandleOutrightResultQuery_WhenCalled_SetDefaultFromDateIsToday()
         {
             //// Arrange
             var query = new OutrightResultQuery();
@@ -58,7 +58,7 @@
         }
 
         [Test]
-        public void HandleOutrightResultQuery_WhenCalled_ReturnToDateIsToday()
+        public void HandleOutrightResultQuery_WhenCalled_SetDefaultToDateIsToday()
         {
             //// Arrange
             var query = new OutrightResultQuery();
@@ -97,7 +97,7 @@
         }
 
         [Test]
-        public void HandleOutrightResultQuery_WhenCalled_ReturnMinResultDateIsBalanceUpDate()
+        public void HandleOutrightResultQuery_WhenCalled_SetMinResultDateIsBalanceUpDate()
         {
             //// Arrange
             var query = new OutrightResultQuery();
@@ -130,7 +130,7 @@
         }
 
         [Test]
-        public void HandleOutrightResultQuery_WhenCalled_ReturnMaxResultDateIsToday()
+        public void HandleOutrightResultQuery_WhenCalled_SetMaxResultDateIsToday()
         {
             //// Arrange
             var query = new OutrightResultQuery();
@@ -184,7 +184,7 @@
         }
 
         [Test]
-        public void HandleOutrightResultQuery_NoneOfSportTypeIsSelected_ReturnDefaultSelectedSportType()
+        public void HandleOutrightResultQuery_NoneOfSportTypeIsSelected_FirstSportTypeIsSelected()
         {
             //// Arrange
             var query = new OutrightResultQuery();
@@ -363,6 +363,6 @@
             _outrightResultService.Received().GetExcelResults(query, balanceUpDate);
         }
 
-        #endregion
+        #endregion Outright Excel Result Query
     }
 }
