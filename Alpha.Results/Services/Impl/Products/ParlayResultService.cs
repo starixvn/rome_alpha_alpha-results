@@ -1,4 +1,4 @@
-namespace Alpha.Results.Site.Services.Impl
+namespace Alpha.Results.Site.Services.Impl.Products
 {
     using System;
     using System.IO;
@@ -6,8 +6,8 @@ namespace Alpha.Results.Site.Services.Impl
     using Alpha.Results.Site.Criteria;
     using Alpha.Results.Site.DataAccesses;
     using DataAccesses.Impl;
-    using Fanex.Result.Core;
     using Fanex.Result.Core.Base;
+    using Impl;
     using Models.Requests;
 
     public class ParlayResultService : IProductResultService

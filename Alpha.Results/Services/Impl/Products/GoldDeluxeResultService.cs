@@ -11,12 +11,12 @@
     using Fanex.Result.Core.GoldDeluxe.DTO;
     using Models.Requests;
 
-    public class GoldDeluxePopupResultService : IProductResultService
+    public class GoldDeluxeResultService : IProductResultService
     {
         private readonly IDynamicRepository _dynamicRepository;
         private readonly IResultEngineAdapter _resultEngineAdapter;
 
-        public GoldDeluxePopupResultService(
+        public GoldDeluxeResultService(
             IDynamicRepository dynamicRepository = null,
             IResultEngineAdapter resultEngineAdapter = null)
         {

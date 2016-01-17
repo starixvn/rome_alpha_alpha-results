@@ -29,38 +29,6 @@
 
                     return new SportsbookResultService();
 
-                case SportType.BasketBall:
-                case SportType.Netball:
-                case SportType.FootBall:
-                case SportType.Rugby:
-                case SportType.IceHockey:
-                case SportType.FieldHockey:
-                case SportType.Tennis:
-                case SportType.VolleyBall:
-                case SportType.Badminton:
-                case SportType.Squash:
-                case SportType.BaseBall:
-                case SportType.Golf:
-                case SportType.Motorsports:
-                case SportType.HRFixedOdds:
-                case SportType.Billard:
-                case SportType.Cycling:
-                case SportType.Fencing:
-                case SportType.Judo:
-                case SportType.ModernPentathlon:
-                case SportType.Rowing:
-                case SportType.Sailing:
-                case SportType.Shooting:
-                case SportType.Taekwondo:
-                case SportType.Triathlon:
-                case SportType.Wrestling:
-                case SportType.Winter:
-                case SportType.ESports:
-                case SportType.VirtualSports:
-                case SportType.VirtualTennis:
-                default:
-                    return new SportsbookResultService();
-
                 case SportType.HorseRacing:
                 case SportType.Greyhound:
                 case SportType.Harness:
@@ -80,7 +48,10 @@
                     return new VirtualRacingResultService();
 
                 case SportType.GoldDeluxe:
-                    return new GoldDeluxePopupResultService();
+                    return new GoldDeluxeResultService();
+
+                default:
+                    return new SportsbookResultService();
             }
         }
     }

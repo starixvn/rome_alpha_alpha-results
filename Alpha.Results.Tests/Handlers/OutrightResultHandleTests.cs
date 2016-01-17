@@ -2,9 +2,10 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
+    using Alpha.Utilities.Extensions;
+    using Fanex.Result.Core.Sportsbook.DTO;
     using Models.Requests;
     using NSubstitute;
     using NUnit.Framework;
@@ -13,8 +14,8 @@
     using Site.Services.Impl;
     using Sunplus.Agent.Model.Entities;
     using Sunplus.Agent.Model.RemotingRef;
-    using Alpha.Utilities.Extensions;
 
+    [TestFixture]
     public class OutrightResultHandleTests
     {
         private IOutrightResultService _outrightResultService;
@@ -146,8 +147,8 @@
         {
             //// Arrange
             var query = new OutrightResultQuery();
-            var balanceUpDate = new DateTime(2016, 1, 1);
 
+            var balanceUpDate = new DateTime(2016, 1, 1);
             _reportDataService.GetBalanceUpDate().Returns(balanceUpDate);
 
             //// Act
@@ -155,6 +156,211 @@
 
             //// Assert
             _outrightResultService.Received().GetOutrights(query.FromDate, query.ToDate, balanceUpDate);
+        }
+
+        [Test]
+        public void HandleOutrightResultQuery_SportTypeIsSelected_ReturnSelectedSportType()
+        {
+            //// Arrange
+            var query = new OutrightResultQuery
+            {
+                SportType = 1
+            };
+            _outrightResultService.GetOutrights(query.FromDate, query.ToDate, Arg.Any<DateTime>())
+                .Returns(new List<Outright>
+                {
+                    new Outright
+                    {
+                        SportType = 10,
+                        LeagueId = 2
+                    }
+                });
+
+            //// Act
+            var actualViewModel = _outrightResultHandler.Handle(query);
+
+            //// Assert
+            Assert.AreEqual(1, actualViewModel.SportType);
+        }
+
+        [Test]
+        public void HandleOutrightResultQuery_NoneOfSportTypeIsSelected_ReturnDefaultSelectedSportType()
+        {
+            //// Arrange
+            var query = new OutrightResultQuery();
+            _outrightResultService.GetOutrights(query.FromDate, query.ToDate, Arg.Any<DateTime>())
+                .Returns(new List<Outright>
+                {
+                    new Outright
+                    {
+                        SportType = 10,
+                        LeagueId = 2
+                    }
+                });
+
+            //// Act
+            var actualViewModel = _outrightResultHandler.Handle(query);
+
+            //// Assert
+            Assert.AreEqual(10, actualViewModel.SportType);
+        }
+
+        [Test]
+        public void HandleOutrightResultQuery_LeagueIsSelected_ReturnSelectedLeague()
+        {
+            //// Arrange
+            var query = new OutrightResultQuery
+            {
+                LeagueId = 5
+            };
+
+            _outrightResultService.GetOutrights(query.FromDate, query.ToDate, Arg.Any<DateTime>())
+                .Returns(new List<Outright>
+                {
+                    new Outright
+                    {
+                        SportType = 10,
+                        LeagueId = 2
+                    }
+                });
+
+            //// Act
+            var actualViewModel = _outrightResultHandler.Handle(query);
+
+            //// Assert
+            Assert.AreEqual(5, actualViewModel.LeagueId);
+        }
+
+        [Test]
+        public void HandleOutrightResultQuery_OutrightsHaveData_ReturnGroupedSports()
+        {
+            //// Arrange
+            var query = new OutrightResultQuery
+            {
+                SportType = 2
+            };
+
+            _outrightResultService.GetOutrights(query.FromDate, query.ToDate, Arg.Any<DateTime>())
+                .Returns(new List<Outright>
+                {
+                    new Outright { SportType = 5, LeagueId = 1 },
+                    new Outright { SportType = 2, LeagueId = 2 },
+                    new Outright { SportType = 2, LeagueId = 3 }
+                });
+
+            //// Act
+            var actualViewModel = _outrightResultHandler.Handle(query);
+
+            //// Assert
+            Assert.IsTrue(actualViewModel.Sports.Count() == 2
+                && actualViewModel.Sports.ElementAt(0).Value == "5"
+                && actualViewModel.Sports.ElementAt(1).Value == "2"
+                && actualViewModel.Sports.ElementAt(1).Selected);
+        }
+
+        [Test]
+        public void HandleOutrightResultQuery_OutrightsHaveData_ReturnGroupedLeagues()
+        {
+            //// Arrange
+            var query = new OutrightResultQuery
+            {
+                SportType = 2,
+                LeagueId = 3
+            };
+
+            _outrightResultService.GetOutrights(query.FromDate, query.ToDate, Arg.Any<DateTime>())
+                .Returns(new List<Outright>
+                {
+                    new Outright { SportType = 5, LeagueId = 3 },
+                    new Outright { SportType = 2, LeagueId = 2 },
+                    new Outright { SportType = 2, LeagueId = 3 },
+                    new Outright { SportType = 2, LeagueId = 4 }
+                });
+
+            //// Act
+            var actualViewModel = _outrightResultHandler.Handle(query);
+
+            //// Assert
+            Assert.IsTrue(actualViewModel.Leagues.Count() == 3
+                && actualViewModel.Leagues.ElementAt(0).Value == "2"
+                && actualViewModel.Leagues.ElementAt(1).Value == "3"
+                && actualViewModel.Leagues.ElementAt(2).Value == "4"
+                && actualViewModel.Leagues.ElementAt(1).Selected);
+        }
+
+        [Test]
+        public void HandleOutrightResultQuery_OutrightsHaveData_ReturnSportAndLeagueName()
+        {
+            //// Arrange
+            var query = new OutrightResultQuery();
+
+            _outrightResultService.GetOutrights(query.FromDate, query.ToDate, Arg.Any<DateTime>())
+                .Returns(new List<Outright>
+                {
+                    new Outright
+                    {
+                        SportType = 10,
+                        LeagueId = 2
+                    }
+                });
+            var sportName = "Sport Name";
+            CacheRefFactory.CacheRef.GetSportName(10).Returns(sportName);
+            var leagueName = "League Name";
+            CacheRefFactory.CacheRef.GetLeagueName(2).Returns(leagueName);
+
+            //// Act
+            var actualViewModel = _outrightResultHandler.Handle(query);
+
+            //// Assert
+            Assert.IsTrue(actualViewModel.Sports.First().Text == sportName
+                && actualViewModel.Leagues.First().Text == leagueName);
+        }
+
+        [Test]
+        public void HandleOutrightResultQuery_OutrightsHaveData_ExecuteGetResults()
+        {
+            //// Arrange
+            var query = new OutrightResultQuery();
+            var expectedHtmlResult = "Html Result";
+            _outrightResultService.GetResults(Arg.Any<IEnumerable<Outright>>(), Arg.Any<OutrightResultQuery>())
+                .Returns(expectedHtmlResult);
+
+            //// Act
+            var actualResultViewModel = _outrightResultHandler.Handle(query);
+
+            //// Assert
+            Assert.AreEqual(expectedHtmlResult, actualResultViewModel.HtmlResults);
+        }
+
+        #endregion Outright Result Query
+
+        #region Outright Excel Result Query
+
+        [Test]
+        public void HandleExcelOutrightResultQuery_QueryIsNull_ThrowArgumentNullException()
+        {
+            ExcelOutrightResultQuery query = null;
+
+            Assert.Throws<ArgumentNullException>(() => _outrightResultHandler.Handle(query));
+        }
+
+        [Test]
+        public void HandleExcelOutrightResultQuery_WhenCalled_ExecuteGetExcelResults()
+        {
+            //// Arrange
+            var query = new ExcelOutrightResultQuery();
+
+            var balanceUpDate = new DateTime(2016, 1, 1);
+            _reportDataService.GetBalanceUpDate().Returns(balanceUpDate);
+
+            var excelResult = new MemoryStream();
+            _outrightResultService.GetExcelResults(query, balanceUpDate).Returns(excelResult);
+
+            //// Act
+            _outrightResultHandler.Handle(query);
+
+            //// Assert
+            _outrightResultService.Received().GetExcelResults(query, balanceUpDate);
         }
 
         #endregion
