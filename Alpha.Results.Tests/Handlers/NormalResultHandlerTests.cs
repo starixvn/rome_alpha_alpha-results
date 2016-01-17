@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using App_GlobalResources;
     using Models;
     using Models.Requests;
     using NSubstitute;
@@ -12,6 +13,7 @@
     using Site.Services.Impl;
     using Sunplus.Agent.Model.Entities;
     using Sunplus.Agent.Model.RemotingRef;
+    using Alpha.Utilities.Extensions;
 
     [TestFixture]
     public class NormalResultHandlerTests
@@ -39,7 +41,7 @@
         {
             NormalResultQuery query = null;
 
-            Assert.Throws<ArgumentNullException>(new TestDelegate(() => _normalResultHandler.Handle(query)));
+            Assert.Throws<ArgumentNullException>(() => _normalResultHandler.Handle(query));
         }
 
         [Test]
@@ -53,6 +55,20 @@
 
             //// Assert
             Assert.AreEqual(DateTime.Now.Date, actualViewModel.ResultDate.Date);
+        }
+
+        [Test]
+        public void HandleNormalResultQuery_WhenCalled_ReturnMinResultDateMessage()
+        {
+            //// Arrange
+            var query = new NormalResultQuery(new Dictionary<int, bool>(), false);
+
+            //// Act
+            var actualViewModel = _normalResultHandler.Handle(query);
+
+            //// Assert
+            var expectedMinResultDateMessage = $"You can view the report data from {actualViewModel.MinResultDate.ToShortDateFormatWithSlash()}."; 
+            Assert.AreEqual(expectedMinResultDateMessage, actualViewModel.MinResultDateMessage);
         }
 
         [Test]
@@ -279,6 +295,21 @@
                         && query.LeagueId == resultQuery.LeagueId));
         }
 
+        [Test]
+        public void HandleNormalResultQuery_WhenCalled_ReturnHtmlResults()
+        {
+            //// Arrange
+            var resultQuery = new NormalResultQuery(new Dictionary<int, bool>(), false);
+            var expectedHtmlResult = "Html Result";
+            _normalResultService.GetResults(Arg.Any<NormalResultQuery>()).Returns(expectedHtmlResult);
+
+            //// Act
+            var actualResultViewModel = _normalResultHandler.Handle(resultQuery);
+
+            //// Assert
+            Assert.AreEqual(expectedHtmlResult, actualResultViewModel.HtmlResults);
+        }
+
         #endregion Handle Normal Result Query
 
         #region Handle Normal Result Details Query
@@ -288,7 +319,7 @@
         {
             NormalResultDetailsQuery query = null;
 
-            Assert.Throws<ArgumentNullException>(new TestDelegate(() => _normalResultHandler.Handle(query)));
+            Assert.Throws<ArgumentNullException>(() => _normalResultHandler.Handle(query));
         }
 
         [Test]
@@ -344,6 +375,74 @@
             //// Assert
             _normalResultService.Received().GetResultDetails(query);
         }
+
+        [Test]
+        public void HandleNormalResultDetailsQuery_WhenCall_ReturnHtmlResultDetails()
+        {
+            //// Arrange
+            var query = new NormalResultDetailsQuery();
+            var expectedHtmlResult = "Result Details";
+            _normalResultService.GetResultDetails(query).Returns(expectedHtmlResult);
+
+            //// Act
+            var resultDetailsViewModel = _normalResultHandler.Handle(query);
+
+            //// Assert
+            Assert.AreEqual(expectedHtmlResult, resultDetailsViewModel.HtmlResults);
+        }
+
+        #endregion
+
+        #region Handle Excel Normal Result Query
+
+        [Test]
+        public void HandleExcelNormalResultQuery_QueryIsNull_ThrowArgumentNullException()
+        {
+            ExcelNormalResultQuery query = null;
+
+            Assert.Throws<ArgumentNullException>(() => _normalResultHandler.Handle(query));
+        }
+
+        [TestCase(0, "Results - {0} | Sport Name - Show All Leagues")]
+        [TestCase(1, "Results - {0} | Sport Name - League Name")]
+        public void HandleExcelNormalResultQuery_WhenCalled_BuildExcelTitle(int leagueId, string expectedExcelTitle)
+        {
+            //// Arrange
+            var query = new ExcelNormalResultQuery
+            {
+                LeagueId = leagueId,
+                SportId = 1
+            };
+
+            CacheRefFactory.CacheRef.GetSportName(1).Returns("Sport Name");
+            CacheRefFactory.CacheRef.GetLeagueName(leagueId).Returns("League Name");
+
+            //// Act
+            _normalResultHandler.Handle(query);
+
+            //// Assert
+            _normalResultService.Received().GetExcelResults(Arg.Is<ExcelNormalResultQuery>(
+                excelQuery => excelQuery.ExcelTitle == string.Format(expectedExcelTitle, query.ResultDate.ToShortDateFormatWithSlash())
+                ));
+        }
+
+        [Test]
+        public void HandleExcelNormalResultQuery_WhenCalled_ReturnExcelResult()
+        {
+            //// Arrange
+            var query = new ExcelNormalResultQuery();
+            var expectedExcelResult = new byte[] { 1, 2, 3 };
+            _normalResultService.GetExcelResults(query).Returns(expectedExcelResult);
+
+            //// Act
+            var excelViewModel = _normalResultHandler.Handle(query);
+
+            //// Assert
+            Assert.IsTrue(
+                expectedExcelResult == excelViewModel.ExcelResults
+                && "Results.xls" == excelViewModel.ExcelName);
+        }
+
         #endregion
     }
 }

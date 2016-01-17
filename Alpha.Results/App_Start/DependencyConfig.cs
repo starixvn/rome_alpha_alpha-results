@@ -62,7 +62,7 @@
 
         private static IEnumerable<Assembly> GetAssemblies()
         {
-            yield return typeof(NormalResultHandler).Assembly;
+            yield return typeof(OutrightResultHandler).Assembly;
         }
 
         private static void RegisterCrossCuttingConcerns(Container container)
