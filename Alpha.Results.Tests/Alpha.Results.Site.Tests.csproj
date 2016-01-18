@@ -79,6 +79,10 @@
       <HintPath>..\packages\Fanex.Result.Core-LiveCasino.1.0.0.8\lib\net40\Fanex.Result.Core.LiveCasino.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Fanex.Result.Core.MetricGaming, Version=1.0.0.9, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Result.Core-MetricGaming.1.0.0.9\lib\net40\Fanex.Result.Core.MetricGaming.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Fanex.Result.Core.NumberGame, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core-NumberGame.1.0.1.0\lib\net40\Fanex.Result.Core.NumberGame.dll</HintPath>
       <Private>True</Private>
@@ -235,6 +239,10 @@
     <Compile Include="Services\NormalResultServiceTestOld.cs" />
     <Compile Include="Services\NormalResultServiceTests.cs" />
     <Compile Include="Services\Products\CockfightingResultServiceTests.cs" />
+    <Compile Include="Services\Products\LiveCasinoResultServiceTests.cs" />
+    <Compile Include="Services\Products\MetricGamingResultServiceTests.cs" />
+    <Compile Include="Services\Products\NumberGameResultServiceTests.cs" />
+    <Compile Include="Services\Products\ParlayResultServiceTestscs.cs" />
     <Compile Include="Services\ReportDayServiceTest.cs" />
     <Compile Include="Services\ResultServiceFactoryTests.cs" />
   </ItemGroup>
