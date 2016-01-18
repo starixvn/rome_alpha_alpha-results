@@ -6,18 +6,18 @@
     using Site.Services;
 
     [TestFixture]
-    public class NormalResultServiceTest
+    public class NormalResultServiceTestOld
     {
-        private IDynamicRepository _repository;
-        private IResultServiceFactory _serviceFactory;
-        private INormalResultService _service;
+        //private IDynamicRepository _repository;
+        //private IResultServiceFactory _serviceFactory;
+        //private INormalResultService _service;
 
-        [SetUp]
-        public void Init()
-        {
-            _repository = Substitute.For<IDynamicRepository>();
-            _serviceFactory = Substitute.For<IResultServiceFactory>();
-        }
+        //[SetUp]
+        //public void Init()
+        //{
+        //    _repository = Substitute.For<IDynamicRepository>();
+        //    _serviceFactory = Substitute.For<IResultServiceFactory>();
+        //}
 
         ////[Test]
         ////public void GetLeagues_ResultDateLessThanBalanceUpDate_ThrowArgumentOutOfRangeException()

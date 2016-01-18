@@ -79,8 +79,7 @@
             container.Register<INormalResultService, NormalResultService>(Lifestyle.Scoped);
             container.Register<ICockfightingResultService, CockfightingResultService>(Lifestyle.Scoped);
             container.Register<ICockFightingAPI, CockFightingAPI>(Lifestyle.Scoped);
-            
-            // For Keno Areas.
+            container.Register<IResultEngineAdapter, ResultEngineAdapter>(Lifestyle.Scoped);
             container.Register<IKenoGameService, KenoGameService>(Lifestyle.Scoped);
         }
 

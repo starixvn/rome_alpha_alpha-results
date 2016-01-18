@@ -19,10 +19,14 @@ namespace Alpha.Results.Site.Services.Impl
     public class OutrightResultService : IOutrightResultService
     {
         private readonly IDynamicRepository _dynamicRepository;
+        private readonly IResultEngineAdapter _resultEngineAdatper;
 
-        public OutrightResultService(IDynamicRepository dynamicRepository)
+        public OutrightResultService(
+            IDynamicRepository dynamicRepository,
+            IResultEngineAdapter resultEngineAdatper)
         {
             _dynamicRepository = dynamicRepository;
+            _resultEngineAdatper = resultEngineAdatper;
         }
 
         public IEnumerable<Outright> GetOutrights(DateTime fromDate, DateTime toDate, DateTime balanceUpDate)
@@ -56,7 +60,7 @@ namespace Alpha.Results.Site.Services.Impl
                 HighlightWinnerTeam = true
             };
 
-            return ResultEngine.HtmlParser(outrights.ToList(), resultSetting);
+            return _resultEngineAdatper.HtmlParser(outrights.ToList(), resultSetting);
         }
 
         [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0", Justification = "Reviewed")]
@@ -81,7 +85,7 @@ namespace Alpha.Results.Site.Services.Impl
                 ExcelTemplatePath = request.TemplatePath
             };
 
-            return ResultEngine.ExcelParser(outrights.ToList(), resultSetting);
+            return _resultEngineAdatper.ExcelParser(outrights.ToList(), resultSetting);
         }
 
         private GetOutRightResultCriteria GetOutrightCriteria(DateTime fromDate, DateTime toDate)

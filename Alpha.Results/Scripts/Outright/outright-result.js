@@ -9,7 +9,8 @@
 
     function initializeDatepicker() {
         var dpkSettings = {
-            minDate: minResultDate
+            minDate: minResultDate,
+            allowInputToggle: true
         };
 
         fromdatepicker = $('#dpk-fromdate').datepicker(dpkSettings);

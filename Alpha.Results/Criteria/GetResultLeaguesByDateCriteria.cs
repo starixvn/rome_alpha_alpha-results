@@ -7,7 +7,8 @@
     {
         public string EventDate { get; set; }
 
-        public int SportType { get; set; }
+        [SpParam(SqlParamName = "sporttype")]
+        public int SportId { get; set; }
 
         public bool IsShowAll
         {

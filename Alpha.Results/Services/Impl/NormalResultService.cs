@@ -39,7 +39,7 @@
             {
                 EventDate = resultDate.ToShortDateString(),
                 Language = language,
-                SportType = sportId
+                SportId = sportId
             });
 
             return leagues;

@@ -8,17 +8,17 @@
 
     public class CockfightingResultService : ICockfightingResultService
     {
-        private const string DefaultLanguageKey = "EN";
+        private const string DefaultLanguageKey = "en";
 
         private static readonly IDictionary<string, string> LanguageCodes = new Dictionary<string, string>
         {
             { "E", DefaultLanguageKey },
-            { "J", "JP" },
-            { "CT", "CH" },
-            { "CS", "CS" },
-            { "TH", "TH" },
-            { "KO", "KO" },
-            { "VI", "VI" },
+            { "J", "jp" },
+            { "CT", "ch" },
+            { "CS", "cs" },
+            { "TH", "th" },
+            { "KO", "ko" },
+            { "VI", "vi" },
         };
 
         private readonly ICockFightingAPI _cockfightingApi;
@@ -39,7 +39,7 @@
                     return _cockfightingApi.ExtendToken(request.CustomerId.ToString());
                 }
 
-                var languageCode = LanguageCodes.ContainsKey(request.LanguageKey)
+                var languageCode = request.LanguageKey != null && LanguageCodes.ContainsKey(request.LanguageKey.ToUpper())
                     ? LanguageCodes[request.LanguageKey]
                     : DefaultLanguageKey;
 

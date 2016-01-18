@@ -48,7 +48,8 @@ var normalResult =
     },
     registerEvents: function () {
         normalResult.domElements.dpkContainer.datepicker({
-            minDate: normalResult.domElements.txtMinResultDate.val()
+            minDate: normalResult.domElements.txtMinResultDate.val(),
+            allowInputToggle: true
         }).data("DateTimePicker").maxDate(normalResult.domElements.txtToday.val());
 
         normalResult.domElements.ddlSports.select2();
