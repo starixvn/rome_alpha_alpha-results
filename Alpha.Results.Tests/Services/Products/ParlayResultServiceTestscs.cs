@@ -2,9 +2,6 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using Criteria;
     using DataAccesses;
     using Fanex.Result.Core.Base;
@@ -16,6 +13,7 @@
     using Site.Services.Impl;
     using Site.Services.Impl.Products;
     using Sunplus.Agent.Model.Entities;
+
     [TestFixture]
     public class ParlayResultServiceTestscs
     {
@@ -72,7 +70,7 @@
 
             var metricGamingTickets = new List<Parlay>
             {
-                new Parlay ()
+                new Parlay()
             };
 
             _parlayResultDataAccess.GetParlayResults(Arg.Any<GetParlayResultCriteria>()).Returns(metricGamingTickets);
@@ -81,8 +79,9 @@
             _parlayResultService.GetResultDetails(query);
 
             //// Assert
-            _resultEngineAdapter.Received().HtmlParser(Arg.Is<List<Parlay>>
-                (items => items.Count == 1), Arg.Any<ResultSetting>());
+            _resultEngineAdapter.Received().HtmlParser(
+                Arg.Is<List<Parlay>>(items => items.Count == 1), 
+                Arg.Any<ResultSetting>());
         }
 
         [Test]
@@ -107,9 +106,8 @@
                                 && resultSetting.IsPopUp
                                 && resultSetting.LanguageCode == query.Language
                                 && !resultSetting.VisibleMatchCodeIDColumn
-                                && resultSetting.VisiblePopUpTitle
-                                && resultSetting.HighlightWinnerTeam
-                ));
+                                && resultSetting.VisibleFreeHeader
+                                && resultSetting.HighlightWinnerTeam));
         }
 
         [Test]

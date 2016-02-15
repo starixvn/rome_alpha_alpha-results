@@ -2,12 +2,8 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using Criteria;
     using DataAccesses;
-    using Fanex.Data.Repository;
     using Fanex.Result.Core.Base;
     using Fanex.Result.Core.MetricGaming.DTO;
     using Models.Requests;
@@ -17,6 +13,7 @@
     using Site.Services.Impl;
     using Site.Services.Impl.Products;
     using Sunplus.Agent.Model.Entities;
+
     [TestFixture]
     public class MetricGamingResultServiceTests
     {
@@ -79,7 +76,7 @@
 
             var metricGamingTickets = new List<MetricGaming>
             {
-                new MetricGaming ()
+                new MetricGaming()
             };
 
             _metricGamingResultDataAccess.GetResults(Arg.Any<GetMetricGamingResultCriteria>()).Returns(metricGamingTickets);
@@ -116,8 +113,7 @@
                                 && resultSetting.LanguageCode == "en-US"
                                 && !resultSetting.VisibleMatchCodeIDColumn
                                 && resultSetting.VisiblePopUpTitle
-                                && resultSetting.HighlightWinnerTeam
-                ));
+                                && resultSetting.HighlightWinnerTeam));
         }
 
         [Test]

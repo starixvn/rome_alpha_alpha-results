@@ -67,7 +67,7 @@
 
             var metricGamingTickets = new List<NumberGame>
             {
-                new NumberGame ()
+                new NumberGame()
             };
 
             _numberGameResultDataAccess.GetNumberGameResultDetails(Arg.Any<GetNumberGameResultDetailsCriteria>()).Returns(metricGamingTickets);
@@ -103,8 +103,7 @@
                                 && !resultSetting.VisibleMatchCodeIDColumn
                                 && resultSetting.VisibleFreeHeader
                                 && resultSetting.VisibleDetailedLink
-                                && resultSetting.HighlightWinnerTeam
-                ));
+                                && resultSetting.HighlightWinnerTeam));
         }
     }
 }

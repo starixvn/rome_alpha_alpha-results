@@ -55,7 +55,8 @@
             _liveCasinoResultService.GetResultDetails(query);
 
             //// Assert
-            _dynamicRepository.Received().Fetch<LiveCasino>(Arg.Is<GetLiveCasinoResultCriteria>
+            _dynamicRepository.Received().Fetch<LiveCasino>(
+                Arg.Is<GetLiveCasinoResultCriteria>
                 (criteria => criteria.League == "3"
                             && criteria.MatchId == query.MatchId
                             && criteria.BetType == query.BetTypeId));
@@ -112,8 +113,7 @@
                                 && !resultSetting.VisibleMatchCodeIDColumn
                                 && resultSetting.VisibleFreeHeader
                                 && resultSetting.VisibleDetailedLink
-                                && resultSetting.HighlightWinnerTeam
-                ));
+                                && resultSetting.HighlightWinnerTeam));
         }
 
         [Test]

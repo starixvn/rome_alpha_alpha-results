@@ -236,7 +236,6 @@
     <Compile Include="Handlers\NormalResultHandlerTests.cs" />
     <Compile Include="Handlers\OutrightResultHandleTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\NormalResultServiceTestOld.cs" />
     <Compile Include="Services\NormalResultServiceTests.cs" />
     <Compile Include="Services\Products\CockfightingResultServiceTests.cs" />
     <Compile Include="Services\Products\LiveCasinoResultServiceTests.cs" />
