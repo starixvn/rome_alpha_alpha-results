@@ -27,7 +27,8 @@ var cockFightingResult = function (resultApi) {
             success: function (response) {
                 clearInterval(_intervalId);
                 if (response.IsSuccess) {
-                    var cockFightingWindow = $("#iframeId").attr("src", response.Url);
+                    var cockFightingWindow = window.open(response.Url, '_blank', 'left=20,top=20,width=950,height=650,toolbar=1,resizable=1,scrollbars,status=1');
+                    me.extendSession();
                 } else {
                     alert($('#FailedToConnectMessage').val());
                 }
