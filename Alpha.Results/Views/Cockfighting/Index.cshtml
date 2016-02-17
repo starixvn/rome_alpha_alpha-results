@@ -3,7 +3,7 @@
     var cockFightingResult = Url.Action("Result", "Cockfighting");
 }
 
-<iframe id="iframeId" name='iframeId' frameborder="0" src="" left="0" top="0"></iframe>
+<a href="#" id="result-link" class="lnk" target="_blank">@Resources.OpenCockfightingResults</a>
 
 @Html.Hidden("FailedToConnectMessage", @Resources.CockFightFailedToConnect)
 @Html.Hidden("CockFightingResultUrl", @cockFightingResult)

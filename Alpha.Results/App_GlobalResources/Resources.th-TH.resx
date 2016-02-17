@@ -180,4 +180,7 @@
   <data name="CockFightFailedToConnect" xml:space="preserve">
     <value>Cannot connect to Cockfighting API! Please contact Administrator.</value>
   </data>
+  <data name="OpenCockfightingResults" xml:space="preserve">
+    <value>Click here to open Cockfighting results</value>
+  </data>
 </root>

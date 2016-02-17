@@ -142,6 +142,15 @@ namespace Alpha.Results.Site.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Click here to open Cockfighting results.
+        /// </summary>
+        public static string OpenCockfightingResults {
+            get {
+                return ResourceManager.GetString("OpenCockfightingResults", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Click here to open Keno results.
         /// </summary>
         public static string OpenKenoResults {
