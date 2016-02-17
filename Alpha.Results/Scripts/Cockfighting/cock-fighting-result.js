@@ -27,7 +27,7 @@ var cockFightingResult = function (resultApi) {
             success: function (response) {
                 clearInterval(_intervalId);
                 if (response.IsSuccess) {
-                    var cockFightingWindow = window.open(response.Url, '_blank', 'left=20,top=20,width=950,height=650,toolbar=1,resizable=1,scrollbars,status=1');
+                    var cockFightingWindow = window.open(response.Url, 'Cockfighting-Result', 'width=900,height=700,directories=0,titlebar=0,toolbar=0,location=0,status=0,menubar=0');
                     $('#result-link').attr('href', response.Url);
                     me.extendSession();
                 } else {
