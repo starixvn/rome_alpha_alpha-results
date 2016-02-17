@@ -39,7 +39,7 @@
 
             var viewModel = new NormalResultViewModel
             {
-                ResultDate = message.ResultDate,
+                ResultDate = message.ResultDate.Date,
                 MinResultDate = balanceUpDate,
                 Sports = sports
             };
@@ -48,7 +48,11 @@
             {
                 viewModel.SportId = message.SportId > 0 ? message.SportId : int.Parse(sports.First().Value);
                 viewModel.Leagues = GetLeaguesResult(message.ResultDate, viewModel.SportId, message.Language, message.DisableHorseRacingWin);
-                viewModel.LeagueId = message.LeagueId;
+
+                if (viewModel.Leagues.Any(selectItem => selectItem.Value == message.LeagueId.ToString()))
+                {
+                    viewModel.LeagueId = message.LeagueId;
+                }
             }
 
             viewModel.HtmlResults = _normalResultService.GetResults(new NormalResultQuery

@@ -28,14 +28,12 @@ var cockFightingResult = function (resultApi) {
                 clearInterval(_intervalId);
                 if (response.IsSuccess) {
                     var linkResult = $('#result-link');
-                    linkResult.attr('href', response.Url);
+                    linkResult.attr('href', response.Url).show();
 
                     linkResult.click(function (e) {
                         e.preventDefault();
                         window.open(response.Url, 'Cockfighting-Result', 'width=900,height=700,directories=0,titlebar=0,toolbar=0,location=0,status=0,menubar=0');
                     });
-
-                    linkResult.trigger('click');
 
                     me.extendSession();
                 } else {

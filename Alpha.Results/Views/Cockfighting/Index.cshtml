@@ -3,7 +3,7 @@
     var cockFightingResult = Url.Action("Result", "Cockfighting");
 }
 
-<a href="#" id="result-link" class="lnk" target="_blank">@Resources.OpenCockfightingResults</a>
+<a href="#" id="result-link" class="lnk" target="_blank" style="display:none;" >@Resources.OpenCockfightingResults</a>
 
 @Html.Hidden("FailedToConnectMessage", @Resources.CockFightFailedToConnect)
 @Html.Hidden("CockFightingResultUrl", @cockFightingResult)
