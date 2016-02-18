@@ -46,7 +46,10 @@
 
             if (viewModel.Sports.Any())
             {
-                viewModel.SportId = message.SportId > 0 ? message.SportId : int.Parse(sports.First().Value);
+                viewModel.SportId = message.SportId > 0 && sports.Any(sport => sport.Value == message.SportId.ToString()) 
+                    ? message.SportId 
+                    : int.Parse(sports.First().Value);
+
                 viewModel.Leagues = GetLeaguesResult(message.ResultDate, viewModel.SportId, message.Language, message.DisableHorseRacingWin);
 
                 if (viewModel.Leagues.Any(selectItem => selectItem.Value == message.LeagueId.ToString()))
