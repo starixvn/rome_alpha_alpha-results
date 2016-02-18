@@ -220,7 +220,7 @@
                     new Outright
                     {
                         SportType = 10,
-                        LeagueId = 2
+                        LeagueId = 5
                     }
                 });
 
@@ -229,6 +229,32 @@
 
             //// Assert
             Assert.AreEqual(5, actualViewModel.LeagueId);
+        }
+
+        [Test]
+        public void HandleOutrightResultQuery_LeagueIsNotAvailable_ReturnSelectedAllLeague()
+        {
+            //// Arrange
+            var query = new OutrightResultQuery
+            {
+                LeagueId = 2
+            };
+
+            _outrightResultService.GetOutrights(query.FromDate, query.ToDate, Arg.Any<DateTime>())
+                .Returns(new List<Outright>
+                {
+                    new Outright
+                    {
+                        SportType = 10,
+                        LeagueId = 5
+                    }
+                });
+
+            //// Act
+            var actualViewModel = _outrightResultHandler.Handle(query);
+
+            //// Assert
+            Assert.AreEqual(0, actualViewModel.LeagueId);
         }
 
         [Test]
@@ -253,9 +279,9 @@
 
             //// Assert
             Assert.IsTrue(actualViewModel.Sports.Count() == 2
-                && actualViewModel.Sports.ElementAt(0).Value == "5"
-                && actualViewModel.Sports.ElementAt(1).Value == "2"
-                && actualViewModel.Sports.ElementAt(1).Selected);
+                && actualViewModel.Sports.ElementAt(0).Value == "2"
+                && actualViewModel.Sports.ElementAt(1).Value == "5"
+                && actualViewModel.Sports.ElementAt(0).Selected);
         }
 
         [Test]

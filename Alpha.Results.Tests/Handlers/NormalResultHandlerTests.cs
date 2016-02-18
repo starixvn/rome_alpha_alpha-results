@@ -290,8 +290,7 @@
             //// Assert
             _normalResultService.Received().GetResults(Arg.Is<NormalResultQuery>(
                 query => query.ResultDate.Date == resultQuery.ResultDate.Date
-                        && query.SportId == resultQuery.SportId
-                        && query.LeagueId == resultQuery.LeagueId));
+                        && query.SportId == resultQuery.SportId));
         }
 
         [Test]
