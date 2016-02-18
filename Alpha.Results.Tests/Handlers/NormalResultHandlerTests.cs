@@ -149,7 +149,7 @@
             //// Arrange
             var query = new NormalResultQuery(new Dictionary<int, bool>(), false)
             {
-                SportId = 10
+                SportId = 1
             };
 
             var sports = new List<Sport>
@@ -164,6 +164,29 @@
 
             //// Assert
             Assert.AreEqual(query.SportId, actualViewModel.SportId);
+        }
+
+        [Test]
+        public void HandleNormalResultQuery_SportSelectedIsNotAvailable_ReturnDefaultSportId()
+        {
+            //// Arrange
+            var query = new NormalResultQuery(new Dictionary<int, bool>(), false)
+            {
+                SportId = 10
+            };
+
+            var sports = new List<Sport>
+            {
+                new Sport { Id = 1 }
+            };
+
+            _normalResultService.GetSports(Arg.Any<DateTime>(), Arg.Any<IDictionary<int, bool>>()).Returns(sports);
+
+            //// Act
+            var actualViewModel = _normalResultHandler.Handle(query);
+
+            //// Assert
+            Assert.AreEqual(1, actualViewModel.SportId);
         }
 
         [Test]
