@@ -6,6 +6,7 @@ var normalResult =
 {
     resultDetailsUrl: 'Normal/ResultDetails?',
     excelResultsUrl: 'Normal/ExcelResults?',
+    isIe: false,
     domElements:
         {
             txtResultDate: null,
@@ -26,8 +27,18 @@ var normalResult =
             loadingImage: null
         },
     init: function () {
+
         normalResult.cacheElements();
         normalResult.registerEvents();
+
+        var ua = window.navigator.userAgent;
+        var msie = ua.indexOf("MSIE ");
+
+        if (msie > 0)// If Internet Explorer, return version number
+        {
+            normalResult.isIe = parseInt(ua.substring(msie + 5, ua.indexOf(".", msie))) < 10;
+        }
+
     },
     cacheElements: function () {
         normalResult.domElements.txtResultDate = $('#ResultDate');
@@ -95,18 +106,22 @@ var normalResult =
                 normalResult.domElements.resultDetails.modal({});
             });
 
-        normalResult.domElements.frmDetailsResult.load(function (){
-            normalResult.domElements.loadingImage.hide();
-        });
-
         normalResult.domElements.frmDetailsResult
             .off('load.normalResult')
             .on('load.normalResult', function () {
+                normalResult.domElements.loadingImage.hide();
                 var $this = $(this);
                 var detailTitle = $this.contents().find("title").html();
                 normalResult.domElements.resultDetailTitle.html(detailTitle);
 
                 $this.show();
+
+                if (normalResult.isIe) {
+                    var bodyWidth = $('body').width();
+                    $this.width(bodyWidth - 200);
+                    normalResult.domElements.resultDetails.modal({});
+                    normalResult.domElements.resultDetails.find('.modal-dialog').width(bodyWidth - 100);
+                }
         });
 
         normalResult.domElements.excelBtn
