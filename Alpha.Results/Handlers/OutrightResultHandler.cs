@@ -59,7 +59,7 @@
                 ToDate = message.ToDate
             };
 
-            var outrights = _outrightService.GetOutrights(message.FromDate, message.ToDate, balanceUpDate);
+            var outrights = _outrightService.GetOutrights(message.FromDate, message.ToDate, balanceUpDate).OrderBy(outright => outright.SportType);
 
             if (outrights.Any())
             {
@@ -68,7 +68,15 @@
                     : outrights.First().SportType;
 
                 viewModel.SportType = message.SportType;
-                viewModel.LeagueId = message.LeagueId;
+                if (outrights.Any(outright => outright.LeagueId == message.LeagueId && outright.SportType == viewModel.SportType))
+                {
+                    viewModel.LeagueId = message.LeagueId;
+                }
+                else
+                {
+                    message.LeagueId = 0;
+                }
+
                 viewModel = GetSportsAndLeagues(viewModel, outrights, viewModel.SportType, viewModel.LeagueId);
             }
 
