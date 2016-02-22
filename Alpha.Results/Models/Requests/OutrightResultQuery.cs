@@ -4,7 +4,7 @@
     using Services.Impl;
     using System;
     using Views;
-
+    using System.Threading;
     public class OutrightResultQuery : IRequest<OutrightResultViewModel>
     {
         public OutrightResultQuery()
@@ -26,7 +26,7 @@
         {
             get
             {
-                return UserSessionFactory.CurrentSession.Language;
+                return Thread.CurrentThread.CurrentCulture.Name;
             }
         }
     }
