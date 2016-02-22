@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Threading;
     using MediatR;
     using Services.Impl;
     using Sunplus.Agent.Model.BL.Definitions;
@@ -36,7 +37,7 @@
         {
             get
             {
-                return UserSessionFactory.CurrentSession.Language;
+                return Thread.CurrentThread.CurrentCulture.Name;
             }
         }
 
