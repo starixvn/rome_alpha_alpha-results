@@ -40,11 +40,14 @@
         {
             get
             {
-                Logs.WriteInfo($"Thread Language: {Thread.CurrentThread.CurrentCulture.Name} \r\n"
-                    + $"- Session Language Factory: {UserSessionFactory.CurrentSession.Language} \r\n"
-                    + $"- Session Language: {UserSession.Current.Language} \r\n"
-                    + $"- Username: {UserSession.Current.UserName} \r\n"
-                    + $"- Username: {HttpContext.Current.User.Identity.Name}");
+                if (Thread.CurrentThread.CurrentCulture.Name != UserSessionFactory.CurrentSession.Language)
+                {
+                    Logs.WriteInfo($"Thread Language: {Thread.CurrentThread.CurrentCulture.Name} \r\n"
+                        + $"- Session Language Factory: {UserSessionFactory.CurrentSession.Language} \r\n"
+                        + $"- Session Language: {UserSession.Current.Language} \r\n"
+                        + $"- Username: {UserSession.Current.UserName} \r\n"
+                        + $"- Username: {HttpContext.Current.User.Identity.Name}");
+                }
 
                 return Thread.CurrentThread.CurrentCulture.Name;
             }
