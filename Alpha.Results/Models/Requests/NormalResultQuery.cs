@@ -3,10 +3,13 @@
     using System;
     using System.Collections.Generic;
     using System.Threading;
+    using System.Web;
     using MediatR;
     using Services.Impl;
     using Sunplus.Agent.Model.BL.Definitions;
+    using Sunplus.Agent.Model.Entities;
     using Sunplus.Agent.Model.Entities.Permission;
+    using Sunplus.Agent.Utilities;
     using Views;
 
     public class NormalResultQuery : IRequest<NormalResultViewModel>
@@ -37,6 +40,12 @@
         {
             get
             {
+                Logs.WriteInfo($"Thread Language: {Thread.CurrentThread.CurrentCulture.Name} \r\n"
+                    + $"- Session Language Factory: {UserSessionFactory.CurrentSession.Language} \r\n"
+                    + $"- Session Language: {UserSession.Current.Language} \r\n"
+                    + $"- Username: {UserSession.Current.UserName} \r\n"
+                    + $"- Username: {HttpContext.Current.User.Identity.Name}");
+
                 return Thread.CurrentThread.CurrentCulture.Name;
             }
         }
