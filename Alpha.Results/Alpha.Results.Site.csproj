@@ -514,6 +514,33 @@
     </Content>
     <Content Include="Views\Cockfighting\Index.cshtml" />
     <Content Include="Views\Keno\Index.cshtml" />
+    <None Include="Web.AppSettings.backupMNLI1.config">
+      <DependentUpon>Web.AppSettings.config</DependentUpon>
+    </None>
+    <None Include="Web.AppSettings.backupMNLI7.config">
+      <DependentUpon>Web.AppSettings.config</DependentUpon>
+    </None>
+    <None Include="Web.AppSettings.backupMNLNapInternal.config">
+      <DependentUpon>Web.AppSettings.config</DependentUpon>
+    </None>
+    <None Include="Web.backupMNLI1.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.backupMNLI7.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.backupMNLNapInternal.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.ConnectionStrings.bacbupMNLI1.config">
+      <DependentUpon>Web.ConnectionStrings.config</DependentUpon>
+    </None>
+    <None Include="Web.ConnectionStrings.bacbupMNLI7.config">
+      <DependentUpon>Web.ConnectionStrings.config</DependentUpon>
+    </None>
+    <None Include="Web.ConnectionStrings.backupMNLNapInternal.config">
+      <DependentUpon>Web.ConnectionStrings.config</DependentUpon>
+    </None>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
