@@ -27,9 +27,6 @@
             _metricGamingResultDataAccess = Substitute.For<IMetricGamingResultDataAccess>();
             _resultEngineAdapter = Substitute.For<IResultEngineAdapter>();
             _metricGamingResultService = new MetricGamingResultService(_metricGamingResultDataAccess, _resultEngineAdapter);
-
-            UserSessionFactory.CurrentSession = Substitute.For<IUserSession>();
-            UserSessionFactory.CurrentSession.Language = "en-US";
         }
 
         [Test]

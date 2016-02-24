@@ -16,16 +16,21 @@
     {
         private IDictionary<int, bool> _sportsStatus;
         private bool? _disableHorseRacingWin;
+        private string _language;
 
         public NormalResultQuery()
         {
             ResultDate = DateTime.Now;
         }
 
-        internal NormalResultQuery(IDictionary<int, bool> sportStatus, bool disableHorseRacingWin) : this()
+        internal NormalResultQuery(
+            IDictionary<int, bool> sportStatus, 
+            bool disableHorseRacingWin,
+            string language) : this()
         {
             _sportsStatus = sportStatus;
             _disableHorseRacingWin = disableHorseRacingWin;
+            _language = language;
         }
 
         public DateTime ResultDate { get; set; }
@@ -40,16 +45,7 @@
         {
             get
             {
-                if (Thread.CurrentThread.CurrentCulture.Name != UserSessionFactory.CurrentSession.Language)
-                {
-                    Logs.WriteInfo($"Thread Language: {Thread.CurrentThread.CurrentCulture.Name} \r\n"
-                        + $"- Session Language Factory: {UserSessionFactory.CurrentSession.Language} \r\n"
-                        + $"- Session Language: {UserSession.Current.Language} \r\n"
-                        + $"- Username: {UserSession.Current.UserName} \r\n"
-                        + $"- Username: {HttpContext.Current.User.Identity.Name}");
-                }
-
-                return Thread.CurrentThread.CurrentCulture.Name;
+                return string.IsNullOrEmpty(_language) ? UserSession.Current.Language : _language;
             }
         }
 

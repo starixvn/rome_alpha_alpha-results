@@ -1,17 +1,24 @@
 ﻿namespace Alpha.Results.Site.Models.Requests
 {
-    using MediatR;
-    using Services.Impl;
     using System;
+    using MediatR;
+    using Sunplus.Agent.Model.Entities;
     using Views;
-    using System.Threading;
+
     public class OutrightResultQuery : IRequest<OutrightResultViewModel>
     {
+        private string _language;
+
         public OutrightResultQuery()
         {
             DateTime currentDate = DateTime.Today;
             FromDate = currentDate;
             ToDate = currentDate;
+        }
+
+        internal OutrightResultQuery(string language)
+        {
+            _language = language;
         }
 
         public DateTime FromDate { get; set; }
@@ -26,7 +33,7 @@
         {
             get
             {
-                return Thread.CurrentThread.CurrentCulture.Name;
+                return string.IsNullOrEmpty(_language) ? UserSession.Current.Language : _language;
             }
         }
     }

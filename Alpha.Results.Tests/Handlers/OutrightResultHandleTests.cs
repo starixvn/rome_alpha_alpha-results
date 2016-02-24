@@ -21,6 +21,7 @@
         private IOutrightResultService _outrightResultService;
         private OutrightResultHandler _outrightResultHandler;
         private IReportDateService _reportDataService;
+        private const string DefaultLanguage = "en-US";
 
         [SetUp]
         public void SetUp()
@@ -30,8 +31,6 @@
             _outrightResultHandler = new OutrightResultHandler(_outrightResultService, _reportDataService);
 
             CacheRefFactory.CacheRef = Substitute.For<ICacheRefService>();
-            UserSessionFactory.CurrentSession = Substitute.For<IUserSession>();
-            UserSessionFactory.CurrentSession.Language = "en-US";
         }
 
         #region Outright Result Query

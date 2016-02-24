@@ -20,6 +20,7 @@
         private INormalResultService _normalResultService;
         private NormalResultHandler _normalResultHandler;
         private IReportDateService _reportDataService;
+        private const string DefaultLanguage = "en-US";
 
         [SetUp]
         public void SetUp()
@@ -29,8 +30,6 @@
             _normalResultHandler = new NormalResultHandler(_normalResultService, _reportDataService);
 
             CacheRefFactory.CacheRef = Substitute.For<ICacheRefService>();
-            UserSessionFactory.CurrentSession = Substitute.For<IUserSession>();
-            UserSessionFactory.CurrentSession.Language = "en-US";
         }
 
         #region Handle Normal Result Query
@@ -47,7 +46,7 @@
         public void HandleNormalResultQuery_WhenCalled_SetResultDateIsToday()
         {
             //// Arrange
-            var query = new NormalResultQuery(new Dictionary<int, bool>(), false);
+            var query = new NormalResultQuery(new Dictionary<int, bool>(), false, DefaultLanguage);
 
             //// Act
             var actualViewModel = _normalResultHandler.Handle(query);
@@ -60,7 +59,7 @@
         public void HandleNormalResultQuery_WhenCalled_ReturnMinResultDateMessage()
         {
             //// Arrange
-            var query = new NormalResultQuery(new Dictionary<int, bool>(), false);
+            var query = new NormalResultQuery(new Dictionary<int, bool>(), false, DefaultLanguage);
 
             //// Act
             var actualViewModel = _normalResultHandler.Handle(query);
@@ -74,7 +73,7 @@
         public void HandleNormalResultQuery_WhenCalled_SetMinResultDateIsBalanceUpDate()
         {
             //// Arrange
-            var query = new NormalResultQuery(new Dictionary<int, bool>(), false);
+            var query = new NormalResultQuery(new Dictionary<int, bool>(), false, DefaultLanguage);
             var balanceUpDate = new DateTime(2016, 1, 1);
 
             _reportDataService.GetBalanceUpDate().Returns(balanceUpDate);
@@ -90,7 +89,7 @@
         public void HandleNormalResultQuery_SportsAreNotEmpty_ReturnSelectListItemsOfSport()
         {
             //// Arrange
-            var query = new NormalResultQuery(new Dictionary<int, bool>(), false);
+            var query = new NormalResultQuery(new Dictionary<int, bool>(), false, DefaultLanguage);
             var sports = new List<Sport>
             {
                 new Sport { Id = 1 },
@@ -113,7 +112,7 @@
         public void HandleNormalResultQuery_SportsAreNotEmpty_ReturnSportName()
         {
             //// Arrange
-            var query = new NormalResultQuery(new Dictionary<int, bool>(), false);
+            var query = new NormalResultQuery(new Dictionary<int, bool>(), false, DefaultLanguage);
             var sports = new List<Sport>
             {
                 new Sport { Id = 1 }
@@ -137,7 +136,7 @@
         public void HandleNormalResultQuery_SportsStatusIsNull_ThrowArgumentNullException()
         {
             //// Arrange
-            var query = new NormalResultQuery(null, false);
+            var query = new NormalResultQuery(null, false, DefaultLanguage);
 
             //// Assert
             Assert.Throws<ArgumentNullException>(() => _normalResultHandler.Handle(query));
@@ -147,7 +146,7 @@
         public void HandleNormalResultQuery_AnySportIsSelected_ReturnSelectedSportId()
         {
             //// Arrange
-            var query = new NormalResultQuery(new Dictionary<int, bool>(), false)
+            var query = new NormalResultQuery(new Dictionary<int, bool>(), false, DefaultLanguage)
             {
                 SportId = 1
             };
@@ -170,7 +169,7 @@
         public void HandleNormalResultQuery_SportSelectedIsNotAvailable_ReturnDefaultSportId()
         {
             //// Arrange
-            var query = new NormalResultQuery(new Dictionary<int, bool>(), false)
+            var query = new NormalResultQuery(new Dictionary<int, bool>(), false, DefaultLanguage)
             {
                 SportId = 10
             };
@@ -193,7 +192,7 @@
         public void HandleNormalResultQuery_NoneSportIsSelected_FirstSportIsSelectedByDefault()
         {
             //// Arrange
-            var query = new NormalResultQuery(new Dictionary<int, bool>(), false)
+            var query = new NormalResultQuery(new Dictionary<int, bool>(), false, DefaultLanguage)
             {
                 SportId = 0
             };
@@ -217,7 +216,7 @@
         public void HandleNormalResultQuery_NoSport_NotExecuteGetLeagues()
         {
             //// Arrange
-            var query = new NormalResultQuery(new Dictionary<int, bool>(), false);
+            var query = new NormalResultQuery(new Dictionary<int, bool>(), false, DefaultLanguage);
 
             _normalResultService.GetSports(Arg.Any<DateTime>(), Arg.Any<IDictionary<int, bool>>())
                 .Returns(Enumerable.Empty<Sport>());
@@ -237,7 +236,7 @@
         public void HandleNormalResultQuery_AnySportIsSelected_ExecuteGetLeagues()
         {
             //// Arrange
-            var query = new NormalResultQuery(new Dictionary<int, bool>(), false);
+            var query = new NormalResultQuery(new Dictionary<int, bool>(), false, DefaultLanguage);
 
             _normalResultService.GetSports(Arg.Any<DateTime>(), Arg.Any<IDictionary<int, bool>>())
                 .Returns(new List<Sport> { new Sport { Id = 1 } });
@@ -257,7 +256,7 @@
         public void HandleNormalResultQuery_LeaguesAreNotEmpty_ReturnSelectListItemsOfLeague()
         {
             //// Arrange
-            var query = new NormalResultQuery(new Dictionary<int, bool>(), false);
+            var query = new NormalResultQuery(new Dictionary<int, bool>(), false, DefaultLanguage);
 
             _normalResultService.GetSports(Arg.Any<DateTime>(), Arg.Any<IDictionary<int, bool>>())
                 .Returns(new List<Sport> { new Sport { Id = 1 } });
@@ -276,7 +275,7 @@
         public void HandleNormalResultQuery_LeaguesAreNotEmpty_ReturnLeagueName()
         {
             //// Arrange
-            var query = new NormalResultQuery(new Dictionary<int, bool>(), false);
+            var query = new NormalResultQuery(new Dictionary<int, bool>(), false, DefaultLanguage);
 
             _normalResultService.GetSports(Arg.Any<DateTime>(), Arg.Any<IDictionary<int, bool>>())
                 .Returns(new List<Sport> { new Sport { Id = 1 } });
@@ -298,7 +297,7 @@
         public void HandleNormalResultQuery_WhenCalled_ExecuteGetResults()
         {
             //// Arrange
-            var resultQuery = new NormalResultQuery(new Dictionary<int, bool>(), false)
+            var resultQuery = new NormalResultQuery(new Dictionary<int, bool>(), false, DefaultLanguage)
             {
                 SportId = 1,
                 LeagueId = 2
@@ -320,7 +319,7 @@
         public void HandleNormalResultQuery_WhenCalled_ReturnHtmlResults()
         {
             //// Arrange
-            var resultQuery = new NormalResultQuery(new Dictionary<int, bool>(), false);
+            var resultQuery = new NormalResultQuery(new Dictionary<int, bool>(), false, DefaultLanguage);
             var expectedHtmlResult = "Html Result";
             _normalResultService.GetResults(Arg.Any<NormalResultQuery>()).Returns(expectedHtmlResult);
 

@@ -417,7 +417,6 @@
     <Compile Include="Services\Impl\Products\VirtualRacingResultService.cs" />
     <Compile Include="Services\Impl\ResultEngineAdapter.cs" />
     <Compile Include="Services\Impl\ResultServiceFactory.cs" />
-    <Compile Include="Services\Impl\UserSessionFactory.cs" />
     <Compile Include="Services\INormalResultService.cs" />
     <Compile Include="Services\IOutrightResultService.cs" />
     <Compile Include="Services\IReportDateService.cs" />

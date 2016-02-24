@@ -21,6 +21,7 @@
         private LiveCasinoResultService _liveCasinoResultService;
         private IDynamicRepository _dynamicRepository;
         private IResultEngineAdapter _resultEngineAdapter;
+        private const string DefaultLanguage = "en-US";
 
         [SetUp]
         public void SetUp()
@@ -29,8 +30,6 @@
             _resultEngineAdapter = Substitute.For<IResultEngineAdapter>();
             _liveCasinoResultService = new LiveCasinoResultService(_dynamicRepository, _resultEngineAdapter);
 
-            UserSessionFactory.CurrentSession = Substitute.For<IUserSession>();
-            UserSessionFactory.CurrentSession.Language = "en-US";
         }
 
         [Test]
@@ -44,7 +43,7 @@
         public void GetResultDetails_WhenCalled_ExecuteFetch()
         {
             //// Arrange
-            var query = new NormalResultDetailsQuery
+            var query = new NormalResultDetailsQuery(new Dictionary<int, bool>(), false, DefaultLanguage)
             {
                 MatchId = 1,
                 BetTypeId = 1,
@@ -66,7 +65,7 @@
         public void GetResultDetails_GotDataFromRepository_UpdateDataWithQueryBetType()
         {
             //// Arrange
-            var query = new NormalResultDetailsQuery
+            var query = new NormalResultDetailsQuery(new Dictionary<int, bool>(), false, DefaultLanguage)
             {
                 MatchId = 1,
                 BetTypeId = 1,
@@ -92,7 +91,7 @@
         public void GetResultDetails_GotDataFromRepository_ExecuteHtmlParserWithResultSetting()
         {
             //// Arrange
-            var query = new NormalResultDetailsQuery
+            var query = new NormalResultDetailsQuery(new Dictionary<int, bool>(), false, DefaultLanguage)
             {
                 MatchId = 1,
                 BetTypeId = 1,
