@@ -3,7 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Alpha.Utilities.Extensions;
+    using Sunplus.Agent.Utilities.Extension;
     using Models;
     using Models.Requests;
     using NSubstitute;

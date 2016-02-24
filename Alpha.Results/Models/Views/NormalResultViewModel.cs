@@ -3,7 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Web.Mvc;
-    using Alpha.Utilities.Extensions;
+    using Sunplus.Agent.Utilities.Extension;
     using App_GlobalResources;
 
     public class NormalResultViewModel
