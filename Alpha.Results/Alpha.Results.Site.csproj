@@ -511,9 +511,13 @@
     </Content>
     <Content Include="Web.ConnectionStrings.napinternal.config">
       <DependentUpon>Web.ConnectionStrings.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Views\Cockfighting\Index.cshtml" />
     <Content Include="Views\Keno\Index.cshtml" />
+    <None Include="Web.AppSettings.backupMNLExNapInternal.config">
+      <DependentUpon>Web.AppSettings.config</DependentUpon>
+    </None>
     <None Include="Web.AppSettings.backupMNLI1.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
     </None>
@@ -522,6 +526,9 @@
     </None>
     <None Include="Web.AppSettings.backupMNLNapInternal.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
+    </None>
+    <None Include="Web.backupMNLExNapInternal.config">
+      <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.backupMNLI1.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -536,6 +543,9 @@
       <DependentUpon>Web.ConnectionStrings.config</DependentUpon>
     </None>
     <None Include="Web.ConnectionStrings.bacbupMNLI7.config">
+      <DependentUpon>Web.ConnectionStrings.config</DependentUpon>
+    </None>
+    <None Include="Web.ConnectionStrings.backupMNLExNapInternal.config">
       <DependentUpon>Web.ConnectionStrings.config</DependentUpon>
     </None>
     <None Include="Web.ConnectionStrings.backupMNLNapInternal.config">
