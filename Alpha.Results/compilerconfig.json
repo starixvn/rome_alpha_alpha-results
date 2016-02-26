@@ -1,6 +1,9 @@
 ﻿[
   {
     "outputFile": "Content/result.css",
-    "inputFile": "Content/result.scss"
+    "inputFile": "Content/result.scss",
+    "minify": {
+      "enabled": false
+    }
   }
 ]
