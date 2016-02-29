@@ -57,7 +57,8 @@
                 {
                     { (int)SportType.NumberGame,  UserPermission.IsShowNumberGame },
                     { (int)SportType.LiveCasino,  UserPermission.IsShowLiveCasino },
-                    { (int)SportType.GoldDeluxe,  UserPermission.IsShowGoldDeluxeSettingForCredit }
+                    { (int)SportType.GoldDeluxe,  UserPermission.IsShowGoldDeluxeSettingForCredit },
+                    { (int)SportType.VirtualSports,  UserPermission.IsShowVirtualSports }
                 };
 
                 return sportsStatus;
