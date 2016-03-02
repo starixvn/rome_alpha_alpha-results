@@ -1,14 +1,14 @@
 ﻿namespace Alpha.Results.Site
 {
-    using App_Start;
-    using Auth.Web;
-    using Sunplus.Agent.Utilities;
     using System;
     using System.Reflection;
     using System.Web;
     using System.Web.Mvc;
     using System.Web.Optimization;
     using System.Web.Routing;
+    using App_Start;
+    using Auth.Web;
+    using Sunplus.Agent.Utilities;
 
     public class MvcApplication : System.Web.HttpApplication
     {
@@ -41,7 +41,7 @@
 
             if (!Request.IsLocal)
             {
-                if(ex.Message.Contains("Extend Token Error UserID"))
+                if (ex.Message.Contains("Extend Token Error UserID"))
                 {
                     return;
                 }

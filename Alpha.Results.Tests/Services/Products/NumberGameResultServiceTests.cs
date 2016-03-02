@@ -10,9 +10,7 @@
     using NSubstitute;
     using NUnit.Framework;
     using Site.Services;
-    using Site.Services.Impl;
     using Site.Services.Impl.Products;
-    using Sunplus.Agent.Model.Entities;
 
     [TestFixture]
     public class NumberGameResultServiceTests
@@ -20,6 +18,7 @@
         private NumberGameResultService _numberGamingResultService;
         private INumberGameResultDataAccess _numberGameResultDataAccess;
         private IResultEngineAdapter _resultEngineAdapter;
+        private const string DefaultLanguage = "en-US";
 
         [SetUp]
         public void SetUp()
@@ -27,9 +26,6 @@
             _numberGameResultDataAccess = Substitute.For<INumberGameResultDataAccess>();
             _resultEngineAdapter = Substitute.For<IResultEngineAdapter>();
             _numberGamingResultService = new NumberGameResultService(_numberGameResultDataAccess, _resultEngineAdapter);
-
-            UserSessionFactory.CurrentSession = Substitute.For<IUserSession>();
-            UserSessionFactory.CurrentSession.Language = "en-US";
         }
 
         [Test]
@@ -43,7 +39,7 @@
         public void GetResultDetails_WhenCalled_ExecuteFetch()
         {
             //// Arrange
-            var query = new NormalResultDetailsQuery
+            var query = new NormalResultDetailsQuery(new Dictionary<int, bool>(), false, DefaultLanguage)
             {
                 MatchId = 1
             };
@@ -60,7 +56,7 @@
         public void GetResultDetails_GotDataFromRepository_UpdateDataWithQueryBetType()
         {
             //// Arrange
-            var query = new NormalResultDetailsQuery
+            var query = new NormalResultDetailsQuery(new Dictionary<int, bool>(), false, DefaultLanguage)
             {
                 MatchId = 3
             };
@@ -84,7 +80,7 @@
         public void GetResultDetails_GotDataFromRepository_ExecuteHtmlParserWithResultSetting()
         {
             //// Arrange
-            var query = new NormalResultDetailsQuery
+            var query = new NormalResultDetailsQuery(new Dictionary<int, bool>(), false, DefaultLanguage)
             {
                 MatchId = 1
             };

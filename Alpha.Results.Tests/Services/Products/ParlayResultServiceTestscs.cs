@@ -10,9 +10,7 @@
     using NSubstitute;
     using NUnit.Framework;
     using Site.Services;
-    using Site.Services.Impl;
     using Site.Services.Impl.Products;
-    using Sunplus.Agent.Model.Entities;
 
     [TestFixture]
     public class ParlayResultServiceTestscs
@@ -20,6 +18,7 @@
         private ParlayResultService _parlayResultService;
         private IParlayResultDataAccess _parlayResultDataAccess;
         private IResultEngineAdapter _resultEngineAdapter;
+        private const string DefaultLanguage = "en-US";
 
         [SetUp]
         public void SetUp()
@@ -27,9 +26,6 @@
             _parlayResultDataAccess = Substitute.For<IParlayResultDataAccess>();
             _resultEngineAdapter = Substitute.For<IResultEngineAdapter>();
             _parlayResultService = new ParlayResultService(_parlayResultDataAccess, _resultEngineAdapter);
-
-            UserSessionFactory.CurrentSession = Substitute.For<IUserSession>();
-            UserSessionFactory.CurrentSession.Language = "en-US";
         }
 
         [Test]
@@ -43,7 +39,7 @@
         public void GetResultDetails_WhenCalled_ExecuteFetch()
         {
             //// Arrange
-            var query = new NormalResultDetailsQuery
+            var query = new NormalResultDetailsQuery(new Dictionary<int, bool>(), false, DefaultLanguage)
             {
                 RefNum = 2
             };
@@ -60,7 +56,7 @@
         public void GetResultDetails_GotDataFromRepository_UpdateDataWithQueryBetType()
         {
             //// Arrange
-            var query = new NormalResultDetailsQuery
+            var query = new NormalResultDetailsQuery(new Dictionary<int, bool>(), false, DefaultLanguage)
             {
                 SportId = 1,
                 RefNum = 10,
@@ -80,7 +76,7 @@
 
             //// Assert
             _resultEngineAdapter.Received().HtmlParser(
-                Arg.Is<List<Parlay>>(items => items.Count == 1), 
+                Arg.Is<List<Parlay>>(items => items.Count == 1),
                 Arg.Any<ResultSetting>());
         }
 
@@ -88,7 +84,7 @@
         public void GetResultDetails_GotDataFromRepository_ExecuteHtmlParserWithResultSetting()
         {
             //// Arrange
-            var query = new NormalResultDetailsQuery
+            var query = new NormalResultDetailsQuery(new Dictionary<int, bool>(), false, DefaultLanguage)
             {
                 SportId = 1,
                 RefNum = 10,

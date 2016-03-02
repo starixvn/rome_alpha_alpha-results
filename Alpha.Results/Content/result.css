@@ -243,6 +243,9 @@ table.fn-rs tbody .cl-match div.first-half-last-goal {
   .dropdown .form-control option {
     padding: 5px; }
 
+.select2-dropdown {
+  z-index: 100; }
+
 .width-150 {
   width: 150px; }
 
