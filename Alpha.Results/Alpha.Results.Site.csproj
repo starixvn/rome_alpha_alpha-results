@@ -135,8 +135,8 @@
       <HintPath>..\packages\Fanex.Result.Core-Racing.1.0.0.9\lib\net40\Fanex.Result.Core.Racing.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Fanex.Result.Core.Sportsbook, Version=1.0.2.2, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Result.Core-Sportsbook.1.0.2.2\lib\net40\Fanex.Result.Core.Sportsbook.dll</HintPath>
+    <Reference Include="Fanex.Result.Core.Sportsbook, Version=1.0.2.3, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Result.Core-Sportsbook.1.0.2.3\lib\net40\Fanex.Result.Core.Sportsbook.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="IBCFile, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -542,6 +542,12 @@
     </None>
     <None Include="Web.ConnectionStrings.backupMNLExNapInternal.config">
       <DependentUpon>Web.ConnectionStrings.config</DependentUpon>
+    </None>
+    <None Include="Web.ConnectionStrings.backupMNLI1.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.ConnectionStrings.backupMNLI7.config">
+      <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.ConnectionStrings.backupMNLNapInternal.config">
       <DependentUpon>Web.ConnectionStrings.config</DependentUpon>
