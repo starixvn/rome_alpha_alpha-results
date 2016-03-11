@@ -597,48 +597,48 @@
     </Content>
     <Content Include="Views\Cockfighting\Index.cshtml" />
     <Content Include="Views\Keno\Index.cshtml" />
-    <None Include="Web.AppSettings.backupMNLExNapInternal.config">
+    <Content Include="Web.AppSettings.backupMNLExNapInternal.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
-    </None>
-    <None Include="Web.AppSettings.backupMNLI1.config">
+    </Content>
+    <Content Include="Web.AppSettings.backupMNLI1.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
-    </None>
-    <None Include="Web.AppSettings.backupMNLI7.config">
+    </Content>
+    <Content Include="Web.AppSettings.backupMNLI7.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
-    </None>
-    <None Include="Web.AppSettings.backupMNLNapInternal.config">
+    </Content>
+    <Content Include="Web.AppSettings.backupMNLNapInternal.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
-    </None>
-    <None Include="Web.backupMNLExNapInternal.config">
+    </Content>
+    <Content Include="Web.backupMNLExNapInternal.config">
       <DependentUpon>Web.config</DependentUpon>
-    </None>
-    <None Include="Web.backupMNLI1.config">
+    </Content>
+    <Content Include="Web.backupMNLI1.config">
       <DependentUpon>Web.config</DependentUpon>
-    </None>
-    <None Include="Web.backupMNLI7.config">
+    </Content>
+    <Content Include="Web.backupMNLI7.config">
       <DependentUpon>Web.config</DependentUpon>
-    </None>
-    <None Include="Web.backupMNLNapInternal.config">
+    </Content>
+    <Content Include="Web.backupMNLNapInternal.config">
       <DependentUpon>Web.config</DependentUpon>
-    </None>
-    <None Include="Web.ConnectionStrings.bacbupMNLI1.config">
+    </Content>
+    <Content Include="Web.ConnectionStrings.backupMNLExNapInternal.config">
       <DependentUpon>Web.ConnectionStrings.config</DependentUpon>
-    </None>
-    <None Include="Web.ConnectionStrings.bacbupMNLI7.config">
+    </Content>
+    <Content Include="Web.ConnectionStrings.backupMNLI1.config">
       <DependentUpon>Web.ConnectionStrings.config</DependentUpon>
-    </None>
-    <None Include="Web.ConnectionStrings.backupMNLExNapInternal.config">
+    </Content>
+    <Content Include="Web.ConnectionStrings.backupMNLI7.config">
       <DependentUpon>Web.ConnectionStrings.config</DependentUpon>
-    </None>
-    <None Include="Web.ConnectionStrings.backupMNLI1.config">
+    </Content>
+    <Content Include="Web.ConnectionStrings.backupMNLI1.config">
       <DependentUpon>Web.config</DependentUpon>
-    </None>
-    <None Include="Web.ConnectionStrings.backupMNLI7.config">
+    </Content>
+    <Content Include="Web.ConnectionStrings.backupMNLI7.config">
       <DependentUpon>Web.config</DependentUpon>
-    </None>
-    <None Include="Web.ConnectionStrings.backupMNLNapInternal.config">
+    </Content>
+    <Content Include="Web.ConnectionStrings.backupMNLNapInternal.config">
       <DependentUpon>Web.ConnectionStrings.config</DependentUpon>
-    </None>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -666,7 +666,17 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-  </ItemGroup>
+
+
+
+
+
+  
+
+
+
+
+</ItemGroup>
   <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="App_GlobalResources\Resources.ja-JP.resx" />
