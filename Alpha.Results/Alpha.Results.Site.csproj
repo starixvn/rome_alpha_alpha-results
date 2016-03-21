@@ -564,6 +564,10 @@
     <Content Include="Web.proi7.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
+    <Content Include="Web.sit.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.uati1.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -579,17 +583,7 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-
-
-
-
-
-  
-
-
-
-
-</ItemGroup>
+  </ItemGroup>
   <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="App_GlobalResources\Resources.ja-JP.resx" />
