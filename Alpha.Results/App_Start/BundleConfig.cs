@@ -53,7 +53,8 @@
         {
             bundles.Add(new StyleBundle(ResultCoreStyleBundleUrl)
                 .Include("~/Content/Fanex.Result/fanex.result.css", new CssRewriteUrlTransformWrapper())
-                .Include("~/Content/result.css", new CssRewriteUrlTransformWrapper()));
+                .Include("~/Content/result.css", new CssRewriteUrlTransformWrapper())
+                .Include("~/Content/Fanex.Result.3rdLiveCasino/css/table_w.css", new CssRewriteUrlTransformWrapper()));
         }
     }
 }

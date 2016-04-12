@@ -1,8 +1,8 @@
 ﻿namespace Alpha.Results.Site.Services.Impl
 {
+    using System.Diagnostics.CodeAnalysis;
     using Products;
     using Sunplus.Agent.Model.BL.Definitions;
-    using System.Diagnostics.CodeAnalysis;
 
     public class ResultServiceFactory : IResultServiceFactory
     {
@@ -39,6 +39,9 @@
 
                 case SportType.LiveCasino:
                     return new LiveCasinoResultService();
+
+                case SportType.AllBet:
+                    return new AllBetCasinoResultService();
 
                 case SportType.VirtualHorsesRacing:
                 case SportType.VirtualGreyhounds:
