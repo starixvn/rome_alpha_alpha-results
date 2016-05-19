@@ -5,7 +5,6 @@
     using System.Diagnostics.CodeAnalysis;
     using System.Linq;
     using System.Web.Mvc;
-    using Sunplus.Agent.Utilities.Extension;
     using App_GlobalResources;
     using Fanex.Common.Helper;
     using Fanex.Result.Core.Sportsbook.DTO;
@@ -14,6 +13,7 @@
     using Models.Views;
     using Services;
     using Sunplus.Agent.Model.RemotingRef;
+    using Sunplus.Agent.Utilities.Extension;
 
     public class OutrightResultHandler :
          IRequestHandler<OutrightResultQuery, OutrightResultViewModel>,
@@ -86,9 +86,9 @@
         }
 
         private OutrightResultViewModel GetSportsAndLeagues(
-            OutrightResultViewModel viewModel, 
-            IEnumerable<Outright> outrights, 
-            int selectedSportType, 
+            OutrightResultViewModel viewModel,
+            IEnumerable<Outright> outrights,
+            int selectedSportType,
             int selectedLeagueId)
         {
             Check.Argument.IsNotNull(viewModel, "viewModel");

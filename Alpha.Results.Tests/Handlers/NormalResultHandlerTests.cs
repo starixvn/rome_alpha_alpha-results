@@ -3,16 +3,14 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Sunplus.Agent.Utilities.Extension;
     using Models;
     using Models.Requests;
     using NSubstitute;
     using NUnit.Framework;
     using Site.Handlers;
     using Site.Services;
-    using Site.Services.Impl;
-    using Sunplus.Agent.Model.Entities;
     using Sunplus.Agent.Model.RemotingRef;
+    using Sunplus.Agent.Utilities.Extension;
 
     [TestFixture]
     public class NormalResultHandlerTests
