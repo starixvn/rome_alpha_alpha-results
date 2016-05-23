@@ -395,6 +395,9 @@
     <Content Include="Content\Images\loader3.gif" />
     <Content Include="Content\Images\sprite.png" />
     <Content Include="Global.asax" />
+    <Content Include="Web.uati7.config">
+      <DependentUpon>Web.local.config</DependentUpon>
+    </Content>
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -416,8 +419,38 @@
     </Content>
     <Content Include="Scripts\Cockfighting\cock-fighting-result.js" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Web.backupMNLNapInternal.config">
+      <DependentUpon>Web.local.config</DependentUpon>
+    </Content>
+    <Content Include="Web.backupMNLI7.config">
+      <DependentUpon>Web.local.config</DependentUpon>
+    </Content>
+    <Content Include="Web.backupMNLI1.config">
+      <DependentUpon>Web.local.config</DependentUpon>
+    </Content>
+    <Content Include="Web.backupMNLExNapInternal.config">
+      <DependentUpon>Web.local.config</DependentUpon>
+    </Content>
     <Content Include="Web.config">
       <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.napexternal.config">
+      <DependentUpon>Web.local.config</DependentUpon>
+    </Content>
+    <Content Include="Web.napinternal.config">
+      <DependentUpon>Web.local.config</DependentUpon>
+    </Content>
+    <Content Include="Web.proi1.config">
+      <DependentUpon>Web.local.config</DependentUpon>
+    </Content>
+    <Content Include="Web.proi7.config">
+      <DependentUpon>Web.local.config</DependentUpon>
+    </Content>
+    <Content Include="Web.sit.config">
+      <DependentUpon>Web.local.config</DependentUpon>
+    </Content>
+    <Content Include="Web.uati1.config">
+      <DependentUpon>Web.local.config</DependentUpon>
     </Content>
   </ItemGroup>
   <ItemGroup>
@@ -609,18 +642,6 @@
     <Content Include="Web.AppSettings.backupMNLNapInternal.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
     </Content>
-    <Content Include="Web.backupMNLExNapInternal.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <Content Include="Web.backupMNLI1.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <Content Include="Web.backupMNLI7.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <Content Include="Web.backupMNLNapInternal.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
     <Content Include="Web.ConnectionStrings.backupMNLExNapInternal.config">
       <DependentUpon>Web.ConnectionStrings.config</DependentUpon>
     </Content>
@@ -630,43 +651,13 @@
     <Content Include="Web.ConnectionStrings.backupMNLI7.config">
       <DependentUpon>Web.ConnectionStrings.config</DependentUpon>
     </Content>
-    <Content Include="Web.ConnectionStrings.backupMNLI1.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <Content Include="Web.ConnectionStrings.backupMNLI7.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
     <Content Include="Web.ConnectionStrings.backupMNLNapInternal.config">
       <DependentUpon>Web.ConnectionStrings.config</DependentUpon>
     </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-    <Content Include="Web.local.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <Content Include="Web.proi1.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <Content Include="Web.proi7.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <Content Include="Web.sit.config">
-      <DependentUpon>Web.config</DependentUpon>
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Web.uati1.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <Content Include="Web.uati7.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <Content Include="Web.napexternal.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <Content Include="Web.napinternal.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
+    <Content Include="Web.local.config" />
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
