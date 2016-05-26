@@ -1,14 +1,16 @@
 ﻿namespace Alpha.Results.Site
 {
+    using App_Start;
+    using Auth.Web;
+    using ONEbook.UM.Filters;
+    using Sunplus.Agent.Utilities;
     using System;
     using System.Reflection;
     using System.Web;
+    using System.Web.Http;
     using System.Web.Mvc;
     using System.Web.Optimization;
     using System.Web.Routing;
-    using App_Start;
-    using Auth.Web;
-    using Sunplus.Agent.Utilities;
 
     public class MvcApplication : System.Web.HttpApplication
     {
@@ -22,6 +24,8 @@
             Fanex.Data.Configuration.DbSettingProviderManager.Current.Start();
 
             ShareSession.Init();
+
+            GlobalFilters.Filters.Add(new CheckUMFilter());
 
             Logs.WriteInfo("Alpha - Results - Application Start");
         }
