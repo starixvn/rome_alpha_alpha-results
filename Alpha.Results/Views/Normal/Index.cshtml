@@ -5,12 +5,6 @@
 @model NormalResultViewModel
 
 
-@section ComponentStyles
-{
-    <link href="/contents/components/datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
-    <link href="/contents/components/select2/css/select2.min.css" rel="stylesheet" />
-}
-
 <div role="tabpanel" class="tab-pane active" id="normal">
     <div class="row filter">
         @using (Html.BeginForm("Index", "Normal", FormMethod.Get, new { @id = "result-filter" }))
@@ -21,7 +15,7 @@
                     <div class="input-group date" id="dpkContainer">
                         @Html.EditorFor(model => model.ResultDate, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
                         <span class="input-group-addon">
-                            <span class="calendar"></span>
+                            <span class="icon-calendar"></span>
                         </span>
                     </div>
                 </div>
@@ -78,9 +72,8 @@
 
 @section Scripts
 {
-    <script type="text/javascript" src="/contents/components/datetimepicker/js/datepicker.min.js"></script>
-    <script type="text/javascript" src="/contents/components/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
-    <script type="text/javascript" src="/contents/components/select2/js/select2.min.js"></script>
+
+
     @Scripts.Render(BundleConfig.NormalResultJavascriptBundleUrl)
 }
 

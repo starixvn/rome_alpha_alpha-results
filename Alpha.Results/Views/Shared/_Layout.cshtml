@@ -3,7 +3,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@Html.Raw(ViewBag.Title)</title>
-    <link href="/contents/css/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/assets/bundles/site-results/default.min.css" rel="stylesheet" />
     
     @RenderSection("ComponentStyles", false)
 
@@ -30,9 +30,7 @@
 
     @Html.Hidden("RootURL", HttpContext.Current.Response.ApplyAppPathModifier("~/"))
 
-    <script type="text/javascript" src="/contents/libs/jquery/jquery-1.11.3.min.js"></script>
-    <script type="text/javascript" src="/contents/libs/moment/moment.js"></script>
-    <script type="text/javascript" src="/contents/css/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/assets/bundles/site-results/default.js"></script>
 
     @RenderSection("Scripts", false)
 </body>
