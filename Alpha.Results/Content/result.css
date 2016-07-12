@@ -22,6 +22,8 @@
     font-size: 13px; }
   .tab-content .filter [class^="col-"] {
     margin-bottom: 15px; }
+  .tab-content .filter .main-option {
+    margin-bottom: 0; }
   .tab-content .filter .txt-red {
     color: #f00; }
   .tab-content .filter .form-group {
