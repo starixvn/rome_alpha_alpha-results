@@ -15,7 +15,7 @@
     display: inline-block;
     width: 200px;
     vertical-align: middle;
-    margin: 0 15px 0 5px; }
+    margin: 0 8px 0 5px; }
     .tab-content .control.date {
       width: 130px; }
   .tab-content .btn {
@@ -24,6 +24,10 @@
     margin-bottom: 15px; }
   .tab-content .filter .txt-red {
     color: #f00; }
+  .tab-content .filter .form-group {
+    display: inline-block; }
+    .tab-content .filter .form-group label {
+      font-weight: normal; }
   .tab-content .filter .sport-info .btn {
     width: 100%;
     text-align: left;
@@ -56,6 +60,10 @@
   max-height: none; }
 
 /********************** Table ***************************/
+table {
+  font-family: Roboto, Arial, Tahoma, helvetica, sans-serif;
+  font-size: 13px; }
+
 table.fn-rs thead th {
   background: #666;
   color: #fff; }
@@ -81,9 +89,10 @@ table.fn-rs thead th {
   box-sizing: content-box; }
 
 table.fn-rs thead th {
-  padding: 8px 6px;
+  padding: 4px 6px;
   border-bottom: none;
-  font-weight: bold; }
+  font-weight: bold;
+  height: 24px; }
 
 table.fn-rs .cl-ht-score, table.fn-rs .cl-f-score, table.fn-rs .cl-ht-score, table.fn-rs .cl-f-score {
   width: 100px; }
@@ -117,7 +126,9 @@ table.fn-rs tbody .cl-match div.first-half-last-goal {
 .input-group.date .input-group-addon {
   background: transparent;
   border: none;
-  padding: 6px 8px; }
+  padding: 0px 8px;
+  position: relative;
+  top: 3px; }
 
 .input-group.date .form-control {
   -webkit-border-radius: 2px;

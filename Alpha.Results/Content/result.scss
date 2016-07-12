@@ -29,7 +29,7 @@ body {
         display: inline-block;
         width: 200px;
         vertical-align: middle;
-        margin: 0 15px 0 5px;
+        margin: 0 8px 0 5px;
 
         &.date {
             width: 130px;
@@ -47,6 +47,11 @@ body {
 
         .txt-red {
             color: #f00;
+        }
+
+        .form-group {
+            display: inline-block;
+            label { font-weight: normal; }
         }
 
         .sport-info {
@@ -99,6 +104,11 @@ body {
     }
 }
 /********************** Table ***************************/
+table {
+    font-family: $font-family;
+    font-size: $font-size;
+}
+
 table.fn-rs {
     thead th {
         background: $primary-color;
@@ -134,9 +144,10 @@ table.fn-rs thead th {
 }
 
 table.fn-rs thead th {
-    padding: 8px 6px;
+    padding: 4px 6px;
     border-bottom: none;
     font-weight: bold;
+    height: 24px;
 }
 
 table.fn-rs, table.fn-rs {
@@ -185,7 +196,9 @@ table.fn-rs tbody .cl-match div {
     .input-group-addon {
         background: transparent;
         border: none;
-        padding: 6px 8px;
+        padding: 0px 8px;
+        position: relative;
+        top: 3px;
     }
 
     .form-control {
