@@ -395,8 +395,8 @@
     <Content Include="Content\Fanex.Result\images\bg_header03.jpg" />
     <Content Include="Content\Fanex.Result\images\bg_header04.jpg" />
     <Content Include="Content\Fanex.Result\images\goal-icon.png" />
+    <Content Include="Content\Images\ajax-loader.gif" />
     <Content Include="Content\Images\goal-icon.png" />
-    <Content Include="Content\Images\loader3.gif" />
     <Content Include="Content\Images\sprite.png" />
     <Content Include="Global.asax" />
     <Content Include="Web.uati7.config">
