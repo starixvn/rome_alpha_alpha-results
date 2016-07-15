@@ -401,6 +401,7 @@
     <Content Include="Global.asax" />
     <Content Include="Web.uati7.config">
       <DependentUpon>Web.local.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
@@ -425,36 +426,46 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Web.backupMNLNapInternal.config">
       <DependentUpon>Web.local.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.backupMNLI7.config">
       <DependentUpon>Web.local.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.backupMNLI1.config">
       <DependentUpon>Web.local.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.backupMNLExNapInternal.config">
       <DependentUpon>Web.local.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.napexternal.config">
       <DependentUpon>Web.local.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.napinternal.config">
       <DependentUpon>Web.local.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.proi1.config">
       <DependentUpon>Web.local.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.proi7.config">
       <DependentUpon>Web.local.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.sit.config">
       <DependentUpon>Web.local.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.uati1.config">
       <DependentUpon>Web.local.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
@@ -624,7 +635,9 @@
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-    <Content Include="Web.local.config" />
+    <Content Include="Web.local.config">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
