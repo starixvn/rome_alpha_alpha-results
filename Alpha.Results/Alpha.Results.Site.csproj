@@ -508,6 +508,7 @@
     <Compile Include="Handlers\KenoResultHandler.cs" />
     <Compile Include="Handlers\NormalResultHandler.cs" />
     <Compile Include="Handlers\OutrightResultHandler.cs" />
+    <Compile Include="Helpers\StaticResources.cs" />
     <Compile Include="Models\Dtos\BalanceUpAndMoveBetsDate.cs" />
     <Compile Include="Models\League.cs" />
     <Compile Include="Models\Requests\CockfightingResultQuery.cs" />
