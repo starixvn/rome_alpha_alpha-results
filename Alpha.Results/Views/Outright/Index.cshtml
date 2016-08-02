@@ -24,7 +24,7 @@
                     <div class="input-group date" id="dpk-fromdate">
                         @Html.EditorFor(model => model.FromDate, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
                         <span class="input-group-addon">
-                            <span class="calendar"></span>
+                            <span class="icon-calendar"></span>
                         </span>
                     </div>
                 </div>
@@ -33,13 +33,13 @@
                     <div class="input-group date" id="dpk-todate">
                         @Html.EditorFor(model => model.ToDate, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
                         <span class="input-group-addon">
-                            <span class="calendar"></span>
+                            <span class="icon-calendar"></span>
                         </span>
                     </div>
                 </div>
-                <input type="submit" value="@Resources.Submit" class="btn btn-submit" id="btn-submit" />
-                <input type="submit" value="@Model.Today" class="btn btn-default btn-other-day" id="btn-today" />
-                <input type="submit" value="@Model.Yesterday" class="btn btn-default btn-other-day" id="btn-yesterday" />
+                <input type="submit" value="@Resources.Submit" class="btn-submit" id="btn-submit" />
+                <input type="submit" value="@Model.Today" class="btn-default btn-other-day" id="btn-today" />
+                <input type="submit" value="@Model.Yesterday" class="btn-default btn-other-day" id="btn-yesterday" />
             </div>
             <div class="col-sm-12">
                 <span class="txt-red">*</span> @Model.MinResultDateMessage
@@ -72,9 +72,5 @@
 
 @section scripts
 {
-    <script type="text/javascript" src="/contents/components/datetimepicker/js/datepicker.min.js"></script>
-    <script type="text/javascript" src="/contents/components/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
-    <script type="text/javascript" src="/contents/components/select2/js/select2.min.js"></script>
-
     @Scripts.Render(BundleConfig.OutrightResultJavascriptBundleUrl)
 }

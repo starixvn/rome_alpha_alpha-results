@@ -5,32 +5,28 @@
 @model NormalResultViewModel
 
 
-@section ComponentStyles
-{
-    <link href="/contents/components/datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
-    <link href="/contents/components/select2/css/select2.min.css" rel="stylesheet" />
-}
-
 <div role="tabpanel" class="tab-pane active" id="normal">
     <div class="row filter">
         @using (Html.BeginForm("Index", "Normal", FormMethod.Get, new { @id = "result-filter" }))
         {
-            <div class="col-sm-12">
-                <span class="txt">@Resources.Date</span>
-                <div class="control date">
-                    <div class="input-group date" id="dpkContainer">
-                        @Html.EditorFor(model => model.ResultDate, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-                        <span class="input-group-addon">
-                            <span class="calendar"></span>
-                        </span>
+            <div class="col-sm-12 main-option">
+                <div class="form-group">
+                    <label class="txt">@Resources.Date</label>
+                    <div class="control date">
+                        <div class="input-group date" id="dpkContainer">
+                            @Html.EditorFor(model => model.ResultDate, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            <span class="input-group-addon">
+                                <span class="icon-calendar"></span>
+                            </span>
+                        </div>
                     </div>
                 </div>
-
-                <input type="submit" value="@Resources.Submit" id="selected-day-results" class="btn btn-submit" />
-                <input type="submit" value="@Model.Today.ToShortDateFormatWithSlash()" id="today-results" class="btn btn-default btn-other-day" />
-                <input type="submit" value="@Model.Yesterday.ToShortDateFormatWithSlash()" id="yesterday-results" class="btn btn-default btn-other-day" />
+                <div class="form-group">
+                    <input type="submit" value="@Resources.Submit" id="selected-day-results" class="btn-submit" />
+                    <input type="submit" value="@Model.Today.ToShortDateFormatWithSlash()" id="today-results" class="btn-default btn-other-day" />
+                    <input type="submit" value="@Model.Yesterday.ToShortDateFormatWithSlash()" id="yesterday-results" class="btn-default btn-other-day" />
+                </div>
             </div>
-
             <div class="col-sm-12">
                 <span class="txt-red">*</span> @Model.MinResultDateMessage
             </div>
@@ -38,14 +34,17 @@
             if (Model.Sports.Any())
             {
                 <div class="col-sm-12 sport-info">
-                    <span class="txt">@Resources.Sport</span>
-                    <div class="dropdown control">
-                        @Html.DropDownListFor(model => model.SportId, Model.Sports, new { @class = "form-control" })
+                    <div class="form-group">
+                        <label class="txt">@Resources.Sport</label>
+                        <div class="dropdown control">
+                            @Html.DropDownListFor(model => model.SportId, Model.Sports, new { @class = "form-control" })
+                        </div>
                     </div>
-
-                    <span class="txt">@Resources.League</span>
-                    <div class="dropdown control league-content">
-                        @Html.DropDownListFor(model => model.LeagueId, Model.Leagues, Resources.ShowAllLeagues, new { @class = "form-control", @onchange = "this.form.submit()" })
+                    <div class="form-group">
+                        <label class="txt">@Resources.League</label>
+                        <div class="dropdown control league-content">
+                            @Html.DropDownListFor(model => model.LeagueId, Model.Leagues, Resources.ShowAllLeagues, new { @class = "form-control", @onchange = "this.form.submit()" })
+                        </div>
                     </div>
                     <span class="icon-excel" id="excel-btn"></span>
                 </div>
@@ -69,7 +68,7 @@
         </div>
 
         <div class="modal-body" id="detail-result-body">
-            <img id="loading-image" src="~/Content/Images/loader3.gif" />
+            <img id="loading-image" src="~/Content/Images/ajax-loader.gif" />
             <iframe src="about:blank" frameborder="0" scrolling="yes" height="400px" id="result-detail-frm" name="result-detail-frm" style="display:none;width:100%;"></iframe>
         </div>
     </div>
@@ -78,9 +77,8 @@
 
 @section Scripts
 {
-    <script type="text/javascript" src="/contents/components/datetimepicker/js/datepicker.min.js"></script>
-    <script type="text/javascript" src="/contents/components/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
-    <script type="text/javascript" src="/contents/components/select2/js/select2.min.js"></script>
+
+
     @Scripts.Render(BundleConfig.NormalResultJavascriptBundleUrl)
 }
 
