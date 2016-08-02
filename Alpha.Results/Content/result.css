@@ -226,17 +226,22 @@ body.keno iframe {
   #result-details .modal-dialog .modal-header .close {
     margin-top: 10px; }
 
-#detail-result-body table {
-  border-collapse: separate; }
-  #detail-result-body table tr:last-child td {
+table {
+  border-spacing: 0;
+  border: 0; }
+
+#detail-result-body table:not(.parlay) {
+  border: 1px solid #cbc9ca; }
+  #detail-result-body table:not(.parlay) tfoot tr:first-child td {
     border-bottom: 1px solid #cbc9ca; }
-  #detail-result-body table tr td {
-    border-bottom: none; }
-    #detail-result-body table tr td:not(:last-child) {
-      border-right: none; }
-  #detail-result-body table:first-child tr:nth-child(odd) td:first-child,
-  #detail-result-body table:first-child tr:nth-child(odd) td:last-child {
-    border-bottom: 1px solid #cbc9ca; }
-  #detail-result-body table:first-child tr:nth-child(even) td:last-child {
-    border-right: none; }
+  #detail-result-body table:not(.parlay) thead tr th, #detail-result-body table:not(.parlay) tr th {
+    font-weight: normal; }
+  #detail-result-body table:not(.parlay) tr td, #detail-result-body table:not(.parlay) thead tr th, #detail-result-body table:not(.parlay) tr th {
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-right: 1px solid #cbc9ca;
+    border-top: 1px solid #cbc9ca;
+    white-space: nowrap; }
+  #detail-result-body table:not(.parlay) tbody + tfoot tr:first-child td {
+    border-top: 1px solid #cbc9ca; }
 
