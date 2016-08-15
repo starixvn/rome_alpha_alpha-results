@@ -1,9 +1,9 @@
 ﻿[
-  {
-    "outputFile": "Content/result.css",
-    "inputFile": "Content/result.scss",
-    "minify": {
-      "enabled": false
+    {
+        "outputFile": "Content/result.css",
+        "inputFile": "Content/result.scss",
+        "minify": {
+            "enabled": false
+        }
     }
-  }
 ]
