@@ -69,19 +69,20 @@ table {
   font-family: Roboto, Arial, Tahoma, helvetica, sans-serif;
   font-size: 13px; }
 
-table.fn-rs thead th {
-  background: #666;
-  color: #fff; }
-
-table.fn-rs tbody td {
-  padding: 5px;
-  vertical-align: middle; }
-  table.fn-rs tbody td.cl-league {
-    background: #f4f5e0;
-    text-transform: uppercase;
-    color: #333333;
-    font-weight: bold;
-    line-height: initial; }
+table.fn-rs {
+  min-width: unset; }
+  table.fn-rs thead th {
+    background: #666;
+    color: #fff; }
+  table.fn-rs tbody td {
+    padding: 5px;
+    vertical-align: middle; }
+    table.fn-rs tbody td.cl-league {
+      background: #f4f5e0;
+      text-transform: uppercase;
+      color: #333333;
+      font-weight: bold;
+      line-height: initial; }
 
 table.fn-rs tbody tr.even {
   background: #eaeaed; }

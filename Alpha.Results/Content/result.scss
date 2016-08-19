@@ -115,6 +115,7 @@ table {
 }
 
 table.fn-rs {
+    min-width: unset;
     thead th {
         background: $primary-color;
         color: #fff;
