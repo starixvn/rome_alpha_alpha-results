@@ -308,8 +308,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\SPNames\Internal\Results.xml" />
     <Content Include="App_Data\SPNames\LOCAL\Results.xml" />
-    <Content Include="App_Data\SPNames\PRO\Results.xml" />
+    <Content Include="App_Data\SPNames\PRO\Results.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="App_Data\SPNames\UAT\Results.xml" />
     <Content Include="Content\Fanex.Result.3rdLiveCasino\css\images\layout\btn_UI04.png" />
     <Content Include="Content\Fanex.Result.3rdLiveCasino\css\images\layout\icon_UI02.png" />
