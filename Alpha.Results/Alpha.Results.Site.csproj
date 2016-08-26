@@ -308,8 +308,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\SPNames\INTERNAL\Results.xml" />
     <Content Include="App_Data\SPNames\LOCAL\Results.xml" />
-    <Content Include="App_Data\SPNames\PRO\Results.xml" />
+    <Content Include="App_Data\SPNames\PRO\Results.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="App_Data\SPNames\UAT\Results.xml" />
     <Content Include="Content\Fanex.Result.3rdLiveCasino\css\images\layout\btn_UI04.png" />
     <Content Include="Content\Fanex.Result.3rdLiveCasino\css\images\layout\icon_UI02.png" />
@@ -401,6 +404,7 @@
     <Content Include="Global.asax" />
     <Content Include="Web.uati7.config">
       <DependentUpon>Web.local.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
@@ -425,36 +429,46 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Web.backupMNLNapInternal.config">
       <DependentUpon>Web.local.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.backupMNLI7.config">
       <DependentUpon>Web.local.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.backupMNLI1.config">
       <DependentUpon>Web.local.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.backupMNLExNapInternal.config">
       <DependentUpon>Web.local.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.napexternal.config">
       <DependentUpon>Web.local.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.napinternal.config">
       <DependentUpon>Web.local.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.proi1.config">
       <DependentUpon>Web.local.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.proi7.config">
       <DependentUpon>Web.local.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.sit.config">
       <DependentUpon>Web.local.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.uati1.config">
       <DependentUpon>Web.local.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
@@ -601,37 +615,11 @@
     <Content Include="Web.AppSettings.uati7.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
     </Content>
-    <Content Include="Web.ConnectionStrings.config" />
-    <Content Include="Web.ConnectionStrings.local.config">
-      <DependentUpon>Web.ConnectionStrings.config</DependentUpon>
-    </Content>
-    <Content Include="Web.ConnectionStrings.proi1.config">
-      <DependentUpon>Web.ConnectionStrings.config</DependentUpon>
-    </Content>
-    <Content Include="Web.ConnectionStrings.proi7.config">
-      <DependentUpon>Web.ConnectionStrings.config</DependentUpon>
-    </Content>
-    <Content Include="Web.ConnectionStrings.sit.config">
-      <DependentUpon>Web.ConnectionStrings.config</DependentUpon>
-    </Content>
-    <Content Include="Web.ConnectionStrings.uati1.config">
-      <DependentUpon>Web.ConnectionStrings.config</DependentUpon>
-    </Content>
-    <Content Include="Web.ConnectionStrings.uati7.config">
-      <DependentUpon>Web.ConnectionStrings.config</DependentUpon>
-    </Content>
     <Content Include="Web.AppSettings.napexternal.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
     </Content>
     <Content Include="Web.AppSettings.napinternal.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
-    </Content>
-    <Content Include="Web.ConnectionStrings.napexternal.config">
-      <DependentUpon>Web.ConnectionStrings.config</DependentUpon>
-    </Content>
-    <Content Include="Web.ConnectionStrings.napinternal.config">
-      <DependentUpon>Web.ConnectionStrings.config</DependentUpon>
-      <SubType>Designer</SubType>
     </Content>
     <Content Include="Views\Cockfighting\Index.cshtml" />
     <Content Include="Views\Keno\Index.cshtml" />
@@ -647,22 +635,12 @@
     <Content Include="Web.AppSettings.backupMNLNapInternal.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
     </Content>
-    <Content Include="Web.ConnectionStrings.backupMNLExNapInternal.config">
-      <DependentUpon>Web.ConnectionStrings.config</DependentUpon>
-    </Content>
-    <Content Include="Web.ConnectionStrings.backupMNLI1.config">
-      <DependentUpon>Web.ConnectionStrings.config</DependentUpon>
-    </Content>
-    <Content Include="Web.ConnectionStrings.backupMNLI7.config">
-      <DependentUpon>Web.ConnectionStrings.config</DependentUpon>
-    </Content>
-    <Content Include="Web.ConnectionStrings.backupMNLNapInternal.config">
-      <DependentUpon>Web.ConnectionStrings.config</DependentUpon>
-    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-    <Content Include="Web.local.config" />
+    <Content Include="Web.local.config">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
