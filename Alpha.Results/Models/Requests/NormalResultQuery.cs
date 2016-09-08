@@ -35,6 +35,10 @@
 
         public DateTime ResultDate { get; set; }
 
+        public string TransDesc { get; set; }
+
+        public string BetCheck { get; set; }
+
         public int SportId { get; set; }
 
         public int LeagueId { get; set; }
