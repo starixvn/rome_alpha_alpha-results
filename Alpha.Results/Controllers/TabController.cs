@@ -2,7 +2,6 @@
 {
     using System.Web.Mvc;
     using Models.Views;
-    using Sunplus.Agent.Model.Base;
     using Sunplus.Agent.Model.Entities.Permission;
 
     public class TabController : Controller
@@ -15,8 +14,7 @@
         [ChildActionOnly]
         public ActionResult Index(string tabName = "Normal")
         {
-            IProductPermission productPermission = new ProductPermission();
-            var isEnableCockfighting = productPermission.IsEnableProduct(CockFightingProductId);
+            var isEnableCockfighting = UserPermission.IsEnableProduct(CockFightingProductId);
 
             return PartialView(new TabViewModel(tabName, UserPermission.EnableKeno, isEnableCockfighting));
         }
