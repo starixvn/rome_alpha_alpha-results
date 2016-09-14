@@ -313,6 +313,9 @@
     <Content Include="App_Data\SPNames\PRO\Results.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="App_Data\SPNames\SIT\Results.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="App_Data\SPNames\UAT\Results.xml" />
     <Content Include="Content\Fanex.Result\Allbet\css\button.css" />
     <Content Include="Content\Fanex.Result\Allbet\css\images\layout\btn_UI04.png" />
