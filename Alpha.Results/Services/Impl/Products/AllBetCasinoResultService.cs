@@ -22,9 +22,9 @@
         {
             Check.Argument.IsNotNull(detailsRequest, "detailsRequest");
 
-            var allbetResultService = new BuilderService();
+            var allbetResultService = new AllbetResultBuilder();
 
-            return allbetResultService.Render(detailsRequest.BetTypeId.ToString(), detailsRequest.Language);
+            return allbetResultService.Render(detailsRequest.TransDesc, detailsRequest.BetCheck, detailsRequest.BetTypeId.ToString(), detailsRequest.Language);
         }
     }
 }
