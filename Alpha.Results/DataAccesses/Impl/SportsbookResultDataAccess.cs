@@ -222,7 +222,7 @@
                 MatchId = criteria.MatchId,
                 Color = string.Empty,
                 MatchCode = reader["matchcode"] != DBNull.Value ? Convert.ToString(reader["matchcode"]) : string.Empty,
-                GoalRecord = string.Empty,
+                GoalRecord = reader["goalrecord"] != DBNull.Value ? reader["goalrecord"].ToString() : string.Empty,
                 IsHTCal = false,
                 Calculate = false,
                 RefNo = string.Empty,
