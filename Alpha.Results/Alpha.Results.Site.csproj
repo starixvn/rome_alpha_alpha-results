@@ -678,11 +678,17 @@
     <Content Include="Views\NG2\Index.cshtml" />
     <Content Include="Views\NG2\ParlayDetail.cshtml" />
     <Content Include="Views\NG2\TicketDetail.cshtml" />
+    <Content Include="Web.AppSettings.local2.config">
+      <DependentUpon>Web.AppSettings.config</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <Content Include="Web.local.config">
       <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.local2.config">
+      <DependentUpon>Web.local.config</DependentUpon>
     </Content>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
