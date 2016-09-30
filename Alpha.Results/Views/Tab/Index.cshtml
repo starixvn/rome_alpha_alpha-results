@@ -22,4 +22,9 @@
     </li>
 }
 
-
+@if (Model.IsEnableNG2)
+{
+    <li role="presentation" class="@((Model.SelectedTabName == "ng2") ? "active" : string.Empty)">
+        @Html.ActionLink(Fanex.Products.ProductManager.GetProductName(Sunplus.Agent.Model.Definitions.ProductIdConstants.NG2), "index", "ng2", null, new { id = "tabng2" })
+    </li>
+}
