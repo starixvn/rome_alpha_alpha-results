@@ -11,7 +11,7 @@
         {
             string controllerName = string.Format("..{0}", MicroSites.NG2ResultPath);
 
-            return RedirectToAction("Index", controllerName);
+            return View("~/Views/NG2/Index.cshtml", null, controllerName);
         }
 
         [HttpGet]
