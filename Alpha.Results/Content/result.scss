@@ -16,15 +16,17 @@ body {
     position: absolute;
     min-width: 100%;
     height: 100%;
-
     > body {
         background: #f4f4f4;
     }
 }
 
+.ng2-container {
+    overflow: hidden;
+}
 
 .tab-content {
-    padding: 15px 0;
+    padding: 16px 0;
 
     .control {
         display: inline-block;
@@ -36,7 +38,7 @@ body {
             width: 130px;
         }
     }
-
+    
     .btn {
         font-size: 13px;
     }
@@ -45,10 +47,7 @@ body {
         [class^="col-"] {
             margin-bottom: 15px;
         }
-
-        .main-option {
-            margin-bottom: 0;
-        }
+        .main-option { margin-bottom: 0; }
 
         .txt-red {
             color: #f00;
@@ -56,10 +55,7 @@ body {
 
         .form-group {
             display: inline-block;
-
-            label {
-                font-weight: normal;
-            }
+            label { font-weight: normal; }
         }
 
         .sport-info {
@@ -98,6 +94,14 @@ body {
         font-size: 20px;
         color: #1f7244;
     }
+
+    .ng2 {
+        position: absolute;
+        left: 0;
+        top: 56px;
+        bottom: 0;
+        right: 0;
+    }
 }
 
 .main-content {
@@ -123,7 +127,6 @@ table {
 
 table.fn-rs {
     min-width: unset;
-
     thead th {
         background: $primary-color;
         color: #fff;
@@ -133,7 +136,6 @@ table.fn-rs {
         td {
             padding: 5px;
             vertical-align: middle;
-
             &.cl-league {
                 background: #f4f5e0;
                 text-transform: uppercase;
@@ -198,14 +200,6 @@ table.fn-rs tbody .cl-match div {
     &.first-half-last-goal {
         background: url($goal-icon) no-repeat no-repeat -9px -83px;
     }
-}
-
-table.fn-rs tbody .cl-group-name {
-    vertical-align: middle;
-    font-weight: bold;
-    line-height: 7px;
-    height: 21px;
-    text-align: center;
 }
 
 /************************** Textbox **********************************/
@@ -303,7 +297,6 @@ body.keno iframe {
 
 #result-details .modal-dialog {
     margin: 30px auto;
-
     .modal-header {
         .close {
             margin-top: 10px;
@@ -312,7 +305,6 @@ body.keno iframe {
 }
 
 $table-border-color: #cbc9ca;
-
 table {
     border-spacing: 0;
     border: 0;
@@ -341,3 +333,7 @@ table {
         border-top: 1px solid $table-border-color;
     }
 }
+
+
+
+
