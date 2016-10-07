@@ -9,8 +9,11 @@
   .ifr-result > body {
     background: #f4f4f4; }
 
+.ng2-container {
+  overflow: hidden; }
+
 .tab-content {
-  padding: 15px 0; }
+  padding: 16px 0; }
   .tab-content .control {
     display: inline-block;
     width: 200px;
@@ -52,6 +55,12 @@
     cursor: pointer;
     font-size: 20px;
     color: #1f7244; }
+  .tab-content .ng2 {
+    position: absolute;
+    left: 0;
+    top: 42px;
+    bottom: 0;
+    right: 0; }
 
 .main-content .fn-rs-content-header {
   padding-right: 0;
@@ -123,13 +132,6 @@ table.fn-rs tbody .cl-match div.first-half-first-goal {
 
 table.fn-rs tbody .cl-match div.first-half-last-goal {
   background: url("images/goal-icon.png") no-repeat no-repeat -9px -83px; }
-
-table.fn-rs tbody .cl-group-name {
-  vertical-align: middle;
-  font-weight: bold;
-  line-height: 7px;
-  height: 21px;
-  text-align: center; }
 
 /************************** Textbox **********************************/
 .input-group.date .icon-calendar {
