@@ -664,6 +664,7 @@
     <Content Include="Web.AppSettings.backupMNLNapInternal.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
     </Content>
+    <Content Include="Views\Shared\Piwik.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
