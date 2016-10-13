@@ -1,7 +1,9 @@
 ﻿namespace Alpha.Results.Site.Controllers
 {
+    using System.Diagnostics.CodeAnalysis;
     using System.Globalization;
     using System.Threading;
+    using System.Web;
     using System.Web.Mvc;
     using System.Web.Mvc.Filters;
     using System.Web.Routing;
@@ -12,17 +14,36 @@
     {
         private const string DefaultLanguage = "en-US";
 
-        private static readonly CultureInfo DefaultCulture = CultureInfo.CreateSpecificCulture(DefaultLanguage);
+        private CultureInfo defaultCulture = CultureInfo.CreateSpecificCulture(DefaultLanguage);
 
+        [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0", Justification = "Reviewed!")]
         protected override void OnAuthentication(AuthenticationContext filterContext)
         {
             base.OnAuthentication(filterContext);
 
-            if (UserSession.Current.CustId == 0)
+            if (!filterContext.HttpContext.User.Identity.IsAuthenticated
+                || UserSession.Current.UserId <= 0)
             {
-                Response.Redirect(FormsAuthentication.LoginUrl, true);
+                UnAuthentication(filterContext);
+            }
+        }
 
-                return;
+        private void UnAuthentication(AuthenticationContext filterContext)
+        {
+            HttpResponseBase response = filterContext.HttpContext.Response;
+
+            if (filterContext.HttpContext.Request.IsAjaxRequest())
+            {
+                response.Clear();
+                response.Write("{ \"message\": \"You are not authorized on this function!\" }");
+                filterContext.Result = new HttpUnauthorizedResult();
+                filterContext.Result.ExecuteResult(filterContext.Controller.ControllerContext);
+                response.TrySkipIisCustomErrors = true;
+                response.End();
+            }
+            else
+            {
+                filterContext.Result = new RedirectResult(FormsAuthentication.LoginUrl);
             }
         }
 
@@ -51,8 +72,8 @@
             Thread.CurrentThread.CurrentCulture = new CultureInfo(cultureName);
             Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture;
 
-            Thread.CurrentThread.CurrentCulture.DateTimeFormat = DefaultCulture.DateTimeFormat;
-            Thread.CurrentThread.CurrentCulture.NumberFormat = DefaultCulture.NumberFormat;
+            Thread.CurrentThread.CurrentCulture.DateTimeFormat = defaultCulture.DateTimeFormat;
+            Thread.CurrentThread.CurrentCulture.NumberFormat = defaultCulture.NumberFormat;
 
             base.Initialize(requestContext);
         }
