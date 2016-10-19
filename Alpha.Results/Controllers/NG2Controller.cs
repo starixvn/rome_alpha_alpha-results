@@ -9,9 +9,7 @@
         [HttpGet]
         public ActionResult Index()
         {
-            string controllerName = string.Format("..{0}", MicroSites.NG2ResultPath);
-
-            return View("~/Views/NG2/Index.cshtml", null, controllerName);
+            return View("~/Views/NG2/Index.cshtml", null, MicroSites.NG2ResultPath);
         }
 
         [HttpGet]
