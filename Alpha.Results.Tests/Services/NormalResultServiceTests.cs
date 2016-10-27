@@ -33,7 +33,7 @@
         public void GetLeagues_SportIdIsNegativeOrZero_ThrowArgumentOutOfRangeException(int sportId)
         {
             Assert.Throws<ArgumentOutOfRangeException>(new TestDelegate(
-                () => _resultService.GetLeagues(DateTime.Now, sportId, DefaultLanguage, false)));
+                () => _resultService.GetLeagues(DateTime.Now, sportId, DefaultLanguage, false, DateTime.Now)));
         }
 
         [TestCase(null)]
@@ -41,7 +41,7 @@
         public void GetLeagues_LanguageIsNullOrEmpty_ThrowArgumentException(string language)
         {
             Assert.Throws<ArgumentException>(new TestDelegate(
-                () => _resultService.GetLeagues(DateTime.Now, 1, language, false)));
+                () => _resultService.GetLeagues(DateTime.Now, 1, language, false, DateTime.Now)));
         }
 
         [Test]
@@ -50,6 +50,7 @@
             //// Arrange
             var sportId = 1;
             var resultDate = new DateTime(1989, 5, 28);
+            var moveBetsDate = new DateTime(1989, 5, 28);
             var expectedLeague = new List<League>
             {
                 new League
@@ -65,7 +66,7 @@
                     && criteria.SportId == sportId)).Returns(expectedLeague);
 
             //// Act
-            var leagues = _resultService.GetLeagues(resultDate, sportId, DefaultLanguage, false);
+            var leagues = _resultService.GetLeagues(resultDate, sportId, DefaultLanguage, false, moveBetsDate);
 
             //// Assert
             Assert.IsTrue(leagues.Count() == 1
@@ -82,6 +83,7 @@
         {
             //// Arrange
             var resultDate = new DateTime(1989, 5, 28);
+            var moveBetsDate = new DateTime(1989, 5, 28);
             var expectedSports = new List<Sport>
             {
                 new Sport
@@ -95,7 +97,7 @@
                 criteria.EventDate == resultDate.ToShortDateString())).Returns(expectedSports);
 
             //// Act
-            var sports = _resultService.GetSports(resultDate, new Dictionary<int, bool>());
+            var sports = _resultService.GetSports(resultDate, new Dictionary<int, bool>(), moveBetsDate);
 
             //// Assert
             Assert.IsTrue(sports.Count() == 1
@@ -111,7 +113,7 @@
             var disableHorseRacingWin = true;
 
             //// Act
-            var leagues = _resultService.GetLeagues(DateTime.Now, sportId, DefaultLanguage, disableHorseRacingWin);
+            var leagues = _resultService.GetLeagues(DateTime.Now, sportId, DefaultLanguage, disableHorseRacingWin, DateTime.Now);
 
             //// Assert
             Assert.IsEmpty(leagues);

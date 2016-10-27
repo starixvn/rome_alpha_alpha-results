@@ -2,14 +2,10 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Threading;
-    using System.Web;
     using MediatR;
-    using Services.Impl;
     using Sunplus.Agent.Model.BL.Definitions;
     using Sunplus.Agent.Model.Entities;
     using Sunplus.Agent.Model.Entities.Permission;
-    using Sunplus.Agent.Utilities;
     using Views;
 
     public class NormalResultQuery : IRequest<NormalResultViewModel>
@@ -78,5 +74,7 @@
                     : AppSettings.Disable151_31;
             }
         }
+
+        public DateTime MoveBetsDate { get; set; }
     }
 }

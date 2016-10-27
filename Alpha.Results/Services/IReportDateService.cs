@@ -5,5 +5,7 @@
     public interface IReportDateService
     {
         DateTime GetBalanceUpDate();
+
+        DateTime GetMoveBetsDate();
     }
 }

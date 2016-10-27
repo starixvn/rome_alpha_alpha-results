@@ -9,6 +9,11 @@
     /// </summary>
     public class GetSportsbookResultCriteria : CriteriaBase
     {
+        public GetSportsbookResultCriteria(DateTime moveBetsDay)
+        {
+            MoveBetsDay = moveBetsDay;
+        }
+
         public DateTime FromDate { get; set; }
 
         public int LeagueId { get; set; }
@@ -22,6 +27,8 @@
                 return AppSettings.LocalTest;
             }
         }
+
+        public DateTime MoveBetsDay { get; }
 
         public override string GetSettingKey()
         {

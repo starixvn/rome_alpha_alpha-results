@@ -95,7 +95,7 @@
                 new Sport { Id = 2 }
             };
 
-            _normalResultService.GetSports(Arg.Any<DateTime>(), Arg.Any<IDictionary<int, bool>>())
+            _normalResultService.GetSports(Arg.Any<DateTime>(), Arg.Any<IDictionary<int, bool>>(), Arg.Any<DateTime>())
                 .Returns(sports);
 
             //// Act
@@ -117,7 +117,7 @@
                 new Sport { Id = 1 }
             };
 
-            _normalResultService.GetSports(Arg.Any<DateTime>(), Arg.Any<IDictionary<int, bool>>())
+            _normalResultService.GetSports(Arg.Any<DateTime>(), Arg.Any<IDictionary<int, bool>>(), Arg.Any<DateTime>())
                 .Returns(sports);
 
             var expectedSportName = "sport name";
@@ -155,7 +155,7 @@
                 new Sport { Id = 1 }
             };
 
-            _normalResultService.GetSports(Arg.Any<DateTime>(), Arg.Any<IDictionary<int, bool>>()).Returns(sports);
+            _normalResultService.GetSports(Arg.Any<DateTime>(), Arg.Any<IDictionary<int, bool>>(), Arg.Any<DateTime>()).Returns(sports);
 
             //// Act
             var actualViewModel = _normalResultHandler.Handle(query);
@@ -178,7 +178,7 @@
                 new Sport { Id = 1 }
             };
 
-            _normalResultService.GetSports(Arg.Any<DateTime>(), Arg.Any<IDictionary<int, bool>>()).Returns(sports);
+            _normalResultService.GetSports(Arg.Any<DateTime>(), Arg.Any<IDictionary<int, bool>>(), Arg.Any<DateTime>()).Returns(sports);
 
             //// Act
             var actualViewModel = _normalResultHandler.Handle(query);
@@ -202,7 +202,7 @@
                 new Sport { Id = 2 }
             };
 
-            _normalResultService.GetSports(Arg.Any<DateTime>(), Arg.Any<IDictionary<int, bool>>()).Returns(sports);
+            _normalResultService.GetSports(Arg.Any<DateTime>(), Arg.Any<IDictionary<int, bool>>(), Arg.Any<DateTime>()).Returns(sports);
 
             //// Act
             var actualViewModel = _normalResultHandler.Handle(query);
@@ -217,7 +217,7 @@
             //// Arrange
             var query = new NormalResultQuery(new Dictionary<int, bool>(), false, DefaultLanguage);
 
-            _normalResultService.GetSports(Arg.Any<DateTime>(), Arg.Any<IDictionary<int, bool>>())
+            _normalResultService.GetSports(Arg.Any<DateTime>(), Arg.Any<IDictionary<int, bool>>(), Arg.Any<DateTime>())
                 .Returns(Enumerable.Empty<Sport>());
 
             //// Act
@@ -228,7 +228,8 @@
                 Arg.Any<DateTime>(),
                 Arg.Any<int>(),
                 Arg.Any<string>(),
-                Arg.Any<bool>());
+                Arg.Any<bool>(),
+                Arg.Any<DateTime>());
         }
 
         [Test]
@@ -237,7 +238,7 @@
             //// Arrange
             var query = new NormalResultQuery(new Dictionary<int, bool>(), false, DefaultLanguage);
 
-            _normalResultService.GetSports(Arg.Any<DateTime>(), Arg.Any<IDictionary<int, bool>>())
+            _normalResultService.GetSports(Arg.Any<DateTime>(), Arg.Any<IDictionary<int, bool>>(), Arg.Any<DateTime>())
                 .Returns(new List<Sport> { new Sport { Id = 1 } });
 
             //// Act
@@ -248,7 +249,8 @@
                 query.ResultDate,
                 1,
                 query.Language,
-                query.DisableHorseRacingWin);
+                query.DisableHorseRacingWin,
+                Arg.Any<DateTime>());
         }
 
         [Test]
@@ -257,10 +259,10 @@
             //// Arrange
             var query = new NormalResultQuery(new Dictionary<int, bool>(), false, DefaultLanguage);
 
-            _normalResultService.GetSports(Arg.Any<DateTime>(), Arg.Any<IDictionary<int, bool>>())
+            _normalResultService.GetSports(Arg.Any<DateTime>(), Arg.Any<IDictionary<int, bool>>(), Arg.Any<DateTime>())
                 .Returns(new List<Sport> { new Sport { Id = 1 } });
 
-            _normalResultService.GetLeagues(Arg.Any<DateTime>(), 1, Arg.Any<string>(), Arg.Any<bool>())
+            _normalResultService.GetLeagues(Arg.Any<DateTime>(), 1, Arg.Any<string>(), Arg.Any<bool>(), Arg.Any<DateTime>())
                 .Returns(new List<League> { new League { Id = 11 } });
 
             //// Act
@@ -276,10 +278,10 @@
             //// Arrange
             var query = new NormalResultQuery(new Dictionary<int, bool>(), false, DefaultLanguage);
 
-            _normalResultService.GetSports(Arg.Any<DateTime>(), Arg.Any<IDictionary<int, bool>>())
+            _normalResultService.GetSports(Arg.Any<DateTime>(), Arg.Any<IDictionary<int, bool>>(), Arg.Any<DateTime>())
                 .Returns(new List<Sport> { new Sport { Id = 1 } });
 
-            _normalResultService.GetLeagues(Arg.Any<DateTime>(), 1, Arg.Any<string>(), Arg.Any<bool>())
+            _normalResultService.GetLeagues(Arg.Any<DateTime>(), 1, Arg.Any<string>(), Arg.Any<bool>(), Arg.Any<DateTime>())
                 .Returns(new List<League> { new League { Id = 11 } });
 
             var expectedLeagueName = "League Name";
@@ -302,7 +304,7 @@
                 LeagueId = 2
             };
 
-            _normalResultService.GetSports(Arg.Any<DateTime>(), Arg.Any<IDictionary<int, bool>>())
+            _normalResultService.GetSports(Arg.Any<DateTime>(), Arg.Any<IDictionary<int, bool>>(), Arg.Any<DateTime>())
                 .Returns(new List<Sport> { new Sport { Id = 1 } });
 
             //// Act

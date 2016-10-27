@@ -35,7 +35,8 @@
             Check.Argument.IsNotEmpty(message.Language, "message.Language");
 
             var balanceUpDate = _reportService.GetBalanceUpDate();
-            var sports = GetSportsResult(message.ResultDate, message.SportsStatus);
+            var moveBetsDate = _reportService.GetMoveBetsDate();
+            var sports = GetSportsResult(message.ResultDate, message.SportsStatus, moveBetsDate);
 
             var viewModel = new NormalResultViewModel
             {
@@ -50,7 +51,7 @@
                     ? message.SportId
                     : int.Parse(sports.First().Value);
 
-                viewModel.Leagues = GetLeaguesResult(message.ResultDate, viewModel.SportId, message.Language, message.DisableHorseRacingWin);
+                viewModel.Leagues = GetLeaguesResult(message.ResultDate, viewModel.SportId, message.Language, message.DisableHorseRacingWin, moveBetsDate);
 
                 if (viewModel.Leagues.Any(selectItem => selectItem.Value == message.LeagueId.ToString()))
                 {
@@ -63,16 +64,17 @@
                 ResultDate = viewModel.ResultDate,
                 SportId = viewModel.SportId,
                 LeagueId = viewModel.LeagueId,
+                MoveBetsDate = moveBetsDate
             });
 
             return viewModel;
         }
 
-        private IEnumerable<SelectListItem> GetSportsResult(DateTime resultDate, IDictionary<int, bool> sportsStatus)
+        private IEnumerable<SelectListItem> GetSportsResult(DateTime resultDate, IDictionary<int, bool> sportsStatus, DateTime moveBetsDate)
         {
             Check.Argument.IsNotNull(sportsStatus, "sportsStatus");
 
-            var sports = _normalResultService.GetSports(resultDate, sportsStatus);
+            var sports = _normalResultService.GetSports(resultDate, sportsStatus, moveBetsDate);
 
             return sports.Select(sport => new SelectListItem
             {
@@ -81,13 +83,14 @@
             });
         }
 
-        private IEnumerable<SelectListItem> GetLeaguesResult(DateTime resultDate, int sportTypeId, string language, bool disableHorseRacingWin)
+        private IEnumerable<SelectListItem> GetLeaguesResult(DateTime resultDate, int sportTypeId, string language, bool disableHorseRacingWin, DateTime moveBetsDate)
         {
             var leagues = _normalResultService.GetLeagues(
                                 resultDate,
                                 sportTypeId,
                                 language,
-                                disableHorseRacingWin);
+                                disableHorseRacingWin,
+                                moveBetsDate);
 
             return leagues.Select(league => new SelectListItem
             {
@@ -123,6 +126,7 @@
 
             var leagueName = message.LeagueId == 0 ? Resources.ShowAllLeaguesExcelTitle : CacheRefFactory.CacheRef.GetLeagueName(message.LeagueId);
             var resultDate = message.ResultDate.ToShortDateFormatWithSlash();
+            message.MoveBetsDate = _reportService.GetMoveBetsDate();
 
             message.ExcelTitle = $"{Resources.Results} - {resultDate} | {CacheRefFactory.CacheRef.GetSportName(message.SportId)} - {leagueName}";
 

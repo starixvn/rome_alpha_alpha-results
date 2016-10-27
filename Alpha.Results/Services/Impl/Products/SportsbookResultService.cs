@@ -80,7 +80,7 @@ namespace Alpha.Results.Site.Services.Impl.Products
 
         private static GetSportsbookResultCriteria GetCriteria(NormalResultQuery request)
         {
-            return new GetSportsbookResultCriteria()
+            return new GetSportsbookResultCriteria(request.MoveBetsDate)
             {
                 FromDate = request.ResultDate,
                 SportType = request.SportId,
