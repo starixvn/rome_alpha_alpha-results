@@ -9,15 +9,13 @@
         [HttpGet]
         public ActionResult Index()
         {
-            return View("~/Views/NG2/Index.cshtml", null, MicroSites.NG2ResultPath);
+            return View("~/Views/NG2/Index.cshtml", null, $"{MicroSites.NG2ResultPath}/All");
         }
 
         [HttpGet]
         public ActionResult TicketDetail(int gambleId)
-        {
-            string controllerName = string.Format("..{0}", MicroSites.NG2ResultPath);
-
-            return RedirectToAction("TicketDetail", controllerName, new RouteValueDictionary(new
+        {            
+            return RedirectToAction("TicketDetail", $"..{MicroSites.NG2ResultPath}", new RouteValueDictionary(new
             {
                 gambleId
             }));
@@ -26,9 +24,7 @@
         [HttpGet]
         public ActionResult ParlayDetail(string refno)
         {
-            string controllerName = string.Format("..{0}", MicroSites.NG2ResultPath);
-
-            return RedirectToAction("ParlayDetail", controllerName, new RouteValueDictionary(new
+            return RedirectToAction("ParlayDetail", $"..{MicroSites.NG2ResultPath}", new RouteValueDictionary(new
             {
                 refno
             }));
