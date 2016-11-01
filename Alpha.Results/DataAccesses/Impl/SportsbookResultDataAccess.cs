@@ -101,8 +101,6 @@
                 KickOffTime = reader["kickofftime"] != DBNull.Value ? DateTime.Parse(reader["kickofftime"].ToString()) : DateTime.MinValue,
                 MatchCode = reader["matchcode"] != DBNull.Value ? reader["matchcode"].ToString() : string.Empty,
                 GoalRecord = reader["goalrecord"] != DBNull.Value ? reader["goalrecord"].ToString() : string.Empty,
-                LiveHomeScore = reader["livehomescore"] != DBNull.Value ? Convert.ToInt32(reader["livehomescore"]) : new int?(),
-                LiveAwayScore = reader["liveawayscore"] != DBNull.Value ? Convert.ToInt32(reader["liveawayscore"]) : new int?(),
                 IsHTCal = reader["IsHTCal"] != DBNull.Value ? Convert.ToBoolean(reader["IsHTCal"]) : false,
                 Calculate = reader["Calculate"] != DBNull.Value ? Convert.ToBoolean(reader["Calculate"]) : false,
                 RefNo = string.Empty,
