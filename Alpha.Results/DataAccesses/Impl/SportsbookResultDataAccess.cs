@@ -204,7 +204,7 @@
         {
             criteria.SportType = reader["sporttype"] != DBNull.Value ? Convert.ToInt32(reader["sporttype"]) : 0;
 
-            return new Sportsbook()
+            var sportsbook = new Sportsbook()
             {
                 HomeId = reader["homeID"] != DBNull.Value ? Convert.ToInt32(reader["homeID"]) : 0,
                 AwayId = reader["awayID"] != DBNull.Value ? Convert.ToInt32(reader["awayID"]) : 0,
@@ -223,8 +223,6 @@
                 Color = string.Empty,
                 MatchCode = reader["matchcode"] != DBNull.Value ? Convert.ToString(reader["matchcode"]) : string.Empty,
                 GoalRecord = reader["goalrecord"] != DBNull.Value ? reader["goalrecord"].ToString() : string.Empty,
-                LiveHomeScore = reader["livehomescore"] != DBNull.Value ? Convert.ToInt32(reader["livehomescore"]) : new int?(),
-                LiveAwayScore = reader["liveawayscore"] != DBNull.Value ? Convert.ToInt32(reader["liveawayscore"]) : new int?(),
                 IsHTCal = false,
                 Calculate = false,
                 RefNo = string.Empty,
@@ -232,6 +230,14 @@
                 Bettype = criteria.BetType,
                 GameDetails = new List<GameDetail>()
             };
+
+            if (ColumnExisted(reader, "livehomescore") && ColumnExisted(reader, "liveawayscore"))
+            {
+                sportsbook.LiveHomeScore = reader["livehomescore"] != DBNull.Value ? Convert.ToInt32(reader["livehomescore"]) : new int?();
+                sportsbook.LiveAwayScore = reader["liveawayscore"] != DBNull.Value ? Convert.ToInt32(reader["liveawayscore"]) : new int?();
+            }
+
+            return sportsbook;
         }
 
         private bool ColumnExisted(IDataReader reader, string columnName)
