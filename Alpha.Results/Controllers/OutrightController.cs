@@ -5,6 +5,7 @@
     using MediatR;
     using Models.Requests;
     using Models.Views;
+    using Web;
 
     public class OutrightController : BaseController
     {

@@ -5,6 +5,7 @@
     using MediatR;
     using Models.Requests;
     using Models.Views;
+    using Web;
 
     public class NormalController : BaseController
     {
@@ -39,7 +40,7 @@
         [HttpGet]
         public ActionResult ExcelResults(ExcelNormalResultQuery request)
         {
-            request.TemplatePath = Server.MapPath(@"~/App_Data/Fanex.Result/"); 
+            request.TemplatePath = Server.MapPath(@"~/App_Data/Fanex.Result/");
 
             var viewModel = _mediator.Send<NormalResultExcelViewModel>(request);
 

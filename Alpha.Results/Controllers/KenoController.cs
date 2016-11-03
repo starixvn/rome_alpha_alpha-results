@@ -1,9 +1,10 @@
 ﻿namespace Alpha.Results.Site.Controllers
 {
+    using System.Web.Mvc;
     using MediatR;
     using Models.Requests;
     using Sunplus.Agent.Model.Entities;
-    using System.Web.Mvc;
+    using Web;
 
     public class KenoController : BaseController
     {
