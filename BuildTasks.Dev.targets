@@ -5,7 +5,7 @@
          InitialTargets="MyTargets">
   <Target Name="MyTargets">
 	<Exec Command=".nuget\nuget restore Alpha.Results.sln"/>
-	<MSBuild Projects="Alpha.Results/Alpha.Results.Site.csproj" />
+	<MSBuild Projects="Alpha.Results.sln" />
   </Target>
   
 </Project>
