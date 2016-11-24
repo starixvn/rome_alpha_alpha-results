@@ -5,6 +5,7 @@
     using Models.Requests;
     using Models.Views;
     using Sunplus.Agent.Model.Entities;
+    using Web;
 
     public class CockfightingController : BaseController
     {
