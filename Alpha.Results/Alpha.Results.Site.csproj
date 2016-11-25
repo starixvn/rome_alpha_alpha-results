@@ -447,6 +447,7 @@
     <Content Include="Content\Master\_variables.scss" />
     <Content Include="Content\Super\_variables.scss" />
     <Content Include="Content\_mixins.scss" />
+    <Content Include="deployment.ignore" />
     <None Include="Properties\PublishProfiles\AllBet.pubxml" />
     <None Include="Properties\PublishProfiles\Local202.pubxml" />
     <None Include="Properties\PublishProfiles\Local202CookieLess.pubxml" />
@@ -460,19 +461,11 @@
     </Content>
     <Content Include="Scripts\Cockfighting\cock-fighting-result.js" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Web.backupMNLNapInternal.config">
-      <DependentUpon>Web.local.config</DependentUpon>
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="Web.backupMNLI7.config">
       <DependentUpon>Web.local.config</DependentUpon>
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.backupMNLI1.config">
-      <DependentUpon>Web.local.config</DependentUpon>
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Web.backupMNLExNapInternal.config">
       <DependentUpon>Web.local.config</DependentUpon>
       <SubType>Designer</SubType>
     </Content>
@@ -661,16 +654,11 @@
     </Content>
     <Content Include="Views\Cockfighting\Index.cshtml" />
     <Content Include="Views\Keno\Index.cshtml" />
-    <Content Include="Web.AppSettings.backupMNLExNapInternal.config">
-      <DependentUpon>Web.AppSettings.config</DependentUpon>
-    </Content>
     <Content Include="Web.AppSettings.backupMNLI1.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.AppSettings.backupMNLI7.config">
-      <DependentUpon>Web.AppSettings.config</DependentUpon>
-    </Content>
-    <Content Include="Web.AppSettings.backupMNLNapInternal.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
     </Content>
     <Content Include="Views\Shared\Piwik.cshtml" />
@@ -679,6 +667,18 @@
     <Content Include="Views\NG2\TicketDetail.cshtml" />
     <Content Include="Web.AppSettings.local2.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
+    </Content>
+    <Content Include="Web.AppSettings.backupMNLExNap.config">
+      <DependentUpon>Web.AppSettings.config</DependentUpon>
+    </Content>
+    <Content Include="Web.AppSettings.backupMNLNap.config">
+      <DependentUpon>Web.AppSettings.config</DependentUpon>
+    </Content>
+    <Content Include="Web.backupMNLExNap.config">
+      <DependentUpon>Web.local.config</DependentUpon>
+    </Content>
+    <Content Include="Web.backupMNLNap.config">
+      <DependentUpon>Web.local.config</DependentUpon>
     </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
