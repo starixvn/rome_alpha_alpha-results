@@ -32,9 +32,7 @@
         /// <summary>
         /// Application error event handler.
         /// </summary>
-        /// <param name="sender">Event sender.</param>
-        /// <param name="e">Event arguments.</param>
-        protected void Application_Error(object sender, EventArgs e)
+        protected void Application_Error()
         {
             Exception ex = Server.GetLastError().GetBaseException();
             if (ex is HttpException)
@@ -81,7 +79,7 @@
                 runtime,
                 null);
 
-            Logs.WriteInfo($"\r\n\r\n_shutDownMessage={shutDownMessage}\r\n\r\n_shutDownStack={shutDownStack}");
+            Logs.WriteInfo($"\r\n\r\n shutdown message={shutDownMessage}\r\n\r\n shutdown stack={shutDownStack}");
         }
     }
 }

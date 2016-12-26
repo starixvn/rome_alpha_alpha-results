@@ -15,17 +15,15 @@
     [TestFixture]
     public class NormalResultServiceTests
     {
-        private IDynamicRepository _dynamicRepository;
-        private IResultServiceFactory _resultServiceFactory;
-        private NormalResultService _resultService;
         private const string DefaultLanguage = "en-US";
+        private IDynamicRepository _dynamicRepository;
+        private NormalResultService _resultService;
 
         [SetUp]
         public void SetUp()
         {
             _dynamicRepository = Substitute.For<IDynamicRepository>();
-            _resultServiceFactory = Substitute.For<IResultServiceFactory>();
-            _resultService = new NormalResultService(_dynamicRepository, _resultServiceFactory);
+            _resultService = new NormalResultService(_dynamicRepository, Substitute.For<IResultServiceFactory>());
         }
 
         #region Get Leagues
@@ -83,7 +81,6 @@
         public void GetSports_ReturnSports()
         {
             //// Arrange
-            var sportId = 1;
             var resultDate = new DateTime(1989, 5, 28);
             var expectedSports = new List<Sport>
             {

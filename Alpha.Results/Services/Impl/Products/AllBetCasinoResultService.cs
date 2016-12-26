@@ -1,6 +1,7 @@
 ﻿namespace Alpha.Results.Site.Services.Impl.Products
 {
     using System;
+    using System.Diagnostics.CodeAnalysis;
     using System.IO;
     using Fanex.Common.Helper;
     using Fanex.Result.Core.AllBetCasino;
@@ -18,6 +19,7 @@
             throw new NotImplementedException();
         }
 
+        [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0", Justification = "Reviewed")]
         public string GetResultDetails(NormalResultDetailsQuery detailsRequest)
         {
             Check.Argument.IsNotNull(detailsRequest, "detailsRequest");

@@ -1,5 +1,6 @@
 ﻿namespace Alpha.Results.Site.Services.Impl
 {
+    using System;
     using System.Collections.Generic;
     using Fanex.Logging;
     using Fanex.Result.Core.CockFighting;
@@ -32,6 +33,11 @@
 
         public string GetResultUrl(CockfightingResultQuery request)
         {
+            if (request == null)
+            {
+                throw new ArgumentNullException(nameof(request), "Request cannot be null");
+            }
+
             try
             {
                 if (request.IsKeepAlive.HasValue && request.IsKeepAlive.Value)

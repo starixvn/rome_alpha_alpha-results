@@ -15,10 +15,10 @@
     [TestFixture]
     public class ParlayResultServiceTestscs
     {
+        private const string DefaultLanguage = "en-US";
         private ParlayResultService _parlayResultService;
         private IParlayResultDataAccess _parlayResultDataAccess;
         private IResultEngineAdapter _resultEngineAdapter;
-        private const string DefaultLanguage = "en-US";
 
         [SetUp]
         public void SetUp()
@@ -31,7 +31,6 @@
         [Test]
         public void GetResultDetails_QueryIsNull_ThrowArgumentNullException()
         {
-            NormalResultDetailsQuery query = null;
             Assert.Throws<ArgumentNullException>(() => _parlayResultService.GetResultDetails(null));
         }
 
@@ -48,8 +47,8 @@
             _parlayResultService.GetResultDetails(query);
 
             //// Assert
-            _parlayResultDataAccess.Received().GetParlayResults(Arg.Is<GetParlayResultCriteria>
-                (criteria => criteria.RefNo == query.RefNum));
+            _parlayResultDataAccess.Received().GetParlayResults(
+                Arg.Is<GetParlayResultCriteria>(criteria => criteria.RefNo == query.RefNum));
         }
 
         [Test]
@@ -96,7 +95,9 @@
             _parlayResultService.GetResultDetails(query);
 
             //// Assert
-            _resultEngineAdapter.Received().HtmlParser(Arg.Any<IList<Parlay>>(), Arg.Is<ResultSetting>(
+            _resultEngineAdapter.Received().HtmlParser(
+                Arg.Any<IList<Parlay>>(), 
+                Arg.Is<ResultSetting>(
                 resultSetting => !resultSetting.IsOutright
                                 && resultSetting.IsParlayPopUp
                                 && resultSetting.IsPopUp

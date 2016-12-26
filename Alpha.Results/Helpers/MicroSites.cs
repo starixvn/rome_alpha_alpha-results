@@ -6,7 +6,7 @@
     {
         public static string NG2ResultPath
         {
-           get{ return AppPathHelper.GetAppPath(AppSettings.NG2SiteAppPath, "~/Result"); }
+            get { return AppPathHelper.GetAppPath(AppSettings.NG2SiteAppPath, "~/Result"); }
         }
     }
 }

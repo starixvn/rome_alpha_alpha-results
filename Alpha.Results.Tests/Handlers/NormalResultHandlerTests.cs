@@ -15,10 +15,11 @@
     [TestFixture]
     public class NormalResultHandlerTests
     {
+        private const string DefaultLanguage = "en-US";
+
         private INormalResultService _normalResultService;
         private NormalResultHandler _normalResultHandler;
         private IReportDateService _reportDataService;
-        private const string DefaultLanguage = "en-US";
 
         [SetUp]
         public void SetUp()
@@ -266,7 +267,7 @@
             var actualViewModel = _normalResultHandler.Handle(query);
 
             //// Assert
-            Assert.IsTrue(actualViewModel.Leagues.ToList().ElementAt(0).Value == "11");
+            Assert.IsTrue(actualViewModel.Leagues.ElementAt(0).Value == "11");
         }
 
         [Test]
@@ -288,7 +289,7 @@
             var actualViewModel = _normalResultHandler.Handle(query);
 
             //// Assert
-            Assert.AreEqual(expectedLeagueName, actualViewModel.Leagues.ToList().ElementAt(0).Text);
+            Assert.AreEqual(expectedLeagueName, actualViewModel.Leagues.ElementAt(0).Text);
         }
 
         [Test]

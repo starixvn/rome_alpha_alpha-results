@@ -11,17 +11,15 @@
     using NSubstitute;
     using NUnit.Framework;
     using Site.Services;
-    using Site.Services.Impl;
     using Site.Services.Impl.Products;
-    using Sunplus.Agent.Model.Entities;
 
     [TestFixture]
     public class LiveCasinoResultServiceTests
     {
+        private const string DefaultLanguage = "en-US";
         private LiveCasinoResultService _liveCasinoResultService;
         private IDynamicRepository _dynamicRepository;
         private IResultEngineAdapter _resultEngineAdapter;
-        private const string DefaultLanguage = "en-US";
 
         [SetUp]
         public void SetUp()
@@ -29,13 +27,11 @@
             _dynamicRepository = Substitute.For<IDynamicRepository>();
             _resultEngineAdapter = Substitute.For<IResultEngineAdapter>();
             _liveCasinoResultService = new LiveCasinoResultService(_dynamicRepository, _resultEngineAdapter);
-
         }
 
         [Test]
         public void GetResultDetails_QueryIsNull_ThrowArgumentNullException()
         {
-            NormalResultDetailsQuery query = null;
             Assert.Throws<ArgumentNullException>(() => _liveCasinoResultService.GetResultDetails(null));
         }
 
@@ -55,8 +51,7 @@
 
             //// Assert
             _dynamicRepository.Received().Fetch<LiveCasino>(
-                Arg.Is<GetLiveCasinoResultCriteria>
-                (criteria => criteria.League == "3"
+                Arg.Is<GetLiveCasinoResultCriteria>(criteria => criteria.League == "3"
                             && criteria.MatchId == query.MatchId
                             && criteria.BetType == query.BetTypeId));
         }
@@ -83,8 +78,9 @@
             _liveCasinoResultService.GetResultDetails(query);
 
             //// Assert
-            _resultEngineAdapter.Received().HtmlParser(Arg.Is<List<LiveCasino>>
-                (items => items.Count == 1 && items.First().Bettype == 1), Arg.Any<ResultSetting>());
+            _resultEngineAdapter.Received().HtmlParser(
+                Arg.Is<List<LiveCasino>>(items => items.Count == 1 && items.First().Bettype == 1), 
+                Arg.Any<ResultSetting>());
         }
 
         [Test]
@@ -102,7 +98,9 @@
             _liveCasinoResultService.GetResultDetails(query);
 
             //// Assert
-            _resultEngineAdapter.Received().HtmlParser(Arg.Any<List<LiveCasino>>(), Arg.Is<ResultSetting>(
+            _resultEngineAdapter.Received().HtmlParser(
+                Arg.Any<List<LiveCasino>>(), 
+                Arg.Is<ResultSetting>(
                 resultSetting => resultSetting.SportType == SportType.LiveCasino
                                 && !resultSetting.IsOutright
                                 && !resultSetting.IsParlayPopUp

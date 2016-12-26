@@ -15,10 +15,10 @@
     [TestFixture]
     public class NumberGameResultServiceTests
     {
+        private const string DefaultLanguage = "en-US";
         private NumberGameResultService _numberGamingResultService;
         private INumberGameResultDataAccess _numberGameResultDataAccess;
         private IResultEngineAdapter _resultEngineAdapter;
-        private const string DefaultLanguage = "en-US";
 
         [SetUp]
         public void SetUp()
@@ -31,7 +31,6 @@
         [Test]
         public void GetResultDetails_QueryIsNull_ThrowArgumentNullException()
         {
-            NormalResultDetailsQuery query = null;
             Assert.Throws<ArgumentNullException>(() => _numberGamingResultService.GetResultDetails(null));
         }
 
@@ -48,8 +47,8 @@
             _numberGamingResultService.GetResultDetails(query);
 
             //// Assert
-            _numberGameResultDataAccess.Received().GetNumberGameResultDetails(Arg.Is<GetNumberGameResultDetailsCriteria>
-                (criteria => criteria.MatchId == query.MatchId));
+            _numberGameResultDataAccess.Received().GetNumberGameResultDetails(
+                Arg.Is<GetNumberGameResultDetailsCriteria>(criteria => criteria.MatchId == query.MatchId));
         }
 
         [Test]
@@ -72,8 +71,9 @@
             _numberGamingResultService.GetResultDetails(query);
 
             //// Assert
-            _resultEngineAdapter.Received().HtmlParser(Arg.Is<List<NumberGame>>
-                (items => items.Count == 1), Arg.Any<ResultSetting>());
+            _resultEngineAdapter.Received().HtmlParser(
+                Arg.Is<List<NumberGame>>(items => items.Count == 1), 
+                Arg.Any<ResultSetting>());
         }
 
         [Test]
@@ -89,7 +89,9 @@
             _numberGamingResultService.GetResultDetails(query);
 
             //// Assert
-            _resultEngineAdapter.Received().HtmlParser(Arg.Any<IList<NumberGame>>(), Arg.Is<ResultSetting>(
+            _resultEngineAdapter.Received().HtmlParser(
+                Arg.Any<IList<NumberGame>>(), 
+                Arg.Is<ResultSetting>(
                 resultSetting => resultSetting.SportType == SportType.NumberGame
                                 && !resultSetting.IsOutright
                                 && !resultSetting.IsParlayPopUp
