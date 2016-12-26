@@ -3,9 +3,13 @@
          xmlns="http://schemas.microsoft.com/developer/msbuild/2003"
          DefaultTargets="MyTargets"
          InitialTargets="MyTargets">
+
   <Target Name="MyTargets">
 	<Exec Command=".nuget\nuget restore Alpha.Results.sln"/>
-	<MSBuild Projects="Alpha.Results.sln" />
+	<MSBuild Projects="Alpha.Results.sln"
+	
+	Properties="RunNunitTests=true;TreatWarningsAsErrors=false;RunCodeAnalysis=true;StyleCopEnabled=true" />
   </Target>
+
   
 </Project>
