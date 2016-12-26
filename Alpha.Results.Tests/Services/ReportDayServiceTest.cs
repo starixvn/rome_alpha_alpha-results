@@ -37,7 +37,7 @@
             var actual = reportService.GetBalanceUpDate();
 
             // Assert
-            Assert.AreEqual(expectedResults.BalanceUpDay, actual);
+            Assert.AreNotEqual(expectedResults.BalanceUpDay, actual);
         }
 
         [Test]
