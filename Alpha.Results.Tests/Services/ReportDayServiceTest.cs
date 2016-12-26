@@ -8,98 +8,157 @@
     using Models.Dtos;
     using NSubstitute;
     using NUnit.Framework;
+    using Site.Services;
     using Site.Services.Impl;
 
     [TestFixture]
     public class ReportDayServiceTest
     {
-        private const string BalanceUpDateCacheKey = "Alpha.Results.Site.Services.Impl.BalanceUpDate";
+        private const string BalanceUpAndMoveBetsDateCacheKey = "Alpha.Results.Site.Services.Impl.BalanceUpAndMoveBetsDate";
 
-        private IDynamicRepository SetupRepositoryWithDataReturn(DateTime balanceUpDate, DateTime moveBetsDate)
+        [Test]
+        public void GetBalanceUpDate_ReturnValidDate()
         {
-            var dynamicRepository = Substitute.For<IDynamicRepository>();
-            var reportDays = new BalanceUpAndMoveBetsDate { BalanceUpDay = balanceUpDate, MoveBetsDay = moveBetsDate };
-            dynamicRepository.Get<BalanceUpAndMoveBetsDate>(Arg.Any<GetBalanceUpAndMoveBetsDayCriteria>()).Returns(reportDays);
+            // Arrange
+            var repository = Substitute.For<IDynamicRepository>();
+            var cacheManager = Substitute.For<ICache>();
 
-            return dynamicRepository;
+            var expectedResults = new BalanceUpAndMoveBetsDate
+            {
+                BalanceUpDay = new DateTime(1981, 2, 15),
+                MoveBetsDay = new DateTime(2000, 12, 1)
+            };
+
+            cacheManager.Get<BalanceUpAndMoveBetsDate>(BalanceUpAndMoveBetsDateCacheKey).Returns(expectedResults);
+
+            var reportService = new ReportDateService(repository, cacheManager);
+            
+            // Act
+            var actual = reportService.GetBalanceUpDate();
+
+            // Assert
+            Assert.AreEqual(expectedResults.BalanceUpDay, actual);
         }
 
         [Test]
-        public void GetBalanceUpDate_DataExistInCache_MustReturnDataGetFromCache()
+        public void GetMoveBetsDate_ReturnValidDate()
+        {
+            // Arrange
+            var repository = Substitute.For<IDynamicRepository>();
+            var cacheManager = Substitute.For<ICache>();
+
+            var expectedResults = new BalanceUpAndMoveBetsDate
+            {
+                BalanceUpDay = new DateTime(1981, 2, 15),
+                MoveBetsDay = new DateTime(2000, 12, 1)
+            };
+
+            cacheManager.Get<BalanceUpAndMoveBetsDate>(BalanceUpAndMoveBetsDateCacheKey).Returns(expectedResults);
+
+            var reportService = new ReportDateService(repository, cacheManager);
+
+            // Act
+            var actual = reportService.GetMoveBetsDate();
+
+            // Assert
+            Assert.AreEqual(expectedResults.MoveBetsDay, actual);
+        }
+
+        [Test]
+        public void GetBalanceUpAndMoveBetsDate_DataExistInCache_MustReturnDataGetFromCache()
         {
             // Arrange
             var cacheManager = Substitute.For<ICache>();
-            var expectedDay = DateTime.Now.AddDays(-1);
-            cacheManager.Get<DateTime>(BalanceUpDateCacheKey).Returns(expectedDay);
+
+            var expectedResults = new BalanceUpAndMoveBetsDate
+            {
+                BalanceUpDay = DateTime.Now.AddDays(-1),
+                MoveBetsDay = DateTime.Now.AddDays(-1),
+            };
+            
+            cacheManager.Get<BalanceUpAndMoveBetsDate>(BalanceUpAndMoveBetsDateCacheKey).Returns(expectedResults);
 
             var repository = Substitute.For<IDynamicRepository>();
 
             var reportService = new ReportDateService(repository, cacheManager);
 
             // Act
-            var actual = reportService.GetBalanceUpDate();
+            var actual = reportService.GetBalanceUpAndMoveBetsDate();
 
             // Assert
-            Assert.AreEqual(expectedDay, actual);
+            Assert.IsTrue(expectedResults.BalanceUpDay == actual.BalanceUpDay &&
+                expectedResults.MoveBetsDay == actual.MoveBetsDay);
         }
 
         [Test]
-        public void GetBalanceUpDate_CacheKeyDoesNotExist_ReturnsDateGetFromRepository()
+        public void GetBalanceUpAndMoveBetsDate_CacheKeyDoesNotExist_ReturnsDateGetFromRepository()
         {
             // Arrange
             var cacheManager = Substitute.For<ICache>();
 
             var balanceUpDate = new DateTime(1981, 2, 15);
+            var moveBetsDay = new DateTime(2000, 12, 1);
             var repository = Substitute.For<IDynamicRepository>();
-            var reportDays = new BalanceUpAndMoveBetsDate { BalanceUpDay = balanceUpDate, MoveBetsDay = DateTime.Now };
+            var reportDays = new BalanceUpAndMoveBetsDate { BalanceUpDay = balanceUpDate, MoveBetsDay = moveBetsDay };
             repository.Get<BalanceUpAndMoveBetsDate>(new GetBalanceUpAndMoveBetsDayCriteria()).ReturnsForAnyArgs(reportDays);
 
             var reportService = new ReportDateService(repository, cacheManager);
 
             // Act
-            var actual = reportService.GetBalanceUpDate();
+            var actual = reportService.GetBalanceUpAndMoveBetsDate();
 
             // Assert
-            Assert.AreEqual(balanceUpDate, actual);
+            Assert.IsTrue(reportDays.BalanceUpDay == actual.BalanceUpDay &&
+                reportDays.MoveBetsDay == actual.MoveBetsDay);
         }
 
         [Test]
-        public void GetBalanceUpDate_DataGetFromRepositoryIsNull_ThrowException()
+        public void GetBalanceUpAndMoveBetsDate_DataGetFromRepositoryIsNull_ThrowException()
         {
             // Arrange
+            BalanceUpAndMoveBetsDate data = null;
             var cacheManager = Substitute.For<ICache>();
-            cacheManager.Get<DateTime>(BalanceUpDateCacheKey).Returns(DateTime.MinValue);
+            cacheManager
+                .Get<BalanceUpAndMoveBetsDate>(BalanceUpAndMoveBetsDateCacheKey)
+                .Returns(data);
 
             var repository = Substitute.For<IDynamicRepository>();
-            BalanceUpAndMoveBetsDate data = null;
             repository.Get<BalanceUpAndMoveBetsDate>(Arg.Any<GetBalanceUpAndMoveBetsDayCriteria>()).Returns(data);
 
             var reportService = new ReportDateService(repository, cacheManager);
 
             // Act
-            Assert.Throws<Exception>(() => reportService.GetBalanceUpDate());
+            Assert.Throws<Exception>(() => reportService.GetBalanceUpAndMoveBetsDate());
             reportService
-                .Invoking(service => service.GetBalanceUpDate())
+                .Invoking(service => service.GetBalanceUpAndMoveBetsDate())
                 .ShouldThrow<Exception>()
-                .WithMessage("Cannot get balance up date");
+                .WithMessage("Cannot get balance up date and move bets date.");
         }
 
         [Test]
-        public void GetBalanceUpDate_DataGetFromRepositoryIsNotNull_MustBeSetToCache()
+        public void GetBalanceUpAndMoveBetsDate_DataGetFromRepositoryIsNotNull_MustBeSetToCache()
         {
             // Arrange
             var cacheManager = Substitute.For<ICache>();
 
             var balanceUpDate = new DateTime(1981, 2, 15);
-            var repository = SetupRepositoryWithDataReturn(balanceUpDate, moveBetsDate: DateTime.Now);
+            var moveBetsDate = new DateTime(2000, 12, 01);
+            var reportDays = new BalanceUpAndMoveBetsDate
+            {
+                BalanceUpDay = balanceUpDate,
+                MoveBetsDay = moveBetsDate
+            };
+
+            var repository = Substitute.For<IDynamicRepository>();
+            repository.Get<BalanceUpAndMoveBetsDate>(new GetBalanceUpAndMoveBetsDayCriteria()).ReturnsForAnyArgs(reportDays);
 
             var reportService = new ReportDateService(repository, cacheManager);
 
             // Act
-            reportService.GetBalanceUpDate();
+            reportService.GetBalanceUpAndMoveBetsDate();
 
             // Assert
-            cacheManager.Received().Set(BalanceUpDateCacheKey, balanceUpDate);
+            cacheManager.Received().Set(BalanceUpAndMoveBetsDateCacheKey, reportDays);
         }
     }
 }

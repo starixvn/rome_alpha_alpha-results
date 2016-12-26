@@ -31,7 +31,7 @@
             return GetBalanceUpAndMoveBetsDate().MoveBetsDay;
         }
 
-        private BalanceUpAndMoveBetsDate GetBalanceUpAndMoveBetsDate()
+        public BalanceUpAndMoveBetsDate GetBalanceUpAndMoveBetsDate()
         {
             var data = _cacheManager.Get<BalanceUpAndMoveBetsDate>(BalanceUpAndMoveBetsDateCacheKey);
 
