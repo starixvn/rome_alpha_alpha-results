@@ -31,6 +31,7 @@
             return GetBalanceUpAndMoveBetsDate().MoveBetsDay;
         }
 
+        [SuppressMessage("Microsoft.Usage", "CA2201:DoNotRaiseReservedExceptionTypes", Justification = "Reviewed!")]
         public BalanceUpAndMoveBetsDate GetBalanceUpAndMoveBetsDate()
         {
             var data = _cacheManager.Get<BalanceUpAndMoveBetsDate>(BalanceUpAndMoveBetsDateCacheKey);
