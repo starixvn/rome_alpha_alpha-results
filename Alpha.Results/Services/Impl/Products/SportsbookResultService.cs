@@ -8,7 +8,6 @@ namespace Alpha.Results.Site.Services.Impl.Products
     using Alpha.Results.Site.DataAccesses;
     using DataAccesses.Impl;
     using Fanex.Common.Helper;
-    using Fanex.Result.Core;
     using Fanex.Result.Core.Base;
     using Fanex.Result.Core.Sportsbook.DTO;
     using Models.Requests;
@@ -87,8 +86,6 @@ namespace Alpha.Results.Site.Services.Impl.Products
                 LeagueId = request.LeagueId
             };
         }
-
-
 
         [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0", Justification = "Reviewed")]
         public string GetResultDetails(NormalResultDetailsQuery detailsRequest)
