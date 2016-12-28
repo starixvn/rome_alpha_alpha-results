@@ -460,7 +460,7 @@
             //// Assert
             Assert.IsTrue(
                 expectedExcelResult == excelViewModel.ExcelResults
-                && "Results.xls" == excelViewModel.ExcelName);
+                && excelViewModel.ExcelName == "Results.xls");
         }
 
         #endregion Handle Excel Normal Result Query
