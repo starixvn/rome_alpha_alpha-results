@@ -32,7 +32,6 @@
         [Test]
         public void GetResultDetails_QueryIsNull_ThrowArgumentNullException()
         {
-            NormalResultDetailsQuery query = null;
             Assert.Throws<ArgumentNullException>(() => _metricGamingResultService.GetResultDetails(null));
         }
 
@@ -52,8 +51,8 @@
             _metricGamingResultService.GetResultDetails(query);
 
             //// Assert
-            _metricGamingResultDataAccess.Received().GetResults(Arg.Is<GetMetricGamingResultCriteria>
-                (criteria => criteria.BetId == query.BetId
+            _metricGamingResultDataAccess.Received().GetResults(
+                Arg.Is<GetMetricGamingResultCriteria>(criteria => criteria.BetId == query.BetId
                             && criteria.SportType == query.SportId
                             && criteria.BetType == query.BetTypeId
                             && criteria.TransId == query.RefNum));
@@ -82,8 +81,9 @@
             _metricGamingResultService.GetResultDetails(query);
 
             //// Assert
-            _resultEngineAdapter.Received().HtmlParser(Arg.Is<List<MetricGaming>>
-                (items => items.Count == 1), Arg.Any<ResultSetting>());
+            _resultEngineAdapter.Received().HtmlParser(
+                Arg.Is<List<MetricGaming>>(items => items.Count == 1), 
+                Arg.Any<ResultSetting>());
         }
 
         [Test]
@@ -102,7 +102,9 @@
             _metricGamingResultService.GetResultDetails(query);
 
             //// Assert
-            _resultEngineAdapter.Received().HtmlParser(Arg.Any<IList<MetricGaming>>(), Arg.Is<ResultSetting>(
+            _resultEngineAdapter.Received().HtmlParser(
+                Arg.Any<IList<MetricGaming>>(), 
+                Arg.Is<ResultSetting>(
                 resultSetting => resultSetting.SportType == SportType.Soccer
                                 && !resultSetting.IsOutright
                                 && !resultSetting.IsParlayPopUp

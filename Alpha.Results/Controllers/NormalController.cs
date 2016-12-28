@@ -1,5 +1,6 @@
 ﻿namespace Alpha.Results.Site.Controllers
 {
+    using System;
     using System.Diagnostics.CodeAnalysis;
     using System.Web.Mvc;
     using MediatR;
@@ -40,6 +41,11 @@
         [HttpGet]
         public ActionResult ExcelResults(ExcelNormalResultQuery request)
         {
+            if (request == null)
+            {
+                throw new ArgumentNullException(nameof(request), "Request cannot be null");
+            }
+
             request.TemplatePath = Server.MapPath(@"~/App_Data/Fanex.Result/");
 
             var viewModel = _mediator.Send<NormalResultExcelViewModel>(request);

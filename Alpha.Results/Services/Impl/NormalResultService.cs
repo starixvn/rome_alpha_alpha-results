@@ -24,7 +24,7 @@
             _resultServiceFactory = resultServiceFactory;
         }
 
-        public IEnumerable<League> GetLeagues(DateTime resultDate, int sportId, string language, bool disableHorseRacingWin)
+        public IEnumerable<League> GetLeagues(DateTime resultDate, int sportId, string language, bool disableHorseRacingWin, DateTime moveBetsDate)
         {
             Check.Argument.IsNotNegativeOrZero(sportId, "sportId");
             Check.Argument.IsNotEmpty(language, "language");
@@ -35,7 +35,7 @@
                 return Enumerable.Empty<League>();
             }
 
-            var leagues = _dynamicRepository.Fetch<League>(new GetResultLeaguesByDateCriteria
+            var leagues = _dynamicRepository.Fetch<League>(new GetResultLeaguesByDateCriteria(moveBetsDate)
             {
                 EventDate = resultDate.ToShortDateString(),
                 Language = language,
@@ -45,9 +45,9 @@
             return leagues;
         }
 
-        public IEnumerable<Sport> GetSports(DateTime resultDate, IDictionary<int, bool> sportsStatus)
+        public IEnumerable<Sport> GetSports(DateTime resultDate, IDictionary<int, bool> sportsStatus, DateTime moveBetsDate)
         {
-            var sports = _dynamicRepository.Fetch<Sport>(new GetResultSportsByDateCriteria
+            var sports = _dynamicRepository.Fetch<Sport>(new GetResultSportsByDateCriteria(moveBetsDate)
             {
                 EventDate = resultDate.ToShortDateString()
             }).ToList();

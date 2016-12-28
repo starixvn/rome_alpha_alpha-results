@@ -16,7 +16,10 @@
         [HttpGet]
         public ActionResult TicketDetail(int gambleId)
         {
-            return RedirectToAction("TicketDetail", $"..{MicroSites.NG2ResultPath}", new RouteValueDictionary(new
+            return RedirectToAction(
+                "TicketDetail", 
+                $"..{MicroSites.NG2ResultPath}", 
+                new RouteValueDictionary(new
             {
                 gambleId
             }));
@@ -25,7 +28,10 @@
         [HttpGet]
         public ActionResult ParlayDetail(string refno)
         {
-            return RedirectToAction("ParlayDetail", $"..{MicroSites.NG2ResultPath}", new RouteValueDictionary(new
+            return RedirectToAction(
+                "ParlayDetail", 
+                $"..{MicroSites.NG2ResultPath}", 
+                new RouteValueDictionary(new
             {
                 refno
             }));

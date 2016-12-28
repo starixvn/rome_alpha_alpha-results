@@ -19,7 +19,6 @@
         private IOutrightResultService _outrightResultService;
         private OutrightResultHandler _outrightResultHandler;
         private IReportDateService _reportDataService;
-        private const string DefaultLanguage = "en-US";
 
         [SetUp]
         public void SetUp()

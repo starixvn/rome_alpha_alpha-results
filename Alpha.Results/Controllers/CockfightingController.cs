@@ -1,5 +1,6 @@
 ﻿namespace Alpha.Results.Site.Controllers
 {
+    using System;
     using System.Web.Mvc;
     using MediatR;
     using Models.Requests;
@@ -24,6 +25,11 @@
         [HttpGet]
         public JsonResult Result(CockfightingResultQuery request)
         {
+            if (request == null)
+            {
+                throw new ArgumentNullException(nameof(request), "Request cannot be null");
+            }
+
             request.CustomerId = UserSession.Current.CustId;
             request.LanguageKey = UserSession.Current.LangKey;
 

@@ -9,7 +9,7 @@
 
     public class ReportDateService : IReportDateService
     {
-        private const string BalanceUpDateCacheKey = "Alpha.Results.Site.Services.Impl.BalanceUpDate";
+        private const string BalanceUpAndMoveBetsDateCacheKey = "Alpha.Results.Site.Services.Impl.BalanceUpAndMoveBetsDate";
 
         private readonly IDynamicRepository _dynamicRepository;
         private readonly ICache _cacheManager;
@@ -23,22 +23,32 @@
         [SuppressMessage("Microsoft.Usage", "CA2201:DoNotRaiseReservedExceptionTypes", Justification = "Reviewed")]
         public DateTime GetBalanceUpDate()
         {
-            var date = _cacheManager.Get<DateTime>(BalanceUpDateCacheKey);
+            return GetBalanceUpAndMoveBetsDate().BalanceUpDay;
+        }
 
-            if (date == DateTime.MinValue)
+        public DateTime GetMoveBetsDate()
+        {
+            return GetBalanceUpAndMoveBetsDate().MoveBetsDay;
+        }
+
+        [SuppressMessage("Microsoft.Usage", "CA2201:DoNotRaiseReservedExceptionTypes", Justification = "Reviewed!")]
+        public BalanceUpAndMoveBetsDate GetBalanceUpAndMoveBetsDate()
+        {
+            var data = _cacheManager.Get<BalanceUpAndMoveBetsDate>(BalanceUpAndMoveBetsDateCacheKey);
+
+            if (data == null)
             {
-                var data = _dynamicRepository.Get<BalanceUpAndMoveBetsDate>(new GetBalanceUpAndMoveBetsDayCriteria());
+                data = _dynamicRepository.Get<BalanceUpAndMoveBetsDate>(new GetBalanceUpAndMoveBetsDayCriteria());
 
                 if (data == null)
                 {
-                    throw new Exception("Cannot get balance up date");
+                    throw new Exception("Cannot get balance up date and move bets date.");
                 }
 
-                date = data.BalanceUpDay;
-                _cacheManager.Set(BalanceUpDateCacheKey, date);
+                _cacheManager.Set(BalanceUpAndMoveBetsDateCacheKey, data);
             }
 
-            return date;
-        }       
+            return data;
+        }
     }
 }
