@@ -30,6 +30,7 @@
     @Html.Hidden("RootURL", HttpContext.Current.Response.ApplyAppPathModifier("~/"))
 
     @Alpha.Results.Site.Helpers.StaticResources.AssetScripts.Render("/bundles/site-results/default")
+    @Alpha.Web.Helpers.GoogleAnalyticHepler.Render()
 </body>
 </html>
 
