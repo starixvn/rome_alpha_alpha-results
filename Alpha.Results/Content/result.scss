@@ -176,11 +176,11 @@ table.fn-rs, table.fn-rs {
     }
 }
 
-table.fn-rs tbody .cl-match.home {
+table.fn-rs tbody .cl-match.home, table.fn-rs.popup tbody .cl-result.home {
     color: #1735b2;
 }
 
-table.fn-rs tbody .cl-match.away {
+table.fn-rs tbody .cl-match.away, table.fn-rs.popup tbody .cl-result.away {
     color: #ff5521;
 }
 
