@@ -48,7 +48,7 @@ namespace Alpha.Results.Site.Services.Impl.Products
             {
                 SportType = sportType,
                 LanguageCode = request.Language,
-                VisibleDetailedLink = sportType == SportType.Soccer || sportType == SportType.Tennis,
+                VisibleDetailedLink = sportType == SportType.Soccer || sportType == SportType.Tennis || sportType == SportType.BasketBall,
                 VisibleFreeHeader = true,
                 VisibleMatchCodeIDColumn = false,
                 HighlightWinnerTeam = true
