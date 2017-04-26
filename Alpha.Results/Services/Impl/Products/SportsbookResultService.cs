@@ -51,7 +51,8 @@ namespace Alpha.Results.Site.Services.Impl.Products
                 VisibleDetailedLink = sportType == SportType.Soccer || sportType == SportType.Tennis || sportType == SportType.BasketBall,
                 VisibleFreeHeader = true,
                 VisibleMatchCodeIDColumn = false,
-                HighlightWinnerTeam = true
+                HighlightWinnerTeam = true,
+                EnableCheckScoreCalculated = true
             };
 
             return _resultEngineAdapter.HtmlParser(results, resultSetting).Replace("original-title", " title ");
@@ -69,7 +70,8 @@ namespace Alpha.Results.Site.Services.Impl.Products
                 ExcelTitle = request.ExcelTitle,
                 ExcelTemplatePath = request.TemplatePath,
                 VisibleMatchCodeIDColumn = false,
-                HighlightWinnerTeam = true
+                HighlightWinnerTeam = true,
+                EnableCheckScoreCalculated = true
             };
 
             var results = _dataAccess.GetSportbookResults(GetCriteria(request)).ToList();
@@ -111,7 +113,8 @@ namespace Alpha.Results.Site.Services.Impl.Products
                 IsPopUp = true,
                 LanguageCode = detailsRequest.Language,
                 VisibleMatchCodeIDColumn = false,
-                HighlightWinnerTeam = true
+                HighlightWinnerTeam = true,
+                EnableCheckScoreCalculated = true
             };
 
             return detailsRequest.IsViewResultFromBetList
