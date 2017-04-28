@@ -437,6 +437,33 @@
     <Content Include="Content\Images\goal-icon.png" />
     <Content Include="Content\Images\sprite.png" />
     <Content Include="Global.asax" />
+    <None Include="Web.AppSettings.backupMNLExNap2.config">
+      <DependentUpon>Web.AppSettings.config</DependentUpon>
+    </None>
+    <None Include="Web.AppSettings.backupMNLNap.config">
+      <DependentUpon>Web.AppSettings.config</DependentUpon>
+    </None>
+    <None Include="Web.AppSettings.backupMNLExNap.config">
+      <DependentUpon>Web.AppSettings.config</DependentUpon>
+    </None>
+    <None Include="Web.AppSettings.backupMNL2.config">
+      <DependentUpon>Web.AppSettings.config</DependentUpon>
+    </None>
+    <None Include="Web.AppSettings.backupMNL.config">
+      <DependentUpon>Web.AppSettings.config</DependentUpon>
+    </None>
+    <None Include="Web.backupMNL.config">
+      <DependentUpon>Web.local.config</DependentUpon>
+    </None>
+    <None Include="Web.backupMNL2.config">
+      <DependentUpon>Web.local.config</DependentUpon>
+    </None>
+    <None Include="Web.backupMNLExNap2.config">
+      <DependentUpon>Web.local.config</DependentUpon>
+    </None>
+    <None Include="Web.backupMNLNap2.config">
+      <DependentUpon>Web.local.config</DependentUpon>
+    </None>
     <Content Include="Web.uati7.config">
       <DependentUpon>Web.local.config</DependentUpon>
       <SubType>Designer</SubType>
@@ -463,14 +490,6 @@
     </Content>
     <Content Include="Scripts\Cockfighting\cock-fighting-result.js" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Web.backupMNLI7.config">
-      <DependentUpon>Web.local.config</DependentUpon>
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Web.backupMNLI1.config">
-      <DependentUpon>Web.local.config</DependentUpon>
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -498,12 +517,6 @@
       <DependentUpon>Web.local.config</DependentUpon>
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Web.AppSettings.backupMNLExNapI7.config">
-      <DependentUpon>Web.AppSettings.config</DependentUpon>
-    </Content>
-    <Content Include="Web.AppSettings.backupMNLNapI7.config">
-      <DependentUpon>Web.AppSettings.config</DependentUpon>
-    </Content>
     <Content Include="Web.AppSettings.napexternali7.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
     </Content>
@@ -512,12 +525,6 @@
     </Content>
     <Content Include="Web.AppSettings.siti7.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
-    </Content>
-    <Content Include="Web.backupMNLExNapI7.config">
-      <DependentUpon>Web.local.config</DependentUpon>
-    </Content>
-    <Content Include="Web.backupMNLNap7.config">
-      <DependentUpon>Web.local.config</DependentUpon>
     </Content>
     <Content Include="Web.napexternali7.config">
       <DependentUpon>Web.local.config</DependentUpon>
@@ -668,6 +675,7 @@
     </Content>
     <Content Include="Web.AppSettings.proi7.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.AppSettings.sit.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
@@ -686,31 +694,21 @@
     </Content>
     <Content Include="Views\Cockfighting\Index.cshtml" />
     <Content Include="Views\Keno\Index.cshtml" />
-    <Content Include="Web.AppSettings.backupMNLI1.config">
-      <DependentUpon>Web.AppSettings.config</DependentUpon>
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Web.AppSettings.backupMNLI7.config">
-      <DependentUpon>Web.AppSettings.config</DependentUpon>
-    </Content>
     <Content Include="Views\NG2\Index.cshtml" />
     <Content Include="Views\NG2\ParlayDetail.cshtml" />
     <Content Include="Views\NG2\TicketDetail.cshtml" />
     <Content Include="Web.AppSettings.local2.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
     </Content>
-    <Content Include="Web.AppSettings.backupMNLExNap.config">
+    <None Include="Web.AppSettings.backupMNLNap2.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
-    </Content>
-    <Content Include="Web.AppSettings.backupMNLNap.config">
-      <DependentUpon>Web.AppSettings.config</DependentUpon>
-    </Content>
-    <Content Include="Web.backupMNLExNap.config">
+    </None>
+    <None Include="Web.backupMNLExNap.config">
       <DependentUpon>Web.local.config</DependentUpon>
-    </Content>
-    <Content Include="Web.backupMNLNap.config">
+    </None>
+    <None Include="Web.backupMNLNap.config">
       <DependentUpon>Web.local.config</DependentUpon>
-    </Content>
+    </None>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
