@@ -4,12 +4,18 @@
     {
         private string _selectedTabName;
 
-        public TabViewModel(string selectedTabName, bool isEnabledKenoTab, bool isEnableCockfighting, bool isEnableNG2)
+        public TabViewModel(
+            string selectedTabName,
+            bool isEnabledKenoTab,
+            bool isEnableCockfighting,
+            bool isEnableNG2,
+            bool isEnableLottery)
         {
             _selectedTabName = selectedTabName;
             IsEnabledKenoTab = isEnabledKenoTab;
             IsEnableCockfighting = isEnableCockfighting;
             IsEnableNG2 = isEnableNG2;
+            IsEnableLottery = isEnableLottery;
         }
 
         public string SelectedTabName
@@ -25,5 +31,7 @@
         public bool IsEnableCockfighting { get; set; }
 
         public bool IsEnableNG2 { get; }
+
+        public bool IsEnableLottery { get; }
     }
 }

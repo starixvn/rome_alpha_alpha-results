@@ -183,4 +183,10 @@
   <data name="OpenCockfightingResults" xml:space="preserve">
     <value>Click here to open Cockfighting results</value>
   </data>
+  <data name="Lottery" xml:space="preserve">
+    <value>Lottery</value>
+  </data>
+  <data name="OpenLotteryResults" xml:space="preserve">
+    <value>Click here to open Lottery results</value>
+  </data>
 </root>

@@ -24,6 +24,7 @@
             {
                 LanguageKey = userSession.LangKey,
                 CustId = userSession.CustId,
+                CustLevelId = userSession.RoleId,
                 RootUrl = HttpContext.Response.ApplyAppPathModifier("~/")
             });
 

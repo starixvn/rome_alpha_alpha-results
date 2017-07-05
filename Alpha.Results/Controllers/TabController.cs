@@ -15,8 +15,14 @@
 
             var product = ProductManager.GetProduct(ProductIdConstants.NG2);
             var isEnableNG2 = product != null && product.ShowSettings;
+            var viewModel = new TabViewModel(
+                tabName,
+                UserPermission.EnableKeno,
+                isEnableCockfighting,
+                isEnableNG2,
+                UserPermission.IsEnableProduct(ProductIdConstants.Lottery));
 
-            return PartialView(new TabViewModel(tabName, UserPermission.EnableKeno, isEnableCockfighting, isEnableNG2));
+            return PartialView(viewModel);
         }
     }
 }

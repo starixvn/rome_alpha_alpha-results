@@ -7,7 +7,7 @@
     <Setting Key="Age_Result_LeagueSelByDate" SpName="Age_Result_LeagueSelByDate" DbName="DBAGE.bodb02.BODBDownlineNet">
       <Mapping ObjectProperty="Id" DataField="leagueid" />
     </Setting>
-    <Setting Key="Age_Result_MatchSelByLeague" SpName="Age_Result_MatchSelByLeague_xpre" DbName="DBAGE.bodb02.BODBDownlineNet" />
+    <Setting Key="Age_Result_MatchSelByLeague" SpName="Age_Result_MatchSelByLeague" DbName="DBAGE.bodb02.BODBDownlineNet" />
     <Setting Key="Age_Result_MatchSelGoalHistory" SpName="Age_Result_MatchSelGoalHistory" DbName="DBAGE.bodb02.BODBDownlineNet" />
     <Setting Key="Age_Result_MatchSelNumberGameByLeague" SpName="Age_Result_MatchSelNumberGameByLeague" DbName="DBAGE.bodb02.BODBDownlineNet" />
     <Setting Key="Age_Result_Outright" SpName="Age_Result_Outright" DbName="DBAGE.bodb02.BODBDownlineNet" />
