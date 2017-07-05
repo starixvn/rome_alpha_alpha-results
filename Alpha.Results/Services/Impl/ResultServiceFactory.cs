@@ -13,7 +13,8 @@
         public IProductResultService CreateProductResultService(int sportId, int betTypeId)
         {
             if (betTypeId == (int)BetType.Mix_Parlay
-                || betTypeId == (int)BetType.Combine_Mix_Parlay)
+                || betTypeId == (int)BetType.Combine_Mix_Parlay
+                || betTypeId == (int)BetType.Mix_Parlay_BetRadarVirtualSports)
             {
                 return new ParlayResultService();
             }
