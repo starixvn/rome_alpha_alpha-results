@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using MediatR;
     using Sunplus.Agent.Model.BL.Definitions;
+    using Sunplus.Agent.Model.Definitions;
     using Sunplus.Agent.Model.Entities;
     using Sunplus.Agent.Model.Entities.Permission;
     using Views;
@@ -58,7 +59,7 @@
                     { (int)SportType.NumberGame,  UserPermission.IsShowNumberGame },
                     { (int)SportType.LiveCasino,  UserPermission.IsShowLiveCasino },
                     { (int)SportType.GoldDeluxe,  UserPermission.IsShowGoldDeluxeSettingForCredit },
-                    { (int)SportType.VirtualSports,  UserPermission.IsShowVirtualSports }
+                    { (int)SportType.VirtualSports, UserPermission.HasPermissionOnProduct(ProductIdConstants.VirtualSports) }
                 };
 
                 return sportsStatus;
