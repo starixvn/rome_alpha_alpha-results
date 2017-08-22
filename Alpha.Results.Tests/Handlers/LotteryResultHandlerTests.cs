@@ -28,7 +28,7 @@
 
             var actualViewModel = _lotteryResultHandler.Handle(query);
 
-            var expectedResultPath = $"RootUrl/game/keno/kenoresult/resultdetail?date={DateTime.Today.ToString("yyyyMMdd")}&language=EN&customerid=1&custLevelId=0&productId=28";
+            var expectedResultPath = $"RootUrl/game/keno/kenoresult/resultdetail?date={DateTime.Today.ToString("yyyyMMdd")}&language=EN&customerid=1&productId=28&custLevelId=0";
             Assert.AreEqual(expectedResultPath, actualViewModel.ResultPath);
         }
 
@@ -44,7 +44,7 @@
 
             var actualViewModel = _lotteryResultHandler.Handle(query);
 
-            var expectedExtendTokenPath = "RootUrl/game/keno/kenoresult/extendtoken?userid=1&productId=28";
+            var expectedExtendTokenPath = "RootUrl/game/keno/kenoresult/extendtoken?productId=28&userid=1";
             Assert.AreEqual(expectedExtendTokenPath, actualViewModel.ExtendTokenPath);
         }
     }

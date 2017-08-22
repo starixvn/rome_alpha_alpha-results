@@ -12,7 +12,7 @@ namespace Alpha.Results.Site.Handlers
         public LotteryResultViewModel Handle(LotteryResultQuery message)
         {
             var resultPath = string.Format(
-                "{0}game/keno/kenoresult/resultdetail?date={1}&language={2}&customerid={3}&custLevelId={4}&productId={5}",
+                "{0}game/keno/kenoresult/resultdetail?date={1}&language={2}&customerid={3}&productId={5}&custLevelId={4}",
                 message.RootPath,
                 DateTime.Today.ToString("yyyyMMdd"),
                 message.LanguageKey,
@@ -20,7 +20,7 @@ namespace Alpha.Results.Site.Handlers
                 message.CustLevelId,
                 ProductIdConstants.Lottery);
 
-            var extendTokenPath = $"{message.RootPath}game/keno/kenoresult/extendtoken?userid={message.CustId}&productId={ProductIdConstants.Lottery}";
+            var extendTokenPath = $"{message.RootPath}game/keno/kenoresult/extendtoken?productId={ProductIdConstants.Lottery}&userid={message.CustId}";
 
             return new LotteryResultViewModel
             {
