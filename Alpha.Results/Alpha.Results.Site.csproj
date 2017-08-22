@@ -92,7 +92,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Fanex.Game.Keno, Version=3.0.0.2, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Game.Keno.AlphaResults.3.0.0.2-kenolottery-11\lib\net40\Fanex.Game.Keno.dll</HintPath>
+      <HintPath>..\packages\Fanex.Game.Keno.AlphaResults.3.0.0.2\lib\net40\Fanex.Game.Keno.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Fanex.Logging, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
