@@ -34,7 +34,7 @@
 
             var actualViewModel = _kenoResultHandler.Handle(query);
 
-            var expectedResultUrl = $"RootUrl/game/keno/kenoresult/resultdetail?date={DateTime.Today.ToString("yyyyMMdd")}&language=EN&customerid=1&productId=8&custLevelId=0";
+            var expectedResultUrl = $"RootUrl/game/keno/kenoresult/resultdetail?date={DateTime.Today.ToString("yyyyMMdd")}&language=EN&productId=8&customerid=1";
             Assert.AreEqual(expectedResultUrl, actualViewModel.ResultUrl);
         }
 

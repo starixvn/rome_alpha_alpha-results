@@ -28,7 +28,7 @@
 
             var actualViewModel = _lotteryResultHandler.Handle(query);
 
-            var expectedResultPath = $"RootUrl/game/keno/kenoresult/resultdetail?date={DateTime.Today.ToString("yyyyMMdd")}&language=EN&customerid=1&productId=28&custLevelId=0";
+            var expectedResultPath = $"RootUrl/game/keno/kenoresult/resultdetail?date={DateTime.Today.ToString("yyyyMMdd")}&language=EN&productId=28&customerid=1";
             Assert.AreEqual(expectedResultPath, actualViewModel.ResultPath);
         }
 

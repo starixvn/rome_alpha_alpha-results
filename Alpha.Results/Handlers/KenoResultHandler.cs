@@ -17,12 +17,11 @@
             }
 
             var resultUrl = string.Format(
-                "{0}game/keno/kenoresult/resultdetail?date={1}&language={2}&customerid={3}&productId={5}&custLevelId={4}",
+                "{0}game/keno/kenoresult/resultdetail?date={1}&language={2}&productId={4}&customerid={3}",
                 message.RootUrl,
                 DateTime.Today.ToString("yyyyMMdd"),
                 message.LanguageKey,
                 message.CustId,
-                message.CustLevelId,
                 ProductIdConstants.Keno);
 
             var extendTokenUrl = $"{message.RootUrl}game/keno/kenoresult/extendtoken?productId={ProductIdConstants.Keno}&userid={message.CustId}";
