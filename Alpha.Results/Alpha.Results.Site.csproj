@@ -437,10 +437,10 @@
     <Content Include="Content\Fanex.Result\images\bg_header03.jpg" />
     <Content Include="Content\Fanex.Result\images\bg_header04.jpg" />
     <Content Include="Content\Fanex.Result\images\goal-icon.png" />
-    <Content Include="Content\Fanex.Result\images\icon_bets.png" />
-    <Content Include="Content\Fanex.Result\images\lotto_ball.png" />
     <Content Include="Content\Images\ajax-loader.gif" />
     <Content Include="Content\Images\goal-icon.png" />
+    <Content Include="Content\Images\icon_bets.png" />
+    <Content Include="Content\Images\lotto_ball.png" />
     <Content Include="Content\Images\sprite.png" />
     <Content Include="Global.asax" />
     <Content Include="App_Data\Fanex.Result\Lucky3.xls" />
