@@ -1,0 +1,17 @@
+﻿@using Newtonsoft.Json;
+@model HandHistoryResultViewModel
+@{
+    Layout = null;
+}
+<html>
+<head>
+    @Styles.Render(BundleConfig.HandHistoryResultStyleBundleUrl)
+    <title>@Model.Title</title>
+</head>
+<body>
+    <div id="handhistory-result"></div>
+    @Html.Hidden("HandHistory", JsonConvert.SerializeObject(Model.HandHistory))
+    @Alpha.Results.Site.Helpers.StaticResources.AssetScripts.Render("/bundles/site-results/default")
+    @Scripts.Render(BundleConfig.HandHistoryResultJavascriptBundleUrl)
+</body>
+</html>

@@ -13,6 +13,7 @@
     using Fanex.Logging;
     using Fanex.Result.Core.AllBetCasino;
     using Fanex.Result.Core.CockFighting;
+    using Fanex.Result.Core.Voidbridge;
     using Handlers;
     using MediatR;
     using Services;
@@ -87,6 +88,10 @@
             container.Register<IResultEngineAdapter, ResultEngineAdapter>(Lifestyle.Scoped);
             container.Register<IKenoGameService, KenoGameService>(Lifestyle.Scoped);
             container.Register<IAllbetResultBuilder, AllbetResultBuilder>(Lifestyle.Scoped);
+            container.Register<VoidbridgeApi, VoidbridgeApiImp>(Lifestyle.Scoped);
+            container.Register<IRNGCasinoResultService, RNGCasinoResultService>(Lifestyle.Scoped);
+            container.Register<IMacauGamesResultService, MacauGamesResultService>(Lifestyle.Scoped);
+            container.Register<IFishingWorldResultService, FishingWorldResultService>(Lifestyle.Scoped);
         }
 
         private static void RegisterDataAccesses(Container container)

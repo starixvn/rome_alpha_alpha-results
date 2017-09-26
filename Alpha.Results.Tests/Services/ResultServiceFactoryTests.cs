@@ -1,6 +1,5 @@
 ﻿namespace Alpha.Results.Site.Tests.Services
 {
-    using NSubstitute;
     using NUnit.Framework;
     using Site.Services.Impl;
     using Site.Services.Impl.Products;
@@ -22,7 +21,7 @@
         public void CreateProductResultService_BetTypeIsMixParlayOrSystemParlay_ReturnParlayResultService(int betTypeId)
         {
             //// Act
-            var resultService = _resultServiceFactory.CreateProductResultService(Arg.Any<int>(), betTypeId);
+            var resultService = _resultServiceFactory.CreateProductResultService(0, betTypeId);
 
             //// Assert
             Assert.IsTrue(resultService is ParlayResultService);
@@ -76,7 +75,7 @@
             int sportId)
         {
             //// Act
-            var resultService = _resultServiceFactory.CreateProductResultService(sportId, Arg.Any<int>());
+            var resultService = _resultServiceFactory.CreateProductResultService(sportId, 0);
 
             //// Assert
             Assert.IsTrue(resultService is SportsbookResultService);
@@ -91,7 +90,7 @@
             int sportId)
         {
             //// Act
-            var resultService = _resultServiceFactory.CreateProductResultService(sportId, Arg.Any<int>());
+            var resultService = _resultServiceFactory.CreateProductResultService(sportId, 0);
 
             //// Assert
             Assert.IsTrue(resultService is RacingResultService);
@@ -156,7 +155,7 @@
             int sportId)
         {
             //// Act
-            var resultService = _resultServiceFactory.CreateProductResultService(sportId, Arg.Any<int>());
+            var resultService = _resultServiceFactory.CreateProductResultService(sportId, 0);
 
             //// Assert
             Assert.IsTrue(resultService is VirtualRacingResultService);
@@ -182,7 +181,7 @@
             int sportId)
         {
             //// Act
-            var resultService = _resultServiceFactory.CreateProductResultService(sportId, Arg.Any<int>());
+            var resultService = _resultServiceFactory.CreateProductResultService(sportId, 0);
 
             //// Assert
             Assert.IsTrue(resultService is SportsbookResultService);
