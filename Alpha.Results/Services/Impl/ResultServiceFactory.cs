@@ -37,6 +37,8 @@
 
                 case SportType.NumberGame:
                     return new NumberGameResultService();
+                case SportType.Lucky3:
+                    return new Lucky3ResultService();
 
                 case SportType.LiveCasino:
                     return new LiveCasinoResultService();
