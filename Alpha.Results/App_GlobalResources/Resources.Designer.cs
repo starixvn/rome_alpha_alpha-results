@@ -124,6 +124,15 @@ namespace Alpha.Results.Site.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Lottery.
+        /// </summary>
+        public static string Lottery {
+            get {
+                return ResourceManager.GetString("Lottery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mix Parlay.
         /// </summary>
         public static string MixParlay {
@@ -156,6 +165,15 @@ namespace Alpha.Results.Site.App_GlobalResources {
         public static string OpenKenoResults {
             get {
                 return ResourceManager.GetString("OpenKenoResults", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Click here to open Lottery results.
+        /// </summary>
+        public static string OpenLotteryResults {
+            get {
+                return ResourceManager.GetString("OpenLotteryResults", resourceCulture);
             }
         }
         

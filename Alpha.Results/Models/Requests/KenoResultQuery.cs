@@ -8,6 +8,8 @@
     {
         public int CustId { get; set; }
 
+        public int CustLevelId { get; set; }
+
         public string LanguageKey { get; set; }
 
         [SuppressMessage("Microsoft.Design", "CA1056:UriPropertiesShouldNotBeStrings", Justification = "Reviewed")]

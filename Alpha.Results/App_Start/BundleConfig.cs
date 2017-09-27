@@ -10,6 +10,8 @@
         public const string ResultCoreStyleBundleUrl = "~/bundle/styles/resultcore";
         public const string KenoResultStyleBundleUrl = "~/bundle/styles/kenoresult";
 
+        public const string LotteryResultScriptBundleUrl = "~/bundle/styles/lotteryresult";
+
         public static void RegisterBundles(BundleCollection bundles)
         {
             RegisterJavascriptBundles(bundles);
@@ -22,6 +24,7 @@
             RegisterOutrightResultJavascript(bundles);
             RegisterCockfightingResultJavascript(bundles);
             RegisterKenoResultJavascript(bundles);
+            RegisterLotteryResultJavascript(bundles);
         }
 
         private static void RegisterNormalResultJavascript(BundleCollection bundles)
@@ -40,6 +43,12 @@
         {
             bundles.Add(new ScriptBundle(KenoResultStyleBundleUrl).Include(
                         "~/Scripts/Keno/index.js"));
+        }
+
+        private static void RegisterLotteryResultJavascript(BundleCollection bundles)
+        {
+            bundles.Add(new ScriptBundle(LotteryResultScriptBundleUrl).Include(
+                        "~/Scripts/Lottery/index.js"));
         }
 
         private static void RegisterCockfightingResultJavascript(BundleCollection bundles)
