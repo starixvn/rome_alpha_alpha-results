@@ -348,10 +348,16 @@
     <Content Include="RNGCasinoSection.backupMNL2.config">
       <DependentUpon>RNGCasinoSection.config</DependentUpon>
     </Content>
+    <Content Include="RNGCasinoSection.backupMNL3.config">
+      <DependentUpon>RNGCasinoSection.config</DependentUpon>
+    </Content>
     <Content Include="RNGCasinoSection.backupMNLExNap.config">
       <DependentUpon>RNGCasinoSection.config</DependentUpon>
     </Content>
     <Content Include="RNGCasinoSection.backupMNLExNap2.config">
+      <DependentUpon>RNGCasinoSection.config</DependentUpon>
+    </Content>
+    <Content Include="RNGCasinoSection.backupMNLExNap3.config">
       <DependentUpon>RNGCasinoSection.config</DependentUpon>
     </Content>
     <Content Include="RNGCasinoSection.backupMNLNap.config">
@@ -360,10 +366,16 @@
     <Content Include="RNGCasinoSection.backupMNLNap2.config">
       <DependentUpon>RNGCasinoSection.config</DependentUpon>
     </Content>
+    <Content Include="RNGCasinoSection.backupMNLNap3.config">
+      <DependentUpon>RNGCasinoSection.config</DependentUpon>
+    </Content>
     <Content Include="RNGCasinoSection.napexternal.config">
       <DependentUpon>RNGCasinoSection.config</DependentUpon>
     </Content>
     <Content Include="RNGCasinoSection.napexternal2.config">
+      <DependentUpon>RNGCasinoSection.config</DependentUpon>
+    </Content>
+    <Content Include="RNGCasinoSection.napexternal3.config">
       <DependentUpon>RNGCasinoSection.config</DependentUpon>
     </Content>
     <Content Include="RNGCasinoSection.napinternal.config">
@@ -372,10 +384,16 @@
     <Content Include="RNGCasinoSection.napinternal2.config">
       <DependentUpon>RNGCasinoSection.config</DependentUpon>
     </Content>
+    <Content Include="RNGCasinoSection.napinternal3.config">
+      <DependentUpon>RNGCasinoSection.config</DependentUpon>
+    </Content>
     <Content Include="RNGCasinoSection.pro.config">
       <DependentUpon>RNGCasinoSection.config</DependentUpon>
     </Content>
     <Content Include="RNGCasinoSection.pro2.config">
+      <DependentUpon>RNGCasinoSection.config</DependentUpon>
+    </Content>
+    <Content Include="RNGCasinoSection.pro3.config">
       <DependentUpon>RNGCasinoSection.config</DependentUpon>
     </Content>
     <Content Include="RNGCasinoSection.SIT.config">
@@ -384,10 +402,10 @@
     <Content Include="RNGCasinoSection.SIT2.config">
       <DependentUpon>RNGCasinoSection.config</DependentUpon>
     </Content>
-    <Content Include="RNGCasinoSection.UAT.config">
+    <Content Include="RNGCasinoSection.SIT3.config">
       <DependentUpon>RNGCasinoSection.config</DependentUpon>
     </Content>
-    <Content Include="RNGCasinoSection.UAT2.config">
+    <Content Include="RNGCasinoSection.UAT.config">
       <DependentUpon>RNGCasinoSection.config</DependentUpon>
     </Content>
     <Content Include="App_Data\SPNames\INTERNAL\Results.xml">
@@ -521,6 +539,12 @@
     <Content Include="Content\Images\sprite.png" />
     <Content Include="Global.asax" />
     <Content Include="App_Data\Fanex.Result\Lucky3.xls" />
+    <Content Include="RNGCasinoSection.UAT2.config">
+      <DependentUpon>RNGCasinoSection.config</DependentUpon>
+    </Content>
+    <Content Include="RNGCasinoSection.UAT3.config">
+      <DependentUpon>RNGCasinoSection.config</DependentUpon>
+    </Content>
     <Content Include="Scripts\Lottery\index.js" />
     <Content Include="Views\Lottery\Index.cshtml" />
     <Content Include="Views\HandHistory\Index.cshtml" />
