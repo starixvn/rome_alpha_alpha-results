@@ -1,16 +1,16 @@
 ﻿namespace Alpha.Results.Site.Tests.Services
 {
-    using Criteria;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using Fanex.Data.Repository;
     using Models;
     using NSubstitute;
     using NUnit.Framework;
+    using Site.Criteria;
     using Site.Services;
     using Site.Services.Impl;
     using Sunplus.Agent.Model.BL.Definitions;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
 
     [TestFixture]
     public class NormalResultServiceTests

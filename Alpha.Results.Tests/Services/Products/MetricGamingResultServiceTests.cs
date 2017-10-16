@@ -2,17 +2,15 @@
 {
     using System;
     using System.Collections.Generic;
-    using Criteria;
     using DataAccesses;
     using Fanex.Result.Core.Base;
     using Fanex.Result.Core.MetricGaming.DTO;
     using Models.Requests;
     using NSubstitute;
     using NUnit.Framework;
+    using Site.Criteria;
     using Site.Services;
-    using Site.Services.Impl;
     using Site.Services.Impl.Products;
-    using Sunplus.Agent.Model.Entities;
 
     [TestFixture]
     public class MetricGamingResultServiceTests
@@ -82,7 +80,7 @@
 
             //// Assert
             _resultEngineAdapter.Received().HtmlParser(
-                Arg.Is<List<MetricGaming>>(items => items.Count == 1), 
+                Arg.Is<List<MetricGaming>>(items => items.Count == 1),
                 Arg.Any<ResultSetting>());
         }
 
@@ -103,7 +101,7 @@
 
             //// Assert
             _resultEngineAdapter.Received().HtmlParser(
-                Arg.Any<IList<MetricGaming>>(), 
+                Arg.Any<IList<MetricGaming>>(),
                 Arg.Is<ResultSetting>(
                 resultSetting => resultSetting.SportType == SportType.Soccer
                                 && !resultSetting.IsOutright

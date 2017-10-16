@@ -258,6 +258,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\CockfightingControllerTests.cs" />
+    <Compile Include="Criteria\GetBalanceUpAndMoveBetsDayCriteriaTests.cs" />
+    <Compile Include="Criteria\GetGoldDeluxeResultCriteriaTests.cs" />
+    <Compile Include="Criteria\GetLiveCasinoResultCriteriaTests.cs" />
+    <Compile Include="Criteria\GetMetricGamingResultCriteriaTests.cs" />
+    <Compile Include="Criteria\GetNumberGameResultCriteriaTests.cs" />
+    <Compile Include="Criteria\GetNumberGameResultDetailsCriteriaTests.cs" />
+    <Compile Include="Criteria\GetOutRightResultCriteriaTests.cs" />
+    <Compile Include="Criteria\GetParlayResultCriteriaTests.cs" />
+    <Compile Include="Criteria\GetRacingResultCriteriaTests.cs" />
+    <Compile Include="Criteria\GetRacingResultDetailsCriteriaTests.cs" />
+    <Compile Include="Criteria\GetResultLeaguesByDateCriteriaTests.cs" />
+    <Compile Include="Criteria\GetResultSportsByDateCriteriaTests.cs" />
+    <Compile Include="Criteria\GetSportsbookResultCriteriaTests.cs" />
+    <Compile Include="Criteria\GetSportsbookResultDetailsCriteriaTests.cs" />
+    <Compile Include="Criteria\GetVirtualRacingResultCriteriaTests.cs" />
     <Compile Include="Handlers\CockfightingResultHandlerTests.cs" />
     <Compile Include="Handlers\LotteryResultHandlerTests.cs" />
     <Compile Include="Handlers\KenoResultHandlerTests.cs" />

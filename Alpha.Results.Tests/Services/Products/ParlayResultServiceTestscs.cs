@@ -2,13 +2,13 @@
 {
     using System;
     using System.Collections.Generic;
-    using Criteria;
     using DataAccesses;
     using Fanex.Result.Core.Base;
     using Fanex.Result.Core.Sportsbook.DTO;
     using Models.Requests;
     using NSubstitute;
     using NUnit.Framework;
+    using Site.Criteria;
     using Site.Services;
     using Site.Services.Impl.Products;
 
@@ -96,7 +96,7 @@
 
             //// Assert
             _resultEngineAdapter.Received().HtmlParser(
-                Arg.Any<IList<Parlay>>(), 
+                Arg.Any<IList<Parlay>>(),
                 Arg.Is<ResultSetting>(
                 resultSetting => !resultSetting.IsOutright
                                 && resultSetting.IsParlayPopUp

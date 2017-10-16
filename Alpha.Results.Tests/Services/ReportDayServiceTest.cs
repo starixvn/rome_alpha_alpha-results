@@ -1,14 +1,13 @@
 ﻿namespace Alpha.Results.Site.Tests.Services
 {
     using System;
-    using Criteria;
     using Fanex.Caching;
     using Fanex.Data.Repository;
     using FluentAssertions;
     using Models.Dtos;
     using NSubstitute;
     using NUnit.Framework;
-    using Site.Services;
+    using Site.Criteria;
     using Site.Services.Impl;
 
     [TestFixture]
@@ -32,7 +31,7 @@
             cacheManager.Get<BalanceUpAndMoveBetsDate>(BalanceUpAndMoveBetsDateCacheKey).Returns(expectedResults);
 
             var reportService = new ReportDateService(repository, cacheManager);
-            
+
             // Act
             var actual = reportService.GetBalanceUpDate();
 
@@ -75,7 +74,7 @@
                 BalanceUpDay = DateTime.Now.AddDays(-1),
                 MoveBetsDay = DateTime.Now.AddDays(-1),
             };
-            
+
             cacheManager.Get<BalanceUpAndMoveBetsDate>(BalanceUpAndMoveBetsDateCacheKey).Returns(expectedResults);
 
             var repository = Substitute.For<IDynamicRepository>();

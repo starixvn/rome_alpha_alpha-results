@@ -3,13 +3,13 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Criteria;
     using Fanex.Data.Repository;
     using Fanex.Result.Core.Base;
     using Fanex.Result.Core.LiveCasino.DTO;
     using Models.Requests;
     using NSubstitute;
     using NUnit.Framework;
+    using Site.Criteria;
     using Site.Services;
     using Site.Services.Impl.Products;
 
@@ -79,7 +79,7 @@
 
             //// Assert
             _resultEngineAdapter.Received().HtmlParser(
-                Arg.Is<List<LiveCasino>>(items => items.Count == 1 && items.First().Bettype == 1), 
+                Arg.Is<List<LiveCasino>>(items => items.Count == 1 && items.First().Bettype == 1),
                 Arg.Any<ResultSetting>());
         }
 
@@ -99,7 +99,7 @@
 
             //// Assert
             _resultEngineAdapter.Received().HtmlParser(
-                Arg.Any<List<LiveCasino>>(), 
+                Arg.Any<List<LiveCasino>>(),
                 Arg.Is<ResultSetting>(
                 resultSetting => resultSetting.SportType == SportType.LiveCasino
                                 && !resultSetting.IsOutright

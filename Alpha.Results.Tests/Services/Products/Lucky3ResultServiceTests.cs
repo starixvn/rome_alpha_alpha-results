@@ -1,16 +1,16 @@
 ﻿namespace Alpha.Results.Site.Tests.Services.Products
 {
-    using Criteria;
+    using System;
+    using System.Collections.Generic;
     using DataAccesses;
     using Fanex.Result.Core.Base;
     using Fanex.Result.Core.Lucky3.DTO;
     using Models.Requests;
     using NSubstitute;
     using NUnit.Framework;
+    using Site.Criteria;
     using Site.Services;
     using Site.Services.Impl.Products;
-    using System;
-    using System.Collections.Generic;
 
     [TestFixture]
     public class Lucky3ResultServiceTests
@@ -72,7 +72,7 @@
 
             //// Assert
             resultEngineAdapter.Received().HtmlParser(
-                Arg.Is<List<Lucky3>>(items => items.Count == 1), 
+                Arg.Is<List<Lucky3>>(items => items.Count == 1),
                 Arg.Any<ResultSetting>());
         }
 
@@ -90,7 +90,7 @@
 
             //// Assert
             resultEngineAdapter.Received().HtmlParser(
-                Arg.Any<IList<Lucky3>>(), 
+                Arg.Any<IList<Lucky3>>(),
                 Arg.Is<ResultSetting>(
                 resultSetting => resultSetting.SportType == SportType.Lucky3
                                 && !resultSetting.IsOutright
