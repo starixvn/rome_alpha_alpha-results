@@ -2,13 +2,13 @@
 {
     using System;
     using System.Collections.Generic;
-    using DataAccesses;
     using Fanex.Result.Core.Base;
     using Fanex.Result.Core.MetricGaming.DTO;
-    using Models.Requests;
     using NSubstitute;
     using NUnit.Framework;
     using Site.Criteria;
+    using Site.DataAccesses;
+    using Site.Models.Requests;
     using Site.Services;
     using Site.Services.Impl.Products;
 

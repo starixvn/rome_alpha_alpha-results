@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web.Mvc;
 using Alpha.Results.Site.Controllers;
 using MediatR;
 using NSubstitute;
@@ -17,6 +18,16 @@ namespace Alpha.Results.Site.Tests.Controllers
         {
             mediator = Substitute.For<IMediator>();
             controller = new CockfightingController(mediator);
+        }
+
+        [Test]
+        public void Index_Always_ReturnView()
+        {
+            // Act
+            var result = controller.Index();
+
+            // Assert
+            Assert.IsTrue(result is ViewResult);
         }
 
         [Test]

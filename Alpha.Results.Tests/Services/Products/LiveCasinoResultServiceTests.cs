@@ -6,10 +6,10 @@
     using Fanex.Data.Repository;
     using Fanex.Result.Core.Base;
     using Fanex.Result.Core.LiveCasino.DTO;
-    using Models.Requests;
     using NSubstitute;
     using NUnit.Framework;
     using Site.Criteria;
+    using Site.Models.Requests;
     using Site.Services;
     using Site.Services.Impl.Products;
 

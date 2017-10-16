@@ -4,10 +4,10 @@
     using Fanex.Caching;
     using Fanex.Data.Repository;
     using FluentAssertions;
-    using Models.Dtos;
     using NSubstitute;
     using NUnit.Framework;
     using Site.Criteria;
+    using Site.Models.Dtos;
     using Site.Services.Impl;
 
     [TestFixture]

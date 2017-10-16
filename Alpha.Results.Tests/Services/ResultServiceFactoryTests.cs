@@ -104,6 +104,16 @@
         }
 
         [Test]
+        public void CreateProductResultService_SportIsLucky3_ReturnLucky3ResultService()
+        {
+            //// Act
+            var resultService = _resultServiceFactory.CreateProductResultService((int)SportType.Lucky3, Arg.Any<int>());
+
+            //// Assert
+            Assert.IsTrue(resultService is Lucky3ResultService);
+        }
+
+        [Test]
         public void CreateProductResultService_SportIsLiveCasino_ReturnLiveCasinoResultService()
         {
             //// Act
@@ -111,6 +121,16 @@
 
             //// Assert
             Assert.IsTrue(resultService is LiveCasinoResultService);
+        }
+
+        [Test]
+        public void CreateProductResultService_SportIsAllBet_ReturnAllBetResultService()
+        {
+            //// Act
+            var resultService = _resultServiceFactory.CreateProductResultService((int)SportType.AllBet, Arg.Any<int>());
+
+            //// Assert
+            Assert.IsTrue(resultService is AllBetCasinoResultService);
         }
 
         [TestCase(SportType.VirtualHorsesRacing)]

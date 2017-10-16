@@ -1,9 +1,9 @@
 ﻿namespace Alpha.Results.Site.Tests.Handlers
 {
     using System;
-    using Models.Requests;
     using NUnit.Framework;
     using Site.Handlers;
+    using Site.Models.Requests;
 
     [TestFixture]
     public class KenoResultHandlerTests

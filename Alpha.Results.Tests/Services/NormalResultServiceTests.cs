@@ -2,12 +2,15 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
+    using Constants;
     using Fanex.Data.Repository;
-    using Models;
     using NSubstitute;
     using NUnit.Framework;
     using Site.Criteria;
+    using Site.Models;
+    using Site.Models.Requests;
     using Site.Services;
     using Site.Services.Impl;
     using Sunplus.Agent.Model.BL.Definitions;
@@ -15,15 +18,16 @@
     [TestFixture]
     public class NormalResultServiceTests
     {
-        private const string DefaultLanguage = "en-US";
         private IDynamicRepository _dynamicRepository;
         private NormalResultService _resultService;
+        private IResultServiceFactory _resultServiceFactory;
 
         [SetUp]
         public void SetUp()
         {
             _dynamicRepository = Substitute.For<IDynamicRepository>();
-            _resultService = new NormalResultService(_dynamicRepository, Substitute.For<IResultServiceFactory>());
+            _resultServiceFactory = Substitute.For<IResultServiceFactory>();
+            _resultService = new NormalResultService(_dynamicRepository, _resultServiceFactory);
         }
 
         #region Get Leagues
@@ -33,7 +37,7 @@
         public void GetLeagues_SportIdIsNegativeOrZero_ThrowArgumentOutOfRangeException(int sportId)
         {
             Assert.Throws<ArgumentOutOfRangeException>(new TestDelegate(
-                () => _resultService.GetLeagues(DateTime.Now, sportId, DefaultLanguage, false, DateTime.Now)));
+                () => _resultService.GetLeagues(DateTime.Now, sportId, LanguageCode.English, false, DateTime.Now)));
         }
 
         [TestCase(null)]
@@ -62,11 +66,11 @@
 
             _dynamicRepository.Fetch<League>(Arg.Is<GetResultLeaguesByDateCriteria>(criteria =>
                     criteria.EventDate == resultDate.ToShortDateString()
-                    && criteria.Language == DefaultLanguage
+                    && criteria.Language == LanguageCode.English
                     && criteria.SportId == sportId)).Returns(expectedLeague);
 
             //// Act
-            var leagues = _resultService.GetLeagues(resultDate, sportId, DefaultLanguage, false, moveBetsDate);
+            var leagues = _resultService.GetLeagues(resultDate, sportId, LanguageCode.English, false, moveBetsDate);
 
             //// Assert
             Assert.IsTrue(leagues.Count() == 1
@@ -113,10 +117,118 @@
             var disableHorseRacingWin = true;
 
             //// Act
-            var leagues = _resultService.GetLeagues(DateTime.Now, sportId, DefaultLanguage, disableHorseRacingWin, DateTime.Now);
+            var leagues = _resultService.GetLeagues(DateTime.Now, sportId, LanguageCode.English, disableHorseRacingWin, DateTime.Now);
 
             //// Assert
             Assert.IsEmpty(leagues);
+        }
+
+        #endregion
+
+        #region Get Results
+
+        [Test]
+        public void GetResults_RequestIsNull_ThrowArgumentNullException()
+        {
+            Assert.Throws<ArgumentNullException>(new TestDelegate(() => _resultService.GetResults(null)));
+        }
+
+        [Test]
+        public void GetResults_RequestIsNotNull_CallCreateProductResultService()
+        {
+            // Arrange
+            var request = new NormalResultQuery();
+
+            // Act
+            _resultService.GetResults(request);
+
+            // Assert
+            _resultServiceFactory.Received().CreateProductResultService(Arg.Is(request.SportId), Arg.Is(request.BetTypeId));
+        }
+
+        #endregion
+
+        #region Get Excel Results
+
+        [Test]
+        public void GetExcelResults_RequestIsNull_ThrowArgumentNullException()
+        {
+            Assert.Throws<ArgumentNullException>(new TestDelegate(() => _resultService.GetExcelResults(null)));
+        }
+
+        [TestCase(0)]
+        [TestCase(-1)]
+        public void GetExcelResults_SportIdIsNegativeOrZero_ThrowArgumentOutOfRangeException(int sportId)
+        {
+            // Arrange
+            var request = new ExcelNormalResultQuery
+            {
+                SportId = sportId
+            };
+
+            // Act & Assert
+            Assert.Throws<ArgumentOutOfRangeException>(new TestDelegate(
+                () => _resultService.GetExcelResults(request)));
+        }
+
+        [TestCase(null)]
+        [TestCase("")]
+        public void GetExcelResults_TemplatePathIsNullOrEmpty_ThrowArgumentException(string templatePath)
+        {
+            // Arrange
+            var request = new ExcelNormalResultQuery
+            {
+                SportId = 1,
+                TemplatePath = templatePath
+            };
+
+            // Act & Assert
+            Assert.Throws<ArgumentException>(new TestDelegate(
+                () => _resultService.GetExcelResults(request)));
+        }
+
+        [Test]
+        public void GetExcelResults_RequestIsNotNull_CallCreateProductResultService()
+        {
+            // Arrange
+            var request = new ExcelNormalResultQuery
+            {
+                SportId = 1,
+                TemplatePath = "TemplatePath"
+            };
+            _resultServiceFactory
+                .CreateProductResultService(Arg.Any<int>(), Arg.Any<int>())
+                .ExportExcel(Arg.Any<ExcelNormalResultQuery>())
+                .Returns(new MemoryStream());
+
+            // Act
+            _resultService.GetExcelResults(request);
+
+            // Assert
+            _resultServiceFactory.Received().CreateProductResultService(Arg.Is(request.SportId), Arg.Is(request.BetTypeId));
+        }
+
+        #endregion
+
+        #region Get Result Details
+
+        [Test]
+        public void GetResultDetails_RequestIsNull_ThrowArgumentNullException()
+        {
+            Assert.Throws<ArgumentNullException>(new TestDelegate(() => _resultService.GetResultDetails(null)));
+        }
+
+        [Test]
+        public void GetResultDetails_RequestIsNotNull_CallCreateProductResultService()
+        {
+            // Arrange
+            var request = new NormalResultDetailsQuery();
+
+            // Act
+            _resultService.GetResultDetails(request);
+
+            // Assert
+            _resultServiceFactory.Received().CreateProductResultService(Arg.Is(request.SportId), Arg.Is(request.BetTypeId));
         }
 
         #endregion

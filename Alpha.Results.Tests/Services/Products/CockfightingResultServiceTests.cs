@@ -1,17 +1,13 @@
 ﻿namespace Alpha.Results.Site.Tests.Services.Products
 {
+    using System;
     using Fanex.Logging;
     using Fanex.Result.Core.CockFighting;
     using Fanex.Result.Core.CockFighting.Exceptions;
-    using Models.Requests;
     using NSubstitute;
     using NUnit.Framework;
+    using Site.Models.Requests;
     using Site.Services.Impl;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     public class CockfightingResultServiceTests
     {
@@ -103,6 +99,12 @@
 
             //// Assert
             _logger.Received().Error(Arg.Is<string>(message => !string.IsNullOrEmpty(message)), Arg.Any<Exception>());
+        }
+
+        [Test]
+        public void GetResultUrl_RequestIsNull_ThrowsArgumentNullException()
+        {
+            Assert.Throws<ArgumentNullException>(new TestDelegate(() => _cockfightingResultService.GetResultUrl(null)));
         }
     }
 }
