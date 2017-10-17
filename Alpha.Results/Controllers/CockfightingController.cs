@@ -30,8 +30,10 @@
                 throw new ArgumentNullException(nameof(request), "Request cannot be null");
             }
 
+#pragma warning disable CS0618 // Type or member is obsolete
             request.CustomerId = UserSession.Current.CustId;
             request.LanguageKey = UserSession.Current.LangKey;
+#pragma warning restore CS0618 // Type or member is obsolete
 
             var viewModel = _mediator.Send<CockfightingResultViewModel>(request);
 

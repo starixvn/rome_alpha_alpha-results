@@ -1,13 +1,13 @@
-namespace Alpha.Results.Site.Services.Impl.Products
+﻿namespace Alpha.Results.Site.Services.Impl.Products
 {
+    using System.IO;
+    using System.Linq;
     using Alpha.Results.Site.Criteria;
     using Alpha.Results.Site.DataAccesses;
     using DataAccesses.Impl;
     using Fanex.Common.Helper;
     using Fanex.Result.Core.Base;
     using Models.Requests;
-    using System.IO;
-    using System.Linq;
 
     public class Lucky3ResultService : IProductResultService
     {
@@ -90,7 +90,7 @@ namespace Alpha.Results.Site.Services.Impl.Products
 
         private static GetNumberGameResultCriteria GetCriteria(NormalResultQuery request)
         {
-            return new GetNumberGameResultCriteria()
+            return new GetNumberGameResultCriteria
             {
                 FromDate = request.ResultDate,
                 LeagueId = request.LeagueId,

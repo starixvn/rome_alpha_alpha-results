@@ -288,6 +288,7 @@
     <Compile Include="DataAccesses\RacingResultDataAccessTests.cs" />
     <Compile Include="DataAccesses\SportsbookResultDataAccessTests.cs" />
     <Compile Include="DataAccesses\VirtualRacingResultDataAccessTests.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Handlers\CockfightingResultHandlerTests.cs" />
     <Compile Include="Handlers\LotteryResultHandlerTests.cs" />
     <Compile Include="Handlers\KenoResultHandlerTests.cs" />

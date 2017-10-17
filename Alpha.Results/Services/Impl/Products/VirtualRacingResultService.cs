@@ -1,4 +1,4 @@
-namespace Alpha.Results.Site.Services.Impl.Products
+﻿namespace Alpha.Results.Site.Services.Impl.Products
 {
     using System;
     using System.Diagnostics.CodeAnalysis;
@@ -8,7 +8,6 @@ namespace Alpha.Results.Site.Services.Impl.Products
     using Alpha.Results.Site.DataAccesses;
     using DataAccesses.Impl;
     using Fanex.Common.Helper;
-    using Fanex.Result.Core;
     using Fanex.Result.Core.Base;
     using Models.Requests;
 
@@ -73,7 +72,7 @@ namespace Alpha.Results.Site.Services.Impl.Products
 
         private static GetVirtualRacingResultCriteria GetCriteria(NormalResultQuery request)
         {
-            return new GetVirtualRacingResultCriteria()
+            return new GetVirtualRacingResultCriteria
             {
                 FromDate = request.ResultDate,
                 SportType = request.SportId,
@@ -86,7 +85,7 @@ namespace Alpha.Results.Site.Services.Impl.Products
         {
             Check.Argument.IsNotNull(detailsRequest, "detailsRequest");
 
-            var criteria = new GetRacingResultDetailsCriteria()
+            var criteria = new GetRacingResultDetailsCriteria
             {
                 MatchId = detailsRequest.MatchId,
                 RaceNo = GetRaceNumber(detailsRequest.Race)

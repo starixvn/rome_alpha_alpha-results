@@ -18,7 +18,9 @@
         [HttpGet]
         public ActionResult Index()
         {
+#pragma warning disable CS0618 // Type or member is obsolete
             var userSession = UserSession.Current;
+#pragma warning restore CS0618 // Type or member is obsolete
 
             var viewModel = _mediator.Send(new KenoResultQuery
             {

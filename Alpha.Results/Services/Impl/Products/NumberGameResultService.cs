@@ -1,4 +1,4 @@
-namespace Alpha.Results.Site.Services.Impl.Products
+﻿namespace Alpha.Results.Site.Services.Impl.Products
 {
     using System.Diagnostics.CodeAnalysis;
     using System.IO;
@@ -7,7 +7,6 @@ namespace Alpha.Results.Site.Services.Impl.Products
     using Alpha.Results.Site.DataAccesses;
     using DataAccesses.Impl;
     using Fanex.Common.Helper;
-    using Fanex.Result.Core;
     using Fanex.Result.Core.Base;
     using Models.Requests;
 
@@ -70,7 +69,7 @@ namespace Alpha.Results.Site.Services.Impl.Products
 
         private static GetNumberGameResultCriteria GetCriteria(NormalResultQuery request)
         {
-            return new GetNumberGameResultCriteria()
+            return new GetNumberGameResultCriteria
             {
                 FromDate = request.ResultDate,
                 LeagueId = request.LeagueId,

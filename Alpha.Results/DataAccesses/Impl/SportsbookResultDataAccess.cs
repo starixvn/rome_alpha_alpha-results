@@ -141,7 +141,7 @@
                 throw new ArgumentNullException(nameof(criteria), "Criteria cannot be null");
             }
 
-            var result = new List<Sportsbook>();  
+            var result = new List<Sportsbook>();
 
             using (ObjectDb objDb = new ObjectDb(criteria.GetSettingKey()))
             {
@@ -204,7 +204,7 @@
         {
             criteria.SportType = reader["sporttype"] != DBNull.Value ? Convert.ToInt32(reader["sporttype"]) : 0;
 
-            var sportsbook = new Sportsbook()
+            var sportsbook = new Sportsbook
             {
                 HomeId = reader["homeID"] != DBNull.Value ? Convert.ToInt32(reader["homeID"]) : 0,
                 AwayId = reader["awayID"] != DBNull.Value ? Convert.ToInt32(reader["awayID"]) : 0,
