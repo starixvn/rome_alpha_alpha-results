@@ -9,6 +9,13 @@
 
     public class AllBetCasinoResultService : IProductResultService
     {
+        private readonly IAllbetResultBuilder allbetResultBuilder;
+
+        public AllBetCasinoResultService(IAllbetResultBuilder allbetResultBuilder = null)
+        {
+            this.allbetResultBuilder = allbetResultBuilder ?? new AllbetResultBuilder();
+        }
+
         public MemoryStream ExportExcel(ExcelNormalResultQuery request)
         {
             throw new NotImplementedException();
@@ -24,9 +31,7 @@
         {
             Check.Argument.IsNotNull(detailsRequest, "detailsRequest");
 
-            var allbetResultService = new AllbetResultBuilder();
-
-            return allbetResultService.Render(detailsRequest.TransDesc, detailsRequest.BetCheck, detailsRequest.BetTypeId.ToString(), detailsRequest.Language);
+            return allbetResultBuilder.Render(detailsRequest.TransDesc, detailsRequest.BetCheck, detailsRequest.BetTypeId.ToString(), detailsRequest.Language);
         }
     }
 }

@@ -11,6 +11,7 @@
     using Fanex.Data.Repository;
     using Fanex.Game.Keno.Business;
     using Fanex.Logging;
+    using Fanex.Result.Core.AllBetCasino;
     using Fanex.Result.Core.CockFighting;
     using Handlers;
     using MediatR;
@@ -81,6 +82,7 @@
             container.Register<ICockFightingAPI, CockFightingAPI>(Lifestyle.Scoped);
             container.Register<IResultEngineAdapter, ResultEngineAdapter>(Lifestyle.Scoped);
             container.Register<IKenoGameService, KenoGameService>(Lifestyle.Scoped);
+            container.Register<IAllbetResultBuilder, AllbetResultBuilder>(Lifestyle.Scoped);
         }
 
         private static void RegisterDataAccesses(Container container)
