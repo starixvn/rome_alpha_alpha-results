@@ -272,6 +272,9 @@
     <Compile Include="Configurations\AppSettingsTests.cs" />
     <Compile Include="Constants\LanguageCode.cs" />
     <Compile Include="Controllers\CockfightingControllerTests.cs" />
+    <Compile Include="Controllers\KenoControllerTests.cs" />
+    <Compile Include="Controllers\LotteryControllerTests.cs" />
+    <Compile Include="Controllers\NG2ControllerTests.cs" />
     <Compile Include="Controllers\NormalControllerTests.cs" />
     <Compile Include="Controllers\OutrightControllerTests.cs" />
     <Compile Include="Criteria\GetBalanceUpAndMoveBetsDayCriteriaTests.cs" />

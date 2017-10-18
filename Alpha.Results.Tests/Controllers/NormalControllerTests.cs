@@ -1,6 +1,7 @@
 ﻿namespace Alpha.Results.Site.Tests.Controllers
 {
     using System;
+    using Helpers;
     using MediatR;
     using NSubstitute;
     using NUnit.Framework;
@@ -48,6 +49,26 @@
         public void ExcelResults_RequestIsNull_ThrowsArgumentNullException()
         {
             Assert.Throws<ArgumentNullException>(new TestDelegate(() => controller.ExcelResults(null)));
+        }
+
+        [Test]
+        public void ExcelResults_RequestIsNotNull_CallMediatorSendExcelNormalResultQuery()
+        {
+            // Arrange
+            var request = new ExcelNormalResultQuery();
+            UrlHelper.ResultTemplatePath = "TemplatePath";
+
+            var viewModel = new NormalResultExcelViewModel
+            {
+                ExcelResults = new byte[0]
+            };
+            mediator.Send<NormalResultExcelViewModel>(Arg.Any<ExcelNormalResultQuery>()).Returns(viewModel);
+
+            // Act
+            controller.ExcelResults(request);
+
+            // Assert
+            mediator.Received().Send<NormalResultExcelViewModel>(Arg.Is(request));
         }
     }
 }

@@ -1,7 +1,7 @@
-﻿using System;
-using System.Web.Mvc;
-namespace Alpha.Results.Site.Tests.Controllers
+﻿namespace Alpha.Results.Site.Tests.Controllers
 {
+    using System;
+    using System.Web.Mvc;
     using MediatR;
     using NSubstitute;
     using NUnit.Framework;

@@ -76,7 +76,7 @@
 
         private static void RegisterServices(Container container)
         {
-            container.Register<IUserSession, UserSessionExt>(Lifestyle.Scoped);
+            container.RegisterPerWebRequest<IUserSession, UserSessionExt>();
 
             container.Register<IResultServiceFactory, ResultServiceFactory>(Lifestyle.Scoped);
             container.Register<IReportDateService, ReportDateService>(Lifestyle.Scoped);

@@ -1,11 +1,13 @@
 ﻿namespace Alpha.Results.Site.Tests.Controllers
 {
     using System;
+    using Helpers;
     using MediatR;
     using NSubstitute;
     using NUnit.Framework;
     using Site.Controllers;
     using Site.Models.Requests;
+    using Site.Models.Views;
 
     [TestFixture]
     public class OutrightControllerTests
@@ -34,6 +36,26 @@
         public void ExcelResults_RequestIsNull_ThrowsArgumentNullException()
         {
             Assert.Throws<ArgumentNullException>(new TestDelegate(() => controller.ExcelResults(null)));
+        }
+
+        [Test]
+        public void ExcelResults_RequestIsNotNull_CallMediatorSendExcelOutrightResultQuery()
+        {
+            // Arrange
+            var request = new ExcelOutrightResultQuery();
+            UrlHelper.ResultTemplatePath = "TemplatePath";
+
+            var viewModel = new OutrightResultExcelViewModel
+            {
+                ExcelResults = new byte[0]
+            };
+            mediator.Send<OutrightResultExcelViewModel>(Arg.Any<ExcelOutrightResultQuery>()).Returns(viewModel);
+
+            // Act
+            controller.ExcelResults(request);
+
+            // Assert
+            mediator.Received().Send<OutrightResultExcelViewModel>(Arg.Is(request));
         }
     }
 }

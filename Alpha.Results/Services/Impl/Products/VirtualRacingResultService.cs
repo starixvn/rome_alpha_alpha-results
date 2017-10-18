@@ -33,10 +33,6 @@
         {
             Check.Argument.IsNotNull(request, "request");
 
-            var criteria = GetCriteria(request);
-
-            var results = _racingResultDataAccess.GetVirtualRacingResults(criteria).ToList();
-
             var resultSetting = new ResultSetting
             {
                 SportType = (SportType)request.SportId,
@@ -47,6 +43,9 @@
                 HighlightWinnerTeam = true
             };
 
+            var criteria = GetCriteria(request);
+            var results = _racingResultDataAccess.GetVirtualRacingResults(criteria).ToList();
+
             return _resultEngineAdapter.HtmlParser(results, resultSetting);
         }
 
@@ -54,6 +53,8 @@
         public MemoryStream ExportExcel(ExcelNormalResultQuery request)
         {
             Check.Argument.IsNotNull(request, "request");
+
+            var results = _racingResultDataAccess.GetVirtualRacingResults(GetCriteria(request)).ToList();
 
             var resultSetting = new ResultSetting
             {
@@ -64,8 +65,6 @@
                 VisibleMatchCodeIDColumn = false,
                 HighlightWinnerTeam = true
             };
-
-            var results = _racingResultDataAccess.GetVirtualRacingResults(GetCriteria(request)).ToList();
 
             return _resultEngineAdapter.ExcelParser(results, resultSetting);
         }
@@ -85,14 +84,6 @@
         {
             Check.Argument.IsNotNull(detailsRequest, "detailsRequest");
 
-            var criteria = new GetRacingResultDetailsCriteria
-            {
-                MatchId = detailsRequest.MatchId,
-                RaceNo = GetRaceNumber(detailsRequest.Race)
-            };
-
-            var results = _racingResultDataAccess.GetVirtualRacingResultDetails(criteria);
-
             var resultSetting = new ResultSetting
             {
                 SportType = (SportType)detailsRequest.SportId,
@@ -106,6 +97,13 @@
                 VisibleDetailedLink = true,
                 HighlightWinnerTeam = true
             };
+
+            var criteria = new GetRacingResultDetailsCriteria
+            {
+                MatchId = detailsRequest.MatchId,
+                RaceNo = GetRaceNumber(detailsRequest.Race)
+            };
+            var results = _racingResultDataAccess.GetVirtualRacingResultDetails(criteria);
 
             return _resultEngineAdapter.HtmlParser(results, resultSetting);
         }

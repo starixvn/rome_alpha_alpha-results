@@ -25,7 +25,7 @@
                 LanguageKey = _userSession.LangKey,
                 CustId = _userSession.CustId,
                 CustLevelId = _userSession.RoleId,
-                RootUrl = HttpContext.Response.ApplyAppPathModifier("~/")
+                RootUrl = Helpers.UrlHelper.CurrentAppPatch
             });
 
             return View(viewModel);
