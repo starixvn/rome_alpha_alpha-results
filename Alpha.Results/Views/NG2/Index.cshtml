@@ -1,4 +1,4 @@
-@{
+﻿@{
     ViewBag.Title = Fanex.Products.ProductManager.GetProductName(Sunplus.Agent.Model.Definitions.ProductIdConstants.NG2);
     Layout = null;
 }
@@ -10,7 +10,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@Html.Raw(ViewBag.Title)</title>
-    @Alpha.Results.Site.Helpers.StaticResources.AssetStyles.Render("/bundles/site-results/default")
+    @Alpha.Web.Helpers.StaticResources.AssetStyles.Render("/bundles/site-results/default")
     @Styles.Render(BundleConfig.ResultCoreStyleBundleUrl)
 </head>
 <body class="ng2-container">
@@ -29,8 +29,7 @@
 
     @Html.Hidden("RootURL", HttpContext.Current.Response.ApplyAppPathModifier("~/"))
 
-    @Alpha.Results.Site.Helpers.StaticResources.AssetScripts.Render("/bundles/site-results/default")
+    @Alpha.Web.Helpers.StaticResources.AssetScripts.Render("/bundles/site-results/default")
     @Alpha.Web.Helpers.GoogleAnalyticHepler.Render()
 </body>
 </html>
-

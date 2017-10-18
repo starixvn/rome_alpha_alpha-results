@@ -20,6 +20,8 @@
     using SimpleInjector;
     using SimpleInjector.Integration.Web;
     using SimpleInjector.Integration.Web.Mvc;
+    using Sunplus.Agent.Model.Base;
+    using Sunplus.Agent.Model.Entities;
 
     public static class DependencyConfig
     {
@@ -74,6 +76,8 @@
 
         private static void RegisterServices(Container container)
         {
+            container.Register<IUserSession, UserSessionExt>(Lifestyle.Scoped);
+
             container.Register<IResultServiceFactory, ResultServiceFactory>(Lifestyle.Scoped);
             container.Register<IReportDateService, ReportDateService>(Lifestyle.Scoped);
             container.Register<IOutrightResultService, OutrightResultService>(Lifestyle.Scoped);

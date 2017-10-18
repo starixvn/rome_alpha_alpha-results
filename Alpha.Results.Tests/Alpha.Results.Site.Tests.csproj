@@ -302,7 +302,6 @@
     <Compile Include="Handlers\KenoResultHandlerTests.cs" />
     <Compile Include="Handlers\NormalResultHandlerTests.cs" />
     <Compile Include="Handlers\OutrightResultHandleTests.cs" />
-    <Compile Include="Helpers\AppPathHelperTests.cs" />
     <Compile Include="Models\Views\NormalResultViewModelTests.cs" />
     <Compile Include="Models\Views\OutrightResultExcelViewModelTests.cs" />
     <Compile Include="Models\Views\TabViewModelTests.cs" />

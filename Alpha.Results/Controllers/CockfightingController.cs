@@ -4,17 +4,18 @@
     using System.Web.Mvc;
     using MediatR;
     using Models.Requests;
-    using Models.Views;
     using Sunplus.Agent.Model.Entities;
     using Web;
 
     public class CockfightingController : BaseController
     {
         private readonly IMediator _mediator;
+        private readonly IUserSession _userSession;
 
-        public CockfightingController(IMediator mediator)
+        public CockfightingController(IMediator mediator, IUserSession userSession)
         {
             _mediator = mediator;
+            _userSession = userSession;
         }
 
         public ActionResult Index()
@@ -30,12 +31,10 @@
                 throw new ArgumentNullException(nameof(request), "Request cannot be null");
             }
 
-#pragma warning disable CS0618 // Type or member is obsolete
-            request.CustomerId = UserSession.Current.CustId;
-            request.LanguageKey = UserSession.Current.LangKey;
-#pragma warning restore CS0618 // Type or member is obsolete
+            request.CustomerId = _userSession.CustId;
+            request.LanguageKey = _userSession.LangKey;
 
-            var viewModel = _mediator.Send<CockfightingResultViewModel>(request);
+            var viewModel = _mediator.Send(request);
 
             return Json(viewModel, JsonRequestBehavior.AllowGet);
         }

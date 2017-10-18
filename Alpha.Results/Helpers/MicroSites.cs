@@ -1,6 +1,7 @@
 ﻿namespace Alpha.Results.Site.Helpers
 {
-    using Alpha.Results.Site.Configurations;
+    using Configurations;
+    using Web.Helpers;
 
     public static class MicroSites
     {
