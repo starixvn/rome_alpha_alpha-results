@@ -25,7 +25,7 @@ namespace Alpha.Results.Site.Controllers
                 LanguageKey = _userSession.LangKey,
                 CustId = _userSession.CustId,
                 CustLevelId = _userSession.RoleId,
-                RootPath = Helpers.UrlHelper.CurrentAppPatch
+                RootPath = Helpers.UrlHelper.CurrentAppPath
             });
 
             return View(viewModel);

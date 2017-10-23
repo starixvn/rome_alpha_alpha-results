@@ -25,7 +25,7 @@
             userSession.CustId.Returns(1);
             userSession.RoleId.Returns((byte)2);
 
-            UrlHelper.CurrentAppPatch = "path";
+            UrlHelper.CurrentAppPath = "path";
 
             controller = new LotteryController(mediator, userSession);
         }

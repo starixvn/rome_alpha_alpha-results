@@ -29,7 +29,7 @@
             }
         }
 
-        public static string CurrentAppPatch
+        public static string CurrentAppPath
         {
             get
             {

@@ -25,7 +25,7 @@
                 LanguageKey = _userSession.LangKey,
                 CustId = _userSession.CustId,
                 CustLevelId = _userSession.RoleId,
-                RootUrl = Helpers.UrlHelper.CurrentAppPatch
+                RootUrl = Helpers.UrlHelper.CurrentAppPath
             });
 
             return View(viewModel);

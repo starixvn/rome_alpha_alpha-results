@@ -25,7 +25,7 @@
         }
 
         [Test]
-        public void NG2SiteAppPath_NotHasConfig_ReturnsNull()
+        public void NG2SiteAppPath_NotHaveConfig_ReturnsNull()
         {
             // Arrange
             AppSettings.AppSettingValues = new NameValueCollection
