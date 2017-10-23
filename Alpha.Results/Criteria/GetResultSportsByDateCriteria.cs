@@ -19,7 +19,9 @@
         {
             get
             {
+#pragma warning disable CS0618 // Type or member is obsolete
                 return AppSettings.LocalTest;
+#pragma warning restore CS0618 // Type or member is obsolete
             }
         }
 

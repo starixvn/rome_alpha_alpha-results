@@ -11,6 +11,7 @@
     using Fanex.Data.Repository;
     using Fanex.Game.Keno.Business;
     using Fanex.Logging;
+    using Fanex.Result.Core.AllBetCasino;
     using Fanex.Result.Core.CockFighting;
     using Handlers;
     using MediatR;
@@ -19,6 +20,8 @@
     using SimpleInjector;
     using SimpleInjector.Integration.Web;
     using SimpleInjector.Integration.Web.Mvc;
+    using Sunplus.Agent.Model.Base;
+    using Sunplus.Agent.Model.Entities;
 
     public static class DependencyConfig
     {
@@ -73,6 +76,8 @@
 
         private static void RegisterServices(Container container)
         {
+            container.RegisterPerWebRequest<IUserSession, UserSessionExt>();
+
             container.Register<IResultServiceFactory, ResultServiceFactory>(Lifestyle.Scoped);
             container.Register<IReportDateService, ReportDateService>(Lifestyle.Scoped);
             container.Register<IOutrightResultService, OutrightResultService>(Lifestyle.Scoped);
@@ -81,6 +86,7 @@
             container.Register<ICockFightingAPI, CockFightingAPI>(Lifestyle.Scoped);
             container.Register<IResultEngineAdapter, ResultEngineAdapter>(Lifestyle.Scoped);
             container.Register<IKenoGameService, KenoGameService>(Lifestyle.Scoped);
+            container.Register<IAllbetResultBuilder, AllbetResultBuilder>(Lifestyle.Scoped);
         }
 
         private static void RegisterDataAccesses(Container container)

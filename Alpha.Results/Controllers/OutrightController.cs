@@ -37,7 +37,7 @@
                 throw new ArgumentNullException(nameof(request), "Request cannot be null");
             }
 
-            request.TemplatePath = Server.MapPath(@"~/App_Data/Fanex.Result/");
+            request.TemplatePath = Helpers.UrlHelper.ResultTemplatePath;
 
             var viewModel = _mediator.Send<OutrightResultExcelViewModel>(request);
 

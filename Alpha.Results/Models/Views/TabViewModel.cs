@@ -2,7 +2,7 @@
 {
     public class TabViewModel
     {
-        private string _selectedTabName;
+        private readonly string _selectedTabName;
 
         public TabViewModel(
             string selectedTabName,

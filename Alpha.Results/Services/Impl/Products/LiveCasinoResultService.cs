@@ -1,4 +1,4 @@
-namespace Alpha.Results.Site.Services.Impl.Products
+﻿namespace Alpha.Results.Site.Services.Impl.Products
 {
     using System;
     using System.IO;
@@ -6,7 +6,6 @@ namespace Alpha.Results.Site.Services.Impl.Products
     using Alpha.Results.Site.Criteria;
     using Fanex.Common.Helper;
     using Fanex.Data.Repository;
-    using Fanex.Result.Core;
     using Fanex.Result.Core.Base;
     using Fanex.Result.Core.LiveCasino.DTO;
     using Models.Requests;
@@ -32,7 +31,7 @@ namespace Alpha.Results.Site.Services.Impl.Products
         {
             Check.Argument.IsNotNull(detailsRequest, "detailsRequest");
 
-            var criteria = new GetLiveCasinoResultCriteria()
+            var criteria = new GetLiveCasinoResultCriteria
             {
                 MatchId = detailsRequest.MatchId,
                 BetType = detailsRequest.BetTypeId,

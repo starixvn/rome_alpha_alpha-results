@@ -3,11 +3,11 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Models;
-    using Models.Requests;
     using NSubstitute;
     using NUnit.Framework;
     using Site.Handlers;
+    using Site.Models;
+    using Site.Models.Requests;
     using Site.Services;
     using Sunplus.Agent.Model.RemotingRef;
     using Sunplus.Agent.Utilities.Extension;

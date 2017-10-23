@@ -33,6 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Alpha.Web, Version=1.0.0.7, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Alpha.Web.1.0.0.7\lib\net40\Alpha.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Couchbase, Version=1.0.0.0, Culture=neutral, PublicKeyToken=81137140da4e57ef, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Caching.1.0.404.97\lib\net40\Couchbase.dll</HintPath>
       <Private>True</Private>
@@ -61,8 +65,8 @@
       <HintPath>..\packages\Fanex.Data.0.5.404.63\lib\net40\Fanex.Data.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Fanex.Logging, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Logging.1.0.0.0\lib\net40\Fanex.Logging.dll</HintPath>
+    <Reference Include="Fanex.Logging, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Logging.1.0.4\lib\net40\Fanex.Logging.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Fanex.Products, Version=0.0.0.1, Culture=neutral, processorArchitecture=MSIL">
@@ -73,12 +77,20 @@
       <HintPath>..\packages\Fanex.Result.Core-NPOI.2.0.6.2.0.9.1\lib\net40\Fanex.Result.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Fanex.Result.Core.AllBetCasino, Version=1.0.0.10, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Result.Core.AllBetCasino.1.0.0.10\lib\net40\Fanex.Result.Core.AllBetCasino.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Fanex.Result.Core.Base, Version=2.0.9.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core-NPOI.2.0.6.2.0.9.1\lib\net40\Fanex.Result.Core.Base.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Fanex.Result.Core.CockFighting, Version=1.0.0.3, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core.CockFighting.1.0.0.3\lib\net40\Fanex.Result.Core.CockFighting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Fanex.Result.Core.GoldDeluxe, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Result.Core-GoldDeluxe.1.0.1.0\lib\net40\Fanex.Result.Core.GoldDeluxe.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Fanex.Result.Core.LiveCasino, Version=1.0.0.8, Culture=neutral, processorArchitecture=MSIL">
@@ -119,6 +131,18 @@
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
       <HintPath>..\packages\NPOI.2.0.6\lib\net40\ICSharpCode.SharpZipLib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="KellermanSoftware.Compare-NET-Objects, Version=3.9.0.0, Culture=neutral, PublicKeyToken=d970ace04cc85217, processorArchitecture=MSIL">
+      <HintPath>..\packages\CompareNETObjects.3.09.0.0\lib\net46\KellermanSoftware.Compare-NET-Objects.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="LiveCasinoResult, Version=1.0.0.6, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Result.Core.AllBetCasino.1.0.0.10\lib\net40\LiveCasinoResult.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MediatR, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MediatR.2.0.2\lib\net45\MediatR.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Caching, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -245,19 +269,59 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configurations\AppSettingsTests.cs" />
+    <Compile Include="Constants\LanguageCode.cs" />
+    <Compile Include="Controllers\CockfightingControllerTests.cs" />
+    <Compile Include="Controllers\KenoControllerTests.cs" />
+    <Compile Include="Controllers\LotteryControllerTests.cs" />
+    <Compile Include="Controllers\NG2ControllerTests.cs" />
+    <Compile Include="Controllers\NormalControllerTests.cs" />
+    <Compile Include="Controllers\OutrightControllerTests.cs" />
+    <Compile Include="Criteria\GetBalanceUpAndMoveBetsDayCriteriaTests.cs" />
+    <Compile Include="Criteria\GetGoldDeluxeResultCriteriaTests.cs" />
+    <Compile Include="Criteria\GetLiveCasinoResultCriteriaTests.cs" />
+    <Compile Include="Criteria\GetMetricGamingResultCriteriaTests.cs" />
+    <Compile Include="Criteria\GetNumberGameResultCriteriaTests.cs" />
+    <Compile Include="Criteria\GetNumberGameResultDetailsCriteriaTests.cs" />
+    <Compile Include="Criteria\GetOutRightResultCriteriaTests.cs" />
+    <Compile Include="Criteria\GetParlayResultCriteriaTests.cs" />
+    <Compile Include="Criteria\GetRacingResultCriteriaTests.cs" />
+    <Compile Include="Criteria\GetRacingResultDetailsCriteriaTests.cs" />
+    <Compile Include="Criteria\GetResultLeaguesByDateCriteriaTests.cs" />
+    <Compile Include="Criteria\GetResultSportsByDateCriteriaTests.cs" />
+    <Compile Include="Criteria\GetSportsbookResultCriteriaTests.cs" />
+    <Compile Include="Criteria\GetSportsbookResultDetailsCriteriaTests.cs" />
+    <Compile Include="Criteria\GetVirtualRacingResultCriteriaTests.cs" />
+    <Compile Include="DataAccesses\Lucky3ResultDataAccessTests.cs" />
+    <Compile Include="DataAccesses\MetricGamingResultDataAccessTests.cs" />
+    <Compile Include="DataAccesses\NumberGameResultDataAccessTests.cs" />
+    <Compile Include="DataAccesses\ParlayResultDataAccessTests.cs" />
+    <Compile Include="DataAccesses\RacingResultDataAccessTests.cs" />
+    <Compile Include="DataAccesses\SportsbookResultDataAccessTests.cs" />
+    <Compile Include="DataAccesses\VirtualRacingResultDataAccessTests.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Handlers\CockfightingResultHandlerTests.cs" />
     <Compile Include="Handlers\LotteryResultHandlerTests.cs" />
     <Compile Include="Handlers\KenoResultHandlerTests.cs" />
     <Compile Include="Handlers\NormalResultHandlerTests.cs" />
     <Compile Include="Handlers\OutrightResultHandleTests.cs" />
+    <Compile Include="Models\Views\NormalResultViewModelTests.cs" />
+    <Compile Include="Models\Views\OutrightResultExcelViewModelTests.cs" />
+    <Compile Include="Models\Views\TabViewModelTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\NormalResultServiceTests.cs" />
+    <Compile Include="Services\OutrightResultServiceTests.cs" />
+    <Compile Include="Services\Products\AllBetCasinoResultServiceTests.cs" />
     <Compile Include="Services\Products\CockfightingResultServiceTests.cs" />
+    <Compile Include="Services\Products\GoldDeluxeResultServiceTests.cs" />
     <Compile Include="Services\Products\LiveCasinoResultServiceTests.cs" />
     <Compile Include="Services\Products\Lucky3ResultServiceTests.cs" />
     <Compile Include="Services\Products\MetricGamingResultServiceTests.cs" />
     <Compile Include="Services\Products\NumberGameResultServiceTests.cs" />
-    <Compile Include="Services\Products\ParlayResultServiceTestscs.cs" />
+    <Compile Include="Services\Products\ParlayResultServiceTests.cs" />
+    <Compile Include="Services\Products\RacingResultServiceTests.cs" />
+    <Compile Include="Services\Products\SportsbookResultServiceTests.cs" />
+    <Compile Include="Services\Products\VirtualRacingResultServiceTests.cs" />
     <Compile Include="Services\ReportDayServiceTest.cs" />
     <Compile Include="Services\ResultServiceFactoryTests.cs" />
   </ItemGroup>
@@ -277,8 +341,10 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AppReadme\Compare-NET-Objects-Help.txt" />
     <Content Include="Scripts\Fanex.Result.Core\cock-fighting-result.js" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fanex.Visual-StyleCop.MSBuild.4.7.59.1\build\Fanex.Visual-StyleCop.MSBuild.Targets" Condition="Exists('..\packages\Fanex.Visual-StyleCop.MSBuild.4.7.59.1\build\Fanex.Visual-StyleCop.MSBuild.Targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

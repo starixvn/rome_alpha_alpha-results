@@ -5,10 +5,10 @@
     using System.IO;
     using System.Linq;
     using Fanex.Result.Core.Sportsbook.DTO;
-    using Models.Requests;
     using NSubstitute;
     using NUnit.Framework;
     using Site.Handlers;
+    using Site.Models.Requests;
     using Site.Services;
     using Sunplus.Agent.Model.RemotingRef;
     using Sunplus.Agent.Utilities.Extension;

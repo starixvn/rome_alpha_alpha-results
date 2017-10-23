@@ -1,4 +1,4 @@
-namespace Alpha.Results.Site.Services.Impl.Products
+﻿namespace Alpha.Results.Site.Services.Impl.Products
 {
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
@@ -94,7 +94,7 @@ namespace Alpha.Results.Site.Services.Impl.Products
         {
             Check.Argument.IsNotNull(detailsRequest, "detailsRequest");
 
-            var criteria = new GetSportsbookResultDetailsCriteria()
+            var criteria = new GetSportsbookResultDetailsCriteria
             {
                 MatchId = detailsRequest.MatchId,
                 BetType = detailsRequest.BetTypeId,

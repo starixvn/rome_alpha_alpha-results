@@ -7,7 +7,7 @@
 
     public class OutrightResultQuery : IRequest<OutrightResultViewModel>
     {
-        private string _language;
+        private readonly string _language;
 
         public OutrightResultQuery()
         {
@@ -33,7 +33,9 @@
         {
             get
             {
+#pragma warning disable CS0618 // Type or member is obsolete
                 return string.IsNullOrEmpty(_language) ? UserSession.Current.Language : _language;
+#pragma warning restore CS0618 // Type or member is obsolete
             }
         }
     }

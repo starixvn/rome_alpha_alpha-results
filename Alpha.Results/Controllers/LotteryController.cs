@@ -9,23 +9,23 @@ namespace Alpha.Results.Site.Controllers
     public class LotteryController : BaseController
     {
         private readonly IMediator _mediator;
+        private readonly IUserSession _userSession;
 
-        public LotteryController(IMediator mediator)
+        public LotteryController(IMediator mediator, IUserSession userSession)
         {
             _mediator = mediator;
+            _userSession = userSession;
         }
 
         [HttpGet]
         public ActionResult Index()
         {
-            var userSession = UserSession.Current;
-
             var viewModel = _mediator.Send(new LotteryResultQuery
             {
-                LanguageKey = userSession.LangKey,
-                CustId = userSession.CustId,
-                CustLevelId = userSession.RoleId,
-                RootPath = HttpContext.Response.ApplyAppPathModifier("~/")
+                LanguageKey = _userSession.LangKey,
+                CustId = _userSession.CustId,
+                CustLevelId = _userSession.RoleId,
+                RootPath = Helpers.UrlHelper.CurrentAppPath
             });
 
             return View(viewModel);

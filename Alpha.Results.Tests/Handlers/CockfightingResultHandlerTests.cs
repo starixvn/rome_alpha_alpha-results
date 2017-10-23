@@ -1,10 +1,10 @@
 ﻿namespace Alpha.Results.Site.Tests.Handlers
 {
     using System;
-    using Models.Requests;
     using NSubstitute;
     using NUnit.Framework;
     using Site.Handlers;
+    using Site.Models.Requests;
     using Site.Services;
 
     [TestFixture]

@@ -1,4 +1,4 @@
-namespace Alpha.Results.Site.Services.Impl.Products
+﻿namespace Alpha.Results.Site.Services.Impl.Products
 {
     using System;
     using System.Diagnostics.CodeAnalysis;
@@ -8,7 +8,6 @@ namespace Alpha.Results.Site.Services.Impl.Products
     using Alpha.Results.Site.DataAccesses;
     using DataAccesses.Impl;
     using Fanex.Common.Helper;
-    using Fanex.Result.Core;
     using Fanex.Result.Core.Base;
     using Models.Requests;
 
@@ -34,10 +33,6 @@ namespace Alpha.Results.Site.Services.Impl.Products
         {
             Check.Argument.IsNotNull(request, "request");
 
-            var criteria = GetCriteria(request);
-
-            var results = _racingResultDataAccess.GetVirtualRacingResults(criteria).ToList();
-
             var resultSetting = new ResultSetting
             {
                 SportType = (SportType)request.SportId,
@@ -48,6 +43,9 @@ namespace Alpha.Results.Site.Services.Impl.Products
                 HighlightWinnerTeam = true
             };
 
+            var criteria = GetCriteria(request);
+            var results = _racingResultDataAccess.GetVirtualRacingResults(criteria).ToList();
+
             return _resultEngineAdapter.HtmlParser(results, resultSetting);
         }
 
@@ -55,6 +53,8 @@ namespace Alpha.Results.Site.Services.Impl.Products
         public MemoryStream ExportExcel(ExcelNormalResultQuery request)
         {
             Check.Argument.IsNotNull(request, "request");
+
+            var results = _racingResultDataAccess.GetVirtualRacingResults(GetCriteria(request)).ToList();
 
             var resultSetting = new ResultSetting
             {
@@ -66,14 +66,12 @@ namespace Alpha.Results.Site.Services.Impl.Products
                 HighlightWinnerTeam = true
             };
 
-            var results = _racingResultDataAccess.GetVirtualRacingResults(GetCriteria(request)).ToList();
-
             return _resultEngineAdapter.ExcelParser(results, resultSetting);
         }
 
         private static GetVirtualRacingResultCriteria GetCriteria(NormalResultQuery request)
         {
-            return new GetVirtualRacingResultCriteria()
+            return new GetVirtualRacingResultCriteria
             {
                 FromDate = request.ResultDate,
                 SportType = request.SportId,
@@ -85,14 +83,6 @@ namespace Alpha.Results.Site.Services.Impl.Products
         public string GetResultDetails(NormalResultDetailsQuery detailsRequest)
         {
             Check.Argument.IsNotNull(detailsRequest, "detailsRequest");
-
-            var criteria = new GetRacingResultDetailsCriteria()
-            {
-                MatchId = detailsRequest.MatchId,
-                RaceNo = GetRaceNumber(detailsRequest.Race)
-            };
-
-            var results = _racingResultDataAccess.GetVirtualRacingResultDetails(criteria);
 
             var resultSetting = new ResultSetting
             {
@@ -107,6 +97,13 @@ namespace Alpha.Results.Site.Services.Impl.Products
                 VisibleDetailedLink = true,
                 HighlightWinnerTeam = true
             };
+
+            var criteria = new GetRacingResultDetailsCriteria
+            {
+                MatchId = detailsRequest.MatchId,
+                RaceNo = GetRaceNumber(detailsRequest.Race)
+            };
+            var results = _racingResultDataAccess.GetVirtualRacingResultDetails(criteria);
 
             return _resultEngineAdapter.HtmlParser(results, resultSetting);
         }

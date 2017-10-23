@@ -1,4 +1,4 @@
-namespace Alpha.Results.Site.Services.Impl
+﻿namespace Alpha.Results.Site.Services.Impl
 {
     using System;
     using System.Collections.Generic;
@@ -9,7 +9,6 @@ namespace Alpha.Results.Site.Services.Impl
     using App_GlobalResources;
     using Fanex.Common.Helper;
     using Fanex.Data.Repository;
-    using Fanex.Result.Core;
     using Fanex.Result.Core.Base;
     using Fanex.Result.Core.Sportsbook.DTO;
     using Models.Requests;
@@ -94,7 +93,9 @@ namespace Alpha.Results.Site.Services.Impl
             {
                 FromDate = fromDate,
                 ToDate = toDate,
+#pragma warning disable CS0618 // Type or member is obsolete
                 IsShowAll = AppSettings.LocalTest
+#pragma warning restore CS0618 // Type or member is obsolete
             };
         }
 
@@ -115,10 +116,12 @@ namespace Alpha.Results.Site.Services.Impl
 
         private string GetExcelTitle(DateTime fromDate, DateTime toDate, int sportType, int leagueId)
         {
+#pragma warning disable CS0618 // Type or member is obsolete
             string leagueName = leagueId == 0 ? Resources.ShowAllLeaguesExcelTitle : CacheRef.GetLeagueName(leagueId);
 
-            return $"{Resources.OutrightResults.ToUpper()} - {fromDate.ToShortDateString()} " 
+            return $"{Resources.OutrightResults.ToUpper()} - {fromDate.ToShortDateString()} "
                 + $"-> {toDate.ToShortDateString()} | {CacheRef.GetSportName(sportType)} - {leagueName}";
+#pragma warning restore CS0618 // Type or member is obsolete
         }
     }
 }

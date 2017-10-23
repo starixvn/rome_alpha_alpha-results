@@ -2,18 +2,18 @@
 {
     using System;
     using System.Collections.Generic;
-    using Criteria;
-    using DataAccesses;
     using Fanex.Result.Core.Base;
     using Fanex.Result.Core.Sportsbook.DTO;
-    using Models.Requests;
     using NSubstitute;
     using NUnit.Framework;
+    using Site.Criteria;
+    using Site.DataAccesses;
+    using Site.Models.Requests;
     using Site.Services;
     using Site.Services.Impl.Products;
 
     [TestFixture]
-    public class ParlayResultServiceTestscs
+    public class ParlayResultServiceTests
     {
         private const string DefaultLanguage = "en-US";
         private ParlayResultService _parlayResultService;
@@ -96,7 +96,7 @@
 
             //// Assert
             _resultEngineAdapter.Received().HtmlParser(
-                Arg.Any<IList<Parlay>>(), 
+                Arg.Any<IList<Parlay>>(),
                 Arg.Is<ResultSetting>(
                 resultSetting => !resultSetting.IsOutright
                                 && resultSetting.IsParlayPopUp

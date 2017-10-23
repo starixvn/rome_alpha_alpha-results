@@ -2,20 +2,20 @@
 {
     using System;
     using System.Collections.Generic;
-    using Criteria;
-    using DataAccesses;
+    using Constants;
     using Fanex.Result.Core.Base;
     using Fanex.Result.Core.NumberGame.DTO;
-    using Models.Requests;
     using NSubstitute;
     using NUnit.Framework;
+    using Site.Criteria;
+    using Site.DataAccesses;
+    using Site.Models.Requests;
     using Site.Services;
     using Site.Services.Impl.Products;
 
     [TestFixture]
     public class NumberGameResultServiceTests
     {
-        private const string DefaultLanguage = "en-US";
         private NumberGameResultService _numberGamingResultService;
         private INumberGameResultDataAccess _numberGameResultDataAccess;
         private IResultEngineAdapter _resultEngineAdapter;
@@ -38,7 +38,7 @@
         public void GetResultDetails_WhenCalled_ExecuteFetch()
         {
             //// Arrange
-            var query = new NormalResultDetailsQuery(new Dictionary<int, bool>(), false, DefaultLanguage)
+            var query = new NormalResultDetailsQuery(new Dictionary<int, bool>(), false, LanguageCode.English)
             {
                 MatchId = 1
             };
@@ -55,7 +55,7 @@
         public void GetResultDetails_GotDataFromRepository_UpdateDataWithQueryBetType()
         {
             //// Arrange
-            var query = new NormalResultDetailsQuery(new Dictionary<int, bool>(), false, DefaultLanguage)
+            var query = new NormalResultDetailsQuery(new Dictionary<int, bool>(), false, LanguageCode.English)
             {
                 MatchId = 3
             };
@@ -72,7 +72,7 @@
 
             //// Assert
             _resultEngineAdapter.Received().HtmlParser(
-                Arg.Is<List<NumberGame>>(items => items.Count == 1), 
+                Arg.Is<List<NumberGame>>(items => items.Count == 1),
                 Arg.Any<ResultSetting>());
         }
 
@@ -80,7 +80,7 @@
         public void GetResultDetails_GotDataFromRepository_ExecuteHtmlParserWithResultSetting()
         {
             //// Arrange
-            var query = new NormalResultDetailsQuery(new Dictionary<int, bool>(), false, DefaultLanguage)
+            var query = new NormalResultDetailsQuery(new Dictionary<int, bool>(), false, LanguageCode.English)
             {
                 MatchId = 1
             };
@@ -90,7 +90,7 @@
 
             //// Assert
             _resultEngineAdapter.Received().HtmlParser(
-                Arg.Any<IList<NumberGame>>(), 
+                Arg.Any<IList<NumberGame>>(),
                 Arg.Is<ResultSetting>(
                 resultSetting => resultSetting.SportType == SportType.NumberGame
                                 && !resultSetting.IsOutright
@@ -102,6 +102,110 @@
                                 && resultSetting.VisibleFreeHeader
                                 && resultSetting.VisibleDetailedLink
                                 && resultSetting.HighlightWinnerTeam));
+        }
+
+        [Test]
+        public void GetResult_RequestIsNull_ThrowArgumentNullException()
+        {
+            Assert.Throws<ArgumentNullException>(() => _numberGamingResultService.GetResult(null));
+        }
+
+        [Test]
+        public void GetResult_RequestIsNotNull_CallGetNumberGameResults()
+        {
+            // Arrange
+            var request = new NormalResultQuery(new Dictionary<int, bool>(), false, LanguageCode.English)
+            {
+                LeagueId = 1
+            };
+
+            // Act
+            _numberGamingResultService.GetResult(request);
+
+            // Assert
+            _numberGameResultDataAccess.Received()
+                .GetNumberGameResults(Arg.Is<GetNumberGameResultCriteria>(
+                    c => c.FromDate == request.ResultDate
+                        && c.LeagueId == request.LeagueId
+                        && c.Language == request.Language));
+        }
+
+        [Test]
+        public void GetResult_RequestIsNotNull_CallHtmlParser()
+        {
+            // Arrange
+            var request = new NormalResultQuery(new Dictionary<int, bool>(), false, LanguageCode.English)
+            {
+                LeagueId = 1,
+                SportId = 161
+            };
+
+            // Act
+            _numberGamingResultService.GetResult(request);
+
+            // Assert
+            _resultEngineAdapter.Received().HtmlParser(
+                Arg.Any<IList<NumberGame>>(),
+                Arg.Is<ResultSetting>(
+                    s => s.SportType == SportType.NumberGame
+                        && s.LanguageCode == request.Language
+                        && s.VisibleDetailedLink
+                        && s.VisibleFreeHeader
+                        && !s.VisibleMatchCodeIDColumn
+                        && s.HighlightWinnerTeam));
+        }
+
+        [Test]
+        public void ExportExcel_RequestIsNull_ThrowArgumentNullException()
+        {
+            Assert.Throws<ArgumentNullException>(() => _numberGamingResultService.ExportExcel(null));
+        }
+
+        [Test]
+        public void ExportExcel_RequestIsNotNull_CallGetResults()
+        {
+            // Arrange
+            var request = new ExcelNormalResultQuery(new Dictionary<int, bool>(), false, LanguageCode.English)
+            {
+                LeagueId = 1
+            };
+
+            // Act
+            _numberGamingResultService.ExportExcel(request);
+
+            // Assert
+            _numberGameResultDataAccess.Received()
+                .GetNumberGameResults(Arg.Is<GetNumberGameResultCriteria>(
+                    c => c.FromDate == request.ResultDate
+                        && c.LeagueId == request.LeagueId
+                        && c.Language == request.Language));
+        }
+
+        [Test]
+        public void ExportExcel_RequestIsNotNull_CallExcelParser()
+        {
+            // Arrange
+            var request = new ExcelNormalResultQuery(new Dictionary<int, bool>(), false, LanguageCode.English)
+            {
+                LeagueId = 1,
+                SportId = 161,
+                ExcelTitle = "ExelTitle",
+                TemplatePath = "Path"
+            };
+
+            // Act
+            _numberGamingResultService.ExportExcel(request);
+
+            // Assert
+            _resultEngineAdapter.Received().ExcelParser(
+                Arg.Any<IList<NumberGame>>(),
+                Arg.Is<ResultSetting>(
+                    resultSetting => resultSetting.SportType == SportType.NumberGame
+                                    && resultSetting.LanguageCode == request.Language
+                                    && resultSetting.ExcelTitle == request.ExcelTitle
+                                    && resultSetting.ExcelTemplatePath == request.TemplatePath
+                                    && !resultSetting.VisibleMatchCodeIDColumn
+                                    && resultSetting.HighlightWinnerTeam));
         }
     }
 }

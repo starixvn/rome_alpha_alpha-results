@@ -29,7 +29,9 @@
             Check.Argument.IsNotNegativeOrZero(sportId, "sportId");
             Check.Argument.IsNotEmpty(language, "language");
 
+#pragma warning disable CS0618 // Type or member is obsolete
             if (sportId == (int)SportType.HorseRacing
+#pragma warning restore CS0618 // Type or member is obsolete
                 && disableHorseRacingWin)
             {
                 return Enumerable.Empty<League>();
