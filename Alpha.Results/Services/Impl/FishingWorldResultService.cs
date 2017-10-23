@@ -1,6 +1,7 @@
 ﻿namespace Alpha.Results.Site.Services.Impl
 {
     using System;
+    using Constants;
     using Fanex.Result.Core.GlobalGaming;
     using Fanex.Result.Core.GlobalGaming.DTO;
     using Models.HandHistory;
@@ -13,12 +14,13 @@
             try
             {
                 var globalGamingResultApi = new GlobalGamingResultApi();
+                var siteId = GetSiteId(request.RoleId);
 
                 var iframe = globalGamingResultApi.GetResultUrl(new GlobalGamingDTO
                 {
                     CustId = request.CustId.ToString(),
                     GameId = request.RefNo,
-                    SiteId = request.SiteId.ToString(),
+                    SiteId = siteId.ToString(),
                     Language = request.Language
                 });
 
@@ -29,5 +31,10 @@
                 return new HandHistoryModel(string.Empty, false, ex.Message);
             }
         }
+
+        private static int GetSiteId(int roleId) =>
+            roleId.Equals(RoleIdConstants.Agent) ? 3000 :
+            roleId.Equals(RoleIdConstants.Master) ? 3100 :
+            3200;
     }
 }

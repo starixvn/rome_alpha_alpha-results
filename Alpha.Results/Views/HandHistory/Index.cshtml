@@ -11,7 +11,7 @@
 <body>
     <div id="handhistory-result"></div>
     @Html.Hidden("HandHistory", JsonConvert.SerializeObject(Model.HandHistory))
-    @Alpha.Results.Site.Helpers.StaticResources.AssetScripts.Render("/bundles/site-results/default")
+    @Alpha.Web.Helpers.StaticResources.AssetScripts.Render("/bundles/site-results/default")
     @Scripts.Render(BundleConfig.HandHistoryResultJavascriptBundleUrl)
 </body>
 </html>

@@ -1,6 +1,7 @@
 ﻿namespace Alpha.Results.Site.Services.Impl
 {
     using System;
+    using Constants;
     using Fanex.Result.Core.Voidbridge;
     using Models.HandHistory;
     using Models.Requests;
@@ -18,7 +19,9 @@
         {
             try
             {
-                var iframe = _voidbridgeApi.GetBetHistoryUrl(request.CustId.ToString(), request.RefNo, request.Language, request.SiteId.ToString());
+                var siteId = GetSiteId(request.RoleId);
+
+                var iframe = _voidbridgeApi.GetBetHistoryUrl(request.CustId.ToString(), request.RefNo, request.Language, siteId.ToString());
 
                 return new HandHistoryModel(iframe, true, string.Empty);
             }
@@ -27,5 +30,10 @@
                 return new HandHistoryModel(string.Empty, false, ex.Message);
             }
         }
+
+        private static int GetSiteId(int roleId) =>
+            roleId.Equals(RoleIdConstants.Agent) ? 3000 :
+            roleId.Equals(RoleIdConstants.Master) ? 3100 :
+            3200;
     }
 }

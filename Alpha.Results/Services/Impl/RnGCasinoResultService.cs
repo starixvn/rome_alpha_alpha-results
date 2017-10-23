@@ -5,6 +5,7 @@
     using System.Web;
     using App_GlobalResources;
     using Configurations.RNGCasino;
+    using Constants;
     using Fanex.Common;
     using Fanex.Logging;
     using Models.HandHistory;
@@ -23,7 +24,7 @@
 
         public HandHistoryModel GetResult(RNGCasinoResultQuery request)
         {
-            var token = GetToken(request.SiteId);
+            var token = GetToken(request.RoleId);
 
             if (token == null)
             {
@@ -41,17 +42,13 @@
             return new HandHistoryModel(iframe, true, string.Empty);
         }
 
-        private TokenResponse GetToken(int siteId)
+        private TokenResponse GetToken(int roleId)
         {
             try
             {
                 var rngCasinoSection = RNGCasinoSection.Instance;
+                var siteId = GetSiteId(roleId);
                 var getTokenAPI = string.Format(rngCasinoSection.TokenAPI);
-
-                if (siteId == 0)
-                {
-                    siteId = Converter.ToInt(rngCasinoSection.SiteId);
-                }
 
                 var requestInfo = new Request
                 {
@@ -132,6 +129,16 @@
                 default:
                     return "en";
             }
+        }
+
+        private int GetSiteId(int roleId)
+        {
+            var siteIds = RNGCasinoSection.Instance.SiteId.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
+
+            var index = roleId.Equals(RoleIdConstants.Agent) ? 2
+                    : roleId.Equals(RoleIdConstants.Master) ? 1 : 0;
+
+            return Converter.ToInt(siteIds[index]);
         }
     }
 }

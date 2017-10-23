@@ -295,6 +295,28 @@
         }
 
         [Test]
+        public void HandleNormalResultQuery_LeaguesContainsLeagueIdInMessage_ReturnLeagueId()
+        {
+            //// Arrange
+            var query = new NormalResultQuery(new Dictionary<int, bool>(), false, DefaultLanguage);
+            query.LeagueId = 11;
+
+            _normalResultService.GetSports(Arg.Any<DateTime>(), Arg.Any<IDictionary<int, bool>>(), Arg.Any<DateTime>())
+                .Returns(new List<Sport> { new Sport { Id = 1 } });
+
+            _normalResultService.GetLeagues(Arg.Any<DateTime>(), 1, Arg.Any<string>(), Arg.Any<bool>(), Arg.Any<DateTime>())
+                .Returns(new List<League> { new League { Id = 11 } });
+
+            var expectedLeaugeId = 11;
+
+            //// Act
+            var actualViewModel = _normalResultHandler.Handle(query);
+
+            //// Assert
+            Assert.AreEqual(expectedLeaugeId, actualViewModel.LeagueId);
+        }
+
+        [Test]
         public void HandleNormalResultQuery_WhenCalled_ExecuteGetResults()
         {
             //// Arrange
