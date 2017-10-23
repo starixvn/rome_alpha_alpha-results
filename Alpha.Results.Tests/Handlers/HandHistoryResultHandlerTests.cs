@@ -3,12 +3,12 @@
     using System;
     using App_GlobalResources;
     using KellermanSoftware.CompareNetObjects;
-    using Models.HandHistory;
-    using Models.Requests;
-    using Models.Views;
     using NSubstitute;
     using NUnit.Framework;
     using Site.Handlers;
+    using Site.Models.HandHistory;
+    using Site.Models.Requests;
+    using Site.Models.Views;
     using Site.Services;
 
     [TestFixture]

@@ -1,9 +1,9 @@
 ﻿namespace Alpha.Results.Site.Tests.Services
 {
     using Fanex.Result.Core.Voidbridge;
-    using Models.Requests;
     using NSubstitute;
     using NUnit.Framework;
+    using Site.Models.Requests;
     using Site.Services.Impl;
 
     [TestFixture]

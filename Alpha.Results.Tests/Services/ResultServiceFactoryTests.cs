@@ -1,5 +1,6 @@
 ﻿namespace Alpha.Results.Site.Tests.Services
 {
+    using NSubstitute;
     using NUnit.Framework;
     using Site.Services.Impl;
     using Site.Services.Impl.Products;
