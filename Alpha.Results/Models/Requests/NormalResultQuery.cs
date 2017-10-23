@@ -46,9 +46,7 @@
         {
             get
             {
-#pragma warning disable CS0618 // Type or member is obsolete
                 return string.IsNullOrEmpty(_language) ? UserSession.Current.Language : _language;
-#pragma warning restore CS0618 // Type or member is obsolete
             }
         }
 
@@ -58,12 +56,10 @@
             {
                 var sportsStatus = _sportsStatus ?? new Dictionary<int, bool>
                 {
-#pragma warning disable CS0618 // Type or member is obsolete
                     { (int)SportType.NumberGame,  UserPermission.IsShowNumberGame },
                     { (int)SportType.LiveCasino,  UserPermission.IsShowLiveCasino },
                     { (int)SportType.GoldDeluxe,  UserPermission.IsShowGoldDeluxeSettingForCredit },
                     { (int)SportType.VirtualSports, UserPermission.HasPermissionOnProduct(ProductIdConstants.VirtualSports) }
-#pragma warning restore CS0618 // Type or member is obsolete
                 };
 
                 return sportsStatus;
@@ -76,9 +72,7 @@
             {
                 return _disableHorseRacingWin.HasValue
                     ? _disableHorseRacingWin.Value
-#pragma warning disable CS0618 // Type or member is obsolete
                     : AppSettings.Disable151_31;
-#pragma warning restore CS0618 // Type or member is obsolete
             }
         }
 

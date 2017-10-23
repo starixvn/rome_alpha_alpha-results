@@ -33,9 +33,7 @@
         {
             get
             {
-#pragma warning disable CS0618 // Type or member is obsolete
                 return string.IsNullOrEmpty(_language) ? UserSession.Current.Language : _language;
-#pragma warning restore CS0618 // Type or member is obsolete
             }
         }
     }

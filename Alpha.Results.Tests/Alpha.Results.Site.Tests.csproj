@@ -20,9 +20,10 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;CODE_ANALYSIS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <NoWarn>618</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -277,6 +278,7 @@
     <Compile Include="Configurations\AppSettingsTests.cs" />
     <Compile Include="Constants\LanguageCode.cs" />
     <Compile Include="Controllers\CockfightingControllerTests.cs" />
+    <Compile Include="Controllers\HandHistoryControllerTests.cs" />
     <Compile Include="Controllers\KenoControllerTests.cs" />
     <Compile Include="Controllers\LotteryControllerTests.cs" />
     <Compile Include="Controllers\NG2ControllerTests.cs" />

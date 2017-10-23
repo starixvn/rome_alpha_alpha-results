@@ -71,9 +71,9 @@
             return BaseIndexOf(element);
         }
 
-        protected override void BaseAdd(ConfigurationElement kenoBetTypesElement)
+        protected override void BaseAdd(ConfigurationElement element)
         {
-            BaseAdd(kenoBetTypesElement, false);
+            BaseAdd(element, false);
         }
 
         protected override sealed ConfigurationElement CreateNewElement()

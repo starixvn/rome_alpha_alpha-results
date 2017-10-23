@@ -93,9 +93,7 @@
             {
                 FromDate = fromDate,
                 ToDate = toDate,
-#pragma warning disable CS0618 // Type or member is obsolete
                 IsShowAll = AppSettings.LocalTest
-#pragma warning restore CS0618 // Type or member is obsolete
             };
         }
 
@@ -116,12 +114,10 @@
 
         private string GetExcelTitle(DateTime fromDate, DateTime toDate, int sportType, int leagueId)
         {
-#pragma warning disable CS0618 // Type or member is obsolete
             string leagueName = leagueId == 0 ? Resources.ShowAllLeaguesExcelTitle : CacheRef.GetLeagueName(leagueId);
 
             return $"{Resources.OutrightResults.ToUpper()} - {fromDate.ToShortDateString()} "
                 + $"-> {toDate.ToShortDateString()} | {CacheRef.GetSportName(sportType)} - {leagueName}";
-#pragma warning restore CS0618 // Type or member is obsolete
         }
     }
 }

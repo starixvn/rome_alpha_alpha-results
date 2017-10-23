@@ -11,7 +11,6 @@
         [ChildActionOnly]
         public ActionResult Index(string tabName = "Normal")
         {
-#pragma warning disable CS0618 // Type or member is obsolete
             var isEnableCockfighting = UserPermission.IsEnableProduct(ProductIdConstants.CockFighting);
 
             var product = ProductManager.GetProduct(ProductIdConstants.NG2);
@@ -22,7 +21,6 @@
                 isEnableCockfighting,
                 isEnableNG2,
                 UserPermission.IsEnableProduct(ProductIdConstants.Lottery));
-#pragma warning restore CS0618 // Type or member is obsolete
 
             return PartialView(viewModel);
         }

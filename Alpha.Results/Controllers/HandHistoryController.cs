@@ -9,10 +9,12 @@
     public class HandHistoryController : BaseController
     {
         private readonly IMediator _mediator;
+        private readonly IUserSession _userSession;
 
-        public HandHistoryController(IMediator mediator)
+        public HandHistoryController(IMediator mediator, IUserSession userSession)
         {
             _mediator = mediator;
+            _userSession = userSession;
         }
 
         public ActionResult RNGCasino(RNGCasinoResultQuery message)
@@ -26,8 +28,7 @@
 
         private ActionResult ViewResult(HandHistoryResultBaseQuery message)
         {
-            var userSession = UserSession.Current;
-            message.Language = userSession.Language;
+            message.Language = _userSession.Language;
 
             return View("Index", _mediator.Send(message));
         }

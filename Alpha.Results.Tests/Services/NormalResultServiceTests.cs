@@ -113,9 +113,7 @@
         public void GetLeagues_SportIsHorseRacingAndDisabledHorseRacingWinInConfig_ReturnEmptyLeague()
         {
             //// Arrange
-#pragma warning disable CS0618 // Type or member is obsolete
             var sportId = (int)SportType.HorseRacing;
-#pragma warning restore CS0618 // Type or member is obsolete
             var disableHorseRacingWin = true;
 
             //// Act
