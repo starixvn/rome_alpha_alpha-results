@@ -2,6 +2,7 @@
 {
     using System;
     using Constants;
+    using Fanex.Result.Core.Base.Models;
     using Fanex.Result.Core.GlobalGaming;
     using Fanex.Result.Core.GlobalGaming.DTO;
     using Models.HandHistory;
@@ -9,14 +10,20 @@
 
     public class FishingWorldResultService : IFishingWorldResultService
     {
+        private readonly Base3rdResultApi _globalGamingResultApi;
+
+        public FishingWorldResultService(Base3rdResultApi globalGamingResultApi)
+        {
+            _globalGamingResultApi = globalGamingResultApi ?? new GlobalGamingResultApi();
+        }
+
         public HandHistoryModel GetResult(FishingWorldResultQuery request)
         {
             try
             {
-                var globalGamingResultApi = new GlobalGamingResultApi();
                 var siteId = GetSiteId(request.RoleId);
 
-                var iframe = globalGamingResultApi.GetResultUrl(new GlobalGamingDTO
+                var iframe = _globalGamingResultApi.GetResultUrl(new GlobalGamingDTO
                 {
                     CustId = request.CustId.ToString(),
                     GameId = request.RefNo,

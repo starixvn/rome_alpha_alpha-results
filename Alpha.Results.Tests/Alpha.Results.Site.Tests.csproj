@@ -90,6 +90,10 @@
       <HintPath>..\packages\Fanex.Result.Core.CockFighting.1.0.0.3\lib\net40\Fanex.Result.Core.CockFighting.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Fanex.Result.Core.GlobalGaming, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Result.Core.GlobalGaming.1.0.0.2\lib\net40\Fanex.Result.Core.GlobalGaming.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Fanex.Result.Core.GoldDeluxe, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core-GoldDeluxe.1.0.1.0\lib\net40\Fanex.Result.Core.GoldDeluxe.dll</HintPath>
       <Private>True</Private>
@@ -322,6 +326,7 @@
     <Compile Include="Services\OutrightResultServiceTests.cs" />
     <Compile Include="Services\Products\AllBetCasinoResultServiceTests.cs" />
     <Compile Include="Services\Products\CockfightingResultServiceTests.cs" />
+    <Compile Include="Services\Products\FishingWorldResultServiceTests.cs" />
     <Compile Include="Services\Products\GoldDeluxeResultServiceTests.cs" />
     <Compile Include="Services\Products\LiveCasinoResultServiceTests.cs" />
     <Compile Include="Services\Products\Lucky3ResultServiceTests.cs" />
