@@ -12,7 +12,7 @@
     using Fanex.Result.Core.Base;
     using Fanex.Result.Core.Sportsbook.DTO;
     using Models.Requests;
-    using Sunplus.Agent.Model.BL.Cache;
+    using RemotingRef;
     using Sunplus.Agent.Model.BL.Definitions;
 
     public class OutrightResultService : IOutrightResultService
@@ -114,10 +114,10 @@
 
         private string GetExcelTitle(DateTime fromDate, DateTime toDate, int sportType, int leagueId)
         {
-            string leagueName = leagueId == 0 ? Resources.ShowAllLeaguesExcelTitle : CacheRef.GetLeagueName(leagueId);
+            string leagueName = leagueId == 0 ? Resources.ShowAllLeaguesExcelTitle : CacheRefFactory.CacheRef.GetLeagueName(leagueId);
 
             return $"{Resources.OutrightResults.ToUpper()} - {fromDate.ToShortDateString()} "
-                + $"-> {toDate.ToShortDateString()} | {CacheRef.GetSportName(sportType)} - {leagueName}";
+                + $"-> {toDate.ToShortDateString()} | {CacheRefFactory.CacheRef.GetSportName(sportType)} - {leagueName}";
         }
     }
 }

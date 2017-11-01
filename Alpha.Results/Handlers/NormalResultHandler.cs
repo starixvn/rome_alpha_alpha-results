@@ -10,8 +10,8 @@
     using MediatR;
     using Models.Requests;
     using Models.Views;
+    using RemotingRef;
     using Services;
-    using Sunplus.Agent.Model.RemotingRef;
     using Sunplus.Agent.Utilities.Extension;
 
     public class NormalResultHandler :

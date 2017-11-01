@@ -7,8 +7,8 @@
     }
   },
   {
-    "outputFile": "Content/HandHistory/handhistory.css",
-    "inputFile": "Content/HandHistory/handhistory.scss",
+    "outputFile": "Content/ThirdParty/third-party.css",
+    "inputFile": "Content/ThirdParty/third-party.scss",
     "minify": {
       "enabled": false
     }

@@ -7,10 +7,9 @@
         public const string NormalResultJavascriptBundleUrl = "~/bundles/scripts/normalresult";
         public const string OutrightResultJavascriptBundleUrl = "~/bundles/scripts/outrightresult";
         public const string CockfightingResultJavascriptBundleUrl = "~/bundles/scripts/cockfightingresult";
-        public const string HandHistoryResultJavascriptBundleUrl = "~/bundles/scripts/handhistoryresult";
         public const string ResultCoreStyleBundleUrl = "~/bundle/styles/resultcore";
         public const string KenoResultStyleBundleUrl = "~/bundle/styles/kenoresult";
-        public const string HandHistoryResultStyleBundleUrl = "~/bundle/styles/hanhistoryresult";
+        public const string ThirdPartyResultStyleBundleUrl = "~/bundle/styles/thirdpartyresult";
 
         public const string LotteryResultScriptBundleUrl = "~/bundle/styles/lotteryresult";
 
@@ -18,7 +17,7 @@
         {
             RegisterJavascriptBundles(bundles);
             RegisterStyleBundles(bundles);
-            RegisterHandHistoryResultStyleBundles(bundles);
+            RegisterThirdPartyResultStyleBundles(bundles);
         }
 
         private static void RegisterJavascriptBundles(BundleCollection bundles)
@@ -28,7 +27,6 @@
             RegisterCockfightingResultJavascript(bundles);
             RegisterKenoResultJavascript(bundles);
             RegisterLotteryResultJavascript(bundles);
-            RegisterHandHistoryResultJavascript(bundles);
         }
 
         private static void RegisterNormalResultJavascript(BundleCollection bundles)
@@ -62,12 +60,6 @@
                         "~/Scripts/Cockfighting/index.js"));
         }
 
-        private static void RegisterHandHistoryResultJavascript(BundleCollection bundles)
-        {
-            bundles.Add(new ScriptBundle(HandHistoryResultJavascriptBundleUrl).Include(
-                        "~/Scripts/HandHistory/handhistory.js"));
-        }
-
         private static void RegisterStyleBundles(BundleCollection bundles)
         {
             bundles.Add(new StyleBundle(ResultCoreStyleBundleUrl)
@@ -76,10 +68,10 @@
                 .Include("~/Content/Fanex.Result/Allbet/css/table_w.css", new CssRewriteUrlTransformWrapper()));
         }
 
-        private static void RegisterHandHistoryResultStyleBundles(BundleCollection bundles)
+        private static void RegisterThirdPartyResultStyleBundles(BundleCollection bundles)
         {
-            bundles.Add(new StyleBundle(HandHistoryResultStyleBundleUrl)
-                .Include("~/Content/HandHistory/handhistory.css", new CssRewriteUrlTransformWrapper()));
+            bundles.Add(new StyleBundle(ThirdPartyResultStyleBundleUrl)
+                .Include("~/Content/ThirdParty/third-party.css", new CssRewriteUrlTransformWrapper()));
         }
     }
 }

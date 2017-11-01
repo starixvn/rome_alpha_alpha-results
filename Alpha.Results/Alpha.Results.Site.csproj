@@ -49,6 +49,10 @@
     <CodeAnalysisRuleSet>Alpha.Results.Site.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Alpha.RemotingRef, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Alpha.RemotingRef.1.0.0.2\lib\net40\Alpha.RemotingRef.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Alpha.Web, Version=1.0.0.7, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Alpha.Web.1.0.0.7\lib\net40\Alpha.Web.dll</HintPath>
       <Private>True</Private>
@@ -173,6 +177,10 @@
       <HintPath>..\packages\Fanex.Result.Core.Voidbridge.1.0.1.2\lib\Fanex.Result.Core.Voidbridge.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Fanex.Result.ThirdParty, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Result.ThirdParty.1.0.2-beta1\lib\net40\Fanex.Result.ThirdParty.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="IBCCrypt, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\IBCCrypt.1.1.0.0\lib\IBCCrypt.dll</HintPath>
       <Private>True</Private>
@@ -278,10 +286,6 @@
       <HintPath>..\packages\Sunplus.Agent.Model.Definitions.3.0.1.12\lib\net40\Sunplus.Agent.Model.Definitions.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Sunplus.Agent.Model.RemotingRef, Version=3.0.0.2, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sunplus.Agent.Model.RemotingRef.3.0.0.2\lib\net40\Sunplus.Agent.Model.RemotingRef.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Sunplus.Agent.Utilities, Version=3.0.0.4, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Sunplus.Agent.Utilities.3.0.0.4\lib\net40\Sunplus.Agent.Utilities.dll</HintPath>
       <Private>True</Private>
@@ -343,6 +347,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\ThirdParty\third-party.css">
+      <DependentUpon>third-party.scss</DependentUpon>
+    </Content>
     <Content Include="RNGCasinoSection.backupMNL.config">
       <DependentUpon>RNGCasinoSection.config</DependentUpon>
     </Content>
@@ -530,9 +537,6 @@
     <Content Include="Content\Fanex.Result\images\bg_header03.jpg" />
     <Content Include="Content\Fanex.Result\images\bg_header04.jpg" />
     <Content Include="Content\Fanex.Result\images\goal-icon.png" />
-    <Content Include="Content\HandHistory\handhistory.css">
-      <DependentUpon>handhistory.scss</DependentUpon>
-    </Content>
     <Content Include="Content\Images\ajax-loader.gif" />
     <Content Include="Content\Images\goal-icon.png" />
     <Content Include="Content\Images\icon_bets.png" />
@@ -548,10 +552,9 @@
     </Content>
     <Content Include="Scripts\Lottery\index.js" />
     <Content Include="Views\Lottery\Index.cshtml" />
-    <Content Include="Views\HandHistory\Index.cshtml" />
     <Content Include="RNGCasinoSection.config" />
-    <Content Include="Content\HandHistory\handhistory.scss" />
-    <Content Include="Content\HandHistory\_variables.scss" />
+    <Content Include="Content\ThirdParty\third-party.scss" />
+    <Content Include="Content\ThirdParty\_variables.scss" />
     <Content Include="Web.AppSettings.backupMNLExNap2.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
     </Content>
@@ -585,7 +588,6 @@
     <Content Include="Web.backupMNLExNap2.config">
       <DependentUpon>Web.local.config</DependentUpon>
     </Content>
-    <Content Include="Scripts\HandHistory\handhistory.js" />
     <Content Include="Web.backupMNLExNap3.config">
       <DependentUpon>Web.local.config</DependentUpon>
     </Content>
@@ -692,6 +694,7 @@
     <Content Include="Web.siti3.config">
       <DependentUpon>Web.local.config</DependentUpon>
     </Content>
+    <Content Include="Views\ThirdParty\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -699,18 +702,15 @@
     <Compile Include="App_Start\DependencyConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Configurations\AppSettings.cs" />
-    <Compile Include="Configurations\RNGCasino\RNGCasinoCollection.cs" />
-    <Compile Include="Configurations\RNGCasino\RNGCasinoElement.cs" />
-    <Compile Include="Configurations\RNGCasino\RNGCasinoSection.cs" />
     <Compile Include="Constants\RoleIdConstants.cs" />
     <Compile Include="Controllers\CockfightingController.cs" />
-    <Compile Include="Controllers\HandHistoryController.cs" />
     <Compile Include="Controllers\KenoController.cs" />
     <Compile Include="Controllers\LotteryController.cs" />
     <Compile Include="Controllers\NG2Controller.cs" />
     <Compile Include="Controllers\NormalController.cs" />
     <Compile Include="Controllers\OutrightController.cs" />
     <Compile Include="Controllers\TabController.cs" />
+    <Compile Include="Controllers\ThirdPartyController.cs" />
     <Compile Include="Criteria\GetBalanceUpDateCriteria.cs" />
     <Compile Include="Criteria\Products\GetGoldDeluxeResultCriteria.cs" />
     <Compile Include="Criteria\Products\GetLiveCasinoResultCriteria.cs" />
@@ -750,41 +750,30 @@
     </Compile>
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Handlers\CockfightingResultHandler.cs" />
-    <Compile Include="Handlers\HandHistoryResultHandler.cs" />
     <Compile Include="Handlers\KenoResultHandler.cs" />
     <Compile Include="Handlers\LotteryResultHandler.cs" />
     <Compile Include="Handlers\NormalResultHandler.cs" />
     <Compile Include="Handlers\OutrightResultHandler.cs" />
+    <Compile Include="Handlers\ThirdPartyResultHandler.cs" />
     <Compile Include="Helpers\UrlHelper.cs" />
     <Compile Include="Models\Dtos\BalanceUpAndMoveBetsDate.cs" />
-    <Compile Include="Models\HandHistory\HandHistoryModel.cs" />
     <Compile Include="Models\League.cs" />
-    <Compile Include="Models\Requests\HandHistory\HandHistoryResultBaseQuery.cs" />
     <Compile Include="Models\Requests\CockfightingResultQuery.cs" />
     <Compile Include="Models\Requests\ExcelNormalResultQuery.cs" />
     <Compile Include="Models\Requests\ExcelOutrightResultQuery.cs" />
-    <Compile Include="Models\Requests\HandHistory\FishingWorldResultQuery.cs" />
     <Compile Include="Models\Requests\KenoResultQuery.cs" />
     <Compile Include="Models\Requests\LotteryResultQuery.cs" />
     <Compile Include="Models\Requests\NormalResultDetailsQuery.cs" />
     <Compile Include="Models\Requests\NormalResultQuery.cs" />
     <Compile Include="Models\Requests\OutrightResultQuery.cs" />
-    <Compile Include="Models\Requests\HandHistory\RNGCasinoResultQuery.cs" />
-    <Compile Include="Models\Requests\HandHistory\MacauGamesResultQuery.cs" />
-    <Compile Include="Models\HandHistory\RNGCasino\AuthInfo.cs" />
-    <Compile Include="Models\HandHistory\RNGCasino\CallInfo.cs" />
-    <Compile Include="Models\HandHistory\RNGCasino\RequestInfo.cs" />
-    <Compile Include="Models\HandHistory\RNGCasino\TokenResponse.cs" />
-    <Compile Include="Models\HandHistory\RNGCasino\TokenResult.cs" />
+    <Compile Include="Models\Requests\ThirdPartyResultQuery.cs" />
     <Compile Include="Models\Sport.cs" />
     <Compile Include="Models\Views\LotteryResultViewModel.cs" />
-    <Compile Include="Models\Views\HandHistoryResultViewModel.cs" />
     <Compile Include="Models\Views\OutrightResultExcelViewModel.cs" />
     <Compile Include="Models\Views\CockfightingResultViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ICockfightingResultService.cs" />
-    <Compile Include="Services\IFishingWorldResultService.cs" />
-    <Compile Include="Services\Impl\FishingWorldResultService.cs" />
+    <Compile Include="Services\Impl\JsonConverterImpl.cs" />
     <Compile Include="Services\Impl\OutrightResultService.cs" />
     <Compile Include="Services\Impl\CockfightingResultService.cs" />
     <Compile Include="Services\Impl\Products\AllBetCasinoResultService.cs" />
@@ -801,8 +790,6 @@
     <Compile Include="Services\Impl\Products\VirtualRacingResultService.cs" />
     <Compile Include="Services\Impl\ResultEngineAdapter.cs" />
     <Compile Include="Services\Impl\ResultServiceFactory.cs" />
-    <Compile Include="Services\Impl\RNGCasinoResultService.cs" />
-    <Compile Include="Services\Impl\MacauGamesResultService.cs" />
     <Compile Include="Services\INormalResultService.cs" />
     <Compile Include="Services\IOutrightResultService.cs" />
     <Compile Include="Services\IReportDateService.cs" />
@@ -815,8 +802,6 @@
     <Compile Include="Models\Views\NormalResultViewModel.cs" />
     <Compile Include="Models\Views\OutrightResultViewModel.cs" />
     <Compile Include="Models\Views\TabViewModel.cs" />
-    <Compile Include="Services\IRNGCasinoResultService.cs" />
-    <Compile Include="Services\IMacauGamesResultService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -941,6 +926,7 @@
     <EmbeddedResource Include="App_GlobalResources\Resources.zh-CN.resx" />
     <EmbeddedResource Include="App_GlobalResources\Resources.zh-TW.resx" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

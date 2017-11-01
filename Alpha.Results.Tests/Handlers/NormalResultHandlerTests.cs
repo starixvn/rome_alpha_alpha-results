@@ -5,11 +5,11 @@
     using System.Linq;
     using NSubstitute;
     using NUnit.Framework;
+    using RemotingRef;
     using Site.Handlers;
     using Site.Models;
     using Site.Models.Requests;
     using Site.Services;
-    using Sunplus.Agent.Model.RemotingRef;
     using Sunplus.Agent.Utilities.Extension;
 
     [TestFixture]
@@ -28,7 +28,7 @@
             _reportDataService = Substitute.For<IReportDateService>();
             _normalResultHandler = new NormalResultHandler(_normalResultService, _reportDataService);
 
-            CacheRefFactory.CacheRef = Substitute.For<ICacheRefService>();
+            CacheRefFactory.CacheRef = Substitute.For<CacheRefService>();
         }
 
         #region Handle Normal Result Query

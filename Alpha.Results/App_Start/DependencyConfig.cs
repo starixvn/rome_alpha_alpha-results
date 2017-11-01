@@ -16,8 +16,11 @@
     using Fanex.Result.Core.CockFighting;
     using Fanex.Result.Core.GlobalGaming;
     using Fanex.Result.Core.Voidbridge;
+    using Fanex.Result.ThirdParty.Services;
+    using Fanex.Result.ThirdParty.Services.Impl;
     using Handlers;
     using MediatR;
+    using RemotingRef;
     using Services;
     using Services.Impl;
     using SimpleInjector;
@@ -80,6 +83,7 @@
         private static void RegisterServices(Container container)
         {
             container.RegisterPerWebRequest<IUserSession, UserSessionExt>();
+            container.RegisterSingleton<CacheRefService, CacheRefServiceImpl>();
 
             container.Register<IResultServiceFactory, ResultServiceFactory>(Lifestyle.Scoped);
             container.Register<IReportDateService, ReportDateService>(Lifestyle.Scoped);
@@ -91,10 +95,10 @@
             container.Register<IKenoGameService, KenoGameService>(Lifestyle.Scoped);
             container.Register<IAllbetResultBuilder, AllbetResultBuilder>(Lifestyle.Scoped);
             container.Register<VoidbridgeApi, VoidbridgeApiImp>(Lifestyle.Scoped);
-            container.Register<IRNGCasinoResultService, RNGCasinoResultService>(Lifestyle.Scoped);
-            container.Register<IMacauGamesResultService, MacauGamesResultService>(Lifestyle.Scoped);
-            container.Register<IFishingWorldResultService, FishingWorldResultService>(Lifestyle.Scoped);
             container.Register<Base3rdResultApi, GlobalGamingResultApi>(Lifestyle.Scoped);
+
+            container.RegisterSingleton<JsonConverter, JsonConverterImpl>();
+            container.Register<ProductResultServiceFactory, ProductResultServiceFactoryImpl>();
         }
 
         private static void RegisterDataAccesses(Container container)
