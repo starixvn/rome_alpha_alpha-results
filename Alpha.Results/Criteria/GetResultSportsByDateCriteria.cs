@@ -1,8 +1,8 @@
 ﻿namespace Alpha.Results.Site.Criteria
 {
     using System;
+    using Configurations;
     using Fanex.Data.Repository;
-    using Sunplus.Agent.Model.BL.Definitions;
 
     public class GetResultSportsByDateCriteria : CriteriaBase
     {

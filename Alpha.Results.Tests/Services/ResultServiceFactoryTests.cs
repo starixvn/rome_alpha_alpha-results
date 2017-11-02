@@ -2,9 +2,9 @@
 {
     using NSubstitute;
     using NUnit.Framework;
+    using Site.Constants;
     using Site.Services.Impl;
     using Site.Services.Impl.Products;
-    using Sunplus.Agent.Model.BL.Definitions;
 
     [TestFixture]
     public class ResultServiceFactoryTests
@@ -40,36 +40,36 @@
             Assert.IsTrue(resultService is MetricGamingResultService);
         }
 
-        [TestCase(SportType.Soccer)]
-        [TestCase(SportType.BasketBall)]
-        [TestCase(SportType.Netball)]
-        [TestCase(SportType.FootBall)]
-        [TestCase(SportType.Rugby)]
-        [TestCase(SportType.IceHockey)]
-        [TestCase(SportType.FieldHockey)]
-        [TestCase(SportType.Tennis)]
-        [TestCase(SportType.VolleyBall)]
-        [TestCase(SportType.Badminton)]
-        [TestCase(SportType.Squash)]
-        [TestCase(SportType.BaseBall)]
-        [TestCase(SportType.Golf)]
-        [TestCase(SportType.Motorsports)]
-        [TestCase(SportType.HRFixedOdds)]
-        [TestCase(SportType.Billard)]
-        [TestCase(SportType.Cycling)]
-        [TestCase(SportType.Fencing)]
-        [TestCase(SportType.Judo)]
-        [TestCase(SportType.ModernPentathlon)]
-        [TestCase(SportType.Rowing)]
-        [TestCase(SportType.Sailing)]
-        [TestCase(SportType.Shooting)]
-        [TestCase(SportType.Taekwondo)]
-        [TestCase(SportType.Triathlon)]
-        [TestCase(SportType.Wrestling)]
-        [TestCase(SportType.Winter)]
-        [TestCase(SportType.ESports)]
-        [TestCase(SportType.VirtualSports)]
-        [TestCase(SportType.VirtualTennis)]
+        [TestCase(SportTypeIdConstants.Soccer)]
+        [TestCase(SportTypeIdConstants.BasketBall)]
+        [TestCase(SportTypeIdConstants.Netball)]
+        [TestCase(SportTypeIdConstants.FootBall)]
+        [TestCase(SportTypeIdConstants.Rugby)]
+        [TestCase(SportTypeIdConstants.IceHockey)]
+        [TestCase(SportTypeIdConstants.FieldHockey)]
+        [TestCase(SportTypeIdConstants.Tennis)]
+        [TestCase(SportTypeIdConstants.VolleyBall)]
+        [TestCase(SportTypeIdConstants.Badminton)]
+        [TestCase(SportTypeIdConstants.Squash)]
+        [TestCase(SportTypeIdConstants.BaseBall)]
+        [TestCase(SportTypeIdConstants.Golf)]
+        [TestCase(SportTypeIdConstants.Motorsports)]
+        [TestCase(SportTypeIdConstants.HRFixedOdds)]
+        [TestCase(SportTypeIdConstants.Billard)]
+        [TestCase(SportTypeIdConstants.Cycling)]
+        [TestCase(SportTypeIdConstants.Fencing)]
+        [TestCase(SportTypeIdConstants.Judo)]
+        [TestCase(SportTypeIdConstants.ModernPentathlon)]
+        [TestCase(SportTypeIdConstants.Rowing)]
+        [TestCase(SportTypeIdConstants.Sailing)]
+        [TestCase(SportTypeIdConstants.Shooting)]
+        [TestCase(SportTypeIdConstants.Taekwondo)]
+        [TestCase(SportTypeIdConstants.Triathlon)]
+        [TestCase(SportTypeIdConstants.Wrestling)]
+        [TestCase(SportTypeIdConstants.Winter)]
+        [TestCase(SportTypeIdConstants.ESports)]
+        [TestCase(SportTypeIdConstants.VirtualSports)]
+        [TestCase(SportTypeIdConstants.VirtualTennis)]
         public void CreateProductResultService_SportIsBelongingToSportsbook_ReturnSportsbookResultService(
             int sportId)
         {
@@ -80,9 +80,9 @@
             Assert.IsTrue(resultService is SportsbookResultService);
         }
 
-        [TestCase(SportType.HorseRacing)]
-        [TestCase(SportType.Greyhound)]
-        [TestCase(SportType.Harness)]
+        [TestCase(SportTypeIdConstants.HorseRacing)]
+        [TestCase(SportTypeIdConstants.Greyhound)]
+        [TestCase(SportTypeIdConstants.Harness)]
         public void CreateProductResultService_SportIsBelongToRacing_ReturnRacingResultService(
             int sportId)
         {
@@ -97,7 +97,7 @@
         public void CreateProductResultService_SportIsNumbergame_ReturnNumbergameResultService()
         {
             //// Act
-            var resultService = _resultServiceFactory.CreateProductResultService((int)SportType.NumberGame, Arg.Any<int>());
+            var resultService = _resultServiceFactory.CreateProductResultService(SportTypeIdConstants.NumberGame, Arg.Any<int>());
 
             //// Assert
             Assert.IsTrue(resultService is NumberGameResultService);
@@ -107,7 +107,7 @@
         public void CreateProductResultService_SportIsLucky3_ReturnLucky3ResultService()
         {
             //// Act
-            var resultService = _resultServiceFactory.CreateProductResultService((int)SportType.Lucky3, Arg.Any<int>());
+            var resultService = _resultServiceFactory.CreateProductResultService(SportTypeIdConstants.Lucky3, Arg.Any<int>());
 
             //// Assert
             Assert.IsTrue(resultService is Lucky3ResultService);
@@ -117,7 +117,7 @@
         public void CreateProductResultService_SportIsLiveCasino_ReturnLiveCasinoResultService()
         {
             //// Act
-            var resultService = _resultServiceFactory.CreateProductResultService((int)SportType.LiveCasino, Arg.Any<int>());
+            var resultService = _resultServiceFactory.CreateProductResultService(SportTypeIdConstants.LiveCasino, Arg.Any<int>());
 
             //// Assert
             Assert.IsTrue(resultService is LiveCasinoResultService);
@@ -127,17 +127,17 @@
         public void CreateProductResultService_SportIsAllBet_ReturnAllBetResultService()
         {
             //// Act
-            var resultService = _resultServiceFactory.CreateProductResultService((int)SportType.AllBet, Arg.Any<int>());
+            var resultService = _resultServiceFactory.CreateProductResultService(SportTypeIdConstants.AllBet, Arg.Any<int>());
 
             //// Assert
             Assert.IsTrue(resultService is AllBetCasinoResultService);
         }
 
-        [TestCase(SportType.VirtualHorsesRacing)]
-        [TestCase(SportType.VirtualGreyhounds)]
-        [TestCase(SportType.VirtualMotors)]
-        [TestCase(SportType.VirtualCycling)]
-        [TestCase(SportType.VirtualSpeedway)]
+        [TestCase(SportTypeIdConstants.VirtualHorsesRacing)]
+        [TestCase(SportTypeIdConstants.VirtualGreyhounds)]
+        [TestCase(SportTypeIdConstants.VirtualMotors)]
+        [TestCase(SportTypeIdConstants.VirtualCycling)]
+        [TestCase(SportTypeIdConstants.VirtualSpeedway)]
         public void CreateProductResultService_SportIsBelongToVirtualRacing_ReturnVirtualRacingResultService(
             int sportId)
         {
@@ -152,14 +152,14 @@
         public void CreateProductResultService_SportIsGoldDeluxe_ReturnGoldDeluxeResultService()
         {
             //// Act
-            var resultService = _resultServiceFactory.CreateProductResultService((int)SportType.GoldDeluxe, Arg.Any<int>());
+            var resultService = _resultServiceFactory.CreateProductResultService(SportTypeIdConstants.GoldDeluxe, Arg.Any<int>());
 
             //// Assert
             Assert.IsTrue(resultService is GoldDeluxeResultService);
         }
 
-        [TestCase(SportType.Athletics)]
-        [TestCase(SportType.Equestrian)]
+        [TestCase(SportTypeIdConstants.Athletics)]
+        [TestCase(SportTypeIdConstants.Equestrian)]
         public void CreateProductResultService_OtherSports_ReturnSportsbookResultService(
             int sportId)
         {

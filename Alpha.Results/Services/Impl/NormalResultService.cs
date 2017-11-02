@@ -4,12 +4,12 @@
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
     using System.Linq;
+    using Constants;
     using Criteria;
     using Fanex.Common.Helper;
     using Fanex.Data.Repository;
     using Models;
     using Models.Requests;
-    using Sunplus.Agent.Model.BL.Definitions;
 
     public class NormalResultService : INormalResultService
     {
@@ -29,7 +29,7 @@
             Check.Argument.IsNotNegativeOrZero(sportId, "sportId");
             Check.Argument.IsNotEmpty(language, "language");
 
-            if (sportId == (int)SportType.HorseRacing
+            if (sportId == SportTypeIdConstants.HorseRacing
                 && disableHorseRacingWin)
             {
                 return Enumerable.Empty<League>();

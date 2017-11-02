@@ -1,10 +1,10 @@
 ﻿namespace Alpha.Results.Site.Handlers
 {
     using System;
+    using Constants;
     using MediatR;
     using Models.Requests;
     using Models.Views;
-    using Sunplus.Agent.Model.Definitions;
 
     public class KenoResultHandler :
         IRequestHandler<KenoResultQuery, KenoResultViewModel>

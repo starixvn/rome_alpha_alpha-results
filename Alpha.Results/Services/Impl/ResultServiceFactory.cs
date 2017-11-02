@@ -1,8 +1,8 @@
 ﻿namespace Alpha.Results.Site.Services.Impl
 {
     using System.Diagnostics.CodeAnalysis;
+    using Constants;
     using Products;
-    using Sunplus.Agent.Model.BL.Definitions;
 
     public class ResultServiceFactory : IResultServiceFactory
     {
@@ -12,16 +12,16 @@
         [SuppressMessage("StyleCop.CSharp.Nexcel.NexcelCustomRules", "SP2101:MethodMustNotContainMoreLinesThan", Justification = "Reviewed.")]
         public IProductResultService CreateProductResultService(int sportId, int betTypeId)
         {
-            if (betTypeId == (int)BetType.Mix_Parlay
-                || betTypeId == (int)BetType.Combine_Mix_Parlay
-                || betTypeId == (int)BetType.Mix_Parlay_BetRadarVirtualSports)
+            if (betTypeId == BetTypeIdConstants.MixParlay
+                || betTypeId == BetTypeIdConstants.CombineMixParlay
+                || betTypeId == BetTypeIdConstants.MixParlayBetRadarVirtualSports)
             {
                 return new ParlayResultService();
             }
 
-            switch ((SportType)sportId)
+            switch (sportId)
             {
-                case SportType.Soccer:
+                case SportTypeIdConstants.Soccer:
                     if (MetricGaming60SecondOfKick <= betTypeId
                         && betTypeId <= MetricGamingEndBetType)
                     {
@@ -30,30 +30,30 @@
 
                     return new SportsbookResultService();
 
-                case SportType.HorseRacing:
-                case SportType.Greyhound:
-                case SportType.Harness:
+                case SportTypeIdConstants.HorseRacing:
+                case SportTypeIdConstants.Greyhound:
+                case SportTypeIdConstants.Harness:
                     return new RacingResultService();
 
-                case SportType.NumberGame:
+                case SportTypeIdConstants.NumberGame:
                     return new NumberGameResultService();
-                case SportType.Lucky3:
+                case SportTypeIdConstants.Lucky3:
                     return new Lucky3ResultService();
 
-                case SportType.LiveCasino:
+                case SportTypeIdConstants.LiveCasino:
                     return new LiveCasinoResultService();
 
-                case SportType.AllBet:
+                case SportTypeIdConstants.AllBet:
                     return new AllBetCasinoResultService();
 
-                case SportType.VirtualHorsesRacing:
-                case SportType.VirtualGreyhounds:
-                case SportType.VirtualMotors:
-                case SportType.VirtualCycling:
-                case SportType.VirtualSpeedway:
+                case SportTypeIdConstants.VirtualHorsesRacing:
+                case SportTypeIdConstants.VirtualGreyhounds:
+                case SportTypeIdConstants.VirtualMotors:
+                case SportTypeIdConstants.VirtualCycling:
+                case SportTypeIdConstants.VirtualSpeedway:
                     return new VirtualRacingResultService();
 
-                case SportType.GoldDeluxe:
+                case SportTypeIdConstants.GoldDeluxe:
                     return new GoldDeluxeResultService();
 
                 default:

@@ -2,9 +2,9 @@
 {
     using System;
     using System.Collections.Generic;
+    using Configurations;
+    using Constants;
     using MediatR;
-    using Sunplus.Agent.Model.BL.Definitions;
-    using Sunplus.Agent.Model.Definitions;
     using Sunplus.Agent.Model.Entities;
     using Sunplus.Agent.Model.Entities.Permission;
     using Views;
@@ -56,10 +56,10 @@
             {
                 var sportsStatus = _sportsStatus ?? new Dictionary<int, bool>
                 {
-                    { (int)SportType.NumberGame,  UserPermission.IsShowNumberGame },
-                    { (int)SportType.LiveCasino,  UserPermission.IsShowLiveCasino },
-                    { (int)SportType.GoldDeluxe,  UserPermission.IsShowGoldDeluxeSettingForCredit },
-                    { (int)SportType.VirtualSports, UserPermission.HasPermissionOnProduct(ProductIdConstants.VirtualSports) }
+                    { SportTypeIdConstants.NumberGame,  UserPermission.IsShowNumberGame },
+                    { SportTypeIdConstants.LiveCasino,  UserPermission.IsShowLiveCasino },
+                    { SportTypeIdConstants.GoldDeluxe,  UserPermission.IsShowGoldDeluxeSettingForCredit },
+                    { SportTypeIdConstants.VirtualSports, UserPermission.HasPermissionOnProduct(ProductIdConstants.VirtualSports) }
                 };
 
                 return sportsStatus;

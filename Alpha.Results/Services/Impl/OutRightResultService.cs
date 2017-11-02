@@ -5,15 +5,15 @@
     using System.Diagnostics.CodeAnalysis;
     using System.IO;
     using System.Linq;
-    using Alpha.Results.Site.Criteria;
     using App_GlobalResources;
+    using Configurations;
+    using Criteria;
     using Fanex.Common.Helper;
     using Fanex.Data.Repository;
     using Fanex.Result.Core.Base;
     using Fanex.Result.Core.Sportsbook.DTO;
     using Models.Requests;
     using RemotingRef;
-    using Sunplus.Agent.Model.BL.Definitions;
 
     public class OutrightResultService : IOutrightResultService
     {
