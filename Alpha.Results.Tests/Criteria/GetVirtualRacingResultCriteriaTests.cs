@@ -1,7 +1,9 @@
 ﻿namespace Alpha.Results.Site.Tests.Criteria
 {
     using System;
+    using System.Collections.Specialized;
     using NUnit.Framework;
+    using Site.Configurations;
     using Site.Criteria;
 
     [TestFixture]
@@ -71,6 +73,40 @@
 
             // Assert
             Assert.IsTrue(isValid);
+        }
+
+        [Test]
+        public void IsShowAll_LocalTestIsTrue_ReturnsTrue()
+        {
+            // Arrange
+            AppSettings.AppSettingValues = new NameValueCollection
+            {
+                ["LocalTest"] = "1"
+            };
+            var criteria = new GetVirtualRacingResultCriteria();
+
+            // Act
+            var isShowAll = criteria.IsShowAll;
+
+            // Assert
+            Assert.True(isShowAll);
+        }
+
+        [Test]
+        public void IsShowAll_LocalTestIsFalse_ReturnsTrue()
+        {
+            // Arrange
+            AppSettings.AppSettingValues = new NameValueCollection
+            {
+                ["LocalTest"] = "0"
+            };
+            var criteria = new GetVirtualRacingResultCriteria();
+
+            // Act
+            var isShowAll = criteria.IsShowAll;
+
+            // Assert
+            Assert.False(isShowAll);
         }
     }
 }

@@ -130,12 +130,20 @@
       <HintPath>..\packages\Fanex.Result.Core.Voidbridge.1.0.1.2\lib\Fanex.Result.Core.Voidbridge.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Fanex.Result.ThirdParty, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Result.ThirdParty.1.0.2-beta1\lib\net40\Fanex.Result.ThirdParty.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="FluentAssertions, Version=4.1.1.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
       <HintPath>..\packages\FluentAssertions.4.1.1\lib\net45\FluentAssertions.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="FluentAssertions.Core, Version=4.1.1.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
       <HintPath>..\packages\FluentAssertions.4.1.1\lib\net45\FluentAssertions.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IBCCrypt, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\IBCCrypt.1.1.0.0\lib\IBCCrypt.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="IBCFile, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -287,6 +295,7 @@
     <Compile Include="Controllers\NG2ControllerTests.cs" />
     <Compile Include="Controllers\NormalControllerTests.cs" />
     <Compile Include="Controllers\OutrightControllerTests.cs" />
+    <Compile Include="Controllers\ThirdPartyControllerTests.cs" />
     <Compile Include="Criteria\GetBalanceUpAndMoveBetsDayCriteriaTests.cs" />
     <Compile Include="Criteria\GetGoldDeluxeResultCriteriaTests.cs" />
     <Compile Include="Criteria\GetLiveCasinoResultCriteriaTests.cs" />
@@ -315,6 +324,7 @@
     <Compile Include="Handlers\KenoResultHandlerTests.cs" />
     <Compile Include="Handlers\NormalResultHandlerTests.cs" />
     <Compile Include="Handlers\OutrightResultHandleTests.cs" />
+    <Compile Include="Handlers\ThirdPartyResultHandlerTests.cs" />
     <Compile Include="Models\Views\NormalResultViewModelTests.cs" />
     <Compile Include="Models\Views\OutrightResultExcelViewModelTests.cs" />
     <Compile Include="Models\Views\TabViewModelTests.cs" />
