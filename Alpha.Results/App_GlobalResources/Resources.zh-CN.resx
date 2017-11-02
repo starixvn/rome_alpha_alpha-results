@@ -169,7 +169,7 @@
     <value>所有联赛</value>
   </data>
   <data name="ThereIsNoData" xml:space="preserve">
-    <value>There is no data</value>
+    <value>没有数据</value>
   </data>
   <data name="OpenKenoResults" xml:space="preserve">
     <value>Click here to open Keno results</value>
@@ -188,59 +188,5 @@
   </data>
   <data name="OpenLotteryResults" xml:space="preserve">
     <value>Click here to open Lottery results</value>
-  </data>
-  <data name="Agent" xml:space="preserve">
-    <value>代理</value>
-  </data>
-  <data name="Choice" xml:space="preserve">
-    <value>选择</value>
-  </data>
-  <data name="Comm" xml:space="preserve">
-    <value>Comm</value>
-  </data>
-  <data name="FishingWorld" xml:space="preserve">
-    <value>Fishing World</value>
-  </data>
-  <data name="Master" xml:space="preserve">
-    <value>总代理</value>
-  </data>
-  <data name="No" xml:space="preserve">
-    <value>#</value>
-  </data>
-  <data name="Odds" xml:space="preserve">
-    <value>赔率</value>
-  </data>
-  <data name="Product_6" xml:space="preserve">
-    <value>RNG Casino</value>
-  </data>
-  <data name="PT" xml:space="preserve">
-    <value>PT</value>
-  </data>
-  <data name="Result" xml:space="preserve">
-    <value>Result</value>
-  </data>
-  <data name="RNGCasinoAPI_FailedToConnect" xml:space="preserve">
-    <value>Cannot connect to RNGCasino API! Please contact Administrator.</value>
-  </data>
-  <data name="Stake" xml:space="preserve">
-    <value>投注额</value>
-  </data>
-  <data name="Status" xml:space="preserve">
-    <value>状态</value>
-  </data>
-  <data name="Super" xml:space="preserve">
-    <value>Super</value>
-  </data>
-  <data name="Symbol_Percent" xml:space="preserve">
-    <value>%</value>
-  </data>
-  <data name="Trans_Time" xml:space="preserve">
-    <value>Trans.Time</value>
-  </data>
-  <data name="Voidbridge" xml:space="preserve">
-    <value>Macau Games</value>
-  </data>
-  <data name="Win_Loss" xml:space="preserve">
-    <value>输赢</value>
   </data>
 </root>

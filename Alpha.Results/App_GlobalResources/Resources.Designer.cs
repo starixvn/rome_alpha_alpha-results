@@ -61,24 +61,6 @@ namespace Alpha.Results.Site.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Agent.
-        /// </summary>
-        public static string Agent {
-            get {
-                return ResourceManager.GetString("Agent", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Choice.
-        /// </summary>
-        public static string Choice {
-            get {
-                return ResourceManager.GetString("Choice", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Cannot connect to Cockfighting API! Please contact Administrator..
         /// </summary>
         public static string CockFightFailedToConnect {
@@ -97,15 +79,6 @@ namespace Alpha.Results.Site.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Comm.
-        /// </summary>
-        public static string Comm {
-            get {
-                return ResourceManager.GetString("Comm", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Date.
         /// </summary>
         public static string Date {
@@ -120,15 +93,6 @@ namespace Alpha.Results.Site.App_GlobalResources {
         public static string ExportToExcel {
             get {
                 return ResourceManager.GetString("ExportToExcel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Fishing World.
-        /// </summary>
-        public static string FishingWorld {
-            get {
-                return ResourceManager.GetString("FishingWorld", resourceCulture);
             }
         }
         
@@ -169,15 +133,6 @@ namespace Alpha.Results.Site.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Master.
-        /// </summary>
-        public static string Master {
-            get {
-                return ResourceManager.GetString("Master", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Mix Parlay.
         /// </summary>
         public static string MixParlay {
@@ -187,29 +142,11 @@ namespace Alpha.Results.Site.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No.
-        /// </summary>
-        public static string No {
-            get {
-                return ResourceManager.GetString("No", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Normal.
         /// </summary>
         public static string Normal {
             get {
                 return ResourceManager.GetString("Normal", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Odds.
-        /// </summary>
-        public static string Odds {
-            get {
-                return ResourceManager.GetString("Odds", resourceCulture);
             }
         }
         
@@ -259,47 +196,11 @@ namespace Alpha.Results.Site.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to RNG Casino.
-        /// </summary>
-        public static string Product_6 {
-            get {
-                return ResourceManager.GetString("Product_6", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to PT.
-        /// </summary>
-        public static string PT {
-            get {
-                return ResourceManager.GetString("PT", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Result.
-        /// </summary>
-        public static string Result {
-            get {
-                return ResourceManager.GetString("Result", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Results.
         /// </summary>
         public static string Results {
             get {
                 return ResourceManager.GetString("Results", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Cannot connect to RNGCasino API! Please contact Administrator..
-        /// </summary>
-        public static string RNGCasinoAPI_FailedToConnect {
-            get {
-                return ResourceManager.GetString("RNGCasinoAPI_FailedToConnect", resourceCulture);
             }
         }
         
@@ -331,47 +232,11 @@ namespace Alpha.Results.Site.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Stake.
-        /// </summary>
-        public static string Stake {
-            get {
-                return ResourceManager.GetString("Stake", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Status.
-        /// </summary>
-        public static string Status {
-            get {
-                return ResourceManager.GetString("Status", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Submit.
         /// </summary>
         public static string Submit {
             get {
                 return ResourceManager.GetString("Submit", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Super.
-        /// </summary>
-        public static string Super {
-            get {
-                return ResourceManager.GetString("Super", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to %.
-        /// </summary>
-        public static string Symbol_Percent {
-            get {
-                return ResourceManager.GetString("Symbol_Percent", resourceCulture);
             }
         }
         
@@ -403,38 +268,11 @@ namespace Alpha.Results.Site.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Trans.Time.
-        /// </summary>
-        public static string Trans_Time {
-            get {
-                return ResourceManager.GetString("Trans_Time", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to You can view the report data from {0}..
         /// </summary>
         public static string ViewDataFromDate {
             get {
                 return ResourceManager.GetString("ViewDataFromDate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Macau Games.
-        /// </summary>
-        public static string Voidbridge {
-            get {
-                return ResourceManager.GetString("Voidbridge", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Win Loss.
-        /// </summary>
-        public static string Win_Loss {
-            get {
-                return ResourceManager.GetString("Win_Loss", resourceCulture);
             }
         }
     }
