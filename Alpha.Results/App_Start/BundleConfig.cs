@@ -9,6 +9,7 @@
         public const string CockfightingResultJavascriptBundleUrl = "~/bundles/scripts/cockfightingresult";
         public const string ResultCoreStyleBundleUrl = "~/bundle/styles/resultcore";
         public const string KenoResultStyleBundleUrl = "~/bundle/styles/kenoresult";
+        public const string ThirdPartyResultStyleBundleUrl = "~/bundle/styles/thirdpartyresult";
 
         public const string LotteryResultScriptBundleUrl = "~/bundle/styles/lotteryresult";
 
@@ -16,6 +17,7 @@
         {
             RegisterJavascriptBundles(bundles);
             RegisterStyleBundles(bundles);
+            RegisterThirdPartyResultStyleBundles(bundles);
         }
 
         private static void RegisterJavascriptBundles(BundleCollection bundles)
@@ -64,6 +66,12 @@
                 .Include("~/Content/Fanex.Result/fanex.result.css", new CssRewriteUrlTransformWrapper())
                 .Include("~/Content/result.css", new CssRewriteUrlTransformWrapper())
                 .Include("~/Content/Fanex.Result/Allbet/css/table_w.css", new CssRewriteUrlTransformWrapper()));
+        }
+
+        private static void RegisterThirdPartyResultStyleBundles(BundleCollection bundles)
+        {
+            bundles.Add(new StyleBundle(ThirdPartyResultStyleBundleUrl)
+                .Include("~/Content/ThirdParty/third-party.css", new CssRewriteUrlTransformWrapper()));
         }
     }
 }

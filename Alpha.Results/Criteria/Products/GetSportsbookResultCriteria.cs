@@ -1,8 +1,8 @@
 ﻿namespace Alpha.Results.Site.Criteria
 {
     using System;
+    using Configurations;
     using Fanex.Data.Repository;
-    using Sunplus.Agent.Model.BL.Definitions;
 
     /// <summary>
     /// The criteria GetSportsBookResultCriteria.
@@ -24,9 +24,7 @@
         {
             get
             {
-#pragma warning disable CS0618 // Type or member is obsolete
                 return AppSettings.LocalTest;
-#pragma warning restore CS0618 // Type or member is obsolete
             }
         }
 

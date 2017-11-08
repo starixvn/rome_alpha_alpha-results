@@ -7,10 +7,10 @@
     using Fanex.Result.Core.Sportsbook.DTO;
     using NSubstitute;
     using NUnit.Framework;
+    using RemotingRef;
     using Site.Handlers;
     using Site.Models.Requests;
     using Site.Services;
-    using Sunplus.Agent.Model.RemotingRef;
     using Sunplus.Agent.Utilities.Extension;
 
     [TestFixture]
@@ -27,7 +27,7 @@
             _reportDataService = Substitute.For<IReportDateService>();
             _outrightResultHandler = new OutrightResultHandler(_outrightResultService, _reportDataService);
 
-            CacheRefFactory.CacheRef = Substitute.For<ICacheRefService>();
+            CacheRefFactory.CacheRef = Substitute.For<CacheRefService>();
         }
 
         #region Outright Result Query

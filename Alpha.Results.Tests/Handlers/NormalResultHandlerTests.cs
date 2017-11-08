@@ -5,11 +5,11 @@
     using System.Linq;
     using NSubstitute;
     using NUnit.Framework;
+    using RemotingRef;
     using Site.Handlers;
     using Site.Models;
     using Site.Models.Requests;
     using Site.Services;
-    using Sunplus.Agent.Model.RemotingRef;
     using Sunplus.Agent.Utilities.Extension;
 
     [TestFixture]
@@ -28,7 +28,7 @@
             _reportDataService = Substitute.For<IReportDateService>();
             _normalResultHandler = new NormalResultHandler(_normalResultService, _reportDataService);
 
-            CacheRefFactory.CacheRef = Substitute.For<ICacheRefService>();
+            CacheRefFactory.CacheRef = Substitute.For<CacheRefService>();
         }
 
         #region Handle Normal Result Query
@@ -292,6 +292,28 @@
 
             //// Assert
             Assert.AreEqual(expectedLeagueName, actualViewModel.Leagues.ElementAt(0).Text);
+        }
+
+        [Test]
+        public void HandleNormalResultQuery_LeaguesContainsLeagueIdInMessage_ReturnLeagueId()
+        {
+            //// Arrange
+            var query = new NormalResultQuery(new Dictionary<int, bool>(), false, DefaultLanguage);
+            query.LeagueId = 11;
+
+            _normalResultService.GetSports(Arg.Any<DateTime>(), Arg.Any<IDictionary<int, bool>>(), Arg.Any<DateTime>())
+                .Returns(new List<Sport> { new Sport { Id = 1 } });
+
+            _normalResultService.GetLeagues(Arg.Any<DateTime>(), 1, Arg.Any<string>(), Arg.Any<bool>(), Arg.Any<DateTime>())
+                .Returns(new List<League> { new League { Id = 11 } });
+
+            var expectedLeaugeId = 11;
+
+            //// Act
+            var actualViewModel = _normalResultHandler.Handle(query);
+
+            //// Assert
+            Assert.AreEqual(expectedLeaugeId, actualViewModel.LeagueId);
         }
 
         [Test]

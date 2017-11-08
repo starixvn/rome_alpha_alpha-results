@@ -5,15 +5,15 @@
     using System.Diagnostics.CodeAnalysis;
     using System.IO;
     using System.Linq;
-    using Alpha.Results.Site.Criteria;
     using App_GlobalResources;
+    using Configurations;
+    using Criteria;
     using Fanex.Common.Helper;
     using Fanex.Data.Repository;
     using Fanex.Result.Core.Base;
     using Fanex.Result.Core.Sportsbook.DTO;
     using Models.Requests;
-    using Sunplus.Agent.Model.BL.Cache;
-    using Sunplus.Agent.Model.BL.Definitions;
+    using RemotingRef;
 
     public class OutrightResultService : IOutrightResultService
     {
@@ -93,9 +93,7 @@
             {
                 FromDate = fromDate,
                 ToDate = toDate,
-#pragma warning disable CS0618 // Type or member is obsolete
                 IsShowAll = AppSettings.LocalTest
-#pragma warning restore CS0618 // Type or member is obsolete
             };
         }
 
@@ -116,12 +114,10 @@
 
         private string GetExcelTitle(DateTime fromDate, DateTime toDate, int sportType, int leagueId)
         {
-#pragma warning disable CS0618 // Type or member is obsolete
-            string leagueName = leagueId == 0 ? Resources.ShowAllLeaguesExcelTitle : CacheRef.GetLeagueName(leagueId);
+            string leagueName = leagueId == 0 ? Resources.ShowAllLeaguesExcelTitle : CacheRefFactory.CacheRef.GetLeagueName(leagueId);
 
             return $"{Resources.OutrightResults.ToUpper()} - {fromDate.ToShortDateString()} "
-                + $"-> {toDate.ToShortDateString()} | {CacheRef.GetSportName(sportType)} - {leagueName}";
-#pragma warning restore CS0618 // Type or member is obsolete
+                + $"-> {toDate.ToShortDateString()} | {CacheRefFactory.CacheRef.GetSportName(sportType)} - {leagueName}";
         }
     }
 }

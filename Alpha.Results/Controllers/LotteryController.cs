@@ -1,11 +1,11 @@
-﻿using System.Web.Mvc;
-using Alpha.Results.Site.Models.Requests;
-using Alpha.Web;
-using MediatR;
-using Sunplus.Agent.Model.Entities;
-
-namespace Alpha.Results.Site.Controllers
+﻿namespace Alpha.Results.Site.Controllers
 {
+    using System.Web.Mvc;
+    using MediatR;
+    using Models.Requests;
+    using Sunplus.Agent.Model.Entities;
+    using Web;
+
     public class LotteryController : BaseController
     {
         private readonly IMediator _mediator;

@@ -1,11 +1,11 @@
-﻿using System;
-using Alpha.Results.Site.Models.Requests;
-using Alpha.Results.Site.Models.Views;
-using MediatR;
-using Sunplus.Agent.Model.Definitions;
-
-namespace Alpha.Results.Site.Handlers
+﻿namespace Alpha.Results.Site.Handlers
 {
+    using System;
+    using Constants;
+    using MediatR;
+    using Models.Requests;
+    using Models.Views;
+
     public class LotteryResultHandler :
          IRequestHandler<LotteryResultQuery, LotteryResultViewModel>
     {

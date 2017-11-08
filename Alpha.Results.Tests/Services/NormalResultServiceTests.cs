@@ -8,12 +8,12 @@
     using Fanex.Data.Repository;
     using NSubstitute;
     using NUnit.Framework;
+    using Site.Constants;
     using Site.Criteria;
     using Site.Models;
     using Site.Models.Requests;
     using Site.Services;
     using Site.Services.Impl;
-    using Sunplus.Agent.Model.BL.Definitions;
 
     [TestFixture]
     public class NormalResultServiceTests
@@ -113,9 +113,7 @@
         public void GetLeagues_SportIsHorseRacingAndDisabledHorseRacingWinInConfig_ReturnEmptyLeague()
         {
             //// Arrange
-#pragma warning disable CS0618 // Type or member is obsolete
-            var sportId = (int)SportType.HorseRacing;
-#pragma warning restore CS0618 // Type or member is obsolete
+            var sportId = SportTypeIdConstants.HorseRacing;
             var disableHorseRacingWin = true;
 
             //// Act

@@ -2,9 +2,9 @@
 {
     using NSubstitute;
     using NUnit.Framework;
+    using Site.Constants;
     using Site.Services.Impl;
     using Site.Services.Impl.Products;
-    using Sunplus.Agent.Model.BL.Definitions;
 
     [TestFixture]
     public class ResultServiceFactoryTests
@@ -22,7 +22,7 @@
         public void CreateProductResultService_BetTypeIsMixParlayOrSystemParlay_ReturnParlayResultService(int betTypeId)
         {
             //// Act
-            var resultService = _resultServiceFactory.CreateProductResultService(Arg.Any<int>(), betTypeId);
+            var resultService = _resultServiceFactory.CreateProductResultService(0, betTypeId);
 
             //// Assert
             Assert.IsTrue(resultService is ParlayResultService);
@@ -40,58 +40,54 @@
             Assert.IsTrue(resultService is MetricGamingResultService);
         }
 
-#pragma warning disable CS0618 // Type or member is obsolete
-        [TestCase(SportType.Soccer)]
-        [TestCase(SportType.BasketBall)]
-        [TestCase(SportType.Netball)]
-        [TestCase(SportType.FootBall)]
-        [TestCase(SportType.Rugby)]
-        [TestCase(SportType.IceHockey)]
-        [TestCase(SportType.FieldHockey)]
-        [TestCase(SportType.Tennis)]
-        [TestCase(SportType.VolleyBall)]
-        [TestCase(SportType.Badminton)]
-        [TestCase(SportType.Squash)]
-        [TestCase(SportType.BaseBall)]
-        [TestCase(SportType.Golf)]
-        [TestCase(SportType.Motorsports)]
-        [TestCase(SportType.HRFixedOdds)]
-        [TestCase(SportType.Billard)]
-        [TestCase(SportType.Cycling)]
-        [TestCase(SportType.Fencing)]
-        [TestCase(SportType.Judo)]
-        [TestCase(SportType.ModernPentathlon)]
-        [TestCase(SportType.Rowing)]
-        [TestCase(SportType.Sailing)]
-        [TestCase(SportType.Shooting)]
-        [TestCase(SportType.Taekwondo)]
-        [TestCase(SportType.Triathlon)]
-        [TestCase(SportType.Wrestling)]
-        [TestCase(SportType.Winter)]
-        [TestCase(SportType.ESports)]
-        [TestCase(SportType.VirtualSports)]
-        [TestCase(SportType.VirtualTennis)]
-#pragma warning restore CS0618 // Type or member is obsolete
+        [TestCase(SportTypeIdConstants.Soccer)]
+        [TestCase(SportTypeIdConstants.BasketBall)]
+        [TestCase(SportTypeIdConstants.Netball)]
+        [TestCase(SportTypeIdConstants.FootBall)]
+        [TestCase(SportTypeIdConstants.Rugby)]
+        [TestCase(SportTypeIdConstants.IceHockey)]
+        [TestCase(SportTypeIdConstants.FieldHockey)]
+        [TestCase(SportTypeIdConstants.Tennis)]
+        [TestCase(SportTypeIdConstants.VolleyBall)]
+        [TestCase(SportTypeIdConstants.Badminton)]
+        [TestCase(SportTypeIdConstants.Squash)]
+        [TestCase(SportTypeIdConstants.BaseBall)]
+        [TestCase(SportTypeIdConstants.Golf)]
+        [TestCase(SportTypeIdConstants.Motorsports)]
+        [TestCase(SportTypeIdConstants.HRFixedOdds)]
+        [TestCase(SportTypeIdConstants.Billard)]
+        [TestCase(SportTypeIdConstants.Cycling)]
+        [TestCase(SportTypeIdConstants.Fencing)]
+        [TestCase(SportTypeIdConstants.Judo)]
+        [TestCase(SportTypeIdConstants.ModernPentathlon)]
+        [TestCase(SportTypeIdConstants.Rowing)]
+        [TestCase(SportTypeIdConstants.Sailing)]
+        [TestCase(SportTypeIdConstants.Shooting)]
+        [TestCase(SportTypeIdConstants.Taekwondo)]
+        [TestCase(SportTypeIdConstants.Triathlon)]
+        [TestCase(SportTypeIdConstants.Wrestling)]
+        [TestCase(SportTypeIdConstants.Winter)]
+        [TestCase(SportTypeIdConstants.ESports)]
+        [TestCase(SportTypeIdConstants.VirtualSports)]
+        [TestCase(SportTypeIdConstants.VirtualTennis)]
         public void CreateProductResultService_SportIsBelongingToSportsbook_ReturnSportsbookResultService(
             int sportId)
         {
             //// Act
-            var resultService = _resultServiceFactory.CreateProductResultService(sportId, Arg.Any<int>());
+            var resultService = _resultServiceFactory.CreateProductResultService(sportId, 0);
 
             //// Assert
             Assert.IsTrue(resultService is SportsbookResultService);
         }
 
-#pragma warning disable CS0618 // Type or member is obsolete
-        [TestCase(SportType.HorseRacing)]
-        [TestCase(SportType.Greyhound)]
-        [TestCase(SportType.Harness)]
-#pragma warning restore CS0618 // Type or member is obsolete
+        [TestCase(SportTypeIdConstants.HorseRacing)]
+        [TestCase(SportTypeIdConstants.Greyhound)]
+        [TestCase(SportTypeIdConstants.Harness)]
         public void CreateProductResultService_SportIsBelongToRacing_ReturnRacingResultService(
             int sportId)
         {
             //// Act
-            var resultService = _resultServiceFactory.CreateProductResultService(sportId, Arg.Any<int>());
+            var resultService = _resultServiceFactory.CreateProductResultService(sportId, 0);
 
             //// Assert
             Assert.IsTrue(resultService is RacingResultService);
@@ -101,9 +97,7 @@
         public void CreateProductResultService_SportIsNumbergame_ReturnNumbergameResultService()
         {
             //// Act
-#pragma warning disable CS0618 // Type or member is obsolete
-            var resultService = _resultServiceFactory.CreateProductResultService((int)SportType.NumberGame, Arg.Any<int>());
-#pragma warning restore CS0618 // Type or member is obsolete
+            var resultService = _resultServiceFactory.CreateProductResultService(SportTypeIdConstants.NumberGame, Arg.Any<int>());
 
             //// Assert
             Assert.IsTrue(resultService is NumberGameResultService);
@@ -113,9 +107,7 @@
         public void CreateProductResultService_SportIsLucky3_ReturnLucky3ResultService()
         {
             //// Act
-#pragma warning disable CS0618 // Type or member is obsolete
-            var resultService = _resultServiceFactory.CreateProductResultService((int)SportType.Lucky3, Arg.Any<int>());
-#pragma warning restore CS0618 // Type or member is obsolete
+            var resultService = _resultServiceFactory.CreateProductResultService(SportTypeIdConstants.Lucky3, Arg.Any<int>());
 
             //// Assert
             Assert.IsTrue(resultService is Lucky3ResultService);
@@ -125,9 +117,7 @@
         public void CreateProductResultService_SportIsLiveCasino_ReturnLiveCasinoResultService()
         {
             //// Act
-#pragma warning disable CS0618 // Type or member is obsolete
-            var resultService = _resultServiceFactory.CreateProductResultService((int)SportType.LiveCasino, Arg.Any<int>());
-#pragma warning restore CS0618 // Type or member is obsolete
+            var resultService = _resultServiceFactory.CreateProductResultService(SportTypeIdConstants.LiveCasino, Arg.Any<int>());
 
             //// Assert
             Assert.IsTrue(resultService is LiveCasinoResultService);
@@ -137,26 +127,22 @@
         public void CreateProductResultService_SportIsAllBet_ReturnAllBetResultService()
         {
             //// Act
-#pragma warning disable CS0618 // Type or member is obsolete
-            var resultService = _resultServiceFactory.CreateProductResultService((int)SportType.AllBet, Arg.Any<int>());
-#pragma warning restore CS0618 // Type or member is obsolete
+            var resultService = _resultServiceFactory.CreateProductResultService(SportTypeIdConstants.AllBet, Arg.Any<int>());
 
             //// Assert
             Assert.IsTrue(resultService is AllBetCasinoResultService);
         }
 
-#pragma warning disable CS0618 // Type or member is obsolete
-        [TestCase(SportType.VirtualHorsesRacing)]
-        [TestCase(SportType.VirtualGreyhounds)]
-        [TestCase(SportType.VirtualMotors)]
-        [TestCase(SportType.VirtualCycling)]
-        [TestCase(SportType.VirtualSpeedway)]
-#pragma warning restore CS0618 // Type or member is obsolete
+        [TestCase(SportTypeIdConstants.VirtualHorsesRacing)]
+        [TestCase(SportTypeIdConstants.VirtualGreyhounds)]
+        [TestCase(SportTypeIdConstants.VirtualMotors)]
+        [TestCase(SportTypeIdConstants.VirtualCycling)]
+        [TestCase(SportTypeIdConstants.VirtualSpeedway)]
         public void CreateProductResultService_SportIsBelongToVirtualRacing_ReturnVirtualRacingResultService(
             int sportId)
         {
             //// Act
-            var resultService = _resultServiceFactory.CreateProductResultService(sportId, Arg.Any<int>());
+            var resultService = _resultServiceFactory.CreateProductResultService(sportId, 0);
 
             //// Assert
             Assert.IsTrue(resultService is VirtualRacingResultService);
@@ -166,23 +152,19 @@
         public void CreateProductResultService_SportIsGoldDeluxe_ReturnGoldDeluxeResultService()
         {
             //// Act
-#pragma warning disable CS0618 // Type or member is obsolete
-            var resultService = _resultServiceFactory.CreateProductResultService((int)SportType.GoldDeluxe, Arg.Any<int>());
-#pragma warning restore CS0618 // Type or member is obsolete
+            var resultService = _resultServiceFactory.CreateProductResultService(SportTypeIdConstants.GoldDeluxe, Arg.Any<int>());
 
             //// Assert
             Assert.IsTrue(resultService is GoldDeluxeResultService);
         }
 
-#pragma warning disable CS0618 // Type or member is obsolete
-        [TestCase(SportType.Athletics)]
-        [TestCase(SportType.Equestrian)]
-#pragma warning restore CS0618 // Type or member is obsolete
+        [TestCase(SportTypeIdConstants.Athletics)]
+        [TestCase(SportTypeIdConstants.Equestrian)]
         public void CreateProductResultService_OtherSports_ReturnSportsbookResultService(
             int sportId)
         {
             //// Act
-            var resultService = _resultServiceFactory.CreateProductResultService(sportId, Arg.Any<int>());
+            var resultService = _resultServiceFactory.CreateProductResultService(sportId, 0);
 
             //// Assert
             Assert.IsTrue(resultService is SportsbookResultService);

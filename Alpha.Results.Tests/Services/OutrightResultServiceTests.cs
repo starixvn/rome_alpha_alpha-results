@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Collections.Specialized;
     using System.Linq;
     using Constants;
     using Fanex.Data.Repository;
@@ -10,6 +11,8 @@
     using KellermanSoftware.CompareNetObjects;
     using NSubstitute;
     using NUnit.Framework;
+    using Site.Configurations;
+    using Site.Criteria;
     using Site.Models.Requests;
     using Site.Services;
     using Site.Services.Impl;
@@ -27,6 +30,11 @@
             _dynamicRepository = Substitute.For<IDynamicRepository>();
             _resultEngineAdatper = Substitute.For<IResultEngineAdapter>();
             _resultService = new OutrightResultService(_dynamicRepository, _resultEngineAdatper);
+
+            AppSettings.AppSettingValues = new NameValueCollection
+            {
+                ["LocalTests"] = "1"
+            };
         }
 
         [Test]
@@ -40,6 +48,28 @@
 
             // Assert
             Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [Test]
+        public void GetOutrights_FromDateIsGreaterThanOrEqualBalanceUpDate_CallsFetchFromDynamicRepository()
+        {
+            // Arrange
+            DateTime fromDate;
+            DateTime toDate;
+            DateTime balanceUpDate;
+            fromDate = toDate = balanceUpDate = DateTime.Now;
+
+            var criteria = GetOutrightCriteria(fromDate.Date, toDate.Date.AddDays(1).AddTicks(-1));
+
+            // Act
+            _resultService.GetOutrights(fromDate, toDate, balanceUpDate);
+
+            // Assert
+            _dynamicRepository.Received().Fetch<Outright>(
+                Arg.Is<GetOutRightResultCriteria>(
+                    param => param.FromDate == criteria.FromDate
+                        && param.ToDate == criteria.ToDate
+                        && param.IsShowAll == criteria.IsShowAll));
         }
 
         [Test]
@@ -95,5 +125,13 @@
             Assert.Throws<ArgumentException>(new TestDelegate(
                 () => _resultService.GetExcelResults(new ExcelOutrightResultQuery() { TemplatePath = templatePath }, DateTime.Now)));
         }
+
+        private static GetOutRightResultCriteria GetOutrightCriteria(DateTime fromDate, DateTime toDate)
+            => new GetOutRightResultCriteria
+            {
+                FromDate = fromDate,
+                ToDate = toDate,
+                IsShowAll = AppSettings.LocalTest
+            };
     }
 }
