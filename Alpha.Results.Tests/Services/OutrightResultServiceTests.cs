@@ -11,6 +11,7 @@
     using KellermanSoftware.CompareNetObjects;
     using NSubstitute;
     using NUnit.Framework;
+    using RemotingRef;
     using Site.Configurations;
     using Site.Criteria;
     using Site.Models.Requests;
@@ -23,6 +24,7 @@
         private IDynamicRepository _dynamicRepository;
         private IResultEngineAdapter _resultEngineAdatper;
         private OutrightResultService _resultService;
+        private CompareLogic compareLogic;
 
         [SetUp]
         public void SetUp()
@@ -35,7 +37,12 @@
             {
                 ["LocalTests"] = "1"
             };
+
+            compareLogic = new CompareLogic();
+            CacheRefFactory.CacheRef = Substitute.For<CacheRefService>();
         }
+
+        #region GetOutrights
 
         [Test]
         public void GetOutrights_FromDateIsLessThanBalanceUpDate_ReturnEmptyList()
@@ -72,6 +79,10 @@
                         && param.IsShowAll == criteria.IsShowAll));
         }
 
+        #endregion
+
+        #region GetResults
+
         [Test]
         public void GetResults_OutrightsIsNull_ThrowArgumentNullException()
         {
@@ -85,10 +96,9 @@
         }
 
         [Test]
-        public void GetResults_RequestIsNotNull_ReturnResult()
+        public void GetResults_RequestIsNotNull_ExecuteHtmlParser()
         {
             // Arrange
-            var compareLogic = new CompareLogic();
             var request = new OutrightResultQuery(LanguageCode.English)
             {
                 SportType = 1,
@@ -103,14 +113,17 @@
                 VisibleMatchCodeIDColumn = false,
                 HighlightWinnerTeam = true
             };
-            var expectedResult = _resultEngineAdatper.HtmlParser(outrights, resultSetting);
 
             // Act
             var actualResults = _resultService.GetResults(outrights, request);
 
             // Assert
-            Assert.IsTrue(compareLogic.Compare(expectedResult, actualResults).AreEqual);
+            _resultEngineAdatper.Received().HtmlParser
+                (Arg.Is<IList<Outright>>(p => compareLogic.Compare(p, outrights).AreEqual),
+                Arg.Is<ResultSetting>(setting => compareLogic.Compare(resultSetting, setting).AreEqual));
         }
+
+        #endregion
 
         [Test]
         public void GetExcelResults_RequestIsNull_ThrowArgumentNullException()
@@ -124,6 +137,44 @@
         {
             Assert.Throws<ArgumentException>(new TestDelegate(
                 () => _resultService.GetExcelResults(new ExcelOutrightResultQuery() { TemplatePath = templatePath }, DateTime.Now)));
+        }
+
+        [Test]
+        public void GeExcelResult_RequestIsNotNull_ExecuteExcelParser()
+        {
+            // Arrange
+            CacheRefFactory.CacheRef.GetLeagueName(Arg.Any<int>()).Returns("LeagueName");
+            CacheRefFactory.CacheRef.GetSportName(Arg.Any<int>()).Returns("SportName");
+
+            var query = new ExcelOutrightResultQuery(LanguageCode.English)
+            {
+                TemplatePath = "TemplatePath",
+                FromDate = new DateTime(2017, 11, 14),
+                ToDate = new DateTime(2017, 11, 14),
+                SportType = 1,
+                LeagueId = 1
+            };
+
+            var outrights = new List<Outright>();
+            _dynamicRepository.Fetch<Outright>(Arg.Any<GetOutRightResultCriteria>()).Returns(outrights);
+
+            var resultSetting = new ResultSetting
+            {
+                LanguageCode = query.Language,
+                IsOutright = true,
+                IsPopUp = false,
+                HighlightWinnerTeam = true,
+                ExcelTitle = "OUTRIGHT RESULTS - 11/14/2017 -> 11/14/2017 | SportName - LeagueName",
+                ExcelTemplatePath = query.TemplatePath
+            };
+
+            // Act
+            _resultService.GetExcelResults(query, DateTime.Now);
+
+            // Assert
+            _resultEngineAdatper.Received().ExcelParser(
+                Arg.Is<IList<Outright>>(p => compareLogic.Compare(p, outrights).AreEqual),
+                Arg.Is<ResultSetting>(setting => compareLogic.Compare(setting, resultSetting).AreEqual));
         }
 
         private static GetOutRightResultCriteria GetOutrightCriteria(DateTime fromDate, DateTime toDate)
