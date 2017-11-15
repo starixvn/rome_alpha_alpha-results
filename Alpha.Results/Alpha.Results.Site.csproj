@@ -670,6 +670,7 @@
     <Compile Include="DataAccesses\IRacingResultDataAccess.cs" />
     <Compile Include="DataAccesses\ISportsbookResultDataAccess.cs" />
     <Compile Include="DataAccesses\IVirtualRacingResultDataAccess.cs" />
+    <Compile Include="DataAccesses\Impl\ObjectDbFactory.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

@@ -1,12 +1,11 @@
-namespace Alpha.Results.Site.DataAccesses.Impl
+﻿namespace Alpha.Results.Site.DataAccesses.Impl
 {
     using System;
     using System.Collections.Generic;
     using System.Data;
     using System.Linq;
-    using Alpha.Results.Site.Criteria;
-    using Alpha.Results.Site.DataAccesses;
-    using Fanex.Data;
+    using Criteria;
+    using DataAccesses;
     using Fanex.Result.Core.NumberGame.DTO;
 
     /// <summary>
@@ -27,7 +26,7 @@ namespace Alpha.Results.Site.DataAccesses.Impl
             }
 
             var result = new List<NumberGame>();
-            using (var db = new ObjectDb(criteria.GetSettingKey()))
+            using (var db = ObjectDbFactory.CreateInstance(criteria.GetSettingKey()))
             {
                 using (var reader = db.ExecuteReader(criteria.GetSpParams()))
                 {
@@ -84,7 +83,7 @@ namespace Alpha.Results.Site.DataAccesses.Impl
             }
 
             var result = new List<NumberGame>();
-            using (var db = new ObjectDb(criteria.GetSettingKey()))
+            using (var db = ObjectDbFactory.CreateInstance(criteria.GetSettingKey()))
             {
                 using (var reader = db.ExecuteReader(criteria.GetSpParams()))
                 {

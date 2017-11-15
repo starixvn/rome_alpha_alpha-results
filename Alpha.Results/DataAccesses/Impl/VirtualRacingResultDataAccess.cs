@@ -1,10 +1,9 @@
-namespace Alpha.Results.Site.DataAccesses.Impl
+﻿namespace Alpha.Results.Site.DataAccesses.Impl
 {
     using System;
     using System.Collections.Generic;
-    using Alpha.Results.Site.Criteria;
-    using Alpha.Results.Site.DataAccesses;
-    using Fanex.Data;
+    using Criteria;
+    using DataAccesses;
     using Fanex.Result.Core.Racing.DTO;
 
     public class VirtualRacingResultDataAccess : IVirtualRacingResultDataAccess
@@ -22,7 +21,7 @@ namespace Alpha.Results.Site.DataAccesses.Impl
             }
 
             var result = new List<Racing>();
-            using (var db = new ObjectDb(criteria.GetSettingKey()))
+            using (var db = ObjectDbFactory.CreateInstance(criteria.GetSettingKey()))
             {
                 using (var reader = db.ExecuteReader(criteria.GetSpParams()))
                 {
@@ -45,7 +44,7 @@ namespace Alpha.Results.Site.DataAccesses.Impl
 
             var result = new List<Racing>();
 
-            using (var db = new ObjectDb(criteria.GetSettingKey()))
+            using (var db = ObjectDbFactory.CreateInstance(criteria.GetSettingKey()))
             {
                 using (var reader = db.ExecuteReader(criteria.GetSpParams()))
                 {

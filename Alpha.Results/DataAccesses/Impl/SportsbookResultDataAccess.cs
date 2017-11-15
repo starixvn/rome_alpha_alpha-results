@@ -4,9 +4,8 @@
     using System.Collections.Generic;
     using System.Data;
     using System.Linq;
-    using Alpha.Results.Site.Criteria;
-    using Alpha.Results.Site.DataAccesses;
-    using Fanex.Data;
+    using Criteria;
+    using DataAccesses;
     using Fanex.Result.Core.Sportsbook.DTO;
 
     /// <summary>
@@ -28,7 +27,7 @@
 
             var results = new List<Sportsbook>();
             var gameDetails = new List<GameDetail>();
-            using (var db = new ObjectDb(criteria.GetSettingKey()))
+            using (var db = ObjectDbFactory.CreateInstance(criteria.GetSettingKey()))
             {
                 using (var reader = db.ExecuteReader(criteria.GetSpParams()))
                 {
@@ -143,7 +142,7 @@
 
             var result = new List<Sportsbook>();
 
-            using (ObjectDb objDb = new ObjectDb(criteria.GetSettingKey()))
+            using (var objDb = ObjectDbFactory.CreateInstance(criteria.GetSettingKey()))
             {
                 using (var reader = objDb.ExecuteReader(criteria.GetSpParams()))
                 {

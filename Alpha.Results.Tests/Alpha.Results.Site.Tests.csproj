@@ -318,6 +318,7 @@
     <Compile Include="DataAccesses\RacingResultDataAccessTests.cs" />
     <Compile Include="DataAccesses\SportsbookResultDataAccessTests.cs" />
     <Compile Include="DataAccesses\VirtualRacingResultDataAccessTests.cs" />
+    <Compile Include="Database\VirtualRacing\VirtualRacingDatabase.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Handlers\CockfightingResultHandlerTests.cs" />
     <Compile Include="Handlers\LotteryResultHandlerTests.cs" />
@@ -325,6 +326,7 @@
     <Compile Include="Handlers\NormalResultHandlerTests.cs" />
     <Compile Include="Handlers\OutrightResultHandleTests.cs" />
     <Compile Include="Handlers\ThirdPartyResultHandlerTests.cs" />
+    <Compile Include="Helpers\FileHelper.cs" />
     <Compile Include="Models\Views\NormalResultViewModelTests.cs" />
     <Compile Include="Models\Views\OutrightResultExcelViewModelTests.cs" />
     <Compile Include="Models\Views\TabViewModelTests.cs" />
@@ -362,6 +364,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AppReadme\Compare-NET-Objects-Help.txt" />
+    <Content Include="Database\VirtualRacing\VirtualRacingResult.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\Fanex.Result.Core\cock-fighting-result.js" />
   </ItemGroup>
   <ItemGroup />

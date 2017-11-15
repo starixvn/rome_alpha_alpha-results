@@ -4,7 +4,6 @@
     using System.Collections.Generic;
     using Criteria;
     using Fanex.Common;
-    using Fanex.Data;
     using Fanex.Result.Core.MetricGaming.DTO;
 
     public class MetricGamingResultDataAccess : IMetricGamingResultDataAccess
@@ -18,7 +17,7 @@
 
             var result = new List<MetricGaming>();
 
-            using (ObjectDb objDb = new ObjectDb(criteria.GetSettingKey()))
+            using (var objDb = ObjectDbFactory.CreateInstance(criteria.GetSettingKey()))
             {
                 using (var reader = objDb.ExecuteReader(criteria.GetSpParams()))
                 {
