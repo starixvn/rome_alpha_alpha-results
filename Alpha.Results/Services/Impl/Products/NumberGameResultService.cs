@@ -5,6 +5,7 @@
     using System.Linq;
     using Alpha.Results.Site.Criteria;
     using Alpha.Results.Site.DataAccesses;
+    using Constants;
     using DataAccesses.Impl;
     using Fanex.Common.Helper;
     using Fanex.Result.Core.Base;
@@ -73,7 +74,8 @@
             {
                 FromDate = request.ResultDate,
                 LeagueId = request.LeagueId,
-                Language = request.Language
+                Language = request.Language,
+                SportType = SportTypeIdConstants.NumberGame
             };
         }
 

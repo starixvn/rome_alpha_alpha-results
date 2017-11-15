@@ -7,6 +7,7 @@
     using Fanex.Result.Core.NumberGame.DTO;
     using NSubstitute;
     using NUnit.Framework;
+    using Site.Constants;
     using Site.Criteria;
     using Site.DataAccesses;
     using Site.Models.Requests;
@@ -127,7 +128,8 @@
                 .GetNumberGameResults(Arg.Is<GetNumberGameResultCriteria>(
                     c => c.FromDate == request.ResultDate
                         && c.LeagueId == request.LeagueId
-                        && c.Language == request.Language));
+                        && c.Language == request.Language
+                        && c.SportType == SportTypeIdConstants.NumberGame));
         }
 
         [Test]
@@ -178,7 +180,8 @@
                 .GetNumberGameResults(Arg.Is<GetNumberGameResultCriteria>(
                     c => c.FromDate == request.ResultDate
                         && c.LeagueId == request.LeagueId
-                        && c.Language == request.Language));
+                        && c.Language == request.Language
+                        && c.SportType == SportTypeIdConstants.NumberGame));
         }
 
         [Test]
