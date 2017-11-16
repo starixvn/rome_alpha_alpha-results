@@ -624,10 +624,18 @@
     <Content Include="Views\ThirdParty\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\BundleConfig.cs" />
-    <Compile Include="App_Start\CssRewriteUrlTransformWrapper.cs" />
-    <Compile Include="App_Start\DependencyConfig.cs" />
-    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\BundleConfig.cs">
+      <SonarQubeExclude>true</SonarQubeExclude>
+    </Compile>
+    <Compile Include="App_Start\CssRewriteUrlTransformWrapper.cs">
+      <SonarQubeExclude>true</SonarQubeExclude>
+    </Compile>
+    <Compile Include="App_Start\DependencyConfig.cs">
+      <SonarQubeExclude>true</SonarQubeExclude>
+    </Compile>
+    <Compile Include="App_Start\RouteConfig.cs">
+      <SonarQubeExclude>true</SonarQubeExclude>
+    </Compile>
     <Compile Include="Configurations\AppSettings.cs" />
     <Compile Include="Constants\BetTypeIdConstants.cs" />
     <Compile Include="Constants\ProductIdConstants.cs" />
@@ -892,8 +900,10 @@
     <Error Condition="!Exists('..\packages\Fanex.Visual-StyleCop.MSBuild.4.7.59.1\build\Fanex.Visual-StyleCop.MSBuild.Targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fanex.Visual-StyleCop.MSBuild.4.7.59.1\build\Fanex.Visual-StyleCop.MSBuild.Targets'))" />
   </Target>
   <PropertyGroup>
-    <PostBuildEvent>if not exist "$(WebProjectOutputDir)\bin\Roslyn" md "$(WebProjectOutputDir)\bin\Roslyn"  
-      start /MIN xcopy /s /y /R "$(OutDir)roslyn\*.*" "$(WebProjectOutputDir)\bin\Roslyn"</PostBuildEvent>
+    <PostBuildEvent>
+      if not exist "$(WebProjectOutputDir)\bin\Roslyn" md "$(WebProjectOutputDir)\bin\Roslyn"
+      start /MIN xcopy /s /y /R "$(OutDir)roslyn\*.*" "$(WebProjectOutputDir)\bin\Roslyn"
+    </PostBuildEvent>
   </PropertyGroup>
   <Import Project="..\packages\Fanex.Visual-StyleCop.MSBuild.4.7.59.1\build\Fanex.Visual-StyleCop.MSBuild.Targets" Condition="Exists('..\packages\Fanex.Visual-StyleCop.MSBuild.4.7.59.1\build\Fanex.Visual-StyleCop.MSBuild.Targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

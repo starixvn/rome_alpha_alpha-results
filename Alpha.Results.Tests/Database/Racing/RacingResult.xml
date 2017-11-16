@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<VirtualRacingTable>
-  <VirtualRacing>
+<RacingTable>
+  <Racing>
     <meetingid>27538</meetingid>
     <HorseId>226628</HorseId>
     <HorseNo>3</HorseNo>
@@ -12,10 +12,10 @@
     <racename>1</racename>
     <kickofftime>2017-10-27</kickofftime>
     <rowcount>3</rowcount>
-    <SCR></SCR>
+    <SCR>17,15,16,</SCR>
     <TF></TF>
-  </VirtualRacing>
-  <VirtualRacing>
+  </Racing>
+  <Racing>
     <meetingid>27538</meetingid>
     <HorseId>227039</HorseId>
     <HorseNo>7</HorseNo>
@@ -28,8 +28,8 @@
     <rowcount>3</rowcount>
     <SCR></SCR>
     <TF></TF>
-  </VirtualRacing>
-  <VirtualRacing>
+  </Racing>
+  <Racing>
     <meetingid>27538</meetingid>
     <HorseId>226690</HorseId>
     <HorseNo>4</HorseNo>
@@ -40,7 +40,6 @@
     <odds>5.40</odds>
     <kickofftime>2017-10-27</kickofftime>
     <rowcount>3</rowcount>
-    <SCR></SCR>
     <TF></TF>
-  </VirtualRacing>
-</VirtualRacingTable>
+  </Racing>
+</RacingTable>

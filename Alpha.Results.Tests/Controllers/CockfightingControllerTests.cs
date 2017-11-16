@@ -48,7 +48,7 @@
         public void Result_RequestIsNotNull_CallMediatorSendCockfightingResultQuery()
         {
             // Arrange
-            var request = new CockfightingResultQuery();
+            var request = new CockfightingResultQuery { SiteId = 0 };
 
             // Act
             controller.Result(request);
@@ -56,7 +56,8 @@
             // Assert
             mediator.Received().Send(Arg.Is<CockfightingResultQuery>(
                 query => query.CustomerId == userSession.CustId
-                    && query.LanguageKey == userSession.LangKey));
+                    && query.LanguageKey == userSession.LangKey
+                    && query.SiteId == request.SiteId));
         }
     }
 }

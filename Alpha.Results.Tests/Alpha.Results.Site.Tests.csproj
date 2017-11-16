@@ -318,7 +318,11 @@
     <Compile Include="DataAccesses\RacingResultDataAccessTests.cs" />
     <Compile Include="DataAccesses\SportsbookResultDataAccessTests.cs" />
     <Compile Include="DataAccesses\VirtualRacingResultDataAccessTests.cs" />
-    <Compile Include="Database\VirtualRacing\VirtualRacingDatabase.cs" />
+    <Compile Include="Database\NumberGame\NumberGameDatabase.cs" />
+    <Compile Include="Database\MetricGaming\MetricGamingDatabase.cs" />
+    <Compile Include="Database\Parlay\ParlayDatabase.cs" />
+    <Compile Include="Database\Racing\RacingDatabase.cs" />
+    <Compile Include="Database\SportsBook\SportsBookDatabase.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Handlers\CockfightingResultHandlerTests.cs" />
     <Compile Include="Handlers\LotteryResultHandlerTests.cs" />
@@ -364,7 +368,22 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AppReadme\Compare-NET-Objects-Help.txt" />
-    <Content Include="Database\VirtualRacing\VirtualRacingResult.xml">
+    <Content Include="Database\NumberGame\NumberGameResult.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Database\MetricGaming\MetricGamingResult.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Database\Parlay\ParlayResult.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Database\Racing\RacingResult.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Database\SportsBook\SportsBookResult.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Database\SportsBook\SportsBookResultDetails.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\Fanex.Result.Core\cock-fighting-result.js" />
