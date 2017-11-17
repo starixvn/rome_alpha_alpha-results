@@ -681,6 +681,7 @@
     <Compile Include="DataAccesses\Impl\ObjectDbFactory.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+      <SonarQubeExclude>true</SonarQubeExclude>
     </Compile>
     <Compile Include="App_GlobalResources\Resources.Designer.cs">
       <DependentUpon>Resources.resx</DependentUpon>
