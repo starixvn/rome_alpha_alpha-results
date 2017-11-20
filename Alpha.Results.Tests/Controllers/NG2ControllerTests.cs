@@ -13,7 +13,7 @@
         [SetUp]
         public void SetUp()
         {
-            Helpers.UrlHelper.NG2ResultPath = "NG2ResultPath";
+            Site.Helpers.UrlHelper.NG2ResultPath = "NG2ResultPath";
             controller = new NG2Controller();
         }
 

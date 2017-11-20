@@ -97,8 +97,10 @@
                 }
             };
 
-            _dynamicRepository.Fetch<Sport>(Arg.Is<GetResultSportsByDateCriteria>(criteria =>
-                criteria.EventDate == resultDate.ToShortDateString())).Returns(expectedSports);
+            _dynamicRepository.Fetch<Sport>(
+                Arg.Is<GetResultSportsByDateCriteria>(
+                    criteria => criteria.EventDate == resultDate.ToShortDateString()
+                        && criteria.MoveBetsDay == moveBetsDate)).Returns(expectedSports);
 
             //// Act
             var sports = _resultService.GetSports(resultDate, new Dictionary<int, bool>(), moveBetsDate);

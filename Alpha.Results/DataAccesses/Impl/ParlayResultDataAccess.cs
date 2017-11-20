@@ -1,12 +1,11 @@
-namespace Alpha.Results.Site.DataAccesses.Impl
+﻿namespace Alpha.Results.Site.DataAccesses.Impl
 {
     using System;
     using System.Collections.Generic;
     using System.Data;
     using System.Linq;
-    using Alpha.Results.Site.Criteria;
-    using Alpha.Results.Site.DataAccesses;
-    using Fanex.Data;
+    using Criteria;
+    using DataAccesses;
     using Fanex.Result.Core.Sportsbook.DTO;
 
     /// <summary>
@@ -28,7 +27,7 @@ namespace Alpha.Results.Site.DataAccesses.Impl
 
             List<Parlay> results = null;
 
-            using (var db = new ObjectDb(criteria.GetSettingKey(), 600))
+            using (var db = ObjectDbFactory.CreateTimeOutInstance(criteria.GetSettingKey(), 600))
             {
                 using (var reader = db.ExecuteReader(criteria.GetSpParams()))
                 {

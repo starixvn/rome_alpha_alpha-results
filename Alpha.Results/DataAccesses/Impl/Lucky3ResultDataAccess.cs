@@ -1,13 +1,12 @@
-namespace Alpha.Results.Site.DataAccesses.Impl
+﻿namespace Alpha.Results.Site.DataAccesses.Impl
 {
-    using Alpha.Results.Site.Criteria;
-    using Alpha.Results.Site.DataAccesses;
-    using Fanex.Data;
-    using Fanex.Result.Core.Lucky3.DTO;
     using System;
     using System.Collections.Generic;
     using System.Data;
     using System.Linq;
+    using Criteria;
+    using DataAccesses;
+    using Fanex.Result.Core.Lucky3.DTO;
 
     public class Lucky3ResultDataAccess : ILucky3ResultDataAccess
     {
@@ -19,7 +18,7 @@ namespace Alpha.Results.Site.DataAccesses.Impl
             }
 
             var result = new List<Lucky3>();
-            using (var db = new ObjectDb(criteria.GetSettingKey()))
+            using (var db = ObjectDbFactory.CreateInstance(criteria.GetSettingKey()))
             {
                 using (var reader = db.ExecuteReader(criteria.GetSpParams()))
                 {
@@ -31,7 +30,7 @@ namespace Alpha.Results.Site.DataAccesses.Impl
             }
 
             return result;
-        }        
+        }
 
         public IList<Lucky3> GetResultDetails(GetNumberGameResultDetailsCriteria criteria)
         {
@@ -41,7 +40,7 @@ namespace Alpha.Results.Site.DataAccesses.Impl
             }
 
             var result = new List<Lucky3>();
-            using (var db = new ObjectDb(criteria.GetSettingKey()))
+            using (var db = ObjectDbFactory.CreateInstance(criteria.GetSettingKey()))
             {
                 using (var reader = db.ExecuteReader(criteria.GetSpParams()))
                 {

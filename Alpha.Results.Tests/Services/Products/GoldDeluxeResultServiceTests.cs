@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using Constants;
     using Fanex.Data.Repository;
     using Fanex.Result.Core.Base;
@@ -64,6 +65,32 @@
                 .Fetch<GoldDeluxe>(Arg.Is<GetGoldDeluxeResultCriteria>(
                     c => c.TransId == request.RefNum
                         && c.BetType == request.BetTypeId));
+        }
+
+        [Test]
+        public void GetResultDetails_GotDataFromRepository_UpdateDataWithQueryBettype()
+        {
+            // Arrange
+            var request = new NormalResultDetailsQuery(new Dictionary<int, bool>(), false, LanguageCode.English)
+            {
+                RefNum = 1,
+                BetTypeId = 1
+            };
+
+            var goldDeluxeResult = new List<GoldDeluxe>
+            {
+                new GoldDeluxe { Bettype=10 }
+            };
+
+            _dynamicRepository.Fetch<GoldDeluxe>(Arg.Any<GetGoldDeluxeResultCriteria>()).Returns(goldDeluxeResult);
+
+            // Act
+            _goldDeluxeResultService.GetResultDetails(request);
+
+            // Assert
+            _resultEngineAdapter.Received().HtmlParser(
+                Arg.Is<IList<GoldDeluxe>>(items => items.Count == 1 && items.First().Bettype == 1),
+                Arg.Any<ResultSetting>());
         }
 
         [Test]
