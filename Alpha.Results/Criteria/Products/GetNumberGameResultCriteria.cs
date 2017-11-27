@@ -14,6 +14,8 @@ namespace Alpha.Results.Site.Criteria
 
         public string Language { get; set; }
 
+        public int SportType { get; set; }
+
         public override string GetSettingKey()
         {
             return "Age_Result_MatchSelNumberGameByLeague";
@@ -21,7 +23,7 @@ namespace Alpha.Results.Site.Criteria
 
         public override bool IsValid()
         {
-            return FromDate > DateTime.MinValue && LeagueId > 0;
+            return FromDate > DateTime.MinValue && LeagueId > 0 && SportType > 0;
         }
     }
 }

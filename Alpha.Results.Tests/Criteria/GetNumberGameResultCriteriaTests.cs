@@ -2,6 +2,7 @@
 {
     using System;
     using NUnit.Framework;
+    using Site.Constants;
     using Site.Criteria;
 
     [TestFixture]
@@ -28,7 +29,8 @@
             var criteria = new GetNumberGameResultCriteria
             {
                 FromDate = DateTime.MinValue,
-                LeagueId = 1
+                LeagueId = 1,
+                SportType = SportTypeIdConstants.NumberGame
             };
 
             // Act
@@ -46,7 +48,8 @@
             var criteria = new GetNumberGameResultCriteria
             {
                 FromDate = DateTime.Now,
-                LeagueId = leagueId
+                LeagueId = leagueId,
+                SportType = SportTypeIdConstants.NumberGame
             };
 
             // Act
@@ -63,7 +66,8 @@
             var criteria = new GetNumberGameResultCriteria
             {
                 FromDate = DateTime.Now,
-                LeagueId = 1
+                LeagueId = 1,
+                SportType = SportTypeIdConstants.NumberGame
             };
 
             // Act
