@@ -5,6 +5,7 @@
     using System.Web.Mvc;
     using App_GlobalResources;
     using Sunplus.Agent.Utilities.Extension;
+    using Utils;
 
     public class NormalResultViewModel
     {
@@ -24,7 +25,7 @@
         {
             get
             {
-                return DateTime.Now.AddDays(-1);
+                return SystemTime.Now.AddDays(-1);
             }
         }
 
@@ -32,7 +33,7 @@
         {
             get
             {
-                return DateTime.Now;
+                return SystemTime.Now;
             }
         }
 
