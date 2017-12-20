@@ -3,15 +3,22 @@
     using System;
     using NUnit.Framework;
     using Site.Models.Views;
+    using Utils;
 
     [TestFixture]
     public class NormalResultViewModelTests
     {
+        [SetUp]
+        public void SetUp()
+        {
+            SystemTime.Now = DateTime.Now;
+        }
+
         [Test]
         public void Yesterday_Always_ReturnCorrectValue()
         {
             // Arrange
-            var expectedValue = DateTime.Now.AddDays(-1);
+            var expectedValue = SystemTime.Now.AddDays(-1);
             var viewModel = new NormalResultViewModel();
 
             // Act
@@ -25,7 +32,7 @@
         public void Today_Always_ReturnCorrectValue()
         {
             // Arrange
-            var expectedValue = DateTime.Now;
+            var expectedValue = SystemTime.Now;
             var viewModel = new NormalResultViewModel();
 
             // Act

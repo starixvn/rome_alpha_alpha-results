@@ -742,6 +742,7 @@
     <Compile Include="Models\Views\NormalResultViewModel.cs" />
     <Compile Include="Models\Views\OutrightResultViewModel.cs" />
     <Compile Include="Models\Views\TabViewModel.cs" />
+    <Compile Include="Utils\SystemTime.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
