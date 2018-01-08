@@ -7,7 +7,8 @@
     using Models.Requests;
     using RemotingRef;
 
-    public class ThirdPartyResultHandler : IRequestHandler<ThirdPartyResultQuery, ThirdPartyResultViewModel>
+    public class ThirdPartyResultHandler : IRequestHandler<ThirdPartyResultQuery, ThirdPartyResultViewModel>,
+        IRequestHandler<ThirdPartyPopupResultQuery,ThirdPartyResultViewModel>
     {
         private readonly ProductResultServiceFactory serviceFactory;
 
@@ -24,6 +25,18 @@
 
             var productResultService = serviceFactory.CreateProductResultService(message.ProductId);
             var result = productResultService.GetResultLink(message);
+
+            return new ThirdPartyResultViewModel(productName, result);
+        }
+
+        public ThirdPartyResultViewModel Handle(ThirdPartyPopupResultQuery message)
+        {
+            Check.Argument.IsNotNull(message, "message");
+
+            var productName = CacheRefFactory.CacheRef.GetProductName(message.ProductId);
+
+            var productResultService = serviceFactory.CreateProductResultService(message.ProductId);
+            var result = productResultService.GetPopupResultLink(message);
 
             return new ThirdPartyResultViewModel(productName, result);
         }

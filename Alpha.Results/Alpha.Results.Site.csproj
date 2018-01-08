@@ -234,8 +234,8 @@
       <HintPath>..\packages\EnterpriseLibrary.Unity.5.0.414.0\lib\net40\Microsoft.Practices.Unity.Interception.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.5.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="NPOI, Version=2.0.6.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
@@ -478,6 +478,7 @@
     <Content Include="Content\Images\sprite.png" />
     <Content Include="Global.asax" />
     <Content Include="App_Data\Fanex.Result\Lucky3.xls" />
+    <Content Include="Scripts\Bullfighting\index.js" />
     <Content Include="Scripts\Lottery\index.js" />
     <Content Include="Views\Lottery\Index.cshtml" />
     <Content Include="Content\ThirdParty\third-party.scss" />
@@ -623,6 +624,7 @@
       <DependentUpon>Web.local.config</DependentUpon>
     </Content>
     <Content Include="Views\ThirdParty\Index.cshtml" />
+    <Content Include="Views\Bullfighting\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs">
@@ -642,6 +644,7 @@
     <Compile Include="Constants\ProductIdConstants.cs" />
     <Compile Include="Constants\RoleIdConstants.cs" />
     <Compile Include="Constants\SportTypeIdConstants.cs" />
+    <Compile Include="Controllers\BullfightingController.cs" />
     <Compile Include="Controllers\KenoController.cs" />
     <Compile Include="Controllers\LotteryController.cs" />
     <Compile Include="Controllers\NG2Controller.cs" />
@@ -700,12 +703,12 @@
     <Compile Include="Models\Requests\NormalResultDetailsQuery.cs" />
     <Compile Include="Models\Requests\NormalResultQuery.cs" />
     <Compile Include="Models\Requests\OutrightResultQuery.cs" />
+    <Compile Include="Models\Requests\ThirdPartyPopupResultQuery.cs" />
     <Compile Include="Models\Requests\ThirdPartyResultQuery.cs" />
     <Compile Include="Models\Sport.cs" />
     <Compile Include="Models\Views\LotteryResultViewModel.cs" />
     <Compile Include="Models\Views\OutrightResultExcelViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\Impl\JsonConverterImpl.cs" />
     <Compile Include="Services\Impl\OutrightResultService.cs" />
     <Compile Include="Services\Impl\Products\AllBetCasinoResultService.cs" />
     <Compile Include="Services\Impl\Products\GoldDeluxeResultService.cs" />
@@ -855,7 +858,6 @@
     <EmbeddedResource Include="App_GlobalResources\Resources.zh-CN.resx" />
     <EmbeddedResource Include="App_GlobalResources\Resources.zh-TW.resx" />
   </ItemGroup>
-  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

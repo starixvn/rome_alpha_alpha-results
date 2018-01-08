@@ -6,6 +6,7 @@
     {
         public const string NormalResultJavascriptBundleUrl = "~/bundles/scripts/normalresult";
         public const string OutrightResultJavascriptBundleUrl = "~/bundles/scripts/outrightresult";
+        public const string BullfightingResultJavascriptBundleUrl = "~/bundles/scripts/bullfightingresult";
         public const string ResultCoreStyleBundleUrl = "~/bundle/styles/resultcore";
         public const string KenoResultStyleBundleUrl = "~/bundle/styles/kenoresult";
         public const string ThirdPartyResultStyleBundleUrl = "~/bundle/styles/thirdpartyresult";
@@ -23,6 +24,7 @@
         {
             RegisterNormalResultJavascript(bundles);
             RegisterOutrightResultJavascript(bundles);
+            RegisterBullfightingResultJavascript(bundles);
             RegisterKenoResultJavascript(bundles);
             RegisterLotteryResultJavascript(bundles);
         }
@@ -51,6 +53,11 @@
                         "~/Scripts/Lottery/index.js"));
         }        
 
+        }
+
+        private static void RegisterBullfightingResultJavascript(BundleCollection bundles)
+        {
+            bundles.Add(new ScriptBundle(BullfightingResultJavascriptBundleUrl).Include("~/Scripts/Bullfighting/index.js"));
         private static void RegisterStyleBundles(BundleCollection bundles)
         {
             bundles.Add(new StyleBundle(ResultCoreStyleBundleUrl)

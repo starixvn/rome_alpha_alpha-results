@@ -17,7 +17,8 @@
                 tabName,
                 UserPermission.EnableKeno,
                 isEnableNG2,
-                UserPermission.IsEnableProduct(ProductIdConstants.Lottery));
+                UserPermission.IsEnableProduct(ProductIdConstants.Lottery),
+                UserPermission.IsEnableProduct(ProductIdConstants.BullFighting));
 
             return PartialView(viewModel);
         }

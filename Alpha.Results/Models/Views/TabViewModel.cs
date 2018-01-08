@@ -8,12 +8,14 @@
             string selectedTabName,
             bool isEnabledKenoTab,
             bool isEnableNG2,
-            bool isEnableLottery)
+            bool isEnableLottery,
+            bool isEnableBullfighting)
         {
             _selectedTabName = selectedTabName;
             IsEnabledKenoTab = isEnabledKenoTab;            
             IsEnableNG2 = isEnableNG2;
             IsEnableLottery = isEnableLottery;
+            IsEnableBullfighting = isEnableBullfighting;
         }
 
         public string SelectedTabName
@@ -29,5 +31,7 @@
         public bool IsEnableNG2 { get; }
 
         public bool IsEnableLottery { get; }
+
+        public bool IsEnableBullfighting { get; }
     }
 }

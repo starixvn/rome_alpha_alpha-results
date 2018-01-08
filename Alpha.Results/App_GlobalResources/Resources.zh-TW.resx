@@ -180,4 +180,10 @@
   <data name="OpenLotteryResults" xml:space="preserve">
     <value>Click here to open Lottery results</value>
   </data>
+  <data name="Bullfighting" xml:space="preserve">
+    <value>Bullfighting</value>
+  </data>
+  <data name="OpenBullfightingResults" xml:space="preserve">
+    <value>點擊這裏打開鬥牛的成績</value>
+  </data>
 </root>
