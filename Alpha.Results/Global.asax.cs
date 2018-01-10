@@ -12,6 +12,7 @@
     using Sunplus.Agent.Model.Entities;
     using Web;
     using Web.Filters;
+    using Web.Helpers;
 
     public class MvcApplication : System.Web.HttpApplication
     {
@@ -25,6 +26,7 @@
             Fanex.Data.Configuration.DbSettingProviderManager.Current.Start();
 
             ShareSession.Init();
+            StaticResources.Init(StaticResources.GetBuildVersion());
 
             GlobalFilters.Filters.Add(new CheckUMFilter());
             GlobalFilters.Filters.Add(new NoCacheFilter());
