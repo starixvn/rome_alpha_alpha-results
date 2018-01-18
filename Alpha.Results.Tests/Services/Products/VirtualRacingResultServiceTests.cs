@@ -38,7 +38,7 @@
         public void GetResult_RequestIsNotNull_CallGetNumberGameResults()
         {
             // Arrange
-            var request = new NormalResultQuery(new Dictionary<int, bool>(), false, LanguageCode.English)
+            var request = new NormalResultQuery(new Dictionary<int, bool>(), LanguageCode.English)
             {
                 SportId = 181,
                 LeagueId = 1
@@ -59,7 +59,7 @@
         public void GetResult_RequestIsNotNull_CallHtmlParser()
         {
             // Arrange
-            var request = new NormalResultQuery(new Dictionary<int, bool>(), false, LanguageCode.English)
+            var request = new NormalResultQuery(new Dictionary<int, bool>(), LanguageCode.English)
             {
                 LeagueId = 1,
                 SportId = 181
@@ -90,7 +90,7 @@
         public void ExportExcel_RequestIsNotNull_CallGetResults()
         {
             // Arrange
-            var request = new ExcelNormalResultQuery(new Dictionary<int, bool>(), false, LanguageCode.English)
+            var request = new ExcelNormalResultQuery(new Dictionary<int, bool>(), LanguageCode.English)
             {
                 LeagueId = 1,
                 SportId = 181
@@ -111,7 +111,7 @@
         public void ExportExcel_RequestIsNotNull_CallExcelParser()
         {
             // Arrange
-            var request = new ExcelNormalResultQuery(new Dictionary<int, bool>(), false, LanguageCode.English)
+            var request = new ExcelNormalResultQuery(new Dictionary<int, bool>(), LanguageCode.English)
             {
                 LeagueId = 1,
                 SportId = 181,
@@ -144,7 +144,7 @@
         public void GetResultDetails_WhenCalled_ExecuteFetch()
         {
             //// Arrange
-            var query = new NormalResultDetailsQuery(new Dictionary<int, bool>(), false, LanguageCode.English)
+            var query = new NormalResultDetailsQuery(new Dictionary<int, bool>(), LanguageCode.English)
             {
                 MatchId = 1,
                 Race = "0"
@@ -164,7 +164,7 @@
         public void GetResultDetails_GotDataFromRepository_UpdateDataWithQueryBetType()
         {
             //// Arrange
-            var query = new NormalResultDetailsQuery(new Dictionary<int, bool>(), false, LanguageCode.English)
+            var query = new NormalResultDetailsQuery(new Dictionary<int, bool>(), LanguageCode.English)
             {
                 MatchId = 3,
                 Race = "1"
@@ -190,7 +190,7 @@
         public void GetResultDetails_GotDataFromRepository_ExecuteHtmlParserWithResultSetting()
         {
             //// Arrange
-            var query = new NormalResultDetailsQuery(new Dictionary<int, bool>(), false, LanguageCode.English)
+            var query = new NormalResultDetailsQuery(new Dictionary<int, bool>(), LanguageCode.English)
             {
                 MatchId = 1,
                 Race = "1",

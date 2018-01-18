@@ -13,7 +13,6 @@
     using Fanex.Logging;
     using Fanex.Result.Core.AllBetCasino;
     using Fanex.Result.Core.Base.Models;
-    using Fanex.Result.Core.CockFighting;
     using Fanex.Result.Core.GlobalGaming;
     using Fanex.Result.Core.Voidbridge;
     using Fanex.Result.ThirdParty.Services;
@@ -89,8 +88,6 @@
             container.Register<IReportDateService, ReportDateService>(Lifestyle.Scoped);
             container.Register<IOutrightResultService, OutrightResultService>(Lifestyle.Scoped);
             container.Register<INormalResultService, NormalResultService>(Lifestyle.Scoped);
-            container.Register<ICockfightingResultService, CockfightingResultService>(Lifestyle.Scoped);
-            container.Register<ICockFightingAPI, CockFightingAPI>(Lifestyle.Scoped);
             container.Register<IResultEngineAdapter, ResultEngineAdapter>(Lifestyle.Scoped);
             container.Register<IKenoGameService, KenoGameService>(Lifestyle.Scoped);
             container.Register<IAllbetResultBuilder, AllbetResultBuilder>(Lifestyle.Scoped);
@@ -106,8 +103,7 @@
             container.Register<IDynamicRepository, DynamicRepository>(Lifestyle.Scoped);
             container.Register<IMetricGamingResultDataAccess, MetricGamingResultDataAccess>(Lifestyle.Scoped);
             container.Register<INumberGameResultDataAccess, NumberGameResultDataAccess>(Lifestyle.Scoped);
-            container.Register<IParlayResultDataAccess, ParlayResultDataAccess>(Lifestyle.Scoped);
-            container.Register<IRacingResultDataAccess, RacingResultDataAccess>(Lifestyle.Scoped);
+            container.Register<IParlayResultDataAccess, ParlayResultDataAccess>(Lifestyle.Scoped);            
             container.Register<ISportsbookResultDataAccess, SportsbookResultDataAccess>(Lifestyle.Scoped);
             container.Register<IVirtualRacingResultDataAccess, VirtualRacingResultDataAccess>(Lifestyle.Scoped);
         }

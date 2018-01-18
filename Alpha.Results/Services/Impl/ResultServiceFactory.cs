@@ -28,20 +28,12 @@
                         return new MetricGamingResultService();
                     }
 
-                    return new SportsbookResultService();
-
-                case SportTypeIdConstants.HorseRacing:
-                case SportTypeIdConstants.Greyhound:
-                case SportTypeIdConstants.Harness:
-                    return new RacingResultService();
+                    return new SportsbookResultService();                    
 
                 case SportTypeIdConstants.NumberGame:
                     return new NumberGameResultService();
                 case SportTypeIdConstants.Lucky3:
-                    return new Lucky3ResultService();
-
-                case SportTypeIdConstants.LiveCasino:
-                    return new LiveCasinoResultService();
+                    return new Lucky3ResultService();                    
 
                 case SportTypeIdConstants.AllBet:
                     return new AllBetCasinoResultService();

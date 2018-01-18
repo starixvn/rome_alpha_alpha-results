@@ -12,8 +12,7 @@
 
         internal NormalResultDetailsQuery(
             IDictionary<int, bool> sportStatus,
-            bool disableHorseRacingWin,
-            string language) : base(sportStatus, disableHorseRacingWin, language)
+            string language) : base(sportStatus, language)
         {
         }
 

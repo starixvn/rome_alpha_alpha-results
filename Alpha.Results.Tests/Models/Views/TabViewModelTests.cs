@@ -11,7 +11,7 @@
         {
             // Arrange
             var tabName = "TabName";
-            var viewModel = new TabViewModel(tabName, false, false, false, false);
+            var viewModel = new TabViewModel(tabName, false, false, false);
             var expectedValue = "tabname";
 
             // Act
