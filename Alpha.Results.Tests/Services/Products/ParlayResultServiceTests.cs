@@ -38,7 +38,7 @@
         public void GetResultDetails_WhenCalled_ExecuteFetch()
         {
             //// Arrange
-            var query = new NormalResultDetailsQuery(new Dictionary<int, bool>(), false, DefaultLanguage)
+            var query = new NormalResultDetailsQuery(new Dictionary<int, bool>(), DefaultLanguage)
             {
                 RefNum = 2
             };
@@ -55,7 +55,7 @@
         public void GetResultDetails_GotDataFromRepository_UpdateDataWithQueryBetType()
         {
             //// Arrange
-            var query = new NormalResultDetailsQuery(new Dictionary<int, bool>(), false, DefaultLanguage)
+            var query = new NormalResultDetailsQuery(new Dictionary<int, bool>(), DefaultLanguage)
             {
                 SportId = 1,
                 RefNum = 10,
@@ -83,7 +83,7 @@
         public void GetResultDetails_GotDataFromRepository_ExecuteHtmlParserWithResultSetting()
         {
             //// Arrange
-            var query = new NormalResultDetailsQuery(new Dictionary<int, bool>(), false, DefaultLanguage)
+            var query = new NormalResultDetailsQuery(new Dictionary<int, bool>(), DefaultLanguage)
             {
                 SportId = 1,
                 RefNum = 10,

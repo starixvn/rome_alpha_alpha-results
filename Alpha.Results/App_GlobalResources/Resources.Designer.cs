@@ -61,24 +61,6 @@ namespace Alpha.Results.Site.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cannot connect to Cockfighting API! Please contact Administrator..
-        /// </summary>
-        public static string CockFightFailedToConnect {
-            get {
-                return ResourceManager.GetString("CockFightFailedToConnect", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Cockfighting.
-        /// </summary>
-        public static string CockFighting {
-            get {
-                return ResourceManager.GetString("CockFighting", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Date.
         /// </summary>
         public static string Date {
@@ -147,15 +129,6 @@ namespace Alpha.Results.Site.App_GlobalResources {
         public static string Normal {
             get {
                 return ResourceManager.GetString("Normal", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Click here to open Cockfighting results.
-        /// </summary>
-        public static string OpenCockfightingResults {
-            get {
-                return ResourceManager.GetString("OpenCockfightingResults", resourceCulture);
             }
         }
         

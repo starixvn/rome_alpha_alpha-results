@@ -51,7 +51,7 @@
         public void GetResultDetails_RequestIsNotNull_CallFetchFromRepository()
         {
             // Arrange
-            var request = new NormalResultDetailsQuery(new Dictionary<int, bool>(), false, LanguageCode.English)
+            var request = new NormalResultDetailsQuery(new Dictionary<int, bool>(), LanguageCode.English)
             {
                 RefNum = 1,
                 BetTypeId = 1
@@ -71,7 +71,7 @@
         public void GetResultDetails_GotDataFromRepository_UpdateDataWithQueryBettype()
         {
             // Arrange
-            var request = new NormalResultDetailsQuery(new Dictionary<int, bool>(), false, LanguageCode.English)
+            var request = new NormalResultDetailsQuery(new Dictionary<int, bool>(), LanguageCode.English)
             {
                 RefNum = 1,
                 BetTypeId = 1
@@ -97,7 +97,7 @@
         public void GetResultDetails_RequestIsNotNull_CallHtmlParser()
         {
             // Arrange
-            var request = new NormalResultDetailsQuery(new Dictionary<int, bool>(), false, LanguageCode.English)
+            var request = new NormalResultDetailsQuery(new Dictionary<int, bool>(), LanguageCode.English)
             {
                 RefNum = 1,
                 BetTypeId = 1

@@ -54,7 +54,6 @@
         [TestCase(SportTypeIdConstants.BaseBall)]
         [TestCase(SportTypeIdConstants.Golf)]
         [TestCase(SportTypeIdConstants.Motorsports)]
-        [TestCase(SportTypeIdConstants.HRFixedOdds)]
         [TestCase(SportTypeIdConstants.Billard)]
         [TestCase(SportTypeIdConstants.Cycling)]
         [TestCase(SportTypeIdConstants.Fencing)]
@@ -80,19 +79,6 @@
             Assert.IsTrue(resultService is SportsbookResultService);
         }
 
-        [TestCase(SportTypeIdConstants.HorseRacing)]
-        [TestCase(SportTypeIdConstants.Greyhound)]
-        [TestCase(SportTypeIdConstants.Harness)]
-        public void CreateProductResultService_SportIsBelongToRacing_ReturnRacingResultService(
-            int sportId)
-        {
-            //// Act
-            var resultService = _resultServiceFactory.CreateProductResultService(sportId, 0);
-
-            //// Assert
-            Assert.IsTrue(resultService is RacingResultService);
-        }
-
         [Test]
         public void CreateProductResultService_SportIsNumbergame_ReturnNumbergameResultService()
         {
@@ -111,17 +97,7 @@
 
             //// Assert
             Assert.IsTrue(resultService is Lucky3ResultService);
-        }
-
-        [Test]
-        public void CreateProductResultService_SportIsLiveCasino_ReturnLiveCasinoResultService()
-        {
-            //// Act
-            var resultService = _resultServiceFactory.CreateProductResultService(SportTypeIdConstants.LiveCasino, Arg.Any<int>());
-
-            //// Assert
-            Assert.IsTrue(resultService is LiveCasinoResultService);
-        }
+        }        
 
         [Test]
         public void CreateProductResultService_SportIsAllBet_ReturnAllBetResultService()

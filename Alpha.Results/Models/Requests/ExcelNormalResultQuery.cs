@@ -12,9 +12,8 @@
 
         internal ExcelNormalResultQuery(
             IDictionary<int, bool> sportStatus,
-            bool disableHorseRacingWin,
             string language)
-            : base(sportStatus, disableHorseRacingWin, language)
+            : base(sportStatus, language)
         {
         }
 

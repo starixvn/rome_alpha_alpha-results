@@ -32,14 +32,8 @@
         public const int Wrestling = 42;
         public const int ESports = 43;
 
-        public const int HorseRacing = 151;
-        public const int Greyhound = 152;
-        public const int Harness = 153;
-        public const int HRFixedOdds = 154;
-
         public const int Lucky3 = 160;
         public const int NumberGame = 161;
-        public const int LiveCasino = 162;
 
         public const int VirtualSports = 180;
         public const int VirtualHorsesRacing = 181;

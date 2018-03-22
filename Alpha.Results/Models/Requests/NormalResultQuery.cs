@@ -12,7 +12,6 @@
     public class NormalResultQuery : IRequest<NormalResultViewModel>
     {
         private readonly IDictionary<int, bool> _sportsStatus;
-        private readonly bool? _disableHorseRacingWin;
         private readonly string _language;
 
         public NormalResultQuery()
@@ -22,11 +21,9 @@
 
         internal NormalResultQuery(
             IDictionary<int, bool> sportStatus,
-            bool disableHorseRacingWin,
             string language) : this()
         {
             _sportsStatus = sportStatus;
-            _disableHorseRacingWin = disableHorseRacingWin;
             _language = language;
         }
 
@@ -57,24 +54,13 @@
                 var sportsStatus = _sportsStatus ?? new Dictionary<int, bool>
                 {
                     { SportTypeIdConstants.NumberGame,  UserPermission.IsShowNumberGame },
-                    { SportTypeIdConstants.LiveCasino,  UserPermission.IsShowLiveCasino },
                     { SportTypeIdConstants.GoldDeluxe,  UserPermission.IsShowGoldDeluxeSettingForCredit },
                     { SportTypeIdConstants.VirtualSports, UserPermission.HasPermissionOnProduct(ProductIdConstants.VirtualSports) }
                 };
 
                 return sportsStatus;
             }
-        }
-
-        public bool DisableHorseRacingWin
-        {
-            get
-            {
-                return _disableHorseRacingWin.HasValue
-                    ? _disableHorseRacingWin.Value
-                    : AppSettings.Disable151_31;
-            }
-        }
+        }       
 
         public DateTime MoveBetsDate { get; set; }
     }

@@ -11,8 +11,6 @@
     <Setting Key="Age_Result_MatchSelGoalHistory" SpName="Age_Result_MatchSelGoalHistory" DbName="DBAGE.bodb02.BODBDownlineNet" />
     <Setting Key="Age_Result_MatchSelNumberGameByLeague" SpName="Age_Result_MatchSelNumberGameByLeague" DbName="DBAGE.bodb02.BODBDownlineNet" />
     <Setting Key="Age_Result_Outright" SpName="Age_Result_Outright" DbName="DBAGE.bodb02.BODBDownlineNet" />
-    <Setting Key="Age_Result_RaceSelByMeeting" SpName="Age_Result_RaceSelByMeeting" DbName="DBAGE.bodb02.BODBDownlineNet" />
-    <Setting Key="Age_Result_RBRaceSelByMeeting" SpName="Age_Result_RBRaceSelByMeeting" DbName="DBAGE.bodb02.BODBDownlineNet" />
     <Setting Key="Age_Result_SportSelByDate" SpName="Age_Result_SportSelByDate" DbName="DBAGE.bodb02.BODBDownlineNet">
       <Mapping ObjectProperty="Id" DataField="sporttype" />
     </Setting>

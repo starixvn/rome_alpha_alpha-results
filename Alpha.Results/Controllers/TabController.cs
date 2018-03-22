@@ -11,14 +11,11 @@
         [ChildActionOnly]
         public ActionResult Index(string tabName = "Normal")
         {
-            var isEnableCockfighting = UserPermission.IsEnableProduct(ProductIdConstants.CockFighting);
-
             var product = ProductManager.GetProduct(ProductIdConstants.NG2);
             var isEnableNG2 = product != null && product.ShowSettings;
             var viewModel = new TabViewModel(
                 tabName,
                 UserPermission.EnableKeno,
-                isEnableCockfighting,
                 isEnableNG2,
                 UserPermission.IsEnableProduct(ProductIdConstants.Lottery));
 

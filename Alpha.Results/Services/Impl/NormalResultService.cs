@@ -24,16 +24,10 @@
             _resultServiceFactory = resultServiceFactory;
         }
 
-        public IEnumerable<League> GetLeagues(DateTime resultDate, int sportId, string language, bool disableHorseRacingWin, DateTime moveBetsDate)
+        public IEnumerable<League> GetLeagues(DateTime resultDate, int sportId, string language, DateTime moveBetsDate)
         {
             Check.Argument.IsNotNegativeOrZero(sportId, "sportId");
             Check.Argument.IsNotEmpty(language, "language");
-
-            if (sportId == SportTypeIdConstants.HorseRacing
-                && disableHorseRacingWin)
-            {
-                return Enumerable.Empty<League>();
-            }
 
             var leagues = _dynamicRepository.Fetch<League>(new GetResultLeaguesByDateCriteria(moveBetsDate)
             {

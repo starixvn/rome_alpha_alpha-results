@@ -44,7 +44,7 @@
         public void GetResultDetails_ResutIsNotNull_CallAllbetResultBuilderRender()
         {
             // Arrange
-            var request = new NormalResultDetailsQuery(new Dictionary<int, bool>(), false, LanguageCode.English)
+            var request = new NormalResultDetailsQuery(new Dictionary<int, bool>(), LanguageCode.English)
             {
                 TransDesc = "",
                 BetCheck = "",

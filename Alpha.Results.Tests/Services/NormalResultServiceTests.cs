@@ -37,7 +37,7 @@
         public void GetLeagues_SportIdIsNegativeOrZero_ThrowArgumentOutOfRangeException(int sportId)
         {
             Assert.Throws<ArgumentOutOfRangeException>(new TestDelegate(
-                () => _resultService.GetLeagues(DateTime.Now, sportId, LanguageCode.English, false, DateTime.Now)));
+                () => _resultService.GetLeagues(DateTime.Now, sportId, LanguageCode.English, DateTime.Now)));
         }
 
         [TestCase(null)]
@@ -45,7 +45,7 @@
         public void GetLeagues_LanguageIsNullOrEmpty_ThrowArgumentException(string language)
         {
             Assert.Throws<ArgumentException>(new TestDelegate(
-                () => _resultService.GetLeagues(DateTime.Now, 1, language, false, DateTime.Now)));
+                () => _resultService.GetLeagues(DateTime.Now, 1, language, DateTime.Now)));
         }
 
         [Test]
@@ -70,7 +70,7 @@
                     && criteria.SportId == sportId)).Returns(expectedLeague);
 
             //// Act
-            var leagues = _resultService.GetLeagues(resultDate, sportId, LanguageCode.English, false, moveBetsDate);
+            var leagues = _resultService.GetLeagues(resultDate, sportId, LanguageCode.English, moveBetsDate);
 
             //// Assert
             Assert.IsTrue(leagues.Count() == 1
@@ -109,21 +109,7 @@
             Assert.IsTrue(sports.Count() == 1
                 && sports.ElementAt(0).Id == 1
                 && sports.ElementAt(0).Name == "Sport Name");
-        }
-
-        [Test]
-        public void GetLeagues_SportIsHorseRacingAndDisabledHorseRacingWinInConfig_ReturnEmptyLeague()
-        {
-            //// Arrange
-            var sportId = SportTypeIdConstants.HorseRacing;
-            var disableHorseRacingWin = true;
-
-            //// Act
-            var leagues = _resultService.GetLeagues(DateTime.Now, sportId, LanguageCode.English, disableHorseRacingWin, DateTime.Now);
-
-            //// Assert
-            Assert.IsEmpty(leagues);
-        }
+        }        
 
         #endregion
 
