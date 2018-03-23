@@ -25,5 +25,7 @@
         public long RefNum { get; set; }
 
         public bool IsViewResultFromBetList { get; set; }
+
+        public int Hdp2 { get; set; }
     }
 }
