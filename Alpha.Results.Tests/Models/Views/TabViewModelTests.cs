@@ -11,7 +11,7 @@
         {
             // Arrange
             var tabName = "TabName";
-            var viewModel = new TabViewModel(tabName, false, false, false);
+            var viewModel = new TabViewModel(tabName, false, false, false, false);
             var expectedValue = "tabname";
 
             // Act
@@ -26,7 +26,7 @@
         {
             // Arrange
             var isEnableBullfighting = true;
-            var viewModel = new TabViewModel("test", false, false, false, false, isEnableBullfighting);
+            var viewModel = new TabViewModel("test", false, false, false, isEnableBullfighting);
 
             // Act
             var actualValue = viewModel.IsEnableBullfighting;

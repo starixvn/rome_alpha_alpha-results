@@ -51,13 +51,13 @@
         {
             bundles.Add(new ScriptBundle(LotteryResultScriptBundleUrl).Include(
                         "~/Scripts/Lottery/index.js"));
-        }        
 
         }
 
         private static void RegisterBullfightingResultJavascript(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle(BullfightingResultJavascriptBundleUrl).Include("~/Scripts/Bullfighting/index.js"));
+        }
         private static void RegisterStyleBundles(BundleCollection bundles)
         {
             bundles.Add(new StyleBundle(ResultCoreStyleBundleUrl)

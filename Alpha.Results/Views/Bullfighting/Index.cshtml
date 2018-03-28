@@ -7,8 +7,13 @@
 
 <div role="tabpanel" class="tab-pane active" id="bullfighting">
     <div class="filter">
-        <a href="#" id="result-link" class="lnk" target="_blank">@Resources.OpenBullfightingResults</a>
-        @Html.Hidden("resultPageUrl", Model.Result.Value)
+        <div class="col-sm-12">
+            <a href="#" id="result-link" class="lnk" target="_blank">@Resources.OpenBullfightingResults</a>
+            @Html.Hidden("resultPageUrl", Model.Result.Value)
+        </div>
+        <div class="col-sm-12">
+            <span class="txt-red">*</span> @Resources.NoteForBullfighting
+        </div>
     </div>
 </div>
 

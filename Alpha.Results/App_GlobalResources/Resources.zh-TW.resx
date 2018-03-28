@@ -186,4 +186,7 @@
   <data name="OpenBullfightingResults" xml:space="preserve">
     <value>點擊這裏打開鬥牛的成績</value>
   </data>
+  <data name="NoteForBullfighting" xml:space="preserve">
+    <value>注意：顯示時間為GMT + 8。</value>
+  </data>
 </root>

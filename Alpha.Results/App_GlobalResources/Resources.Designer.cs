@@ -151,6 +151,16 @@ namespace Alpha.Results.Site.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Note: The time displayed shall be in GMT+8.
+        ///.
+        /// </summary>
+        public static string NoteForBullfighting {
+            get {
+                return ResourceManager.GetString("NoteForBullfighting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Click here to open Bullfighting results.
         /// </summary>
         public static string OpenBullfightingResults {

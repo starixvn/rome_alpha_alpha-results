@@ -1,5 +1,7 @@
 ﻿namespace Alpha.Results.Site.Handlers
 {
+    using App_GlobalResources;
+    using Constants;
     using Fanex.Common.Helper;
     using Fanex.Result.ThirdParty.Models.Views;
     using Fanex.Result.ThirdParty.Services;

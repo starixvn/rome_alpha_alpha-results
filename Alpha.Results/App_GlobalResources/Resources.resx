@@ -189,4 +189,8 @@
   <data name="ConnectionFailedTo3rd" xml:space="preserve">
     <value>Connect failed to {0}</value>
   </data>
+  <data name="NoteForBullfighting" xml:space="preserve">
+    <value>Note: The time displayed shall be in GMT+8.
+</value>
+  </data>
 </root>
