@@ -21,6 +21,9 @@
 
         public long BetId { get; set; }
 
+        [SpParam(Ignored = true)]
+        public int Handicap2 { get; set; }
+
         public override string GetSettingKey()
         {
             return IsViewResultFromBetList ? "Age_BetList_SelMatchResult" : "Age_Result_MatchSelResultDetail";

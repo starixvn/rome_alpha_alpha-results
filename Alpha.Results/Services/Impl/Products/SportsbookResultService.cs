@@ -100,7 +100,8 @@
                 BetType = detailsRequest.BetTypeId,
                 SportType = detailsRequest.SportId,
                 BetId = detailsRequest.BetId,
-                IsViewResultFromBetList = detailsRequest.IsViewResultFromBetList
+                IsViewResultFromBetList = detailsRequest.IsViewResultFromBetList,
+                Handicap2 = detailsRequest.Hdp2
             };
 
             var results = _dataAccess.GetScoreInformation(criteria);

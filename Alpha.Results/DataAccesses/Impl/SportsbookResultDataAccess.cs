@@ -227,7 +227,8 @@
                 RefNo = string.Empty,
                 BetID = criteria.BetId.ToString(),
                 Bettype = criteria.BetType,
-                GameDetails = new List<GameDetail>()
+                GameDetails = new List<GameDetail>(),
+                Handicap2 = criteria.Handicap2
             };
 
             if (ColumnExisted(reader, "livehomescore") && ColumnExisted(reader, "liveawayscore"))
