@@ -48,7 +48,7 @@
             {
                 SportType = sportType,
                 LanguageCode = request.Language,
-                VisibleDetailedLink = sportType == SportType.Soccer || sportType == SportType.Tennis || sportType == SportType.BasketBall,
+                VisibleDetailedLink = HasDetailResult(sportType),
                 VisibleFreeHeader = true,
                 VisibleMatchCodeIDColumn = false,
                 HighlightWinnerTeam = true,
@@ -121,6 +121,12 @@
             return detailsRequest.IsViewResultFromBetList
                 ? _resultEngineAdapter.HtmlParser(results, resultSetting).Replace("original-title", " title ")
                 : _resultEngineAdapter.HtmlGameDetailParser(results[0], resultSetting).Replace("original-title", " title ");
+        }
+
+        private static bool HasDetailResult(SportType sportType)
+        {
+
+            return sportType == SportType.Soccer || sportType == SportType.Tennis || sportType == SportType.BasketBall || sportType == SportType.VirtualBasketBall;
         }
     }
 }
