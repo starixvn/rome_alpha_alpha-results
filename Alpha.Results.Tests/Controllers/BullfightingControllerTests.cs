@@ -27,7 +27,7 @@
         }
 
         [Test]
-        public void Index_Always_CallsMediatorSendThirdPartyQuery()
+        public void Index_Always_CallsMediatorSendThirdPartyPopupQuery()
         {
             // Arrange
 
@@ -36,7 +36,7 @@
 
             // Assert
             mediator.Received()
-                .Send(Arg.Is<ThirdPartyResultQuery>(
+                .Send(Arg.Is<ThirdPartyDetailResultQuery>(
                     msg => msg.Language == userSession.Language
                     && msg.CustId == userSession.CustId
                     && msg.RoleId == userSession.RoleId

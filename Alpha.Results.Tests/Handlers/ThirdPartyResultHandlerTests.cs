@@ -51,7 +51,7 @@
         [Test]
         public void HandleThirdPartyPopupResultQuery_QueryIsNull_ThrowArgumentNullException()
         {
-            ThirdPartyPopupResultQuery request = null;
+            ThirdPartyDetailResultQuery request = null;
 
             Assert.Throws<ArgumentNullException>(() => handler.Handle(request));
         }
@@ -61,7 +61,7 @@
         {
             // Arrange
             CacheRefFactory.CacheRef.GetProductName(Arg.Any<int>()).Returns("ProductName");
-            var query = new ThirdPartyPopupResultQuery
+            var query = new ThirdPartyDetailResultQuery
             {
                 ProductId = 30
             };

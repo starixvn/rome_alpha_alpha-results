@@ -23,7 +23,7 @@
             return View(mediator.Send(message));
         }
 
-        public ActionResult Popup(ThirdPartyPopupResultQuery message)
+        public ActionResult Detail(ThirdPartyDetailResultQuery message)
         {
             message.Language = userSession.Language;
 

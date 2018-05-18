@@ -4,7 +4,7 @@
     using Fanex.Result.ThirdParty.Models.Views;
     using MediatR;
 
-    public class ThirdPartyPopupResultQuery : ThirdPartyResultBaseQuery, IRequest<ThirdPartyResultViewModel>
+    public class ThirdPartyDetailResultQuery : ThirdPartyResultBaseQuery, IRequest<ThirdPartyResultViewModel>
     {
     }
 }

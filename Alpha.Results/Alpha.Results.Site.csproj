@@ -178,7 +178,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Fanex.Result.ThirdParty, Version=1.0.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Result.ThirdParty.1.0.5.0-Bullfighting-01\lib\net40\Fanex.Result.ThirdParty.dll</HintPath>
+      <HintPath>..\packages\Fanex.Result.ThirdParty.1.0.5.0\lib\net40\Fanex.Result.ThirdParty.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="IBCCrypt, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -703,7 +703,7 @@
     <Compile Include="Models\Requests\NormalResultDetailsQuery.cs" />
     <Compile Include="Models\Requests\NormalResultQuery.cs" />
     <Compile Include="Models\Requests\OutrightResultQuery.cs" />
-    <Compile Include="Models\Requests\ThirdPartyPopupResultQuery.cs" />
+    <Compile Include="Models\Requests\ThirdPartyDetailResultQuery.cs" />
     <Compile Include="Models\Requests\ThirdPartyResultQuery.cs" />
     <Compile Include="Models\Sport.cs" />
     <Compile Include="Models\Views\LotteryResultViewModel.cs" />

@@ -10,7 +10,7 @@
     using RemotingRef;
 
     public class ThirdPartyResultHandler : IRequestHandler<ThirdPartyResultQuery, ThirdPartyResultViewModel>,
-        IRequestHandler<ThirdPartyPopupResultQuery,ThirdPartyResultViewModel>
+        IRequestHandler<ThirdPartyDetailResultQuery,ThirdPartyResultViewModel>
     {
         private readonly ProductResultServiceFactory serviceFactory;
 
@@ -31,14 +31,14 @@
             return new ThirdPartyResultViewModel(productName, result);
         }
 
-        public ThirdPartyResultViewModel Handle(ThirdPartyPopupResultQuery message)
+        public ThirdPartyResultViewModel Handle(ThirdPartyDetailResultQuery message)
         {
             Check.Argument.IsNotNull(message, "message");
 
             var productName = CacheRefFactory.CacheRef.GetProductName(message.ProductId);
 
             var productResultService = serviceFactory.CreateProductResultService(message.ProductId);
-            var result = productResultService.GetPopupResultLink(message);
+            var result = productResultService.GetDetailLink(message);
 
             return new ThirdPartyResultViewModel(productName, result);
         }
