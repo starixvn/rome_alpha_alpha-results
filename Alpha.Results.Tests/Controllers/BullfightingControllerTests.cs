@@ -36,7 +36,7 @@
 
             // Assert
             mediator.Received()
-                .Send(Arg.Is<ThirdPartyDetailResultQuery>(
+                .Send(Arg.Is<ThirdPartyResultQuery>(
                     msg => msg.Language == userSession.Language
                     && msg.CustId == userSession.CustId
                     && msg.RoleId == userSession.RoleId
