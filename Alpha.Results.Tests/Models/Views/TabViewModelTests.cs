@@ -11,7 +11,7 @@
         {
             // Arrange
             var tabName = "TabName";
-            var viewModel = new TabViewModel(tabName, false, false, false);
+            var viewModel = new TabViewModel(tabName, false, false, false, false);
             var expectedValue = "tabname";
 
             // Act
@@ -19,6 +19,20 @@
 
             // Assert
             Assert.AreEqual(expectedValue, actualValue);
+        }
+
+        [Test]
+        public void IsEnableBullfighting_Always_CorrectValueInConstructor()
+        {
+            // Arrange
+            var isEnableBullfighting = true;
+            var viewModel = new TabViewModel("test", false, false, false, isEnableBullfighting);
+
+            // Act
+            var actualValue = viewModel.IsEnableBullfighting;
+
+            // Assert
+            Assert.AreEqual(isEnableBullfighting, actualValue);
         }
     }
 }

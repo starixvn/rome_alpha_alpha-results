@@ -24,3 +24,10 @@
         @Html.ActionLink(Fanex.Products.ProductManager.GetProductName(Alpha.Results.Site.Constants.ProductIdConstants.Lottery), "index", "lottery", null, new { id = "tablottery" })
     </li>
 }
+
+@*@if (Model.IsEnableBullfighting)
+{
+    <li role="presentation" class="@((Model.SelectedTabName == "bullfighting") ? "active" : string.Empty)">
+        @Html.ActionLink(Fanex.Products.ProductManager.GetProductName(Alpha.Results.Site.Constants.ProductIdConstants.Bullfighting), "index", "Bullfighting", null, new { id = "tabbullfighting" })
+    </li>
+}*@

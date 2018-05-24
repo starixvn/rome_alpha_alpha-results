@@ -26,7 +26,9 @@
         [Test]
         public void HandleThirdPartyResultQuery_QueryIsNull_ThrowArgumentNullException()
         {
-            Assert.Throws<ArgumentNullException>(() => handler.Handle(null));
+            ThirdPartyResultQuery request = null;
+
+            Assert.Throws<ArgumentNullException>(() => handler.Handle(request));
         }
 
         [Test]
@@ -37,6 +39,31 @@
             var query = new ThirdPartyResultQuery
             {
                 ProductId = 6
+            };
+
+            // Act
+            handler.Handle(query);
+
+            // Assert
+            serviceFactory.Received().CreateProductResultService(Arg.Is(query.ProductId));
+        }
+
+        [Test]
+        public void HandleThirdPartyPopupResultQuery_QueryIsNull_ThrowArgumentNullException()
+        {
+            ThirdPartyDetailResultQuery request = null;
+
+            Assert.Throws<ArgumentNullException>(() => handler.Handle(request));
+        }
+
+        [Test]
+        public void HandleThirdPartyPopupResultQuery_QueryIsNotNull_CallsCreateProductResultService()
+        {
+            // Arrange
+            CacheRefFactory.CacheRef.GetProductName(Arg.Any<int>()).Returns("ProductName");
+            var query = new ThirdPartyDetailResultQuery
+            {
+                ProductId = 30
             };
 
             // Act

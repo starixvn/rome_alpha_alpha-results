@@ -1,5 +1,7 @@
 ﻿namespace Alpha.Results.Site.Handlers
 {
+    using App_GlobalResources;
+    using Constants;
     using Fanex.Common.Helper;
     using Fanex.Result.ThirdParty.Models.Views;
     using Fanex.Result.ThirdParty.Services;
@@ -7,7 +9,8 @@
     using Models.Requests;
     using RemotingRef;
 
-    public class ThirdPartyResultHandler : IRequestHandler<ThirdPartyResultQuery, ThirdPartyResultViewModel>
+    public class ThirdPartyResultHandler : IRequestHandler<ThirdPartyResultQuery, ThirdPartyResultViewModel>,
+        IRequestHandler<ThirdPartyDetailResultQuery,ThirdPartyResultViewModel>
     {
         private readonly ProductResultServiceFactory serviceFactory;
 
@@ -24,6 +27,18 @@
 
             var productResultService = serviceFactory.CreateProductResultService(message.ProductId);
             var result = productResultService.GetResultLink(message);
+
+            return new ThirdPartyResultViewModel(productName, result);
+        }
+
+        public ThirdPartyResultViewModel Handle(ThirdPartyDetailResultQuery message)
+        {
+            Check.Argument.IsNotNull(message, "message");
+
+            var productName = CacheRefFactory.CacheRef.GetProductName(message.ProductId);
+
+            var productResultService = serviceFactory.CreateProductResultService(message.ProductId);
+            var result = productResultService.GetDetailLink(message);
 
             return new ThirdPartyResultViewModel(productName, result);
         }

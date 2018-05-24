@@ -20,6 +20,7 @@
     using Handlers;
     using MediatR;
     using RemotingRef;
+    using RestSharp;
     using Services;
     using Services.Impl;
     using SimpleInjector;
@@ -88,13 +89,13 @@
             container.Register<IReportDateService, ReportDateService>(Lifestyle.Scoped);
             container.Register<IOutrightResultService, OutrightResultService>(Lifestyle.Scoped);
             container.Register<INormalResultService, NormalResultService>(Lifestyle.Scoped);
+
             container.Register<IResultEngineAdapter, ResultEngineAdapter>(Lifestyle.Scoped);
             container.Register<IKenoGameService, KenoGameService>(Lifestyle.Scoped);
             container.Register<IAllbetResultBuilder, AllbetResultBuilder>(Lifestyle.Scoped);
             container.Register<VoidbridgeApi, VoidbridgeApiImp>(Lifestyle.Scoped);
             container.Register<Base3rdResultApi, GlobalGamingResultApi>(Lifestyle.Scoped);
-
-            container.RegisterSingleton<JsonConverter, JsonConverterImpl>();
+            container.Register<IRestClient>(() => new RestClient());
             container.Register<ProductResultServiceFactory, ProductResultServiceFactoryImpl>();
         }
 
