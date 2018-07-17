@@ -183,4 +183,7 @@
   <data name="Bullfighting" xml:space="preserve">
     <value>Bullfighting</value>
   </data>
+  <data name="PokerGames" xml:space="preserve">
+    <value>Poker Games</value>
+  </data>
 </root>

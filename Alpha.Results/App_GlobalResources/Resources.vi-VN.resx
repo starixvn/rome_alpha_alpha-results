@@ -186,4 +186,7 @@
   <data name="NoteForBullfighting" xml:space="preserve">
     <value>Lưu ý: Thời gian hiển thị là GMT+8</value>
   </data>
+  <data name="PokerGames" xml:space="preserve">
+    <value>Poker Games</value>
+  </data>
 </root>

@@ -189,4 +189,7 @@
   <data name="NoteForBullfighting" xml:space="preserve">
     <value>注意：显示时间为GMT + 8。</value>
   </data>
+  <data name="PokerGames" xml:space="preserve">
+    <value>Poker Games</value>
+  </data>
 </root>
