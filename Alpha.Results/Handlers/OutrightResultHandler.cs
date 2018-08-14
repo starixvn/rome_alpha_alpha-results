@@ -11,7 +11,6 @@
     using MediatR;
     using Models.Requests;
     using Models.Views;
-    using RemotingRef;
     using Services;
     using Sunplus.Agent.Utilities.Extension;
 
@@ -21,11 +20,16 @@
     {
         private readonly IOutrightResultService _outrightService;
         private readonly IReportDateService _reportService;
+        private readonly ICacheRefService _cacheRefService;
 
-        public OutrightResultHandler(IOutrightResultService outrightService, IReportDateService reportService)
+        public OutrightResultHandler(
+            IOutrightResultService outrightService,
+            IReportDateService reportService,
+            ICacheRefService cacheRefService)
         {
             _outrightService = outrightService;
             _reportService = reportService;
+            _cacheRefService = cacheRefService;
         }
 
         public OutrightResultExcelViewModel Handle(ExcelOutrightResultQuery message)
@@ -63,7 +67,7 @@
 
             if (outrights.Any())
             {
-                message.SportType = message.SportType > 0
+                message.SportType = message.SportType > 0 && outrights.Any(outright => outright.SportType == message.SportType)
                     ? message.SportType
                     : outrights.First().SportType;
 
@@ -107,7 +111,7 @@
                 sportTypes.Add(new SelectListItem
                 {
                     Value = key.ToString(),
-                    Text = CacheRefFactory.CacheRef.GetSportName(key),
+                    Text = _cacheRefService.GetSportName(key),
                     Selected = matchedSportType
                 });
 
@@ -119,7 +123,7 @@
                         .Select(league => new SelectListItem
                         {
                             Value = league.ToString(),
-                            Text = CacheRefFactory.CacheRef.GetLeagueName(league),
+                            Text = _cacheRefService.GetLeagueName(league),
                             Selected = league == selectedLeagueId
                         });
                 }

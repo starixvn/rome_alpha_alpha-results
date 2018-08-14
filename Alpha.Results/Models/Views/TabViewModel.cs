@@ -1,5 +1,7 @@
 ﻿namespace Alpha.Results.Site.Models.Views
 {
+    using System;
+
     public class TabViewModel
     {
         private readonly string _selectedTabName;
@@ -9,13 +11,15 @@
             bool isEnabledKenoTab,
             bool isEnableNG2,
             bool isEnableLottery,
-            bool isEnableBullfighting)
+            bool isEnableBullfighting,
+            Func<int, string> getProductName)
         {
             _selectedTabName = selectedTabName;
             IsEnabledKenoTab = isEnabledKenoTab;            
             IsEnableNG2 = isEnableNG2;
             IsEnableLottery = isEnableLottery;
             IsEnableBullfighting = isEnableBullfighting;
+            GetProductName = getProductName;
         }
 
         public string SelectedTabName
@@ -33,5 +37,7 @@
         public bool IsEnableLottery { get; }
 
         public bool IsEnableBullfighting { get; }
+
+        public Func<int, string> GetProductName { get; }
     }
 }

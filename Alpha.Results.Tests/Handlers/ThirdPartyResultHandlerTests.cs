@@ -4,23 +4,24 @@
     using Fanex.Result.ThirdParty.Services;
     using NSubstitute;
     using NUnit.Framework;
-    using RemotingRef;
     using Site.Handlers;
     using Site.Models.Requests;
+    using Site.Services;
 
     [TestFixture]
     public class ThirdPartyResultHandlerTests
     {
         private ProductResultServiceFactory serviceFactory;
         private ThirdPartyResultHandler handler;
+        private ICacheRefService cacheRefService;
 
         [SetUp]
         public void SetUp()
         {
             serviceFactory = Substitute.For<ProductResultServiceFactory>();
-            handler = new ThirdPartyResultHandler(serviceFactory);
+            cacheRefService = Substitute.For<ICacheRefService>();
 
-            CacheRefFactory.CacheRef = Substitute.For<CacheRefService>();
+            handler = new ThirdPartyResultHandler(serviceFactory, cacheRefService);
         }
 
         [Test]
@@ -35,7 +36,7 @@
         public void HandleThirdPartyResultQuery_QueryIsNotNull_CallsCreateProductResultService()
         {
             // Arrange
-            CacheRefFactory.CacheRef.GetProductName(Arg.Any<int>()).Returns("ProductName");
+            cacheRefService.GetProductName(Arg.Any<int>()).Returns("ProductName");
             var query = new ThirdPartyResultQuery
             {
                 ProductId = 6
@@ -60,7 +61,7 @@
         public void HandleThirdPartyPopupResultQuery_QueryIsNotNull_CallsCreateProductResultService()
         {
             // Arrange
-            CacheRefFactory.CacheRef.GetProductName(Arg.Any<int>()).Returns("ProductName");
+            cacheRefService.GetProductName(Arg.Any<int>()).Returns("ProductName");
             var query = new ThirdPartyDetailResultQuery
             {
                 ProductId = 30

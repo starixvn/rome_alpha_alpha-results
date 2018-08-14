@@ -22,6 +22,8 @@
 
         public static bool Disable151_31 => GetConfigValue("Disable151_31") == "1";
 
+        public static string RemoteRefURL => GetConfigValue("RemoteRefURL");
+
         public static string GetConfigValue(string configName) => AppSettingValues[configName];
     }
 }

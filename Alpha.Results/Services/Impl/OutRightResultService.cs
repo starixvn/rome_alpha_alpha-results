@@ -13,19 +13,21 @@
     using Fanex.Result.Core.Base;
     using Fanex.Result.Core.Sportsbook.DTO;
     using Models.Requests;
-    using RemotingRef;
 
     public class OutrightResultService : IOutrightResultService
     {
         private readonly IDynamicRepository _dynamicRepository;
         private readonly IResultEngineAdapter _resultEngineAdatper;
+        private readonly ICacheRefService _cacheRefService;
 
         public OutrightResultService(
             IDynamicRepository dynamicRepository,
-            IResultEngineAdapter resultEngineAdatper)
+            IResultEngineAdapter resultEngineAdatper,
+            ICacheRefService cacheRefService)
         {
             _dynamicRepository = dynamicRepository;
             _resultEngineAdatper = resultEngineAdatper;
+            _cacheRefService = cacheRefService;
         }
 
         public IEnumerable<Outright> GetOutrights(DateTime fromDate, DateTime toDate, DateTime balanceUpDate)
@@ -114,10 +116,10 @@
 
         private string GetExcelTitle(DateTime fromDate, DateTime toDate, int sportType, int leagueId)
         {
-            string leagueName = leagueId == 0 ? Resources.ShowAllLeaguesExcelTitle : CacheRefFactory.CacheRef.GetLeagueName(leagueId);
+            string leagueName = leagueId == 0 ? Resources.ShowAllLeaguesExcelTitle : _cacheRefService.GetLeagueName(leagueId);
 
             return $"{Resources.OutrightResults.ToUpper()} - {fromDate.ToShortDateString()} "
-                + $"-> {toDate.ToShortDateString()} | {CacheRefFactory.CacheRef.GetSportName(sportType)} - {leagueName}";
+                + $"-> {toDate.ToShortDateString()} | {_cacheRefService.GetSportName(sportType)} - {leagueName}";
         }
     }
 }

@@ -11,7 +11,6 @@
     using KellermanSoftware.CompareNetObjects;
     using NSubstitute;
     using NUnit.Framework;
-    using RemotingRef;
     using Site.Configurations;
     using Site.Criteria;
     using Site.Models.Requests;
@@ -25,13 +24,16 @@
         private IResultEngineAdapter _resultEngineAdatper;
         private OutrightResultService _resultService;
         private CompareLogic compareLogic;
+        private ICacheRefService _cacheRefService;
 
         [SetUp]
         public void SetUp()
         {
             _dynamicRepository = Substitute.For<IDynamicRepository>();
             _resultEngineAdatper = Substitute.For<IResultEngineAdapter>();
-            _resultService = new OutrightResultService(_dynamicRepository, _resultEngineAdatper);
+            _cacheRefService = Substitute.For<ICacheRefService>();
+
+            _resultService = new OutrightResultService(_dynamicRepository, _resultEngineAdatper, _cacheRefService);
 
             AppSettings.AppSettingValues = new NameValueCollection
             {
@@ -39,7 +41,6 @@
             };
 
             compareLogic = new CompareLogic();
-            CacheRefFactory.CacheRef = Substitute.For<CacheRefService>();
         }
 
         #region GetOutrights
@@ -143,8 +144,8 @@
         public void GeExcelResult_RequestIsNotNull_ExecuteExcelParser()
         {
             // Arrange
-            CacheRefFactory.CacheRef.GetLeagueName(Arg.Any<int>()).Returns("LeagueName");
-            CacheRefFactory.CacheRef.GetSportName(Arg.Any<int>()).Returns("SportName");
+            _cacheRefService.GetLeagueName(Arg.Any<int>()).Returns("LeagueName");
+            _cacheRefService.GetSportName(Arg.Any<int>()).Returns("SportName");
 
             var query = new ExcelOutrightResultQuery(LanguageCode.English)
             {

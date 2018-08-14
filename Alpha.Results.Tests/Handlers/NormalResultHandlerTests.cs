@@ -5,7 +5,6 @@
     using System.Linq;
     using NSubstitute;
     using NUnit.Framework;
-    using RemotingRef;
     using Site.Handlers;
     using Site.Models;
     using Site.Models.Requests;
@@ -20,15 +19,16 @@
         private INormalResultService _normalResultService;
         private NormalResultHandler _normalResultHandler;
         private IReportDateService _reportDataService;
+        private ICacheRefService _cacheRefService;
 
         [SetUp]
         public void SetUp()
         {
             _normalResultService = Substitute.For<INormalResultService>();
             _reportDataService = Substitute.For<IReportDateService>();
-            _normalResultHandler = new NormalResultHandler(_normalResultService, _reportDataService);
+            _cacheRefService = Substitute.For<ICacheRefService>();
 
-            CacheRefFactory.CacheRef = Substitute.For<CacheRefService>();
+            _normalResultHandler = new NormalResultHandler(_normalResultService, _reportDataService, _cacheRefService);
         }
 
         #region Handle Normal Result Query
@@ -121,7 +121,7 @@
                 .Returns(sports);
 
             var expectedSportName = "sport name";
-            CacheRefFactory.CacheRef.GetSportName(1).Returns(expectedSportName);
+            _cacheRefService.GetSportName(1).Returns(expectedSportName);
 
             //// Act
             var actualViewModel = _normalResultHandler.Handle(query);
@@ -283,7 +283,7 @@
                 .Returns(new List<League> { new League { Id = 11 } });
 
             var expectedLeagueName = "League Name";
-            CacheRefFactory.CacheRef.GetLeagueName(11).Returns(expectedLeagueName);
+            _cacheRefService.GetLeagueName(11).Returns(expectedLeagueName);
 
             //// Act
             var actualViewModel = _normalResultHandler.Handle(query);
@@ -373,8 +373,8 @@
                 LeagueId = 2
             };
 
-            CacheRefFactory.CacheRef.GetSportName(1).Returns("Sport Name");
-            CacheRefFactory.CacheRef.GetLeagueName(2).Returns("League Name");
+            _cacheRefService.GetSportName(1).Returns("Sport Name");
+            _cacheRefService.GetLeagueName(2).Returns("League Name");
 
             //// Act
             var actualViewModel = _normalResultHandler.Handle(query);
@@ -394,8 +394,8 @@
                 BetTypeId = 4
             };
 
-            CacheRefFactory.CacheRef.GetSportName(1).Returns("Sport Name");
-            CacheRefFactory.CacheRef.GetBetTypeName(4).Returns("Bet Type Name");
+            _cacheRefService.GetSportName(1).Returns("Sport Name");
+            _cacheRefService.GetBetTypeName(4).Returns("Bet Type Name");
 
             //// Act
             var actualViewModel = _normalResultHandler.Handle(query);
@@ -455,8 +455,8 @@
                 SportId = 1
             };
 
-            CacheRefFactory.CacheRef.GetSportName(1).Returns("Sport Name");
-            CacheRefFactory.CacheRef.GetLeagueName(leagueId).Returns("League Name");
+            _cacheRefService.GetSportName(1).Returns("Sport Name");
+            _cacheRefService.GetLeagueName(leagueId).Returns("League Name");
 
             //// Act
             _normalResultHandler.Handle(query);

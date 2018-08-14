@@ -10,7 +10,6 @@
     using MediatR;
     using Models.Requests;
     using Models.Views;
-    using RemotingRef;
     using Services;
     using Sunplus.Agent.Utilities.Extension;
 
@@ -21,11 +20,16 @@
     {
         private readonly INormalResultService _normalResultService;
         private readonly IReportDateService _reportService;
+        private readonly ICacheRefService _cacheRefService;
 
-        public NormalResultHandler(INormalResultService normalResultService, IReportDateService reportService)
+        public NormalResultHandler(
+            INormalResultService normalResultService,
+            IReportDateService reportService,
+            ICacheRefService cacheRefService)
         {
             _normalResultService = normalResultService;
             _reportService = reportService;
+            _cacheRefService = cacheRefService;
         }
 
         [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0", Justification = "Reviewed")]
@@ -78,7 +82,7 @@
 
             return sports.Select(sport => new SelectListItem
             {
-                Text = CacheRefFactory.CacheRef.GetSportName(sport.Id),
+                Text = _cacheRefService.GetSportName(sport.Id),
                 Value = sport.Id.ToString()
             });
         }
@@ -93,7 +97,7 @@
 
             return leagues.Select(league => new SelectListItem
             {
-                Text = CacheRefFactory.CacheRef.GetLeagueName(league.Id),
+                Text = _cacheRefService.GetLeagueName(league.Id),
                 Value = league.Id.ToString()
             });
         }
@@ -103,11 +107,11 @@
         {
             Check.Argument.IsNotNull(message, "message");
 
-            var sportName = CacheRefFactory.CacheRef.GetSportName(message.SportId);
+            var sportName = _cacheRefService.GetSportName(message.SportId);
 
             var leagueName = message.LeagueId > 0
-                ? CacheRefFactory.CacheRef.GetLeagueName(message.LeagueId)
-                : CacheRefFactory.CacheRef.GetBetTypeName(message.BetTypeId);
+                ? _cacheRefService.GetLeagueName(message.LeagueId)
+                : _cacheRefService.GetBetTypeName(message.BetTypeId);
 
             var viewModel = new NormalDetailViewModel
             {
@@ -123,11 +127,11 @@
         {
             Check.Argument.IsNotNull(message, "message");
 
-            var leagueName = message.LeagueId == 0 ? Resources.ShowAllLeaguesExcelTitle : CacheRefFactory.CacheRef.GetLeagueName(message.LeagueId);
+            var leagueName = message.LeagueId == 0 ? Resources.ShowAllLeaguesExcelTitle : _cacheRefService.GetLeagueName(message.LeagueId);
             var resultDate = message.ResultDate.ToShortDateFormatWithSlash();
             message.MoveBetsDate = _reportService.GetMoveBetsDate();
 
-            message.ExcelTitle = $"{Resources.Results} - {resultDate} | {CacheRefFactory.CacheRef.GetSportName(message.SportId)} - {leagueName}";
+            message.ExcelTitle = $"{Resources.Results} - {resultDate} | {_cacheRefService.GetSportName(message.SportId)} - {leagueName}";
 
             var excelResults = _normalResultService.GetExcelResults(message);
 
