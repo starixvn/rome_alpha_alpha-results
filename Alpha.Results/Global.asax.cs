@@ -6,8 +6,12 @@
     using System.Web.Optimization;
     using System.Web.Routing;
     using App_Start;
+    using Configurations;
     using Fanex.Logging.Extensions.Database;
     using Fanex.Logging.Extensions.Web;
+    using Fanex.RemotingRef;
+    using Fanex.Result.Core.Base;
+    using Fanex.Result.Core.RemotingRef;
     using ONEbook.UM.Filters;
     using Sunplus.Agent.Model.Entities;
     using Web;
@@ -35,6 +39,11 @@
                 .UseGetDbExceptionInfo(DatabaseInfoGetters.GetDbExceptionInfo);
 
             ExceptionHandler.UseConfig(loggingConfiguration);
+
+            RefDataTypeContainer
+                .ConnectTo(new Uri(AppSettings.RemoteRefURL))
+                .FromApplication("Alpha.Results.Site");
+            ResultCoreManager.RegisterRefDataHelper(new RefDataHelper());
         }
 
         /// <summary>

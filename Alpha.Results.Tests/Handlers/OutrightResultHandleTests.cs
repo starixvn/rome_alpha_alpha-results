@@ -7,7 +7,6 @@
     using Fanex.Result.Core.Sportsbook.DTO;
     using NSubstitute;
     using NUnit.Framework;
-    using RemotingRef;
     using Site.Handlers;
     using Site.Models.Requests;
     using Site.Services;
@@ -19,15 +18,16 @@
         private IOutrightResultService _outrightResultService;
         private OutrightResultHandler _outrightResultHandler;
         private IReportDateService _reportDataService;
+        private ICacheRefService _cacheRefService;
 
         [SetUp]
         public void SetUp()
         {
             _outrightResultService = Substitute.For<IOutrightResultService>();
             _reportDataService = Substitute.For<IReportDateService>();
-            _outrightResultHandler = new OutrightResultHandler(_outrightResultService, _reportDataService);
+            _cacheRefService = Substitute.For<ICacheRefService>();
 
-            CacheRefFactory.CacheRef = Substitute.For<CacheRefService>();
+            _outrightResultHandler = new OutrightResultHandler(_outrightResultService, _reportDataService, _cacheRefService);
         }
 
         #region Outright Result Query
@@ -167,7 +167,7 @@
                 {
                     new Outright
                     {
-                        SportType = 10,
+                        SportType = 1,
                         LeagueId = 2
                     }
                 });
@@ -326,9 +326,9 @@
                     }
                 });
             var sportName = "Sport Name";
-            CacheRefFactory.CacheRef.GetSportName(10).Returns(sportName);
+            _cacheRefService.GetSportName(10).Returns(sportName);
             var leagueName = "League Name";
-            CacheRefFactory.CacheRef.GetLeagueName(2).Returns(leagueName);
+            _cacheRefService.GetLeagueName(2).Returns(leagueName);
 
             //// Act
             var actualViewModel = _outrightResultHandler.Handle(query);

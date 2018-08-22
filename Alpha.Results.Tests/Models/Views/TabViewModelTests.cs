@@ -1,6 +1,8 @@
 ﻿namespace Alpha.Results.Site.Tests.Models.Views
 {
+    using System;
     using NUnit.Framework;
+    using Site.Constants;
     using Site.Models.Views;
 
     [TestFixture]
@@ -11,7 +13,23 @@
         {
             // Arrange
             var tabName = "TabName";
-            var viewModel = new TabViewModel(tabName, false, false, false, false);
+            Func<int, string> getProductName = (productId) =>
+            {
+                switch (productId)
+                {
+                    case ProductIdConstants.NG2:
+                        return "NG2";
+
+                    case ProductIdConstants.Lottery:
+                        return "Lottery";
+
+                    case ProductIdConstants.Bullfighting:
+                        return "Bullfighting";
+                }
+
+                return string.Empty;
+            };
+            var viewModel = new TabViewModel(tabName, false, false, false, false, getProductName);
             var expectedValue = "tabname";
 
             // Act
@@ -26,7 +44,23 @@
         {
             // Arrange
             var isEnableBullfighting = true;
-            var viewModel = new TabViewModel("test", false, false, false, isEnableBullfighting);
+            Func<int, string> getProductName = (productId) =>
+            {
+                switch (productId)
+                {
+                    case ProductIdConstants.NG2:
+                        return "NG2";
+
+                    case ProductIdConstants.Lottery:
+                        return "Lottery";
+
+                    case ProductIdConstants.Bullfighting:
+                        return "Bullfighting";
+                }
+
+                return string.Empty;
+            };
+            var viewModel = new TabViewModel("test", false, false, false, isEnableBullfighting, getProductName);
 
             // Act
             var actualValue = viewModel.IsEnableBullfighting;

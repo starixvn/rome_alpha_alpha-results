@@ -11,15 +11,17 @@
     using Fanex.Data.Repository;
     using Fanex.Game.Keno.Business;
     using Fanex.Logging;
+    using Fanex.RemotingRef;
     using Fanex.Result.Core.AllBetCasino;
     using Fanex.Result.Core.Base.Models;
+    using Fanex.Result.Core.Base.Utilities;
     using Fanex.Result.Core.GlobalGaming;
+    using Fanex.Result.Core.RemotingRef;
     using Fanex.Result.Core.Voidbridge;
     using Fanex.Result.ThirdParty.Services;
     using Fanex.Result.ThirdParty.Services.Impl;
     using Handlers;
     using MediatR;
-    using RemotingRef;
     using RestSharp;
     using Services;
     using Services.Impl;
@@ -83,7 +85,9 @@
         private static void RegisterServices(Container container)
         {
             container.RegisterPerWebRequest<IUserSession, UserSessionExt>();
-            container.RegisterSingleton<CacheRefService, CacheRefServiceImpl>();
+            container.RegisterSingleton<IRemotingRefService, RemotingRefService>();
+            container.RegisterSingleton<IRefDataHelper, RefDataHelper>();
+            container.RegisterSingleton<ICacheRefService, CacheRefService>();
 
             container.Register<IResultServiceFactory, ResultServiceFactory>(Lifestyle.Scoped);
             container.Register<IReportDateService, ReportDateService>(Lifestyle.Scoped);
