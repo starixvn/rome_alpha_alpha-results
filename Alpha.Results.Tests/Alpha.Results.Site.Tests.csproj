@@ -78,8 +78,8 @@
       <HintPath>..\packages\Fanex.Logging.1.0.4\lib\net40\Fanex.Logging.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Fanex.Products, Version=1.0.0.4, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Products.1.0.0.4\lib\net40\Fanex.Products.dll</HintPath>
+    <Reference Include="Fanex.Products, Version=1.0.0.5, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Products.1.0.0.5-RemotingRef01\lib\net461\Fanex.Products.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Fanex.Result.Core, Version=2.1.1.0, Culture=neutral, processorArchitecture=MSIL">
@@ -130,8 +130,8 @@
       <HintPath>..\packages\Fanex.Result.Core.Voidbridge.1.0.2\lib\net40\Fanex.Result.Core.Voidbridge.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Fanex.Result.ThirdParty, Version=1.0.7.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Result.ThirdParty.1.0.7\lib\net40\Fanex.Result.ThirdParty.dll</HintPath>
+    <Reference Include="Fanex.Result.ThirdParty, Version=1.0.7.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Result.ThirdParty.1.0.7.1-RemotingRef01\lib\net461\Fanex.Result.ThirdParty.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="FluentAssertions, Version=4.1.1.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
@@ -230,10 +230,6 @@
       <HintPath>..\packages\RazorEngine.3.7.0\lib\net45\RazorEngine.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="RemotingRef, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RemotingRef.2.0.0.17\lib\net40\RemotingRef.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\RestSharp.105.2.3\lib\net46\RestSharp.dll</HintPath>
       <Private>True</Private>
@@ -242,8 +238,8 @@
       <HintPath>..\packages\SPSRemoting.1.0.0\lib\net40\SPSRemoting.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Sunplus.Agent.Model.Base, Version=3.0.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sunplus.Agent.Model.Base.3.0.4\lib\net40\Sunplus.Agent.Model.Base.dll</HintPath>
+    <Reference Include="Sunplus.Agent.Model.Base, Version=3.0.4.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sunplus.Agent.Model.Base.3.0.4.1-RemotingRef01\lib\net461\Sunplus.Agent.Model.Base.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Sunplus.Agent.Model.Definitions, Version=3.0.2.3, Culture=neutral, processorArchitecture=MSIL">
