@@ -1,0 +1,27 @@
+﻿@model PokerGamesViewModel
+@{
+    ViewBag.Title = Resources.PokerGames;
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@Model.Title</title>
+    @Styles.Render(BundleConfig.ThirdPartyResultStyleBundleUrl)
+</head>
+<body>
+    <div class="third-party-result">
+        @{
+            if (Model.IsSuccess)
+            {
+                <iframe src="@Model.Result" frameborder="0" class="poker-games-iframe"></iframe>
+            }
+            else
+            {
+                <div class='alertboxerr'><span class='icon-error'></span>@Model.Result</div>
+            }
+        }
+    </div>
+</body>
+</html>

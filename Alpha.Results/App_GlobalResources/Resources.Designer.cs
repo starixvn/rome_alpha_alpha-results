@@ -206,6 +206,15 @@ namespace Alpha.Results.Site.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Poker Games.
+        /// </summary>
+        public static string PokerGames {
+            get {
+                return ResourceManager.GetString("PokerGames", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Results.
         /// </summary>
         public static string Results {

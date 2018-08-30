@@ -7,5 +7,6 @@
         public const int NG2 = 23;
         public const int Lottery = 28;
         public const int Bullfighting = 30;
+        public const int PokerGames = 33;
     }
 }
