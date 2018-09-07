@@ -186,7 +186,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Fanex.Result.ThirdParty, Version=1.0.7.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Result.ThirdParty.1.0.7-BF-vnese-03\lib\net40\Fanex.Result.ThirdParty.dll</HintPath>
+      <HintPath>..\packages\Fanex.Result.ThirdParty.1.0.7\lib\net40\Fanex.Result.ThirdParty.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="IBCCrypt, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
