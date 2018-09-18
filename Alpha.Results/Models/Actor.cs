@@ -11,5 +11,8 @@
         public int ActorId { get; }
 
         public byte ActorRoleId { get; }
+
+        public bool IsValid()
+            => ActorId > 0 && ActorRoleId > 0;
     }
 }

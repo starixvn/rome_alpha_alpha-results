@@ -342,7 +342,6 @@
     <Compile Include="Models\Views\OutrightResultExcelViewModelTests.cs" />
     <Compile Include="Models\Views\TabViewModelTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\AuthorizationServiceTests.cs" />
     <Compile Include="Services\NormalResultServiceTests.cs" />
     <Compile Include="Services\OutrightResultServiceTests.cs" />
     <Compile Include="Services\Products\AllBetCasinoResultServiceTests.cs" />

@@ -62,7 +62,8 @@
                 if (int.TryParse(custIdParam, out custId))
                 {
                     var actor = new Actor(_userSession.CustId, _userSession.RoleId);
-                    isBelonging = _authorizationService.IsBelonging(actor, custId, _userSession.SubAccId);
+                    isBelonging = actor.IsValid()
+                        && _authorizationService.IsBelongingOnPage(actor, custId, _userSession.SubAccId);
                 }
             }
 

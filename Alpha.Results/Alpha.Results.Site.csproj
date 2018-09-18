@@ -693,6 +693,7 @@
     <Compile Include="Controllers\TabController.cs" />
     <Compile Include="Controllers\ThirdPartyController.cs" />
     <Compile Include="Criteria\CheckBelongingCriteria.cs" />
+    <Compile Include="Criteria\CheckConsolidatedGroupBelongingCriteria.cs" />
     <Compile Include="Criteria\GetBalanceUpDateCriteria.cs" />
     <Compile Include="Criteria\Products\GetGoldDeluxeResultCriteria.cs" />
     <Compile Include="Criteria\Products\GetMetricGamingResultCriteria.cs" />
