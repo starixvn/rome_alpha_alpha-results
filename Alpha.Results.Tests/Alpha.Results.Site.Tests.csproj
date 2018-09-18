@@ -300,6 +300,7 @@
     <Compile Include="Controllers\OutrightControllerTests.cs" />
     <Compile Include="Controllers\BullfightingControllerTests.cs" />
     <Compile Include="Controllers\ThirdPartyControllerTests.cs" />
+    <Compile Include="Criteria\CheckBelongingCriteriaTests.cs" />
     <Compile Include="Criteria\GetBalanceUpAndMoveBetsDayCriteriaTests.cs" />
     <Compile Include="Criteria\GetGoldDeluxeResultCriteriaTests.cs" />
     <Compile Include="Criteria\GetMetricGamingResultCriteriaTests.cs" />
@@ -312,6 +313,7 @@
     <Compile Include="Criteria\GetSportsbookResultCriteriaTests.cs" />
     <Compile Include="Criteria\GetSportsbookResultDetailsCriteriaTests.cs" />
     <Compile Include="Criteria\GetVirtualRacingResultCriteriaTests.cs" />
+    <Compile Include="DataAccesses\AuthorizationDataAccessTests.cs" />
     <Compile Include="DataAccesses\Lucky3ResultDataAccessTests.cs" />
     <Compile Include="DataAccesses\MetricGamingResultDataAccessTests.cs" />
     <Compile Include="DataAccesses\NumberGameResultDataAccessTests.cs" />
@@ -330,6 +332,8 @@
     <Compile Include="Handlers\OutrightResultHandleTests.cs" />
     <Compile Include="Handlers\ThirdPartyResultHandlerTests.cs" />
     <Compile Include="Helpers\FileHelper.cs" />
+    <Compile Include="Models\ActorTests.cs" />
+    <Compile Include="Models\BelongingInfoTests.cs" />
     <Compile Include="Models\Views\NormalResultViewModelTests.cs" />
     <Compile Include="Models\Views\OutrightResultExcelViewModelTests.cs" />
     <Compile Include="Models\Views\TabViewModelTests.cs" />
