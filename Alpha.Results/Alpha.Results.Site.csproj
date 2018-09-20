@@ -53,8 +53,8 @@
       <HintPath>..\packages\Alpha.SubAccount.1.0.0\lib\net40\Alpha.SubAccount.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Alpha.Web, Version=1.0.1.3, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Alpha.Web.1.0.1.3\lib\net40\Alpha.Web.dll</HintPath>
+    <Reference Include="Alpha.Web, Version=1.0.1.8, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Alpha.Web.1.0.1.8\lib\net461\Alpha.Web.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
@@ -117,8 +117,8 @@
       <HintPath>..\packages\Fanex.Logging.Extensions.Web.1.0.5\lib\net40\Fanex.Logging.Extensions.Web.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Fanex.Products, Version=1.0.0.4, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Products.1.0.0.4\lib\net40\Fanex.Products.dll</HintPath>
+    <Reference Include="Fanex.Products, Version=1.0.0.5, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Products.1.0.0.5\lib\net461\Fanex.Products.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Fanex.RemotingRef, Version=1.1.1.0, Culture=neutral, processorArchitecture=MSIL">
@@ -185,8 +185,8 @@
       <HintPath>..\packages\Fanex.Result.Core.Voidbridge.1.0.2\lib\net40\Fanex.Result.Core.Voidbridge.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Fanex.Result.ThirdParty, Version=1.0.7.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Result.ThirdParty.1.0.7\lib\net40\Fanex.Result.ThirdParty.dll</HintPath>
+    <Reference Include="Fanex.Result.ThirdParty, Version=1.0.7.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Result.ThirdParty.1.0.7.1\lib\net461\Fanex.Result.ThirdParty.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="IBCCrypt, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -262,10 +262,6 @@
       <HintPath>..\packages\RazorEngine.3.7.0\lib\net45\RazorEngine.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="RemotingRef, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RemotingRef.2.0.0.17\lib\net40\RemotingRef.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\RestSharp.105.2.3\lib\net46\RestSharp.dll</HintPath>
       <Private>True</Private>
@@ -286,8 +282,8 @@
       <HintPath>..\packages\SPSRemoting.1.0.0\lib\net40\SPSRemoting.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Sunplus.Agent.Model.Base, Version=3.0.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sunplus.Agent.Model.Base.3.0.4\lib\net40\Sunplus.Agent.Model.Base.dll</HintPath>
+    <Reference Include="Sunplus.Agent.Model.Base, Version=3.0.4.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sunplus.Agent.Model.Base.3.0.4.1\lib\net461\Sunplus.Agent.Model.Base.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Sunplus.Agent.Model.DataAccessLibrary, Version=3.0.0.2, Culture=neutral, processorArchitecture=MSIL">
@@ -692,6 +688,8 @@
     <Compile Include="Controllers\PokerGamesController.cs" />
     <Compile Include="Controllers\TabController.cs" />
     <Compile Include="Controllers\ThirdPartyController.cs" />
+    <Compile Include="Criteria\CheckBelongingCriteria.cs" />
+    <Compile Include="Criteria\CheckConsolidatedGroupBelongingCriteria.cs" />
     <Compile Include="Criteria\GetBalanceUpDateCriteria.cs" />
     <Compile Include="Criteria\Products\GetGoldDeluxeResultCriteria.cs" />
     <Compile Include="Criteria\Products\GetMetricGamingResultCriteria.cs" />
@@ -705,7 +703,9 @@
     <Compile Include="Criteria\Products\GetSportsbookResultDetailsCriteria.cs" />
     <Compile Include="Criteria\Products\GetSportsbookResultCriteria.cs" />
     <Compile Include="Criteria\Products\GetVirtualRacingResultCriteria.cs" />
+    <Compile Include="DataAccesses\IAuthorizationDataAccess.cs" />
     <Compile Include="DataAccesses\IMetricGamingResultDataAccess.cs" />
+    <Compile Include="DataAccesses\Impl\AuthorizationDataAccess.cs" />
     <Compile Include="DataAccesses\Impl\MetricGamingResultDataAccess.cs" />
     <Compile Include="DataAccesses\Impl\Lucky3ResultDataAccess.cs" />
     <Compile Include="DataAccesses\Impl\NumberGameResultDataAccess.cs" />
@@ -735,6 +735,8 @@
     <Compile Include="Handlers\PokerGamesHandler.cs" />
     <Compile Include="Handlers\ThirdPartyResultHandler.cs" />
     <Compile Include="Helpers\UrlHelper.cs" />
+    <Compile Include="Models\Actor.cs" />
+    <Compile Include="Models\BelongingInfo.cs" />
     <Compile Include="Models\Dtos\BalanceUpAndMoveBetsDate.cs" />
     <Compile Include="Models\League.cs" />
     <Compile Include="Models\Requests\ExcelNormalResultQuery.cs" />
@@ -752,7 +754,9 @@
     <Compile Include="Models\Views\OutrightResultExcelViewModel.cs" />
     <Compile Include="Models\Views\PokerGamesViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\IAuthorizationService.cs" />
     <Compile Include="Services\ICacheRefService.cs" />
+    <Compile Include="Services\Impl\AuthorizationService.cs" />
     <Compile Include="Services\Impl\CacheRefService.cs" />
     <Compile Include="Services\Impl\OutrightResultService.cs" />
     <Compile Include="Services\Impl\Products\AllBetCasinoResultService.cs" />
