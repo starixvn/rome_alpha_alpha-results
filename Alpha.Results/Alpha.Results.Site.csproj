@@ -570,6 +570,7 @@
     <Content Include="Alpha.Results.Site.Debug.ruleset" />
     <Content Include="Alpha.Results.Site.ruleset" />
     <Content Include="App_Data\Fanex.Result\VSBasketBall.xls" />
+    <Content Include="App_Data\Fanex.Result\ESport.xls" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
