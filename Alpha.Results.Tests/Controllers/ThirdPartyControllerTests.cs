@@ -37,5 +37,18 @@
             // Assert
             mediator.Received().Send(Arg.Is<ThirdPartyResultQuery>(msg => msg.Language == userSession.Language));
         }
+
+        [Test]
+        public void Detail_Always_CallsMediatorSendThirdPartyDetailResultQuery()
+        {
+            // Arrange
+            var query = new ThirdPartyDetailResultQuery();
+
+            // Act
+            controller.Detail(query);
+
+            // Assert
+            mediator.Received().Send(Arg.Is<ThirdPartyDetailResultQuery>(msg => msg.Language == userSession.Language));
+        }
     }
 }
