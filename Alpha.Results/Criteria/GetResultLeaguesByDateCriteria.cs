@@ -24,8 +24,6 @@
             }
         }
 
-        public string Language { get; set; }
-
         public DateTime MoveBetsDay { get; }
 
         public override string GetSettingKey()

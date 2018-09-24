@@ -24,15 +24,13 @@
             _resultServiceFactory = resultServiceFactory;
         }
 
-        public IEnumerable<League> GetLeagues(DateTime resultDate, int sportId, string language, DateTime moveBetsDate)
+        public IEnumerable<League> GetLeagues(DateTime resultDate, int sportId, DateTime moveBetsDate)
         {
             Check.Argument.IsNotNegativeOrZero(sportId, "sportId");
-            Check.Argument.IsNotEmpty(language, "language");
 
             var leagues = _dynamicRepository.Fetch<League>(new GetResultLeaguesByDateCriteria(moveBetsDate)
             {
                 EventDate = resultDate.ToShortDateString(),
-                Language = language,
                 SportId = sportId
             });
 
