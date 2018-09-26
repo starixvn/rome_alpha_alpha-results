@@ -112,6 +112,7 @@
                 IsOutright = false,
                 IsParlayPopUp = false,
                 IsPopUp = true,
+                IsPopupOpenFromBetList = detailsRequest.IsViewResultFromBetList,
                 LanguageCode = detailsRequest.Language,
                 VisibleMatchCodeIDColumn = false,
                 HighlightWinnerTeam = true,
@@ -123,10 +124,19 @@
                 : _resultEngineAdapter.HtmlGameDetailParser(results[0], resultSetting).Replace("original-title", " title ");
         }
 
+
         private static bool HasDetailResult(SportType sportType)
         {
+            var sportHasDetail = new List<SportType>
+            {
+                SportType.Soccer,
+                SportType.Tennis,
+                SportType.BasketBall,
+                SportType.VirtualBasketBall,
+                SportType.ESport
+            };
 
-            return sportType == SportType.Soccer || sportType == SportType.Tennis || sportType == SportType.BasketBall || sportType == SportType.VirtualBasketBall;
+            return sportHasDetail.Contains(sportType);
         }
     }
 }
