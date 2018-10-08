@@ -91,7 +91,6 @@
                             HtHomeScore = 0,
                             EventDate = new DateTime(2017, 11 , 16),
                             IsNeutral = false,
-                            IsPending = false,
                             KickOffTime =  new DateTime(2017, 11, 16),
                             MatchCode = "QC_NAP_Delete_Parlay",
                             GoalRecord = "A;",
@@ -100,7 +99,8 @@
                             RefNo = string.Empty,
                             GameDetails = new List<GameDetail>(),
                             Bettype = 1,
-                            BetID = string.Empty
+                            BetID = string.Empty,
+                            SettlementStatus = 0
                         },
                     }
                 },
@@ -125,7 +125,6 @@
                             HtHomeScore = 1,
                             EventDate = new DateTime(2017, 11 , 16),
                             IsNeutral = false,
-                            IsPending = false,
                             KickOffTime =  new DateTime(2017, 11, 16),
                             MatchCode = "QC_NAP_Delete_Parlay",
                             GoalRecord = "H;",

@@ -96,7 +96,6 @@
                         : new int?(),
                 EventDate = reader["eventdate"] != DBNull.Value ? DateTime.Parse(reader["eventdate"].ToString()) : DateTime.MinValue,
                 IsNeutral = reader["IsNeutral"] != DBNull.Value ? bool.Parse(reader["IsNeutral"].ToString()) : false,
-                IsPending = reader["IsPending"] != DBNull.Value ? bool.Parse(reader["IsPending"].ToString()) : false,
                 KickOffTime = reader["kickofftime"] != DBNull.Value ? DateTime.Parse(reader["kickofftime"].ToString()) : DateTime.MinValue,
                 MatchCode = reader["matchcode"] != DBNull.Value ? reader["matchcode"].ToString() : string.Empty,
                 GoalRecord = reader["goalrecord"] != DBNull.Value ? reader["goalrecord"].ToString() : string.Empty,
@@ -105,7 +104,8 @@
                 RefNo = string.Empty,
                 GameDetails = new List<GameDetail>(),
                 Bettype = GetBetTypeFromToken(reader),
-                BetID = GetBetIDFromToken(reader)
+                BetID = GetBetIDFromToken(reader),
+                SettlementStatus = reader["SettlementStatus"] != DBNull.Value ? Convert.ToByte(reader["SettlementStatus"]) : default(byte)
             };
 
             return item;
@@ -216,7 +216,6 @@
                 EventDate = reader["eventdate"] != DBNull.Value ? Convert.ToDateTime(reader["eventdate"].ToString()) : DateTime.MinValue,
                 IsNeutral = reader["IsNeutral"] != DBNull.Value ? Convert.ToBoolean(reader["IsNeutral"]) : false,
                 BetStatus = reader["betstatus"] != DBNull.Value ? Convert.ToString(reader["betstatus"]) : string.Empty,
-                IsPending = reader["IsPending"] != DBNull.Value ? Convert.ToBoolean(reader["IsPending"]) : false,
                 LeagueId = reader["LeagueID"] != DBNull.Value ? Convert.ToInt32(reader["LeagueID"]) : 0,
                 MatchId = criteria.MatchId,
                 Color = string.Empty,
@@ -228,7 +227,8 @@
                 BetID = criteria.BetId.ToString(),
                 Bettype = criteria.BetType,
                 GameDetails = new List<GameDetail>(),
-                Handicap2 = criteria.Handicap2
+                Handicap2 = criteria.Handicap2,
+                SettlementStatus = reader["SettlementStatus"] != DBNull.Value ? Convert.ToByte(reader["SettlementStatus"]) : default(byte)
             };
 
             if (ColumnExisted(reader, "livehomescore") && ColumnExisted(reader, "liveawayscore"))
