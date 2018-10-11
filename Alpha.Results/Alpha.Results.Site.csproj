@@ -515,6 +515,7 @@
     <Content Include="Global.asax" />
     <Content Include="App_Data\Fanex.Result\Lucky3.xls" />
     <Content Include="Scripts\Bullfighting\index.js" />
+    <Content Include="Scripts\PokerGames\index.js" />
     <Content Include="Scripts\Lottery\index.js" />
     <Content Include="Views\Lottery\Index.cshtml" />
     <Content Include="Content\ThirdParty\third-party.scss" />
