@@ -34,6 +34,7 @@
 
         public const int Lucky3 = 160;
         public const int NumberGame = 161;
+        public const int Happy5 = 164;
 
         public const int VirtualSports = 180;
         public const int VirtualHorsesRacing = 181;
