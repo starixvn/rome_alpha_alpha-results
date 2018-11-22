@@ -15,7 +15,6 @@
     <lcolor>#ff0000</lcolor>
     <eventdate>2017-11-16</eventdate>
     <IsNeutral>false</IsNeutral>
-    <IsPending>false</IsPending>
     <kickofftime>2017-11-16</kickofftime>
     <matchcode>QC_NAP_Delete_Parlay</matchcode>
     <goalrecord>A;</goalrecord>
@@ -23,6 +22,7 @@
     <Calculate>true</Calculate>
     <bettype>1</bettype>
     <betcheck></betcheck>
+    <SettlementStatus>0</SettlementStatus>
   </SportsBook>
   <SportsBook>
     <sporttype>1</sporttype>
@@ -39,12 +39,12 @@
     <lcolor>#ff0000</lcolor>
     <eventdate>2017-11-16</eventdate>
     <IsNeutral>false</IsNeutral>
-    <IsPending>false</IsPending>
     <kickofftime>2017-11-16</kickofftime>
     <matchcode>QC_NAP_Delete_Parlay</matchcode>
     <goalrecord>H;</goalrecord>
     <IsHTCal>true</IsHTCal>
     <Calculate>true</Calculate>
+    <SettlementStatus>0</SettlementStatus>
   </SportsBook>
   <ResultDetail>
     <matchid>70000112</matchid>

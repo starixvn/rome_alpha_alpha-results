@@ -125,16 +125,16 @@
       <HintPath>..\packages\Fanex.RemotingRef.1.2.0\lib\net461\Fanex.RemotingRef.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Fanex.Result.Core, Version=2.1.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Result.Core-NPOI.2.0.6.2.1.1\lib\net40\Fanex.Result.Core.dll</HintPath>
+    <Reference Include="Fanex.Result.Core, Version=2.1.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Result.Core-NPOI.2.0.6.2.1.3\lib\net40\Fanex.Result.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Fanex.Result.Core.AllBetCasino, Version=1.0.1.2, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core.AllBetCasino.1.0.1.2\lib\net40\Fanex.Result.Core.AllBetCasino.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Fanex.Result.Core.Base, Version=2.1.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Result.Core-NPOI.2.0.6.2.1.1\lib\net40\Fanex.Result.Core.Base.dll</HintPath>
+    <Reference Include="Fanex.Result.Core.Base, Version=2.1.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Result.Core-NPOI.2.0.6.2.1.3\lib\net40\Fanex.Result.Core.Base.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Fanex.Result.Core.GlobalGaming, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
@@ -157,8 +157,8 @@
       <HintPath>..\packages\Fanex.Result.Core-MicroGaming.1.0.0.2\lib\net40\Fanex.Result.Core.MicroGaming.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Fanex.Result.Core.NumberGame, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Result.Core-NumberGame.1.0.2\lib\net40\Fanex.Result.Core.NumberGame.dll</HintPath>
+    <Reference Include="Fanex.Result.Core.NumberGame, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Result.Core-NumberGame.1.0.3\lib\net40\Fanex.Result.Core.NumberGame.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Fanex.Result.Core.PokerGames, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
@@ -177,8 +177,8 @@
       <HintPath>..\packages\Fanex.Result.Core.RemotingRef.1.0.2\lib\net461\Fanex.Result.Core.RemotingRef.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Fanex.Result.Core.Sportsbook, Version=1.1.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Result.Core-Sportsbook.1.1.1\lib\net40\Fanex.Result.Core.Sportsbook.dll</HintPath>
+    <Reference Include="Fanex.Result.Core.Sportsbook, Version=1.1.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Result.Core-Sportsbook.1.1.3\lib\net40\Fanex.Result.Core.Sportsbook.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Fanex.Result.Core.Voidbridge, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
@@ -705,15 +705,15 @@
     <Compile Include="Criteria\Products\GetSportsbookResultCriteria.cs" />
     <Compile Include="Criteria\Products\GetVirtualRacingResultCriteria.cs" />
     <Compile Include="DataAccesses\IAuthorizationDataAccess.cs" />
+    <Compile Include="DataAccesses\ILucky3ResultDataAccess.cs" />
     <Compile Include="DataAccesses\IMetricGamingResultDataAccess.cs" />
     <Compile Include="DataAccesses\Impl\AuthorizationDataAccess.cs" />
-    <Compile Include="DataAccesses\Impl\MetricGamingResultDataAccess.cs" />
     <Compile Include="DataAccesses\Impl\Lucky3ResultDataAccess.cs" />
+    <Compile Include="DataAccesses\Impl\MetricGamingResultDataAccess.cs" />
     <Compile Include="DataAccesses\Impl\NumberGameResultDataAccess.cs" />
     <Compile Include="DataAccesses\Impl\ParlayResultDataAccess.cs" />
     <Compile Include="DataAccesses\Impl\SportsbookResultDataAccess.cs" />
     <Compile Include="DataAccesses\Impl\VirtualRacingResultDataAccess.cs" />
-    <Compile Include="DataAccesses\ILucky3ResultDataAccess.cs" />
     <Compile Include="DataAccesses\INumberGameResultDataAccess.cs" />
     <Compile Include="DataAccesses\IParlayResultDataAccess.cs" />
     <Compile Include="DataAccesses\ISportsbookResultDataAccess.cs" />

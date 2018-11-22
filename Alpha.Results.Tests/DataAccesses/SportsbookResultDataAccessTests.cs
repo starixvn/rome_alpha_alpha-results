@@ -81,7 +81,6 @@
                     HtHomeScore = 0,
                     EventDate = new DateTime(2017, 11 , 16),
                     IsNeutral = false,
-                    IsPending = false,
                     KickOffTime =  new DateTime(2017, 11, 16),
                     MatchCode = "QC_NAP_Delete_Parlay",
                     GoalRecord = "A;",
@@ -90,7 +89,8 @@
                     RefNo = string.Empty,
                     GameDetails = new List<GameDetail>(),
                     Bettype = 1,
-                    BetID = string.Empty
+                    BetID = string.Empty,
+                    SettlementStatus = 0
                 },
                 new Sportsbook
                 {
@@ -107,7 +107,6 @@
                     HtHomeScore = 1,
                     EventDate = new DateTime(2017, 11 , 16),
                     IsNeutral = false,
-                    IsPending = false,
                     KickOffTime =  new DateTime(2017, 11, 16),
                     MatchCode = "QC_NAP_Delete_Parlay",
                     GoalRecord = "H;",
@@ -119,7 +118,8 @@
                         new GameDetail { MatchId = 70000112, ResourceId = "01", HomeValue = "0", AwayValue = "1", SettlementStatusID = 4 }
                     },
                     Bettype = 0,
-                    BetID = string.Empty
+                    BetID = string.Empty,
+                    SettlementStatus = 0
                 }
             };
 
@@ -185,7 +185,6 @@
                     HtHomeScore = 0,
                     EventDate = new DateTime(2017, 11 , 16),
                     IsNeutral = false,
-                    IsPending = false,
                     KickOffTime =  new DateTime(2017, 11, 16),
                     MatchCode = "QC_NAP_Delete_Parlay",
                     GoalRecord = "A;",
@@ -198,7 +197,8 @@
                         new GameDetail { MatchId = 70000112, ResourceId = "04", HomeValue = "1", AwayValue = "2", ResultStatusID = 5, SettlementStatusID = 4, OtherInfo = string.Empty }
                     },
                     BetID = "1",
-                    Bettype = 1
+                    Bettype = 1,
+                    SettlementStatus = 0
                 }
             };
 
