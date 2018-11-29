@@ -126,5 +126,23 @@
             // Assert
             Assert.False(actualValue);
         }
+
+        [Test]
+        public void RemoteRefURL_HasConfig_ReturnsCorrectSetting()
+        {
+            // Arrange
+            AppSettings.AppSettingValues = new NameValueCollection
+            {
+                ["RemoteRefURL"] = "Path"
+            };
+            var expectedSetting = "Path";
+
+            // Act
+            var actualSetting = AppSettings.RemoteRefURL;
+
+            // Assert
+            Assert.AreEqual(expectedSetting, actualSetting);
+        }
+
     }
 }
