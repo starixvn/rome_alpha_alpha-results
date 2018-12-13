@@ -227,7 +227,6 @@
             _normalResultService.DidNotReceive().GetLeagues(
                 Arg.Any<DateTime>(),
                 Arg.Any<int>(),
-                Arg.Any<string>(),
                 Arg.Any<DateTime>());
         }
 
@@ -247,7 +246,6 @@
             _normalResultService.Received().GetLeagues(
                 query.ResultDate,
                 1,
-                query.Language,
                 Arg.Any<DateTime>());
         }
 
@@ -260,7 +258,7 @@
             _normalResultService.GetSports(Arg.Any<DateTime>(), Arg.Any<IDictionary<int, bool>>(), Arg.Any<DateTime>())
                 .Returns(new List<Sport> { new Sport { Id = 1 } });
 
-            _normalResultService.GetLeagues(Arg.Any<DateTime>(), 1, Arg.Any<string>(), Arg.Any<DateTime>())
+            _normalResultService.GetLeagues(Arg.Any<DateTime>(), 1, Arg.Any<DateTime>())
                 .Returns(new List<League> { new League { Id = 11 } });
 
             //// Act
@@ -279,7 +277,7 @@
             _normalResultService.GetSports(Arg.Any<DateTime>(), Arg.Any<IDictionary<int, bool>>(), Arg.Any<DateTime>())
                 .Returns(new List<Sport> { new Sport { Id = 1 } });
 
-            _normalResultService.GetLeagues(Arg.Any<DateTime>(), 1, Arg.Any<string>(), Arg.Any<DateTime>())
+            _normalResultService.GetLeagues(Arg.Any<DateTime>(), 1, Arg.Any<DateTime>())
                 .Returns(new List<League> { new League { Id = 11 } });
 
             var expectedLeagueName = "League Name";
@@ -302,7 +300,7 @@
             _normalResultService.GetSports(Arg.Any<DateTime>(), Arg.Any<IDictionary<int, bool>>(), Arg.Any<DateTime>())
                 .Returns(new List<Sport> { new Sport { Id = 1 } });
 
-            _normalResultService.GetLeagues(Arg.Any<DateTime>(), 1, Arg.Any<string>(), Arg.Any<DateTime>())
+            _normalResultService.GetLeagues(Arg.Any<DateTime>(), 1, Arg.Any<DateTime>())
                 .Returns(new List<League> { new League { Id = 11 } });
 
             var expectedLeaugeId = 11;

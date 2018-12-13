@@ -37,17 +37,9 @@
         public void GetLeagues_SportIdIsNegativeOrZero_ThrowArgumentOutOfRangeException(int sportId)
         {
             Assert.Throws<ArgumentOutOfRangeException>(new TestDelegate(
-                () => _resultService.GetLeagues(DateTime.Now, sportId, LanguageCode.English, DateTime.Now)));
+                () => _resultService.GetLeagues(DateTime.Now, sportId, DateTime.Now)));
         }
-
-        [TestCase(null)]
-        [TestCase("")]
-        public void GetLeagues_LanguageIsNullOrEmpty_ThrowArgumentException(string language)
-        {
-            Assert.Throws<ArgumentException>(new TestDelegate(
-                () => _resultService.GetLeagues(DateTime.Now, 1, language, DateTime.Now)));
-        }
-
+      
         [Test]
         public void GetLeagues_ReturnLeagues()
         {
@@ -66,11 +58,10 @@
 
             _dynamicRepository.Fetch<League>(Arg.Is<GetResultLeaguesByDateCriteria>(criteria =>
                     criteria.EventDate == resultDate.ToShortDateString()
-                    && criteria.Language == LanguageCode.English
                     && criteria.SportId == sportId)).Returns(expectedLeague);
 
             //// Act
-            var leagues = _resultService.GetLeagues(resultDate, sportId, LanguageCode.English, moveBetsDate);
+            var leagues = _resultService.GetLeagues(resultDate, sportId, moveBetsDate);
 
             //// Assert
             Assert.IsTrue(leagues.Count() == 1

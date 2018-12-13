@@ -55,7 +55,7 @@
                     ? message.SportId
                     : int.Parse(sports.First().Value);
 
-                viewModel.Leagues = GetLeaguesResult(message.ResultDate, viewModel.SportId, message.Language,moveBetsDate);
+                viewModel.Leagues = GetLeaguesResult(message.ResultDate, viewModel.SportId, moveBetsDate);
 
                 if (viewModel.Leagues.Any(selectItem => selectItem.Value == message.LeagueId.ToString()))
                 {
@@ -87,12 +87,11 @@
             });
         }
 
-        private IEnumerable<SelectListItem> GetLeaguesResult(DateTime resultDate, int sportTypeId, string language, DateTime moveBetsDate)
+        private IEnumerable<SelectListItem> GetLeaguesResult(DateTime resultDate, int sportTypeId, DateTime moveBetsDate)
         {
             var leagues = _normalResultService.GetLeagues(
                                 resultDate,
                                 sportTypeId,
-                                language,
                                 moveBetsDate);
 
             return leagues.Select(league => new SelectListItem
