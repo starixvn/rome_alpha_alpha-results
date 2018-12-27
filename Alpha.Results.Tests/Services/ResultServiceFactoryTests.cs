@@ -1,4 +1,5 @@
-﻿namespace Alpha.Results.Site.Tests.Services
+﻿using NUnit.Framework;
+namespace Alpha.Results.Site.Tests.Services
 {
     using NSubstitute;
     using NUnit.Framework;
@@ -144,6 +145,19 @@
 
             //// Assert
             Assert.IsTrue(resultService is SportsbookResultService);
+        }
+
+        [Test]
+        public void CreateProductResultService_SportTypeIsHappy5_ReturnHappy5Service()
+        {
+            //// Arrange
+            var sportTypeIsHappy5 = 164;
+
+            //// Act
+            var act = _resultServiceFactory.CreateProductResultService(sportTypeIsHappy5, 0);
+
+            //// Assert
+            Assert.IsTrue(act is Happy5ResultService);
         }
     }
 }

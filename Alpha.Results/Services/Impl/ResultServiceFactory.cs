@@ -30,8 +30,10 @@
 
                     return new SportsbookResultService();                    
 
-                case SportTypeIdConstants.NumberGame:
+                case SportTypeIdConstants.NumberGame:                
                     return new NumberGameResultService();
+                case SportTypeIdConstants.Happy5:
+                    return new Happy5ResultService();
                 case SportTypeIdConstants.Lucky3:
                     return new Lucky3ResultService();                    
 
