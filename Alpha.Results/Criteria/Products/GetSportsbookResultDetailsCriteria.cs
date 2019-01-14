@@ -1,5 +1,7 @@
 ﻿namespace Alpha.Results.Site.Criteria
 {
+    using System.Collections;
+    using Fanex.Data;
     using Fanex.Data.Repository;
 
     /// <summary>
@@ -32,6 +34,22 @@
         public override bool IsValid()
         {
             return MatchId > 0;
+        }
+
+        public override Hashtable GetSpParams()
+        {
+            var inputParams = new Hashtable
+            {
+                ["matchid"] = MatchId
+            };
+
+            if (IsViewResultFromBetList)
+            {
+                inputParams.Add("bettype", BetType);
+                inputParams.Add("betid", BetId);
+            }
+
+            return inputParams;
         }
     }
 }

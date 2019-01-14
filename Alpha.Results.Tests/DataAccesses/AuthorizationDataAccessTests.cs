@@ -19,11 +19,19 @@
         private IObjectDb objectDb;
         private IAuthorizationDataAccess dataAccess;
 
+        [OneTimeSetUp]
+        public void OneTimeSetUp()
+        {
+            DbSettingProviderManager
+                .StartTestingSession()
+                .Run();
+        }
+
         [SetUp]
         public void SetUp()
         {
             objectDb = Substitute.For<IObjectDb>();
-            ObjectDbFactory.CreateInstance = (settingKey) => objectDb;
+            ObjectDbFactory.Mock((key, commandTimeout) => objectDb);
 
             dataAccess = new AuthorizationDataAccess();
         }

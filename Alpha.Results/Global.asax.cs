@@ -7,6 +7,9 @@
     using System.Web.Routing;
     using App_Start;
     using Configurations;
+    using Fanex.Data;
+    using Fanex.Data.CrossCutting.WrappingException;
+    using Fanex.Data.OldConnectionStringProvider;
     using Fanex.Logging.Extensions.Database;
     using Fanex.Logging.Extensions.Web;
     using Fanex.RemotingRef;
@@ -27,7 +30,12 @@
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             DependencyConfig.Init();
 
-            Fanex.Data.Configuration.DbSettingProviderManager.Current.Start();
+            DbSettingProviderManager
+                .StartNewSession()
+                .Use(new OldConnectionStringProvider())
+                .UseDefaultDbSettingProvider(resourcePath: AppSettings.StoredProcedurePath, enableWatching: true)
+                .Use((settingKey, commandTimeout) => new WrappingExceptionObjectDb(settingKey, commandTimeout))
+                .Run();
 
             ShareSession.Init();
             StaticResources.Init(StaticResources.GetBuildVersion());

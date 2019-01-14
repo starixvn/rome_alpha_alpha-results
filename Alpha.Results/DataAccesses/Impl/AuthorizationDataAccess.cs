@@ -1,6 +1,7 @@
 ﻿namespace Alpha.Results.Site.DataAccesses.Impl
 {
     using System;
+    using Fanex.Data;
     using Fanex.Data.Repository;
     using Models;
 
