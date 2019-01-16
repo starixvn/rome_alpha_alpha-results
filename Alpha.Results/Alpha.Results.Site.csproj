@@ -50,6 +50,10 @@
     <CodeAnalysisRuleSet>Alpha.Results.Site.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Alpha.Auth, Version=3.0.2.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Alpha.Auth.3.0.2.1\lib\net461\Alpha.Auth.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Alpha.SubAccount, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Alpha.SubAccount.1.0.0\lib\net40\Alpha.SubAccount.dll</HintPath>
       <Private>True</Private>
@@ -505,7 +509,9 @@
     <Content Include="App_Data\SPNames\INTERNAL\Results.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="App_Data\SPNames\LOCAL\Results.xml" />
+    <Content Include="App_Data\SPNames\LOCAL\Results.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="App_Data\SPNames\PRO\Results.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -560,6 +566,9 @@
     <Content Include="App_Data\Fanex.Result\VSBasketBall.xls" />
     <Content Include="App_Data\Fanex.Result\Happy5.xls" />
     <Content Include="App_Data\Fanex.Result\ESport.xls" />
+    <Content Include="App_Data\AuthorizationSection.config">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -644,8 +653,6 @@
     <Compile Include="Controllers\PokerGamesController.cs" />
     <Compile Include="Controllers\TabController.cs" />
     <Compile Include="Controllers\ThirdPartyController.cs" />
-    <Compile Include="Criteria\CheckBelongingCriteria.cs" />
-    <Compile Include="Criteria\CheckConsolidatedGroupBelongingCriteria.cs" />
     <Compile Include="Criteria\GetBalanceUpDateCriteria.cs" />
     <Compile Include="Criteria\Products\GetGoldDeluxeResultCriteria.cs" />
     <Compile Include="Criteria\Products\GetMetricGamingResultCriteria.cs" />
@@ -660,10 +667,8 @@
     <Compile Include="Criteria\Products\GetSportsbookResultDetailsCriteria.cs" />
     <Compile Include="Criteria\Products\GetSportsbookResultCriteria.cs" />
     <Compile Include="Criteria\Products\GetVirtualRacingResultCriteria.cs" />
-    <Compile Include="DataAccesses\IAuthorizationDataAccess.cs" />
     <Compile Include="DataAccesses\ILucky3ResultDataAccess.cs" />
     <Compile Include="DataAccesses\IMetricGamingResultDataAccess.cs" />
-    <Compile Include="DataAccesses\Impl\AuthorizationDataAccess.cs" />
     <Compile Include="DataAccesses\Impl\Lucky3ResultDataAccess.cs" />
     <Compile Include="DataAccesses\Impl\MetricGamingResultDataAccess.cs" />
     <Compile Include="DataAccesses\Impl\NumberGameResultDataAccess.cs" />
@@ -710,9 +715,7 @@
     <Compile Include="Models\Views\OutrightResultExcelViewModel.cs" />
     <Compile Include="Models\Views\PokerGamesViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\IAuthorizationService.cs" />
     <Compile Include="Services\ICacheRefService.cs" />
-    <Compile Include="Services\Impl\AuthorizationService.cs" />
     <Compile Include="Services\Impl\CacheRefService.cs" />
     <Compile Include="Services\Impl\OutrightResultService.cs" />
     <Compile Include="Services\Impl\Products\AllBetCasinoResultService.cs" />

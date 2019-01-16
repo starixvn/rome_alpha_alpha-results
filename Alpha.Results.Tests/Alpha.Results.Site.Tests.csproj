@@ -347,7 +347,6 @@
     <Compile Include="Controllers\BullfightingControllerTests.cs" />
     <Compile Include="Controllers\PokerGamesControllerTests.cs" />
     <Compile Include="Controllers\ThirdPartyControllerTests.cs" />
-    <Compile Include="Criteria\CheckBelongingCriteriaTests.cs" />
     <Compile Include="Criteria\GetBalanceUpAndMoveBetsDayCriteriaTests.cs" />
     <Compile Include="Criteria\GetGoldDeluxeResultCriteriaTests.cs" />
     <Compile Include="Criteria\GetMetricGamingResultCriteriaTests.cs" />
@@ -360,7 +359,6 @@
     <Compile Include="Criteria\GetSportsbookResultCriteriaTests.cs" />
     <Compile Include="Criteria\GetSportsbookResultDetailsCriteriaTests.cs" />
     <Compile Include="Criteria\GetVirtualRacingResultCriteriaTests.cs" />
-    <Compile Include="DataAccesses\AuthorizationDataAccessTests.cs" />
     <Compile Include="DataAccesses\Lucky3ResultDataAccessTests.cs" />
     <Compile Include="DataAccesses\MetricGamingResultDataAccessTests.cs" />
     <Compile Include="DataAccesses\NumberGameResultDataAccessTests.cs" />
