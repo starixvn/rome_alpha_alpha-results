@@ -51,6 +51,11 @@
                     return new GoldDeluxeResultService();
 
                 default:
+                    if (betTypeId == BetTypeIdConstants.BetBuilder)
+                    {
+                        return new BetBuilderResultService();
+                    }
+
                     return new SportsbookResultService();
             }
         }

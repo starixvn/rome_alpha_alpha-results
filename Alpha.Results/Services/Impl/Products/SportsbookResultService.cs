@@ -6,6 +6,7 @@
     using System.Linq;
     using Alpha.Results.Site.Criteria;
     using Alpha.Results.Site.DataAccesses;
+    using Constants;
     using DataAccesses.Impl;
     using Fanex.Common.Helper;
     using Fanex.Result.Core.Base;
@@ -93,18 +94,15 @@
         public string GetResultDetails(NormalResultDetailsQuery detailsRequest)
         {
             Check.Argument.IsNotNull(detailsRequest, "detailsRequest");
-
-            var criteria = new GetSportsbookResultDetailsCriteria
+            List<Sportsbook> results = new List<Sportsbook>();
+            if(detailsRequest.BetTypeId == BetTypeIdConstants.BetBuilder)
             {
-                MatchId = detailsRequest.MatchId,
-                BetType = detailsRequest.BetTypeId,
-                SportType = detailsRequest.SportId,
-                BetId = detailsRequest.BetId,
-                IsViewResultFromBetList = detailsRequest.IsViewResultFromBetList,
-                Handicap2 = detailsRequest.Hdp2
-            };
-
-            var results = _dataAccess.GetScoreInformation(criteria);
+                results.Add(GetBetBuilder(detailsRequest));
+            }
+            else
+            {
+                results = GetScoreInformation(detailsRequest);
+            }            
 
             var resultSetting = new ResultSetting
             {
@@ -124,6 +122,31 @@
                 : _resultEngineAdapter.HtmlGameDetailParser(results[0], resultSetting).Replace("original-title", " title ");
         }
 
+        private Sportsbook GetBetBuilder(NormalResultDetailsQuery detailsRequest)
+        {
+            var criteria = new GetBetBuidlerResultDetailsCriteria
+            {
+                MarketId = (int)detailsRequest.BetId,
+                MatchId = detailsRequest.MatchId
+            };
+
+            return _dataAccess.GetBetBuilderInformation(criteria);
+        }
+
+        private List<Sportsbook> GetScoreInformation(NormalResultDetailsQuery detailsRequest)
+        {
+            var criteria = new GetSportsbookResultDetailsCriteria
+            {
+                MatchId = detailsRequest.MatchId,
+                BetType = detailsRequest.BetTypeId,
+                SportType = detailsRequest.SportId,
+                BetId = detailsRequest.BetId,
+                IsViewResultFromBetList = detailsRequest.IsViewResultFromBetList,
+                Handicap2 = detailsRequest.Hdp2
+            };
+
+            return _dataAccess.GetScoreInformation(criteria);
+        }
 
         private static bool HasDetailResult(SportType sportType)
         {

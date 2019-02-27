@@ -12,5 +12,7 @@ namespace Alpha.Results.Site.DataAccesses
         IList<Sportsbook> GetSportbookResults(GetSportsbookResultCriteria criteria);
 
         List<Sportsbook> GetScoreInformation(GetSportsbookResultDetailsCriteria criteria);
+
+        Sportsbook GetBetBuilderInformation(GetBetBuidlerResultDetailsCriteria criteria);
     }
 }
