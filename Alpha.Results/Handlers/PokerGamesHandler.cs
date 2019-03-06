@@ -1,7 +1,6 @@
 ﻿namespace Alpha.Results.Site.Handlers
 {
     using System;
-    using Constants;
     using Fanex.Common.Helper;
     using Fanex.Logging.Extensions.Web;
     using Fanex.Result.Core.PokerGames;
@@ -41,7 +40,7 @@
 
             var viewModel = new PokerGamesViewModel
             {
-                Title = cacheRefService.GetProductName(ProductIdConstants.PokerGames),
+                Title = $"{cacheRefService.GetSportName(message.SportTypeId)} - {cacheRefService.GetBetTypeName(Convert.ToInt32(message.GameTypeId))}",
                 Result = result,
                 IsSuccess = isSuccess
             };
