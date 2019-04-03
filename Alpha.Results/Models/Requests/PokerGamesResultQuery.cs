@@ -14,5 +14,7 @@
         public byte RoleId { get; set; }
 
         public int SportTypeId { get; set; }
+
+        public string Language { get; set; }
     }
 }

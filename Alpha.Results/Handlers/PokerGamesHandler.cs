@@ -28,7 +28,7 @@
             try
             {
                 var service = new PokerGamesResult();
-                result = service.GetResult(message.CustId, message.GameTypeId, message.TransId3rd, (ViewerLevel)message.RoleId);
+                result = service.GetResult(message.CustId, message.GameTypeId, message.TransId3rd, (ViewerLevel)message.RoleId, message.Language);
                 isSuccess = true;
             }
             catch (Exception ex)

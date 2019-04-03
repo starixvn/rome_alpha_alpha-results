@@ -30,6 +30,8 @@
         public ActionResult Index(PokerGamesResultQuery request)
         {
             request.RoleId = _userSession.RoleId;
+            request.Language = _userSession.Language;
+
             var viewModel = _mediator.Send(request);
 
             return View(viewModel);
