@@ -27,6 +27,7 @@
     <RestorePackages>true</RestorePackages>
     <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
     <TargetFrameworkProfile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -126,16 +127,14 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Fanex.Result.Core, Version=2.1.9.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Result.Core-NPOI.2.0.6.2.2.2.0-betbuilder-01\lib\net40\Fanex.Result.Core.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\Fanex.Result.Core-NPOI.2.0.6.2.2.4.0-betbuilder-01\lib\net40\Fanex.Result.Core.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.Result.Core.AllBetCasino, Version=1.0.1.4, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core.AllBetCasino.1.0.1.4\lib\net40\Fanex.Result.Core.AllBetCasino.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Fanex.Result.Core.Base, Version=2.2.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Result.Core-NPOI.2.0.6.2.2.2.0-betbuilder-01\lib\net40\Fanex.Result.Core.Base.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Fanex.Result.Core.Base, Version=2.2.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Result.Core-NPOI.2.0.6.2.2.4.0-betbuilder-01\lib\net40\Fanex.Result.Core.Base.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.Result.Core.GlobalGaming, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core.GlobalGaming.1.0.0.2\lib\net40\Fanex.Result.Core.GlobalGaming.dll</HintPath>
@@ -181,9 +180,8 @@
       <HintPath>..\packages\Fanex.Result.Core.RemotingRef.1.0.3-beta01\lib\net461\Fanex.Result.Core.RemotingRef.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Fanex.Result.Core.Sportsbook, Version=1.1.9.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Result.Core-Sportsbook.1.1.9-betbuilder-01\lib\net40\Fanex.Result.Core.Sportsbook.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Fanex.Result.Core.Sportsbook, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Result.Core-Sportsbook.1.2.1-betbuilder-01\lib\net40\Fanex.Result.Core.Sportsbook.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.Result.Core.Voidbridge, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core.Voidbridge.1.0.2\lib\net40\Fanex.Result.Core.Voidbridge.dll</HintPath>
