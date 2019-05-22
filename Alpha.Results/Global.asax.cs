@@ -34,6 +34,7 @@
 
             GlobalFilters.Filters.Add(new CheckUMFilter());
             GlobalFilters.Filters.Add(new NoCacheFilter());
+            GlobalFilters.Filters.Add(new AfterLoginFlowFilter());
 
             var loggingConfiguration = new LoggingConfiguration()
                 .UseGetDbExceptionInfo(DatabaseInfoGetters.GetDbExceptionInfo);
