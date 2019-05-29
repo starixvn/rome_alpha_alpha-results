@@ -106,7 +106,7 @@ namespace Alpha.Results.Site.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Keno.
+        ///   Looks up a localized string similar to RNG Keno.
         /// </summary>
         public static string Keno {
             get {
@@ -170,7 +170,7 @@ namespace Alpha.Results.Site.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Click here to open Keno results.
+        ///   Looks up a localized string similar to Click here to open RNG Keno results.
         /// </summary>
         public static string OpenKenoResults {
             get {

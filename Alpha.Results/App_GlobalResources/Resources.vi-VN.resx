@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Keno" xml:space="preserve">
-    <value>Keno</value>
+    <value>RNG Keno</value>
   </data>
   <data name="MixParlay" xml:space="preserve">
     <value>Cá cược tổng hợp</value>
@@ -172,13 +172,13 @@
     <value>Không có dữ liệu</value>
   </data>
   <data name="OpenKenoResults" xml:space="preserve">
-    <value>Click here to open Keno results</value>
+    <value>Nhấn vào đây để xem kết quả RNG Keno</value>
   </data>
   <data name="Lottery" xml:space="preserve">
-    <value>Lottery</value>
+    <value>Xổ số</value>
   </data>
   <data name="OpenLotteryResults" xml:space="preserve">
-    <value>Click here to open Lottery results</value>
+    <value>Nhấn vào đây để xem kết quả "Xổ Số"</value>
   </data>
   <data name="Bullfighting" xml:space="preserve">
     <value>Bullfighting</value>

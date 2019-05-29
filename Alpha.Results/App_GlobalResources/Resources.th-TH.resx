@@ -172,13 +172,13 @@
     <value>มี ข้อมูลไม่</value>
   </data>
   <data name="OpenKenoResults" xml:space="preserve">
-    <value>Click here to open Keno results</value>
+    <value>กดที่นี่ เพื่อเปิดดูผลคีโน</value>
   </data>
   <data name="Lottery" xml:space="preserve">
-    <value>Lottery</value>
+    <value>ล็อตเตอรี่</value>
   </data>
   <data name="OpenLotteryResults" xml:space="preserve">
-    <value>Click here to open Lottery results</value>
+    <value>กดที่นี่ เพื่อเปิดดูผลลอตเตอรี</value>
   </data>
   <data name="Bullfighting" xml:space="preserve">
     <value>Bullfighting</value>
