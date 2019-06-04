@@ -18,7 +18,7 @@
     <Setting Key="Age_Result_VSRaceSelByMeeting" SpName="Age_Result_VSRaceSelByMeeting" DbName="DBAGE.bodb02.BODBDownlineNet" />
     <Setting Key="Age_SelBalanceUpDay" SpName="Age_SelBalanceUpDay" DbName="DBAGE.bodb02.BODBDownlineNet" Plain="0" />
     <Setting Key="Age_BetList_SelMatchResult" SpName="Age_BetList_SelMatchResult" DbName="DBAGE.bodb02.BODBDownlineNet" Plain="0" />
-    <Setting Key="Age_TicketResult_BetBuilder" SpName="Age_TicketResult_BetBuilder_xtest" DbName="DBACC.bodb02.BODBDownlineNet" Plain="0" />
+    <Setting Key="Age_TicketResult_BetBuilder" SpName="Age_TicketResult_BetBuilder" DbName="DBACC.bodb02.BODBDownlineNet" Plain="0" />
     <Setting Key="All_BetList_MatchResultDetail3rdSel" SpName="All_BetList_MatchResultDetail3rdSel" DbName="DBAGE.bodb02.BODBDownlineNet" Plain="0">
       <Mapping ObjectProperty="BetTypeTime" DataField="Custom1" />
     </Setting>
