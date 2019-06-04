@@ -13,6 +13,34 @@
     /// </summary>
     public class SportsbookResultDataAccess : ISportsbookResultDataAccess
     {
+        public Sportsbook GetBetBuilderInformation(GetBetBuidlerResultDetailsCriteria criteria)
+        {
+            var results = new Sportsbook();
+            using (var db = ObjectDbFactory.CreateInstance(criteria.GetSettingKey()))
+            {
+                using (var reader = db.ExecuteReader(criteria.GetSpParams()))
+                {
+                    while (reader.Read())
+                    {
+                        results= BindSportbook(reader);
+                    }
+
+                    if (reader.NextResult())
+                    {
+                        while (reader.Read())
+                        {
+                            results.BetBuilderDetails.Add(new BetBuilderDetail
+                            {
+                                SelectionType = int.Parse(reader["SelectionType"].ToString()),
+                                Result= reader["Result"].ToString()
+                            });
+                        }
+                    }
+                }
+            }            
+
+            return results;
+        }
         /// <summary>
         /// Get SPORTBOOK result.
         /// </summary>
