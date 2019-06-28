@@ -32,7 +32,6 @@
             }
             catch (Exception ex)
             {
-                ExceptionHandler.Handle(ex);
                 result = ex.Message;
                 isSuccess = false;
             }
