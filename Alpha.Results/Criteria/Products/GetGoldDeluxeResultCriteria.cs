@@ -1,6 +1,5 @@
 ﻿namespace Alpha.Results.Site.Criteria
 {
-    using System;
     using Fanex.Data;
     using Fanex.Data.Repository;
 
@@ -17,6 +16,6 @@
         }
 
         public override bool IsValid()
-            => true;
+            => TransId > 0;
     }
 }

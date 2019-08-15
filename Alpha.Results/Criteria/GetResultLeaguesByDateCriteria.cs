@@ -33,6 +33,6 @@
         }
 
         public override bool IsValid()
-            => true;
+            => SportId > 0;
     }
 }

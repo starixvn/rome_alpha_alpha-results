@@ -1,6 +1,5 @@
 ﻿namespace Alpha.Results.Site.Criteria
 {
-    using System;
     using Fanex.Data.Repository;
 
     public class GetBalanceUpAndMoveBetsDayCriteria : CriteriaBase

@@ -27,20 +27,15 @@
         public int Handicap2 { get; set; }
 
         public override string GetSettingKey()
-        {
-            return IsViewResultFromBetList ? "Age_BetList_SelMatchResult" : "Age_Result_MatchSelResultDetail";
-        }
-
-        public override bool IsValid()
-        {
-            return MatchId > 0;
-        }
+            => IsViewResultFromBetList
+            ? "Age_BetList_SelMatchResult"
+            : "Age_Result_MatchSelResultDetail";
 
         public override Hashtable GetSpParams()
         {
             var inputParams = new Hashtable
             {
-                ["matchid"] = MatchId
+                ["matchid"] = MatchId,
             };
 
             if (IsViewResultFromBetList)
@@ -51,5 +46,8 @@
 
             return inputParams;
         }
+
+        public override bool IsValid()
+            => MatchId > 0;
     }
 }
