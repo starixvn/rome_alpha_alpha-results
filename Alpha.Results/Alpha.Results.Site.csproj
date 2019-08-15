@@ -50,9 +50,8 @@
     <CodeAnalysisRuleSet>Alpha.Results.Site.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Alpha.Auth, Version=3.0.2.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Alpha.Auth.3.0.2.1\lib\net461\Alpha.Auth.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Alpha.Auth, Version=3.0.2.2, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Alpha.Auth.3.0.2.2\lib\net461\Alpha.Auth.dll</HintPath>
     </Reference>
     <Reference Include="Alpha.SubAccount, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Alpha.SubAccount.1.0.0\lib\net40\Alpha.SubAccount.dll</HintPath>
@@ -625,6 +624,9 @@
     <Content Include="Views\ThirdParty\Index.cshtml" />
     <Content Include="Views\Bullfighting\Index.cshtml" />
     <Content Include="Views\PokerGames\Index.cshtml" />
+    <Content Include="Web.AppSettings.napinternali7.config">
+      <DependentUpon>Web.AppSettings.config</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs">
