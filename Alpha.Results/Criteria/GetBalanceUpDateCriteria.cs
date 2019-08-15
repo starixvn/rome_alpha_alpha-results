@@ -1,5 +1,6 @@
 ﻿namespace Alpha.Results.Site.Criteria
 {
+    using System;
     using Fanex.Data.Repository;
 
     public class GetBalanceUpAndMoveBetsDayCriteria : CriteriaBase
@@ -8,5 +9,8 @@
         {
             return "Age_SelBalanceUpDay";
         }
+
+        public override bool IsValid()
+            => true;
     }
 }

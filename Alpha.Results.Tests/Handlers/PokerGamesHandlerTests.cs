@@ -38,11 +38,11 @@
         public void HandleThirdPartyResultQuery_QueryIsNotNullAndHasException_CallsCreateProductResultService()
         {
             // Arrange
-            cacheRefService.GetProductName(Arg.Any<int>()).Returns("ProductName");
+            cacheRefService.GetProductName(Arg.Any<int>()).Returns(" - ");
             var query = new PokerGamesResultQuery();
             var expectedValue = new PokerGamesViewModel
             {
-                Title = "ProductName",
+                Title = " - ",
                 Result = "Result.Core Exception: custId can not be null or emtpy  ",
                 IsSuccess = false
             };

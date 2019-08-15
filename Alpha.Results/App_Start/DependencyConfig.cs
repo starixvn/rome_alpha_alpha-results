@@ -16,7 +16,6 @@
     using Fanex.Result.Core.Base.Models;
     using Fanex.Result.Core.Base.Utilities;
     using Fanex.Result.Core.GlobalGaming;
-    using Fanex.Result.Core.PokerGames;
     using Fanex.Result.Core.RemotingRef;
     using Fanex.Result.Core.Voidbridge;
     using Fanex.Result.ThirdParty.Services;
@@ -102,7 +101,6 @@
             container.Register<Base3rdResultApi, GlobalGamingResultApi>(Lifestyle.Scoped);
             container.Register<IRestClient>(() => new RestClient());
             container.Register<ProductResultServiceFactory, ProductResultServiceFactoryImpl>();
-            container.Register<IAuthorizationService, AuthorizationService>(Lifestyle.Scoped);
         }
 
         private static void RegisterDataAccesses(Container container)
@@ -113,7 +111,6 @@
             container.Register<IParlayResultDataAccess, ParlayResultDataAccess>(Lifestyle.Scoped);
             container.Register<ISportsbookResultDataAccess, SportsbookResultDataAccess>(Lifestyle.Scoped);
             container.Register<IVirtualRacingResultDataAccess, VirtualRacingResultDataAccess>(Lifestyle.Scoped);
-            container.Register<IAuthorizationDataAccess, AuthorizationDataAccess>(Lifestyle.Scoped);
         }
     }
 }
