@@ -100,34 +100,11 @@
 
             var criteria = new GetRacingResultDetailsCriteria
             {
-                MatchId = detailsRequest.MatchId,
-                RaceNo = GetRaceNumber(detailsRequest.Race)
+                MatchId = detailsRequest.MatchId
             };
             var results = _racingResultDataAccess.GetVirtualRacingResultDetails(criteria);
 
             return _resultEngineAdapter.HtmlParser(results, resultSetting);
-        }
-
-        private int GetRaceNumber(string raceNumber)
-        {
-            if (string.IsNullOrEmpty(raceNumber) || raceNumber == "0")
-            {
-                return 0;
-            }
-
-            try
-            {
-                return int.Parse(raceNumber);
-            }
-            catch (Exception exception)
-            {
-                if (exception is NotFiniteNumberException || exception is FormatException)
-                {
-                    return 0;
-                }
-
-                throw;
-            }
         }
     }
 }
