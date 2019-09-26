@@ -156,8 +156,7 @@
             //// Assert
             _racingResultDataAccess.Received().GetVirtualRacingResultDetails(
                 Arg.Is<GetRacingResultDetailsCriteria>(
-                    criteria => criteria.MatchId == query.MatchId
-                            && criteria.RaceNo == 0));
+                    criteria => criteria.MatchId == query.MatchId));
         }
 
         [Test]

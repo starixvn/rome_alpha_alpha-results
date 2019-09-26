@@ -12,13 +12,8 @@ namespace Alpha.Results.Site.Criteria
         [SpParam(SqlParamName = "MatchID")]
         public int MatchId { get; set; }
 
-        [SpParam(Ignored = true)]
-        public int? RaceNo { get; set; }
-
         public override string GetSettingKey()
-        {
-            return "Age_BetList_SelMatchResult2";
-        }
+            => "Age_BetList_SelMatchResult2";
 
         public override bool IsValid()
             => MatchId > 0;
