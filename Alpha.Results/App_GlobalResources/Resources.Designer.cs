@@ -61,15 +61,6 @@ namespace Alpha.Results.Site.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bullfighting.
-        /// </summary>
-        public static string Bullfighting {
-            get {
-                return ResourceManager.GetString("Bullfighting", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Connect failed to {0}.
         /// </summary>
         public static string ConnectionFailedTo3rd {
@@ -151,25 +142,6 @@ namespace Alpha.Results.Site.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Note: The time displayed shall be in GMT+8.
-        ///.
-        /// </summary>
-        public static string NoteForBullfighting {
-            get {
-                return ResourceManager.GetString("NoteForBullfighting", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Click here to open Bullfighting results.
-        /// </summary>
-        public static string OpenBullfightingResults {
-            get {
-                return ResourceManager.GetString("OpenBullfightingResults", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Click here to open RNG Keno results.
         /// </summary>
         public static string OpenKenoResults {
@@ -202,15 +174,6 @@ namespace Alpha.Results.Site.App_GlobalResources {
         public static string OutrightResults {
             get {
                 return ResourceManager.GetString("OutrightResults", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Poker Games.
-        /// </summary>
-        public static string PokerGames {
-            get {
-                return ResourceManager.GetString("PokerGames", resourceCulture);
             }
         }
         

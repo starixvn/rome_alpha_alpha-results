@@ -180,16 +180,4 @@
   <data name="OpenLotteryResults" xml:space="preserve">
     <value>กดที่นี่ เพื่อเปิดดูผลลอตเตอรี</value>
   </data>
-  <data name="Bullfighting" xml:space="preserve">
-    <value>Bullfighting</value>
-  </data>
-  <data name="OpenBullfightingResults" xml:space="preserve">
-    <value>คลิกที่นี่เพื่อเปิดดูผลการแข่งขันของกีฬาสู้วัวกระทิง</value>
-  </data>
-  <data name="NoteForBullfighting" xml:space="preserve">
-    <value>หมายเหตุ : เวลาจะแสดงเป็น GMT + 8.</value>
-  </data>
-  <data name="PokerGames" xml:space="preserve">
-    <value>Poker Games</value>
-  </data>
 </root>

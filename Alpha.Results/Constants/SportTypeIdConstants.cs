@@ -32,7 +32,6 @@
         public const int Wrestling = 42;
         public const int ESports = 43;
 
-        public const int Lucky3 = 160;
         public const int NumberGame = 161;
         public const int Happy5 = 164;
 

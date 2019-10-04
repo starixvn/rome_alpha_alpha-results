@@ -91,16 +91,6 @@ namespace Alpha.Results.Site.Tests.Services
         }
 
         [Test]
-        public void CreateProductResultService_SportIsLucky3_ReturnLucky3ResultService()
-        {
-            //// Act
-            var resultService = _resultServiceFactory.CreateProductResultService(SportTypeIdConstants.Lucky3, Arg.Any<int>());
-
-            //// Assert
-            Assert.IsTrue(resultService is Lucky3ResultService);
-        }        
-
-        [Test]
         public void CreateProductResultService_SportIsAllBet_ReturnAllBetResultService()
         {
             //// Act

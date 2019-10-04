@@ -33,9 +33,7 @@
                 case SportTypeIdConstants.NumberGame:                
                     return new NumberGameResultService();
                 case SportTypeIdConstants.Happy5:
-                    return new Happy5ResultService();
-                case SportTypeIdConstants.Lucky3:
-                    return new Lucky3ResultService();                    
+                    return new Happy5ResultService();         
 
                 case SportTypeIdConstants.AllBet:
                     return new AllBetCasinoResultService();

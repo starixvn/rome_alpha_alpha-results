@@ -22,14 +22,11 @@
 
                     case ProductIdConstants.Lottery:
                         return "Lottery";
-
-                    case ProductIdConstants.Bullfighting:
-                        return "Bullfighting";
                 }
 
                 return string.Empty;
             };
-            var viewModel = new TabViewModel(tabName, false, false, false, false, getProductName);
+            var viewModel = new TabViewModel(tabName, false, false, false, getProductName);
             var expectedValue = "tabname";
 
             // Act
@@ -37,36 +34,6 @@
 
             // Assert
             Assert.AreEqual(expectedValue, actualValue);
-        }
-
-        [Test]
-        public void IsEnableBullfighting_Always_CorrectValueInConstructor()
-        {
-            // Arrange
-            var isEnableBullfighting = true;
-            Func<int, string> getProductName = (productId) =>
-            {
-                switch (productId)
-                {
-                    case ProductIdConstants.NG2:
-                        return "NG2";
-
-                    case ProductIdConstants.Lottery:
-                        return "Lottery";
-
-                    case ProductIdConstants.Bullfighting:
-                        return "Bullfighting";
-                }
-
-                return string.Empty;
-            };
-            var viewModel = new TabViewModel("test", false, false, false, isEnableBullfighting, getProductName);
-
-            // Act
-            var actualValue = viewModel.IsEnableBullfighting;
-
-            // Assert
-            Assert.AreEqual(isEnableBullfighting, actualValue);
         }
     }
 }
