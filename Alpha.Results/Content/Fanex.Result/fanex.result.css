@@ -67,3 +67,9 @@ table.fn-rs tbody .cl-total .selection {
 table.fn-rs tbody .cl-total .result {
   text-align: center;
 }
+table.badminton .cl-result.home {
+    color: #6678e0;
+}
+table.badminton .cl-result.away {
+    color: #008d95;
+}
