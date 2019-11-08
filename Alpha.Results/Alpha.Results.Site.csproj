@@ -164,7 +164,6 @@
     </Reference>
     <Reference Include="Fanex.Result.Core.CardClub, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core.CardClub.1.0.1.0-RemoveInactiveProducts-01\lib\net40\Fanex.Result.Core.CardClub.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="Fanex.Result.Core.GlobalGaming, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core.GlobalGaming.1.0.0.2\lib\net40\Fanex.Result.Core.GlobalGaming.dll</HintPath>
@@ -567,6 +566,7 @@
     <Content Include="Content\Images\lotto_ball.png" />
     <Content Include="Content\Images\sprite.png" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\CardClub\index.js" />
     <Content Include="Scripts\Lottery\index.js" />
     <Content Include="Views\Lottery\Index.cshtml" />
     <Content Include="Content\ThirdParty\third-party.scss" />
@@ -658,6 +658,7 @@
     <Content Include="Web.AppSettings.napinternali7.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
     </Content>
+    <Content Include="Views\CardClub\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs">
@@ -677,6 +678,7 @@
     <Compile Include="Constants\ProductIdConstants.cs" />
     <Compile Include="Constants\RoleIdConstants.cs" />
     <Compile Include="Constants\SportTypeIdConstants.cs" />
+    <Compile Include="Controllers\CardClubController.cs" />
     <Compile Include="Controllers\KenoController.cs" />
     <Compile Include="Controllers\LotteryController.cs" />
     <Compile Include="Controllers\NG2Controller.cs" />
@@ -718,6 +720,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Handlers\CardClubHandler.cs" />
     <Compile Include="Handlers\KenoResultHandler.cs" />
     <Compile Include="Handlers\LotteryResultHandler.cs" />
     <Compile Include="Handlers\NormalResultHandler.cs" />
@@ -730,6 +733,7 @@
     <Compile Include="Models\League.cs" />
     <Compile Include="Models\Requests\ExcelNormalResultQuery.cs" />
     <Compile Include="Models\Requests\ExcelOutrightResultQuery.cs" />
+    <Compile Include="Models\Requests\CardClubResultQuery.cs" />
     <Compile Include="Models\Requests\KenoResultQuery.cs" />
     <Compile Include="Models\Requests\LotteryResultQuery.cs" />
     <Compile Include="Models\Requests\NormalResultDetailsQuery.cs" />
@@ -738,6 +742,7 @@
     <Compile Include="Models\Requests\ThirdPartyDetailResultQuery.cs" />
     <Compile Include="Models\Requests\ThirdPartyResultQuery.cs" />
     <Compile Include="Models\Sport.cs" />
+    <Compile Include="Models\Views\CardClubViewModel.cs" />
     <Compile Include="Models\Views\LotteryResultViewModel.cs" />
     <Compile Include="Models\Views\OutrightResultExcelViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

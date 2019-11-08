@@ -183,4 +183,7 @@
   <data name="ConnectionFailedTo3rd" xml:space="preserve">
     <value>Connect failed to {0}</value>
   </data>
+  <data name="PokerGames" xml:space="preserve">
+    <value>Poker Games</value>
+  </data>
 </root>
