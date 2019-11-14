@@ -1,25 +1,24 @@
 ﻿namespace Alpha.Results.Site.Handlers
 {
     using System;
+    using Alpha.Results.Site.Models.Requests;
+    using Alpha.Results.Site.Models.Views;
+    using Alpha.Results.Site.Services;
     using Fanex.Common.Helper;
     using Fanex.Logging.Extensions.Web;
-    using Fanex.Result.Core.PokerGames;
-    using Fanex.Result.Core.PokerGames.Models;
+    using Fanex.Result.Core.CardClub;
     using MediatR;
-    using Models.Requests;
-    using Models.Views;
-    using Services;
 
-    public class PokerGamesHandler : IRequestHandler<PokerGamesResultQuery, PokerGamesViewModel>
+    public class CardClubHandler : IRequestHandler<CardClubResultQuery, CardClubViewModel>
     {
         private readonly ICacheRefService cacheRefService;
 
-        public PokerGamesHandler(ICacheRefService cacheRefService)
+        public CardClubHandler(ICacheRefService cacheRefService)
         {
             this.cacheRefService = cacheRefService;
         }
 
-        public PokerGamesViewModel Handle(PokerGamesResultQuery message)
+        public CardClubViewModel Handle(CardClubResultQuery message)
         {
             Check.Argument.IsNotNull(message, "message");
             string result;
@@ -27,8 +26,8 @@
 
             try
             {
-                var service = new PokerGamesResult();
-                result = service.GetResult(message.CustId, message.GameTypeId, message.TransId3rd, (ViewerLevel)message.RoleId, message.Language);
+                var service = new CardClubResult();
+                result = service.GetResult(message.CustId, message.GameTypeId, message.TransId3rd, message.Language);
                 isSuccess = true;
             }
             catch (Exception ex)
@@ -38,7 +37,7 @@
                 isSuccess = false;
             }
 
-            var viewModel = new PokerGamesViewModel
+            var viewModel = new CardClubViewModel
             {
                 Title = $"{cacheRefService.GetSportName(message.SportTypeId)} - {cacheRefService.GetBetTypeName(Convert.ToInt32(message.GameTypeId))}",
                 Result = result,

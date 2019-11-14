@@ -94,18 +94,17 @@
       <HintPath>..\packages\Fanex.Products.1.0.0.5\lib\net461\Fanex.Products.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Fanex.RemotingRef, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.RemotingRef.1.3.0\lib\net461\Fanex.RemotingRef.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Fanex.RemotingRef, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.RemotingRef.1.4.0\lib\net461\Fanex.RemotingRef.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.Result.Core, Version=2.1.9.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Result.Core-NPOI.2.0.6.2.2.8.1\lib\net40\Fanex.Result.Core.dll</HintPath>
+      <HintPath>..\packages\Fanex.Result.Core-NPOI.2.0.6.2.3.0\lib\net40\Fanex.Result.Core.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.Result.Core.AllBetCasino, Version=1.0.1.7, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core.AllBetCasino.1.0.1.7\lib\net40\Fanex.Result.Core.AllBetCasino.dll</HintPath>
     </Reference>
-    <Reference Include="Fanex.Result.Core.Base, Version=2.2.8.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Result.Core-NPOI.2.0.6.2.2.8.1\lib\net40\Fanex.Result.Core.Base.dll</HintPath>
+    <Reference Include="Fanex.Result.Core.Base, Version=2.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Result.Core-NPOI.2.0.6.2.3.0\lib\net40\Fanex.Result.Core.Base.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.Result.Core.GlobalGaming, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core.GlobalGaming.1.0.0.2\lib\net40\Fanex.Result.Core.GlobalGaming.dll</HintPath>
@@ -117,10 +116,6 @@
     </Reference>
     <Reference Include="Fanex.Result.Core.Happy5, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core.Happy5.1.0.0.0\lib\net40\Fanex.Result.Core.Happy5.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Fanex.Result.Core.Lucky3, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Result.Core-Lucky3.1.0.0.0\lib\net40\Fanex.Result.Core.Lucky3.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Fanex.Result.Core.MetricGaming, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
@@ -181,9 +176,8 @@
       <HintPath>..\packages\MediatR.2.0.2\lib\net45\MediatR.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="MessagePack, Version=1.7.3.4, Culture=neutral, PublicKeyToken=b4a0369545f0a1be, processorArchitecture=MSIL">
-      <HintPath>..\packages\MessagePack.1.7.3.4\lib\net45\MessagePack.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="MessagePack, Version=1.7.3.7, Culture=neutral, PublicKeyToken=b4a0369545f0a1be, processorArchitecture=MSIL">
+      <HintPath>..\packages\MessagePack.1.7.3.7\lib\net45\MessagePack.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Caching, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\EnterpriseLibrary.Caching.5.0.414.0\lib\net40\Microsoft.Practices.EnterpriseLibrary.Caching.dll</HintPath>
@@ -257,13 +251,11 @@
       <HintPath>..\packages\SPSRemoting.1.0.0\lib\net40\SPSRemoting.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Sunplus.Agent.Model.Base, Version=3.0.4.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sunplus.Agent.Model.Base.3.0.4.1\lib\net461\Sunplus.Agent.Model.Base.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Sunplus.Agent.Model.Base, Version=3.0.4.4, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sunplus.Agent.Model.Base.3.0.4.4\lib\net461\Sunplus.Agent.Model.Base.dll</HintPath>
     </Reference>
-    <Reference Include="Sunplus.Agent.Model.Definitions, Version=3.0.2.3, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sunplus.Agent.Model.Definitions.3.0.2.3\lib\net40\Sunplus.Agent.Model.Definitions.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Sunplus.Agent.Model.Definitions, Version=3.0.2.8, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sunplus.Agent.Model.Definitions.3.0.2.8\lib\net40\Sunplus.Agent.Model.Definitions.dll</HintPath>
     </Reference>
     <Reference Include="Sunplus.Agent.Utilities, Version=3.0.0.4, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Sunplus.Agent.Utilities.3.0.0.4\lib\net40\Sunplus.Agent.Utilities.dll</HintPath>
@@ -342,8 +334,6 @@
     <Compile Include="Controllers\NG2ControllerTests.cs" />
     <Compile Include="Controllers\NormalControllerTests.cs" />
     <Compile Include="Controllers\OutrightControllerTests.cs" />
-    <Compile Include="Controllers\BullfightingControllerTests.cs" />
-    <Compile Include="Controllers\PokerGamesControllerTests.cs" />
     <Compile Include="Controllers\ThirdPartyControllerTests.cs" />
     <Compile Include="Criteria\GetBalanceUpAndMoveBetsDayCriteriaTests.cs" />
     <Compile Include="Criteria\GetGoldDeluxeResultCriteriaTests.cs" />
@@ -357,23 +347,19 @@
     <Compile Include="Criteria\GetSportsbookResultCriteriaTests.cs" />
     <Compile Include="Criteria\GetSportsbookResultDetailsCriteriaTests.cs" />
     <Compile Include="Criteria\GetVirtualRacingResultCriteriaTests.cs" />
-    <Compile Include="DataAccesses\Lucky3ResultDataAccessTests.cs" />
     <Compile Include="DataAccesses\MetricGamingResultDataAccessTests.cs" />
     <Compile Include="DataAccesses\NumberGameResultDataAccessTests.cs" />
     <Compile Include="DataAccesses\ParlayResultDataAccessTests.cs" />
     <Compile Include="DataAccesses\SportsbookResultDataAccessTests.cs" />
     <Compile Include="DataAccesses\VirtualRacingResultDataAccessTests.cs" />
-    <Compile Include="Database\NumberGame\NumberGameDatabase.cs" />
     <Compile Include="Database\MetricGaming\MetricGamingDatabase.cs" />
     <Compile Include="Database\Parlay\ParlayDatabase.cs" />
-    <Compile Include="Database\Racing\RacingDatabase.cs" />
     <Compile Include="Database\SportsBook\SportsBookDatabase.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Handlers\LotteryResultHandlerTests.cs" />
     <Compile Include="Handlers\KenoResultHandlerTests.cs" />
     <Compile Include="Handlers\NormalResultHandlerTests.cs" />
     <Compile Include="Handlers\OutrightResultHandleTests.cs" />
-    <Compile Include="Handlers\PokerGamesHandlerTests.cs" />
     <Compile Include="Handlers\ThirdPartyResultHandlerTests.cs" />
     <Compile Include="Helpers\FileHelper.cs" />
     <Compile Include="Models\ActorTests.cs" />
@@ -387,7 +373,6 @@
     <Compile Include="Services\OutrightResultServiceTests.cs" />
     <Compile Include="Services\Products\AllBetCasinoResultServiceTests.cs" />
     <Compile Include="Services\Products\GoldDeluxeResultServiceTests.cs" />
-    <Compile Include="Services\Products\Lucky3ResultServiceTests.cs" />
     <Compile Include="Services\Products\MetricGamingResultServiceTests.cs" />
     <Compile Include="Services\Products\Happy5ResultServiceTests.cs" />
     <Compile Include="Services\Products\NumberGameResultServiceTests.cs" />
@@ -414,16 +399,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AppReadme\Compare-NET-Objects-Help.txt" />
-    <Content Include="Database\NumberGame\NumberGameResult.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Database\MetricGaming\MetricGamingResult.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Database\Parlay\ParlayResult.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Database\Racing\RacingResult.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Database\SportsBook\SportsBookResult.xml">

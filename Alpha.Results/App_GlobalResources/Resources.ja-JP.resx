@@ -181,10 +181,4 @@
   <data name="OpenLotteryResults" xml:space="preserve">
     <value>Click here to open Lottery results</value>
   </data>
-  <data name="Bullfighting" xml:space="preserve">
-    <value>Bullfighting</value>
-  </data>
-  <data name="PokerGames" xml:space="preserve">
-    <value>Poker Games</value>
-  </data>
 </root>

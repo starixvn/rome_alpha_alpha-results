@@ -6,13 +6,12 @@
     {
         public const string NormalResultJavascriptBundleUrl = "~/bundles/scripts/normalresult";
         public const string OutrightResultJavascriptBundleUrl = "~/bundles/scripts/outrightresult";
-        public const string BullfightingResultJavascriptBundleUrl = "~/bundles/scripts/bullfightingresult";
         public const string ResultCoreStyleBundleUrl = "~/bundle/styles/resultcore";
         public const string KenoResultStyleBundleUrl = "~/bundle/styles/kenoresult";
         public const string ThirdPartyResultStyleBundleUrl = "~/bundle/styles/thirdpartyresult";
 
         public const string LotteryResultScriptBundleUrl = "~/bundle/styles/lotteryresult";
-        public const string PokerGamesResultScriptBundleUrl = "~/bundle/styles/pokergamesresult";
+        public const string CardClubResultScriptBundleUrl = "~/bundle/styles/cardclubresult";
 
         public static void RegisterBundles(BundleCollection bundles)
         {
@@ -25,10 +24,15 @@
         {
             RegisterNormalResultJavascript(bundles);
             RegisterOutrightResultJavascript(bundles);
-            RegisterBullfightingResultJavascript(bundles);
             RegisterKenoResultJavascript(bundles);
             RegisterLotteryResultJavascript(bundles);
-            RegisterPokerGamesResultJavascript(bundles);
+            RegisterCardClubResultJavascript(bundles);
+        }
+
+        private static void RegisterCardClubResultJavascript(BundleCollection bundles)
+        {
+            bundles.Add(new ScriptBundle(CardClubResultScriptBundleUrl).Include(
+                        "~/Scripts/CardClub/index.js"));
         }
 
         private static void RegisterNormalResultJavascript(BundleCollection bundles)
@@ -56,16 +60,6 @@
 
         }
 
-        private static void RegisterPokerGamesResultJavascript(BundleCollection bundles)
-        {
-            bundles.Add(new ScriptBundle(PokerGamesResultScriptBundleUrl).Include(
-                        "~/Scripts/PokerGames/index.js"));
-        }
-
-        private static void RegisterBullfightingResultJavascript(BundleCollection bundles)
-        {
-            bundles.Add(new ScriptBundle(BullfightingResultJavascriptBundleUrl).Include("~/Scripts/Bullfighting/index.js"));
-        }
         private static void RegisterStyleBundles(BundleCollection bundles)
         {
             bundles.Add(new StyleBundle(ResultCoreStyleBundleUrl)

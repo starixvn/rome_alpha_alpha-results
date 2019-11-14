@@ -1,6 +1,6 @@
 ﻿namespace Alpha.Results.Site.Models.Views
 {
-    public class PokerGamesViewModel
+    public class CardClubViewModel
     {
         public string Title { get; set; }
 

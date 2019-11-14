@@ -6,8 +6,6 @@
     <link href="" rel="stylesheet" />
     @Alpha.Web.Helpers.StaticResources.AssetStyles.Render("/bundles/site-results/default")
 
-    @RenderSection("ComponentStyles", false)
-
     @Styles.Render(BundleConfig.ResultCoreStyleBundleUrl)
 
     @RenderSection("Styles", false)
@@ -36,5 +34,6 @@
     @RenderSection("Scripts", false)
 
     @Alpha.Web.Helpers.GoogleAnalyticHepler.Render()
+    @Html.Raw(Fanex.Logging.LogManager.RenderJavascriptLogger())
 </body>
 </html>

@@ -6,22 +6,19 @@
     using Sunplus.Agent.Model.Entities;
     using Web;
 
-    public class PokerGamesController : BaseController
+    public class CardClubController : BaseController
     {
         private readonly IMediator _mediator;
         private readonly IUserSession _userSession;
 
-        public PokerGamesController(
-            IMediator mediator,
-            IUserSession userSession)
+        public CardClubController(IMediator mediator, IUserSession userSession)
         {
             _mediator = mediator;
             _userSession = userSession;
         }
 
-        public ActionResult Index(PokerGamesResultQuery request)
+        public ActionResult Index(CardClubResultQuery request)
         {
-            request.RoleId = _userSession.RoleId;
             request.Language = _userSession.Language;
 
             var viewModel = _mediator.Send(request);

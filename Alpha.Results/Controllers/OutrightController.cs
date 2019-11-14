@@ -22,7 +22,6 @@
         public ActionResult Index(OutrightResultQuery request = null)
         {
             request = request ?? new OutrightResultQuery();
-
             var viewModel = _mediator.Send(request);
 
             return View(viewModel);

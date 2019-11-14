@@ -1,35 +1,10 @@
 ﻿$(function () {
-    var linkKenoResult = $('#result-link');
-    var url = linkKenoResult.attr('href');
+    const $cardClubIframe = $(".card-club-iframe");
 
-    linkKenoResult.click(function (e) {
-        e.preventDefault();
-        window.open(url, 'Keno_Result', 'width=900,height=700,scrollbars=1,directories=0,titlebar=0,toolbar=0,location=0,status=0,menubar=0');
-    });
-})
-
-
-var interval = null;
-
-function extendToken() {
-    $.ajax({
-        type: 'POST',
-        url: $('#extend-token-url').val(),
-        contentType: 'application/json; charset=utf-8',
-        dataType: 'json',
-        success: function (rs) { },
-        error: function (e) { },
-        complete: function (e) { }
-    });
-}
-
-$(function () {
-    $('#result-link').on('click touchend', function () {
-        if (interval == null) {
-            setTimeout(function () {
-                extendToken();
-                interval = setInterval(function () { extendToken(); }, 60 * 1000);
-            }, 30 * 1000);
-        }
-    });
+    if ($cardClubIframe.length) {
+        $(window).resize(function () {
+            var height = $(window).height() - 10;
+            $cardClubIframe.height(height < 0 ? 0 : height);
+        });
+    }
 });

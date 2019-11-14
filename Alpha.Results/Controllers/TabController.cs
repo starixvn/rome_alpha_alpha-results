@@ -27,7 +27,6 @@
                 UserPermission.EnableKeno,
                 isEnableNG2,
                 UserPermission.IsEnableProduct(ProductIdConstants.Lottery),
-                UserPermission.IsEnableProduct(ProductIdConstants.BullFighting),
                 cacheRefService.GetProductName);
 
             return PartialView(viewModel);
