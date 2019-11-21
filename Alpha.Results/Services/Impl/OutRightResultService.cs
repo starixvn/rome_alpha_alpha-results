@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
+    using System.Globalization;
     using System.IO;
     using System.Linq;
     using App_GlobalResources;
@@ -118,7 +119,7 @@
         {
             string leagueName = leagueId == 0 ? Resources.ShowAllLeaguesExcelTitle : _cacheRefService.GetLeagueName(leagueId);
 
-            return $"{Resources.OutrightResults.ToUpper()} - {fromDate.ToShortDateString()} "
+            return $"{Resources.OutrightResults.ToUpper(CultureInfo.CurrentCulture)} - {fromDate.ToShortDateString()} "
                 + $"-> {toDate.ToShortDateString()} | {_cacheRefService.GetSportName(sportType)} - {leagueName}";
         }
     }
