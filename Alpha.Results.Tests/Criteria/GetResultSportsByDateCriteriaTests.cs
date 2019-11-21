@@ -56,5 +56,18 @@
             // Assert
             Assert.False(isShowAll);
         }
+
+        [Test]
+        public void IsValid_Always_ReturnsTrue()
+        {
+            // Arrange
+            var criteria = new GetResultSportsByDateCriteria(DateTime.Now);
+
+            // Act
+            var act = criteria.IsValid();
+
+            // Assert
+            Assert.AreEqual(true, act);
+        }
     }
 }

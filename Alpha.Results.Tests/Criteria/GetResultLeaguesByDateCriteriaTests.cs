@@ -56,5 +56,20 @@
             // Assert
             Assert.False(isShowAll);
         }
+
+        [TestCase(-1, false)]
+        [TestCase(0, false)]
+        [TestCase(1, true)]
+        public void IsValid_Always_ReturnsCorrect(int sportId, bool expected)
+        {
+            // Arrange
+            var criteria = new GetResultLeaguesByDateCriteria(DateTime.Now) { SportId = sportId };
+
+            // Act
+            var act = criteria.IsValid();
+
+            // Assert
+            Assert.AreEqual(expected, act);
+        }
     }
 }

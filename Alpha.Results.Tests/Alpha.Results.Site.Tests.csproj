@@ -329,19 +329,23 @@
   <ItemGroup>
     <Compile Include="Configurations\AppSettingsTests.cs" />
     <Compile Include="Constants\LanguageCode.cs" />
+    <Compile Include="Controllers\CardClubControllerTests.cs" />
     <Compile Include="Controllers\KenoControllerTests.cs" />
     <Compile Include="Controllers\LotteryControllerTests.cs" />
     <Compile Include="Controllers\NG2ControllerTests.cs" />
     <Compile Include="Controllers\NormalControllerTests.cs" />
     <Compile Include="Controllers\OutrightControllerTests.cs" />
+    <Compile Include="Controllers\TabControllerTests.cs" />
     <Compile Include="Controllers\ThirdPartyControllerTests.cs" />
     <Compile Include="Criteria\GetBalanceUpAndMoveBetsDayCriteriaTests.cs" />
+    <Compile Include="Criteria\GetBetBuilderResultDetailsCriteriaTests.cs" />
     <Compile Include="Criteria\GetGoldDeluxeResultCriteriaTests.cs" />
     <Compile Include="Criteria\GetMetricGamingResultCriteriaTests.cs" />
     <Compile Include="Criteria\GetNumberGameResultCriteriaTests.cs" />
     <Compile Include="Criteria\GetNumberGameResultDetailsCriteriaTests.cs" />
     <Compile Include="Criteria\GetOutRightResultCriteriaTests.cs" />
     <Compile Include="Criteria\GetParlayResultCriteriaTests.cs" />
+    <Compile Include="Criteria\GetRacingResultDetailsCriteriaTests.cs" />
     <Compile Include="Criteria\GetResultLeaguesByDateCriteriaTests.cs" />
     <Compile Include="Criteria\GetResultSportsByDateCriteriaTests.cs" />
     <Compile Include="Criteria\GetSportsbookResultCriteriaTests.cs" />
@@ -356,6 +360,7 @@
     <Compile Include="Database\Parlay\ParlayDatabase.cs" />
     <Compile Include="Database\SportsBook\SportsBookDatabase.cs" />
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Handlers\CardClubHandlerTests.cs" />
     <Compile Include="Handlers\LotteryResultHandlerTests.cs" />
     <Compile Include="Handlers\KenoResultHandlerTests.cs" />
     <Compile Include="Handlers\NormalResultHandlerTests.cs" />
@@ -372,6 +377,7 @@
     <Compile Include="Services\NormalResultServiceTests.cs" />
     <Compile Include="Services\OutrightResultServiceTests.cs" />
     <Compile Include="Services\Products\AllBetCasinoResultServiceTests.cs" />
+    <Compile Include="Services\Products\BetBuilderResultServiceTests.cs" />
     <Compile Include="Services\Products\GoldDeluxeResultServiceTests.cs" />
     <Compile Include="Services\Products\MetricGamingResultServiceTests.cs" />
     <Compile Include="Services\Products\Happy5ResultServiceTests.cs" />
