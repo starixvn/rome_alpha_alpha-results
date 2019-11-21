@@ -74,5 +74,22 @@
             // Assert
             Assert.IsTrue(isValid);
         }
+
+        [Test]
+        public void GetSpParamViewFromBetList_Always_Returns3Params()
+        {
+            // Arrange
+            var criteria = new GetSportsbookResultDetailsCriteria
+            {
+                MatchId = 1,
+                IsViewResultFromBetList = true
+            };
+
+            // Act
+            var act = criteria.GetSpParams().Count;
+
+            // Assert
+            Assert.AreEqual(3, act);
+        }
     }
 }

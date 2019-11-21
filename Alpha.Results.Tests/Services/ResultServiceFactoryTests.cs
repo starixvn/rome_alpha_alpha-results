@@ -149,5 +149,15 @@ namespace Alpha.Results.Site.Tests.Services
             //// Assert
             Assert.IsTrue(act is Happy5ResultService);
         }
+
+        [Test]
+        public void CreateProductResultService_BetBuilder_ReturnBetBuilderResultService()
+        {
+            //// Act
+            var resultService = _resultServiceFactory.CreateProductResultService(0, BetTypeIdConstants.BetBuilder);
+
+            //// Assert
+            Assert.IsTrue(resultService is BetBuilderResultService);
+        }
     }
 }

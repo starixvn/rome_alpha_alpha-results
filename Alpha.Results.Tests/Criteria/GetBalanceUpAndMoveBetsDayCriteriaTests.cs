@@ -19,5 +19,19 @@
             // Assert
             Assert.AreEqual(expectedSettingKey, actualSettingKey);
         }
+
+        [Test]
+        public void IsValid_Always_ReturnsTrue()
+        {
+            // Arrange
+            var criteria = new GetBalanceUpAndMoveBetsDayCriteria();
+            var expected = true;
+
+            // Act
+            var actual = criteria.IsValid();
+
+            // Assert
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

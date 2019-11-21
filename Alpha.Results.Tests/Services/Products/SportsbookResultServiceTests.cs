@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using Alpha.Results.Site.Constants;
     using Constants;
     using Fanex.Result.Core.Base;
     using Fanex.Result.Core.Sportsbook.DTO;
@@ -236,6 +237,42 @@
             var results = new List<Sportsbook>
             {
                 new Sportsbook()
+            };
+
+            _sportsbookResultDataAccess.GetScoreInformation(Arg.Any<GetSportsbookResultDetailsCriteria>()).Returns(results);
+
+            //// Act
+            _sportsbookResultService.GetResultDetails(query);
+
+            //// Assert
+            _resultEngineAdapter.Received().HtmlGameDetailParser(
+                Arg.Any<Sportsbook>(),
+                Arg.Is<ResultSetting>(
+                resultSetting => resultSetting.SportType == SportType.Soccer
+                                && !resultSetting.IsOutright
+                                && !resultSetting.IsParlayPopUp
+                                && resultSetting.IsPopUp
+                                && resultSetting.LanguageCode == query.Language
+                                && !resultSetting.VisibleMatchCodeIDColumn
+                                && resultSetting.HighlightWinnerTeam
+                                && resultSetting.EnableCheckScoreCalculated));
+        }
+
+        [Test]
+        public void ResultDetailsBetBuilder_Always_ReturnsCorrect()
+        {
+            //// Arrange
+            var query = new NormalResultDetailsQuery(new Dictionary<int, bool>(), LanguageCode.English)
+            {
+                MatchId = 1,
+                SportId = 1,
+                IsViewResultFromBetList = false,
+                BetTypeId = BetTypeIdConstants.BetBuilder
+            };
+
+            var results = new List<Sportsbook>
+            {
+                new Sportsbook { Bettype = BetTypeIdConstants.BetBuilder }
             };
 
             _sportsbookResultDataAccess.GetScoreInformation(Arg.Any<GetSportsbookResultDetailsCriteria>()).Returns(results);
