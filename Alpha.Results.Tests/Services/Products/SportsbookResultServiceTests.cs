@@ -78,8 +78,7 @@
                         && s.VisibleDetailedLink
                         && s.VisibleFreeHeader
                         && !s.VisibleMatchCodeIDColumn
-                        && s.HighlightWinnerTeam
-                        && s.EnableCheckScoreCalculated));
+                        && s.HighlightWinnerTeam));
         }
 
         [Test]
@@ -133,8 +132,7 @@
                                     && resultSetting.ExcelTitle == request.ExcelTitle
                                     && resultSetting.ExcelTemplatePath == request.TemplatePath
                                     && !resultSetting.VisibleMatchCodeIDColumn
-                                    && resultSetting.HighlightWinnerTeam
-                                    && resultSetting.EnableCheckScoreCalculated));
+                                    && resultSetting.HighlightWinnerTeam));
         }
 
         [Test]
@@ -219,8 +217,7 @@
                                 && resultSetting.IsPopUp
                                 && resultSetting.LanguageCode == query.Language
                                 && !resultSetting.VisibleMatchCodeIDColumn
-                                && resultSetting.HighlightWinnerTeam
-                                && resultSetting.EnableCheckScoreCalculated));
+                                && resultSetting.HighlightWinnerTeam));
         }
 
         [Test]
@@ -254,8 +251,7 @@
                                 && resultSetting.IsPopUp
                                 && resultSetting.LanguageCode == query.Language
                                 && !resultSetting.VisibleMatchCodeIDColumn
-                                && resultSetting.HighlightWinnerTeam
-                                && resultSetting.EnableCheckScoreCalculated));
+                                && resultSetting.HighlightWinnerTeam));
         }
 
         [Test]
@@ -290,8 +286,7 @@
                                 && resultSetting.IsPopUp
                                 && resultSetting.LanguageCode == query.Language
                                 && !resultSetting.VisibleMatchCodeIDColumn
-                                && resultSetting.HighlightWinnerTeam
-                                && resultSetting.EnableCheckScoreCalculated));
+                                && resultSetting.HighlightWinnerTeam));
         }
     }
 }
