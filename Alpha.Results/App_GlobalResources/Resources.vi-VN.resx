@@ -154,7 +154,7 @@
     <value>Từ</value>
   </data>
   <data name="Sport" xml:space="preserve">
-    <value>Sport</value>
+    <value>Môn thể thao</value>
   </data>
   <data name="League" xml:space="preserve">
     <value>Giải</value>
@@ -166,7 +166,7 @@
     <value>Ngày</value>
   </data>
   <data name="ShowAllLeagues" xml:space="preserve">
-    <value>Tất cả Leagues</value>
+    <value>Tất cả Giải</value>
   </data>
   <data name="ThereIsNoData" xml:space="preserve">
     <value>Không có dữ liệu</value>
