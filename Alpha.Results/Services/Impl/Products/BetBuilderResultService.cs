@@ -49,8 +49,7 @@
                 IsPopupOpenFromBetList = true,
                 LanguageCode = detailsRequest.Language,
                 VisibleMatchCodeIDColumn = false,
-                HighlightWinnerTeam = true,
-                EnableCheckScoreCalculated = true
+                HighlightWinnerTeam = true
             };
 
             return _resultEngineAdapter.HtmlParser(results, resultSetting).Replace("original-title", " title ");

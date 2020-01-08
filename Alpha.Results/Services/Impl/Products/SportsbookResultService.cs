@@ -52,8 +52,7 @@
                 VisibleDetailedLink = HasDetailResult(sportType),
                 VisibleFreeHeader = true,
                 VisibleMatchCodeIDColumn = false,
-                HighlightWinnerTeam = true,
-                EnableCheckScoreCalculated = true
+                HighlightWinnerTeam = true
             };
 
             return _resultEngineAdapter.HtmlParser(results, resultSetting).Replace("original-title", " title ");
@@ -71,8 +70,7 @@
                 ExcelTitle = request.ExcelTitle,
                 ExcelTemplatePath = request.TemplatePath,
                 VisibleMatchCodeIDColumn = false,
-                HighlightWinnerTeam = true,
-                EnableCheckScoreCalculated = true
+                HighlightWinnerTeam = true
             };
 
             var results = _dataAccess.GetSportbookResults(GetCriteria(request)).ToList();
@@ -113,8 +111,7 @@
                 IsPopupOpenFromBetList = detailsRequest.IsViewResultFromBetList,
                 LanguageCode = detailsRequest.Language,
                 VisibleMatchCodeIDColumn = false,
-                HighlightWinnerTeam = true,
-                EnableCheckScoreCalculated = true
+                HighlightWinnerTeam = true
             };
 
             return detailsRequest.IsViewResultFromBetList
