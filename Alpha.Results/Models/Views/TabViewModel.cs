@@ -11,12 +11,14 @@
             bool isEnabledKenoTab,
             bool isEnableNG2,
             bool isEnableLottery,
+            bool isEnableVirtualGames,
             Func<int, string> getProductName)
         {
             _selectedTabName = selectedTabName;
             IsEnabledKenoTab = isEnabledKenoTab;            
             IsEnableNG2 = isEnableNG2;
             IsEnableLottery = isEnableLottery;
+            IsEnableVirtualGames = isEnableVirtualGames;
             GetProductName = getProductName;
         }
 
@@ -33,6 +35,8 @@
         public bool IsEnableNG2 { get; }
 
         public bool IsEnableLottery { get; }
+
+        public bool IsEnableVirtualGames { get; }
 
         public Func<int, string> GetProductName { get; }
     }

@@ -11,6 +11,7 @@
         public const string ThirdPartyResultStyleBundleUrl = "~/bundle/styles/thirdpartyresult";
 
         public const string LotteryResultScriptBundleUrl = "~/bundle/styles/lotteryresult";
+        public const string VirtualGamesResultScriptBundleUrl = "~/bundle/styles/virtualgamesresult";
         public const string CardClubResultScriptBundleUrl = "~/bundle/styles/cardclubresult";
 
         public static void RegisterBundles(BundleCollection bundles)
@@ -27,6 +28,7 @@
             RegisterKenoResultJavascript(bundles);
             RegisterLotteryResultJavascript(bundles);
             RegisterCardClubResultJavascript(bundles);
+            RegisterVirtualGamesResultJavascript(bundles);
         }
 
         private static void RegisterCardClubResultJavascript(BundleCollection bundles)
@@ -51,6 +53,13 @@
         {
             bundles.Add(new ScriptBundle(KenoResultStyleBundleUrl).Include(
                         "~/Scripts/Keno/index.js"));
+        }
+
+        private static void RegisterVirtualGamesResultJavascript(BundleCollection bundles)
+        {
+            bundles.Add(new ScriptBundle(VirtualGamesResultScriptBundleUrl).Include(
+                        "~/Scripts/VirtualGames/index.js"));
+
         }
 
         private static void RegisterLotteryResultJavascript(BundleCollection bundles)

@@ -180,4 +180,7 @@
   <data name="OpenLotteryResults" xml:space="preserve">
     <value>กดที่นี่ เพื่อเปิดดูผลลอตเตอรี</value>
   </data>
+  <data name="OpenVirtualGamesResults" xml:space="preserve">
+    <value>กดที่นี่เพื่อเปิดดูผลของเกมส์เสมือนจริง</value>
+  </data>
 </root>

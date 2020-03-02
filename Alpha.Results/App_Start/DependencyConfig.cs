@@ -5,6 +5,7 @@
     using System.Diagnostics.CodeAnalysis;
     using System.Reflection;
     using System.Web.Mvc;
+    using Alpha.Results.Site.Helpers;
     using DataAccesses;
     using DataAccesses.Impl;
     using Fanex.Caching;
@@ -17,6 +18,7 @@
     using Fanex.Result.Core.Base.Utilities;
     using Fanex.Result.Core.GlobalGaming;
     using Fanex.Result.Core.RemotingRef;
+    using Fanex.Result.Core.VirtualGames;
     using Fanex.Result.Core.Voidbridge;
     using Fanex.Result.ThirdParty.Services;
     using Fanex.Result.ThirdParty.Services.Impl;
@@ -101,6 +103,8 @@
             container.Register<Base3rdResultApi, GlobalGamingResultApi>(Lifestyle.Scoped);
             container.Register<IRestClient>(() => new RestClient());
             container.Register<ProductResultServiceFactory, ProductResultServiceFactoryImpl>();
+            container.Register<IVirtualGamesResult, VirtualGamesResult>(Lifestyle.Scoped);
+            container.Register<BrowserHelper, BrowserHelperImpl>(Lifestyle.Singleton);
         }
 
         private static void RegisterDataAccesses(Container container)

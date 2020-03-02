@@ -4,7 +4,7 @@
     using Fanex.Products;
     using Models.Views;
     using Services;
-    using Sunplus.Agent.Model.Definitions;
+    using Alpha.Results.Site.Constants;
     using Sunplus.Agent.Model.Entities.Permission;
 
     public class TabController : Controller
@@ -27,6 +27,7 @@
                 UserPermission.EnableKeno,
                 isEnableNG2,
                 UserPermission.IsEnableProduct(ProductIdConstants.Lottery),
+                UserPermission.IsEnableProduct(ProductIdConstants.VirtualGames),
                 cacheRefService.GetProductName);
 
             return PartialView(viewModel);

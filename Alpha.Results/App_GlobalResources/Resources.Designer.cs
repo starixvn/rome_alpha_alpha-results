@@ -160,6 +160,15 @@ namespace Alpha.Results.Site.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Click here to open Virtual Games results.
+        /// </summary>
+        public static string OpenVirtualGamesResults {
+            get {
+                return ResourceManager.GetString("OpenVirtualGamesResults", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Outright.
         /// </summary>
         public static string Outright {
@@ -264,6 +273,15 @@ namespace Alpha.Results.Site.App_GlobalResources {
         public static string ViewDataFromDate {
             get {
                 return ResourceManager.GetString("ViewDataFromDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Virtual Games.
+        /// </summary>
+        public static string VirtualGames {
+            get {
+                return ResourceManager.GetString("VirtualGames", resourceCulture);
             }
         }
     }

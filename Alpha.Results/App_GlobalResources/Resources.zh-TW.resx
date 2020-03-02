@@ -180,4 +180,7 @@
   <data name="OpenLotteryResults" xml:space="preserve">
     <value>請點選, 開啟彩票賽果</value>
   </data>
+  <data name="OpenVirtualGamesResults" xml:space="preserve">
+    <value>點擊此處開啟虛擬娛樂城賽果</value>
+  </data>
 </root>

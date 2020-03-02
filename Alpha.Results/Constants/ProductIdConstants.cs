@@ -6,5 +6,6 @@
         public const int Keno = 8;
         public const int NG2 = 23;
         public const int Lottery = 28;
+        public const int VirtualGames = 38;
     }
 }

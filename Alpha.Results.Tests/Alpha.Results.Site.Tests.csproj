@@ -139,6 +139,9 @@
     <Reference Include="Fanex.Result.Core.Sportsbook, Version=1.2.5.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core-Sportsbook.1.2.5\lib\net40\Fanex.Result.Core.Sportsbook.dll</HintPath>
     </Reference>
+    <Reference Include="Fanex.Result.Core.VirtualGames, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Result.Core.VirtualGames.1.0.0.0-beta05\lib\net40\Fanex.Result.Core.VirtualGames.dll</HintPath>
+    </Reference>
     <Reference Include="Fanex.Result.Core.Voidbridge, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core.Voidbridge.1.0.2\lib\net40\Fanex.Result.Core.Voidbridge.dll</HintPath>
       <Private>True</Private>
@@ -337,6 +340,7 @@
     <Compile Include="Controllers\NormalControllerTests.cs" />
     <Compile Include="Controllers\OutrightControllerTests.cs" />
     <Compile Include="Controllers\TabControllerTests.cs" />
+    <Compile Include="Controllers\VirtualGamesControllerTests.cs" />
     <Compile Include="Controllers\ThirdPartyControllerTests.cs" />
     <Compile Include="Criteria\GetBalanceUpAndMoveBetsDayCriteriaTests.cs" />
     <Compile Include="Criteria\GetBetBuilderResultDetailsCriteriaTests.cs" />
@@ -366,6 +370,7 @@
     <Compile Include="Handlers\KenoResultHandlerTests.cs" />
     <Compile Include="Handlers\NormalResultHandlerTests.cs" />
     <Compile Include="Handlers\OutrightResultHandleTests.cs" />
+    <Compile Include="Handlers\VirtualGamesResultHandlerTests.cs" />
     <Compile Include="Handlers\ThirdPartyResultHandlerTests.cs" />
     <Compile Include="Helpers\FileHelper.cs" />
     <Compile Include="Models\ActorTests.cs" />
