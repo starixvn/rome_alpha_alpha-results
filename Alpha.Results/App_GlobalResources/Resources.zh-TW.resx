@@ -183,4 +183,7 @@
   <data name="OpenVirtualGamesResults" xml:space="preserve">
     <value>點擊此處開啟虛擬娛樂城賽果</value>
   </data>
+  <data name="VirtualGames" xml:space="preserve">
+    <value>虛擬娛樂城</value>
+  </data>
 </root>
