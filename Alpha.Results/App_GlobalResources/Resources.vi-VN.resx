@@ -180,4 +180,10 @@
   <data name="OpenLotteryResults" xml:space="preserve">
     <value>Nhấn vào đây để xem kết quả "Xổ Số"</value>
   </data>
+  <data name="OpenVirtualGamesResults" xml:space="preserve">
+    <value>Nhấn vào đây để xem kết quả Trò Chơi Ảo</value>
+  </data>
+  <data name="VirtualGames" xml:space="preserve">
+    <value>Trò chơi Ảo</value>
+  </data>
 </root>

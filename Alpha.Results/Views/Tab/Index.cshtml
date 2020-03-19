@@ -24,3 +24,10 @@
         @Html.ActionLink(Model.GetProductName(Alpha.Results.Site.Constants.ProductIdConstants.Lottery), "index", "lottery", null, new { id = "tablottery" })
     </li>
 }
+
+@if (Model.IsEnableVirtualGames)
+{
+    <li role="presentation" class="@((Model.SelectedTabName == "VirtualGames") ? "active" : string.Empty)">
+        @Html.ActionLink(Model.GetProductName(Alpha.Results.Site.Constants.ProductIdConstants.VirtualGames), "index", "virtualgames", null, new { id = "tabvirtualgames" })
+    </li>
+}

@@ -1,0 +1,16 @@
+﻿@model string
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+@Styles.Render(BundleConfig.ThirdPartyResultStyleBundleUrl)
+    <title>@Resources.VirtualGames</title>
+</head>
+<body>
+    <div class="third-party-result">
+        <iframe src="@Model" frameborder="0" class="handhistory-iframe"></iframe>
+    </div>
+</body>
+</html>

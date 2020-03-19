@@ -212,6 +212,9 @@
     <Reference Include="Fanex.Result.Core.Sportsbook, Version=1.2.5.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core-Sportsbook.1.2.5\lib\net40\Fanex.Result.Core.Sportsbook.dll</HintPath>
     </Reference>
+    <Reference Include="Fanex.Result.Core.VirtualGames, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Result.Core.VirtualGames.1.0.0.0\lib\net40\Fanex.Result.Core.VirtualGames.dll</HintPath>
+    </Reference>
     <Reference Include="Fanex.Result.Core.Voidbridge, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core.Voidbridge.1.0.2\lib\net40\Fanex.Result.Core.Voidbridge.dll</HintPath>
       <Private>True</Private>
@@ -669,6 +672,8 @@
       <DependentUpon>Web.AppSettings.config</DependentUpon>
     </Content>
     <Content Include="Views\CardClub\Index.cshtml" />
+    <Content Include="Views\VirtualGames\Index.cshtml" />
+    <Content Include="Views\VirtualGames\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs">
@@ -689,6 +694,7 @@
     <Compile Include="Constants\RoleIdConstants.cs" />
     <Compile Include="Constants\SportTypeIdConstants.cs" />
     <Compile Include="Controllers\CardClubController.cs" />
+    <Compile Include="Controllers\VirtualGamesController.cs" />
     <Compile Include="Controllers\KenoController.cs" />
     <Compile Include="Controllers\LotteryController.cs" />
     <Compile Include="Controllers\NG2Controller.cs" />
@@ -732,10 +738,14 @@
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Handlers\CardClubHandler.cs" />
     <Compile Include="Handlers\KenoResultHandler.cs" />
+    <Compile Include="Handlers\VirtualGamesResultHandler.cs" />
     <Compile Include="Handlers\LotteryResultHandler.cs" />
     <Compile Include="Handlers\NormalResultHandler.cs" />
     <Compile Include="Handlers\OutrightResultHandler.cs" />
     <Compile Include="Handlers\ThirdPartyResultHandler.cs" />
+    <Compile Include="Helpers\BrowserHelper.cs">
+      <SonarQubeExclude>true</SonarQubeExclude>
+    </Compile>
     <Compile Include="Helpers\UrlHelper.cs" />
     <Compile Include="Models\Actor.cs" />
     <Compile Include="Models\BelongingInfo.cs" />
@@ -745,6 +755,8 @@
     <Compile Include="Models\Requests\ExcelOutrightResultQuery.cs" />
     <Compile Include="Models\Requests\CardClubResultQuery.cs" />
     <Compile Include="Models\Requests\KenoResultQuery.cs" />
+    <Compile Include="Models\Requests\VirtualGames\VirtualGamesDetailResultQuery.cs" />
+    <Compile Include="Models\Requests\VirtualGames\VirtualGamesResultQuery.cs" />
     <Compile Include="Models\Requests\LotteryResultQuery.cs" />
     <Compile Include="Models\Requests\NormalResultDetailsQuery.cs" />
     <Compile Include="Models\Requests\NormalResultQuery.cs" />
