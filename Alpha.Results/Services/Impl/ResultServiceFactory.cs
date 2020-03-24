@@ -28,15 +28,21 @@
                         return new MetricGamingResultService();
                     }
 
-                    return new SportsbookResultService();                    
+                    return new SportsbookResultService();
 
-                case SportTypeIdConstants.NumberGame:                
+                case SportTypeIdConstants.NumberGame:
                     return new NumberGameResultService();
                 case SportTypeIdConstants.Happy5:
-                    return new Happy5ResultService();         
+                    return new Happy5ResultService();
 
                 case SportTypeIdConstants.AllBet:
                     return new AllBetCasinoResultService();
+
+                case SportTypeIdConstants.SAGaming:
+                    return new SAGamingResultService();
+
+                case SportTypeIdConstants.SexyGaming:
+                    return new SexyGamingResultService();
 
                 case SportTypeIdConstants.VirtualHorsesRacing:
                 case SportTypeIdConstants.VirtualGreyhounds:
