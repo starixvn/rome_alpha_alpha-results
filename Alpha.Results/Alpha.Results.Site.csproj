@@ -209,11 +209,11 @@
     <Reference Include="Fanex.Result.Core.RemotingRef, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core.RemotingRef.1.0.4\lib\net461\Fanex.Result.Core.RemotingRef.dll</HintPath>
     </Reference>
-    <Reference Include="Fanex.Result.Core.SAGaming, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Result.Core.SAGaming.1.0.0.0-beta01\lib\net40\Fanex.Result.Core.SAGaming.dll</HintPath>
+    <Reference Include="Fanex.Result.Core.SAGaming, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Result.Core.SAGaming.1.0.0.1\lib\net40\Fanex.Result.Core.SAGaming.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.Result.Core.SexyGaming, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Result.Core.SexyGaming.1.0.0.0-beta04\lib\net40\Fanex.Result.Core.SexyGaming.dll</HintPath>
+      <HintPath>..\packages\Fanex.Result.Core.SexyGaming.1.0.0.0\lib\net40\Fanex.Result.Core.SexyGaming.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.Result.Core.Sportsbook, Version=1.2.5.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core-Sportsbook.1.2.5\lib\net40\Fanex.Result.Core.Sportsbook.dll</HintPath>
@@ -244,7 +244,7 @@
       <HintPath>..\packages\Fanex.Result.Core.AllBetCasino.1.0.1.7\lib\net40\LiveCasinoResult.dll</HintPath>
     </Reference>
     <Reference Include="LiveCasinoResultForSA, Version=1.0.1.6, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Result.Core.SAGaming.1.0.0.0-beta01\lib\net40\LiveCasinoResultForSA.dll</HintPath>
+      <HintPath>..\packages\Fanex.Result.Core.SAGaming.1.0.0.1\lib\net40\LiveCasinoResultForSA.dll</HintPath>
     </Reference>
     <Reference Include="MediatR, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MediatR.2.0.2\lib\net45\MediatR.dll</HintPath>
@@ -785,12 +785,12 @@
     <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Roulette\7.png" />
     <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Roulette\8.png" />
     <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Roulette\9.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Sicbo\ScoreBoard_d1.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Sicbo\ScoreBoard_d2.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Sicbo\ScoreBoard_d3.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Sicbo\ScoreBoard_d4.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Sicbo\ScoreBoard_d5.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Sicbo\ScoreBoard_d6.png" />
+    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Sicbo\dice-1.png" />
+    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Sicbo\dice-2.png" />
+    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Sicbo\dice-3.png" />
+    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Sicbo\dice-4.png" />
+    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Sicbo\dice-5.png" />
+    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Sicbo\dice-6.png" />
     <Content Include="Content\ThirdParty\third-party.css">
       <DependentUpon>third-party.scss</DependentUpon>
     </Content>
