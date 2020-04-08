@@ -192,4 +192,10 @@
   <data name="VirtualGames" xml:space="preserve">
     <value>Virtual Games</value>
   </data>
+  <data name="OpenTableGamesResults" xml:space="preserve">
+    <value>Click here to open Table Game results</value>
+  </data>
+  <data name="TableGames" xml:space="preserve">
+    <value>Table Game</value>
+  </data>
 </root>

@@ -28,6 +28,7 @@
                 isEnableNG2,
                 UserPermission.IsEnableProduct(ProductIdConstants.Lottery),
                 UserPermission.IsEnableProduct(ProductIdConstants.VirtualGames),
+                UserPermission.IsEnableProduct(ProductIdConstants.TableGames),
                 cacheRefService.GetProductName);
 
             return PartialView(viewModel);

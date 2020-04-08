@@ -186,4 +186,7 @@
   <data name="VirtualGames" xml:space="preserve">
     <value>虛擬娛樂城</value>
   </data>
+  <data name="OpenTableGamesResults" xml:space="preserve">
+    <value>桌面遊戲的賽果請點擊此處</value>
+  </data>
 </root>

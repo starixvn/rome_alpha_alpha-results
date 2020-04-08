@@ -12,6 +12,7 @@
             bool isEnableNG2,
             bool isEnableLottery,
             bool isEnableVirtualGames,
+            bool isEnableTableGames,
             Func<int, string> getProductName)
         {
             _selectedTabName = selectedTabName;
@@ -19,6 +20,7 @@
             IsEnableNG2 = isEnableNG2;
             IsEnableLottery = isEnableLottery;
             IsEnableVirtualGames = isEnableVirtualGames;
+            IsEnableTableGames = isEnableTableGames;
             GetProductName = getProductName;
         }
 
@@ -37,6 +39,8 @@
         public bool IsEnableLottery { get; }
 
         public bool IsEnableVirtualGames { get; }
+
+        public bool IsEnableTableGames { get; }
 
         public Func<int, string> GetProductName { get; }
     }
