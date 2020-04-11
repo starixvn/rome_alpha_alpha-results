@@ -27,14 +27,14 @@
 
 @if (Model.IsEnableVirtualGames)
 {
-    <li role="presentation" class="@((Model.SelectedTabName == "VirtualGames") ? "active" : string.Empty)">
+    <li role="presentation" class="@((Model.SelectedTabName == "virtualgames") ? "active" : string.Empty)">
         @Html.ActionLink(Model.GetProductName(Alpha.Results.Site.Constants.ProductIdConstants.VirtualGames), "index", "virtualgames", null, new { id = "tabvirtualgames" })
     </li>
 }
 
 @if (Model.IsEnableTableGames)
 {
-    <li role="presentation" class="@((Model.SelectedTabName == "tableGames") ? "active" : string.Empty)">
+    <li role="presentation" class="@((Model.SelectedTabName == "tablegames") ? "active" : string.Empty)">
         @Html.ActionLink(Model.GetProductName(Alpha.Results.Site.Constants.ProductIdConstants.TableGames), "index", "tableGames", null, new { id = "tabtablegames" })
     </li>
 }
