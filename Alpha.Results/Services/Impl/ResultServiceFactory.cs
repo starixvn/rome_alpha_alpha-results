@@ -43,6 +43,8 @@
 
                 case SportTypeIdConstants.SexyGaming:
                     return new SexyGamingResultService();
+                case SportTypeIdConstants.BBin:
+                    return new BBinResultService();
 
                 case SportTypeIdConstants.VirtualHorsesRacing:
                 case SportTypeIdConstants.VirtualGreyhounds:
