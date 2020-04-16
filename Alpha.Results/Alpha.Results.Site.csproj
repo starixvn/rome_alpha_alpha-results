@@ -117,9 +117,8 @@
       <HintPath>..\packages\Fanex.Game.Core.1.0.0\lib\net40\Fanex.Game.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Fanex.Game.Keno, Version=3.0.0.5, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Game.Keno.AlphaResults.3.0.0.5\lib\net40\Fanex.Game.Keno.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Fanex.Game.Keno, Version=3.0.0.6, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Game.Keno.AlphaResults.3.0.0.6\lib\net40\Fanex.Game.Keno.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.Logging, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Logging.2.0.1\lib\net461\Fanex.Logging.dll</HintPath>
@@ -820,6 +819,7 @@
     <Content Include="Content\Images\sprite.png" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\CardClub\index.js" />
+    <Content Include="Scripts\TableGames\index.js" />
     <Content Include="Scripts\Lottery\index.js" />
     <Content Include="Views\Lottery\Index.cshtml" />
     <Content Include="Content\ThirdParty\third-party.scss" />
@@ -914,6 +914,7 @@
     <Content Include="Views\CardClub\Index.cshtml" />
     <Content Include="Views\VirtualGames\Index.cshtml" />
     <Content Include="Views\VirtualGames\Detail.cshtml" />
+    <Content Include="Views\TableGames\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs">
@@ -934,6 +935,7 @@
     <Compile Include="Constants\RoleIdConstants.cs" />
     <Compile Include="Constants\SportTypeIdConstants.cs" />
     <Compile Include="Controllers\CardClubController.cs" />
+    <Compile Include="Controllers\TableGamesController.cs" />
     <Compile Include="Controllers\VirtualGamesController.cs" />
     <Compile Include="Controllers\KenoController.cs" />
     <Compile Include="Controllers\LotteryController.cs" />
@@ -978,6 +980,7 @@
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Handlers\CardClubHandler.cs" />
     <Compile Include="Handlers\KenoResultHandler.cs" />
+    <Compile Include="Handlers\TableGamesResultHandler.cs" />
     <Compile Include="Handlers\VirtualGamesResultHandler.cs" />
     <Compile Include="Handlers\LotteryResultHandler.cs" />
     <Compile Include="Handlers\NormalResultHandler.cs" />
@@ -994,6 +997,7 @@
     <Compile Include="Models\Requests\ExcelNormalResultQuery.cs" />
     <Compile Include="Models\Requests\ExcelOutrightResultQuery.cs" />
     <Compile Include="Models\Requests\CardClubResultQuery.cs" />
+    <Compile Include="Models\Requests\TableGamesResultQuery.cs" />
     <Compile Include="Models\Requests\KenoResultQuery.cs" />
     <Compile Include="Models\Requests\VirtualGames\VirtualGamesDetailResultQuery.cs" />
     <Compile Include="Models\Requests\VirtualGames\VirtualGamesResultQuery.cs" />
@@ -1005,6 +1009,7 @@
     <Compile Include="Models\Requests\ThirdPartyResultQuery.cs" />
     <Compile Include="Models\Sport.cs" />
     <Compile Include="Models\Views\CardClubViewModel.cs" />
+    <Compile Include="Models\Views\TableGamesResultViewModel.cs" />
     <Compile Include="Models\Views\LotteryResultViewModel.cs" />
     <Compile Include="Models\Views\OutrightResultExcelViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -1146,9 +1151,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.6.7.1.4347\analyzers\Google.Protobuf.dll" />
-    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.6.7.1.4347\analyzers\SonarAnalyzer.CSharp.dll" />
-    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.6.7.1.4347\analyzers\SonarAnalyzer.dll" />
+    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.7.14.0.8411\analyzers\Google.Protobuf.dll" />
+    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.7.14.0.8411\analyzers\SonarAnalyzer.CSharp.dll" />
+    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.7.14.0.8411\analyzers\SonarAnalyzer.dll" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

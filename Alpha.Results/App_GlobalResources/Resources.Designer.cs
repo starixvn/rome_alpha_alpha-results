@@ -160,6 +160,15 @@ namespace Alpha.Results.Site.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Click here to open Table Game results.
+        /// </summary>
+        public static string OpenTableGamesResults {
+            get {
+                return ResourceManager.GetString("OpenTableGamesResults", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Click here to open Virtual Games results.
         /// </summary>
         public static string OpenVirtualGamesResults {
@@ -246,6 +255,15 @@ namespace Alpha.Results.Site.App_GlobalResources {
         public static string SystemParlay {
             get {
                 return ResourceManager.GetString("SystemParlay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Table Game.
+        /// </summary>
+        public static string TableGames {
+            get {
+                return ResourceManager.GetString("TableGames", resourceCulture);
             }
         }
         
