@@ -343,6 +343,7 @@
     <Compile Include="Constants\LanguageCode.cs" />
     <Compile Include="Controllers\CardClubControllerTests.cs" />
     <Compile Include="Controllers\KenoControllerTests.cs" />
+    <Compile Include="Controllers\TableGamesControllerTests.cs" />
     <Compile Include="Controllers\LotteryControllerTests.cs" />
     <Compile Include="Controllers\NG2ControllerTests.cs" />
     <Compile Include="Controllers\NormalControllerTests.cs" />
@@ -374,6 +375,7 @@
     <Compile Include="Database\SportsBook\SportsBookDatabase.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Handlers\CardClubHandlerTests.cs" />
+    <Compile Include="Handlers\TableGameResultHandlerTests.cs" />
     <Compile Include="Handlers\LotteryResultHandlerTests.cs" />
     <Compile Include="Handlers\KenoResultHandlerTests.cs" />
     <Compile Include="Handlers\NormalResultHandlerTests.cs" />
@@ -390,6 +392,8 @@
     <Compile Include="Services\CacheRefServiceTests.cs" />
     <Compile Include="Services\NormalResultServiceTests.cs" />
     <Compile Include="Services\OutrightResultServiceTests.cs" />
+    <Compile Include="Services\Products\SexyGamingResultServiceTests.cs" />
+    <Compile Include="Services\Products\SAGamingResultServiceTests.cs" />
     <Compile Include="Services\Products\AllBetCasinoResultServiceTests.cs" />
     <Compile Include="Services\Products\BetBuilderResultServiceTests.cs" />
     <Compile Include="Services\Products\GoldDeluxeResultServiceTests.cs" />
