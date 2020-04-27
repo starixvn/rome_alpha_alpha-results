@@ -180,6 +180,9 @@
       <HintPath>..\packages\Fanex.Result.Core-GoldDeluxe.1.0.4\lib\net40\Fanex.Result.Core.GoldDeluxe.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Fanex.Result.Core.GTCasino, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Result.Core.GTCasino.1.0.0-beta-01\lib\net40\Fanex.Result.Core.GTCasino.dll</HintPath>
+    </Reference>
     <Reference Include="Fanex.Result.Core.Happy5, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core.Happy5.1.0.0.0\lib\net40\Fanex.Result.Core.Happy5.dll</HintPath>
       <Private>True</Private>
@@ -1016,6 +1019,7 @@
     <Compile Include="Services\ICacheRefService.cs" />
     <Compile Include="Services\Impl\CacheRefService.cs" />
     <Compile Include="Services\Impl\OutrightResultService.cs" />
+    <Compile Include="Services\Impl\Products\GTCasinoResultService.cs" />
     <Compile Include="Services\Impl\Products\SAGamingResultService.cs" />
     <Compile Include="Services\Impl\Products\SexyGamingResultService.cs" />
     <Compile Include="Services\Impl\Products\AllBetCasinoResultService.cs" />

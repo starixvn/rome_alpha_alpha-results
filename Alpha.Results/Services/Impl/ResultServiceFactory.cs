@@ -32,6 +32,7 @@
 
                 case SportTypeIdConstants.NumberGame:
                     return new NumberGameResultService();
+
                 case SportTypeIdConstants.Happy5:
                     return new Happy5ResultService();
 
@@ -43,6 +44,9 @@
 
                 case SportTypeIdConstants.SexyGaming:
                     return new SexyGamingResultService();
+
+                case SportTypeIdConstants.GTCasino:
+                    return new GTCasinoResultService();
 
                 case SportTypeIdConstants.VirtualHorsesRacing:
                 case SportTypeIdConstants.VirtualGreyhounds:

@@ -47,5 +47,6 @@
         public const int SexyGaming = 243;
         public const int SAGaming = 244;
         public const int GoldDeluxe = 255;
+        public const int GTCasino = 242;
     }
 }

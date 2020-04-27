@@ -61,14 +61,12 @@
         {
             bundles.Add(new ScriptBundle(VirtualGamesResultScriptBundleUrl).Include(
                         "~/Scripts/VirtualGames/index.js"));
-
         }
 
         private static void RegisterLotteryResultJavascript(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle(LotteryResultScriptBundleUrl).Include(
                         "~/Scripts/Lottery/index.js"));
-
         }
 
         private static void RegisterTableGamesResultJavascript(BundleCollection bundles)
