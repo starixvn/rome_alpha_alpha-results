@@ -116,7 +116,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Fanex.Result.Core.GTCasino, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Result.Core.GTCasino.1.0.0-beta-01\lib\net40\Fanex.Result.Core.GTCasino.dll</HintPath>
+      <HintPath>..\packages\Fanex.Result.Core.GTCasino.1.0.0-beta-05\lib\net40\Fanex.Result.Core.GTCasino.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.Result.Core.Happy5, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core.Happy5.1.0.0.0\lib\net40\Fanex.Result.Core.Happy5.dll</HintPath>
@@ -440,10 +440,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Content\Fanex.Result\Allbet\css\images\layout\" />
-    <Folder Include="Content\Fanex.Result\Allbet\template\public\game_result\Poker\" />
-    <Folder Include="Content\Fanex.Result\Allbet\template\public\game_result\Roulette\" />
-    <Folder Include="Content\Fanex.Result\Allbet\template\public\game_result\Sicbo\" />
+    <Folder Include="Content\Fanex.Result\Allbet\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fanex.Visual-StyleCop.MSBuild.4.7.59.1\build\Fanex.Visual-StyleCop.MSBuild.Targets" Condition="Exists('..\packages\Fanex.Visual-StyleCop.MSBuild.4.7.59.1\build\Fanex.Visual-StyleCop.MSBuild.Targets')" />
