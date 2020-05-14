@@ -44,6 +44,7 @@
         public const int VirtualTennis = 186;
 
         public const int AllBet = 211;
+        public const int BBin = 241;
         public const int SexyGaming = 243;
         public const int SAGaming = 244;
         public const int GoldDeluxe = 255;
