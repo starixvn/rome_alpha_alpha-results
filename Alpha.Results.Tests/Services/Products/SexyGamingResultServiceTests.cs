@@ -3,8 +3,6 @@
     using System;
     using System.Collections.Generic;
     using Constants;
-    using Fanex.Result.Core.AllBetCasino;
-    using Fanex.Result.Core.SAGaming;
     using Fanex.Result.Core.SexyGaming;
     using NSubstitute;
     using NUnit.Framework;
