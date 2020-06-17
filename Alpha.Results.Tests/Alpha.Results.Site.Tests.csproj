@@ -142,7 +142,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Fanex.Result.Core.SAGaming, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Result.Core.SAGaming.1.0.0.2-beta01\lib\net40\Fanex.Result.Core.SAGaming.dll</HintPath>
+      <HintPath>..\packages\Fanex.Result.Core.SAGaming.1.0.0.2\lib\net40\Fanex.Result.Core.SAGaming.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.Result.Core.SexyGaming, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core.SexyGaming.1.0.0.0\lib\net40\Fanex.Result.Core.SexyGaming.dll</HintPath>
