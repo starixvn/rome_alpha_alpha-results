@@ -75,7 +75,8 @@
             {
                 FromDate = request.ResultDate,
                 SportType = request.SportId,
-                LeagueId = request.LeagueId
+                LeagueId = request.LeagueId,
+                MoveBetsDay = request.MoveBetsDate
             };
         }
 
