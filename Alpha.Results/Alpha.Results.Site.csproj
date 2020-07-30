@@ -213,6 +213,9 @@
     <Reference Include="Fanex.Result.Core.RemotingRef, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core.RemotingRef.1.0.4\lib\net461\Fanex.Result.Core.RemotingRef.dll</HintPath>
     </Reference>
+    <Reference Include="Fanex.Result.Core.SabaClub, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Result.Core.SabaClub.1.0.0.1\lib\Fanex.Result.Core.SabaClub.dll</HintPath>
+    </Reference>
     <Reference Include="Fanex.Result.Core.SAGaming, Version=1.0.0.3, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core.SAGaming.1.0.0.3\lib\net40\Fanex.Result.Core.SAGaming.dll</HintPath>
     </Reference>
@@ -1030,6 +1033,7 @@
     <Content Include="Views\VirtualGames\Index.cshtml" />
     <Content Include="Views\VirtualGames\Detail.cshtml" />
     <Content Include="Views\TableGames\Index.cshtml" />
+    <Content Include="Views\SabaClub\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs">
@@ -1049,6 +1053,7 @@
     <Compile Include="Constants\ProductIdConstants.cs" />
     <Compile Include="Constants\RoleIdConstants.cs" />
     <Compile Include="Constants\SportTypeIdConstants.cs" />
+    <Compile Include="Controllers\SabaClubController.cs" />
     <Compile Include="Controllers\CardClubController.cs" />
     <Compile Include="Controllers\TableGamesController.cs" />
     <Compile Include="Controllers\VirtualGamesController.cs" />
@@ -1093,6 +1098,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Handlers\SabaClubHandler.cs" />
     <Compile Include="Handlers\CardClubHandler.cs" />
     <Compile Include="Handlers\KenoResultHandler.cs" />
     <Compile Include="Handlers\TableGamesResultHandler.cs" />
@@ -1109,6 +1115,7 @@
     <Compile Include="Models\BelongingInfo.cs" />
     <Compile Include="Models\Dtos\BalanceUpAndMoveBetsDate.cs" />
     <Compile Include="Models\League.cs" />
+    <Compile Include="Models\Requests\SabaClubResultQuery.cs" />
     <Compile Include="Models\Requests\ExcelNormalResultQuery.cs" />
     <Compile Include="Models\Requests\ExcelOutrightResultQuery.cs" />
     <Compile Include="Models\Requests\CardClubResultQuery.cs" />
@@ -1123,6 +1130,7 @@
     <Compile Include="Models\Requests\ThirdPartyDetailResultQuery.cs" />
     <Compile Include="Models\Requests\ThirdPartyResultQuery.cs" />
     <Compile Include="Models\Sport.cs" />
+    <Compile Include="Models\Views\SabaClubViewModel.cs" />
     <Compile Include="Models\Views\CardClubViewModel.cs" />
     <Compile Include="Models\Views\TableGamesResultViewModel.cs" />
     <Compile Include="Models\Views\LotteryResultViewModel.cs" />
