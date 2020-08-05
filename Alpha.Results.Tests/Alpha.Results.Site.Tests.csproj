@@ -141,6 +141,9 @@
       <HintPath>..\packages\Fanex.Result.Core-Racing.1.1.0\lib\net40\Fanex.Result.Core.Racing.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Fanex.Result.Core.SabaClub, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Result.Core.SabaClub.1.0.0.1\lib\Fanex.Result.Core.SabaClub.dll</HintPath>
+    </Reference>
     <Reference Include="Fanex.Result.Core.SAGaming, Version=1.0.0.3, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core.SAGaming.1.0.0.3\lib\net40\Fanex.Result.Core.SAGaming.dll</HintPath>
     </Reference>
@@ -344,6 +347,7 @@
   <ItemGroup>
     <Compile Include="Configurations\AppSettingsTests.cs" />
     <Compile Include="Constants\LanguageCode.cs" />
+    <Compile Include="Controllers\SabaClubControllerTests.cs" />
     <Compile Include="Controllers\CardClubControllerTests.cs" />
     <Compile Include="Controllers\KenoControllerTests.cs" />
     <Compile Include="Controllers\TableGamesControllerTests.cs" />
@@ -377,6 +381,7 @@
     <Compile Include="Database\Parlay\ParlayDatabase.cs" />
     <Compile Include="Database\SportsBook\SportsBookDatabase.cs" />
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Handlers\SabaClubHandlerTests.cs" />
     <Compile Include="Handlers\CardClubHandlerTests.cs" />
     <Compile Include="Handlers\TableGameResultHandlerTests.cs" />
     <Compile Include="Handlers\LotteryResultHandlerTests.cs" />
