@@ -1,23 +1,25 @@
 ﻿namespace Alpha.Results.Site.Services.Impl
 {
-    using System;
-    using System.Diagnostics.CodeAnalysis;
     using Criteria;
     using Fanex.Caching;
+    using Fanex.Caching.Memory;
     using Fanex.Data.Repository;
     using Models.Dtos;
+    using System;
+    using System.Diagnostics.CodeAnalysis;
 
     public class ReportDateService : IReportDateService
     {
         private const string BalanceUpAndMoveBetsDateCacheKey = "Alpha.Results.Site.Services.Impl.BalanceUpAndMoveBetsDate";
 
         private readonly IDynamicRepository _dynamicRepository;
-        private readonly ICache _cacheManager;
+        private readonly CacheService _cacheService;
+        private static CacheService defaultCacheService = new CacheServiceImpl(new MemoryCache());
 
-        public ReportDateService(IDynamicRepository dynamicRepository, ICache cacheManager)
+        public ReportDateService(IDynamicRepository dynamicRepository, CacheService cacheService)
         {
             _dynamicRepository = dynamicRepository ?? new DynamicRepository();
-            _cacheManager = cacheManager ?? CacheService.CreateInstance(CacheType.MemoryCache);
+            _cacheService = cacheService ?? defaultCacheService;
         }
 
         [SuppressMessage("Microsoft.Usage", "CA2201:DoNotRaiseReservedExceptionTypes", Justification = "Reviewed")]
@@ -34,7 +36,7 @@
         [SuppressMessage("Microsoft.Usage", "CA2201:DoNotRaiseReservedExceptionTypes", Justification = "Reviewed!")]
         public BalanceUpAndMoveBetsDate GetBalanceUpAndMoveBetsDate()
         {
-            var data = _cacheManager.Get<BalanceUpAndMoveBetsDate>(BalanceUpAndMoveBetsDateCacheKey);
+            var data = _cacheService.Get<BalanceUpAndMoveBetsDate>(BalanceUpAndMoveBetsDateCacheKey);
 
             if (data == null)
             {
@@ -45,7 +47,7 @@
                     throw new Exception("Cannot get balance up date and move bets date.");
                 }
 
-                _cacheManager.Set(BalanceUpAndMoveBetsDateCacheKey, data);
+                _cacheService.Set(BalanceUpAndMoveBetsDateCacheKey, data);
             }
 
             return data;

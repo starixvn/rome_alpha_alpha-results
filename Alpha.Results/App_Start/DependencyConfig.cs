@@ -1,14 +1,10 @@
 ﻿namespace Alpha.Results.Site.App_Start
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Diagnostics.CodeAnalysis;
-    using System.Reflection;
-    using System.Web.Mvc;
     using Alpha.Results.Site.Helpers;
     using DataAccesses;
     using DataAccesses.Impl;
     using Fanex.Caching;
+    using Fanex.Caching.Memory;
     using Fanex.Data.Repository;
     using Fanex.Game.Keno.Business;
     using Fanex.Logging;
@@ -34,6 +30,11 @@
     using SimpleInjector.Integration.Web.Mvc;
     using Sunplus.Agent.Model.Base;
     using Sunplus.Agent.Model.Entities;
+    using System;
+    using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
+    using System.Reflection;
+    using System.Web.Mvc;
 
     public static class DependencyConfig
     {
@@ -82,7 +83,7 @@
 
         private static void RegisterCrossCuttingConcerns(Container container)
         {
-            container.Register(() => CacheService.CreateInstance(CacheType.MemoryCache), Lifestyle.Singleton);
+            container.Register<CacheService>(() => new CacheServiceImpl(new MemoryCache()), Lifestyle.Singleton);
             container.Register(() => Logger.Log, Lifestyle.Singleton);
         }
 

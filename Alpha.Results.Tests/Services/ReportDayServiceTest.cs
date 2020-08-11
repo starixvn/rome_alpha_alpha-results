@@ -20,7 +20,7 @@
         {
             // Arrange
             var repository = Substitute.For<IDynamicRepository>();
-            var cacheManager = Substitute.For<ICache>();
+            var cacheManager = Substitute.For<CacheService>();
 
             var expectedResults = new BalanceUpAndMoveBetsDate
             {
@@ -44,7 +44,7 @@
         {
             // Arrange
             var repository = Substitute.For<IDynamicRepository>();
-            var cacheManager = Substitute.For<ICache>();
+            var cacheManager = Substitute.For<CacheService>();
 
             var expectedResults = new BalanceUpAndMoveBetsDate
             {
@@ -67,7 +67,7 @@
         public void GetBalanceUpAndMoveBetsDate_DataExistInCache_MustReturnDataGetFromCache()
         {
             // Arrange
-            var cacheManager = Substitute.For<ICache>();
+            var cacheManager = Substitute.For<CacheService>();
 
             var expectedResults = new BalanceUpAndMoveBetsDate
             {
@@ -93,7 +93,7 @@
         public void GetBalanceUpAndMoveBetsDate_CacheKeyDoesNotExist_ReturnsDateGetFromRepository()
         {
             // Arrange
-            var cacheManager = Substitute.For<ICache>();
+            var cacheManager = Substitute.For<CacheService>();
 
             var balanceUpDate = new DateTime(1981, 2, 15);
             var moveBetsDay = new DateTime(2000, 12, 1);
@@ -116,7 +116,7 @@
         {
             // Arrange
             BalanceUpAndMoveBetsDate data = null;
-            var cacheManager = Substitute.For<ICache>();
+            var cacheManager = Substitute.For<CacheService>();
             cacheManager
                 .Get<BalanceUpAndMoveBetsDate>(BalanceUpAndMoveBetsDateCacheKey)
                 .Returns(data);
@@ -138,7 +138,7 @@
         public void GetBalanceUpAndMoveBetsDate_DataGetFromRepositoryIsNotNull_MustBeSetToCache()
         {
             // Arrange
-            var cacheManager = Substitute.For<ICache>();
+            var cacheManager = Substitute.For<CacheService>();
 
             var balanceUpDate = new DateTime(1981, 2, 15);
             var moveBetsDate = new DateTime(2000, 12, 01);
