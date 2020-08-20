@@ -24,15 +24,7 @@ namespace Alpha.Results.Site.Tests.Handlers
         public void SabaClub_Always_ThrowsTypeInitializationException()
         {
             // Arrange
-            var message = new SabaClubResultQuery
-            {
-                CustId = Arg.Any<string>(),
-                GameRoundId = Arg.Any<string>(),
-                Language = Arg.Any<string>(),
-                SportId = Arg.Any<int>(),
-                GameId = Arg.Any<string>(),
-                SiteId = Arg.Any<string>(),
-            };
+            var message = new SabaClubResultQuery();
 
             // Assert
             Assert.Throws<TypeInitializationException>(new TestDelegate(() => handler.Handle(message)));

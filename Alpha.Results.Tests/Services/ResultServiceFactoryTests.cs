@@ -84,7 +84,7 @@ namespace Alpha.Results.Site.Tests.Services
         public void CreateProductResultService_SportIsNumbergame_ReturnNumbergameResultService()
         {
             //// Act
-            var resultService = _resultServiceFactory.CreateProductResultService(SportTypeIdConstants.NumberGame, Arg.Any<int>());
+            var resultService = _resultServiceFactory.CreateProductResultService(SportTypeIdConstants.NumberGame, 0);
 
             //// Assert
             Assert.IsTrue(resultService is NumberGameResultService);
@@ -94,7 +94,7 @@ namespace Alpha.Results.Site.Tests.Services
         public void CreateProductResultService_SportIsAllBet_ReturnAllBetResultService()
         {
             //// Act
-            var resultService = _resultServiceFactory.CreateProductResultService(SportTypeIdConstants.AllBet, Arg.Any<int>());
+            var resultService = _resultServiceFactory.CreateProductResultService(SportTypeIdConstants.AllBet, 0);
 
             //// Assert
             Assert.IsTrue(resultService is AllBetCasinoResultService);
@@ -119,7 +119,7 @@ namespace Alpha.Results.Site.Tests.Services
         public void CreateProductResultService_SportIsGoldDeluxe_ReturnGoldDeluxeResultService()
         {
             //// Act
-            var resultService = _resultServiceFactory.CreateProductResultService(SportTypeIdConstants.GoldDeluxe, Arg.Any<int>());
+            var resultService = _resultServiceFactory.CreateProductResultService(SportTypeIdConstants.GoldDeluxe, 0);
 
             //// Assert
             Assert.IsTrue(resultService is GoldDeluxeResultService);
@@ -127,8 +127,7 @@ namespace Alpha.Results.Site.Tests.Services
 
         [TestCase(SportTypeIdConstants.Athletics)]
         [TestCase(SportTypeIdConstants.Equestrian)]
-        public void CreateProductResultService_OtherSports_ReturnSportsbookResultService(
-            int sportId)
+        public void CreateProductResultService_OtherSports_ReturnSportsbookResultService(int sportId)
         {
             //// Act
             var resultService = _resultServiceFactory.CreateProductResultService(sportId, 0);

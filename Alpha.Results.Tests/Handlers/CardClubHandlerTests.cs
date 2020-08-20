@@ -26,11 +26,11 @@ namespace Alpha.Results.Site.Tests.Handlers
             // Arrange
             var message = new CardClubResultQuery
             {
-                CustId = Arg.Any<string>(),
-                GameTypeId = Arg.Any<string>(),
-                Language = Arg.Any<string>(),
-                SportTypeId = Arg.Any<int>(),
-                TransId3rd = Arg.Any<string>(),
+                CustId = "123",
+                GameTypeId = "1",
+                Language = "En",
+                SportTypeId = 1,
+                TransId3rd = "123",
             };
 
             // Assert
