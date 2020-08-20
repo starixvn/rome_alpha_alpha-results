@@ -51,7 +51,7 @@ namespace Alpha.Results.Site.Tests.Services.Products
         public void GetResultDetails_Always_ReceivedCall()
         {
             // Arrange
-            var message = new NormalResultDetailsQuery(Arg.Any<IDictionary<int, bool>>(), "en-US");
+            var message = new NormalResultDetailsQuery(new Dictionary<int, bool>(), "en-US");
 
             // Act
             service.GetResultDetails(message);
