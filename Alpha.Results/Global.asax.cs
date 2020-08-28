@@ -45,7 +45,7 @@
             ShareSession.Init();
             StaticResources.Init(StaticResources.GetBuildVersion());
 
-            GlobalFilters.Filters.Add(new NetThrottlingFilterAttribute("Any"));
+            GlobalFilters.Filters.Add(new NetThrottlingFilterAttribute());
             GlobalFilters.Filters.Add(new CheckUMFilter());
             GlobalFilters.Filters.Add(new CheckBelongingFilter());
             GlobalFilters.Filters.Add(new NoCacheFilter());
