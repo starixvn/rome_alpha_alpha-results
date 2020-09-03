@@ -232,8 +232,8 @@
       <HintPath>..\packages\Fanex.Result.Core.Voidbridge.1.0.2\lib\net40\Fanex.Result.Core.Voidbridge.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Fanex.Result.ThirdParty, Version=1.0.9.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Result.ThirdParty.1.0.9\lib\net461\Fanex.Result.ThirdParty.dll</HintPath>
+    <Reference Include="Fanex.Result.ThirdParty, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Result.ThirdParty.1.1.0.0\lib\net461\Fanex.Result.ThirdParty.dll</HintPath>
     </Reference>
     <Reference Include="IBCCrypt, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\IBCCrypt.1.1.0.0\lib\IBCCrypt.dll</HintPath>
