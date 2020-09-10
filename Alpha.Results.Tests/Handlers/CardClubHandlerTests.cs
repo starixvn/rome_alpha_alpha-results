@@ -34,7 +34,7 @@ namespace Alpha.Results.Site.Tests.Handlers
             };
 
             // Assert
-            Assert.Throws<TypeInitializationException>(new TestDelegate(() => handler.Handle(message)));
+            Assert.Throws<NotImplementedException>(new TestDelegate(() => handler.Handle(message)));
         }
 
         [Test]
