@@ -4,7 +4,6 @@
     using DataAccesses;
     using DataAccesses.Impl;
     using Fanex.Caching;
-    using Fanex.Caching.Memory;
     using Fanex.Data.Repository;
     using Fanex.Game.Keno.Business;
     using Fanex.Logging;
@@ -83,7 +82,6 @@
 
         private static void RegisterCrossCuttingConcerns(Container container)
         {
-            container.Register<CacheService>(() => new CacheServiceImpl(new MemoryCache()), Lifestyle.Singleton);
             container.Register(() => Logger.Log, Lifestyle.Singleton);
         }
 
@@ -91,6 +89,7 @@
         {
             container.RegisterPerWebRequest<IUserSession, UserSessionExt>();
             container.RegisterSingleton<IRemotingRefService, RemotingRefService>();
+            container.RegisterSingleton<ICacheService>(new CacheService());
             container.RegisterSingleton<IRefDataHelper, RefDataHelper>();
             container.RegisterSingleton<ICacheRefService, CacheRefService>();
 

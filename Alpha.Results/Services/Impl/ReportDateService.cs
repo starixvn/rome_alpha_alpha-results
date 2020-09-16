@@ -2,7 +2,6 @@
 {
     using Criteria;
     using Fanex.Caching;
-    using Fanex.Caching.Memory;
     using Fanex.Data.Repository;
     using Models.Dtos;
     using System;
@@ -13,13 +12,12 @@
         private const string BalanceUpAndMoveBetsDateCacheKey = "Alpha.Results.Site.Services.Impl.BalanceUpAndMoveBetsDate";
 
         private readonly IDynamicRepository _dynamicRepository;
-        private readonly CacheService _cacheService;
-        private static CacheService defaultCacheService = new CacheServiceImpl(new MemoryCache());
+        private readonly ICacheService _cacheService;
 
-        public ReportDateService(IDynamicRepository dynamicRepository, CacheService cacheService)
+        public ReportDateService(IDynamicRepository dynamicRepository, ICacheService cacheService)
         {
             _dynamicRepository = dynamicRepository ?? new DynamicRepository();
-            _cacheService = cacheService ?? defaultCacheService;
+            _cacheService = cacheService ?? new CacheService();
         }
 
         [SuppressMessage("Microsoft.Usage", "CA2201:DoNotRaiseReservedExceptionTypes", Justification = "Reviewed")]
