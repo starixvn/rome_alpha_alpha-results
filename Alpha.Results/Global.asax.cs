@@ -2,6 +2,7 @@
 {
     using Alpha.Logging;
     using Alpha.NetThrottling.Mvc;
+    using Alpha.NetThrottling.Utils;
     using App_Start;
     using Auth.Filters;
     using Configurations;
@@ -17,6 +18,7 @@
     using Sunplus.Agent.Model.Entities;
     using System;
     using System.Collections.Generic;
+    using System.Web;
     using System.Web.Mvc;
     using System.Web.Optimization;
     using System.Web.Routing;
@@ -68,8 +70,13 @@
             }
 
             Exception ex = Server.GetLastError();
-            var currentCustomer = UserSession.Current;
+            HttpException httpException = ex as HttpException;
+            if (httpException != null && httpException.GetHttpCode() == HttpStatusCodes.TooManyRequests)
+            {
+                return;
+            }
 
+            var currentCustomer = UserSession.Current;
             ExceptionHandler.Handle(ex,
                 new Dictionary<string, object>
                 {
