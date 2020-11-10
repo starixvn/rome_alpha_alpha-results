@@ -49,6 +49,8 @@
 
                 case SportTypeIdConstants.GTCasino:
                     return new GTCasinoResultService();
+                case SportTypeIdConstants.WM:
+                    return new WMResultService();
 
                 case SportTypeIdConstants.VirtualHorsesRacing:
                 case SportTypeIdConstants.VirtualGreyhounds:
