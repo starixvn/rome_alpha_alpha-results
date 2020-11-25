@@ -111,10 +111,11 @@
             var leagueName = message.LeagueId > 0
                 ? _cacheRefService.GetLeagueName(message.LeagueId)
                 : _cacheRefService.GetBetTypeName(message.BetTypeId);
+            leagueName = string.IsNullOrEmpty(leagueName) ? leagueName : $" - {leagueName}";
 
             var viewModel = new NormalDetailViewModel
             {
-                Title = $"{sportName} - {leagueName}",
+                Title = $"{sportName}{leagueName}",
                 HtmlResults = _normalResultService.GetResultDetails(message)
             };
 
