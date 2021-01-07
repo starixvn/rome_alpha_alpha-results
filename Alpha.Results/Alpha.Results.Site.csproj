@@ -193,6 +193,9 @@
       <HintPath>..\packages\Fanex.Result.Core.Happy5.1.0.0.0\lib\net40\Fanex.Result.Core.Happy5.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Fanex.Result.Core.Happy5LinkedGames, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Result.Core.Happy5LinkedGames.1.0.0-beta-06\lib\Fanex.Result.Core.Happy5LinkedGames.dll</HintPath>
+    </Reference>
     <Reference Include="Fanex.Result.Core.Joker, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core.Joker.1.0.0.0\lib\Fanex.Result.Core.Joker.dll</HintPath>
     </Reference>
@@ -1165,6 +1168,7 @@
     <Content Include="Views\VirtualGames\Detail.cshtml" />
     <Content Include="Views\TableGames\Index.cshtml" />
     <Content Include="Views\SabaClub\Index.cshtml" />
+    <Content Include="Views\Happy5LinkedGames\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs">
@@ -1187,6 +1191,7 @@
     <Compile Include="Controllers\SabaClubController.cs" />
     <Compile Include="Controllers\CardClubController.cs" />
     <Compile Include="Controllers\TableGamesController.cs" />
+    <Compile Include="Controllers\Happy5LinkedGamesController.cs" />
     <Compile Include="Controllers\VirtualGamesController.cs" />
     <Compile Include="Controllers\KenoController.cs" />
     <Compile Include="Controllers\LotteryController.cs" />
@@ -1233,6 +1238,7 @@
     <Compile Include="Handlers\CardClubHandler.cs" />
     <Compile Include="Handlers\KenoResultHandler.cs" />
     <Compile Include="Handlers\TableGamesResultHandler.cs" />
+    <Compile Include="Handlers\Happy5LinkedGamesResultHandler.cs" />
     <Compile Include="Handlers\VirtualGamesResultHandler.cs" />
     <Compile Include="Handlers\LotteryResultHandler.cs" />
     <Compile Include="Handlers\NormalResultHandler.cs" />
@@ -1252,6 +1258,7 @@
     <Compile Include="Models\Requests\CardClubResultQuery.cs" />
     <Compile Include="Models\Requests\TableGamesResultQuery.cs" />
     <Compile Include="Models\Requests\KenoResultQuery.cs" />
+    <Compile Include="Models\Requests\Happy5LinkedGamesResultQuery.cs" />
     <Compile Include="Models\Requests\VirtualGames\VirtualGamesDetailResultQuery.cs" />
     <Compile Include="Models\Requests\VirtualGames\VirtualGamesResultQuery.cs" />
     <Compile Include="Models\Requests\LotteryResultQuery.cs" />
@@ -1261,6 +1268,7 @@
     <Compile Include="Models\Requests\ThirdPartyDetailResultQuery.cs" />
     <Compile Include="Models\Requests\ThirdPartyResultQuery.cs" />
     <Compile Include="Models\Sport.cs" />
+    <Compile Include="Models\Views\Happy5LinkedGamesViewModel.cs" />
     <Compile Include="Models\Views\SabaClubViewModel.cs" />
     <Compile Include="Models\Views\CardClubViewModel.cs" />
     <Compile Include="Models\Views\TableGamesResultViewModel.cs" />
