@@ -201,6 +201,9 @@
     </Reference>
     <Reference Include="Fanex.Result.Core.LinkedGames, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core.LinkedGames.1.0.0\lib\net40\Fanex.Result.Core.LinkedGames.dll</HintPath>
+      </Reference>
+    <Reference Include="Fanex.Result.Core.MaxGame, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Result.Core.MaxGame.1.0.0-beta-03\lib\net40\Fanex.Result.Core.MaxGame.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.Result.Core.MetricGaming, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core-MetricGaming.1.0.1\lib\net40\Fanex.Result.Core.MetricGaming.dll</HintPath>
@@ -1259,6 +1262,7 @@
     <Compile Include="Models\Requests\TableGamesResultQuery.cs" />
     <Compile Include="Models\Requests\KenoResultQuery.cs" />
     <Compile Include="Models\Requests\Happy5LinkedGamesResultQuery.cs" />
+    <Compile Include="Models\Requests\MaxGameResultQuery.cs" />
     <Compile Include="Models\Requests\VirtualGames\VirtualGamesDetailResultQuery.cs" />
     <Compile Include="Models\Requests\VirtualGames\VirtualGamesResultQuery.cs" />
     <Compile Include="Models\Requests\LotteryResultQuery.cs" />

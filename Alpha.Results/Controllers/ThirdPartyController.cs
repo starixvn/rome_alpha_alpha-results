@@ -29,5 +29,12 @@
 
             return View("~/Views/ThirdParty/Index.cshtml", mediator.Send(message));
         }
+
+        public ActionResult MaxGameResult(MaxGameResultQuery message)
+        {
+            message.Language = userSession.Language;
+
+            return View("~/Views/ThirdParty/Index.cshtml", mediator.Send(message));
+        }
     }
 }
