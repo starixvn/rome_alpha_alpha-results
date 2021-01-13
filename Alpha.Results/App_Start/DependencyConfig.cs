@@ -17,6 +17,7 @@
     using Fanex.Result.Core.Base.Models;
     using Fanex.Result.Core.Base.Utilities;
     using Fanex.Result.Core.GlobalGaming;
+    using Fanex.Result.Core.LinkedGames;
     using Fanex.Result.Core.RemotingRef;
     using Fanex.Result.Core.VirtualGames;
     using Fanex.Result.Core.Voidbridge;
@@ -105,6 +106,7 @@
             container.Register<ProductResultServiceFactory, ProductResultServiceFactoryImpl>();
             container.Register<IVirtualGamesResult, VirtualGamesResult>(Lifestyle.Scoped);
             container.Register<BrowserHelper, BrowserHelperImpl>(Lifestyle.Singleton);
+            container.Register<ILinkedGamesResult, LinkedGamesResult>(Lifestyle.Scoped);
         }
 
         private static void RegisterDataAccesses(Container container)

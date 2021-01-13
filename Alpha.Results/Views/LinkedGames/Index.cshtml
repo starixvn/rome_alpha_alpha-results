@@ -1,0 +1,16 @@
+﻿@model LinkedGamesViewModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+@Styles.Render(BundleConfig.ThirdPartyResultStyleBundleUrl)
+    <title>@Model.Title </title>
+</head>
+<body>
+    <div class="third-party-result">
+        <iframe src="@Model.Result" frameborder="0" class="handhistory-iframe"></iframe>
+    </div>
+</body>
+</html>
