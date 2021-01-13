@@ -3,7 +3,7 @@ using MediatR;
 
 namespace Alpha.Results.Site.Models.Requests
 {
-    public class Happy5LinkedGamesResultQuery : IRequest<Happy5LinkedGamesViewModel>
+    public class LinkedGamesResultQuery : IRequest<LinkedGamesViewModel>
     {
         public string Language { get; set; }
 

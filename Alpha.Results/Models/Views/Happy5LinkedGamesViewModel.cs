@@ -1,6 +1,6 @@
 ﻿namespace Alpha.Results.Site.Models.Views
 {
-    public class Happy5LinkedGamesViewModel
+    public class LinkedGamesViewModel
     {
         public string Title { get; set; }
 

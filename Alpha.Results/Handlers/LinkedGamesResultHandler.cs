@@ -4,28 +4,28 @@
     using Alpha.Results.Site.Helpers;
     using Alpha.Results.Site.Models.Views;
     using Alpha.Results.Site.Services;
-    using Fanex.Result.Core.Happy5LinkedGames;
+    using Fanex.Result.Core.LinkedGames;
     using MediatR;
     using Models.Requests;
 
-    public class Happy5LinkedGamesResultHandler :
-        IRequestHandler<Happy5LinkedGamesResultQuery, Happy5LinkedGamesViewModel>
+    public class LinkedGamesResultHandler :
+        IRequestHandler<LinkedGamesResultQuery, LinkedGamesViewModel>
     {
-        private readonly IHappy5LinkedGamesResult result;
+        private readonly ILinkedGamesResult result;
         private readonly BrowserHelper browserHelper;
         private readonly ICacheRefService cacheRefService;
 
-        public Happy5LinkedGamesResultHandler(IHappy5LinkedGamesResult result, BrowserHelper browserHelper, ICacheRefService cacheRefService)
+        public LinkedGamesResultHandler(ILinkedGamesResult result, BrowserHelper browserHelper, ICacheRefService cacheRefService)
         {
             this.result = result;
             this.browserHelper = browserHelper;
             this.cacheRefService = cacheRefService;
         }
-        public Happy5LinkedGamesViewModel Handle(Happy5LinkedGamesResultQuery message)
+        public LinkedGamesViewModel Handle(LinkedGamesResultQuery message)
         {
             var url = result.GetResult(message.CustId, message.TransId3rd, IsDesktop(), message.Language);
 
-            return new Happy5LinkedGamesViewModel
+            return new LinkedGamesViewModel
             {
                 Title = $"{cacheRefService.GetSportName(message.SportTypeId)} - {cacheRefService.GetBetTypeName(message.BetTypeId)}",
                 Result = url

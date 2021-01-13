@@ -6,24 +6,24 @@
     using Sunplus.Agent.Model.Entities;
     using Web;
 
-    public class Happy5LinkedGamesController : BaseController
+    public class LinkedGamesController : BaseController
     {
         private readonly IMediator _mediator;
         private readonly IUserSession _userSession;
 
-        public Happy5LinkedGamesController(IMediator mediator, IUserSession userSession)
+        public LinkedGamesController(IMediator mediator, IUserSession userSession)
         {
             _mediator = mediator;
             _userSession = userSession;
         }
        
-        public ActionResult Index(Happy5LinkedGamesResultQuery query)
+        public ActionResult Index(LinkedGamesResultQuery query)
         {
             query.Language = _userSession.Language;
 
             var viewModel = _mediator.Send(query);
 
-            return View("~/Views/Happy5LinkedGames/Index.cshtml", (object)viewModel);
+            return View("~/Views/LinkedGames/Index.cshtml", (object)viewModel);
         }
     }
 }
