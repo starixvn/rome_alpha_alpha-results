@@ -11,5 +11,8 @@
         public static DataSet SportsBookResultData => sportsBookResultData;
 
         public static DataSet SportsBookResultDetailsData => sportsBookResultDetailsData;
+
+        public static DataSet BetBuilderResultDetailsData 
+            => FileHelper.LoadDataSet(@"\Database\SportsBook\BetBuilderResultDetails.xml");
     }
 }

@@ -8,6 +8,7 @@
     using Fanex.Data;
     using Fanex.Result.Core.Sportsbook.DTO;
     using KellermanSoftware.CompareNetObjects;
+    using Newtonsoft.Json;
     using NSubstitute;
     using NUnit.Framework;
     using Site.Criteria;
@@ -215,6 +216,52 @@
 
             // Assert
             Assert.IsTrue(compareLogic.Compare(expectedData, actualData).AreEqual);
+        }
+
+        [Test]
+        public void GetBetBuilderInformation_HasData_ReturnsDataFromObjectDb()
+        {
+            // Arrange
+            var criteria = new GetBetBuidlerResultDetailsCriteria();
+
+            var dataReader = SportsBookDatabase.BetBuilderResultDetailsData.CreateDataReader();
+            objectDb.ExecuteReader(Arg.Any<Hashtable>()).Returns(dataReader);
+
+            var expectedData = new Sportsbook
+            {
+                AwayId = 1201,
+                HomeId = 1200,
+                BetStatus = "1FL:1-1;FL:1-1;",
+                LeagueId = 165,
+                MatchId = 70000113,
+                EventStatus = "completed",
+                FinalAwayScore = 1,
+                HtAwayScore = 1,
+                Color = "#ff0000",
+                FinalHomeScore = 0,
+                HtHomeScore = 0,
+                EventDate = new DateTime(2017, 11, 16),
+                IsNeutral = false,
+                KickOffTime = new DateTime(2017, 11, 16),
+                MatchCode = "QC_NAP_Delete_Parlay",
+                GoalRecord = "A;",
+                IsHTCal = true,
+                Calculate = true,
+                RefNo = string.Empty,
+                BetBuilderDetails = new List<BetBuilderDetail>
+                    {
+                        new BetBuilderDetail { SelectionType = 12345, Result ="01", SelectionName = null}
+                    },
+                BetID = "1",
+                Bettype = 1,
+                SettlementStatus = 0
+            };
+
+            // Act
+            var actualData = dataAccess.GetBetBuilderInformation(criteria);
+
+            // Assert
+            Assert.AreEqual(JsonConvert.SerializeObject(expectedData), JsonConvert.SerializeObject(actualData));
         }
     }
 }

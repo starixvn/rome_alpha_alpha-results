@@ -4,6 +4,7 @@
     using System.Collections;
     using System.Collections.Generic;
     using System.Data;
+    using Alpha.Results.Site.Tests.Database.SportsBook;
     using Fanex.Data;
     using Fanex.Result.Core.NumberGame.DTO;
     using KellermanSoftware.CompareNetObjects;
@@ -78,6 +79,68 @@
             objectDb.ExecuteReader(Arg.Any<Hashtable>()).Returns(dataTable.CreateDataReader());
 
             var expectedData = new List<NumberGame>();
+
+            // Act
+            var actualData = dataAccess.GetNumberGameResultDetails(criteria);
+
+            // Assert
+            Assert.IsTrue(compareLogic.Compare(expectedData, actualData).AreEqual);
+        }
+
+        [Test]
+        public void GetNumberGameResults_HasData_ReturnsDataFromObjectDb()
+        {
+            // Arrange
+            var criteria = new GetNumberGameResultCriteria();
+
+            var dataReader = NumberGameDatabase.ResultData.CreateDataReader();
+            objectDb.ExecuteReader(Arg.Any<Hashtable>()).Returns(dataReader);
+
+            var expectedData = new List<NumberGame>
+            {
+                new NumberGame
+                {
+                    LeagueId = 1,
+                    MatchId = 1201,
+                    EventStatus = "completed",
+                    EventDate = new DateTime(2017,11,16),
+                    KickOffTime = new DateTime(2017,11,16),
+                    MatchCode = "1200",
+                    Seg = new List<int> { 1, 2},
+                    Ball = new List<int> { 1, 2 }
+                }
+            };
+
+            // Act
+            var actualData = dataAccess.GetNumberGameResults(criteria);
+
+            // Assert
+            Assert.IsTrue(compareLogic.Compare(expectedData, actualData).AreEqual);
+        }
+
+        [Test]
+        public void GetNumberGameResultDetails_HasData_ReturnsDataFromObjectDb()
+        {
+            // Arrange
+            var criteria = new GetNumberGameResultDetailsCriteria();
+
+            var dataReader = NumberGameDatabase.ResultData.CreateDataReader();
+            objectDb.ExecuteReader(Arg.Any<Hashtable>()).Returns(dataReader);
+
+            var expectedData = new List<NumberGame>
+            {
+                new NumberGame
+                {
+                    LeagueId = 1,
+                    MatchId = 1201,
+                    EventStatus = "completed",
+                    EventDate = new DateTime(2017,11,16),
+                    KickOffTime = new DateTime(2017,11,16),
+                    MatchCode = "1200",
+                    Seg = new List<int> { 1, 2 },
+                    Ball = new List<int> { 1, 2 }
+                }
+            };
 
             // Act
             var actualData = dataAccess.GetNumberGameResultDetails(criteria);

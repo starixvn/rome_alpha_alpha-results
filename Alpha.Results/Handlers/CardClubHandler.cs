@@ -9,7 +9,7 @@
     using Fanex.Result.Core.CardClub;
     using MediatR;
 
-    public class CardClubHandler : IRequestHandler<CardClubResultQuery, CardClubViewModel>
+    public class CardClubHandler : IRequestHandler<CardClubResultQuery, ThirdPartyProductViewModel>
     {
         private readonly ICacheRefService cacheRefService;
 
@@ -18,7 +18,7 @@
             this.cacheRefService = cacheRefService;
         }
 
-        public CardClubViewModel Handle(CardClubResultQuery message)
+        public ThirdPartyProductViewModel Handle(CardClubResultQuery message)
         {
             Check.Argument.IsNotNull(message, "message");
             string result;
@@ -37,7 +37,7 @@
                 isSuccess = false;
             }
 
-            var viewModel = new CardClubViewModel
+            var viewModel = new ThirdPartyProductViewModel
             {
                 Title = $"{cacheRefService.GetSportName(message.SportTypeId)} - {cacheRefService.GetBetTypeName(Convert.ToInt32(message.GameTypeId))}",
                 Result = result,

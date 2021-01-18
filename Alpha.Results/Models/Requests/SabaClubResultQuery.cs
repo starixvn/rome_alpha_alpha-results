@@ -4,7 +4,7 @@
     using Alpha.Results.Site.Models.Views;
     using MediatR;
 
-    public class SabaClubResultQuery : IRequest<SabaClubViewModel>
+    public class SabaClubResultQuery : IRequest<ThirdPartyProductViewModel>
     {
         public string CustId { get; set; }
 
