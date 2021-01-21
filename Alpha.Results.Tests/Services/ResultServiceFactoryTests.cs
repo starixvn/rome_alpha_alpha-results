@@ -1,7 +1,5 @@
-﻿using NUnit.Framework;
-namespace Alpha.Results.Site.Tests.Services
+﻿namespace Alpha.Results.Site.Tests.Services
 {
-    using NSubstitute;
     using NUnit.Framework;
     using Site.Constants;
     using Site.Services.Impl;
@@ -157,6 +155,56 @@ namespace Alpha.Results.Site.Tests.Services
 
             //// Assert
             Assert.IsTrue(resultService is BetBuilderResultService);
+        }
+
+        [Test]
+        public void CreateProductResultService_SAGaming_ReturnSAGamingResultService()
+        {
+            //// Act
+            var resultService = _resultServiceFactory.CreateProductResultService(SportTypeIdConstants.SAGaming, 0);
+
+            //// Assert
+            Assert.IsTrue(resultService is SAGamingResultService);
+        }
+
+        [Test]
+        public void CreateProductResultService_GTCasino_GTCasinoResultService()
+        {
+            //// Act
+            var resultService = _resultServiceFactory.CreateProductResultService(SportTypeIdConstants.GTCasino, 0);
+
+            //// Assert
+            Assert.IsTrue(resultService is GTCasinoResultService);
+        }
+
+        [Test]
+        public void CreateProductResultService_SexyGaming_ReturnSAGamingResultService()
+        {
+            //// Act
+            var resultService = _resultServiceFactory.CreateProductResultService(SportTypeIdConstants.SexyGaming, 0);
+
+            //// Assert
+            Assert.IsTrue(resultService is SexyGamingResultService);
+        }
+
+        [Test]
+        public void CreateProductResultService_WM_ReturnWMResultService()
+        {
+            //// Act
+            var resultService = _resultServiceFactory.CreateProductResultService(SportTypeIdConstants.WM, 0);
+
+            //// Assert
+            Assert.IsTrue(resultService is WMResultService);
+        }
+
+        [Test]
+        public void CreateProductResultService_LGVirtualSports_ReturnLeapGamingResultService()
+        {
+            //// Act
+            var resultService = _resultServiceFactory.CreateProductResultService(SportTypeIdConstants.LGVirtualSports, 0);
+
+            //// Assert
+            Assert.IsTrue(resultService is LeapGamingResultService);
         }
     }
 }

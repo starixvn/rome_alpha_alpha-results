@@ -14,7 +14,6 @@
         private readonly IResultEngineAdapter _resultEngineAdapter;
 
         public LeapGamingResultService(
-            IDynamicRepository dynamicRepository = null,
             IResultEngineAdapter resultEngineAdapter = null)
         {
             //// Still using poorman DI here because result service factory need to create it manual

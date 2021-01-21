@@ -202,6 +202,9 @@
     <Reference Include="Fanex.Result.Core.LinkedGames, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core.LinkedGames.1.0.0\lib\net40\Fanex.Result.Core.LinkedGames.dll</HintPath>
     </Reference>
+    <Reference Include="Fanex.Result.Core.MaxGame, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Result.Core.MaxGame.1.0.0\lib\net40\Fanex.Result.Core.MaxGame.dll</HintPath>
+    </Reference>
     <Reference Include="Fanex.Result.Core.MetricGaming, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core-MetricGaming.1.0.1\lib\net40\Fanex.Result.Core.MetricGaming.dll</HintPath>
       <Private>True</Private>
@@ -1234,8 +1237,12 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="Handlers\SabaClubHandler.cs" />
-    <Compile Include="Handlers\CardClubHandler.cs" />
+    <Compile Include="Handlers\SabaClubHandler.cs">
+      <SonarQubeExclude>true</SonarQubeExclude>
+    </Compile>
+    <Compile Include="Handlers\CardClubHandler.cs">
+      <SonarQubeExclude>true</SonarQubeExclude>
+    </Compile>
     <Compile Include="Handlers\KenoResultHandler.cs" />
     <Compile Include="Handlers\TableGamesResultHandler.cs" />
     <Compile Include="Handlers\LinkedGamesResultHandler.cs" />
@@ -1259,6 +1266,7 @@
     <Compile Include="Models\Requests\TableGamesResultQuery.cs" />
     <Compile Include="Models\Requests\KenoResultQuery.cs" />
     <Compile Include="Models\Requests\Happy5LinkedGamesResultQuery.cs" />
+    <Compile Include="Models\Requests\MaxGameResultQuery.cs" />
     <Compile Include="Models\Requests\VirtualGames\VirtualGamesDetailResultQuery.cs" />
     <Compile Include="Models\Requests\VirtualGames\VirtualGamesResultQuery.cs" />
     <Compile Include="Models\Requests\LotteryResultQuery.cs" />
@@ -1269,11 +1277,10 @@
     <Compile Include="Models\Requests\ThirdPartyResultQuery.cs" />
     <Compile Include="Models\Sport.cs" />
     <Compile Include="Models\Views\Happy5LinkedGamesViewModel.cs" />
-    <Compile Include="Models\Views\SabaClubViewModel.cs" />
-    <Compile Include="Models\Views\CardClubViewModel.cs" />
     <Compile Include="Models\Views\TableGamesResultViewModel.cs" />
     <Compile Include="Models\Views\LotteryResultViewModel.cs" />
     <Compile Include="Models\Views\OutrightResultExcelViewModel.cs" />
+    <Compile Include="Models\Views\ThirdPartyProductViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ICacheRefService.cs" />
     <Compile Include="Services\Impl\CacheRefService.cs" />
@@ -1295,7 +1302,9 @@
     <Compile Include="Services\Impl\ReportDateService.cs" />
     <Compile Include="Services\Impl\Products\SportsbookResultService.cs" />
     <Compile Include="Services\Impl\Products\VirtualRacingResultService.cs" />
-    <Compile Include="Services\Impl\ResultEngineAdapter.cs" />
+    <Compile Include="Services\Impl\ResultEngineAdapter.cs">
+      <SonarQubeExclude>true</SonarQubeExclude>
+    </Compile>
     <Compile Include="Services\Impl\ResultServiceFactory.cs" />
     <Compile Include="Services\INormalResultService.cs" />
     <Compile Include="Services\IOutrightResultService.cs" />

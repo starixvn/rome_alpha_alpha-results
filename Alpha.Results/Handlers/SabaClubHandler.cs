@@ -9,7 +9,7 @@
     using Fanex.Result.Core.SabaClub;
     using MediatR;
 
-    public class SabaClubHandler : IRequestHandler<SabaClubResultQuery, SabaClubViewModel>
+    public class SabaClubHandler : IRequestHandler<SabaClubResultQuery, ThirdPartyProductViewModel>
     {
         private readonly ICacheRefService cacheRefService;
 
@@ -18,7 +18,7 @@
             this.cacheRefService = cacheRefService;
         }
 
-        public SabaClubViewModel Handle(SabaClubResultQuery message)
+        public ThirdPartyProductViewModel Handle(SabaClubResultQuery message)
         {
             Check.Argument.IsNotNull(message, "message");
             string result;
@@ -37,7 +37,7 @@
                 isSuccess = false;
             }
 
-            var viewModel = new SabaClubViewModel
+            var viewModel = new ThirdPartyProductViewModel
             {
                 Title = $"{cacheRefService.GetSportName(message.SportId)} - {cacheRefService.GetBetTypeName(Convert.ToInt32(message.GameId))}",
                 Result = result,

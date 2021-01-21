@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<NumberGameTable>
+  <NumberGame>
+    <leagueid>1</leagueid >
+    <matchid>1201</matchid >
+    <eventstatus>completed</eventstatus>
+    <eventdate>2017-11-16</eventdate>
+    <kickofftime>2017-11-16</kickofftime>
+    <matchcode>1200</matchcode>
+    <seq>1</seq>
+    <number>1</number>
+  </NumberGame>
+  <NumberGame>
+    <leagueid>1</leagueid >
+    <matchid>1201</matchid >
+    <eventstatus>completed</eventstatus>
+    <eventdate>2017-11-16</eventdate>
+    <kickofftime>2017-11-16</kickofftime>
+    <matchcode>1200</matchcode>
+    <seq>2</seq>
+    <number>2</number>
+  </NumberGame>
+</NumberGameTable>

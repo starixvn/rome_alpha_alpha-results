@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<RacingTable>
+  <Racing>
+    <meetingid>1</meetingid>
+    <HorseId>1201</HorseId>
+    <HorseNo>1200</HorseNo>
+    <IsFavor>1</IsFavor>
+    <IsSCR>1</IsSCR>
+    <place>123</place>
+    <placeodds>12.3</placeodds>
+    <odds>1.2</odds>
+    <racename>1234</racename>
+    <rowcount>1</rowcount>
+    <TF>ff0000</TF>
+    <SCR>scr,</SCR>
+    <OddsStatus>win</OddsStatus>
+    <kickofftime>2017-11-16</kickofftime>
+  </Racing>
+</RacingTable>

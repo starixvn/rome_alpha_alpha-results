@@ -1,6 +1,7 @@
 ﻿namespace Alpha.Results.Site.Tests.Handlers
 {
     using System;
+    using Fanex.Result.Core.MaxGame;
     using Fanex.Result.ThirdParty.Services;
     using NSubstitute;
     using NUnit.Framework;
@@ -14,14 +15,15 @@
         private ProductResultServiceFactory serviceFactory;
         private ThirdPartyResultHandler handler;
         private ICacheRefService cacheRefService;
+        private IMaxGameResult maxGameResult;
 
         [SetUp]
         public void SetUp()
         {
             serviceFactory = Substitute.For<ProductResultServiceFactory>();
             cacheRefService = Substitute.For<ICacheRefService>();
-
-            handler = new ThirdPartyResultHandler(serviceFactory, cacheRefService);
+            maxGameResult = Substitute.For<IMaxGameResult>();            
+            handler = new ThirdPartyResultHandler(serviceFactory, cacheRefService, maxGameResult);
         }
 
         [Test]
@@ -72,6 +74,24 @@
 
             // Assert
             serviceFactory.Received().CreateProductResultService(Arg.Is(query.ProductId));
+        }
+
+
+        [Test]
+        public void MaxGameResultQuery_Always_ReturnCorrectViewModel()
+        {
+            // Arrange
+            cacheRefService.GetProductName(Arg.Any<int>()).Returns("ProductName");
+            var query = new MaxGameResultQuery();
+            maxGameResult.GetResult(Arg.Any<string>(), Arg.Any<string>(), Arg.Any<int>(), Arg.Any<string>(), Arg.Any<string>(), Arg.Any<string>())
+                .Returns("max game result url");
+
+            // Act
+            var act = handler.Handle(query);
+
+
+            // Assert
+            Assert.AreEqual("max game result url", act.Result.Value);
         }
     }
 }
