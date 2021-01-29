@@ -1,12 +1,14 @@
 ﻿namespace Alpha.Results.Site.App_Start
 {
+    using Alpha.NetThrottling;
+    using Alpha.NetThrottling.Models;
+    using Alpha.NetThrottling.Utils;
     using Alpha.Results.Site.Helpers;
     using DataAccesses;
     using DataAccesses.Impl;
     using Fanex.Caching;
     using Fanex.Data.Repository;
     using Fanex.Game.Keno.Business;
-    using Fanex.Logging;
     using Fanex.RemotingRef;
     using Fanex.Result.Core.AllBetCasino;
     using Fanex.Result.Core.Base.Models;
@@ -34,6 +36,8 @@
     using System.Diagnostics.CodeAnalysis;
     using System.Reflection;
     using System.Web.Mvc;
+    using ILogger = NetThrottling.Utils.ILogger;
+    using Logger = NetThrottling.Utils.Logger;
 
     public static class DependencyConfig
     {
@@ -50,6 +54,8 @@
             RegisterDataAccesses(container);
 
             RegisterServices(container);
+
+            RegisterNetThrottling(container);
 
             // This is an extension method from the integration package.
             container.RegisterMvcControllers(Assembly.GetExecutingAssembly());
@@ -82,7 +88,7 @@
 
         private static void RegisterCrossCuttingConcerns(Container container)
         {
-            container.Register(() => Logger.Log, Lifestyle.Singleton);
+            container.Register(() => Fanex.Logging.Logger.Log, Lifestyle.Singleton);
         }
 
         private static void RegisterServices(Container container)
@@ -119,6 +125,14 @@
             container.Register<IParlayResultDataAccess, ParlayResultDataAccess>(Lifestyle.Scoped);
             container.Register<ISportsbookResultDataAccess, SportsbookResultDataAccess>(Lifestyle.Scoped);
             container.Register<IVirtualRacingResultDataAccess, VirtualRacingResultDataAccess>(Lifestyle.Scoped);
+        }
+
+        private static void RegisterNetThrottling(Container container)
+        {
+            container.Register<INetThrottler, NetThrottler>(Lifestyle.Scoped);
+            container.Register<IThrottleSetting, ThrottleSetting>(Lifestyle.Scoped);
+            container.Register<IClock, Clock>(Lifestyle.Scoped);
+            container.Register<ILogger, Logger>(Lifestyle.Scoped);
         }
     }
 }
