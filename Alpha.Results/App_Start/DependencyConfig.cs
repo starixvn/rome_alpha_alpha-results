@@ -2,6 +2,7 @@
 {
     using Alpha.NetThrottling;
     using Alpha.NetThrottling.Models;
+    using Alpha.NetThrottling.Resolvers;
     using Alpha.NetThrottling.Utils;
     using Alpha.Results.Site.Helpers;
     using DataAccesses;
@@ -133,6 +134,8 @@
             container.Register<IThrottleSetting, ThrottleSetting>(Lifestyle.Scoped);
             container.Register<IClock, Clock>(Lifestyle.Scoped);
             container.Register<ILogger, Logger>(Lifestyle.Scoped);
+            container.Register<ICacheServiceFactory, CacheServiceFactory>(Lifestyle.Scoped);
+            container.Register<IResolver, BaseResolver>(Lifestyle.Scoped);
         }
     }
 }
