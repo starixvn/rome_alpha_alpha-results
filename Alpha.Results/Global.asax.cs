@@ -1,11 +1,8 @@
 ﻿namespace Alpha.Results.Site
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Web.Mvc;
-    using System.Web.Optimization;
-    using System.Web.Routing;
     using Alpha.Logging;
+    using Alpha.NetThrottling.Mvc;
+    using Alpha.NetThrottling.Utils;
     using App_Start;
     using Auth.Filters;
     using Configurations;
@@ -19,6 +16,12 @@
     using Fanex.Result.Core.RemotingRef;
     using ONEbook.UM.Filters;
     using Sunplus.Agent.Model.Entities;
+    using System;
+    using System.Collections.Generic;
+    using System.Web;
+    using System.Web.Mvc;
+    using System.Web.Optimization;
+    using System.Web.Routing;
     using Web;
     using Web.Filters;
     using Web.Helpers;
@@ -44,6 +47,7 @@
             ShareSession.Init();
             StaticResources.Init(StaticResources.GetBuildVersion());
 
+            GlobalFilters.Filters.Add(new NetThrottlingFilterAttribute());
             GlobalFilters.Filters.Add(new CheckUMFilter());
             GlobalFilters.Filters.Add(new CheckBelongingFilter());
             GlobalFilters.Filters.Add(new NoCacheFilter());
@@ -66,8 +70,13 @@
             }
 
             Exception ex = Server.GetLastError();
-            var currentCustomer = UserSession.Current;
+            HttpException httpException = ex as HttpException;
+            if (httpException != null && httpException.GetHttpCode() == HttpStatusCodes.TooManyRequests)
+            {
+                return;
+            }
 
+            var currentCustomer = UserSession.Current;
             ExceptionHandler.Handle(ex,
                 new Dictionary<string, object>
                 {
