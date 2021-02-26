@@ -54,5 +54,6 @@
     <ResultStatusID>5</ResultStatusID>
     <SettlementStatusID>4</SettlementStatusID>
     <OtherInfo>0:1</OtherInfo>
+    <BetType>0</BetType>
   </ResultDetail>
 </SportsBookTable>
