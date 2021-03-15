@@ -11,7 +11,7 @@
     using Models.Requests;
     using Models.Views;
     using Services;
-    using Sunplus.Agent.Utilities.Extension;
+    using Alpha.Utilities.Extensions;
 
     public class NormalResultHandler :
         IRequestHandler<NormalResultQuery, NormalResultViewModel>,
