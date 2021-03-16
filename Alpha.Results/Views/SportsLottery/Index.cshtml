@@ -1,0 +1,12 @@
+﻿@model string
+
+<div role="tabpanel" class="tab-pane active" id="tabsportslottery">
+    <div class="filter">
+        <a href="@(Model)" id="result-link" class="lnk" target="_blank">@Resources.OpenSportsLotteryResuls</a>
+    </div>
+</div>
+
+@section scripts
+{
+    @Scripts.Render(BundleConfig.VirtualGamesResultScriptBundleUrl)
+}

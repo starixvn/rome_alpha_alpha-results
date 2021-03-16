@@ -8,5 +8,6 @@
         public const int Lottery = 28;
         public const int VirtualGames = 38;
         public const int TableGames = 40;
+        public const int SportsLottery = 63;
     }
 }

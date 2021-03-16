@@ -198,4 +198,7 @@
   <data name="TableGames" xml:space="preserve">
     <value>Table Game</value>
   </data>
+  <data name="OpenSportsLotteryResuls" xml:space="preserve">
+    <value>Click here to open Sports Lottery results</value>
+  </data>
 </root>

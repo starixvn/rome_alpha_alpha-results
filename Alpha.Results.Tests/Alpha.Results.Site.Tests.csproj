@@ -183,6 +183,9 @@
     <Reference Include="Fanex.Result.Core.Sportsbook, Version=1.2.7.2, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core-Sportsbook.1.2.7.2\lib\net40\Fanex.Result.Core.Sportsbook.dll</HintPath>
     </Reference>
+    <Reference Include="Fanex.Result.Core.SportsLottery, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Result.Core.SportsLottery.1.0.0-beta-09\lib\net461\Fanex.Result.Core.SportsLottery.dll</HintPath>
+    </Reference>
     <Reference Include="Fanex.Result.Core.VirtualGames, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core.VirtualGames.1.0.0.0\lib\net40\Fanex.Result.Core.VirtualGames.dll</HintPath>
     </Reference>
@@ -404,6 +407,7 @@
     <Compile Include="Controllers\NormalControllerTests.cs" />
     <Compile Include="Controllers\OutrightControllerTests.cs" />
     <Compile Include="Controllers\TabControllerTests.cs" />
+    <Compile Include="Controllers\SportsLotteryControllerTests.cs" />
     <Compile Include="Controllers\VirtualGamesControllerTests.cs" />
     <Compile Include="Controllers\ThirdPartyControllerTests.cs" />
     <Compile Include="Criteria\GetBalanceUpAndMoveBetsDayCriteriaTests.cs" />
@@ -439,6 +443,7 @@
     <Compile Include="Handlers\KenoResultHandlerTests.cs" />
     <Compile Include="Handlers\NormalResultHandlerTests.cs" />
     <Compile Include="Handlers\OutrightResultHandleTests.cs" />
+    <Compile Include="Handlers\SportsLotteryResultHandlerTests.cs" />
     <Compile Include="Handlers\VirtualGamesResultHandlerTests.cs" />
     <Compile Include="Handlers\ThirdPartyResultHandlerTests.cs" />
     <Compile Include="Helpers\FileHelper.cs" />

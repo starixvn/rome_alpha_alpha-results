@@ -13,6 +13,7 @@
             bool isEnableLottery,
             bool isEnableVirtualGames,
             bool isEnableTableGames,
+            bool isEnableSportsLottery,
             Func<int, string> getProductName)
         {
             _selectedTabName = selectedTabName;
@@ -21,6 +22,7 @@
             IsEnableLottery = isEnableLottery;
             IsEnableVirtualGames = isEnableVirtualGames;
             IsEnableTableGames = isEnableTableGames;
+            IsEnableSportsLottery = isEnableSportsLottery;
             GetProductName = getProductName;
         }
 
@@ -41,6 +43,8 @@
         public bool IsEnableVirtualGames { get; }
 
         public bool IsEnableTableGames { get; }
+
+        public bool IsEnableSportsLottery { get; }
 
         public Func<int, string> GetProductName { get; }
     }

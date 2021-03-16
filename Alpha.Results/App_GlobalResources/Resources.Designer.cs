@@ -160,6 +160,15 @@ namespace Alpha.Results.Site.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Click here to open Sports Lottery results.
+        /// </summary>
+        public static string OpenSportsLotteryResuls {
+            get {
+                return ResourceManager.GetString("OpenSportsLotteryResuls", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Click here to open Table Game results.
         /// </summary>
         public static string OpenTableGamesResults {
