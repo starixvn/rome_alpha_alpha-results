@@ -171,4 +171,7 @@
   <data name="ThereIsNoData" xml:space="preserve">
     <value>沒有數據</value>
   </data>
+  <data name="ResultLinkText" xml:space="preserve">
+    <value>{0}的賽果請點擊此處</value>
+  </data>
 </root>
