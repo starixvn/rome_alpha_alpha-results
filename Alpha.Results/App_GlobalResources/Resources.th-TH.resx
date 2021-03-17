@@ -174,4 +174,7 @@
   <data name="ResultLinkText" xml:space="preserve">
     <value>คลิกที่นี่เพื่อเปิดผลลัพธ์{0}</value>
   </data>
+  <data name="ResultPopupTitle" xml:space="preserve">
+    <value>ผลการแข่งขัน{0}</value>
+  </data>
 </root>

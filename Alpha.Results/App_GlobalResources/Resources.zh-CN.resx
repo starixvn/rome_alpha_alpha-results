@@ -174,4 +174,7 @@
   <data name="ResultLinkText" xml:space="preserve">
     <value>{0}的赛果请点击此处</value>
   </data>
+  <data name="ResultPopupTitle" xml:space="preserve">
+    <value>{0}结果</value>
+  </data>
 </root>

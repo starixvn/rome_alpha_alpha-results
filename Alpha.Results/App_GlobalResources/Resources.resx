@@ -177,4 +177,7 @@
   <data name="ResultLinkText" xml:space="preserve">
     <value>Click here to open {0} results</value>
   </data>
+  <data name="ResultPopupTitle" xml:space="preserve">
+    <value>{0} Result</value>
+  </data>
 </root>

@@ -1,5 +1,6 @@
 ﻿namespace Alpha.Results.Site.Handlers
 {
+    using Alpha.Results.Site.App_GlobalResources;
     using Alpha.Results.Site.Helpers;
     using Fanex.Common.Helper;
     using Fanex.Result.Core.MaxGame;
@@ -45,7 +46,7 @@
             var productResultService = serviceFactory.CreateProductResultService(message.ProductId);
             var result = productResultService.GetResultLink(message);
 
-            return new ThirdPartyResultViewModel(productName, result);
+            return new ThirdPartyResultViewModel(string.Format(Resources.ResultPopupTitle, productName), result);
         }
 
         public ThirdPartyResultViewModel Handle(ThirdPartyDetailResultQuery message)
@@ -57,7 +58,7 @@
             var productResultService = serviceFactory.CreateProductResultService(message.ProductId);
             var result = productResultService.GetDetailLink(message);
 
-            return new ThirdPartyResultViewModel(productName, result);
+            return new ThirdPartyResultViewModel(string.Format(Resources.ResultPopupTitle, productName), result);
         }
 
         public ThirdPartyResultViewModel Handle(MaxGameResultQuery message)
@@ -68,7 +69,7 @@
 
             var result = maxGameService.GetResult(message.CustId, message.TransId3rd, message.BetType, message.EndTime, message.SiteId, message.Language);
 
-            return new ThirdPartyResultViewModel(productName, new SuccessResult(result));
+            return new ThirdPartyResultViewModel(string.Format(Resources.ResultPopupTitle, productName), new SuccessResult(result));
         }
 
         public ThirdPartyResultViewModel Handle(SportsLotteryDetailResultQuery message)
@@ -79,7 +80,7 @@
 
             var result = sportsLotteryResult.GetResultDetail(message.CustId, message.TransId3rd, !browserHelper.IsMobile(), message.Language);
 
-            return new ThirdPartyResultViewModel(productName, new SuccessResult(result));
+            return new ThirdPartyResultViewModel(string.Format(Resources.ResultPopupTitle, productName), new SuccessResult(result));
         }
     }
 }
