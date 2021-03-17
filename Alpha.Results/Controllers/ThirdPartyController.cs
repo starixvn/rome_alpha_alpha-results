@@ -1,11 +1,12 @@
 ﻿namespace Alpha.Results.Site.Controllers
 {
     using System.Web.Mvc;
+    using Alpha.Web;
     using MediatR;
     using Models.Requests;
     using Sunplus.Agent.Model.Entities;
 
-    public class ThirdPartyController : Controller
+    public class ThirdPartyController : BaseController
     {
         private readonly IMediator mediator;
         private readonly IUserSession userSession;
