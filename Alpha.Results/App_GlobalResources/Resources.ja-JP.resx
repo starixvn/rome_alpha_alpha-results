@@ -172,13 +172,4 @@
   <data name="ThereIsNoData" xml:space="preserve">
     <value>データが存在しません</value>
   </data>
-  <data name="OpenKenoResults" xml:space="preserve">
-    <value>Click here to open Keno results</value>
-  </data>
-  <data name="Lottery" xml:space="preserve">
-    <value>くじ</value>
-  </data>
-  <data name="OpenLotteryResults" xml:space="preserve">
-    <value>Click here to open Lottery results</value>
-  </data>
 </root>

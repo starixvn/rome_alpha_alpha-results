@@ -1,6 +1,8 @@
 ﻿namespace Alpha.Results.Site.Controllers
 {
     using System.Web.Mvc;
+    using Alpha.Results.Site.Models.Views;
+    using Alpha.Results.Site.Services;
     using MediatR;
     using Models.Requests;
     using Sunplus.Agent.Model.Entities;
@@ -10,11 +12,13 @@
     {
         private readonly IMediator _mediator;
         private readonly IUserSession _userSession;
+        private readonly ICacheRefService cacheRefService;
 
-        public SportsLotteryController(IMediator mediator, IUserSession userSession)
+        public SportsLotteryController(IMediator mediator, IUserSession userSession, ICacheRefService cacheRefService)
         {
             _mediator = mediator;
             _userSession = userSession;
+            this.cacheRefService = cacheRefService;
         }
 
         public ActionResult Index()
@@ -24,7 +28,7 @@
                 Language = _userSession.Language,
             });
 
-            return View("~/Views/SportsLottery/Index.cshtml", (object)viewModel);
-        }        
+            return View("~/Views/SportsLottery/Index.cshtml", new SportsLotteryResultViewModel(cacheRefService) { ResultPath = viewModel });
+        }
     }
 }

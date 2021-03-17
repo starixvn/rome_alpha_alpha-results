@@ -171,34 +171,10 @@
   <data name="Date" xml:space="preserve">
     <value>Date</value>
   </data>
-  <data name="OpenKenoResults" xml:space="preserve">
-    <value>Click here to open RNG Keno results</value>
-  </data>
-  <data name="Lottery" xml:space="preserve">
-    <value>Lottery</value>
-  </data>
-  <data name="OpenLotteryResults" xml:space="preserve">
-    <value>Click here to open Lottery results</value>
-  </data>
   <data name="ConnectionFailedTo3rd" xml:space="preserve">
     <value>Connect failed to {0}</value>
   </data>
-  <data name="PokerGames" xml:space="preserve">
-    <value>Poker Games</value>
-  </data>
-  <data name="OpenVirtualGamesResults" xml:space="preserve">
-    <value>Click here to open Virtual Games results</value>
-  </data>
-  <data name="VirtualGames" xml:space="preserve">
-    <value>Virtual Games</value>
-  </data>
-  <data name="OpenTableGamesResults" xml:space="preserve">
-    <value>Click here to open Table Game results</value>
-  </data>
-  <data name="TableGames" xml:space="preserve">
-    <value>Table Game</value>
-  </data>
-  <data name="OpenSportsLotteryResuls" xml:space="preserve">
-    <value>Click here to open Sports Lottery results</value>
+  <data name="ResultLinkText" xml:space="preserve">
+    <value>Click here to open {0} results</value>
   </data>
 </root>

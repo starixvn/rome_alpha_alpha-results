@@ -142,51 +142,6 @@ namespace Alpha.Results.Site.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Click here to open RNG Keno results.
-        /// </summary>
-        public static string OpenKenoResults {
-            get {
-                return ResourceManager.GetString("OpenKenoResults", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Click here to open Lottery results.
-        /// </summary>
-        public static string OpenLotteryResults {
-            get {
-                return ResourceManager.GetString("OpenLotteryResults", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Click here to open Sports Lottery results.
-        /// </summary>
-        public static string OpenSportsLotteryResuls {
-            get {
-                return ResourceManager.GetString("OpenSportsLotteryResuls", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Click here to open Table Game results.
-        /// </summary>
-        public static string OpenTableGamesResults {
-            get {
-                return ResourceManager.GetString("OpenTableGamesResults", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Click here to open Virtual Games results.
-        /// </summary>
-        public static string OpenVirtualGamesResults {
-            get {
-                return ResourceManager.GetString("OpenVirtualGamesResults", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Outright.
         /// </summary>
         public static string Outright {
@@ -210,6 +165,15 @@ namespace Alpha.Results.Site.App_GlobalResources {
         public static string PokerGames {
             get {
                 return ResourceManager.GetString("PokerGames", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Click here to open {0} results.
+        /// </summary>
+        public static string ResultLinkText {
+            get {
+                return ResourceManager.GetString("ResultLinkText", resourceCulture);
             }
         }
         

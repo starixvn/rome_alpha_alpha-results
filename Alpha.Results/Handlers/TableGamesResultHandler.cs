@@ -2,6 +2,7 @@
 {
     using System;
     using Alpha.Results.Site.Helpers;
+    using Alpha.Results.Site.Services;
     using Constants;
     using MediatR;
     using Models.Requests;
@@ -11,10 +12,12 @@
          IRequestHandler<TableGamesResultQuery, TableGamesResultViewModel>
     {
         private readonly BrowserHelper browserHelper;
+        private readonly ICacheRefService cacheRefService;
 
-        public TableGamesResultHandler(BrowserHelper browserHelper)
+        public TableGamesResultHandler(BrowserHelper browserHelper, ICacheRefService cacheRefService)
         {
             this.browserHelper = browserHelper;
+            this.cacheRefService = cacheRefService;
         }
 
         public TableGamesResultViewModel Handle(TableGamesResultQuery message)
@@ -30,7 +33,7 @@
 
             var extendTokenPath = $"{message.RootUrl}game/keno/kenoresult/extendtoken?productId={ProductIdConstants.TableGames}&userid={message.CustId}";
 
-            return new TableGamesResultViewModel
+            return new TableGamesResultViewModel(cacheRefService)
             {
                 ResultPath = resultPath,
                 ExtendTokenPath = extendTokenPath

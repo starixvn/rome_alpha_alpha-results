@@ -171,22 +171,4 @@
   <data name="ThereIsNoData" xml:space="preserve">
     <value>沒有數據</value>
   </data>
-  <data name="OpenKenoResults" xml:space="preserve">
-    <value>點選此處開啟彩票賽果</value>
-  </data>
-  <data name="Lottery" xml:space="preserve">
-    <value>彩票</value>
-  </data>
-  <data name="OpenLotteryResults" xml:space="preserve">
-    <value>請點選, 開啟彩票賽果</value>
-  </data>
-  <data name="OpenVirtualGamesResults" xml:space="preserve">
-    <value>點擊此處開啟虛擬娛樂城賽果</value>
-  </data>
-  <data name="VirtualGames" xml:space="preserve">
-    <value>虛擬娛樂城</value>
-  </data>
-  <data name="OpenTableGamesResults" xml:space="preserve">
-    <value>桌面遊戲的賽果請點擊此處</value>
-  </data>
 </root>

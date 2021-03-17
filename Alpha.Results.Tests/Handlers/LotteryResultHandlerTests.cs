@@ -1,6 +1,8 @@
 ﻿namespace Alpha.Results.Site.Tests.Handlers
 {
     using System;
+    using Alpha.Results.Site.Services;
+    using NSubstitute;
     using NUnit.Framework;
     using Site.Handlers;
     using Site.Models.Requests;
@@ -8,12 +10,14 @@
     [TestFixture]
     public class LotteryResultHandlerTests
     {
+        private ICacheRefService cacheRefService;
         private LotteryResultHandler _lotteryResultHandler;
 
         [SetUp]
         public void SetUp()
         {
-            _lotteryResultHandler = new LotteryResultHandler();
+            cacheRefService = Substitute.For<ICacheRefService>();
+            _lotteryResultHandler = new LotteryResultHandler(cacheRefService);
         }
 
         [Test]

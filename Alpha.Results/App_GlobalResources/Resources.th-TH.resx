@@ -171,19 +171,4 @@
   <data name="ThereIsNoData" xml:space="preserve">
     <value>มี ข้อมูลไม่</value>
   </data>
-  <data name="OpenKenoResults" xml:space="preserve">
-    <value>กดที่นี่ เพื่อเปิดดูผลคีโน</value>
-  </data>
-  <data name="Lottery" xml:space="preserve">
-    <value>ล็อตเตอรี่</value>
-  </data>
-  <data name="OpenLotteryResults" xml:space="preserve">
-    <value>กดที่นี่ เพื่อเปิดดูผลลอตเตอรี</value>
-  </data>
-  <data name="OpenVirtualGamesResults" xml:space="preserve">
-    <value>กดที่นี่เพื่อเปิดดูผลของเกมส์เสมือนจริง</value>
-  </data>
-  <data name="OpenTableGamesResults" xml:space="preserve">
-    <value>คลิกที่นี่เพื่อเปิดผลลัพธ์ Table Game</value>
-  </data>
 </root>

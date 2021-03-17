@@ -1,6 +1,7 @@
 ﻿namespace Alpha.Results.Site.Handlers
 {
     using System;
+    using Alpha.Results.Site.Services;
     using Constants;
     using MediatR;
     using Models.Requests;
@@ -9,6 +10,13 @@
     public class LotteryResultHandler :
          IRequestHandler<LotteryResultQuery, LotteryResultViewModel>
     {
+        private readonly ICacheRefService cacheRefService;
+
+        public LotteryResultHandler(ICacheRefService cacheRefService)
+        {
+            this.cacheRefService = cacheRefService;
+        }
+
         public LotteryResultViewModel Handle(LotteryResultQuery message)
         {
             var resultPath = string.Format(
@@ -21,7 +29,7 @@
 
             var extendTokenPath = $"{message.RootPath}game/keno/kenoresult/extendtoken?productId={ProductIdConstants.Lottery}&userid={message.CustId}";
 
-            return new LotteryResultViewModel
+            return new LotteryResultViewModel(cacheRefService)
             {
                 ResultPath = resultPath,
                 ExtendTokenPath = extendTokenPath
