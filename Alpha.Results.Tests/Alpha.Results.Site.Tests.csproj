@@ -183,6 +183,9 @@
     <Reference Include="Fanex.Result.Core.Sportsbook, Version=1.2.7.2, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core-Sportsbook.1.2.7.2\lib\net40\Fanex.Result.Core.Sportsbook.dll</HintPath>
     </Reference>
+    <Reference Include="Fanex.Result.Core.SportsLottery, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Result.Core.SportsLottery.1.0.0\lib\net461\Fanex.Result.Core.SportsLottery.dll</HintPath>
+    </Reference>
     <Reference Include="Fanex.Result.Core.VirtualGames, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core.VirtualGames.1.0.0.0\lib\net40\Fanex.Result.Core.VirtualGames.dll</HintPath>
     </Reference>
@@ -193,8 +196,8 @@
     <Reference Include="Fanex.Result.Core.WM, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core.WM.1.0.0.1\lib\net40\Fanex.Result.Core.WM.dll</HintPath>
     </Reference>
-    <Reference Include="Fanex.Result.ThirdParty, Version=1.1.0.5, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Result.ThirdParty.1.1.0.5\lib\net461\Fanex.Result.ThirdParty.dll</HintPath>
+    <Reference Include="Fanex.Result.ThirdParty, Version=1.1.0.7, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Result.ThirdParty.1.1.0.7\lib\net461\Fanex.Result.ThirdParty.dll</HintPath>
     </Reference>
     <Reference Include="FluentAssertions, Version=4.1.1.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
       <HintPath>..\packages\FluentAssertions.4.1.1\lib\net45\FluentAssertions.dll</HintPath>
@@ -404,6 +407,7 @@
     <Compile Include="Controllers\NormalControllerTests.cs" />
     <Compile Include="Controllers\OutrightControllerTests.cs" />
     <Compile Include="Controllers\TabControllerTests.cs" />
+    <Compile Include="Controllers\SportsLotteryControllerTests.cs" />
     <Compile Include="Controllers\VirtualGamesControllerTests.cs" />
     <Compile Include="Controllers\ThirdPartyControllerTests.cs" />
     <Compile Include="Criteria\GetBalanceUpAndMoveBetsDayCriteriaTests.cs" />
@@ -439,6 +443,7 @@
     <Compile Include="Handlers\KenoResultHandlerTests.cs" />
     <Compile Include="Handlers\NormalResultHandlerTests.cs" />
     <Compile Include="Handlers\OutrightResultHandleTests.cs" />
+    <Compile Include="Handlers\SportsLotteryResultHandlerTests.cs" />
     <Compile Include="Handlers\VirtualGamesResultHandlerTests.cs" />
     <Compile Include="Handlers\ThirdPartyResultHandlerTests.cs" />
     <Compile Include="Helpers\FileHelper.cs" />

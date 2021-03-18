@@ -171,22 +171,10 @@
   <data name="ThereIsNoData" xml:space="preserve">
     <value>没有数据</value>
   </data>
-  <data name="OpenKenoResults" xml:space="preserve">
-    <value>点击此处开启彩票赛果</value>
+  <data name="ResultLinkText" xml:space="preserve">
+    <value>{0}的赛果请点击此处</value>
   </data>
-  <data name="Lottery" xml:space="preserve">
-    <value>彩票</value>
-  </data>
-  <data name="OpenLotteryResults" xml:space="preserve">
-    <value>请点击, 开启彩票赛果</value>
-  </data>
-  <data name="OpenVirtualGamesResults" xml:space="preserve">
-    <value>点击此处开启虚拟娱乐城赛果</value>
-  </data>
-  <data name="VirtualGames" xml:space="preserve">
-    <value>虚拟娱乐城</value>
-  </data>
-  <data name="OpenTableGamesResults" xml:space="preserve">
-    <value>桌面游戏的赛果请点击此处</value>
+  <data name="ResultPopupTitle" xml:space="preserve">
+    <value>{0}结果</value>
   </data>
 </root>

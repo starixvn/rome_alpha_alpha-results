@@ -115,15 +115,6 @@ namespace Alpha.Results.Site.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Lottery.
-        /// </summary>
-        public static string Lottery {
-            get {
-                return ResourceManager.GetString("Lottery", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Mix Parlay.
         /// </summary>
         public static string MixParlay {
@@ -138,42 +129,6 @@ namespace Alpha.Results.Site.App_GlobalResources {
         public static string Normal {
             get {
                 return ResourceManager.GetString("Normal", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Click here to open RNG Keno results.
-        /// </summary>
-        public static string OpenKenoResults {
-            get {
-                return ResourceManager.GetString("OpenKenoResults", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Click here to open Lottery results.
-        /// </summary>
-        public static string OpenLotteryResults {
-            get {
-                return ResourceManager.GetString("OpenLotteryResults", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Click here to open Table Game results.
-        /// </summary>
-        public static string OpenTableGamesResults {
-            get {
-                return ResourceManager.GetString("OpenTableGamesResults", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Click here to open Virtual Games results.
-        /// </summary>
-        public static string OpenVirtualGamesResults {
-            get {
-                return ResourceManager.GetString("OpenVirtualGamesResults", resourceCulture);
             }
         }
         
@@ -196,11 +151,20 @@ namespace Alpha.Results.Site.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Poker Games.
+        ///   Looks up a localized string similar to Click here to open {0} results.
         /// </summary>
-        public static string PokerGames {
+        public static string ResultLinkText {
             get {
-                return ResourceManager.GetString("PokerGames", resourceCulture);
+                return ResourceManager.GetString("ResultLinkText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} Result.
+        /// </summary>
+        public static string ResultPopupTitle {
+            get {
+                return ResourceManager.GetString("ResultPopupTitle", resourceCulture);
             }
         }
         
@@ -259,15 +223,6 @@ namespace Alpha.Results.Site.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Table Game.
-        /// </summary>
-        public static string TableGames {
-            get {
-                return ResourceManager.GetString("TableGames", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to There is no data.
         /// </summary>
         public static string ThereIsNoData {
@@ -291,15 +246,6 @@ namespace Alpha.Results.Site.App_GlobalResources {
         public static string ViewDataFromDate {
             get {
                 return ResourceManager.GetString("ViewDataFromDate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Virtual Games.
-        /// </summary>
-        public static string VirtualGames {
-            get {
-                return ResourceManager.GetString("VirtualGames", resourceCulture);
             }
         }
     }

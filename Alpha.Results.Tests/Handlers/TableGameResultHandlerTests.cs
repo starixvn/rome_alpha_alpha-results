@@ -2,6 +2,7 @@
 {
     using System;
     using Alpha.Results.Site.Helpers;
+    using Alpha.Results.Site.Services;
     using NSubstitute;
     using NUnit.Framework;
     using Site.Handlers;
@@ -12,12 +13,14 @@
     {
         private TableGamesResultHandler resultHandler;
         private BrowserHelper browserHelper;
+        private ICacheRefService cacheRefService;
 
         [SetUp]
         public void SetUp()
         {
             browserHelper = Substitute.For<BrowserHelper>();
-            resultHandler = new TableGamesResultHandler(browserHelper);
+            cacheRefService = Substitute.For<ICacheRefService>();
+            resultHandler = new TableGamesResultHandler(browserHelper, cacheRefService);
         }
       
         [Test]

@@ -18,6 +18,7 @@
     using Fanex.Result.Core.LinkedGames;
     using Fanex.Result.Core.MaxGame;
     using Fanex.Result.Core.RemotingRef;
+    using Fanex.Result.Core.SportsLottery;
     using Fanex.Result.Core.VirtualGames;
     using Fanex.Result.Core.Voidbridge;
     using Fanex.Result.ThirdParty.Services;
@@ -116,6 +117,7 @@
             container.Register<BrowserHelper, BrowserHelperImpl>(Lifestyle.Singleton);
             container.Register<ILinkedGamesResult, LinkedGamesResult>(Lifestyle.Scoped);
             container.Register<IMaxGameResult, MaxGameResult>(Lifestyle.Scoped);
+            container.Register<ISportsLotteryResult, SportsLotteryResult>(Lifestyle.Scoped);
         }
 
         private static void RegisterDataAccesses(Container container)

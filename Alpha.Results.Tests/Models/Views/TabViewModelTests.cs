@@ -26,7 +26,7 @@
 
                 return string.Empty;
             };
-            var viewModel = new TabViewModel(tabName, false, false, false, false, false, getProductName);
+            var viewModel = new TabViewModel(tabName, false, false, false, false, false, false, getProductName);
             var expectedValue = "tabname";
 
             // Act

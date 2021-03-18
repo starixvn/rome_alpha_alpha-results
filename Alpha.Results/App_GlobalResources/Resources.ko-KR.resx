@@ -171,13 +171,4 @@
   <data name="ThereIsNoData" xml:space="preserve">
     <value>데이터가 없습니다</value>
   </data>
-  <data name="OpenKenoResults" xml:space="preserve">
-    <value>Click here to open Keno results</value>
-  </data>
-  <data name="Lottery" xml:space="preserve">
-    <value>로또</value>
-  </data>
-  <data name="OpenLotteryResults" xml:space="preserve">
-    <value>Click here to open Lottery results</value>
-  </data>
 </root>

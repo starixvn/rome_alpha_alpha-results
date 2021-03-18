@@ -240,6 +240,9 @@
     <Reference Include="Fanex.Result.Core.Sportsbook, Version=1.2.7.2, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core-Sportsbook.1.2.7.2\lib\net40\Fanex.Result.Core.Sportsbook.dll</HintPath>
     </Reference>
+    <Reference Include="Fanex.Result.Core.SportsLottery, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Result.Core.SportsLottery.1.0.0\lib\net461\Fanex.Result.Core.SportsLottery.dll</HintPath>
+    </Reference>
     <Reference Include="Fanex.Result.Core.VirtualGames, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core.VirtualGames.1.0.0.0\lib\net40\Fanex.Result.Core.VirtualGames.dll</HintPath>
     </Reference>
@@ -250,8 +253,8 @@
     <Reference Include="Fanex.Result.Core.WM, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core.WM.1.0.0.1\lib\net40\Fanex.Result.Core.WM.dll</HintPath>
     </Reference>
-    <Reference Include="Fanex.Result.ThirdParty, Version=1.1.0.5, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Result.ThirdParty.1.1.0.5\lib\net461\Fanex.Result.ThirdParty.dll</HintPath>
+    <Reference Include="Fanex.Result.ThirdParty, Version=1.1.0.7, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Result.ThirdParty.1.1.0.7\lib\net461\Fanex.Result.ThirdParty.dll</HintPath>
     </Reference>
     <Reference Include="IBCCrypt, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\IBCCrypt.1.1.0.0\lib\IBCCrypt.dll</HintPath>
@@ -1192,6 +1195,7 @@
     <Content Include="Views\TableGames\Index.cshtml" />
     <Content Include="Views\SabaClub\Index.cshtml" />
     <Content Include="Views\LinkedGames\Index.cshtml" />
+    <Content Include="Views\SportsLottery\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs">
@@ -1215,6 +1219,7 @@
     <Compile Include="Controllers\CardClubController.cs" />
     <Compile Include="Controllers\TableGamesController.cs" />
     <Compile Include="Controllers\LinkedGamesController.cs" />
+    <Compile Include="Controllers\SportsLotteryController.cs" />
     <Compile Include="Controllers\VirtualGamesController.cs" />
     <Compile Include="Controllers\KenoController.cs" />
     <Compile Include="Controllers\LotteryController.cs" />
@@ -1266,6 +1271,7 @@
     <Compile Include="Handlers\KenoResultHandler.cs" />
     <Compile Include="Handlers\TableGamesResultHandler.cs" />
     <Compile Include="Handlers\LinkedGamesResultHandler.cs" />
+    <Compile Include="Handlers\SportsLotteryResultHandler.cs" />
     <Compile Include="Handlers\VirtualGamesResultHandler.cs" />
     <Compile Include="Handlers\LotteryResultHandler.cs" />
     <Compile Include="Handlers\NormalResultHandler.cs" />
@@ -1276,6 +1282,7 @@
     </Compile>
     <Compile Include="Helpers\UrlHelper.cs" />
     <Compile Include="Models\Actor.cs" />
+    <Compile Include="Models\BaseResultTab.cs" />
     <Compile Include="Models\BelongingInfo.cs" />
     <Compile Include="Models\Dtos\BalanceUpAndMoveBetsDate.cs" />
     <Compile Include="Models\League.cs" />
@@ -1287,6 +1294,8 @@
     <Compile Include="Models\Requests\KenoResultQuery.cs" />
     <Compile Include="Models\Requests\Happy5LinkedGamesResultQuery.cs" />
     <Compile Include="Models\Requests\MaxGameResultQuery.cs" />
+    <Compile Include="Models\Requests\SportsLottery\SportsLotteryDetailResultQuery.cs" />
+    <Compile Include="Models\Requests\SportsLottery\SportsLotteryResultQuery.cs" />
     <Compile Include="Models\Requests\VirtualGames\VirtualGamesDetailResultQuery.cs" />
     <Compile Include="Models\Requests\VirtualGames\VirtualGamesResultQuery.cs" />
     <Compile Include="Models\Requests\LotteryResultQuery.cs" />
@@ -1297,6 +1306,8 @@
     <Compile Include="Models\Requests\ThirdPartyResultQuery.cs" />
     <Compile Include="Models\Sport.cs" />
     <Compile Include="Models\Views\Happy5LinkedGamesViewModel.cs" />
+    <Compile Include="Models\Views\VirtualGamesResultViewModel.cs" />
+    <Compile Include="Models\Views\SportsLotteryResultViewModel.cs" />
     <Compile Include="Models\Views\TableGamesResultViewModel.cs" />
     <Compile Include="Models\Views\LotteryResultViewModel.cs" />
     <Compile Include="Models\Views\OutrightResultExcelViewModel.cs" />

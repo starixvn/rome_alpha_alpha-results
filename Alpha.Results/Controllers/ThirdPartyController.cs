@@ -1,11 +1,12 @@
 ﻿namespace Alpha.Results.Site.Controllers
 {
     using System.Web.Mvc;
+    using Alpha.Web;
     using MediatR;
     using Models.Requests;
     using Sunplus.Agent.Model.Entities;
 
-    public class ThirdPartyController : Controller
+    public class ThirdPartyController : BaseController
     {
         private readonly IMediator mediator;
         private readonly IUserSession userSession;
@@ -31,6 +32,13 @@
         }
 
         public ActionResult MaxGameResult(MaxGameResultQuery message)
+        {
+            message.Language = userSession.Language;
+
+            return View("~/Views/ThirdParty/Index.cshtml", mediator.Send(message));
+        }
+
+        public ActionResult SportsLotteryResult(SportsLotteryDetailResultQuery message)
         {
             message.Language = userSession.Language;
 

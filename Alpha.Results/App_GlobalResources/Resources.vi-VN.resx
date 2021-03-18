@@ -171,22 +171,10 @@
   <data name="ThereIsNoData" xml:space="preserve">
     <value>Không có dữ liệu</value>
   </data>
-  <data name="OpenKenoResults" xml:space="preserve">
-    <value>Nhấn vào đây để xem kết quả RNG Keno</value>
+  <data name="ResultLinkText" xml:space="preserve">
+    <value>Nhấn vào đây để xem kết quả của {0}</value>
   </data>
-  <data name="Lottery" xml:space="preserve">
-    <value>Xổ số</value>
-  </data>
-  <data name="OpenLotteryResults" xml:space="preserve">
-    <value>Nhấn vào đây để xem kết quả "Xổ Số"</value>
-  </data>
-  <data name="OpenVirtualGamesResults" xml:space="preserve">
-    <value>Nhấn vào đây để xem kết quả Trò Chơi Ảo</value>
-  </data>
-  <data name="VirtualGames" xml:space="preserve">
-    <value>Trò chơi Ảo</value>
-  </data>
-  <data name="OpenTableGamesResults" xml:space="preserve">
-    <value>Nhấn vào đây để xem kết quả Trò chơi trên bàn</value>
+  <data name="ResultPopupTitle" xml:space="preserve">
+    <value>Kết quả của {0}</value>
   </data>
 </root>

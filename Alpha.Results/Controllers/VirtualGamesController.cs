@@ -1,6 +1,8 @@
 ﻿namespace Alpha.Results.Site.Controllers
 {
     using System.Web.Mvc;
+    using Alpha.Results.Site.Models.Views;
+    using Alpha.Results.Site.Services;
     using MediatR;
     using Models.Requests;
     using Sunplus.Agent.Model.Entities;
@@ -10,11 +12,13 @@
     {
         private readonly IMediator _mediator;
         private readonly IUserSession _userSession;
+        private readonly ICacheRefService cacheRefService;
 
-        public VirtualGamesController(IMediator mediator, IUserSession userSession)
+        public VirtualGamesController(IMediator mediator, IUserSession userSession, ICacheRefService cacheRefService)
         {
             _mediator = mediator;
             _userSession = userSession;
+            this.cacheRefService = cacheRefService;
         }
 
         public ActionResult Index()
@@ -24,7 +28,7 @@
                 Language = _userSession.Language,
             });
 
-            return View("~/Views/VirtualGames/Index.cshtml", (object)viewModel);
+            return View("~/Views/VirtualGames/Index.cshtml", new VirtualGamesResultViewModel(cacheRefService) { ResultPath = viewModel });
         }
 
         public ActionResult Detail(VirtualGamesDetailResultQuery query)
@@ -33,7 +37,7 @@
 
             var viewModel = _mediator.Send(query);
 
-            return View("~/Views/VirtualGames/Detail.cshtml", (object)viewModel);
+            return View("~/Views/VirtualGames/Detail.cshtml", new VirtualGamesResultViewModel(cacheRefService) { ResultPath = viewModel });
         }
     }
 }

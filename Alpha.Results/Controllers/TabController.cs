@@ -29,6 +29,7 @@
                 UserPermission.IsEnableProduct(ProductIdConstants.Lottery),
                 UserPermission.IsEnableProduct(ProductIdConstants.VirtualGames),
                 UserPermission.IsEnableProduct(ProductIdConstants.TableGames),
+                UserPermission.IsEnableProduct(ProductIdConstants.SportsLottery),
                 cacheRefService.GetProductName);
 
             return PartialView(viewModel);
