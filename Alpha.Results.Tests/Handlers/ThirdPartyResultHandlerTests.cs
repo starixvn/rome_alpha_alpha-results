@@ -3,6 +3,7 @@
     using System;
     using Alpha.Results.Site.Helpers;
     using Fanex.Result.Core.MaxGame;
+    using Fanex.Result.Core.PPLiveCasino;
     using Fanex.Result.Core.SportsLottery;
     using Fanex.Result.ThirdParty.Services;
     using NSubstitute;
@@ -19,6 +20,7 @@
         private ICacheRefService cacheRefService;
         private IMaxGameResult maxGameResult;
         private ISportsLotteryResult sportsLotteryResult;
+        private IPPLiveCasinoResult ppLiveCasinoResult;
         private BrowserHelper browserHelper;
 
         [SetUp]
@@ -29,7 +31,8 @@
             maxGameResult = Substitute.For<IMaxGameResult>();
             sportsLotteryResult = Substitute.For<ISportsLotteryResult>();
             browserHelper = Substitute.For<BrowserHelper>();
-            handler = new ThirdPartyResultHandler(serviceFactory, cacheRefService, maxGameResult, sportsLotteryResult, browserHelper);
+            ppLiveCasinoResult = Substitute.For<IPPLiveCasinoResult>();
+            handler = new ThirdPartyResultHandler(serviceFactory, cacheRefService, maxGameResult, sportsLotteryResult, ppLiveCasinoResult, browserHelper);
         }
 
         [Test]
@@ -115,6 +118,23 @@
 
             // Assert
             Assert.AreEqual("sports lottery result url", act.Result.Value);
+        }
+
+        [Test]
+        public void PPLiveCasinoResultQuery_Always_ReturnCorrectViewModel()
+        {
+            // Arrange
+            cacheRefService.GetProductName(Arg.Any<int>()).Returns("ProductName");
+            var query = new PPLiveCasinoResultQuery();
+            ppLiveCasinoResult.GetResult(Arg.Any<string>(), Arg.Any<string>(), Arg.Any<int>(), Arg.Any<string>())
+                .Returns("PP Live Casino result url");
+
+            // Act
+            var act = handler.Handle(query);
+
+
+            // Assert
+            Assert.AreEqual("PP Live Casino result url", act.Result.Value);
         }
     }
 }

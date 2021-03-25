@@ -17,6 +17,7 @@
     using Fanex.Result.Core.GlobalGaming;
     using Fanex.Result.Core.LinkedGames;
     using Fanex.Result.Core.MaxGame;
+    using Fanex.Result.Core.PPLiveCasino;
     using Fanex.Result.Core.RemotingRef;
     using Fanex.Result.Core.SportsLottery;
     using Fanex.Result.Core.VirtualGames;
@@ -118,6 +119,7 @@
             container.Register<ILinkedGamesResult, LinkedGamesResult>(Lifestyle.Scoped);
             container.Register<IMaxGameResult, MaxGameResult>(Lifestyle.Scoped);
             container.Register<ISportsLotteryResult, SportsLotteryResult>(Lifestyle.Scoped);
+            container.Register<IPPLiveCasinoResult, PPLiveCasinoResult>(Lifestyle.Scoped);
         }
 
         private static void RegisterDataAccesses(Container container)
