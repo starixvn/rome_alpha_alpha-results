@@ -2,6 +2,7 @@
 {
     using System.Web.Mvc;
     using Alpha.Web;
+    using Fanex.Result.ThirdParty.Models.Requests;
     using MediatR;
     using Models.Requests;
     using Sunplus.Agent.Model.Entities;
@@ -51,6 +52,13 @@
             message.Language = userSession.Language;
 
             return View(IndexView, mediator.Send(message));
+        }
+
+        public ActionResult HabaneroResult(HabaneroResultQuery message)
+        {
+            message.Language = userSession.Language;
+
+            return View("~/Views/ThirdParty/Index.cshtml", mediator.Send(message));
         }
     }
 }
