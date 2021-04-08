@@ -29,6 +29,7 @@
     <ResultStatusID>5</ResultStatusID>
     <SettlementStatusID>4</SettlementStatusID>
     <OtherInfo>0:1</OtherInfo>
+    <BetType>0</BetType>
   </ResultDetail>
   <ResultDetail>
     <matchid>70000112</matchid>
@@ -38,5 +39,6 @@
     <ResultStatusID>5</ResultStatusID>
     <SettlementStatusID>4</SettlementStatusID>
     <OtherInfo></OtherInfo>
+    <BetType>0</BetType>
   </ResultDetail>
 </SportsBookTable>

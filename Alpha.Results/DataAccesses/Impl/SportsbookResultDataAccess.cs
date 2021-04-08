@@ -208,6 +208,8 @@
         /// </returns>
         private GameDetail BindGameDetail(IDataReader reader, int matchId)
         {
+            var bettypeId = ColumnExisted(reader, "BetType") && reader["BetType"] != DBNull.Value ?
+                int.Parse(reader["BetType"].ToString()) : 0;
             return new GameDetail
             {
                 MatchId = matchId,
@@ -216,7 +218,8 @@
                 AwayValue = reader["AwayValue"] != DBNull.Value ? reader["AwayValue"].ToString() : string.Empty,
                 ResultStatusID = reader["ResultStatusID"] != DBNull.Value ? int.Parse(reader["ResultStatusID"].ToString()) : 0,
                 SettlementStatusID = reader["SettlementStatusID"] != DBNull.Value ? int.Parse(reader["SettlementStatusID"].ToString()) : 0,
-                OtherInfo = reader["OtherInfo"] != DBNull.Value ? reader["OtherInfo"].ToString() : string.Empty
+                OtherInfo = reader["OtherInfo"] != DBNull.Value ? reader["OtherInfo"].ToString() : string.Empty,
+                BettypeId = bettypeId
             };
         }
 
