@@ -19,7 +19,8 @@
         IRequestHandler<MaxGameResultQuery, ThirdPartyResultViewModel>,
         IRequestHandler<SportsLotteryDetailResultQuery, ThirdPartyResultViewModel>,
         IRequestHandler<PPLiveCasinoResultQuery, ThirdPartyResultViewModel>,
-        IRequestHandler<HabaneroResultQuery, ThirdPartyResultViewModel>        
+        IRequestHandler<HabaneroResultQuery, ThirdPartyResultViewModel>,
+        IRequestHandler<CGResultQuery, ThirdPartyResultViewModel>
     {
         private readonly ProductResultServiceFactory serviceFactory;
         private readonly ICacheRefService cacheRefService;
@@ -28,6 +29,7 @@
         private readonly IPPLiveCasinoResult ppLiveCasinoResult;
         private readonly IHabaneroResult habaneroResult;
         private readonly BrowserHelper browserHelper;
+        private readonly IHabaneroResult cgResult;
 
         public ThirdPartyResultHandler(
             ProductResultServiceFactory serviceFactory,
@@ -43,6 +45,7 @@
             this.sportsLotteryResult = sportsLotteryResult;
             this.ppLiveCasinoResult = ppLiveCasinoResult;
             this.habaneroResult = new HabaneroResult("HabaneroResultConfigs");
+            this.cgResult = new HabaneroResult("CGResultConfigs");
             this.browserHelper = browserHelper;
         }
 
@@ -110,6 +113,17 @@
             var productName = cacheRefService.GetProductName(message.ProductId);
 
             var result = habaneroResult.GetResult(message.CustId.ToString(), message.GameId, message.GameCode, message.SiteId, message.Language);
+
+            return new ThirdPartyResultViewModel(string.Format(Resources.ResultPopupTitle, productName), new SuccessResult(result));
+        }
+
+        public ThirdPartyResultViewModel Handle(CGResultQuery message)
+        {
+            Check.Argument.IsNotNull(message, "message");
+
+            var productName = cacheRefService.GetProductName(message.ProductId);
+
+            var result = cgResult.GetResult(message.CustId.ToString(), message.GameId, message.GameCode, message.SiteId, message.Language);
 
             return new ThirdPartyResultViewModel(string.Format(Resources.ResultPopupTitle, productName), new SuccessResult(result));
         }
