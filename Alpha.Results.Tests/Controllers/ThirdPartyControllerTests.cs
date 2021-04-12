@@ -50,5 +50,44 @@
             // Assert
             mediator.Received().Send(Arg.Is<ThirdPartyDetailResultQuery>(msg => msg.Language == userSession.Language));
         }
+
+        [Test]
+        public void Detail_Always_CallsMediatorSendMaxGameResultQuery()
+        {
+            // Arrange
+            var query = new MaxGameResultQuery();
+
+            // Act
+            controller.MaxGameResult(query);
+
+            // Assert
+            mediator.Received().Send(Arg.Is<MaxGameResultQuery>(msg => msg.Language == userSession.Language));
+        }
+
+        [Test]
+        public void Detail_Always_CallsMediatorSendSportsLotteryDetailResultQuery()
+        {
+            // Arrange
+            var query = new SportsLotteryDetailResultQuery();
+
+            // Act
+            controller.SportsLotteryResult(query);
+
+            // Assert
+            mediator.Received().Send(Arg.Is<SportsLotteryDetailResultQuery>(msg => msg.Language == userSession.Language));
+        }
+
+        [Test]
+        public void Detail_Always_CallsMediatorSendPPLiveCasinoResultQuery()
+        {
+            // Arrange
+            var query = new PPLiveCasinoResultQuery();
+
+            // Act
+            controller.PPLiveCasinoResult(query);
+
+            // Assert
+            mediator.Received().Send(Arg.Is<PPLiveCasinoResultQuery>(msg => msg.Language == userSession.Language));
+        }
     }
 }

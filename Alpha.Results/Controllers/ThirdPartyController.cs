@@ -8,6 +8,7 @@
 
     public class ThirdPartyController : BaseController
     {
+        private readonly string IndexView = "~/Views/ThirdParty/Index.cshtml";
         private readonly IMediator mediator;
         private readonly IUserSession userSession;
 
@@ -28,21 +29,28 @@
         {
             message.Language = userSession.Language;
 
-            return View("~/Views/ThirdParty/Index.cshtml", mediator.Send(message));
+            return View(IndexView, mediator.Send(message));
         }
 
         public ActionResult MaxGameResult(MaxGameResultQuery message)
         {
             message.Language = userSession.Language;
 
-            return View("~/Views/ThirdParty/Index.cshtml", mediator.Send(message));
+            return View(IndexView, mediator.Send(message));
         }
 
         public ActionResult SportsLotteryResult(SportsLotteryDetailResultQuery message)
         {
             message.Language = userSession.Language;
 
-            return View("~/Views/ThirdParty/Index.cshtml", mediator.Send(message));
+            return View(IndexView, mediator.Send(message));
+        }
+
+        public ActionResult PPLiveCasinoResult(PPLiveCasinoResultQuery message)
+        {
+            message.Language = userSession.Language;
+
+            return View(IndexView, mediator.Send(message));
         }
     }
 }

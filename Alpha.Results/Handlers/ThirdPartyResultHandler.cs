@@ -4,6 +4,7 @@
     using Alpha.Results.Site.Helpers;
     using Fanex.Common.Helper;
     using Fanex.Result.Core.MaxGame;
+    using Fanex.Result.Core.PPLiveCasino;
     using Fanex.Result.Core.SportsLottery;
     using Fanex.Result.ThirdParty.Models;
     using Fanex.Result.ThirdParty.Models.Views;
@@ -15,12 +16,14 @@
     public class ThirdPartyResultHandler : IRequestHandler<ThirdPartyResultQuery, ThirdPartyResultViewModel>,
         IRequestHandler<ThirdPartyDetailResultQuery, ThirdPartyResultViewModel>,
         IRequestHandler<MaxGameResultQuery, ThirdPartyResultViewModel>,
-        IRequestHandler<SportsLotteryDetailResultQuery, ThirdPartyResultViewModel>
+        IRequestHandler<SportsLotteryDetailResultQuery, ThirdPartyResultViewModel>,
+        IRequestHandler<PPLiveCasinoResultQuery, ThirdPartyResultViewModel>
     {
         private readonly ProductResultServiceFactory serviceFactory;
         private readonly ICacheRefService cacheRefService;
         private readonly IMaxGameResult maxGameService;
         private readonly ISportsLotteryResult sportsLotteryResult;
+        private readonly IPPLiveCasinoResult ppLiveCasinoResult;
         private readonly BrowserHelper browserHelper;
 
         public ThirdPartyResultHandler(
@@ -28,12 +31,14 @@
             ICacheRefService cacheRefService,
             IMaxGameResult maxGameService,
             ISportsLotteryResult sportsLotteryResult,
+            IPPLiveCasinoResult ppLiveCasinoResult,
             BrowserHelper browserHelper)
         {
             this.serviceFactory = serviceFactory;
             this.cacheRefService = cacheRefService;
             this.maxGameService = maxGameService;
             this.sportsLotteryResult = sportsLotteryResult;
+            this.ppLiveCasinoResult = ppLiveCasinoResult;
             this.browserHelper = browserHelper;
         }
 
@@ -79,6 +84,17 @@
             var productName = cacheRefService.GetProductName(message.ProductId);
 
             var result = sportsLotteryResult.GetResultDetail(message.CustId, message.TransId3rd, !browserHelper.IsMobile(), message.Language);
+
+            return new ThirdPartyResultViewModel(string.Format(Resources.ResultPopupTitle, productName), new SuccessResult(result));
+        }
+
+        public ThirdPartyResultViewModel Handle(PPLiveCasinoResultQuery message)
+        {
+            Check.Argument.IsNotNull(message, "message");
+
+            var productName = cacheRefService.GetProductName(message.ProductId);
+
+            var result = ppLiveCasinoResult.GetResult(message.CustId, message.GameId3rd, message.BetType, message.Language);
 
             return new ThirdPartyResultViewModel(string.Format(Resources.ResultPopupTitle, productName), new SuccessResult(result));
         }
