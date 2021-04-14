@@ -10,7 +10,7 @@
     using Site.Handlers;
     using Site.Models.Requests;
     using Site.Services;
-    using Sunplus.Agent.Utilities.Extension;
+    using Alpha.Utilities.Extensions;
 
     [TestFixture]
     public class OutrightResultHandleTests

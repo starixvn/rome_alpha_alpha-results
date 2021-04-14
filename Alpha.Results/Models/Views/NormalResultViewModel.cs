@@ -4,7 +4,7 @@
     using System.Collections.Generic;
     using System.Web.Mvc;
     using App_GlobalResources;
-    using Sunplus.Agent.Utilities.Extension;
+    using Alpha.Utilities.Extensions;
     using Utils;
 
     public class NormalResultViewModel
