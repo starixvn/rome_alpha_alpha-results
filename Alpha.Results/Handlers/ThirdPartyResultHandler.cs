@@ -3,6 +3,7 @@
     using Alpha.Results.Site.App_GlobalResources;
     using Alpha.Results.Site.Helpers;
     using Fanex.Common.Helper;
+    using Fanex.Result.Core.Habanero;
     using Fanex.Result.Core.MaxGame;
     using Fanex.Result.Core.PPLiveCasino;
     using Fanex.Result.Core.SportsLottery;
@@ -17,13 +18,15 @@
         IRequestHandler<ThirdPartyDetailResultQuery, ThirdPartyResultViewModel>,
         IRequestHandler<MaxGameResultQuery, ThirdPartyResultViewModel>,
         IRequestHandler<SportsLotteryDetailResultQuery, ThirdPartyResultViewModel>,
-        IRequestHandler<PPLiveCasinoResultQuery, ThirdPartyResultViewModel>
+        IRequestHandler<PPLiveCasinoResultQuery, ThirdPartyResultViewModel>,
+        IRequestHandler<HabaneroResultQuery, ThirdPartyResultViewModel>        
     {
         private readonly ProductResultServiceFactory serviceFactory;
         private readonly ICacheRefService cacheRefService;
         private readonly IMaxGameResult maxGameService;
         private readonly ISportsLotteryResult sportsLotteryResult;
         private readonly IPPLiveCasinoResult ppLiveCasinoResult;
+        private readonly IHabaneroResult habaneroResult;
         private readonly BrowserHelper browserHelper;
 
         public ThirdPartyResultHandler(
@@ -39,6 +42,7 @@
             this.maxGameService = maxGameService;
             this.sportsLotteryResult = sportsLotteryResult;
             this.ppLiveCasinoResult = ppLiveCasinoResult;
+            this.habaneroResult = new HabaneroResult("HabaneroResultConfigs");
             this.browserHelper = browserHelper;
         }
 
@@ -95,6 +99,17 @@
             var productName = cacheRefService.GetProductName(message.ProductId);
 
             var result = ppLiveCasinoResult.GetResult(message.CustId, message.GameId3rd, message.BetType, message.Language);
+
+            return new ThirdPartyResultViewModel(string.Format(Resources.ResultPopupTitle, productName), new SuccessResult(result));
+        }
+        
+        public ThirdPartyResultViewModel Handle(HabaneroResultQuery message)
+        {
+            Check.Argument.IsNotNull(message, "message");
+
+            var productName = cacheRefService.GetProductName(message.ProductId);
+
+            var result = habaneroResult.GetResult(message.CustId.ToString(), message.GameId, message.GameCode, message.SiteId, message.Language);
 
             return new ThirdPartyResultViewModel(string.Format(Resources.ResultPopupTitle, productName), new SuccessResult(result));
         }
