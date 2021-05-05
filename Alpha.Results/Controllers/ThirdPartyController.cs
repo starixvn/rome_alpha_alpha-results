@@ -60,5 +60,12 @@
 
             return View("~/Views/ThirdParty/Index.cshtml", mediator.Send(message));
         }
+
+        public ActionResult CGResult(CGResultQuery message)
+        {
+            message.Language = userSession.Language;
+
+            return View("~/Views/ThirdParty/Index.cshtml", mediator.Send(message));
+        }
     }
 }

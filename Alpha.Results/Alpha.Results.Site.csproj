@@ -1302,6 +1302,7 @@
     <Compile Include="Models\Requests\MaxGameResultQuery.cs" />
     <Compile Include="Models\Requests\SportsLottery\SportsLotteryDetailResultQuery.cs" />
     <Compile Include="Models\Requests\SportsLottery\SportsLotteryResultQuery.cs" />
+    <Compile Include="Models\Requests\CGResultQuery.cs" />
     <Compile Include="Models\Requests\VirtualGames\VirtualGamesDetailResultQuery.cs" />
     <Compile Include="Models\Requests\VirtualGames\VirtualGamesResultQuery.cs" />
     <Compile Include="Models\Requests\LotteryResultQuery.cs" />
