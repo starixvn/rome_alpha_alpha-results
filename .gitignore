@@ -70,3 +70,4 @@ Fanex_Razorbill_Website_I7/vwd.webinfo
 .vs/Alpha.Results/v15/Server/sqlite3/storage.ide-wal
 .vs/Alpha.Results/v15/Server/sqlite3/storage.ide
 /.vs/Alpha.Results/DesignTimeBuild/.dtbcache
+/Alpha.Results.Tests/Content/*
