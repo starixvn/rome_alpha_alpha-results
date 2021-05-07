@@ -2,6 +2,7 @@
 {
     using System;
     using Alpha.Results.Site.Helpers;
+    using Fanex.Result.Core.Habanero;
     using Fanex.Result.Core.MaxGame;
     using Fanex.Result.Core.PPLiveCasino;
     using Fanex.Result.Core.SportsLottery;
@@ -22,6 +23,8 @@
         private ISportsLotteryResult sportsLotteryResult;
         private IPPLiveCasinoResult ppLiveCasinoResult;
         private BrowserHelper browserHelper;
+        private IHabaneroResult habaneroResult;
+        private ICGResult cgResult;
 
         [SetUp]
         public void SetUp()
@@ -32,7 +35,9 @@
             sportsLotteryResult = Substitute.For<ISportsLotteryResult>();
             browserHelper = Substitute.For<BrowserHelper>();
             ppLiveCasinoResult = Substitute.For<IPPLiveCasinoResult>();
-            handler = new ThirdPartyResultHandler(serviceFactory, cacheRefService, maxGameResult, sportsLotteryResult, ppLiveCasinoResult, browserHelper);
+            habaneroResult = Substitute.For<IHabaneroResult>();
+            cgResult = Substitute.For<ICGResult>();
+            handler = new ThirdPartyResultHandler(serviceFactory, cacheRefService, maxGameResult, sportsLotteryResult, ppLiveCasinoResult, habaneroResult, cgResult, browserHelper);
         }
 
         [Test]
@@ -135,6 +140,40 @@
 
             // Assert
             Assert.AreEqual("PP Live Casino result url", act.Result.Value);
+        }
+
+        [Test]
+        public void HabaneroResultQuery_Always_ReturnCorrectViewModel()
+        {
+            // Arrange
+            cacheRefService.GetProductName(Arg.Any<int>()).Returns("ProductName");
+            var query = new HabaneroResultQuery() { CustId = 1, GameCode = "1", GameId = "1", Language = "en-US", SiteId = "1" };
+            habaneroResult.GetResult("1", "1", "1", "1")
+                .Returns("Habanero result url");
+
+            // Act
+            var act = handler.Handle(query);
+
+
+            // Assert
+            Assert.AreEqual("Habanero result url", act.Result.Value);
+        }
+
+        [Test]
+        public void CGResultQuery_Always_ReturnCorrectViewModel()
+        {
+            // Arrange
+            cacheRefService.GetProductName(Arg.Any<int>()).Returns("ProductName");
+            var query = new CGResultQuery() { CustId = 1, GameCode = "1", GameId = "1", Language = "en-US", SiteId = "1" };
+            cgResult.GetResult("1", "1", "1", "1")
+                .Returns("CG result url");
+
+            // Act
+            var act = handler.Handle(query);
+
+
+            // Assert
+            Assert.AreEqual("CG result url", act.Result.Value);
         }
     }
 }

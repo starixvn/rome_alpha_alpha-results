@@ -89,5 +89,18 @@
             // Assert
             mediator.Received().Send(Arg.Is<PPLiveCasinoResultQuery>(msg => msg.Language == userSession.Language));
         }
+
+        [Test]
+        public void Detail_Always_CallsMediatorSendCreativeGamingResultQuery()
+        {
+            // Arrange
+            var query = new CGResultQuery();
+
+            // Act
+            controller.CGResult(query);
+
+            // Assert
+            mediator.Received().Send(Arg.Is<CGResultQuery>(msg => msg.Language == userSession.Language));
+        }
     }
 }

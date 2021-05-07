@@ -20,6 +20,7 @@
     using Fanex.Result.Core.Base.Models;
     using Fanex.Result.Core.Base.Utilities;
     using Fanex.Result.Core.GlobalGaming;
+    using Fanex.Result.Core.Habanero;
     using Fanex.Result.Core.LinkedGames;
     using Fanex.Result.Core.MaxGame;
     using Fanex.Result.Core.PPLiveCasino;
@@ -120,6 +121,8 @@
             container.Register<IMaxGameResult, MaxGameResult>(Lifestyle.Scoped);
             container.Register<ISportsLotteryResult, SportsLotteryResult>(Lifestyle.Scoped);
             container.Register<IPPLiveCasinoResult, PPLiveCasinoResult>(Lifestyle.Scoped);
+            container.Register<IHabaneroResult>(() => new HabaneroResult("HabaneroResultConfigs"), Lifestyle.Scoped);
+            container.Register<ICGResult>(() => new CGResult("CGResultConfigs"), Lifestyle.Scoped);
         }
 
         private static void RegisterDataAccesses(Container container)

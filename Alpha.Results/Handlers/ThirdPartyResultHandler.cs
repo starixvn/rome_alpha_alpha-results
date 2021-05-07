@@ -29,7 +29,7 @@
         private readonly IPPLiveCasinoResult ppLiveCasinoResult;
         private readonly IHabaneroResult habaneroResult;
         private readonly BrowserHelper browserHelper;
-        private readonly IHabaneroResult cgResult;
+        private readonly ICGResult cgResult;
 
         public ThirdPartyResultHandler(
             ProductResultServiceFactory serviceFactory,
@@ -37,6 +37,8 @@
             IMaxGameResult maxGameService,
             ISportsLotteryResult sportsLotteryResult,
             IPPLiveCasinoResult ppLiveCasinoResult,
+            IHabaneroResult habaneroResult,
+            ICGResult cgResult,
             BrowserHelper browserHelper)
         {
             this.serviceFactory = serviceFactory;
@@ -44,8 +46,8 @@
             this.maxGameService = maxGameService;
             this.sportsLotteryResult = sportsLotteryResult;
             this.ppLiveCasinoResult = ppLiveCasinoResult;
-            this.habaneroResult = new HabaneroResult("HabaneroResultConfigs");
-            this.cgResult = new HabaneroResult("CGResultConfigs");
+            this.habaneroResult = habaneroResult;
+            this.cgResult = cgResult;
             this.browserHelper = browserHelper;
         }
 
