@@ -1,35 +1,34 @@
 ﻿namespace Alpha.Results.Site.Handlers
 {
-    using System;
-    using Constants;
+    using Alpha.Results.Site.Helpers;
+    using Alpha.Results.Site.Services;
     using MediatR;
     using Models.Requests;
     using Models.Views;
 
     public class KenoResultHandler :
-        IRequestHandler<KenoResultQuery, KenoResultViewModel>
+         IRequestHandler<KenoResultQuery, KenoResultViewModel>
     {
+        private readonly ICacheRefService cacheRefService;
+        private readonly IKenoResult kenoResult;
+        private readonly BrowserHelper browserHelper;
+
+        public KenoResultHandler(ICacheRefService cacheRefService,
+            IKenoResult kenoResult,
+            BrowserHelper browserHelper)
+        {
+            this.cacheRefService = cacheRefService;
+            this.kenoResult = kenoResult;
+            this.browserHelper = browserHelper;
+        }
+
         public KenoResultViewModel Handle(KenoResultQuery message)
         {
-            if (message == null)
-            {
-                throw new ArgumentNullException(nameof(message), "KenoResultQuery cannot be null");
-            }
-
-            var resultUrl = string.Format(
-                "{0}game/keno/kenoresult/resultdetail?date={1}&language={2}&productId={4}&customerid={3}",
-                message.RootUrl,
-                DateTime.Today.ToString("yyyyMMdd"),
-                message.LanguageKey,
-                message.CustId,
-                ProductIdConstants.Keno);
-
-            var extendTokenUrl = $"{message.RootUrl}game/keno/kenoresult/extendtoken?productId={ProductIdConstants.Keno}&userid={message.CustId}";
+            var result = kenoResult.GetResult(message.CustId.ToString(), !browserHelper.IsMobile(), message.EventDate, message.RootUrl, message.LanguageKey);
 
             return new KenoResultViewModel
             {
-                ResultUrl = resultUrl,
-                ExtendTokenUrl = extendTokenUrl
+                ResultUrl = result
             };
         }
     }

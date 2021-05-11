@@ -11,6 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SonarQube", "SonarQube", "{
 	ProjectSection(SolutionItems) = preProject
 		SonarQube\Alpha-ResultCSharp.ruleset = SonarQube\Alpha-ResultCSharp.ruleset
 		SonarQube\SolutionBinding.sqconfig = SonarQube\SolutionBinding.sqconfig
+		SonarQube\alpha-result\CSharp\SonarLint.xml = SonarQube\alpha-result\CSharp\SonarLint.xml
 	EndProjectSection
 EndProject
 Global

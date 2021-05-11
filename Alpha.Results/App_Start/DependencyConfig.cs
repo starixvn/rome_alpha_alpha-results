@@ -127,6 +127,9 @@
             container.Register<IWebClient, JsonWebClient>(Lifestyle.Scoped);
             container.Register<ISerializer, JsonSerializer>(Lifestyle.Scoped);
             container.Register<IVGamingResult, VGamingResult>(Lifestyle.Scoped);
+            container.Register<IKenoResult>(() => new KenoResult("KenoResultConfigs"), Lifestyle.Scoped);
+            container.Register<ILotteryResult>(() => new LotteryResult("LotteryResultConfigs"), Lifestyle.Scoped);
+            container.Register<ITableGameResult>(() => new TableGameResult("TableGameResultConfigs"), Lifestyle.Scoped);
         }
 
         private static void RegisterDataAccesses(Container container)

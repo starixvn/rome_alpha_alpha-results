@@ -20,13 +20,7 @@
         [HttpGet]
         public ActionResult Index()
         {
-            var viewModel = _mediator.Send(new TableGamesResultQuery
-            {
-                LanguageKey = _userSession.LangKey,
-                CustId = _userSession.CustId,
-                CustLevelId = _userSession.RoleId,
-                RootUrl = Helpers.UrlHelper.CurrentAppPath
-            });
+            var viewModel = _mediator.Send(new TableGamesResultQuery(_userSession));
 
             return View(viewModel);
         }

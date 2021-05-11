@@ -33,7 +33,7 @@
         private readonly BrowserHelper browserHelper;
         private readonly ICGResult cgResult;
         private readonly IVGamingResult vGamingResultService;
-
+        
         public ThirdPartyResultHandler(
             ProductResultServiceFactory serviceFactory,
             ICacheRefService cacheRefService,
