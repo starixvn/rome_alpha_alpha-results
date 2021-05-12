@@ -14,7 +14,6 @@
     using DataAccesses.Impl;
     using Fanex.Caching;
     using Fanex.Data.Repository;
-    using Fanex.Game.Keno.Business;
     using Fanex.RemotingRef;
     using Fanex.Result.Core.AllBetCasino;
     using Fanex.Result.Core.Base.Models;
@@ -110,7 +109,6 @@
             container.Register<INormalResultService, NormalResultService>(Lifestyle.Scoped);
 
             container.Register<IResultEngineAdapter, ResultEngineAdapter>(Lifestyle.Scoped);
-            container.Register<IKenoGameService, KenoGameService>(Lifestyle.Scoped);
             container.Register<IAllbetResultBuilder, AllbetResultBuilder>(Lifestyle.Scoped);
             container.Register<VoidbridgeApi, VoidbridgeApiImp>(Lifestyle.Scoped);
             container.Register<Base3rdResultApi, GlobalGamingResultApi>(Lifestyle.Scoped);
