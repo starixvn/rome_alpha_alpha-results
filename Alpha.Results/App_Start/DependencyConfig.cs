@@ -123,6 +123,7 @@
             container.Register<IHabaneroResult>(() => new HabaneroResult("HabaneroResultConfigs"), Lifestyle.Scoped);
             container.Register<ICGResult>(() => new CGResult("CGResultConfigs"), Lifestyle.Scoped);
             container.Register<IWebClient, JsonWebClient>(Lifestyle.Scoped);
+            container.Register<IAdvantPlayResult>(() => new AdvantPlayResult("AdvantPlayResultConfigs"), Lifestyle.Scoped);
             container.Register<ISerializer, JsonSerializer>(Lifestyle.Scoped);
             container.Register<IVGamingResult, VGamingResult>(Lifestyle.Scoped);
             container.Register<IKenoResult>(() => new KenoResult("KenoResultConfigs"), Lifestyle.Scoped);

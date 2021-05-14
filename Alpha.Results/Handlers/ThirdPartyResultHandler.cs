@@ -23,6 +23,7 @@
         IRequestHandler<HabaneroResultQuery, ThirdPartyResultViewModel>,
         IRequestHandler<CGResultQuery, ThirdPartyResultViewModel>,
         IRequestHandler<VGamingResultQuery, ThirdPartyResultViewModel>
+        IRequestHandler<AdvantPlayResultQuery, ThirdPartyResultViewModel>
     {
         private readonly ProductResultServiceFactory serviceFactory;
         private readonly ICacheRefService cacheRefService;
@@ -33,6 +34,7 @@
         private readonly BrowserHelper browserHelper;
         private readonly ICGResult cgResult;
         private readonly IVGamingResult vGamingResultService;
+        private readonly IAdvantPlayResult advantPlayResult;
         
         public ThirdPartyResultHandler(
             ProductResultServiceFactory serviceFactory,
@@ -43,6 +45,7 @@
             IHabaneroResult habaneroResult,
             ICGResult cgResult,
             IVGamingResult vGamingResult,
+            IAdvantPlayResult advantPlayResult,
             BrowserHelper browserHelper)
         {
             this.serviceFactory = serviceFactory;
@@ -52,6 +55,7 @@
             this.ppLiveCasinoResult = ppLiveCasinoResult;
             this.habaneroResult = habaneroResult;
             this.cgResult = cgResult;
+            this.advantPlayResult = advantPlayResult;
             this.browserHelper = browserHelper;
             this.vGamingResultService = vGamingResult;
         }
@@ -142,6 +146,17 @@
             var productName = cacheRefService.GetProductName(message.ProductId);
 
             var result = vGamingResultService.GetResult(message.CustId.ToString(), message.GameRoundId, message.GameId, message.SiteId, message.SportId, message.CurrencyName, message.Language);
+
+            return new ThirdPartyResultViewModel(string.Format(Resources.ResultPopupTitle, productName), new SuccessResult(result));
+        }
+        
+        public ThirdPartyResultViewModel Handle(AdvantPlayResultQuery message)
+        {
+            Check.Argument.IsNotNull(message, "message");
+
+            var productName = cacheRefService.GetProductName(message.ProductId);
+
+            var result = advantPlayResult.GetResult(message.CustId.ToString(), message.GameId, message.GameCode, message.SiteId, message.Language);
 
             return new ThirdPartyResultViewModel(string.Format(Resources.ResultPopupTitle, productName), new SuccessResult(result));
         }
