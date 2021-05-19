@@ -67,5 +67,12 @@
 
             return View("~/Views/ThirdParty/Index.cshtml", mediator.Send(message));
         }
+
+        public ActionResult VGamingResult(VGamingResultQuery message)
+        {
+            message.Language = userSession.Language;
+
+            return View("~/Views/ThirdParty/Index.cshtml", mediator.Send(message));
+        }
     }
 }

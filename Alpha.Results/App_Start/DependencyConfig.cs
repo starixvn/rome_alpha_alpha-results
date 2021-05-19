@@ -26,6 +26,7 @@
     using Fanex.Result.Core.PPLiveCasino;
     using Fanex.Result.Core.RemotingRef;
     using Fanex.Result.Core.SportsLottery;
+    using Fanex.Result.Core.VGaming;
     using Fanex.Result.Core.VirtualGames;
     using Fanex.Result.Core.Voidbridge;
     using Fanex.Result.ThirdParty.Services;
@@ -123,6 +124,9 @@
             container.Register<IPPLiveCasinoResult, PPLiveCasinoResult>(Lifestyle.Scoped);
             container.Register<IHabaneroResult>(() => new HabaneroResult("HabaneroResultConfigs"), Lifestyle.Scoped);
             container.Register<ICGResult>(() => new CGResult("CGResultConfigs"), Lifestyle.Scoped);
+            container.Register<IWebClient, JsonWebClient>(Lifestyle.Scoped);
+            container.Register<ISerializer, JsonSerializer>(Lifestyle.Scoped);
+            container.Register<IVGamingResult, VGamingResult>(Lifestyle.Scoped);
         }
 
         private static void RegisterDataAccesses(Container container)

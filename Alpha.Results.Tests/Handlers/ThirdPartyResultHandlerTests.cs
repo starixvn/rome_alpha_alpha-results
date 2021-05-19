@@ -6,6 +6,7 @@
     using Fanex.Result.Core.MaxGame;
     using Fanex.Result.Core.PPLiveCasino;
     using Fanex.Result.Core.SportsLottery;
+    using Fanex.Result.Core.VGaming;
     using Fanex.Result.ThirdParty.Services;
     using NSubstitute;
     using NUnit.Framework;
@@ -25,6 +26,7 @@
         private BrowserHelper browserHelper;
         private IHabaneroResult habaneroResult;
         private ICGResult cgResult;
+        private IVGamingResult vgamingResult;
 
         [SetUp]
         public void SetUp()
@@ -37,7 +39,8 @@
             ppLiveCasinoResult = Substitute.For<IPPLiveCasinoResult>();
             habaneroResult = Substitute.For<IHabaneroResult>();
             cgResult = Substitute.For<ICGResult>();
-            handler = new ThirdPartyResultHandler(serviceFactory, cacheRefService, maxGameResult, sportsLotteryResult, ppLiveCasinoResult, habaneroResult, cgResult, browserHelper);
+            vgamingResult = Substitute.For<IVGamingResult>();
+            handler = new ThirdPartyResultHandler(serviceFactory, cacheRefService, maxGameResult, sportsLotteryResult, ppLiveCasinoResult, habaneroResult, cgResult, vgamingResult, browserHelper);
         }
 
         [Test]
@@ -174,6 +177,31 @@
 
             // Assert
             Assert.AreEqual("CG result url", act.Result.Value);
+        }
+
+        [Test]
+        public void VGamingResultQuery_Always_ReturnCorrectViewModel()
+        {
+            // Arrange
+            cacheRefService.GetProductName(Arg.Any<int>()).Returns("ProductName");
+            var query = new VGamingResultQuery()
+            {
+                SportId = 171,
+                CurrencyName = "UUS",
+                CustId = 1,
+                GameId = "1",
+                GameRoundId = "gameround",
+                Language = "en-US",
+                SiteId = "1"
+            };
+            vgamingResult.GetResult("1", "gameround", "1", "1", 171, "UUS", "en-US").Returns("VGaming result url");
+
+            // Act
+            var act = handler.Handle(query);
+
+
+            // Assert
+            Assert.AreEqual("VGaming result url", act.Result.Value);
         }
     }
 }

@@ -7,6 +7,7 @@
     using Fanex.Result.Core.MaxGame;
     using Fanex.Result.Core.PPLiveCasino;
     using Fanex.Result.Core.SportsLottery;
+    using Fanex.Result.Core.VGaming;
     using Fanex.Result.ThirdParty.Models;
     using Fanex.Result.ThirdParty.Models.Views;
     using Fanex.Result.ThirdParty.Services;
@@ -20,7 +21,8 @@
         IRequestHandler<SportsLotteryDetailResultQuery, ThirdPartyResultViewModel>,
         IRequestHandler<PPLiveCasinoResultQuery, ThirdPartyResultViewModel>,
         IRequestHandler<HabaneroResultQuery, ThirdPartyResultViewModel>,
-        IRequestHandler<CGResultQuery, ThirdPartyResultViewModel>
+        IRequestHandler<CGResultQuery, ThirdPartyResultViewModel>,
+        IRequestHandler<VGamingResultQuery, ThirdPartyResultViewModel>
     {
         private readonly ProductResultServiceFactory serviceFactory;
         private readonly ICacheRefService cacheRefService;
@@ -30,6 +32,7 @@
         private readonly IHabaneroResult habaneroResult;
         private readonly BrowserHelper browserHelper;
         private readonly ICGResult cgResult;
+        private readonly IVGamingResult vGamingResultService;
 
         public ThirdPartyResultHandler(
             ProductResultServiceFactory serviceFactory,
@@ -39,6 +42,7 @@
             IPPLiveCasinoResult ppLiveCasinoResult,
             IHabaneroResult habaneroResult,
             ICGResult cgResult,
+            IVGamingResult vGamingResult,
             BrowserHelper browserHelper)
         {
             this.serviceFactory = serviceFactory;
@@ -49,6 +53,7 @@
             this.habaneroResult = habaneroResult;
             this.cgResult = cgResult;
             this.browserHelper = browserHelper;
+            this.vGamingResultService = vGamingResult;
         }
 
         public ThirdPartyResultViewModel Handle(ThirdPartyResultQuery message)
@@ -126,6 +131,17 @@
             var productName = cacheRefService.GetProductName(message.ProductId);
 
             var result = cgResult.GetResult(message.CustId.ToString(), message.GameId, message.GameCode, message.SiteId, message.Language);
+
+            return new ThirdPartyResultViewModel(string.Format(Resources.ResultPopupTitle, productName), new SuccessResult(result));
+        }
+
+        public ThirdPartyResultViewModel Handle(VGamingResultQuery message)
+        {
+            Check.Argument.IsNotNull(message, "message");
+
+            var productName = cacheRefService.GetProductName(message.ProductId);
+
+            var result = vGamingResultService.GetResult(message.CustId.ToString(), message.GameRoundId, message.GameId, message.SiteId, message.SportId, message.CurrencyName, message.Language);
 
             return new ThirdPartyResultViewModel(string.Format(Resources.ResultPopupTitle, productName), new SuccessResult(result));
         }
