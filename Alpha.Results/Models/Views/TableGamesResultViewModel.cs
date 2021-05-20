@@ -1,17 +1,13 @@
-﻿using Alpha.Results.Site.Constants;
-using Alpha.Results.Site.Services;
-
-namespace Alpha.Results.Site.Models.Views
+﻿namespace Alpha.Results.Site.Models.Views
 {
-    public class TableGamesResultViewModel : BaseResultTab
+    using Alpha.Results.Site.Constants;
+    using Alpha.Results.Site.Services;
+
+    public class TableGamesResultViewModel : KenoLotteryTableGameResultViewModel
     {
         public TableGamesResultViewModel(ICacheRefService cacheRefService)
         {
             ProductName = cacheRefService.GetProductName(ProductIdConstants.TableGames);
         }
-
-        public string ResultPath { get; set; }
-
-        public string ExtendTokenPath { get; set; }
     }
 }

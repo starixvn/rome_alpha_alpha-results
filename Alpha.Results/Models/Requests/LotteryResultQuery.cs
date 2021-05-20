@@ -1,16 +1,14 @@
-﻿using Alpha.Results.Site.Models.Views;
-using MediatR;
-
-namespace Alpha.Results.Site.Models.Requests
+﻿namespace Alpha.Results.Site.Models.Requests
 {
-    public class LotteryResultQuery : IRequest<LotteryResultViewModel>
+    using Alpha.Results.Site.Models.Views;
+    using MediatR;
+    using Sunplus.Agent.Model.Entities;
+
+    public class LotteryResultQuery : KenoLotteryTableGameResultQuery, IRequest<LotteryResultViewModel>
     {
-        public int CustId { get; set; }
+        public LotteryResultQuery(IUserSession userSession) : base(userSession)
+        {
 
-        public int CustLevelId { get; set; }
-
-        public string LanguageKey { get; set; }
-
-        public string RootPath { get; set; }
+        }
     }
 }

@@ -20,13 +20,7 @@
         [HttpGet]
         public ActionResult Index()
         {
-            var viewModel = _mediator.Send(new LotteryResultQuery
-            {
-                LanguageKey = _userSession.LangKey,
-                CustId = _userSession.CustId,
-                CustLevelId = _userSession.RoleId,
-                RootPath = Helpers.UrlHelper.CurrentAppPath
-            });
+            var viewModel = _mediator.Send(new LotteryResultQuery(_userSession));
 
             return View(viewModel);
         }

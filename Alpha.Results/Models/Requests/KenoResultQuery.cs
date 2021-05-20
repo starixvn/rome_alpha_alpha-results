@@ -1,18 +1,14 @@
 ﻿namespace Alpha.Results.Site.Models.Requests
 {
-    using System.Diagnostics.CodeAnalysis;
     using Alpha.Results.Site.Models.Views;
     using MediatR;
+    using Sunplus.Agent.Model.Entities;
 
-    public class KenoResultQuery : IRequest<KenoResultViewModel>
+    public class KenoResultQuery : KenoLotteryTableGameResultQuery, IRequest<KenoResultViewModel>
     {
-        public int CustId { get; set; }
+        public KenoResultQuery(IUserSession userSession) : base(userSession)
+        {
 
-        public int CustLevelId { get; set; }
-
-        public string LanguageKey { get; set; }
-
-        [SuppressMessage("Microsoft.Design", "CA1056:UriPropertiesShouldNotBeStrings", Justification = "Reviewed")]
-        public string RootUrl { get; set; }
+        }
     }
 }

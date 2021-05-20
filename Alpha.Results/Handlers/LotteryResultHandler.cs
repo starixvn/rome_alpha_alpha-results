@@ -1,8 +1,7 @@
 ﻿namespace Alpha.Results.Site.Handlers
 {
-    using System;
+    using Alpha.Results.Site.Helpers;
     using Alpha.Results.Site.Services;
-    using Constants;
     using MediatR;
     using Models.Requests;
     using Models.Views;
@@ -11,28 +10,25 @@
          IRequestHandler<LotteryResultQuery, LotteryResultViewModel>
     {
         private readonly ICacheRefService cacheRefService;
+        private readonly ILotteryResult lotteryResult;
+        private readonly BrowserHelper browserHelper;
 
-        public LotteryResultHandler(ICacheRefService cacheRefService)
+        public LotteryResultHandler(ICacheRefService cacheRefService,
+            ILotteryResult lotteryResult,
+            BrowserHelper browserHelper)
         {
             this.cacheRefService = cacheRefService;
+            this.lotteryResult = lotteryResult;
+            this.browserHelper = browserHelper;
         }
 
         public LotteryResultViewModel Handle(LotteryResultQuery message)
         {
-            var resultPath = string.Format(
-                "{0}game/keno/kenoresult/resultdetail?date={1}&language={2}&productId={4}&customerid={3}",
-                message.RootPath,
-                DateTime.Today.ToString("yyyyMMdd"),
-                message.LanguageKey,
-                message.CustId,
-                ProductIdConstants.Lottery);
-
-            var extendTokenPath = $"{message.RootPath}game/keno/kenoresult/extendtoken?productId={ProductIdConstants.Lottery}&userid={message.CustId}";
+            var result = lotteryResult.GetResult(message.CustId.ToString(), !browserHelper.IsMobile(), message.EventDate, message.RootUrl, message.LanguageKey);
 
             return new LotteryResultViewModel(cacheRefService)
             {
-                ResultPath = resultPath,
-                ExtendTokenPath = extendTokenPath
+                ResultUrl = result
             };
         }
     }

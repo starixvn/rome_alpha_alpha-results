@@ -1,10 +1,9 @@
 ﻿$(function () {
-    const $cardClubIframe = $(".card-club-iframe");
+    var linkKenoResult = $('#result-link');
+    var url = linkKenoResult.attr('href');
 
-    if ($cardClubIframe.length) {
-        $(window).resize(function () {
-            var height = $(window).height() - 10;
-            $cardClubIframe.height(height < 0 ? 0 : height);
-        });
-    }
-});
+    linkKenoResult.click(function (e) {
+        e.preventDefault();
+        window.open(url, 'Keno_Result', 'width=900,height=700,scrollbars=1,directories=0,titlebar=0,toolbar=0,location=0,status=0,menubar=0');
+    });
+})
