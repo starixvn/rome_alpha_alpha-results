@@ -22,7 +22,7 @@
         IRequestHandler<PPLiveCasinoResultQuery, ThirdPartyResultViewModel>,
         IRequestHandler<HabaneroResultQuery, ThirdPartyResultViewModel>,
         IRequestHandler<CGResultQuery, ThirdPartyResultViewModel>,
-        IRequestHandler<VGamingResultQuery, ThirdPartyResultViewModel>
+        IRequestHandler<VGamingResultQuery, ThirdPartyResultViewModel>,
         IRequestHandler<AdvantPlayResultQuery, ThirdPartyResultViewModel>
     {
         private readonly ProductResultServiceFactory serviceFactory;

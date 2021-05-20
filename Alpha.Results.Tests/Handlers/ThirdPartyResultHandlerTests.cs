@@ -27,6 +27,7 @@
         private IHabaneroResult habaneroResult;
         private ICGResult cgResult;
         private IVGamingResult vgamingResult;
+        private IAdvantPlayResult advantPlayResult;
 
         [SetUp]
         public void SetUp()
@@ -40,7 +41,8 @@
             habaneroResult = Substitute.For<IHabaneroResult>();
             cgResult = Substitute.For<ICGResult>();
             vgamingResult = Substitute.For<IVGamingResult>();
-            handler = new ThirdPartyResultHandler(serviceFactory, cacheRefService, maxGameResult, sportsLotteryResult, ppLiveCasinoResult, habaneroResult, cgResult, vgamingResult, browserHelper);
+            advantPlayResult = Substitute.For<IAdvantPlayResult>();
+            handler = new ThirdPartyResultHandler(serviceFactory, cacheRefService, maxGameResult, sportsLotteryResult, ppLiveCasinoResult, habaneroResult, cgResult, vgamingResult, advantPlayResult, browserHelper);
         }
 
         [Test]
@@ -202,6 +204,23 @@
 
             // Assert
             Assert.AreEqual("VGaming result url", act.Result.Value);
+        }
+
+        [Test]
+        public void AdvantPlayResultQuery_Always_ReturnCorrectViewModel()
+        {
+            // Arrange
+            cacheRefService.GetProductName(Arg.Any<int>()).Returns("ProductName");
+            var query = new AdvantPlayResultQuery() { CustId = 1, GameCode = "1", GameId = "1", Language = "en-US", SiteId = "1" };
+            advantPlayResult.GetResult("1", "1", "1", "1")
+                .Returns("AdvantPlay result url");
+
+            // Act
+            var act = handler.Handle(query);
+
+
+            // Assert
+            Assert.AreEqual("AdvantPlay result url", act.Result.Value);
         }
     }
 }
