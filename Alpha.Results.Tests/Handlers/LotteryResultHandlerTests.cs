@@ -1,55 +1,45 @@
 ﻿namespace Alpha.Results.Site.Tests.Handlers
 {
     using System;
+    using Alpha.Results.Site.Helpers;
     using Alpha.Results.Site.Services;
     using NSubstitute;
     using NUnit.Framework;
     using Site.Handlers;
     using Site.Models.Requests;
+    using Sunplus.Agent.Model.Entities;
 
     [TestFixture]
     public class LotteryResultHandlerTests
     {
         private ICacheRefService cacheRefService;
         private LotteryResultHandler _lotteryResultHandler;
+        private BrowserHelper browserHelper;
+        private ILotteryResult lotteryResult;
+        private IUserSession userSession;
 
         [SetUp]
         public void SetUp()
         {
+            browserHelper = Substitute.For<BrowserHelper>();
             cacheRefService = Substitute.For<ICacheRefService>();
-            _lotteryResultHandler = new LotteryResultHandler(cacheRefService);
+            lotteryResult = Substitute.For<ILotteryResult>();
+            _lotteryResultHandler = new LotteryResultHandler(cacheRefService, lotteryResult, browserHelper);
+
+            userSession = Substitute.For<IUserSession>();
+            userSession.LangKey.Returns("EN");
+            userSession.CustId.Returns(1);
         }
 
         [Test]
         public void HandleLotteryResultQuery_WhenCalled_ReturnResultUrl()
         {
-            var query = new LotteryResultQuery
-            {
-                CustId = 1,
-                LanguageKey = "EN",
-                RootPath = "RootUrl/"
-            };
-
+            var query = new LotteryResultQuery(userSession);
+            lotteryResult.GetResult(Arg.Any<string>(), Arg.Any<bool>(), Arg.Any<DateTime>(), Arg.Any<string>(), Arg.Any<string>())
+                .Returns("Lottery result url");
             var actualViewModel = _lotteryResultHandler.Handle(query);
 
-            var expectedResultPath = $"RootUrl/game/keno/kenoresult/resultdetail?date={DateTime.Today.ToString("yyyyMMdd")}&language=EN&productId=28&customerid=1";
-            Assert.AreEqual(expectedResultPath, actualViewModel.ResultPath);
-        }
-
-        [Test]
-        public void Handle_WhenCalled_ReturnExtendTokenUrl()
-        {
-            var query = new LotteryResultQuery
-            {
-                CustId = 1,
-                LanguageKey = "EN",
-                RootPath = "RootUrl/"
-            };
-
-            var actualViewModel = _lotteryResultHandler.Handle(query);
-
-            var expectedExtendTokenPath = "RootUrl/game/keno/kenoresult/extendtoken?productId=28&userid=1";
-            Assert.AreEqual(expectedExtendTokenPath, actualViewModel.ExtendTokenPath);
+            Assert.AreEqual("Lottery result url", actualViewModel.ResultUrl);
         }
     }
 }
