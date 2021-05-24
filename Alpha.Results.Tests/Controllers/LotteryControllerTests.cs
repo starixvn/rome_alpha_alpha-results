@@ -1,5 +1,6 @@
 ﻿namespace Alpha.Results.Site.Tests.Controllers
 {
+    using System;
     using MediatR;
     using NSubstitute;
     using NUnit.Framework;
@@ -40,8 +41,8 @@
             mediator.Received().Send(Arg.Is<LotteryResultQuery>(
                 query => query.LanguageKey == userSession.LangKey
                     && query.CustId == userSession.CustId
-                    && query.CustLevelId == userSession.RoleId
-                    && query.RootPath == "path"));
+                    && query.EventDate == DateTime.Today
+                    && query.RootUrl == "path"));
         }
     }
 }

@@ -1,57 +1,46 @@
 ﻿namespace Alpha.Results.Site.Tests.Handlers
 {
     using System;
+    using Alpha.Results.Site.Helpers;
+    using Alpha.Results.Site.Services;
+    using NSubstitute;
     using NUnit.Framework;
     using Site.Handlers;
     using Site.Models.Requests;
+    using Sunplus.Agent.Model.Entities;
 
     [TestFixture]
     public class KenoResultHandlerTests
     {
         private KenoResultHandler _kenoResultHandler;
+        private BrowserHelper browserHelper;
+        private ICacheRefService cacheRefService;
+        private IKenoResult kenoResult;
+        private IUserSession userSession;
 
         [SetUp]
         public void SetUp()
         {
-            _kenoResultHandler = new KenoResultHandler();
-        }
+            kenoResult = Substitute.For<IKenoResult>();
+            cacheRefService = Substitute.For<ICacheRefService>();
+            browserHelper = Substitute.For<BrowserHelper>();
+            userSession = Substitute.For<IUserSession>();
+            userSession.LangKey.Returns("EN");
+            userSession.CustId.Returns(1);
 
-        [Test]
-        public void HandleKenoResultQuery_QueryIsNull_ThrowArgumentNullException()
-        {
-            Assert.Throws<ArgumentNullException>(new TestDelegate(() => _kenoResultHandler.Handle(null)));
+            _kenoResultHandler = new KenoResultHandler(cacheRefService, kenoResult, browserHelper);
         }
 
         [Test]
         public void HandleKenoResultQuery_WhenCalled_ReturnResultUrl()
         {
-            var query = new KenoResultQuery
-            {
-                CustId = 1,
-                LanguageKey = "EN",
-                RootUrl = "RootUrl/"
-            };
+            var query = new KenoResultQuery(userSession);
+            kenoResult.GetResult(Arg.Any<string>(), Arg.Any<bool>(), Arg.Any<DateTime>(), Arg.Any<string>(), Arg.Any<string>())
+                .Returns("Keno Result url");
 
             var actualViewModel = _kenoResultHandler.Handle(query);
 
-            var expectedResultUrl = $"RootUrl/game/keno/kenoresult/resultdetail?date={DateTime.Today.ToString("yyyyMMdd")}&language=EN&productId=8&customerid=1";
-            Assert.AreEqual(expectedResultUrl, actualViewModel.ResultUrl);
-        }
-
-        [Test]
-        public void Handle_WhenCalled_ReturnExtendTokenUrl()
-        {
-            var query = new KenoResultQuery
-            {
-                CustId = 1,
-                LanguageKey = "EN",
-                RootUrl = "RootUrl/"
-            };
-
-            var actualViewModel = _kenoResultHandler.Handle(query);
-
-            var expectedExtendTokenUrl = "RootUrl/game/keno/kenoresult/extendtoken?productId=8&userid=1";
-            Assert.AreEqual(expectedExtendTokenUrl, actualViewModel.ExtendTokenUrl);
-        }
+            Assert.AreEqual("Keno Result url", actualViewModel.ResultUrl);
+        }        
     }
 }
