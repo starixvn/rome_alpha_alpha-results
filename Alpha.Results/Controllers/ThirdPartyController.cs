@@ -74,5 +74,12 @@
 
             return View("~/Views/ThirdParty/Index.cshtml", mediator.Send(message));
         }
+        
+        public ActionResult AdvantPlayResult(AdvantPlayResultQuery message)
+        {
+            message.Language = userSession.Language;
+
+            return View("~/Views/ThirdParty/Index.cshtml", mediator.Send(message));
+        }
     }
 }

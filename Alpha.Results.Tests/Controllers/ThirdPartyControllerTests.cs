@@ -102,5 +102,18 @@
             // Assert
             mediator.Received().Send(Arg.Is<CGResultQuery>(msg => msg.Language == userSession.Language));
         }
+
+        [Test]
+        public void Detail_Always_CallsMediatorSendAdvantPlayResultQuery()
+        {
+            // Arrange
+            var query = new AdvantPlayResultQuery();
+
+            // Act
+            controller.AdvantPlayResult(query);
+
+            // Assert
+            mediator.Received().Send(Arg.Is<AdvantPlayResultQuery>(msg => msg.Language == userSession.Language));
+        }
     }
 }

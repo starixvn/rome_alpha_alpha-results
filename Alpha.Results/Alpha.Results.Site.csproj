@@ -1354,6 +1354,7 @@
     <Compile Include="Models\Dtos\BalanceUpAndMoveBetsDate.cs" />
     <Compile Include="Models\League.cs" />
     <Compile Include="Models\Requests\KenoLotteryTableGameResultQuery.cs" />
+    <Compile Include="Models\Requests\AdvantPlayResultQuery.cs" />
     <Compile Include="Models\Requests\PPLiveCasinoResultQuery.cs" />
     <Compile Include="Models\Requests\HabaneroResultQuery.cs" />
     <Compile Include="Models\Requests\VGamingResultQuery.cs" />
@@ -1388,6 +1389,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ICacheRefService.cs" />
     <Compile Include="Services\Impl\TableGameResult.cs" />
+    <Compile Include="Services\IAdvantPlayResult.cs" />
     <Compile Include="Services\Impl\LotteryResult.cs" />
     <Compile Include="Services\ITableGamesResult.cs" />
     <Compile Include="Services\ILotteryResult.cs" />
@@ -1395,6 +1397,7 @@
     <Compile Include="Services\ICGResult.cs" />
     <Compile Include="Services\Impl\CacheRefService.cs" />
     <Compile Include="Services\Impl\KenoResult.cs" />
+    <Compile Include="Services\Impl\AdvantPlayResult.cs" />
     <Compile Include="Services\Impl\CGResult.cs" />
     <Compile Include="Services\Impl\OutrightResultService.cs" />
     <Compile Include="Services\Impl\Products\LeapGamingResultService.cs" />
