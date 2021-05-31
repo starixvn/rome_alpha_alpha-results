@@ -28,6 +28,7 @@
         private ICGResult cgResult;
         private IVGamingResult vgamingResult;
         private IAdvantPlayResult advantPlayResult;
+        private IAdvantPlayMiniResult advantPlayMiniResult;
 
         [SetUp]
         public void SetUp()
@@ -42,7 +43,8 @@
             cgResult = Substitute.For<ICGResult>();
             vgamingResult = Substitute.For<IVGamingResult>();
             advantPlayResult = Substitute.For<IAdvantPlayResult>();
-            handler = new ThirdPartyResultHandler(serviceFactory, cacheRefService, maxGameResult, sportsLotteryResult, ppLiveCasinoResult, habaneroResult, cgResult, vgamingResult, advantPlayResult, browserHelper);
+            advantPlayMiniResult = Substitute.For<IAdvantPlayMiniResult>();
+            handler = new ThirdPartyResultHandler(serviceFactory, cacheRefService, maxGameResult, sportsLotteryResult, ppLiveCasinoResult, habaneroResult, cgResult, vgamingResult, advantPlayResult, advantPlayMiniResult, browserHelper);
         }
 
         [Test]
@@ -221,6 +223,23 @@
 
             // Assert
             Assert.AreEqual("AdvantPlay result url", act.Result.Value);
+        }
+
+        [Test]
+        public void AdvantPlayMiniResultQuery_Always_ReturnCorrectViewModel()
+        {
+            // Arrange
+            cacheRefService.GetProductName(Arg.Any<int>()).Returns("ProductName");
+            var query = new AdvantPlayMiniResultQuery() { CustId = 1, GameCode = "1", GameId = "1", Language = "en-US", SiteId = "1" };
+            advantPlayMiniResult.GetResult("1", "1", "1", "1")
+                .Returns("AdvantPlay Mini result url");
+
+            // Act
+            var act = handler.Handle(query);
+
+
+            // Assert
+            Assert.AreEqual("AdvantPlay Mini result url", act.Result.Value);
         }
     }
 }
