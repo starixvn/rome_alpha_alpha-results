@@ -23,7 +23,8 @@
         IRequestHandler<HabaneroResultQuery, ThirdPartyResultViewModel>,
         IRequestHandler<CGResultQuery, ThirdPartyResultViewModel>,
         IRequestHandler<VGamingResultQuery, ThirdPartyResultViewModel>,
-        IRequestHandler<AdvantPlayResultQuery, ThirdPartyResultViewModel>
+        IRequestHandler<AdvantPlayResultQuery, ThirdPartyResultViewModel>,
+        IRequestHandler<AdvantPlayMiniResultQuery, ThirdPartyResultViewModel>
     {
         private readonly ProductResultServiceFactory serviceFactory;
         private readonly ICacheRefService cacheRefService;
@@ -35,7 +36,8 @@
         private readonly ICGResult cgResult;
         private readonly IVGamingResult vGamingResultService;
         private readonly IAdvantPlayResult advantPlayResult;
-        
+        private readonly IAdvantPlayMiniResult advantPlayMiniResult;
+
         public ThirdPartyResultHandler(
             ProductResultServiceFactory serviceFactory,
             ICacheRefService cacheRefService,
@@ -46,6 +48,7 @@
             ICGResult cgResult,
             IVGamingResult vGamingResult,
             IAdvantPlayResult advantPlayResult,
+            IAdvantPlayMiniResult advantPlayMiniResult,
             BrowserHelper browserHelper)
         {
             this.serviceFactory = serviceFactory;
@@ -56,6 +59,7 @@
             this.habaneroResult = habaneroResult;
             this.cgResult = cgResult;
             this.advantPlayResult = advantPlayResult;
+            this.advantPlayMiniResult = advantPlayMiniResult;
             this.browserHelper = browserHelper;
             this.vGamingResultService = vGamingResult;
         }
@@ -157,6 +161,17 @@
             var productName = cacheRefService.GetProductName(message.ProductId);
 
             var result = advantPlayResult.GetResult(message.CustId.ToString(), message.GameId, message.GameCode, message.SiteId, message.Language);
+
+            return new ThirdPartyResultViewModel(string.Format(Resources.ResultPopupTitle, productName), new SuccessResult(result));
+        }
+
+        public ThirdPartyResultViewModel Handle(AdvantPlayMiniResultQuery message)
+        {
+            Check.Argument.IsNotNull(message, "message");
+
+            var productName = cacheRefService.GetProductName(message.ProductId);
+
+            var result = advantPlayMiniResult.GetResult(message.CustId.ToString(), message.GameId, message.GameCode, message.SiteId, message.Language);
 
             return new ThirdPartyResultViewModel(string.Format(Resources.ResultPopupTitle, productName), new SuccessResult(result));
         }

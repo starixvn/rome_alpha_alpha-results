@@ -129,6 +129,7 @@
             container.Register<IKenoResult>(() => new KenoResult("KenoResultConfigs"), Lifestyle.Scoped);
             container.Register<ILotteryResult>(() => new LotteryResult("LotteryResultConfigs"), Lifestyle.Scoped);
             container.Register<ITableGameResult>(() => new TableGameResult("TableGameResultConfigs"), Lifestyle.Scoped);
+            container.Register<IAdvantPlayMiniResult>(() => new AdvantPlayMiniResult("AdvantPlayMiniResultConfigs"), Lifestyle.Scoped);
         }
 
         private static void RegisterDataAccesses(Container container)
