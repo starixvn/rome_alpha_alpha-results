@@ -177,4 +177,7 @@
   <data name="ResultPopupTitle" xml:space="preserve">
     <value>ผลการแข่งขัน{0}</value>
   </data>
+  <data name="PartialUMAnnouncement" xml:space="preserve">
+    <value>เนื่องจากเซิร์ฟเวอร์ไม่ว่างในขณะนี้  ดังนั้นฟังก์ชันนี้ถูกปิดชั่วคราว ตั้งแต่ {0} ถึง {1} (GMT+8) โปรดลองใหม่ภายหลัง ขออภัยในความไม่สะดวกมา ณ ที่นี้ด้วย</value>
+  </data>
 </root>

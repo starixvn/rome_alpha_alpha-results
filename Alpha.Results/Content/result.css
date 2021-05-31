@@ -315,3 +315,7 @@ table {
   #detail-result-body table:not(.parlay) tbody + tfoot tr:first-child td {
     border-top: 1px solid #cbc9ca; }
 
+.partial-um-announcement {
+  color: #fe0000;
+  margin: 0;
+  line-height: 1.5; }

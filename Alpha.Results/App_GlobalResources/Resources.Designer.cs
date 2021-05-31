@@ -151,6 +151,15 @@ namespace Alpha.Results.Site.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Our server is too busy at the moment so this function is turned off temporarily {0} - {1} (GMT+8). Please try again later and sorry for the inconvenience..
+        /// </summary>
+        public static string PartialUMAnnouncement {
+            get {
+                return ResourceManager.GetString("PartialUMAnnouncement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Click here to open {0} results.
         /// </summary>
         public static string ResultLinkText {

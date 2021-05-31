@@ -6,6 +6,7 @@ $primary-color: #666;
 $font-size: 13px;
 $font-family: Roboto, Arial, Tahoma,helvetica,sans-serif;
 $text-color: #333;
+$partial-um-color: #fe0000;
 
 body {
     font-family: $font-family;
@@ -407,6 +408,8 @@ table {
     }
 }
 
-
-
-
+.partial-um-announcement {
+    color: $partial-um-color;
+    margin: 0;
+    line-height: 1.5;
+}

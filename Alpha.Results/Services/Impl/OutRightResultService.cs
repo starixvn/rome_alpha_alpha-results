@@ -6,6 +6,7 @@
     using System.Globalization;
     using System.IO;
     using System.Linq;
+    using Alpha.Web.Helpers;
     using App_GlobalResources;
     using Configurations;
     using Criteria;
@@ -20,15 +21,18 @@
         private readonly IDynamicRepository _dynamicRepository;
         private readonly IResultEngineAdapter _resultEngineAdatper;
         private readonly ICacheRefService _cacheRefService;
+        private readonly PartialUMService _partialUMService;
 
         public OutrightResultService(
             IDynamicRepository dynamicRepository,
             IResultEngineAdapter resultEngineAdatper,
-            ICacheRefService cacheRefService)
+            ICacheRefService cacheRefService,
+            PartialUMService partialUMService)
         {
             _dynamicRepository = dynamicRepository;
             _resultEngineAdatper = resultEngineAdatper;
             _cacheRefService = cacheRefService;
+            _partialUMService = partialUMService;
         }
 
         public IEnumerable<Outright> GetOutrights(DateTime fromDate, DateTime toDate, DateTime balanceUpDate)
@@ -41,6 +45,8 @@
             fromDate = fromDate.Date;
             toDate = toDate.Date.AddDays(1).AddTicks(-1);
             ICriteria criteria = GetOutrightCriteria(fromDate, toDate);
+
+            _partialUMService.CheckPartialUM(criteria.GetSettingKey());
 
             return _dynamicRepository.Fetch<Outright>(criteria);
         }

@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
     using System.Linq;
+    using Alpha.Web.Helpers;
     using Constants;
     using Criteria;
     using Fanex.Common.Helper;
@@ -15,34 +16,45 @@
     {
         private readonly IDynamicRepository _dynamicRepository;
         private readonly IResultServiceFactory _resultServiceFactory;
+        private readonly PartialUMService _partialUMService;
 
         public NormalResultService(
             IDynamicRepository dynamicRepository,
-            IResultServiceFactory resultServiceFactory)
+            IResultServiceFactory resultServiceFactory,
+            PartialUMService partialUMService)
         {
             _dynamicRepository = dynamicRepository;
             _resultServiceFactory = resultServiceFactory;
+            _partialUMService = partialUMService;
         }
 
         public IEnumerable<League> GetLeagues(DateTime resultDate, int sportId, DateTime moveBetsDate)
         {
             Check.Argument.IsNotNegativeOrZero(sportId, "sportId");
 
-            var leagues = _dynamicRepository.Fetch<League>(new GetResultLeaguesByDateCriteria(moveBetsDate)
+            var criteria = new GetResultLeaguesByDateCriteria(moveBetsDate)
             {
                 EventDate = resultDate.ToShortDateString(),
                 SportId = sportId
-            });
+            };
+
+            _partialUMService.CheckPartialUM(criteria.GetSettingKey());
+
+            var leagues = _dynamicRepository.Fetch<League>(criteria);
 
             return leagues;
         }
 
         public IEnumerable<Sport> GetSports(DateTime resultDate, IDictionary<int, bool> sportsStatus, DateTime moveBetsDate)
         {
-            var sports = _dynamicRepository.Fetch<Sport>(new GetResultSportsByDateCriteria(moveBetsDate)
+            var criteria = new GetResultSportsByDateCriteria(moveBetsDate)
             {
                 EventDate = resultDate.ToShortDateString()
-            }).ToList();
+            };
+
+            _partialUMService.CheckPartialUM(criteria.GetSettingKey());
+
+            var sports = _dynamicRepository.Fetch<Sport>(criteria).ToList();
 
             if (sports.Any())
             {
