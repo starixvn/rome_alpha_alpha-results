@@ -4,11 +4,10 @@
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
-    using Constants;
+    using Alpha.Web.Helpers;
     using Fanex.Data.Repository;
     using NSubstitute;
     using NUnit.Framework;
-    using Site.Constants;
     using Site.Criteria;
     using Site.Models;
     using Site.Models.Requests;
@@ -21,13 +20,15 @@
         private IDynamicRepository _dynamicRepository;
         private NormalResultService _resultService;
         private IResultServiceFactory _resultServiceFactory;
+        private PartialUMService _partialUMService;
 
         [SetUp]
         public void SetUp()
         {
             _dynamicRepository = Substitute.For<IDynamicRepository>();
             _resultServiceFactory = Substitute.For<IResultServiceFactory>();
-            _resultService = new NormalResultService(_dynamicRepository, _resultServiceFactory);
+            _partialUMService= Substitute.For<PartialUMService>();
+            _resultService = new NormalResultService(_dynamicRepository, _resultServiceFactory, _partialUMService);
         }
 
         #region Get Leagues

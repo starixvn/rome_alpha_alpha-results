@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using Alpha.Results.Site.Constants;
+    using Alpha.Web.Helpers;
     using Constants;
     using Fanex.Result.Core.Base;
     using Fanex.Result.Core.Sportsbook.DTO;
@@ -20,13 +21,15 @@
         private ISportsbookResultDataAccess _sportsbookResultDataAccess;
         private IResultEngineAdapter _resultEngineAdapter;
         private SportsbookResultService _sportsbookResultService;
+        private PartialUMService _partialUMService;
 
         [SetUp]
         public void SetUp()
         {
             _sportsbookResultDataAccess = Substitute.For<ISportsbookResultDataAccess>();
             _resultEngineAdapter = Substitute.For<IResultEngineAdapter>();
-            _sportsbookResultService = new SportsbookResultService(_sportsbookResultDataAccess, _resultEngineAdapter);
+            _partialUMService = Substitute.For<PartialUMService>();
+            _sportsbookResultService = new SportsbookResultService(_sportsbookResultDataAccess, _resultEngineAdapter, _partialUMService);
         }
 
         [Test]

@@ -9,7 +9,8 @@
     using Alpha.NetThrottling.Models;
     using Alpha.NetThrottling.Resolvers;
     using Alpha.NetThrottling.Utils;
-    using Alpha.Results.Site.Helpers;
+    using Alpha.Web.Helpers;
+    using Alpha.Web.Helpers.Impl;
     using DataAccesses;
     using DataAccesses.Impl;
     using Fanex.Caching;
@@ -115,7 +116,7 @@
             container.Register<IRestClient>(() => new RestClient());
             container.Register<ProductResultServiceFactory, ProductResultServiceFactoryImpl>();
             container.Register<IVirtualGamesResult, VirtualGamesResult>(Lifestyle.Scoped);
-            container.Register<BrowserHelper, BrowserHelperImpl>(Lifestyle.Singleton);
+            container.Register<Helpers.BrowserHelper, Helpers.BrowserHelperImpl>(Lifestyle.Singleton);
             container.Register<ILinkedGamesResult, LinkedGamesResult>(Lifestyle.Scoped);
             container.Register<IMaxGameResult, MaxGameResult>(Lifestyle.Scoped);
             container.Register<ISportsLotteryResult, SportsLotteryResult>(Lifestyle.Scoped);
@@ -130,6 +131,8 @@
             container.Register<ILotteryResult>(() => new LotteryResult("LotteryResultConfigs"), Lifestyle.Scoped);
             container.Register<ITableGameResult>(() => new TableGameResult("TableGameResultConfigs"), Lifestyle.Scoped);
             container.Register<IAdvantPlayMiniResult>(() => new AdvantPlayMiniResult("AdvantPlayMiniResultConfigs"), Lifestyle.Scoped);
+
+            container.RegisterSingleton<PartialUMService, PartialUMServiceImpl>();
         }
 
         private static void RegisterDataAccesses(Container container)

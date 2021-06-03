@@ -3,11 +3,13 @@
     using System;
     using System.Diagnostics.CodeAnalysis;
     using System.Web.Mvc;
+    using Alpha.Web.Filters;
     using MediatR;
     using Models.Requests;
     using Models.Views;
     using Web;
 
+    [PartialUMExceptionFilter]
     public class OutrightController : BaseController
     {
         private readonly IMediator _mediator;
