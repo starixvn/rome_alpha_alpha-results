@@ -318,4 +318,9 @@ table {
 .partial-um-announcement {
   color: #fe0000;
   margin: 0;
-  line-height: 1.5; }
+  line-height: 1.5;
+  font-size: 15px; }
+
+@media only screen and (max-device-width: 768px) {
+  .partial-um-announcement {
+    font-size: 20px; } }

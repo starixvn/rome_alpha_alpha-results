@@ -412,4 +412,11 @@ table {
     color: $partial-um-color;
     margin: 0;
     line-height: 1.5;
+    font-size: $font-size + 2;
+}
+
+@media only screen and (max-device-width: 768px) {
+    .partial-um-announcement {
+        font-size: $font-size + 7;
+    }
 }
