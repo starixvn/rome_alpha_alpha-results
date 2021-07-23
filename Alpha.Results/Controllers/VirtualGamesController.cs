@@ -6,26 +6,23 @@
     using MediatR;
     using Models.Requests;
     using Sunplus.Agent.Model.Entities;
-    using Web;
 
-    public class VirtualGamesController : BaseController
+    public class VirtualGamesController : ResultBaseController
     {
-        private readonly IMediator _mediator;
-        private readonly IUserSession _userSession;
         private readonly ICacheRefService cacheRefService;
 
         public VirtualGamesController(IMediator mediator, IUserSession userSession, ICacheRefService cacheRefService)
+            : base(mediator, userSession)
         {
-            _mediator = mediator;
-            _userSession = userSession;
             this.cacheRefService = cacheRefService;
         }
 
         public ActionResult Index()
         {
-            var viewModel = _mediator.Send(new VirtualGamesResultQuery
+            AssignDarkModeViewData(userSession);
+            var viewModel = mediator.Send(new VirtualGamesResultQuery
             {
-                Language = _userSession.Language,
+                Language = userSession.Language,
             });
 
             return View("~/Views/VirtualGames/Index.cshtml", new VirtualGamesResultViewModel(cacheRefService) { ResultPath = viewModel });
@@ -33,9 +30,10 @@
 
         public ActionResult Detail(VirtualGamesDetailResultQuery query)
         {
-            query.Language = _userSession.Language;
+            AssignDarkModeViewData(userSession);
+            query.Language = userSession.Language;
 
-            var viewModel = _mediator.Send(query);
+            var viewModel = mediator.Send(query);
 
             return View("~/Views/VirtualGames/Detail.cshtml", new VirtualGamesResultViewModel(cacheRefService) { ResultPath = viewModel });
         }

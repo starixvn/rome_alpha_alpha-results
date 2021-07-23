@@ -6,26 +6,24 @@
     using MediatR;
     using Models.Requests;
     using Sunplus.Agent.Model.Entities;
-    using Web;
 
-    public class SportsLotteryController : BaseController
+    public class SportsLotteryController : ResultBaseController
     {
-        private readonly IMediator _mediator;
-        private readonly IUserSession _userSession;
         private readonly ICacheRefService cacheRefService;
 
         public SportsLotteryController(IMediator mediator, IUserSession userSession, ICacheRefService cacheRefService)
+            : base(mediator, userSession)
         {
-            _mediator = mediator;
-            _userSession = userSession;
             this.cacheRefService = cacheRefService;
         }
 
         public ActionResult Index()
         {
-            var viewModel = _mediator.Send(new SportsLotteryResultQuery
+            AssignDarkModeViewData(userSession);
+
+            var viewModel = mediator.Send(new SportsLotteryResultQuery
             {
-                Language = _userSession.Language,
+                Language = userSession.Language,
             });
 
             return View("~/Views/SportsLottery/Index.cshtml", new SportsLotteryResultViewModel(cacheRefService) { ResultPath = viewModel });

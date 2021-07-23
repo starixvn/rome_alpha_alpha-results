@@ -1,27 +1,23 @@
 ﻿namespace Alpha.Results.Site.Controllers
 {
     using System.Web.Mvc;
-    using Alpha.Web;
     using MediatR;
     using Models.Requests;
     using Sunplus.Agent.Model.Entities;
 
-    public class ThirdPartyController : BaseController
+    public class ThirdPartyController : ResultBaseController
     {
-        private readonly string IndexView = "~/Views/ThirdParty/Index.cshtml";
-        private readonly IMediator mediator;
-        private readonly IUserSession userSession;
+        private const string IndexView = "~/Views/ThirdParty/Index.cshtml";
 
         public ThirdPartyController(IMediator mediator, IUserSession userSession)
+            : base(mediator, userSession)
         {
-            this.mediator = mediator;
-            this.userSession = userSession;
         }
 
         public ActionResult Detail(FishingWorldResultQuery message)
         {
             message.Language = userSession.Language;
-            return View(IndexView, mediator.Send(message));
+            return View(IndexView, message);
         }
 
         public ActionResult MaxGameResult(MaxGameResultQuery message)

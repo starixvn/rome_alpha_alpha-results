@@ -9,6 +9,7 @@
         [HttpGet]
         public ActionResult Index()
         {
+            AssignDarkModeViewData();
             return View("~/Views/NG2/Index.cshtml", null, $"{Helpers.UrlHelper.NG2ResultPath}/All");
         }
 

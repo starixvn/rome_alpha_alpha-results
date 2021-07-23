@@ -7,27 +7,20 @@
     using MediatR;
     using Models.Requests;
     using Models.Views;
-    using Web;
+    using Sunplus.Agent.Model.Entities;
 
     [PartialUMExceptionFilter]
-    public class OutrightController : BaseController
+    public class OutrightController : ResultBaseController
     {
-        private readonly IMediator _mediator;
-
-        public OutrightController(IMediator mediator)
+        public OutrightController(IMediator mediator, IUserSession userSession)
+            : base(mediator, userSession)
         {
-            _mediator = mediator;
         }
 
         [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters", Justification = "Reviewed")]
         [HttpGet]
         public ActionResult Index(OutrightResultQuery request = null)
-        {
-            request = request ?? new OutrightResultQuery();
-            var viewModel = _mediator.Send(request);
-
-            return View(viewModel);
-        }
+            => View(request ?? new OutrightResultQuery());
 
         [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters", Justification = "Reviewed")]
         [HttpGet]
@@ -40,7 +33,7 @@
 
             request.TemplatePath = Helpers.UrlHelper.ResultTemplatePath;
 
-            var viewModel = _mediator.Send<OutrightResultExcelViewModel>(request);
+            var viewModel = mediator.Send<OutrightResultExcelViewModel>(request);
 
             return File(viewModel.ExcelResults, "application/vnd.ms-excel", viewModel.ExcelName);
         }

@@ -1,6 +1,7 @@
 ﻿@{
     ViewBag.Title = Fanex.Products.ProductManager.GetProductName(Alpha.Results.Site.Constants.ProductIdConstants.NG2);
     Layout = null;
+    var darkModeName = ViewData["DarkModeName"];
 }
 
 @model string
@@ -10,8 +11,8 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@Html.Raw(ViewBag.Title)</title>
-    @Alpha.Web.Helpers.StaticResources.AssetStyles.Render("/bundles/site-results/default")
-    @Styles.Render(BundleConfig.ResultCoreStyleBundleUrl)
+    @Alpha.Web.Helpers.StaticResources.AssetStyles.Render($"/bundles/site-results/{ViewData["TitleLevel"]}{darkModeName}")
+    @Styles.Render($"~/bundle/styles/resultcore{darkModeName}")
 </head>
 <body class="ng2-container">
     <div id="page_main">

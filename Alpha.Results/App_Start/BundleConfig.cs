@@ -7,6 +7,7 @@
         public const string NormalResultJavascriptBundleUrl = "~/bundles/scripts/normalresult";
         public const string OutrightResultJavascriptBundleUrl = "~/bundles/scripts/outrightresult";
         public const string ResultCoreStyleBundleUrl = "~/bundle/styles/resultcore";
+        public const string ResultCoreStyleBundleUrlDark = "~/bundle/styles/resultcore-dark";
         public const string KenoResultStyleBundleUrl = "~/bundle/styles/kenoresult";
         public const string ThirdPartyResultStyleBundleUrl = "~/bundle/styles/thirdpartyresult";
 
@@ -80,6 +81,11 @@
             bundles.Add(new StyleBundle(ResultCoreStyleBundleUrl)
                 .Include("~/Content/Fanex.Result/fanex.result.css", new CssRewriteUrlTransformWrapper())
                 .Include("~/Content/result.css", new CssRewriteUrlTransformWrapper())
+                .Include("~/Content/Fanex.Result/Allbet/css/table_w.css", new CssRewriteUrlTransformWrapper()));
+
+            bundles.Add(new StyleBundle(ResultCoreStyleBundleUrlDark)
+                .Include("~/Content/Fanex.Result/fanex.result.css", new CssRewriteUrlTransformWrapper())
+                .Include("~/Content/result-dark.css", new CssRewriteUrlTransformWrapper())
                 .Include("~/Content/Fanex.Result/Allbet/css/table_w.css", new CssRewriteUrlTransformWrapper()));
         }
 

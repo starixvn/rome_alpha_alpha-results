@@ -4,25 +4,15 @@
     using MediatR;
     using Models.Requests;
     using Sunplus.Agent.Model.Entities;
-    using Web;
 
-    public class KenoController : BaseController
+    public class KenoController : ResultBaseController
     {
-        private readonly IMediator _mediator;
-        private readonly IUserSession _userSession;
-
         public KenoController(IMediator mediator, IUserSession userSession)
+            : base(mediator, userSession)
         {
-            _mediator = mediator;
-            _userSession = userSession;
         }
 
         [HttpGet]
-        public ActionResult Index()
-        {
-            var viewModel = _mediator.Send(new KenoResultQuery(_userSession));
-
-            return View(viewModel);
-        }
+        public ActionResult Index() => View(new KenoResultQuery(userSession));
     }
 }

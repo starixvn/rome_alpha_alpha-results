@@ -12,5 +12,9 @@
     "minify": {
       "enabled": false
     }
+  },
+  {
+    "outputFile": "Content/result-dark.css",
+    "inputFile": "Content/result-dark.scss"
   }
 ]

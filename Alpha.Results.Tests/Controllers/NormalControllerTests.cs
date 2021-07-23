@@ -8,18 +8,21 @@
     using Site.Helpers;
     using Site.Models.Requests;
     using Site.Models.Views;
+    using Sunplus.Agent.Model.Entities;
 
     [TestFixture]
     public class NormalControllerTests
     {
         private IMediator mediator;
         private NormalController controller;
+        private IUserSession userSession;
 
         [SetUp]
         public void SetUp()
         {
             mediator = Substitute.For<IMediator>();
-            controller = new NormalController(mediator);
+            userSession = Substitute.For<IUserSession>();
+            controller = new NormalController(mediator, userSession);
         }
 
         [Test]

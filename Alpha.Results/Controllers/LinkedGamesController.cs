@@ -4,17 +4,12 @@
     using MediatR;
     using Models.Requests;
     using Sunplus.Agent.Model.Entities;
-    using Web;
 
-    public class LinkedGamesController : BaseController
+    public class LinkedGamesController : ResultBaseController
     {
-        private readonly IMediator _mediator;
-        private readonly IUserSession _userSession;
-
         public LinkedGamesController(IMediator mediator, IUserSession userSession)
+            : base(mediator, userSession)
         {
-            _mediator = mediator;
-            _userSession = userSession;
         }
        
         public ActionResult GetSoccer5Result(Soccer5ResultQuery query)

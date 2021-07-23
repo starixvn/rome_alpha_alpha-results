@@ -69,8 +69,8 @@
     <Reference Include="Alpha.Utilities, Version=3.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Alpha.Utilities.3.0.0.1\lib\net40\Alpha.Utilities.dll</HintPath>
     </Reference>
-    <Reference Include="Alpha.Web, Version=1.0.8.4, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Alpha.Web.1.0.8.5\lib\net461\Alpha.Web.dll</HintPath>
+    <Reference Include="Alpha.Web, Version=1.0.8.6, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Alpha.Web.1.0.8.6-dark06\lib\net461\Alpha.Web.dll</HintPath>
     </Reference>
     <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
@@ -362,8 +362,8 @@
     <Reference Include="StackExchange.Redis, Version=2.0.0.0, Culture=neutral, PublicKeyToken=c219ff1ca8c2ce46, processorArchitecture=MSIL">
       <HintPath>..\packages\StackExchange.Redis.2.0.519\lib\net461\StackExchange.Redis.dll</HintPath>
     </Reference>
-    <Reference Include="Sunplus.Agent.Model.Base, Version=3.0.5.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sunplus.Agent.Model.Base.3.0.5.1\lib\net461\Sunplus.Agent.Model.Base.dll</HintPath>
+    <Reference Include="Sunplus.Agent.Model.Base, Version=3.0.5.6, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sunplus.Agent.Model.Base.3.0.5.6-dark02\lib\net461\Sunplus.Agent.Model.Base.dll</HintPath>
     </Reference>
     <Reference Include="Sunplus.Agent.Model.DataAccessLibrary, Version=3.0.0.2, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Sunplus.Agent.Model.DataAccessLibrary.3.0.0.2\lib\net40\Sunplus.Agent.Model.DataAccessLibrary.dll</HintPath>
@@ -950,6 +950,12 @@
     <Content Include="Content\Fanex.Result\WM\images\Sicbo\5.png" />
     <Content Include="Content\Fanex.Result\WM\images\Sicbo\6.png" />
     <Content Include="Content\Images\info-icon.png" />
+    <Content Include="Content\result-dark.css">
+      <DependentUpon>result-dark.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\result-dark.min.css">
+      <DependentUpon>result-dark.css</DependentUpon>
+    </Content>
     <Content Include="Content\ThirdParty\third-party.css">
       <DependentUpon>third-party.scss</DependentUpon>
     </Content>
@@ -1032,6 +1038,7 @@
     <Content Include="Content\Super\_variables.scss" />
     <Content Include="Content\_mixins.scss" />
     <Content Include="deployment.ignore" />
+    <Content Include="Content\result-dark.scss" />
     <None Include="Properties\PublishProfiles\AllBet.pubxml" />
     <None Include="Properties\PublishProfiles\Local202.pubxml" />
     <None Include="Properties\PublishProfiles\Local202CookieLess.pubxml" />
@@ -1132,6 +1139,7 @@
     <Compile Include="Constants\RoleIdConstants.cs" />
     <Compile Include="Constants\SportTypeIdConstants.cs" />
     <Compile Include="Controllers\KenoController.cs" />
+    <Compile Include="Controllers\ResultBaseController.cs" />
     <Compile Include="Controllers\SabaClubController.cs" />
     <Compile Include="Controllers\TableGamesController.cs" />
     <Compile Include="Controllers\LinkedGamesController.cs" />
