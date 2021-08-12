@@ -45,7 +45,7 @@
                     throw new Exception("Cannot get balance up date and move bets date.");
                 }
 
-                _cacheService.Set(BalanceUpAndMoveBetsDateCacheKey, data);
+                _cacheService.Set(BalanceUpAndMoveBetsDateCacheKey, data, new CacheItemOptions().SetAbsoluteExpiration(TimeSpan.FromMinutes(2)));
             }
 
             return data;
