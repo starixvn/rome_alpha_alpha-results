@@ -21,6 +21,9 @@
         public string GetLeagueName(int leagueId)
             => remotingRefService.GetLeagueName(leagueId.ToString(), LanguageCode);
 
+        public string GetLeague3rdName(int league3rdId)
+            => remotingRefService.GetLeagueName3rd(league3rdId.ToString(), LanguageCode);
+
         public string GetProductName(int productId)
             => remotingRefService.GetResourceDataByRefIdAndResourceId(
                 "Product",
