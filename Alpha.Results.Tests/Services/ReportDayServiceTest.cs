@@ -152,7 +152,7 @@
             reportService.GetBalanceUpAndMoveBetsDate();
 
             // Assert
-            cacheService.Received().Set(BalanceUpAndMoveBetsDateCacheKey, reportDays);
+            cacheService.Received().Set(BalanceUpAndMoveBetsDateCacheKey, reportDays, Arg.Any<CacheItemOptions>());
         }
     }
 }

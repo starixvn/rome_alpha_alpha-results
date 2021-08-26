@@ -65,5 +65,17 @@
             //// Assert
             remotingRefService.Received().GetLeagueName("1", Arg.Any<string>());
         }
+
+        [Test]
+        public void GetLeague3rdName_Awlays_ReceiveCall()
+        {
+            //// Arrange
+
+            //// Act
+            var act = cacheRefService.GetLeague3rdName(1);
+
+            //// Assert
+            remotingRefService.Received().GetLeagueName3rd("1", Arg.Any<string>());
+        }
     }
 }
