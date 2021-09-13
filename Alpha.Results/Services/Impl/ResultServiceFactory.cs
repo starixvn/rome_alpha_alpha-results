@@ -63,7 +63,8 @@
                     return new GoldDeluxeResultService();
                 case SportTypeIdConstants.LGVirtualSports:
                     return new LeapGamingResultService();
-
+                case SportTypeIdConstants.Bitcoin:
+                    return new BitcoinResultService();
                 default:
                     if (betTypeId == BetTypeIdConstants.BetBuilder)
                     {

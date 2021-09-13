@@ -8,6 +8,8 @@
 
         string GetLeagueName(int leagueId);
 
+        string GetLeague3rdName(int league3rdId);
+
         string GetProductName(int productId);
     }
 }

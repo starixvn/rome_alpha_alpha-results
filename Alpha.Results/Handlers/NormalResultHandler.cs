@@ -12,6 +12,7 @@
     using Models.Views;
     using Services;
     using Alpha.Utilities.Extensions;
+    using Alpha.Results.Site.Constants;
 
     public class NormalResultHandler :
         IRequestHandler<NormalResultQuery, NormalResultViewModel>,
@@ -96,7 +97,9 @@
 
             return leagues.Select(league => new SelectListItem
             {
-                Text = _cacheRefService.GetLeagueName(league.Id),
+                Text = SportTypeIdConstants.SportListUsingLeague3rd.Any(i => i == league.SportType) ?
+                _cacheRefService.GetLeague3rdName(league.Id) :
+                _cacheRefService.GetLeagueName(league.Id),
                 Value = league.Id.ToString()
             });
         }
@@ -127,7 +130,7 @@
         {
             Check.Argument.IsNotNull(message, "message");
 
-            var leagueName = message.LeagueId == 0 ? Resources.ShowAllLeaguesExcelTitle : _cacheRefService.GetLeagueName(message.LeagueId);
+            var leagueName = message.LeagueId == 0 ? Resources.ShowAllLeaguesExcelTitle : GetLeagueName(message.LeagueId, message.SportId);
             var resultDate = message.ResultDate.ToShortDateFormatWithSlash();
             message.MoveBetsDate = _reportService.GetMoveBetsDate();
 
@@ -140,5 +143,10 @@
                 ExcelResults = excelResults
             };
         }
+
+        private string GetLeagueName(int leagueId, int sportType)
+            => SportTypeIdConstants.SportListUsingLeague3rd.Any(i => i == sportType) ?
+            _cacheRefService.GetLeague3rdName(leagueId) :
+            _cacheRefService.GetLeagueName(leagueId);
     }
 }
