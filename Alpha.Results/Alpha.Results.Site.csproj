@@ -525,10 +525,6 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-      <Private>True</Private>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
     <AdditionalFiles Include="..\SonarQube\alpha-result\CSharp\SonarLint.xml">
       <Link>SonarLint.xml</Link>
     </AdditionalFiles>
