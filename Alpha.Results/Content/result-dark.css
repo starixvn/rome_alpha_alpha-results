@@ -81,20 +81,19 @@ table {
 table.fn-rs {
   min-width: unset; }
   table.fn-rs thead th {
-    background: #454545;
-    color: #E7E7E7 !important;
-    border-color: #939393; }
+    background: #383838;
+    color: #ededed !important;
+    border-color: #5F626B; }
     table.fn-rs thead th:last-child {
       border-right: none; }
   table.fn-rs tbody td {
     padding: 5px;
     vertical-align: middle;
-    border-color: #3E3F41;
-    color: #E7E7E7; }
+    border-color: #3E3F41; }
     table.fn-rs tbody td.cl-league {
-      background: #56533C;
+      background: #2E2C1F;
       text-transform: uppercase;
-      color: #E7E7E7;
+      color: #EDEDED;
       font-weight: bold;
       line-height: initial; }
   table.fn-rs .cl-status .detail-link {
@@ -104,7 +103,7 @@ table.fn-rs {
     color: #fff; }
 
 table.fn-rs tbody tr.odd {
-  background: #2E2F30; }
+  background: #181919; }
 
 table.fn-rs tbody tr.even {
   background: #262829; }
@@ -128,8 +127,13 @@ table.fn-rs .cl-ht-score, table.fn-rs .cl-f-score, table.fn-rs .cl-ht-score, tab
 table.fn-rs .cl-ko-time, table.fn-rs .cl-ko-time {
   width: 120px; }
 
+table.fn-rs tbody .data .cl-f-score {
+  color: #E54748 !important; }
+
 table.fn-rs tbody .cl-match.home, table.fn-rs.popup tbody .cl-result.home {
-  color: #4288F1; }
+  color: #4D78E5; }
+  table.fn-rs tbody .cl-match.home span, table.fn-rs.popup tbody .cl-result.home span {
+    color: #EDEDED !important; }
 
 table.fn-rs tbody .cl-match.away, table.fn-rs.popup tbody .cl-result.away {
   color: #FF5521; }

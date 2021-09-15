@@ -2,6 +2,7 @@
 {
     using System.Web.Mvc;
     using Alpha.Web;
+    using Alpha.Web.Models;
     using MediatR;
     using Sunplus.Agent.Model.Entities;
 
@@ -10,26 +11,31 @@
 #pragma warning restore S1694 // An abstract class should have both abstract and concrete methods
     {
         protected readonly IMediator mediator;
-        protected readonly IUserSession userSession;
 
         protected ResultBaseController(IMediator mediator, IUserSession userSession)
+            : base(userSession)
         {
             this.mediator = mediator;
-            this.userSession = userSession;
         }
 
         protected ActionResult View<TResponse>(IRequest<TResponse> message)
         {
-            AssignDarkModeViewData(userSession);
+            AssignDarkModeViewData();
 
             return View(mediator.Send(message));
         }
 
         protected ActionResult View<TResponse>(string viewName, IRequest<TResponse> message)
         {
-            AssignDarkModeViewData(userSession);
+            AssignDarkModeViewData();
 
             return View(viewName, mediator.Send(message));
+        }
+
+        protected override void AssignDarkModeViewData()
+        {
+            base.AssignDarkModeViewData();
+            ViewData["TitleLevel"] = Enumeration.FromValue<UserLevel>(userSession.RoleId).DisplayName.ToLowerInvariant();
         }
     }
 }

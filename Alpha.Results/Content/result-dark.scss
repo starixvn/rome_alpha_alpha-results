@@ -129,9 +129,9 @@ table.fn-rs {
     min-width: unset;
 
     thead th {
-        background: $primary-color;
-        color: $text-color !important;
-        border-color: #939393;
+        background: #383838;
+        color: #ededed !important;
+        border-color: #5F626B;
 
         &:last-child {
             border-right: none;
@@ -143,12 +143,11 @@ table.fn-rs {
             padding: 5px;
             vertical-align: middle;
             border-color: #3E3F41;
-            color: $text-color;
 
             &.cl-league {
-                background: #56533C;
+                background: #2E2C1F;
                 text-transform: uppercase;
-                color: $text-color;
+                color: #EDEDED;
                 font-weight: bold;
                 line-height: initial;
             }
@@ -166,7 +165,7 @@ table.fn-rs {
 }
 
 table.fn-rs tbody tr.odd {
-    background: #2E2F30;
+    background: #181919;
 }
 
 table.fn-rs tbody tr.even {
@@ -197,9 +196,15 @@ table.fn-rs, table.fn-rs {
         width: 120px;
     }
 }
-
+table.fn-rs tbody .data .cl-f-score {
+    color: #E54748 !important;
+}
 table.fn-rs tbody .cl-match.home, table.fn-rs.popup tbody .cl-result.home {
-    color: #4288F1;
+    color: #4D78E5;
+
+    span {
+        color: #EDEDED!important;
+    }
 }
 
 table.fn-rs tbody .cl-match.away, table.fn-rs.popup tbody .cl-result.away {

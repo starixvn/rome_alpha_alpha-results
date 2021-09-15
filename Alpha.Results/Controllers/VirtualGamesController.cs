@@ -19,7 +19,7 @@
 
         public ActionResult Index()
         {
-            AssignDarkModeViewData(userSession);
+            AssignDarkModeViewData();
             var viewModel = mediator.Send(new VirtualGamesResultQuery
             {
                 Language = userSession.Language,
@@ -30,7 +30,7 @@
 
         public ActionResult Detail(VirtualGamesDetailResultQuery query)
         {
-            AssignDarkModeViewData(userSession);
+            AssignDarkModeViewData();
             query.Language = userSession.Language;
 
             var viewModel = mediator.Send(query);

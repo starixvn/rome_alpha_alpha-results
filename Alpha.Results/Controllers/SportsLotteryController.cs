@@ -19,7 +19,7 @@
 
         public ActionResult Index()
         {
-            AssignDarkModeViewData(userSession);
+            AssignDarkModeViewData();
 
             var viewModel = mediator.Send(new SportsLotteryResultQuery
             {
