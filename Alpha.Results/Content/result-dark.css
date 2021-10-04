@@ -79,7 +79,8 @@ table {
   font-size: 13px; }
 
 table.fn-rs {
-  min-width: unset; }
+  min-width: unset;
+  color: #ededed !important; }
   table.fn-rs thead th {
     background: #383838;
     color: #ededed !important;
@@ -131,7 +132,7 @@ table.fn-rs tbody .data .cl-f-score {
   color: #E54748 !important; }
 
 table.fn-rs tbody .cl-match.home, table.fn-rs.popup tbody .cl-result.home {
-  color: #4D78E5; }
+  color: #4288F1; }
   table.fn-rs tbody .cl-match.home span, table.fn-rs.popup tbody .cl-result.home span {
     color: #EDEDED !important; }
 
@@ -304,7 +305,7 @@ table {
     border-top: 1px solid #3E3F41;
     white-space: nowrap; }
   #detail-result-body table:not(.parlay) thead tr th, #detail-result-body table:not(.parlay) tr th {
-    border-right-color: #939393; }
+    border-right-color: #5F626B; }
     #detail-result-body table:not(.parlay) thead tr th:last-child, #detail-result-body table:not(.parlay) tr th:last-child {
       border-right: none; }
   #detail-result-body table:not(.parlay) tbody + tfoot tr:first-child td {

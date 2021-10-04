@@ -127,6 +127,7 @@ table {
 
 table.fn-rs {
     min-width: unset;
+    color: #ededed !important;
 
     thead th {
         background: #383838;
@@ -200,10 +201,10 @@ table.fn-rs tbody .data .cl-f-score {
     color: #E54748 !important;
 }
 table.fn-rs tbody .cl-match.home, table.fn-rs.popup tbody .cl-result.home {
-    color: #4D78E5;
+    color: #4288F1;
 
     span {
-        color: #EDEDED!important;
+        color: #EDEDED !important;
     }
 }
 
@@ -409,12 +410,13 @@ table {
         white-space: nowrap;
     }
 
-     thead tr th, tr th {
-         border-right-color: #939393;
-         &:last-child {
-             border-right: none;
-         }
-     }
+    thead tr th, tr th {
+        border-right-color: #5F626B;
+
+        &:last-child {
+            border-right: none;
+        }
+    }
 
     tbody + tfoot tr:first-child td {
         border-top: 1px solid $table-border-color;
