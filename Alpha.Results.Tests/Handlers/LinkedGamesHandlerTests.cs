@@ -38,5 +38,18 @@ namespace Alpha.Results.Site.Tests.Handlers
             // Assert
             result.Received().GetResult(Arg.Any<string>(), Arg.Any<string>(), Arg.Any<bool>(), Arg.Any<string>());
         }
+
+        [Test]
+        public void Soccer5_Always_CallResultAPI()
+        {
+            // Arrange
+
+
+            // Act
+            handler.Handle(new Soccer5ResultQuery());
+
+            // Assert
+            result.Received().GetSoccer5Result(Arg.Any<string>(), Arg.Any<string>(), Arg.Any<bool>(), Arg.Any<string>());
+        }
     }
 }

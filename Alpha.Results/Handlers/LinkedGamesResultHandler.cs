@@ -9,7 +9,8 @@
     using Models.Requests;
 
     public class LinkedGamesResultHandler :
-        IRequestHandler<LinkedGamesResultQuery, LinkedGamesViewModel>
+        IRequestHandler<LinkedGamesResultQuery, LinkedGamesViewModel>,
+        IRequestHandler<Soccer5ResultQuery, LinkedGamesViewModel>
     {
         private readonly ILinkedGamesResult result;
         private readonly BrowserHelper browserHelper;
@@ -24,6 +25,17 @@
         public LinkedGamesViewModel Handle(LinkedGamesResultQuery message)
         {
             var url = result.GetResult(message.CustId, message.TransId3rd, IsDesktop(), message.Language);
+
+            return new LinkedGamesViewModel
+            {
+                Title = $"{cacheRefService.GetSportName(message.SportTypeId)} - {cacheRefService.GetBetTypeName(message.BetTypeId)}",
+                Result = url
+            };
+        }
+
+        public LinkedGamesViewModel Handle(Soccer5ResultQuery message)
+        {
+            var url = result.GetSoccer5Result(message.MatchId, message.Balls, IsDesktop(), message.Language);
 
             return new LinkedGamesViewModel
             {

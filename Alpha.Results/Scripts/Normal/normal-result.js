@@ -4,28 +4,29 @@
 
 var normalResult =
 {
+    resultSoccer5Url: 'LinkedGames/GetSoccer5Result?',
     resultDetailsUrl: 'Normal/ResultDetails?',
     excelResultsUrl: 'Normal/ExcelResults?',
     isIe: false,
     domElements:
-        {
-            txtResultDate: null,
-            btnOtherDay: null,
-            txtToday: null,
-            txtMinResultDate: null,
-            dpkContainer: null,
-            resultForm: null,
-            mainResult: null,
-            rootUrl: null,
-            resultDetails: null,
-            excelBtn: null,
-            ddlSports: null,
-            ddlLeagues: null,
-            filterForm: null,
-            frmDetailsResult: null,
-            resultDetailTitle: null,
-            loadingImage: null
-        },
+    {
+        txtResultDate: null,
+        btnOtherDay: null,
+        txtToday: null,
+        txtMinResultDate: null,
+        dpkContainer: null,
+        resultForm: null,
+        mainResult: null,
+        rootUrl: null,
+        resultDetails: null,
+        excelBtn: null,
+        ddlSports: null,
+        ddlLeagues: null,
+        filterForm: null,
+        frmDetailsResult: null,
+        resultDetailTitle: null,
+        loadingImage: null
+    },
     init: function () {
 
         normalResult.cacheElements();
@@ -38,6 +39,22 @@ var normalResult =
         {
             normalResult.isIe = parseInt(ua.substring(msie + 5, ua.indexOf(".", msie))) < 10;
         }
+
+        showSoccer5Result = function (matchId, balls) {
+            var params = {
+                SportTypeId: 164,// Happy 5
+                BetTypeId: 3604,// Soccer 5
+                MatchId: matchId,
+                Balls: balls
+            };
+
+            var resultDetailsUrl = normalResult.domElements.rootUrl.val()
+                + normalResult.resultSoccer5Url
+                + $.param(params);
+
+            normalResult.domElements.frmDetailsResult.attr('src', resultDetailsUrl);
+            normalResult.domElements.resultDetails.modal({});
+        };
 
     },
     cacheElements: function () {
@@ -122,7 +139,7 @@ var normalResult =
                     normalResult.domElements.resultDetails.modal({});
                     normalResult.domElements.resultDetails.find('.modal-dialog').width(bodyWidth - 100);
                 }
-        });
+            });
 
         normalResult.domElements.excelBtn
             .off('click.normalResult')
@@ -132,9 +149,9 @@ var normalResult =
                     leagueId: $('#LeagueId').val(),
                     sportId: $('#SportId').val()
                 },
-                downloadUrl = normalResult.domElements.rootUrl.val()
-                    + normalResult.excelResultsUrl
-                    + $.param(requestParams);
+                    downloadUrl = normalResult.domElements.rootUrl.val()
+                        + normalResult.excelResultsUrl
+                        + $.param(requestParams);
 
                 var iframe = $('body #iframeExportExcelFile');
                 if (iframe.length === 0) {
@@ -146,7 +163,7 @@ var normalResult =
             });
     }
 };
-
+var showSoccer5Result;
 $(function () {
     normalResult.init();
 })
