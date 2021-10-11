@@ -19,8 +19,6 @@
 
         public ActionResult Index()
         {
-            AssignDarkModeViewData();
-
             var viewModel = mediator.Send(new SportsLotteryResultQuery
             {
                 Language = userSession.Language,

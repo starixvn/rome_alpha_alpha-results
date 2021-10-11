@@ -261,6 +261,8 @@ table.lucky3 .lotto-bets input {
 
 .detail-result {
   margin-top: 15px; }
+  .detail-result .sporttype {
+    color: #EDEDED; }
 
 .lnk {
   color: #045ace; }

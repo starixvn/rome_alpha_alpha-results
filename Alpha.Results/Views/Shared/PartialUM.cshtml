@@ -4,8 +4,8 @@
 <html class="ifr-result">
 <head>
     <meta name="viewport" content="width=device-width" />
-    @Alpha.Web.Helpers.StaticResources.AssetStyles.Render($"/bundles/site-results/{Model.UserLevel}{Model.DarkModeName}")
-    @Styles.Render($"~/bundle/styles/resultcore{Model.DarkModeName}")
+    @Alpha.Web.Helpers.StaticResources.AssetStyles.RenderWithRoleAndDarkMode("/bundles/site-results/")
+    @Styles.Render($"~/bundle/styles/resultcore{Sunplus.Agent.Model.Entities.UserSession.Current.DarkModeName}")
 </head>
 <body>
     <div id="page_main">

@@ -9,7 +9,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@Html.Raw(ViewBag.Title)</title>
-    @Styles.Render($"~/bundle/styles/resultcore{ViewData["DarkModeName"]}")
+    @Styles.Render($"~/bundle/styles/resultcore{Sunplus.Agent.Model.Entities.UserSession.Current.DarkModeName}")
 </head>
 <body>
     <div class="detail-result" id="detail-result-body">

@@ -2,7 +2,6 @@
 {
     using System.Web.Mvc;
     using Alpha.Web;
-    using Alpha.Web.Models;
     using MediatR;
     using Sunplus.Agent.Model.Entities;
 
@@ -20,23 +19,9 @@
         }
 
         protected ActionResult View<TResponse>(IRequest<TResponse> message)
-        {
-            AssignDarkModeViewData();
-
-            return View(mediator.Send(message));
-        }
+            => View(mediator.Send(message));
 
         protected ActionResult View<TResponse>(string viewName, IRequest<TResponse> message)
-        {
-            AssignDarkModeViewData();
-
-            return View(viewName, mediator.Send(message));
-        }
-
-        protected void AssignDarkModeViewData()
-        {
-            ViewData["DarkModeName"] = userSession.DarkModeName;
-            ViewData["TitleLevel"] = Enumeration.FromValue<UserLevel>(userSession.RoleId).DisplayName.ToLowerInvariant();
-        }
+            => View(viewName, mediator.Send(message));
     }
 }
