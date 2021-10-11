@@ -24,6 +24,9 @@
         [Test]
         public void Index_Always_ReturnViewResult()
         {
+            // Arrange
+            userSession.RoleId.Returns((byte)4);
+
             // Act
             var viewResult = controller.Index() as ViewResult;
 

@@ -28,6 +28,9 @@
         [Test]
         public void Index_Always_CallsMediatorSendNormalResultQuery()
         {
+            // Arrange
+            userSession.RoleId.Returns((byte)4);
+
             // Act
             controller.Index();
 
@@ -39,6 +42,7 @@
         public void ResultDetails_Always_CallsMediatorSendNormalResultDetailsQuery()
         {
             // Arrange
+            userSession.RoleId.Returns((byte)4);
             var request = new NormalResultDetailsQuery();
 
             // Act

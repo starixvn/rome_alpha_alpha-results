@@ -8,9 +8,11 @@
 
     public class NG2Controller : BaseController
     {
+        private readonly IUserSession userSession;
+
         public NG2Controller(IUserSession userSession)
-            : base(userSession)
         {
+            this.userSession = userSession;
         }
 
         [HttpGet]
@@ -44,9 +46,9 @@
                 }));
         }
 
-        protected override void AssignDarkModeViewData()
+        private void AssignDarkModeViewData()
         {
-            base.AssignDarkModeViewData();
+            ViewData["DarkModeName"] = userSession.DarkModeName;
             ViewData["TitleLevel"] = Enumeration.FromValue<UserLevel>(userSession.RoleId).DisplayName.ToLowerInvariant();
         }
     }

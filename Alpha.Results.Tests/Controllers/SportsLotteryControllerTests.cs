@@ -32,6 +32,7 @@
         public void Index_Always_CallsMediatorSendSportsLotteryResultQuery()
         {
             // Arrange
+            userSession.RoleId.Returns((byte)4);
 
             // Act
             controller.Index();

@@ -28,6 +28,9 @@
         [Test]
         public void Index_Always_CallsMediatorSendOutrightResultQuery()
         {
+            // Arrange
+            userSession.RoleId.Returns((byte)4);
+
             // Act
             controller.Index();
 

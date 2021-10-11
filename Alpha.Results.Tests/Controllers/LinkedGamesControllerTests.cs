@@ -22,6 +22,7 @@
 
             userSession = Substitute.For<IUserSession>();
             userSession.Language.Returns("en-Us");
+            userSession.RoleId.Returns((byte)4);
 
             controller = new LinkedGamesController(mediator, userSession);
         }

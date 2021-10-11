@@ -11,11 +11,12 @@
 #pragma warning restore S1694 // An abstract class should have both abstract and concrete methods
     {
         protected readonly IMediator mediator;
+        protected readonly IUserSession userSession;
 
         protected ResultBaseController(IMediator mediator, IUserSession userSession)
-            : base(userSession)
         {
             this.mediator = mediator;
+            this.userSession = userSession;
         }
 
         protected ActionResult View<TResponse>(IRequest<TResponse> message)
@@ -32,9 +33,9 @@
             return View(viewName, mediator.Send(message));
         }
 
-        protected override void AssignDarkModeViewData()
+        protected void AssignDarkModeViewData()
         {
-            base.AssignDarkModeViewData();
+            ViewData["DarkModeName"] = userSession.DarkModeName;
             ViewData["TitleLevel"] = Enumeration.FromValue<UserLevel>(userSession.RoleId).DisplayName.ToLowerInvariant();
         }
     }

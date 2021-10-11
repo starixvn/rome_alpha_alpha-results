@@ -24,6 +24,7 @@
             userSession = Substitute.For<IUserSession>();
             cacheRefService = Substitute.For<ICacheRefService>();
             userSession.Language.Returns("en-Us");
+            userSession.RoleId.Returns((byte)4);
 
             controller = new VirtualGamesController(mediator, userSession, cacheRefService);
         }
