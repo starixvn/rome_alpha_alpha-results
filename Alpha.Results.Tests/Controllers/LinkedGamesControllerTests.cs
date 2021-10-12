@@ -42,5 +42,18 @@ namespace Alpha.Results.Site.Tests.Controllers
             // Assert
             Assert.IsTrue(actionResult is ViewResult);
         }
+
+        [Test]
+        public void GetSoccer5Result_Always_ReturnsView()
+        {
+            // Arrage
+            var query = new Soccer5ResultQuery();
+
+            // Act
+            var actionResult = controller.GetSoccer5Result(query);
+
+            // Assert
+            Assert.IsTrue(actionResult is ViewResult);
+        }
     }
 }
