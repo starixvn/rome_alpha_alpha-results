@@ -23,7 +23,7 @@
 
         public LinkedGamesViewModel Handle(Soccer5ResultQuery message)
         {
-            var url = result.GetSoccer5Result(message.MatchId, message.Balls, IsDesktop(), message.Language);
+            var url = result.GetSoccer5Result(message.MatchId, message.Balls, IsDesktop(), message.IsDarkMode, message.Language);
 
             return new LinkedGamesViewModel
             {

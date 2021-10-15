@@ -11,14 +11,8 @@
             : base(mediator, userSession)
         {
         }
-       
+
         public ActionResult GetSoccer5Result(Soccer5ResultQuery query)
-        {
-            query.Language = userSession.Language;
-
-            var viewModel = mediator.Send(query);
-
-            return View("~/Views/LinkedGames/Index.cshtml", (object)viewModel);
-        }
+            => View("~/Views/LinkedGames/Index.cshtml", query);
     }
 }

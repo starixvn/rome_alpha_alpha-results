@@ -8,6 +8,7 @@ namespace Alpha.Results.Site.Models.Requests
     {
         public LinkedGamesResultQuery(IUserSession userSession) : base(userSession)
         { }
+        
         public int SportTypeId { get; set; }
 
         public int BetTypeId { get; set; }

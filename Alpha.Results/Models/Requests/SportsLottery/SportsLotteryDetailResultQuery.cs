@@ -7,8 +7,14 @@ namespace Alpha.Results.Site.Models.Requests
     public class SportsLotteryDetailResultQuery : Result3rdQuery, IRequest<ThirdPartyProductViewModel>
     {
         public SportsLotteryDetailResultQuery(IUserSession userSession) : base(userSession)
+        
+        public SportsLotteryDetailResultQuery(IUserSession userSession) : base(userSession)
         {
+        }
+        public string CustId { get; set; }
+public string TransId3rd { get; set; }
 
+        public int ProductId { get; set; }
         }
     }
 }
