@@ -70,7 +70,6 @@
             GlobalFilters.Filters.Add(new NoCacheFilter());
             GlobalFilters.Filters.Add(new AfterLoginFlowFilter());
             ModelBinders.Binders.DefaultBinder = new QueryEntityModelBinder();
-
             RefDataTypeContainer
                 .ConnectTo(new Uri(AppSettings.RemoteRefURL))
                 .FromApplication("Alpha.Results.Site");

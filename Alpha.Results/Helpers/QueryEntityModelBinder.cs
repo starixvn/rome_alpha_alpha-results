@@ -8,7 +8,7 @@
     public class QueryEntityModelBinder : DefaultModelBinder
     {
         private static readonly Type[] IUserType = { typeof(IUserSession) };
-        private static readonly Type BaseQueryType = typeof(Result3rdQuery);
+        private static readonly Type BaseQueryType = typeof(BaseQuery);
 
         protected override object CreateModel(
             ControllerContext controllerContext,
