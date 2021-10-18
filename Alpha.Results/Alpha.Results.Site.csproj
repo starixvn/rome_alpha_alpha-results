@@ -949,12 +949,10 @@
     <Content Include="Content\Fanex.Result\WM\images\Sicbo\4.png" />
     <Content Include="Content\Fanex.Result\WM\images\Sicbo\5.png" />
     <Content Include="Content\Fanex.Result\WM\images\Sicbo\6.png" />
+    <Content Include="Content\Images\info-icon-dark.png" />
     <Content Include="Content\Images\info-icon.png" />
     <Content Include="Content\result-dark.css">
       <DependentUpon>result-dark.scss</DependentUpon>
-    </Content>
-    <Content Include="Content\result-dark.min.css">
-      <DependentUpon>result-dark.css</DependentUpon>
     </Content>
     <Content Include="Content\ThirdParty\third-party.css">
       <DependentUpon>third-party.scss</DependentUpon>

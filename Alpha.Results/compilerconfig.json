@@ -15,6 +15,9 @@
   },
   {
     "outputFile": "Content/result-dark.css",
-    "inputFile": "Content/result-dark.scss"
+    "inputFile": "Content/result-dark.scss",
+    "minify": {
+      "enabled": false
+    }
   }
 ]

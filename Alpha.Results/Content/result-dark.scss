@@ -434,6 +434,15 @@ table {
     font-size: $font-size + 2;
 }
 
+.info {
+    background: url("Images/info-icon-dark.png");
+    width: 20px;
+    height: 20px;
+    background-size: cover;
+    display: inline-block;
+    cursor: pointer;
+}
+
 @media only screen and (max-device-width: 768px) {
     .partial-um-announcement {
         font-size: $font-size + 7;
