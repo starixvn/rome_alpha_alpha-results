@@ -12,6 +12,11 @@
         protected readonly IMediator mediator;
         protected readonly IUserSession userSession;
 
+        protected ResultBaseController(IMediator mediator)
+        {
+            this.mediator = mediator;
+        }
+
         protected ResultBaseController(IMediator mediator, IUserSession userSession)
         {
             this.mediator = mediator;

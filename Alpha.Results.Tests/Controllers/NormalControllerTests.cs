@@ -8,30 +8,24 @@
     using Site.Helpers;
     using Site.Models.Requests;
     using Site.Models.Views;
-    using Sunplus.Agent.Model.Entities;
 
     [TestFixture]
     public class NormalControllerTests
     {
         private IMediator mediator;
         private NormalController controller;
-        private IUserSession userSession;
 
         [SetUp]
         public void SetUp()
         {
             mediator = Substitute.For<IMediator>();
-            userSession = Substitute.For<IUserSession>();
-            controller = new NormalController(mediator, userSession);
+            controller = new NormalController(mediator);
         }
 
         [Test]
         public void Index_Always_CallsMediatorSendNormalResultQuery()
         {
-            // Arrange
-            userSession.RoleId.Returns((byte)4);
-
-            // Act
+            // Arrange & Act
             controller.Index();
 
             // Assert
@@ -42,7 +36,6 @@
         public void ResultDetails_Always_CallsMediatorSendNormalResultDetailsQuery()
         {
             // Arrange
-            userSession.RoleId.Returns((byte)4);
             var request = new NormalResultDetailsQuery();
 
             // Act

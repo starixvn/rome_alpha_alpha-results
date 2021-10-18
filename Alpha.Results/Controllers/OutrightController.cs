@@ -7,13 +7,11 @@
     using MediatR;
     using Models.Requests;
     using Models.Views;
-    using Sunplus.Agent.Model.Entities;
 
     [PartialUMExceptionFilter]
     public class OutrightController : ResultBaseController
     {
-        public OutrightController(IMediator mediator, IUserSession userSession)
-            : base(mediator, userSession)
+        public OutrightController(IMediator mediator) : base(mediator)
         {
         }
 

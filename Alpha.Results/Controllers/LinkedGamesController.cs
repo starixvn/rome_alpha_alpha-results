@@ -3,12 +3,10 @@
     using System.Web.Mvc;
     using MediatR;
     using Models.Requests;
-    using Sunplus.Agent.Model.Entities;
 
     public class LinkedGamesController : ResultBaseController
     {
-        public LinkedGamesController(IMediator mediator, IUserSession userSession)
-            : base(mediator, userSession)
+        public LinkedGamesController(IMediator mediator) : base(mediator)
         {
         }
 

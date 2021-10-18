@@ -7,13 +7,11 @@
     using MediatR;
     using Models.Requests;
     using Models.Views;
-    using Sunplus.Agent.Model.Entities;
 
     [PartialUMExceptionFilter]
     public class NormalController : ResultBaseController
     {
-        public NormalController(IMediator mediator, IUserSession userSession)
-            : base(mediator, userSession)
+        public NormalController(IMediator mediator) : base(mediator)
         {
         }
 

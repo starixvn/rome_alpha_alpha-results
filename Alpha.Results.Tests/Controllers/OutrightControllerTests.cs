@@ -8,30 +8,24 @@
     using Site.Helpers;
     using Site.Models.Requests;
     using Site.Models.Views;
-    using Sunplus.Agent.Model.Entities;
 
     [TestFixture]
     public class OutrightControllerTests
     {
         private IMediator mediator;
         private OutrightController controller;
-        private IUserSession userSession;
 
         [SetUp]
         public void SetUp()
         {
             mediator = Substitute.For<IMediator>();
-            userSession = Substitute.For<IUserSession>();
-            controller = new OutrightController(mediator, userSession);
+            controller = new OutrightController(mediator);
         }
 
         [Test]
         public void Index_Always_CallsMediatorSendOutrightResultQuery()
         {
-            // Arrange
-            userSession.RoleId.Returns((byte)4);
-
-            // Act
+            // Arrange * Act
             controller.Index();
 
             // Assert
