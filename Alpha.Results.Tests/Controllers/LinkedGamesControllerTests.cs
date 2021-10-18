@@ -31,7 +31,7 @@
         public void Index_Always_CallsMediatorSendSoccer5ResultQuery()
         {
             // Arrange
-            var query = new Soccer5ResultQuery();
+            var query = new Soccer5ResultQuery(userSession);
 
             // Act
             controller.GetSoccer5Result(query);

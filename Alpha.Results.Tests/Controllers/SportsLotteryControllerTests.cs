@@ -13,7 +13,6 @@
     {
         private IMediator mediator;
         private IUserSession userSession;
-        private ICacheRefService cacheRefService;
         private SportsLotteryController controller;
 
         [SetUp]
@@ -21,11 +20,10 @@
         {
             mediator = Substitute.For<IMediator>();
 
-            userSession = Substitute.For<IUserSession>();
-            cacheRefService = Substitute.For<ICacheRefService>();
+            userSession = Substitute.For<IUserSession>();            
             userSession.Language.Returns("en-Us");
 
-            controller = new SportsLotteryController(mediator, userSession, cacheRefService);
+            controller = new SportsLotteryController(mediator, userSession);
         }
 
         [Test]
