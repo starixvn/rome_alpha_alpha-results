@@ -212,23 +212,7 @@ table.fn-rs tbody .cl-match.away, table.fn-rs.popup tbody .cl-result.away {
     color: #FF5521;
 }
 
-table.fn-rs tbody .cl-match div {
-    &.first-goal {
-        background: url($goal-icon) no-repeat -9px -32px;
-    }
-
-    &.last-goal {
-        background: url($goal-icon) no-repeat -9px -16px;
-    }
-
-    &.first-half-first-goal {
-        background: url($goal-icon) no-repeat -9px -65px;
-    }
-
-    &.first-half-last-goal {
-        background: url($goal-icon) no-repeat no-repeat -9px -83px;
-    }
-}
+ 
 
 table.lucky3 {
         .cl-result {
@@ -434,7 +418,7 @@ table {
     font-size: $font-size + 2;
 }
 
-.info {
+.cl-detail-result .info {
     background: url("Images/info-icon-dark.png");
     width: 20px;
     height: 20px;

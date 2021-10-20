@@ -139,18 +139,6 @@ table.fn-rs tbody .cl-match.home, table.fn-rs.popup tbody .cl-result.home {
 table.fn-rs tbody .cl-match.away, table.fn-rs.popup tbody .cl-result.away {
   color: #FF5521; }
 
-table.fn-rs tbody .cl-match div.first-goal {
-  background: url("images/goal-icon.png") no-repeat -9px -32px; }
-
-table.fn-rs tbody .cl-match div.last-goal {
-  background: url("images/goal-icon.png") no-repeat -9px -16px; }
-
-table.fn-rs tbody .cl-match div.first-half-first-goal {
-  background: url("images/goal-icon.png") no-repeat -9px -65px; }
-
-table.fn-rs tbody .cl-match div.first-half-last-goal {
-  background: url("images/goal-icon.png") no-repeat no-repeat -9px -83px; }
-
 table.lucky3 .cl-result {
   width: 150px; }
 
@@ -319,7 +307,7 @@ table {
   line-height: 1.5;
   font-size: 15px; }
 
-.info {
+.cl-detail-result .info {
   background: url("Images/info-icon-dark.png");
   width: 20px;
   height: 20px;
