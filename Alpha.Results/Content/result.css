@@ -321,7 +321,7 @@ table {
   line-height: 1.5;
   font-size: 15px; }
 
-.info {
+.cl-detail-result .info {
   background: url("Images/info-icon.png");
   width: 20px;
   height: 20px;
