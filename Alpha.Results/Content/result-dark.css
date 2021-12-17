@@ -102,6 +102,9 @@ table.fn-rs {
   table.fn-rs .cl-bg-pending {
     background-color: #5C5C00;
     color: #fff; }
+  table.fn-rs .cl-bg-postponed {
+    background-color: #a9a940;
+    color: #fff; }
 
 table.fn-rs tbody tr.odd {
   background: #181919; }

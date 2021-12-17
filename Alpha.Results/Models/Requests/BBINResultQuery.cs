@@ -8,6 +8,8 @@
     {
         public BBINResultQuery(IUserSession userSession) : base(userSession)
         { }
+
+        
     }
 
     public class Result3rdQuery

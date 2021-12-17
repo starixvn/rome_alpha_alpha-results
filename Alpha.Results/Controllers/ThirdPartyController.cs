@@ -66,7 +66,6 @@
 
         public ActionResult PGSoftResult(PGSoftResultQuery message)
         => View(IndexView, mediator.Send(message));
-
         public ActionResult JokerResult(JokerResultQuery message)
         => View(IndexView, mediator.Send(message));
 
