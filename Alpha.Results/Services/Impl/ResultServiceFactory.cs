@@ -44,8 +44,6 @@
 
                 case SportTypeIdConstants.SexyGaming:
                     return new SexyGamingResultService();
-                case SportTypeIdConstants.BBin:
-                    return new BBinResultService();
 
                 case SportTypeIdConstants.GTCasino:
                     return new GTCasinoResultService();

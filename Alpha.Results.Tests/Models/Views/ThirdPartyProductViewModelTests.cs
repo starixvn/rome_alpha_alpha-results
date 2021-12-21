@@ -11,12 +11,7 @@
         public void Title_Always_CanSetValue()
         {
             // Arrange
-            var model = new ThirdPartyProductViewModel
-            {
-                Title = "title",
-                Result = "Result",
-                IsSuccess = true
-            };
+            var model = new ThirdPartyProductViewModel("title", "Result", true);
 
             // Act
 

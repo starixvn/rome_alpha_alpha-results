@@ -37,14 +37,12 @@
                 isSuccess = false;
             }
 
-            var viewModel = new ThirdPartyProductViewModel
-            {
-                Title = $"{cacheRefService.GetSportName(message.SportId)} - {cacheRefService.GetBetTypeName(Convert.ToInt32(message.GameId))}",
-                Result = result,
-                IsSuccess = isSuccess
-            };
+            var viewModel = new ThirdPartyProductViewModel(
+                $"{cacheRefService.GetSportName(message.SportId)} - {cacheRefService.GetBetTypeName(Convert.ToInt32(message.GameId))}",
+                result,
+                isSuccess);
 
             return viewModel;
         }
-    }
+}
 }

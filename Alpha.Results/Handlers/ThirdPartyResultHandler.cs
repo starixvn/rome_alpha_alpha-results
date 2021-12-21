@@ -2,11 +2,15 @@
 {
     using Alpha.Results.Site.App_GlobalResources;
     using Alpha.Results.Site.Helpers;
+    using Alpha.Results.Site.Models.Views;
+    using Alpha.Results.Site.Services.Impl;
     using Fanex.Common.Helper;
     using Fanex.Result.Core.Habanero;
     using Fanex.Result.Core.MaxGame;
     using Fanex.Result.Core.PPLiveCasino;
     using Fanex.Result.Core.SportsLottery;
+    using Fanex.Result.Core.ThirdParty;
+    using Fanex.Result.Core.ThirdParty.Models;
     using Fanex.Result.Core.VGaming;
     using Fanex.Result.ThirdParty.Models;
     using Fanex.Result.ThirdParty.Models.Views;
@@ -24,7 +28,8 @@
         IRequestHandler<CGResultQuery, ThirdPartyResultViewModel>,
         IRequestHandler<VGamingResultQuery, ThirdPartyResultViewModel>,
         IRequestHandler<AdvantPlayResultQuery, ThirdPartyResultViewModel>,
-        IRequestHandler<AdvantPlayMiniResultQuery, ThirdPartyResultViewModel>
+        IRequestHandler<AdvantPlayMiniResultQuery, ThirdPartyResultViewModel>,
+        IRequestHandler<BBINResultQuery, ThirdPartyProductViewModel>
     {
         private readonly ProductResultServiceFactory serviceFactory;
         private readonly ICacheRefService cacheRefService;
@@ -37,6 +42,7 @@
         private readonly IVGamingResult vGamingResultService;
         private readonly IAdvantPlayResult advantPlayResult;
         private readonly IAdvantPlayMiniResult advantPlayMiniResult;
+        private readonly IBBINResult bbinResult;
 
         public ThirdPartyResultHandler(
             ProductResultServiceFactory serviceFactory,
@@ -49,6 +55,7 @@
             IVGamingResult vGamingResult,
             IAdvantPlayResult advantPlayResult,
             IAdvantPlayMiniResult advantPlayMiniResult,
+            IBBINResult bbinResult,
             BrowserHelper browserHelper)
         {
             this.serviceFactory = serviceFactory;
@@ -62,6 +69,7 @@
             this.advantPlayMiniResult = advantPlayMiniResult;
             this.browserHelper = browserHelper;
             this.vGamingResultService = vGamingResult;
+            this.bbinResult = bbinResult;
         }
 
         public ThirdPartyResultViewModel Handle(ThirdPartyResultQuery message)
@@ -120,7 +128,7 @@
 
             return new ThirdPartyResultViewModel(string.Format(Resources.ResultPopupTitle, productName), new SuccessResult(result));
         }
-        
+
         public ThirdPartyResultViewModel Handle(HabaneroResultQuery message)
         {
             Check.Argument.IsNotNull(message, "message");
@@ -153,7 +161,7 @@
 
             return new ThirdPartyResultViewModel(string.Format(Resources.ResultPopupTitle, productName), new SuccessResult(result));
         }
-        
+
         public ThirdPartyResultViewModel Handle(AdvantPlayResultQuery message)
         {
             Check.Argument.IsNotNull(message, "message");
@@ -174,6 +182,21 @@
             var result = advantPlayMiniResult.GetResult(message.CustId.ToString(), message.GameId, message.GameCode, message.SiteId, message.Language);
 
             return new ThirdPartyResultViewModel(string.Format(Resources.ResultPopupTitle, productName), new SuccessResult(result));
+        }
+
+        public ThirdPartyProductViewModel Handle(BBINResultQuery message)
+        {
+            Check.Argument.IsNotNull(message, "message");
+
+            var productName = cacheRefService.GetProductName(message.ProductId);
+            var request = new ResultRequest(message.CustId, message.TransId3rd, message.GameId3rd, message.CurrencyId, message.Language)
+            {
+                SiteId = message.SiteId
+            };
+
+            var result = bbinResult.GetResultGET(request);
+
+            return new ThirdPartyProductViewModel(string.Format(Resources.ResultPopupTitle, productName), result);
         }
     }
 }
