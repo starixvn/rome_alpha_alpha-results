@@ -2,10 +2,12 @@
 {
     using System;
     using Alpha.Results.Site.Helpers;
+    using Alpha.Results.Site.Services.Impl;
     using Fanex.Result.Core.Habanero;
     using Fanex.Result.Core.MaxGame;
     using Fanex.Result.Core.PPLiveCasino;
     using Fanex.Result.Core.SportsLottery;
+    using Fanex.Result.Core.ThirdParty;
     using Fanex.Result.Core.VGaming;
     using Fanex.Result.ThirdParty.Services;
     using NSubstitute;
@@ -29,6 +31,7 @@
         private IVGamingResult vgamingResult;
         private IAdvantPlayResult advantPlayResult;
         private IAdvantPlayMiniResult advantPlayMiniResult;
+        private IBBINResult bbinResult;
 
         [SetUp]
         public void SetUp()
@@ -44,7 +47,8 @@
             vgamingResult = Substitute.For<IVGamingResult>();
             advantPlayResult = Substitute.For<IAdvantPlayResult>();
             advantPlayMiniResult = Substitute.For<IAdvantPlayMiniResult>();
-            handler = new ThirdPartyResultHandler(serviceFactory, cacheRefService, maxGameResult, sportsLotteryResult, ppLiveCasinoResult, habaneroResult, cgResult, vgamingResult, advantPlayResult, advantPlayMiniResult, browserHelper);
+            bbinResult = Substitute.For<IBBINResult>();
+            handler = new ThirdPartyResultHandler(serviceFactory, cacheRefService, maxGameResult, sportsLotteryResult, ppLiveCasinoResult, habaneroResult, cgResult, vgamingResult, advantPlayResult, advantPlayMiniResult, bbinResult, browserHelper);
         }
 
         [Test]

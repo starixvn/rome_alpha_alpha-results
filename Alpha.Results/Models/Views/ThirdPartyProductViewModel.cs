@@ -2,8 +2,15 @@
 {
     public class ThirdPartyProductViewModel
     {
-        public string Title { get; set; }
-        public string Result { get; set; }
-        public bool IsSuccess { get; set; }
+        public ThirdPartyProductViewModel(string title, string result, bool isSuccess = true)
+        {
+            Title = title;
+            Result = result;
+            IsSuccess = isSuccess;
+        }
+
+        public string Title { get; }
+        public string Result { get; }
+        public bool IsSuccess { get; }
     }
 }

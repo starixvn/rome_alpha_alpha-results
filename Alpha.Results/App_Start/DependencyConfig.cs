@@ -131,6 +131,7 @@
             container.Register<ILotteryResult>(() => new LotteryResult("LotteryResultConfigs"), Lifestyle.Scoped);
             container.Register<ITableGameResult>(() => new TableGameResult("TableGameResultConfigs"), Lifestyle.Scoped);
             container.Register<IAdvantPlayMiniResult>(() => new AdvantPlayMiniResult("AdvantPlayMiniResultConfigs"), Lifestyle.Scoped);
+            container.Register<IBBINResult>(() => new BBINResult("BBINResultConfigs"), Lifestyle.Scoped);
 
             container.RegisterSingleton<PartialUMService, PartialUMServiceImpl>();
         }

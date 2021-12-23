@@ -88,5 +88,12 @@
 
             return View("~/Views/ThirdParty/Index.cshtml", mediator.Send(message));
         }
+
+        public ActionResult BBINResult(BBINResultQuery message)
+        {
+            message.Language = userSession.Language;
+
+            return View("~/Views/ThirdParty/Index3rd.cshtml", mediator.Send(message));
+        }
     }
 }
