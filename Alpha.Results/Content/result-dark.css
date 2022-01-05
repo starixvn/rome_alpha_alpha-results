@@ -90,7 +90,7 @@ table.fn-rs {
   table.fn-rs tbody td {
     padding: 5px;
     vertical-align: middle;
-    border-color: #3E3F41; }
+    border-color: #5F626B; }
     table.fn-rs tbody td.cl-league {
       background: #2E2C1F;
       text-transform: uppercase;
@@ -286,23 +286,23 @@ table {
   border: 0; }
 
 #detail-result-body table:not(.parlay) {
-  border: 1px solid #3E3F41; }
+  border: 1px solid #5f626b; }
   #detail-result-body table:not(.parlay) tfoot tr:first-child td {
-    border-bottom: 1px solid #3E3F41; }
+    border-bottom: 1px solid #5f626b; }
   #detail-result-body table:not(.parlay) thead tr th, #detail-result-body table:not(.parlay) tr th {
     font-weight: normal; }
   #detail-result-body table:not(.parlay) tr td, #detail-result-body table:not(.parlay) thead tr th, #detail-result-body table:not(.parlay) tr th {
     border-right-width: 0;
     border-bottom-width: 0;
-    border-right: 1px solid #3E3F41;
-    border-top: 1px solid #3E3F41;
+    border-right: 1px solid #5f626b;
+    border-top: 1px solid #5f626b;
     white-space: nowrap; }
   #detail-result-body table:not(.parlay) thead tr th, #detail-result-body table:not(.parlay) tr th {
     border-right-color: #5F626B; }
     #detail-result-body table:not(.parlay) thead tr th:last-child, #detail-result-body table:not(.parlay) tr th:last-child {
       border-right: none; }
   #detail-result-body table:not(.parlay) tbody + tfoot tr:first-child td {
-    border-top: 1px solid #3E3F41; }
+    border-top: 1px solid #5f626b; }
 
 .partial-um-announcement {
   color: #fe0000;
