@@ -2,13 +2,24 @@
 {
     using Alpha.Results.Site.Models.Views;
     using MediatR;
+    using Sunplus.Agent.Model.Entities;
 
     public class BBINResultQuery : Result3rdQuery, IRequest<ThirdPartyProductViewModel>
     {
+        public BBINResultQuery(IUserSession userSession) : base(userSession)
+        { }
     }
 
     public class Result3rdQuery
     {
+        public Result3rdQuery(IUserSession userSession)
+        {
+            Language = userSession.Language;
+            IsDarkMode = false;
+        }
+
+        public bool IsDarkMode { get; }
+
         public int CustId { get; set; }
 
         public int ProductId { get; set; }
@@ -21,6 +32,11 @@
 
         public int CurrencyId { get; set; }
 
-        public string Language { get; set; }
+        public string Language { get; }
+
+        public int BetType { get; set; }
+
+        public string EndTime { get; set; }
+
     }
 }

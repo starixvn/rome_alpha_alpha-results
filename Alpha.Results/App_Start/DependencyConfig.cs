@@ -20,17 +20,11 @@
     using Fanex.Result.Core.Base.Models;
     using Fanex.Result.Core.Base.Utilities;
     using Fanex.Result.Core.GlobalGaming;
-    using Fanex.Result.Core.Habanero;
     using Fanex.Result.Core.LinkedGames;
-    using Fanex.Result.Core.MaxGame;
-    using Fanex.Result.Core.PPLiveCasino;
     using Fanex.Result.Core.RemotingRef;
     using Fanex.Result.Core.SportsLottery;
     using Fanex.Result.Core.VGaming;
     using Fanex.Result.Core.VirtualGames;
-    using Fanex.Result.Core.Voidbridge;
-    using Fanex.Result.ThirdParty.Services;
-    using Fanex.Result.ThirdParty.Services.Impl;
     using Handlers;
     using MediatR;
     using RestSharp;
@@ -111,16 +105,13 @@
 
             container.Register<IResultEngineAdapter, ResultEngineAdapter>(Lifestyle.Scoped);
             container.Register<IAllbetResultBuilder, AllbetResultBuilder>(Lifestyle.Scoped);
-            container.Register<VoidbridgeApi, VoidbridgeApiImp>(Lifestyle.Scoped);
             container.Register<Base3rdResultApi, GlobalGamingResultApi>(Lifestyle.Scoped);
             container.Register<IRestClient>(() => new RestClient());
-            container.Register<ProductResultServiceFactory, ProductResultServiceFactoryImpl>();
             container.Register<IVirtualGamesResult, VirtualGamesResult>(Lifestyle.Scoped);
             container.Register<Helpers.BrowserHelper, Helpers.BrowserHelperImpl>(Lifestyle.Singleton);
             container.Register<ILinkedGamesResult, LinkedGamesResult>(Lifestyle.Scoped);
-            container.Register<IMaxGameResult, MaxGameResult>(Lifestyle.Scoped);
             container.Register<ISportsLotteryResult, SportsLotteryResult>(Lifestyle.Scoped);
-            container.Register<IPPLiveCasinoResult, PPLiveCasinoResult>(Lifestyle.Scoped);
+            container.Register<ISportsLotteryDetailResult>(() => new SportsLotteryDetailResult("SportsLotteryDetailResultConfigs"), Lifestyle.Scoped);
             container.Register<IHabaneroResult>(() => new HabaneroResult("HabaneroResultConfigs"), Lifestyle.Scoped);
             container.Register<ICGResult>(() => new CGResult("CGResultConfigs"), Lifestyle.Scoped);
             container.Register<IWebClient, JsonWebClient>(Lifestyle.Scoped);
@@ -132,7 +123,20 @@
             container.Register<ITableGameResult>(() => new TableGameResult("TableGameResultConfigs"), Lifestyle.Scoped);
             container.Register<IAdvantPlayMiniResult>(() => new AdvantPlayMiniResult("AdvantPlayMiniResultConfigs"), Lifestyle.Scoped);
             container.Register<IBBINResult>(() => new BBINResult("BBINResultConfigs"), Lifestyle.Scoped);
-
+            container.Register<IRNGCasinoResult>(() => new RNGCasinoResult("RNGCasinoResultConfigs"), Lifestyle.Scoped);
+            container.Register<IPPLiveCasinoResult>(() => new PPLiveCasinoResult("PPLiveCasinoResultConfigs"), Lifestyle.Scoped);
+            container.Register<IHappy5LinkedGamesResult>(() => new Happy5LinkedGamesResult("LinkedGamesResultConfigs"), Lifestyle.Scoped);
+            container.Register<IMaxGameResult>(() => new MaxGameResult("MaxGameResultConfigs"), Lifestyle.Scoped);
+            container.Register<IBGResult>(() => new BGResult("BGResultConfigs"), Lifestyle.Scoped);
+            container.Register<IGDGResult>(() => new GDGResult("GDGResultConfigs"), Lifestyle.Scoped);
+            container.Register<IJokerResult>(() => new JokerResult("JokerResultConfigs"), Lifestyle.Scoped);
+            container.Register<IPGSoftResult>(() => new PGSoftResult("PGSoftResultConfigs"), Lifestyle.Scoped);
+            container.Register<IRNGWarResult>(() => new RNGWarResult("RNGWarResultConfigs"), Lifestyle.Scoped);
+            container.Register<IIONCasinoResult>(() => new IONCasinoResult("IONCasinoResultConfigs"), Lifestyle.Scoped);
+            container.Register<ISpadeGamingResult>(() => new SpadeGamingResult("SpadegamingResultConfigs"), Lifestyle.Scoped);
+            container.Register<ICardClubResult>(() => new CardClubResult("CardClubResultConfigs"), Lifestyle.Scoped);
+            container.Register<IPPResult>(() => new PPResult("PPResultConfigs"), Lifestyle.Scoped);
+            container.Register<IMacauGamesResult>(() => new MacauGamesResult("VoidbridgeResultConfigs"), Lifestyle.Scoped);
             container.RegisterSingleton<PartialUMService, PartialUMServiceImpl>();
         }
 

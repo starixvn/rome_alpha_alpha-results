@@ -1,8 +1,11 @@
-﻿using Fanex.Result.Core.Habanero;
+﻿using Fanex.Result.Core.ThirdParty;
 
 namespace Alpha.Results.Site.Services.Impl
 {
-    public class AdvantPlayResult : HabaneroResult, IAdvantPlayResult
+    public interface IAdvantPlayResult : IThirdPartyResult
+    {
+    }
+    public class AdvantPlayResult : ThirdPartyResult, IAdvantPlayResult
     {
         public AdvantPlayResult(string sectionName) : base(sectionName) { }
     }

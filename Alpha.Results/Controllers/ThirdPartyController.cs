@@ -2,7 +2,6 @@
 {
     using System.Web.Mvc;
     using Alpha.Web;
-    using Fanex.Result.ThirdParty.Models.Requests;
     using MediatR;
     using Models.Requests;
     using Sunplus.Agent.Model.Entities;
@@ -19,81 +18,67 @@
             this.userSession = userSession;
         }
 
-        public ActionResult Index(ThirdPartyResultQuery message)
-        {
-            message.Language = userSession.Language;
-
-            return View(mediator.Send(message));
-        }
-
-        public ActionResult Detail(ThirdPartyDetailResultQuery message)
-        {
-            message.Language = userSession.Language;
-
-            return View(IndexView, mediator.Send(message));
-        }
-
         public ActionResult MaxGameResult(MaxGameResultQuery message)
-        {
-            message.Language = userSession.Language;
+            => View(IndexView, mediator.Send(message));
 
-            return View(IndexView, mediator.Send(message));
-        }
-
-        public ActionResult SportsLotteryResult(SportsLotteryDetailResultQuery message)
-        {
-            message.Language = userSession.Language;
-
-            return View(IndexView, mediator.Send(message));
-        }
+        public ActionResult SportsLotteryDetailResult(SportsLotteryDetailResultQuery message)
+        => View(IndexView, mediator.Send(message));
 
         public ActionResult PPLiveCasinoResult(PPLiveCasinoResultQuery message)
-        {
-            message.Language = userSession.Language;
-
-            return View(IndexView, mediator.Send(message));
-        }
+        => View(IndexView, mediator.Send(message));
 
         public ActionResult HabaneroResult(HabaneroResultQuery message)
-        {
-            message.Language = userSession.Language;
-
-            return View("~/Views/ThirdParty/Index.cshtml", mediator.Send(message));
-        }
+        => View(IndexView, mediator.Send(message));
 
         public ActionResult CGResult(CGResultQuery message)
-        {
-            message.Language = userSession.Language;
-
-            return View("~/Views/ThirdParty/Index.cshtml", mediator.Send(message));
-        }
+        => View(IndexView, mediator.Send(message));
 
         public ActionResult VGamingResult(VGamingResultQuery message)
-        {
-            message.Language = userSession.Language;
+        => View(IndexView, mediator.Send(message));
 
-            return View("~/Views/ThirdParty/Index.cshtml", mediator.Send(message));
-        }
-        
         public ActionResult AdvantPlayResult(AdvantPlayResultQuery message)
-        {
-            message.Language = userSession.Language;
-
-            return View("~/Views/ThirdParty/Index.cshtml", mediator.Send(message));
-        }
+        => View(IndexView, mediator.Send(message));
 
         public ActionResult AdvantPlayMiniResult(AdvantPlayMiniResultQuery message)
-        {
-            message.Language = userSession.Language;
-
-            return View("~/Views/ThirdParty/Index.cshtml", mediator.Send(message));
-        }
+        => View(IndexView, mediator.Send(message));
 
         public ActionResult BBINResult(BBINResultQuery message)
-        {
-            message.Language = userSession.Language;
+        => View(IndexView, mediator.Send(message));
 
-            return View("~/Views/ThirdParty/Index3rd.cshtml", mediator.Send(message));
-        }
+        public ActionResult RngCasinoResult(RNGCasinoResultQuery message)
+        => View(IndexView, mediator.Send(message));
+
+        public ActionResult MacauGamesResult(MacauGamesResultQuery message)
+        => View(IndexView, mediator.Send(message));
+
+        public ActionResult PPResult(PPResultQuery message)
+        => View(IndexView, mediator.Send(message));
+
+        public ActionResult SpadeGamingResult(SpadeGamingResultQuery message)
+        => View(IndexView, mediator.Send(message));
+
+        public ActionResult RNGWarResult(RNGWarResultQuery message)
+        => View(IndexView, mediator.Send(message));
+
+        public ActionResult IONCasinoResult(IONCasinoResultQuery message)
+        => View(IndexView, mediator.Send(message));
+
+        public ActionResult PGSoftResult(PGSoftResultQuery message)
+        => View(IndexView, mediator.Send(message));
+
+        public ActionResult JokerResult(JokerResultQuery message)
+        => View(IndexView, mediator.Send(message));
+
+        public ActionResult GDGResult(GDGResultQuery message)
+        => View(IndexView, mediator.Send(message));
+
+        public ActionResult LinkedGamesResult(LinkedGamesResultQuery message)
+        => View(IndexView, mediator.Send(message));
+
+        public ActionResult BGResult(BGResultQuery message)
+        => View(IndexView, mediator.Send(message));
+
+        public ActionResult CardClubResult(CardClubResultQuery message)
+        => View(IndexView, mediator.Send(message));
     }
 }

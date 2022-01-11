@@ -1,14 +1,20 @@
 ﻿namespace Alpha.Results.Site.Models.Requests
 {
-    using Fanex.Result.ThirdParty.Models.Requests;
-    using Fanex.Result.ThirdParty.Models.Views;
+    using Alpha.Results.Site.Models.Views;
     using MediatR;
+    using Sunplus.Agent.Model.Entities;
 
-    public class VGamingResultQuery : ThirdPartyResultBaseQuery, IRequest<ThirdPartyResultViewModel>
+    public class VGamingResultQuery : Result3rdQuery, IRequest<ThirdPartyProductViewModel>
     {
+        public VGamingResultQuery(IUserSession userSession) : base(userSession)
+        {
+        }
+
         public string CurrencyName { get; set; }
 
         public string GameRoundId { get; set; }
+
+        public string GameId { get; set; }
 
         public int SportId { get; set; }
     }

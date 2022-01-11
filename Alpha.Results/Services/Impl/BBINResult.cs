@@ -10,6 +10,4 @@
     {
         public BBINResult(string sectionName) : base(sectionName) { }
     }
-
-    
 }
