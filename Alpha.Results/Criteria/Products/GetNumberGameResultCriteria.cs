@@ -1,6 +1,7 @@
 namespace Alpha.Results.Site.Criteria
 {
     using System;
+    using Alpha.Results.Site.Configurations;
     using Fanex.Data.Repository;
 
     /// <summary>
@@ -15,6 +16,14 @@ namespace Alpha.Results.Site.Criteria
         public string Language { get; set; }
 
         public int SportType { get; set; }
+
+        public bool IsShowAll
+        {
+            get
+            {
+                return AppSettings.LocalTest;
+            }
+        }
 
         public override string GetSettingKey()
         {
