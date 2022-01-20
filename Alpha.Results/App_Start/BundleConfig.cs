@@ -10,6 +10,7 @@
         public const string ResultCoreStyleBundleUrlDark = "~/bundle/styles/resultcore-dark";
         public const string KenoResultStyleBundleUrl = "~/bundle/styles/kenoresult";
         public const string ThirdPartyResultStyleBundleUrl = "~/bundle/styles/thirdpartyresult";
+        public const string ThirdPartyResultDarkStyleBundleUrl = "~/bundle/styles/thirdpartyresultdark";
 
         public const string TableGamesResultScriptBundleUrl = "~/bundle/styles/tablegamesresult";
         public const string LotteryResultScriptBundleUrl = "~/bundle/styles/lotteryresult";
@@ -93,6 +94,8 @@
         {
             bundles.Add(new StyleBundle(ThirdPartyResultStyleBundleUrl)
                 .Include("~/Content/ThirdParty/third-party.css", new CssRewriteUrlTransformWrapper()));
+            bundles.Add(new StyleBundle(ThirdPartyResultDarkStyleBundleUrl)
+                .Include("~/Content/ThirdParty/third-party-dark.css", new CssRewriteUrlTransformWrapper()));
         }
     }
 }

@@ -957,6 +957,9 @@
     <Content Include="Content\ThirdParty\third-party.css">
       <DependentUpon>third-party.scss</DependentUpon>
     </Content>
+	<Content Include="Content\ThirdParty\third-party-dark.css">
+      <DependentUpon>third-party-dark.scss</DependentUpon>
+    </Content>
     <Content Include="App_Data\SPNames\INTERNAL\Results.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -990,6 +993,7 @@
     <Content Include="Scripts\Lottery\index.js" />
     <Content Include="Views\Lottery\Index.cshtml" />
     <Content Include="Content\ThirdParty\third-party.scss" />
+	<Content Include="Content\ThirdParty\third-party-dark.scss" />
     <Content Include="Content\ThirdParty\_variables.scss" />
     <Content Include="Web.AppSettings.backupMNLNap.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
