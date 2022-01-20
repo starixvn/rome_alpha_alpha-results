@@ -12,11 +12,10 @@
         
     }
 
-    public class Result3rdQuery
+    public class Result3rdQuery : BaseQuery
     {
-        public Result3rdQuery(IUserSession userSession)
+        public Result3rdQuery(IUserSession userSession) : base(userSession)
         {
-            Language = userSession.Language;
             IsDarkMode = false;
         }
 
@@ -33,8 +32,6 @@
         public string GameId3rd { get; set; }
 
         public int CurrencyId { get; set; }
-
-        public string Language { get; }
 
         public int BetType { get; set; }
 
