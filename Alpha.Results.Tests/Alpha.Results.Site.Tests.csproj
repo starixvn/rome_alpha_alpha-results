@@ -378,9 +378,7 @@
   <ItemGroup>
     <Compile Include="Configurations\AppSettingsTests.cs" />
     <Compile Include="Constants\LanguageCode.cs" />
-    <Compile Include="Controllers\LinkedGamesControllerTests.cs" />
     <Compile Include="Controllers\SabaClubControllerTests.cs" />
-    <Compile Include="Controllers\CardClubControllerTests.cs" />
     <Compile Include="Controllers\KenoControllerTests.cs" />
     <Compile Include="Controllers\TableGamesControllerTests.cs" />
     <Compile Include="Controllers\LotteryControllerTests.cs" />
@@ -390,7 +388,6 @@
     <Compile Include="Controllers\TabControllerTests.cs" />
     <Compile Include="Controllers\SportsLotteryControllerTests.cs" />
     <Compile Include="Controllers\VirtualGamesControllerTests.cs" />
-    <Compile Include="Controllers\ThirdPartyControllerTests.cs" />
     <Compile Include="Criteria\GetBalanceUpAndMoveBetsDayCriteriaTests.cs" />
     <Compile Include="Criteria\GetBetBuilderResultDetailsCriteriaTests.cs" />
     <Compile Include="Criteria\GetGoldDeluxeResultCriteriaTests.cs" />
@@ -418,9 +415,7 @@
     <Compile Include="Database\VirtualRacing\VirtualRacingDatabase.cs" />
     <Compile Include="Database\SportsBook\SportsBookDatabase.cs" />
     <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="Handlers\LinkedGamesHandlerTests.cs" />
     <Compile Include="Handlers\SabaClubHandlerTests.cs" />
-    <Compile Include="Handlers\CardClubHandlerTests.cs" />
     <Compile Include="Handlers\TableGameResultHandlerTests.cs" />
     <Compile Include="Handlers\LotteryResultHandlerTests.cs" />
     <Compile Include="Handlers\KenoResultHandlerTests.cs" />
@@ -428,7 +423,6 @@
     <Compile Include="Handlers\OutrightResultHandleTests.cs" />
     <Compile Include="Handlers\SportsLotteryResultHandlerTests.cs" />
     <Compile Include="Handlers\VirtualGamesResultHandlerTests.cs" />
-    <Compile Include="Handlers\ThirdPartyResultHandlerTests.cs" />
     <Compile Include="Helpers\FileHelper.cs" />
     <Compile Include="Models\ActorTests.cs" />
     <Compile Include="Models\BelongingInfoTests.cs" />
@@ -444,7 +438,6 @@
     <Compile Include="Services\Products\LotteryResultTests.cs" />
     <Compile Include="Services\Products\KenoResultTests.cs" />
     <Compile Include="Services\Products\CGResultTests.cs" />
-    <Compile Include="Services\Products\HabaneroResultTests.cs" />
     <Compile Include="Services\Products\AdvantPlayResultTests.cs" />
     <Compile Include="Services\Products\AdvantPlayMiniResultTests.cs" />
     <Compile Include="Services\Products\BitcoinResultServiceTests.cs" />
