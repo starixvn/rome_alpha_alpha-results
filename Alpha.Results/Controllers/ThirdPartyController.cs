@@ -18,6 +18,12 @@
             this.userSession = userSession;
         }
 
+        public ActionResult Detail(FishingWorldResultQuery message)
+        {
+            message.Language = userSession.Language;
+            return View(IndexView, mediator.Send(message));
+        }
+
         public ActionResult MaxGameResult(MaxGameResultQuery message)
             => View(IndexView, mediator.Send(message));
 

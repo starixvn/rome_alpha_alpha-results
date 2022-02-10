@@ -5,15 +5,16 @@
     using Alpha.Results.Site.Models.Views;
     using Alpha.Results.Site.Services.Impl;
     using Fanex.Common.Helper;
-    using Fanex.Result.Core.SportsLottery;
     using Fanex.Result.Core.ThirdParty;
     using Fanex.Result.Core.ThirdParty.Models;
     using Fanex.Result.Core.VGaming;
+    using Fanex.Result.ThirdParty.Services;
     using MediatR;
     using Models.Requests;
     using Services;
 
-    public class ThirdPartyResultHandler : 
+    public class ThirdPartyResultHandler :
+        IRequestHandler<FishingWorldResultQuery, ThirdPartyProductViewModel>,
         IRequestHandler<MaxGameResultQuery, ThirdPartyProductViewModel>,
         IRequestHandler<SportsLotteryDetailResultQuery, ThirdPartyProductViewModel>,
         IRequestHandler<PPLiveCasinoResultQuery, ThirdPartyProductViewModel>,
@@ -58,8 +59,10 @@
         private readonly IPPResult ppResult;
         private readonly IBBINResult bbinResult;
         private readonly IGDGResult gdgResult;
+        private readonly ProductResultServiceFactory serviceFactory;
 
         public ThirdPartyResultHandler(
+            ProductResultServiceFactory serviceFactory,
             ICacheRefService cacheRefService,
             IMaxGameResult maxGameService,
             IPPLiveCasinoResult ppLiveCasinoResult,
@@ -84,6 +87,7 @@
             ISportsLotteryDetailResult sportsLotteryResult,
             BrowserHelper browserHelper)
         {
+            this.serviceFactory = serviceFactory;
             this.cacheRefService = cacheRefService;
             this.maxGameService = maxGameService;
             this.ppLiveCasinoResult = ppLiveCasinoResult;
@@ -107,6 +111,18 @@
             this.ppResult = ppResult;
             this.gdgResult = gdgResult;
             this.sportsLotteryResult = sportsLotteryResult;
+        }
+
+        public ThirdPartyProductViewModel Handle(FishingWorldResultQuery message)
+        {
+            Check.Argument.IsNotNull(message, "message");
+
+            var productName = cacheRefService.GetProductName(message.ProductId);
+
+            var productResultService = serviceFactory.CreateProductResultService(message.ProductId);
+            var result = productResultService.GetDetailLink(message);
+
+            return new ThirdPartyProductViewModel(string.Format(Resources.ResultPopupTitle, productName), result.Value);
         }
 
         public ThirdPartyProductViewModel Handle(MaxGameResultQuery message)
@@ -179,7 +195,7 @@
             var title = $"{cacheRefService.GetSportName(message.SportTypeId)} - {cacheRefService.GetBetTypeName(message.BetTypeId)}";
             var request = new ResultRequest(message.CustId, message.TransId3rd, message.GameId3rd, message.CurrencyId, message.SiteId, message.Language)
             {
-                IsDarkMode = message.IsDarkMode,
+                IsDarkMode = message.IsDarkMode ? "1" : "0",
                 Platform = browserHelper.IsMobile() ? "M" : string.Empty
             };
 
@@ -198,7 +214,7 @@
             var productName = cacheRefService.GetProductName(message.ProductId);
             var request = new ResultRequest(message.CustId, message.TransId3rd, message.GameId3rd, message.CurrencyId, message.SiteId, message.Language)
             {
-                IsDarkMode = message.IsDarkMode,
+                IsDarkMode = message.IsDarkMode ? "1" : "0",
                 Platform = browserHelper.IsMobile() ? "M" : "D",
                 BetTypeId = message.BetType,
                 EndTime = message.EndTime
