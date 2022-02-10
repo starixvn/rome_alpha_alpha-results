@@ -233,7 +233,7 @@
       <HintPath>..\packages\Fanex.Result.Core.WM.1.0.0.1\lib\net40\Fanex.Result.Core.WM.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.Result.ThirdParty, Version=1.1.0.8, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Result.ThirdParty.1.1.0.8-thirdparty-01\lib\net461\Fanex.Result.ThirdParty.dll</HintPath>
+      <HintPath>..\packages\Fanex.Result.ThirdParty.1.1.0.8\lib\net461\Fanex.Result.ThirdParty.dll</HintPath>
     </Reference>
     <Reference Include="IBCCrypt, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\IBCCrypt.1.1.0.0\lib\IBCCrypt.dll</HintPath>
