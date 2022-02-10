@@ -1,16 +1,14 @@
-﻿using Fanex.Result.ThirdParty.Models.Views;
+﻿using Alpha.Results.Site.Models.Views;
 using MediatR;
+using Sunplus.Agent.Model.Entities;
 
 namespace Alpha.Results.Site.Models.Requests
 {
-    public class SportsLotteryDetailResultQuery : IRequest<ThirdPartyResultViewModel>
+    public class SportsLotteryDetailResultQuery : Result3rdQuery, IRequest<ThirdPartyProductViewModel>
     {
-        public string CustId { get; set; }
+        public SportsLotteryDetailResultQuery(IUserSession userSession) : base(userSession)
+        {
 
-        public string Language { get; set; }
-
-        public string TransId3rd { get; set; }
-
-        public int ProductId { get; set; }
+        }
     }
 }

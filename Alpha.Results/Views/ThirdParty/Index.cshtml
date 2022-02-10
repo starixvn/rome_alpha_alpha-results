@@ -1,6 +1,6 @@
-﻿@using Fanex.Result.ThirdParty.Models.Views
+﻿@using Alpha.Results.Site.Models.Views
 
-@model ThirdPartyResultViewModel
+@model ThirdPartyProductViewModel
 @{
     Layout = null;
 }
@@ -13,15 +13,7 @@
 <body>
     <div class="third-party-result">
         @{
-            var result = Model.Result;
-            if (result.IsSuccess)
-            {
-                <iframe src="@result.Value" frameborder="0" class="handhistory-iframe"></iframe>  
-            }
-            else
-            {
-                <div class='alertboxerr'><span class='icon-error'></span>@result.Value</div>
-            }
+            <iframe src="@Model.Result" frameborder="0" class="handhistory-iframe"></iframe>  
         }
     </div>
 </body>

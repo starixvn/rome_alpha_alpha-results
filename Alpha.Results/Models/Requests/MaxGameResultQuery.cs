@@ -1,22 +1,12 @@
 ﻿namespace Alpha.Results.Site.Models.Requests
 {
-    using Fanex.Result.ThirdParty.Models.Views;
+    using Alpha.Results.Site.Models.Views;
     using MediatR;
+    using Sunplus.Agent.Model.Entities;
 
-    public class MaxGameResultQuery : IRequest<ThirdPartyResultViewModel>
+    public class MaxGameResultQuery : Result3rdQuery, IRequest<ThirdPartyProductViewModel>
     {
-        public string CustId { get; set; }
-
-        public string TransId3rd { get; set; }
-
-        public int BetType { get; set; }
-
-        public string EndTime { get; set; }
-
-        public string SiteId { get; set; }
-
-        public string Language { get; set; }
-
-        public int ProductId { get; set; }
+        public MaxGameResultQuery(IUserSession userSession) : base(userSession)
+        { }        
     }
 }

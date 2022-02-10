@@ -1,18 +1,12 @@
 ﻿namespace Alpha.Results.Site.Models.Requests
 {
-    using Fanex.Result.ThirdParty.Models.Views;
+    using Alpha.Results.Site.Models.Views;
     using MediatR;
+    using Sunplus.Agent.Model.Entities;
 
-    public class PPLiveCasinoResultQuery : IRequest<ThirdPartyResultViewModel>
+    public class PPLiveCasinoResultQuery : Result3rdQuery, IRequest<ThirdPartyProductViewModel>
     {
-        public string CustId { get; set; }
-
-        public string GameId3rd { get; set; }
-
-        public int BetType { get; set; }
-
-        public string Language { get; set; }
-
-        public int ProductId { get; set; }
+        public PPLiveCasinoResultQuery(IUserSession userSession) : base(userSession)
+        { }
     }
 }

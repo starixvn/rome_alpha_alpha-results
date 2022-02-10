@@ -17,15 +17,6 @@
             _userSession = userSession;
         }
        
-        public ActionResult Index(LinkedGamesResultQuery query)
-        {
-            query.Language = _userSession.Language;
-
-            var viewModel = _mediator.Send(query);
-
-            return View("~/Views/LinkedGames/Index.cshtml", (object)viewModel);
-        }
-
         public ActionResult GetSoccer5Result(Soccer5ResultQuery query)
         {
             query.Language = _userSession.Language;

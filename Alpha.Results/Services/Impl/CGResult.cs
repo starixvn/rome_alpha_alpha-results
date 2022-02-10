@@ -1,9 +1,13 @@
-﻿using Fanex.Result.Core.Habanero;
+﻿using Fanex.Result.Core.ThirdParty;
 
 namespace Alpha.Results.Site.Services.Impl
 {
-    public class CGResult : HabaneroResult, ICGResult
+    public interface ICGResult : IThirdPartyResult
+    {
+    }
+
+    public class CGResult : ThirdPartyResult, ICGResult
     {
         public CGResult(string sectionName) : base(sectionName) { }
-    }
+    }    
 }

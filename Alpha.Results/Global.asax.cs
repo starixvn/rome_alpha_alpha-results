@@ -9,6 +9,7 @@
     using Alpha.Logging;
     using Alpha.NetThrottling.Mvc;
     using Alpha.NetThrottling.Utils;
+    using Alpha.Results.Site.Helpers;
     using App_Start;
     using Auth.Filters;
     using Configurations;
@@ -68,6 +69,7 @@
             GlobalFilters.Filters.Add(new CheckBelongingFilter());
             GlobalFilters.Filters.Add(new NoCacheFilter());
             GlobalFilters.Filters.Add(new AfterLoginFlowFilter());
+            ModelBinders.Binders.DefaultBinder = new QueryEntityModelBinder();
 
             RefDataTypeContainer
                 .ConnectTo(new Uri(AppSettings.RemoteRefURL))

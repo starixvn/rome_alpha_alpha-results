@@ -119,20 +119,11 @@
     <Reference Include="Fanex.Result.Core.BBin, Version=1.0.0.4, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core.BBin.1.0.0.4\lib\net40\Fanex.Result.Core.BBin.dll</HintPath>
     </Reference>
-    <Reference Include="Fanex.Result.Core.BG, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Result.Core.BG.1.0.0\lib\Fanex.Result.Core.BG.dll</HintPath>
-    </Reference>
     <Reference Include="Fanex.Result.Core.Bitcoin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core-Bitcoin.1.0.0\lib\net40\Fanex.Result.Core.Bitcoin.dll</HintPath>
     </Reference>
-    <Reference Include="Fanex.Result.Core.CardClub, Version=1.0.1.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Result.Core.CardClub.1.0.1.1\lib\net40\Fanex.Result.Core.CardClub.dll</HintPath>
-    </Reference>
     <Reference Include="Fanex.Result.Core.Casino, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core.Casino.1.0.0.1\lib\Fanex.Result.Core.Casino.dll</HintPath>
-    </Reference>
-    <Reference Include="Fanex.Result.Core.GDG, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Result.Core.GDG.1.0.1\lib\Fanex.Result.Core.GDG.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.Result.Core.GlobalGaming, Version=1.0.0.4, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core.GlobalGaming.1.0.0.4\lib\net40\Fanex.Result.Core.GlobalGaming.dll</HintPath>
@@ -144,14 +135,8 @@
     <Reference Include="Fanex.Result.Core.GTCasino, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core.GTCasino.1.0.0\lib\net40\Fanex.Result.Core.GTCasino.dll</HintPath>
     </Reference>
-    <Reference Include="Fanex.Result.Core.Habanero, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Result.Core.Habanero.1.0.0\lib\net461\Fanex.Result.Core.Habanero.dll</HintPath>
-    </Reference>
     <Reference Include="Fanex.Result.Core.Happy5, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core.Happy5.1.0.2\lib\net40\Fanex.Result.Core.Happy5.dll</HintPath>
-    </Reference>
-    <Reference Include="Fanex.Result.Core.Joker, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Result.Core.Joker.1.0.0.0\lib\Fanex.Result.Core.Joker.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.Result.Core.KenoLotteryTG, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core.KenoLotteryTG.1.0.0\lib\net40\Fanex.Result.Core.KenoLotteryTG.dll</HintPath>
@@ -159,11 +144,8 @@
     <Reference Include="Fanex.Result.Core.LeapGaming, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core-LeapGaming.1.0.0.1\lib\net40\Fanex.Result.Core.LeapGaming.dll</HintPath>
     </Reference>
-    <Reference Include="Fanex.Result.Core.LinkedGames, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Result.Core.LinkedGames.1.0.1\lib\net40\Fanex.Result.Core.LinkedGames.dll</HintPath>
-    </Reference>
-    <Reference Include="Fanex.Result.Core.MaxGame, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Result.Core.MaxGame.1.0.0\lib\net40\Fanex.Result.Core.MaxGame.dll</HintPath>
+    <Reference Include="Fanex.Result.Core.LinkedGames, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Result.Core.LinkedGames.1.0.3\lib\net40\Fanex.Result.Core.LinkedGames.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.Result.Core.MetricGaming, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core-MetricGaming.1.0.1\lib\net40\Fanex.Result.Core.MetricGaming.dll</HintPath>
@@ -171,16 +153,6 @@
     </Reference>
     <Reference Include="Fanex.Result.Core.NumberGame, Version=1.0.3.2, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core-NumberGame.1.0.3.2\lib\net40\Fanex.Result.Core.NumberGame.dll</HintPath>
-    </Reference>
-    <Reference Include="Fanex.Result.Core.PGSoft, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Result.Core.PGSoft.1.0.0.0\lib\Fanex.Result.Core.PGSoft.dll</HintPath>
-    </Reference>
-    <Reference Include="Fanex.Result.Core.PP, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Result.Core.PP.1.0.0.0\lib\Fanex.Result.Core.PP.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Fanex.Result.Core.PPLiveCasino, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Result.Core.PPLiveCasino.1.0.0\lib\net461\Fanex.Result.Core.PPLiveCasino.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.Result.Core.Racing, Version=1.1.0.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core-Racing.1.1.0.1\lib\net40\Fanex.Result.Core.Racing.dll</HintPath>
@@ -197,11 +169,11 @@
     <Reference Include="Fanex.Result.Core.Sportsbook, Version=1.2.7.8, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core-Sportsbook.1.2.7.8\lib\net40\Fanex.Result.Core.Sportsbook.dll</HintPath>
     </Reference>
-    <Reference Include="Fanex.Result.Core.SportsLottery, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Result.Core.SportsLottery.1.0.0\lib\net461\Fanex.Result.Core.SportsLottery.dll</HintPath>
+    <Reference Include="Fanex.Result.Core.SportsLottery, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Result.Core.SportsLottery.1.0.2\lib\net461\Fanex.Result.Core.SportsLottery.dll</HintPath>
     </Reference>
-    <Reference Include="Fanex.Result.Core.ThirdParty, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Result.Core.ThirdPartyResult.1.0.0\lib\net461\Fanex.Result.Core.ThirdParty.dll</HintPath>
+    <Reference Include="Fanex.Result.Core.ThirdParty, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Result.Core.ThirdPartyResult.1.0.0.1\lib\net461\Fanex.Result.Core.ThirdParty.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.Result.Core.VGaming, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core.VGaming.1.0.0\lib\net40\Fanex.Result.Core.VGaming.dll</HintPath>
@@ -209,15 +181,11 @@
     <Reference Include="Fanex.Result.Core.VirtualGames, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core.VirtualGames.1.0.0.0\lib\net40\Fanex.Result.Core.VirtualGames.dll</HintPath>
     </Reference>
-    <Reference Include="Fanex.Result.Core.Voidbridge, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Result.Core.Voidbridge.1.0.2\lib\net40\Fanex.Result.Core.Voidbridge.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Fanex.Result.Core.WM, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core.WM.1.0.0.1\lib\net40\Fanex.Result.Core.WM.dll</HintPath>
     </Reference>
-    <Reference Include="Fanex.Result.ThirdParty, Version=1.1.0.7, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Result.ThirdParty.1.1.0.7\lib\net461\Fanex.Result.ThirdParty.dll</HintPath>
+    <Reference Include="Fanex.Result.ThirdParty, Version=1.1.0.8, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Result.ThirdParty.1.1.0.8\lib\net461\Fanex.Result.ThirdParty.dll</HintPath>
     </Reference>
     <Reference Include="FluentAssertions, Version=4.1.1.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
       <HintPath>..\packages\FluentAssertions.4.1.1\lib\net45\FluentAssertions.dll</HintPath>
@@ -410,9 +378,7 @@
   <ItemGroup>
     <Compile Include="Configurations\AppSettingsTests.cs" />
     <Compile Include="Constants\LanguageCode.cs" />
-    <Compile Include="Controllers\LinkedGamesControllerTests.cs" />
     <Compile Include="Controllers\SabaClubControllerTests.cs" />
-    <Compile Include="Controllers\CardClubControllerTests.cs" />
     <Compile Include="Controllers\KenoControllerTests.cs" />
     <Compile Include="Controllers\TableGamesControllerTests.cs" />
     <Compile Include="Controllers\LotteryControllerTests.cs" />
@@ -422,7 +388,6 @@
     <Compile Include="Controllers\TabControllerTests.cs" />
     <Compile Include="Controllers\SportsLotteryControllerTests.cs" />
     <Compile Include="Controllers\VirtualGamesControllerTests.cs" />
-    <Compile Include="Controllers\ThirdPartyControllerTests.cs" />
     <Compile Include="Criteria\GetBalanceUpAndMoveBetsDayCriteriaTests.cs" />
     <Compile Include="Criteria\GetBetBuilderResultDetailsCriteriaTests.cs" />
     <Compile Include="Criteria\GetGoldDeluxeResultCriteriaTests.cs" />
@@ -450,9 +415,7 @@
     <Compile Include="Database\VirtualRacing\VirtualRacingDatabase.cs" />
     <Compile Include="Database\SportsBook\SportsBookDatabase.cs" />
     <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="Handlers\LinkedGamesHandlerTests.cs" />
     <Compile Include="Handlers\SabaClubHandlerTests.cs" />
-    <Compile Include="Handlers\CardClubHandlerTests.cs" />
     <Compile Include="Handlers\TableGameResultHandlerTests.cs" />
     <Compile Include="Handlers\LotteryResultHandlerTests.cs" />
     <Compile Include="Handlers\KenoResultHandlerTests.cs" />
@@ -460,7 +423,6 @@
     <Compile Include="Handlers\OutrightResultHandleTests.cs" />
     <Compile Include="Handlers\SportsLotteryResultHandlerTests.cs" />
     <Compile Include="Handlers\VirtualGamesResultHandlerTests.cs" />
-    <Compile Include="Handlers\ThirdPartyResultHandlerTests.cs" />
     <Compile Include="Helpers\FileHelper.cs" />
     <Compile Include="Models\ActorTests.cs" />
     <Compile Include="Models\BelongingInfoTests.cs" />
@@ -476,7 +438,6 @@
     <Compile Include="Services\Products\LotteryResultTests.cs" />
     <Compile Include="Services\Products\KenoResultTests.cs" />
     <Compile Include="Services\Products\CGResultTests.cs" />
-    <Compile Include="Services\Products\HabaneroResultTests.cs" />
     <Compile Include="Services\Products\AdvantPlayResultTests.cs" />
     <Compile Include="Services\Products\AdvantPlayMiniResultTests.cs" />
     <Compile Include="Services\Products\BitcoinResultServiceTests.cs" />
