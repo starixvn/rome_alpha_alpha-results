@@ -67,7 +67,7 @@
             var act = criteria.IsValid();
 
             // Assert
-            Assert.AreEqual(true, act);
+            Assert.IsTrue(act);
         }
     }
 }
