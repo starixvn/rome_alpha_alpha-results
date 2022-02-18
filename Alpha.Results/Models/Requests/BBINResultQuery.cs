@@ -8,15 +8,14 @@
     {
         public BBINResultQuery(IUserSession userSession) : base(userSession)
         { }
-
-        
     }
 
-    public class Result3rdQuery : BaseQuery
+    public class Result3rdQuery
     {
-        public Result3rdQuery(IUserSession userSession) : base(userSession)
+        public Result3rdQuery(IUserSession userSession)
         {
-            IsDarkMode = false;
+            Language = userSession.Language;
+            IsDarkMode = !string.IsNullOrEmpty(userSession.DarkModeName) || !string.IsNullOrWhiteSpace(userSession.DarkModeName);
         }
 
         public bool IsDarkMode { get; }
@@ -32,6 +31,8 @@
         public string GameId3rd { get; set; }
 
         public int CurrencyId { get; set; }
+
+        public string Language { get; }
 
         public int BetType { get; set; }
 

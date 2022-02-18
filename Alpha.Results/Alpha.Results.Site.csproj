@@ -185,8 +185,8 @@
     <Reference Include="Fanex.Result.Core.LeapGaming, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core-LeapGaming.1.0.0.1\lib\net40\Fanex.Result.Core.LeapGaming.dll</HintPath>
     </Reference>
-    <Reference Include="Fanex.Result.Core.LinkedGames, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Result.Core.LinkedGames.1.0.3\lib\net40\Fanex.Result.Core.LinkedGames.dll</HintPath>
+    <Reference Include="Fanex.Result.Core.LinkedGames, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Result.Core.LinkedGames.1.0.4-darkmode-01\lib\net40\Fanex.Result.Core.LinkedGames.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.Result.Core.MetricGaming, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core-MetricGaming.1.0.1\lib\net40\Fanex.Result.Core.MetricGaming.dll</HintPath>
@@ -217,8 +217,8 @@
     <Reference Include="Fanex.Result.Core.Sportsbook, Version=1.2.7.8, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core-Sportsbook.1.2.7.8\lib\net40\Fanex.Result.Core.Sportsbook.dll</HintPath>
     </Reference>
-    <Reference Include="Fanex.Result.Core.SportsLottery, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Result.Core.SportsLottery.1.0.2\lib\net461\Fanex.Result.Core.SportsLottery.dll</HintPath>
+    <Reference Include="Fanex.Result.Core.SportsLottery, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Result.Core.SportsLottery.1.0.3-darkmode-01\lib\net461\Fanex.Result.Core.SportsLottery.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.Result.Core.ThirdParty, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core.ThirdPartyResult.1.0.0.1\lib\net461\Fanex.Result.Core.ThirdParty.dll</HintPath>
@@ -957,7 +957,7 @@
     <Content Include="Content\ThirdParty\third-party.css">
       <DependentUpon>third-party.scss</DependentUpon>
     </Content>
-	<Content Include="Content\ThirdParty\third-party-dark.css">
+    <Content Include="Content\ThirdParty\third-party-dark.css">
       <DependentUpon>third-party-dark.scss</DependentUpon>
     </Content>
     <Content Include="App_Data\SPNames\INTERNAL\Results.xml">
@@ -993,7 +993,7 @@
     <Content Include="Scripts\Lottery\index.js" />
     <Content Include="Views\Lottery\Index.cshtml" />
     <Content Include="Content\ThirdParty\third-party.scss" />
-	<Content Include="Content\ThirdParty\third-party-dark.scss" />
+    <Content Include="Content\ThirdParty\third-party-dark.scss" />
     <Content Include="Content\ThirdParty\_variables.scss" />
     <Content Include="Web.AppSettings.backupMNLNap.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
@@ -1204,7 +1204,7 @@
     <Compile Include="Helpers\BrowserHelper.cs">
       <SonarQubeExclude>true</SonarQubeExclude>
     </Compile>
-    <Compile Include="Helpers\QueryEntityModelBinder.cs" >
+    <Compile Include="Helpers\QueryEntityModelBinder.cs">
       <SonarQubeExclude>true</SonarQubeExclude>
     </Compile>
     <Compile Include="Helpers\UrlHelper.cs" />

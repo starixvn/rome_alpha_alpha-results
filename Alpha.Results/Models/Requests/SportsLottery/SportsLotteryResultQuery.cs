@@ -4,7 +4,7 @@
     using MediatR;
     using Sunplus.Agent.Model.Entities;
 
-    public class SportsLotteryResultQuery : BaseQuery, IRequest<SportsLotteryResultViewModel>
+    public class SportsLotteryResultQuery : Result3rdQuery, IRequest<SportsLotteryResultViewModel>
     {
         public SportsLotteryResultQuery(IUserSession userSession) : base(userSession)
         {

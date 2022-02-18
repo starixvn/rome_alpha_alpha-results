@@ -4,9 +4,9 @@ using Sunplus.Agent.Model.Entities;
 
 namespace Alpha.Results.Site.Models.Requests
 {
-    public class Soccer5ResultQuery : BaseQuery, IRequest<LinkedGamesViewModel>
+    public class Soccer5ResultQuery : Result3rdQuery, IRequest<LinkedGamesViewModel>
     {
-        public Soccer5ResultQuery(IUserSession userSession):base(userSession)
+        public Soccer5ResultQuery(IUserSession userSession) : base(userSession)
         {
         }
 
