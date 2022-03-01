@@ -1,6 +1,5 @@
 ﻿namespace Alpha.Results.Site.Tests.Controllers
 {
-    using Alpha.Results.Site.Services;
     using MediatR;
     using NSubstitute;
     using NUnit.Framework;
@@ -23,7 +22,7 @@
             userSession = Substitute.For<IUserSession>();
             userSession.Language.Returns("en-Us");
 
-            controller = new LinkedGamesController(mediator, userSession);
+            controller = new LinkedGamesController(mediator);
         }
 
         [Test]
