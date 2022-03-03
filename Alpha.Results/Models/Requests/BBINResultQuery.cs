@@ -1,5 +1,6 @@
 ﻿namespace Alpha.Results.Site.Models.Requests
 {
+    using Alpha.Results.Site.Helpers;
     using Alpha.Results.Site.Models.Views;
     using MediatR;
     using Sunplus.Agent.Model.Entities;
@@ -15,7 +16,7 @@
         public Result3rdQuery(IUserSession userSession)
         {
             Language = userSession.Language;
-            IsDarkMode = false;
+            IsDarkMode = DarkModeHelper.IsDarkMode();
         }
 
         public bool IsDarkMode { get; }

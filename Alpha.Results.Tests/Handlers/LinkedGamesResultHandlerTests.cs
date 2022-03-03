@@ -3,11 +3,11 @@
     using Alpha.Results.Site.Helpers;
     using Alpha.Results.Site.Services;
     using Fanex.Result.Core.LinkedGames;
-    using Fanex.Result.Core.VirtualGames;
     using NSubstitute;
     using NUnit.Framework;
     using Site.Handlers;
     using Site.Models.Requests;
+    using Sunplus.Agent.Model.Entities;
 
     [TestFixture]
     public class LinkedGamesResultHandlerTests
@@ -16,6 +16,7 @@
         private LinkedGamesResultHandler handler;
         private BrowserHelper browserHelper;
         private ICacheRefService cacheRefService;
+        private IUserSession userSession;
 
         [SetUp]
         public void SetUp()
@@ -24,20 +25,19 @@
             browserHelper = Substitute.For<BrowserHelper>();
             cacheRefService = Substitute.For<ICacheRefService>();
             handler = new LinkedGamesResultHandler(result, browserHelper, cacheRefService);
+            userSession = Substitute.For<IUserSession>();
         }
-
 
         [Test]
         public void LinkedGamesResultQuery_Always_CallGetResult()
         {
             // Arrange
 
-
             // Act
-            handler.Handle(new Soccer5ResultQuery());
+            handler.Handle(new Soccer5ResultQuery(userSession));
 
             // Assert
-            result.Received().GetSoccer5Result(Arg.Any<string>(), Arg.Any<string>(), Arg.Any<bool>(), Arg.Any<string>());
+            result.Received().GetSoccer5Result(Arg.Any<string>(), Arg.Any<string>(), Arg.Any<bool>(), Arg.Any<bool>(), Arg.Any<string>(), Arg.Any<int>());
         }
 
         [Test]
@@ -47,10 +47,10 @@
             browserHelper.IsMobile().Returns(true);
 
             // Act
-            handler.Handle(new Soccer5ResultQuery());
+            handler.Handle(new Soccer5ResultQuery(userSession));
 
             // Assert
-            result.Received().GetSoccer5Result(Arg.Any<string>(), Arg.Any<string>(), Arg.Is<bool>(i => !i), Arg.Any<string>());
+            result.Received().GetSoccer5Result(Arg.Any<string>(), Arg.Any<string>(), Arg.Is<bool>(i => !i), Arg.Any<bool>(), Arg.Any<string>(), Arg.Any<int>());
         }
 
         [Test]
@@ -59,10 +59,10 @@
             // Arrange
             cacheRefService.GetSportName(1).Returns("Sport1");
             cacheRefService.GetBetTypeName(1).Returns("Bettype1");
-            result.GetSoccer5Result(Arg.Any<string>(), Arg.Any<string>(), Arg.Any<bool>(), Arg.Any<string>()).Returns("URL Result");
+            result.GetSoccer5Result(Arg.Any<string>(), Arg.Any<string>(), Arg.Any<bool>()).Returns("URL Result");
 
             // Act
-            var act = handler.Handle(new Soccer5ResultQuery { SportTypeId = 1, BetTypeId = 1 });
+            var act = handler.Handle(new Soccer5ResultQuery(userSession) { SportTypeId = 1, BetTypeId = 1 });
 
             // Assert
             Assert.AreEqual("Sport1 - Bettype1", act.Title);

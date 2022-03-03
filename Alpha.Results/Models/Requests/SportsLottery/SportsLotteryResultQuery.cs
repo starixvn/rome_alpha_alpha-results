@@ -1,9 +1,13 @@
 ﻿namespace Alpha.Results.Site.Models.Requests
 {
+    using Alpha.Results.Site.Models.Views;
     using MediatR;
+    using Sunplus.Agent.Model.Entities;
 
-    public class SportsLotteryResultQuery : IRequest<string>
+    public class SportsLotteryResultQuery : Result3rdQuery, IRequest<SportsLotteryResultViewModel>
     {
-        public string Language { get; set; }
+        public SportsLotteryResultQuery(IUserSession userSession) : base(userSession)
+        {
+        }
     }
 }

@@ -20,7 +20,7 @@
         [Test]
         public void Index_Always_ReturnViewResult()
         {
-            // Act
+            // Arrange & Act
             var viewResult = controller.Index() as ViewResult;
 
             // Assert

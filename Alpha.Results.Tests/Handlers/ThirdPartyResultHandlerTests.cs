@@ -14,6 +14,7 @@
     using Site.Handlers;
     using Site.Models.Requests;
     using Sunplus.Agent.Model.Entities;
+    using Sunplus.Agent.Model.Entities;
 
     [TestFixture]
     public class ThirdPartyResultHandlerTests

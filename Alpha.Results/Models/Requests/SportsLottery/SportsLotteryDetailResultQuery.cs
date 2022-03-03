@@ -8,7 +8,6 @@ namespace Alpha.Results.Site.Models.Requests
     {
         public SportsLotteryDetailResultQuery(IUserSession userSession) : base(userSession)
         {
-
         }
     }
 }

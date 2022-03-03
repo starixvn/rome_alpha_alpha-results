@@ -94,7 +94,7 @@
 
         private static void RegisterServices(Container container)
         {
-            container.RegisterPerWebRequest<IUserSession, UserSessionExt>();
+            container.RegisterSingleton<IUserSession, UserSessionExt>();
             container.RegisterSingleton<IRemotingRefService, RemotingRefService>();
             container.RegisterSingleton<ICacheService>(new CacheService());
             container.RegisterSingleton<IRefDataHelper, RefDataHelper>();

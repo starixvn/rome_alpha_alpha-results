@@ -8,9 +8,7 @@
     {
         [HttpGet]
         public ActionResult Index()
-        {
-            return View("~/Views/NG2/Index.cshtml", null, $"{Helpers.UrlHelper.NG2ResultPath}/All");
-        }
+            => View("~/Views/NG2/Index.cshtml", null, $"{Helpers.UrlHelper.NG2ResultPath}/All");
 
         [HttpGet]
         public ActionResult TicketDetail(int gambleId)

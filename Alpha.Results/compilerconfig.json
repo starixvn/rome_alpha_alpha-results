@@ -12,5 +12,19 @@
     "minify": {
       "enabled": false
     }
+  },
+  {
+    "outputFile": "Content/result-dark.css",
+    "inputFile": "Content/result-dark.scss",
+    "minify": {
+      "enabled": false
+    }
+  },
+  {
+    "outputFile": "Content/ThirdParty/third-party-dark.css",
+    "inputFile": "Content/ThirdParty/third-party-dark.scss",
+    "minify": {
+      "enabled": false
+    }
   }
 ]

@@ -25,7 +25,7 @@
         [Test]
         public void Index_Always_CallsMediatorSendOutrightResultQuery()
         {
-            // Act
+            // Arrange * Act
             controller.Index();
 
             // Assert

@@ -4,25 +4,15 @@
     using MediatR;
     using Models.Requests;
     using Sunplus.Agent.Model.Entities;
-    using Web;
 
-    public class TableGamesController : BaseController
+    public class TableGamesController : ResultBaseController
     {
-        private readonly IMediator _mediator;
-        private readonly IUserSession _userSession;
-
         public TableGamesController(IMediator mediator, IUserSession userSession)
+            : base(mediator, userSession)
         {
-            _mediator = mediator;
-            _userSession = userSession;
         }
 
         [HttpGet]
-        public ActionResult Index()
-        {
-            var viewModel = _mediator.Send(new TableGamesResultQuery(_userSession));
-
-            return View(viewModel);
-        }
+        public ActionResult Index() => View(new TableGamesResultQuery(userSession));
     }
 }

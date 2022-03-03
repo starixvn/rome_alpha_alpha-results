@@ -5,9 +5,10 @@ namespace Alpha.Results.Site.Models.Views
 {
     public class SportsLotteryResultViewModel : BaseResultTab
     {
-        public SportsLotteryResultViewModel(ICacheRefService cacheRefService)
+        public SportsLotteryResultViewModel(ICacheRefService cacheRefService, string resultPath)
         {
             ProductName = cacheRefService.GetProductName(ProductIdConstants.SportsLottery);
+            ResultPath = resultPath;
         }
 
         public string ResultPath { get; set; }

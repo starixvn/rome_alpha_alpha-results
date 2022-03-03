@@ -1,11 +1,14 @@
 ﻿using Alpha.Results.Site.Models.Views;
 using MediatR;
+using Sunplus.Agent.Model.Entities;
 
 namespace Alpha.Results.Site.Models.Requests
 {
-    public class Soccer5ResultQuery : IRequest<LinkedGamesViewModel>
+    public class Soccer5ResultQuery : Result3rdQuery, IRequest<LinkedGamesViewModel>
     {
-        public string Language { get; set; }
+        public Soccer5ResultQuery(IUserSession userSession) : base(userSession)
+        {
+        }
 
         public string MatchId { get; set; }
 

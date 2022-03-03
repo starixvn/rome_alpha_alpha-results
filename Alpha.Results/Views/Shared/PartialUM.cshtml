@@ -1,4 +1,28 @@
 ﻿@model Alpha.Web.Exceptions.PartialUMException
-<h5 class="partial-um-announcement">
-    @string.Format(Resources.PartialUMAnnouncement, Model.UMFrom, Model.UMTo)
-</h5>
+@{ Layout = null; }
+<!DOCTYPE html>
+<html class="ifr-result">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    @Alpha.Web.Helpers.StaticResources.AssetStyles.RenderWithRoleAndDarkMode("/bundles/site-results/")
+    @Styles.Render($"~/bundle/styles/resultcore{Alpha.Results.Site.Helpers.DarkModeHelper.GetDarkModeName()}")
+</head>
+<body>
+    <div id="page_main">
+        <div id="page_main">
+            <div class="container-fluid">
+                <div class="">
+                    <ul class="nav nav-tabs" role="tablist">
+                        @Html.Action("Index", "Tab", new { tabName = ViewContext.RouteData.Values["controller"], area = "" })
+                    </ul>
+                    <div class="tab-content">
+                        <h5 class="partial-um-announcement">
+                            @string.Format(Resources.PartialUMAnnouncement, Model.UMFrom, Model.UMTo)
+                        </h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

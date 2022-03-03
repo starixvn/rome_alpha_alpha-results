@@ -1,6 +1,5 @@
 ﻿namespace Alpha.Results.Site.Tests.Controllers
 {
-    using Alpha.Results.Site.Services;
     using MediatR;
     using NSubstitute;
     using NUnit.Framework;
@@ -23,14 +22,14 @@
             userSession = Substitute.For<IUserSession>();
             userSession.Language.Returns("en-Us");
 
-            controller = new LinkedGamesController(mediator, userSession);
+            controller = new LinkedGamesController(mediator);
         }
 
         [Test]
         public void Index_Always_CallsMediatorSendSoccer5ResultQuery()
         {
             // Arrange
-            var query = new Soccer5ResultQuery();
+            var query = new Soccer5ResultQuery(userSession);
 
             // Act
             controller.GetSoccer5Result(query);

@@ -34,6 +34,7 @@ namespace Alpha.Results.Site.Tests.Controllers
         public void CardClubIndex_Always_ReturnsView()
         {
             // Arrage
+            userSession.RoleId.Returns((byte)4);
             var query = new SabaClubResultQuery();
 
             // Act

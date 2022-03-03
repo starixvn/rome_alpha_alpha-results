@@ -3,27 +3,14 @@
     using System.Web.Mvc;
     using MediatR;
     using Models.Requests;
-    using Sunplus.Agent.Model.Entities;
-    using Web;
 
-    public class LinkedGamesController : BaseController
+    public class LinkedGamesController : ResultBaseController
     {
-        private readonly IMediator _mediator;
-        private readonly IUserSession _userSession;
-
-        public LinkedGamesController(IMediator mediator, IUserSession userSession)
+        public LinkedGamesController(IMediator mediator) : base(mediator)
         {
-            _mediator = mediator;
-            _userSession = userSession;
         }
-       
+
         public ActionResult GetSoccer5Result(Soccer5ResultQuery query)
-        {
-            query.Language = _userSession.Language;
-
-            var viewModel = _mediator.Send(query);
-
-            return View("~/Views/LinkedGames/Index.cshtml", (object)viewModel);
-        }
+            => View("~/Views/LinkedGames/Index.cshtml", query);
     }
 }
