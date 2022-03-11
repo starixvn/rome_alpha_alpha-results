@@ -23,6 +23,8 @@
 
         public long BetId { get; set; }
 
+        public string Transdesc { get; set; }
+
         [SpParam(Ignored = true)]
         public int Handicap2 { get; set; }
 
@@ -42,6 +44,7 @@
             {
                 inputParams.Add("bettype", BetType);
                 inputParams.Add("betid", BetId);
+                inputParams.Add("transdesc", Transdesc);
             }
 
             return inputParams;

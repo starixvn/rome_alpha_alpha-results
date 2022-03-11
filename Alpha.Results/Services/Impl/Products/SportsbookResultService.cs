@@ -150,7 +150,8 @@
                 SportType = detailsRequest.SportId,
                 BetId = detailsRequest.BetId,
                 IsViewResultFromBetList = detailsRequest.IsViewResultFromBetList,
-                Handicap2 = detailsRequest.Hdp2
+                Handicap2 = detailsRequest.Hdp2,
+                Transdesc = detailsRequest.TransDesc
             };
 
             return _dataAccess.GetScoreInformation(criteria);
