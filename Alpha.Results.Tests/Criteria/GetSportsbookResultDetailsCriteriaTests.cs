@@ -76,7 +76,7 @@
         }
 
         [Test]
-        public void GetSpParamViewFromBetList_Always_Returns3Params()
+        public void GetSpParamViewFromBetList_Always_Returns4Params()
         {
             // Arrange
             var criteria = new GetSportsbookResultDetailsCriteria
@@ -89,7 +89,7 @@
             var act = criteria.GetSpParams().Count;
 
             // Assert
-            Assert.AreEqual(3, act);
+            Assert.AreEqual(4, act);
         }
     }
 }

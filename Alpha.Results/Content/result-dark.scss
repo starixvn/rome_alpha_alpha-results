@@ -213,6 +213,9 @@ table.fn-rs tbody .cl-match.home, table.fn-rs.popup tbody .cl-result.home {
     }
 }
 
+table.fn-rs .cl-result.home .match-info {
+    color: #000000;
+}
 table.fn-rs tbody .cl-match.away, table.fn-rs.popup tbody .cl-result.away {
     color: #FF5521;
 }
