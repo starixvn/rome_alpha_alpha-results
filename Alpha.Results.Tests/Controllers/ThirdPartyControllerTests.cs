@@ -296,5 +296,18 @@
             // Assert
             mediator.Received().Send(Arg.Any<CardClubResultQuery>());
         }
+
+        [Test]
+        public void FGGResult_Always_CallsMediatorSendCardClubResultQuery()
+        {
+            // Arrange
+            var query = new FGGResultQuery(userSession);
+
+            // Act
+            controller.FGGResult(query);
+
+            // Assert
+            mediator.Received().Send(Arg.Any<FGGResultQuery>());
+        }
     }
 }

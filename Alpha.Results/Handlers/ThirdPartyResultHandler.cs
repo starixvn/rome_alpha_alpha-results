@@ -34,7 +34,8 @@
         IRequestHandler<LinkedGamesResultQuery, ThirdPartyProductViewModel>,
         IRequestHandler<BGResultQuery, ThirdPartyProductViewModel>,
         IRequestHandler<CardClubResultQuery, ThirdPartyProductViewModel>,
-        IRequestHandler<PPResultQuery, ThirdPartyProductViewModel>
+        IRequestHandler<PPResultQuery, ThirdPartyProductViewModel>,
+        IRequestHandler<FGGResultQuery, ThirdPartyProductViewModel>
     {
         private readonly ICacheRefService cacheRefService;
         private readonly IMaxGameResult maxGameService;
@@ -59,6 +60,8 @@
         private readonly IPPResult ppResult;
         private readonly IBBINResult bbinResult;
         private readonly IGDGResult gdgResult;
+        private readonly IFGGResult fggResult;
+
         private readonly ProductResultServiceFactory serviceFactory;
 
         public ThirdPartyResultHandler(
@@ -85,6 +88,7 @@
             IPPResult ppResult,
             IGDGResult gdgResult,
             ISportsLotteryDetailResult sportsLotteryResult,
+            IFGGResult fggResult,
             BrowserHelper browserHelper)
         {
             this.serviceFactory = serviceFactory;
@@ -110,6 +114,7 @@
             this.cardClubResult = cardClubResult;
             this.ppResult = ppResult;
             this.gdgResult = gdgResult;
+            this.fggResult = fggResult;
             this.sportsLotteryResult = sportsLotteryResult;
         }
 
@@ -188,6 +193,9 @@
 
         public ThirdPartyProductViewModel Handle(MacauGamesResultQuery message)
             => Handle(message, macauGamesResult);
+
+        public ThirdPartyProductViewModel Handle(FGGResultQuery message)
+            => Handle(message, fggResult);
 
         public ThirdPartyProductViewModel Handle(LinkedGamesResultQuery message)
         {

@@ -44,6 +44,7 @@
         private IPPResult ppResult;
         private IBBINResult bbinResult;
         private IGDGResult gdgResult;
+        private IFGGResult fggResult;
         private ProductResultServiceFactory serviceFactory;
 
         [SetUp]
@@ -73,6 +74,7 @@
             ppResult = Substitute.For<IPPResult>();
             bbinResult = Substitute.For<IBBINResult>();
             gdgResult = Substitute.For<IGDGResult>();
+            fggResult = Substitute.For<IFGGResult>();
             serviceFactory = Substitute.For<ProductResultServiceFactory>();
             handler = new ThirdPartyResultHandler(serviceFactory,
                 cacheRefService,
@@ -97,6 +99,7 @@
                  ppResult,
                  gdgResult,
                  sportsLotteryResult,
+                 fggResult,
                  browserHelper);
 
             cacheRefService.GetProductName(1).Returns("Product1");
@@ -455,6 +458,26 @@
                 EndTime = DateTime.Today.ToString()
             };
             maxGameService.GetResultGET(Arg.Any<ResultRequest>()).Returns("Url result");
+
+            // Act
+            var act = handler.Handle(query);
+
+            // Assert
+            Assert.AreEqual("Product1 Result", act.Title);
+            Assert.AreEqual("Url result", act.Result);
+        }
+
+        [Test]
+        public void FGGResultQuery_Always_CallGetResult()
+        {
+            // Arrange
+            var query = new FGGResultQuery(userSession)
+            {
+                ProductId = 1,
+                BetType = 1,
+                EndTime = DateTime.Today.ToString()
+            };
+            fggResult.GetResultGET(Arg.Any<ResultRequest>()).Returns("Url result");
 
             // Act
             var act = handler.Handle(query);
