@@ -77,59 +77,5 @@
             // Assert
             result.Received().GetResult(Arg.Is<string>(i => i == "d"), Arg.Any<string>());
         }
-
-        [Test]
-        public void VirtualGamesDetailResultQuery_Always_CallGetResult()
-        {
-            // Arrange
-
-
-            // Act
-            handler.Handle(new VirtualGamesDetailResultQuery());
-
-            // Assert
-            result.Received().GetDetailResult(Arg.Any<string>(), Arg.Any<string>(), Arg.Any<string>());
-        }
-
-
-        [Test]
-        public void VirtualGamesDetailResultQuery_IsMobile_CallGetResultWithM()
-        {
-            // Arrange
-            browserHelper.IsMobile().Returns(true);
-
-            // Act
-            handler.Handle(new VirtualGamesDetailResultQuery());
-
-            // Assert
-            result.Received().GetDetailResult(Arg.Any<string>(), Arg.Is<string>(i => i == "m"), Arg.Any<string>());
-        }
-
-        [Test]
-        public void VirtualGamesDetailResultQuery_IsTablet_CallGetResultWithT()
-        {
-            // Arrange            
-            browserHelper.IsTablet().Returns(true);
-
-            // Act
-            handler.Handle(new VirtualGamesDetailResultQuery());
-
-            // Assert
-            result.Received().GetDetailResult(Arg.Any<string>(), Arg.Is<string>(i => i == "t"), Arg.Any<string>());
-        }
-
-        [Test]
-        public void VirtualGamesDetailResultQuery_IsDesktop_CallGetResultWithD()
-        {
-            // Arrange            
-            browserHelper.IsMobile().Returns(false);
-            browserHelper.IsTablet().Returns(false);
-
-            // Act
-            handler.Handle(new VirtualGamesDetailResultQuery());
-
-            // Assert
-            result.Received().GetDetailResult(Arg.Any<string>(), Arg.Is<string>(i => i == "d"), Arg.Any<string>());
-        }
     }
 }

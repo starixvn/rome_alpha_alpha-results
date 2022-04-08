@@ -142,6 +142,7 @@
             container.Register<IPPResult>(() => new PPResult("PPResultConfigs"), Lifestyle.Scoped);
             container.Register<IMacauGamesResult>(() => new MacauGamesResult("VoidbridgeResultConfigs"), Lifestyle.Scoped);
             container.Register<IFGGResult>(() => new FGGResult("FGGResultConfigs"), Lifestyle.Scoped);
+            container.Register<IVirtualGamesDetailResult>(() => new VirtualGamesDetailResult("VirtualGamesDetailResultConfigs"), Lifestyle.Scoped);
             container.RegisterSingleton<PartialUMService, PartialUMServiceImpl>();
             container.Register<IPService, IPServiceImpl>();
         }

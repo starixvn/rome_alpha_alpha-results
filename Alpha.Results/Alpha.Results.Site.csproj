@@ -1290,6 +1290,7 @@
     <Compile Include="Services\Impl\AdvantPlayMiniResult.cs" />
     <Compile Include="Services\Impl\FGGResult.cs" />
     <Compile Include="Services\Impl\MacauGamesResult.cs" />
+    <Compile Include="Services\Impl\VirtualGamesDetailResult.cs" />
     <Compile Include="Services\Impl\SportsLotteryDetailResult.cs" />
     <Compile Include="Services\Impl\SpadeGamingResult.cs" />
     <Compile Include="Services\Impl\RNGWarResult.cs" />

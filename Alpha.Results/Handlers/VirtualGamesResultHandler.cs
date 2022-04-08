@@ -7,8 +7,7 @@
     using Models.Requests;
 
     public class VirtualGamesResultHandler :
-         IRequestHandler<VirtualGamesResultQuery, string>,
-        IRequestHandler<VirtualGamesDetailResultQuery, string>
+         IRequestHandler<VirtualGamesResultQuery, string>
     {
         private readonly IVirtualGamesResult result;
         private readonly BrowserHelper browserHelper;
@@ -21,9 +20,6 @@
 
         public string Handle(VirtualGamesResultQuery message)
             => result.GetResult(GetPlatform(), message.Language);
-
-        public string Handle(VirtualGamesDetailResultQuery message)
-            => result.GetDetailResult(message.GameId, GetPlatform(), message.Language);
 
         private string GetPlatform()
         {

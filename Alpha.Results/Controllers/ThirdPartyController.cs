@@ -80,7 +80,11 @@
 
         public ActionResult CardClubResult(CardClubResultQuery message)
         => View(IndexView, mediator.Send(message));
+
         public ActionResult FGGResult(FGGResultQuery message)
+        => View(IndexView, mediator.Send(message));
+
+        public ActionResult VirtualGamesResult(VirtualGamesDetailResultQuery message)
         => View(IndexView, mediator.Send(message));
     }
 }
