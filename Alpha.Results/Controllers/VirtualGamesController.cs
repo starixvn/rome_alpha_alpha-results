@@ -18,13 +18,6 @@
         }
 
         public ActionResult Index()
-        {
-            var viewModel = mediator.Send(new VirtualGamesResultQuery
-            {
-                Language = userSession.Language,
-            });
-
-            return View("~/Views/VirtualGames/Index.cshtml", new VirtualGamesResultViewModel(cacheRefService) { ResultPath = viewModel });
-        }
+            => View(new VirtualGamesResultQuery(userSession));
     }
 }
