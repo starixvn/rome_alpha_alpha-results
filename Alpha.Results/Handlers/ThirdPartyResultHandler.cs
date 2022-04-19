@@ -4,6 +4,7 @@
     using Alpha.Results.Site.Helpers;
     using Alpha.Results.Site.Models.Views;
     using Alpha.Results.Site.Services.Impl;
+    using Alpha.Utilities.IP;
     using Fanex.Common.Helper;
     using Fanex.Result.Core.ThirdParty;
     using Fanex.Result.Core.ThirdParty.Models;
@@ -12,6 +13,7 @@
     using MediatR;
     using Models.Requests;
     using Services;
+    using Sunplus.Agent.Model.Common;
 
     public class ThirdPartyResultHandler :
         IRequestHandler<FishingWorldResultQuery, ThirdPartyProductViewModel>,
@@ -61,7 +63,7 @@
         private readonly IBBINResult bbinResult;
         private readonly IGDGResult gdgResult;
         private readonly IFGGResult fggResult;
-
+        private readonly IPService ipService;
         private readonly ProductResultServiceFactory serviceFactory;
 
         public ThirdPartyResultHandler(
@@ -89,6 +91,7 @@
             IGDGResult gdgResult,
             ISportsLotteryDetailResult sportsLotteryResult,
             IFGGResult fggResult,
+            IPService ipService,
             BrowserHelper browserHelper)
         {
             this.serviceFactory = serviceFactory;
@@ -115,6 +118,7 @@
             this.ppResult = ppResult;
             this.gdgResult = gdgResult;
             this.fggResult = fggResult;
+            this.ipService = ipService;
             this.sportsLotteryResult = sportsLotteryResult;
         }
 
@@ -180,7 +184,24 @@
             => Handle(message, jokerResult);
 
         public ThirdPartyProductViewModel Handle(PGSoftResultQuery message)
-            => Handle(message, pgSoftResult);
+        {
+            Check.Argument.IsNotNull(message, "message");
+
+            var productName = cacheRefService.GetProductName(message.ProductId);
+            var ipInfo = ipService.GetIPInformation(AgentIPFormat.GetClientIP());
+            var request = new ResultRequest(message.CustId, message.TransId3rd, message.GameId3rd, message.CurrencyId, message.SiteId, message.Language)
+            {
+                IsDarkMode = message.IsDarkMode ? "1" : "0",
+                Platform = browserHelper.IsMobile() ? "M" : "D",
+                BetTypeId = message.BetType,
+                EndTime = message.EndTime,
+                Location = ipInfo != null ? ipInfo.CountryShort : string.Empty
+            };
+
+            var result = pgSoftResult.GetResultGET(request);
+
+            return new ThirdPartyProductViewModel(string.Format(Resources.ResultPopupTitle, productName), result);
+        }
 
         public ThirdPartyProductViewModel Handle(IONCasinoResultQuery message)
             => Handle(message, ionCasinoResult);
