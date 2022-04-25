@@ -9,6 +9,7 @@
     using Alpha.NetThrottling.Models;
     using Alpha.NetThrottling.Resolvers;
     using Alpha.NetThrottling.Utils;
+    using Alpha.Utilities.IP;
     using Alpha.Web.Helpers;
     using Alpha.Web.Helpers.Impl;
     using DataAccesses;
@@ -142,6 +143,7 @@
             container.Register<IMacauGamesResult>(() => new MacauGamesResult("VoidbridgeResultConfigs"), Lifestyle.Scoped);
             container.Register<IFGGResult>(() => new FGGResult("FGGResultConfigs"), Lifestyle.Scoped);
             container.RegisterSingleton<PartialUMService, PartialUMServiceImpl>();
+            container.Register<IPService, IPServiceImpl>();
         }
 
         private static void RegisterDataAccesses(Container container)
