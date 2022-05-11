@@ -46,6 +46,7 @@
         private IPService ipService;
         private IVirtualGamesDetailResult virtualGamesDetailResult;
         private ProductResultServiceFactory serviceFactory;
+        private IPHelper ipHelper;
 
         [SetUp]
         public void SetUp()
@@ -78,6 +79,7 @@
             fggResult = Substitute.For<IFGGResult>();
             virtualGamesDetailResult = Substitute.For<IVirtualGamesDetailResult>();
             serviceFactory = Substitute.For<ProductResultServiceFactory>();
+            ipHelper = Substitute.For<IPHelper>();
             handler = new ThirdPartyResultHandler(serviceFactory,
                 cacheRefService,
                  maxGameService,
@@ -104,7 +106,8 @@
                  fggResult,
                  ipService,
                  virtualGamesDetailResult,
-                 browserHelper);
+                 browserHelper,
+                 ipHelper);
 
             cacheRefService.GetProductName(1).Returns("Product1");
             cacheRefService.GetSportName(1).Returns("Sports1");
@@ -362,6 +365,7 @@
                 EndTime = DateTime.Today.ToString()
             };
             pgSoftResult.GetResultGET(Arg.Any<ResultRequest>()).Returns("Url result");
+            ipHelper.GetClientIP().Returns("172.168.0.0");
             ipService.GetIPInformation(Arg.Any<string>()).Returns(new Utilities.IP.Models.IPInformationModel());
             // Act
             var act = handler.Handle(query);
