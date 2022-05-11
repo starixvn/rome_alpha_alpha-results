@@ -9,6 +9,7 @@
     using Alpha.NetThrottling.Models;
     using Alpha.NetThrottling.Resolvers;
     using Alpha.NetThrottling.Utils;
+    using Alpha.Results.Site.Helpers;
     using Alpha.Utilities.IP;
     using Alpha.Web.Helpers;
     using Alpha.Web.Helpers.Impl;
@@ -144,6 +145,7 @@
             container.Register<IVirtualGamesDetailResult>(() => new VirtualGamesDetailResult("VirtualGamesDetailResultConfigs"), Lifestyle.Scoped);
             container.RegisterSingleton<PartialUMService, PartialUMServiceImpl>();
             container.Register<IPService, IPServiceImpl>();
+            container.Register<IPHelper, IPHelperImpl>();
         }
 
         private static void RegisterDataAccesses(Container container)

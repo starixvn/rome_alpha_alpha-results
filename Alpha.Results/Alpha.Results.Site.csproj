@@ -1223,6 +1223,7 @@
     <Compile Include="Handlers\NormalResultHandler.cs" />
     <Compile Include="Handlers\OutrightResultHandler.cs" />
     <Compile Include="Handlers\ThirdPartyResultHandler.cs" />
+    <Compile Include="Helpers\IPHelper.cs" />
     <Compile Include="Helpers\BrowserHelper.cs">
       <SonarQubeExclude>true</SonarQubeExclude>
     </Compile>

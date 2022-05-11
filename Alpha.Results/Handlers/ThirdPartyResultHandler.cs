@@ -67,6 +67,7 @@
         private readonly IPService ipService;
         private readonly IVirtualGamesDetailResult virtualGamesResult;
         private readonly ProductResultServiceFactory serviceFactory;
+        private readonly IPHelper ipHelper;
 
         public ThirdPartyResultHandler(
             ProductResultServiceFactory serviceFactory,
@@ -95,7 +96,8 @@
             IFGGResult fggResult,
             IPService ipService,
             IVirtualGamesDetailResult virtualGamesResult,
-            BrowserHelper browserHelper)
+            BrowserHelper browserHelper,
+            IPHelper ipHelper)
         {
             this.serviceFactory = serviceFactory;
             this.cacheRefService = cacheRefService;
@@ -124,6 +126,7 @@
             this.ipService = ipService;
             this.sportsLotteryResult = sportsLotteryResult;
             this.virtualGamesResult = virtualGamesResult;
+            this.ipHelper = ipHelper;
         }
 
         public ThirdPartyProductViewModel Handle(FishingWorldResultQuery message)
@@ -195,7 +198,7 @@
             Check.Argument.IsNotNull(message, "message");
 
             var productName = cacheRefService.GetProductName(message.ProductId);
-            var ipInfo = ipService.GetIPInformation(AgentIPFormat.GetClientIP());
+            var ipInfo = ipService.GetIPInformation(ipHelper.GetClientIP());
             var request = new ResultRequest(message.CustId, message.TransId3rd, message.GameId3rd, message.CurrencyId, message.SiteId, message.Language)
             {
                 IsDarkMode = message.IsDarkMode ? "1" : "0",
