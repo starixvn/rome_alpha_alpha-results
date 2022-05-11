@@ -18,22 +18,6 @@
         }
 
         public ActionResult Index()
-        {
-            var viewModel = mediator.Send(new VirtualGamesResultQuery
-            {
-                Language = userSession.Language,
-            });
-
-            return View("~/Views/VirtualGames/Index.cshtml", new VirtualGamesResultViewModel(cacheRefService) { ResultPath = viewModel });
-        }
-
-        public ActionResult Detail(VirtualGamesDetailResultQuery query)
-        {
-            query.Language = userSession.Language;
-
-            var viewModel = mediator.Send(query);
-
-            return View("~/Views/VirtualGames/Detail.cshtml", new VirtualGamesResultViewModel(cacheRefService) { ResultPath = viewModel });
-        }
+            => View(new VirtualGamesResultQuery(userSession));
     }
 }

@@ -38,20 +38,7 @@
             controller.Index();
 
             // Assert
-            mediator.Received().Send(Arg.Is<VirtualGamesResultQuery>(msg => msg.Language == userSession.Language));
-        }
-
-        [Test]
-        public void Detail_Always_CallsMediatorSendVirtualGamesDetailResultQuery()
-        {
-            // Arrange
-            var query = new VirtualGamesDetailResultQuery();
-
-            // Act
-            controller.Detail(query);
-
-            // Assert
-            mediator.Received().Send(Arg.Is<VirtualGamesDetailResultQuery>(msg => msg.Language == userSession.Language));
+            mediator.Received().Send(Arg.Any<VirtualGamesResultQuery>());
         }
     }
 }

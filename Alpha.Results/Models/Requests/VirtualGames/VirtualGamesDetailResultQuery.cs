@@ -1,11 +1,12 @@
-﻿using MediatR;
+﻿using Alpha.Results.Site.Models.Views;
+using MediatR;
+using Sunplus.Agent.Model.Entities;
 
 namespace Alpha.Results.Site.Models.Requests
 {
-    public class VirtualGamesDetailResultQuery : IRequest<string>
+    public class VirtualGamesDetailResultQuery : Result3rdQuery, IRequest<ThirdPartyProductViewModel>
     {
-        public string Language { get; set; }
-
-        public string GameId { get; set; }
+        public VirtualGamesDetailResultQuery(IUserSession userSession) : base(userSession)
+        { }
     }
 }

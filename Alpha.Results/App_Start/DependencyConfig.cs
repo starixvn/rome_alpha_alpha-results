@@ -25,7 +25,6 @@
     using Fanex.Result.Core.RemotingRef;
     using Fanex.Result.Core.SportsLottery;
     using Fanex.Result.Core.VGaming;
-    using Fanex.Result.Core.VirtualGames;
     using Fanex.Result.ThirdParty.Services;
     using Fanex.Result.ThirdParty.Services.Impl;
     using Handlers;
@@ -111,7 +110,7 @@
             container.Register<Base3rdResultApi, GlobalGamingResultApi>(Lifestyle.Scoped);
             container.Register<IRestClient>(() => new RestClient());
             container.Register<ProductResultServiceFactory, ProductResultServiceFactoryImpl>();
-            container.Register<IVirtualGamesResult, VirtualGamesResult>(Lifestyle.Scoped);
+            container.Register<IVirtualGamesResult>(() => new VirtualGamesResult("VirtualGamesResultConfigs"), Lifestyle.Scoped);
             container.Register<Helpers.BrowserHelper, Helpers.BrowserHelperImpl>(Lifestyle.Singleton);
             container.Register<ILinkedGamesResult, LinkedGamesResult>(Lifestyle.Scoped);
             container.Register<ISportsLotteryResult, SportsLotteryResult>(Lifestyle.Scoped);
@@ -142,6 +141,7 @@
             container.Register<IPPResult>(() => new PPResult("PPResultConfigs"), Lifestyle.Scoped);
             container.Register<IMacauGamesResult>(() => new MacauGamesResult("VoidbridgeResultConfigs"), Lifestyle.Scoped);
             container.Register<IFGGResult>(() => new FGGResult("FGGResultConfigs"), Lifestyle.Scoped);
+            container.Register<IVirtualGamesDetailResult>(() => new VirtualGamesDetailResult("VirtualGamesDetailResultConfigs"), Lifestyle.Scoped);
             container.RegisterSingleton<PartialUMService, PartialUMServiceImpl>();
             container.Register<IPService, IPServiceImpl>();
         }

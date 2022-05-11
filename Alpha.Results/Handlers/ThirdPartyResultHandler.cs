@@ -37,7 +37,8 @@
         IRequestHandler<BGResultQuery, ThirdPartyProductViewModel>,
         IRequestHandler<CardClubResultQuery, ThirdPartyProductViewModel>,
         IRequestHandler<PPResultQuery, ThirdPartyProductViewModel>,
-        IRequestHandler<FGGResultQuery, ThirdPartyProductViewModel>
+        IRequestHandler<FGGResultQuery, ThirdPartyProductViewModel>,
+        IRequestHandler<VirtualGamesDetailResultQuery, ThirdPartyProductViewModel>
     {
         private readonly ICacheRefService cacheRefService;
         private readonly IMaxGameResult maxGameService;
@@ -64,6 +65,7 @@
         private readonly IGDGResult gdgResult;
         private readonly IFGGResult fggResult;
         private readonly IPService ipService;
+        private readonly IVirtualGamesDetailResult virtualGamesResult;
         private readonly ProductResultServiceFactory serviceFactory;
 
         public ThirdPartyResultHandler(
@@ -92,6 +94,7 @@
             ISportsLotteryDetailResult sportsLotteryResult,
             IFGGResult fggResult,
             IPService ipService,
+            IVirtualGamesDetailResult virtualGamesResult,
             BrowserHelper browserHelper)
         {
             this.serviceFactory = serviceFactory;
@@ -120,6 +123,7 @@
             this.fggResult = fggResult;
             this.ipService = ipService;
             this.sportsLotteryResult = sportsLotteryResult;
+            this.virtualGamesResult = virtualGamesResult;
         }
 
         public ThirdPartyProductViewModel Handle(FishingWorldResultQuery message)
@@ -133,6 +137,9 @@
 
             return new ThirdPartyProductViewModel(string.Format(Resources.ResultPopupTitle, productName), result.Value);
         }
+
+        public ThirdPartyProductViewModel Handle(VirtualGamesDetailResultQuery message)
+            => Handle(message, virtualGamesResult);
 
         public ThirdPartyProductViewModel Handle(MaxGameResultQuery message)
             => Handle(message, maxGameService);

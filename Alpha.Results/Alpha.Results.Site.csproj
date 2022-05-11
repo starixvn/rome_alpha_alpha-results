@@ -229,9 +229,6 @@
     <Reference Include="Fanex.Result.Core.VGaming, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core.VGaming.1.0.0\lib\net40\Fanex.Result.Core.VGaming.dll</HintPath>
     </Reference>
-    <Reference Include="Fanex.Result.Core.VirtualGames, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Result.Core.VirtualGames.1.0.0.0\lib\net40\Fanex.Result.Core.VirtualGames.dll</HintPath>
-    </Reference>
     <Reference Include="Fanex.Result.Core.WM, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core.WM.1.0.0.2\lib\net40\Fanex.Result.Core.WM.dll</HintPath>
     </Reference>
@@ -1290,6 +1287,8 @@
     <Compile Include="Services\Impl\AdvantPlayMiniResult.cs" />
     <Compile Include="Services\Impl\FGGResult.cs" />
     <Compile Include="Services\Impl\MacauGamesResult.cs" />
+    <Compile Include="Services\Impl\VirtualGamesResult.cs" />
+    <Compile Include="Services\Impl\VirtualGamesDetailResult.cs" />
     <Compile Include="Services\Impl\SportsLotteryDetailResult.cs" />
     <Compile Include="Services\Impl\SpadeGamingResult.cs" />
     <Compile Include="Services\Impl\RNGWarResult.cs" />
@@ -1309,6 +1308,7 @@
     <Compile Include="Services\Impl\Products\BitcoinResultService.cs" />
     <Compile Include="Services\Impl\TableGameResult.cs" />
     <Compile Include="Services\Impl\LotteryResult.cs" />
+    <Compile Include="Services\IVirtualGamesResult.cs" />
     <Compile Include="Services\ITableGamesResult.cs" />
     <Compile Include="Services\ILotteryResult.cs" />
     <Compile Include="Services\IKenoResult.cs" />

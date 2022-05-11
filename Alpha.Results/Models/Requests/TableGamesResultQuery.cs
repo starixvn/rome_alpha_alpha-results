@@ -6,7 +6,7 @@
 
     public class TableGamesResultQuery : KenoLotteryTableGameResultQuery, IRequest<TableGamesResultViewModel>
     {
-        public TableGamesResultQuery(IUserSession userSession):base(userSession)
+        public TableGamesResultQuery(IUserSession userSession) : base(userSession)
         {
 
         }
