@@ -4,16 +4,14 @@
     using Alpha.Results.Site.Helpers;
     using Alpha.Results.Site.Services;
     using Alpha.Results.Site.Services.Impl;
-    using Fanex.Result.Core.LinkedGames;
+    using Alpha.Utilities.IP;
     using Fanex.Result.Core.ThirdParty.Models;
     using Fanex.Result.Core.VGaming;
-    using Fanex.Result.Core.VirtualGames;
     using Fanex.Result.ThirdParty.Services;
     using NSubstitute;
     using NUnit.Framework;
     using Site.Handlers;
     using Site.Models.Requests;
-    using Sunplus.Agent.Model.Entities;
     using Sunplus.Agent.Model.Entities;
 
     [TestFixture]
@@ -45,12 +43,14 @@
         private IBBINResult bbinResult;
         private IGDGResult gdgResult;
         private IFGGResult fggResult;
+        private IPService ipService;
         private IVirtualGamesDetailResult virtualGamesDetailResult;
         private ProductResultServiceFactory serviceFactory;
 
         [SetUp]
         public void SetUp()
         {
+            ipService = Substitute.For<IPService>();
             userSession = Substitute.For<IUserSession>();
             browserHelper = Substitute.For<BrowserHelper>();
             cacheRefService = Substitute.For<ICacheRefService>();
@@ -102,6 +102,7 @@
                  gdgResult,
                  sportsLotteryResult,
                  fggResult,
+                 ipService,
                  virtualGamesDetailResult,
                  browserHelper);
 
@@ -361,7 +362,7 @@
                 EndTime = DateTime.Today.ToString()
             };
             pgSoftResult.GetResultGET(Arg.Any<ResultRequest>()).Returns("Url result");
-
+            ipService.GetIPInformation(Arg.Any<string>()).Returns(new Utilities.IP.Models.IPInformationModel());
             // Act
             var act = handler.Handle(query);
 

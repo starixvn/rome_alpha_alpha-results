@@ -1,26 +1,31 @@
 ﻿namespace Alpha.Results.Site.Tests.Handlers
 {
     using Alpha.Results.Site.Helpers;
-    using Fanex.Result.Core.VirtualGames;
+    using Alpha.Results.Site.Services;
     using NSubstitute;
     using NUnit.Framework;
     using Site.Handlers;
     using Site.Models.Requests;
+    using Sunplus.Agent.Model.Entities;
 
     [TestFixture]
     public class VirtualGamesResultHandlerTests
     {
+        private IUserSession userSession;
         private IVirtualGamesResult result;
+        private ICacheRefService cacheRefService;
         private VirtualGamesResultHandler handler;
         private BrowserHelper browserHelper;
 
         [SetUp]
         public void SetUp()
         {
+            userSession = Substitute.For<IUserSession>();
             result = Substitute.For<IVirtualGamesResult>();
+            cacheRefService = Substitute.For<ICacheRefService>();
             browserHelper = Substitute.For<BrowserHelper>();
 
-            handler = new VirtualGamesResultHandler(result, browserHelper);
+            handler = new VirtualGamesResultHandler(result, cacheRefService, browserHelper);
         }
 
 
@@ -31,10 +36,10 @@
 
 
             // Act
-            handler.Handle(new VirtualGamesResultQuery());
+            handler.Handle(new VirtualGamesResultQuery(userSession));
 
             // Assert
-            result.Received().GetResult(Arg.Any<string>(), Arg.Any<string>());
+            result.Received().GetResult(Arg.Any<string>(), Arg.Any<bool>(), Arg.Any<System.DateTime>(), Arg.Any<string>(), Arg.Any<string>());
         }
 
 
@@ -45,37 +50,10 @@
             browserHelper.IsMobile().Returns(true);
 
             // Act
-            handler.Handle(new VirtualGamesResultQuery());
+            handler.Handle(new VirtualGamesResultQuery(userSession));
 
             // Assert
-            result.Received().GetResult(Arg.Is<string>(i => i == "m"), Arg.Any<string>());
-        }
-
-        [Test]
-        public void VirtualGamesResultQuery_IsTablet_CallGetResultWithT()
-        {
-            // Arrange            
-            browserHelper.IsTablet().Returns(true);
-
-            // Act
-            handler.Handle(new VirtualGamesResultQuery());
-
-            // Assert
-            result.Received().GetResult(Arg.Is<string>(i => i == "t"), Arg.Any<string>());
-        }
-
-        [Test]
-        public void VirtualGamesResultQuery_IsDesktop_CallGetResultWithD()
-        {
-            // Arrange            
-            browserHelper.IsMobile().Returns(false);
-            browserHelper.IsTablet().Returns(false);
-
-            // Act
-            handler.Handle(new VirtualGamesResultQuery());
-
-            // Assert
-            result.Received().GetResult(Arg.Is<string>(i => i == "d"), Arg.Any<string>());
+            result.Received().GetResult(Arg.Any<string>(), Arg.Any<bool>(), Arg.Any<System.DateTime>(), Arg.Any<string>(), Arg.Any<string>());
         }
     }
 }

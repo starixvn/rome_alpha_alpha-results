@@ -38,7 +38,7 @@
             controller.Index();
 
             // Assert
-            mediator.Received().Send(Arg.Is<VirtualGamesResultQuery>(msg => msg.Language == userSession.Language));
+            mediator.Received().Send(Arg.Any<VirtualGamesResultQuery>());
         }
     }
 }
