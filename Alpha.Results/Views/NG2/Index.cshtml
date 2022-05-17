@@ -12,8 +12,10 @@
     <title>@Html.Raw(ViewBag.Title)</title>
     @Alpha.Web.Helpers.StaticResources.AssetStyles.RenderWithRoleAndDarkMode("/bundles/site-results/")
     @Styles.Render($"~/bundle/styles/resultcore{Alpha.Results.Site.Helpers.DarkModeHelper.GetDarkModeName()}")
+    @Alpha.Web.Helpers.GoogleAnalyticHepler.GtagScript()
 </head>
 <body class="ng2-container">
+    @Alpha.Web.Helpers.GoogleAnalyticHepler.GtagNoScript()
     <div id="page_main">
         <div class="container-fluid">
             <ul class="nav nav-tabs" role="tablist">
@@ -30,6 +32,5 @@
     @Html.Hidden("RootURL", HttpContext.Current.Response.ApplyAppPathModifier("~/"))
 
     @Alpha.Web.Helpers.StaticResources.AssetScripts.Render("/bundles/site-results/default")
-    @Alpha.Web.Helpers.GoogleAnalyticHepler.Render()
 </body>
 </html>

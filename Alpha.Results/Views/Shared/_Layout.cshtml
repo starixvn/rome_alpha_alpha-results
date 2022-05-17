@@ -6,8 +6,10 @@
     @Alpha.Web.Helpers.StaticResources.AssetStyles.RenderWithRoleAndDarkMode("/bundles/site-results/")
     @Styles.Render($"~/bundle/styles/resultcore{Alpha.Results.Site.Helpers.DarkModeHelper.GetDarkModeName()}")
     @RenderSection("Styles", false)
+    @Alpha.Web.Helpers.GoogleAnalyticHepler.GtagScript()
 </head>
 <body>
+    @Alpha.Web.Helpers.GoogleAnalyticHepler.GtagNoScript()
     <div id="page_main">
         <div id="page_main">
             <div class="container-fluid">
@@ -29,7 +31,6 @@
     @Alpha.Web.Helpers.StaticResources.AssetScripts.RenderCommon("/bundles/common/ajaxSetup")
     @RenderSection("Scripts", false)
 
-    @Alpha.Web.Helpers.GoogleAnalyticHepler.Render()
     @Html.Raw(Fanex.Logging.LogManager.RenderJavascriptLogger())
 </body>
 </html>
