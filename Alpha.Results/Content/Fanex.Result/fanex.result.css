@@ -76,3 +76,12 @@ table.badminton .cl-result.home {
 table.badminton .cl-result.away {
     color: #008d95;
 }
+table.fn-rs tbody .cl-group-name {
+    color: #1d3968;
+    background: #cccccc;
+    vertical-align: middle;
+    font-weight: bold;
+    line-height: 17px;
+    height: 21px;
+    text-align: center;
+}
