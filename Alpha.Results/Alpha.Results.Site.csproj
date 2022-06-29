@@ -217,8 +217,8 @@
     <Reference Include="Fanex.Result.Core.SexyGaming, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core.SexyGaming.1.0.0.2\lib\net40\Fanex.Result.Core.SexyGaming.dll</HintPath>
     </Reference>
-    <Reference Include="Fanex.Result.Core.Sportsbook, Version=1.2.8.5, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Result.Core-Sportsbook.1.2.8.5\lib\net40\Fanex.Result.Core.Sportsbook.dll</HintPath>
+    <Reference Include="Fanex.Result.Core.Sportsbook, Version=1.2.8.6, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Result.Core-Sportsbook.1.2.8.6\lib\net40\Fanex.Result.Core.Sportsbook.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.Result.Core.SportsLottery, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core.SportsLottery.1.0.3\lib\net461\Fanex.Result.Core.SportsLottery.dll</HintPath>
@@ -1043,7 +1043,6 @@
     <Content Include="Alpha.Results.Site.ruleset" />
     <Content Include="App_Data\Fanex.Result\VSBasketBall.xls" />
     <Content Include="App_Data\Fanex.Result\Happy5.xls" />
-    <Content Include="App_Data\Fanex.Result\ESport.xls" />
     <Content Include="App_Data\AuthorizationSection.config">
       <SubType>Designer</SubType>
     </Content>
@@ -1053,6 +1052,7 @@
     <Content Include="App_Data\Fanex.Result\Cricket.xls" />
     <Content Include="App_Data\Fanex.Result\BeachVolleyball.xls" />
     <Content Include="App_Data\Fanex.Result\Bitcoin.xls" />
+    <Content Include="App_Data\Fanex.Result\ESport.xls" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
