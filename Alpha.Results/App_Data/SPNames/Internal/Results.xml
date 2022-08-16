@@ -41,4 +41,7 @@
     <Setting Key="Age_CustSubPageAccessSel" SpName="Age_CustSubPageAccessSel" DbName="DBAGE.bodb02.BODBDownlineNetView" Plain="0" />
     <Setting Key="Age_CustomerSelCheckBelonging_MultiCust" SpName="Age_CustomerSelCheckBelonging_MultiCust" DbName="DBAGE.bodb02.BODBDownlineNetView" Plain="0" />
   </Function>
+  <Function Name="Partial UM">
+    <Setting Key="Acc_CheckUM_ByReport" SpName="Acc_CheckUM_ByReport" DbName="DBCust.CustDB.BODBDownlineNetView" Plain="0" />
+  </Function>
 </Functions>

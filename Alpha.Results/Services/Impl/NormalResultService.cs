@@ -4,8 +4,7 @@
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
     using System.Linq;
-    using Alpha.Web.Helpers;
-    using Constants;
+    using Alpha.PartialUM.Services;
     using Criteria;
     using Fanex.Common.Helper;
     using Fanex.Data.Repository;
@@ -16,12 +15,12 @@
     {
         private readonly IDynamicRepository _dynamicRepository;
         private readonly IResultServiceFactory _resultServiceFactory;
-        private readonly PartialUMService _partialUMService;
+        private readonly IPartialUMService _partialUMService;
 
         public NormalResultService(
             IDynamicRepository dynamicRepository,
             IResultServiceFactory resultServiceFactory,
-            PartialUMService partialUMService)
+            IPartialUMService partialUMService)
         {
             _dynamicRepository = dynamicRepository;
             _resultServiceFactory = resultServiceFactory;
@@ -38,7 +37,7 @@
                 SportId = sportId
             };
 
-            _partialUMService.CheckPartialUM(criteria.GetSettingKey());
+            _partialUMService.ThrowIfUM(criteria.GetSettingKey());
 
             var leagues = _dynamicRepository.Fetch<League>(criteria);
 
@@ -52,7 +51,7 @@
                 EventDate = resultDate.ToShortDateString()
             };
 
-            _partialUMService.CheckPartialUM(criteria.GetSettingKey());
+            _partialUMService.ThrowIfUM(criteria.GetSettingKey());
 
             var sports = _dynamicRepository.Fetch<Sport>(criteria).ToList();
 
