@@ -45,6 +45,7 @@
         private IFGGResult fggResult;
         private IPService ipService;
         private IVirtualGamesDetailResult virtualGamesDetailResult;
+        private ISEALResult sealResult;
         private ProductResultServiceFactory serviceFactory;
         private IPHelper ipHelper;
 
@@ -106,6 +107,7 @@
                  fggResult,
                  ipService,
                  virtualGamesDetailResult,
+                 sealResult,
                  browserHelper,
                  ipHelper);
 
@@ -285,6 +287,26 @@
                 EndTime = DateTime.Today.ToString()
             };
             cardClubResult.GetResultGET(Arg.Any<ResultRequest>()).Returns("Url result");
+
+            // Act
+            var act = handler.Handle(query);
+
+            // Assert
+            Assert.AreEqual("Product1 Result", act.Title);
+            Assert.AreEqual("Url result", act.Result);
+        }
+
+        [Test]
+        public void SEALResultQuery_Always_CallGetResult()
+        {
+            // Arrange
+            var query = new SEALResultQuery(userSession)
+            {
+                ProductId = 1,
+                BetType = 1,
+                EndTime = DateTime.Today.ToString()
+            };
+            sealResult.GetResultGET(Arg.Any<ResultRequest>()).Returns("Url result");
 
             // Act
             var act = handler.Handle(query);

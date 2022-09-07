@@ -1240,6 +1240,7 @@
     <Compile Include="Models\League.cs" />
     <Compile Include="Models\Requests\AdvantPlayMiniResultQuery.cs" />
     <Compile Include="Models\Requests\BBINResultQuery.cs" />
+    <Compile Include="Models\Requests\SEALResultQuery.cs" />
     <Compile Include="Models\Requests\FGGResultQuery.cs" />
     <Compile Include="Models\Requests\FishingWorldResultQuery.cs" />
     <Compile Include="Models\Requests\SpadeGamingResultQuery.cs" />
@@ -1287,6 +1288,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ICacheRefService.cs" />
     <Compile Include="Services\Impl\AdvantPlayMiniResult.cs" />
+    <Compile Include="Services\Impl\SEALResult.cs" />
     <Compile Include="Services\Impl\FGGResult.cs" />
     <Compile Include="Services\Impl\MacauGamesResult.cs" />
     <Compile Include="Services\Impl\VirtualGamesResult.cs" />
