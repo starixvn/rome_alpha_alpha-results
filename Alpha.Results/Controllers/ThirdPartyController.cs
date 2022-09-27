@@ -86,5 +86,8 @@
 
         public ActionResult VirtualGamesResult(VirtualGamesDetailResultQuery message)
         => View(IndexView, mediator.Send(message));
+
+        public ActionResult SEALResult(SEALResultQuery message)
+        => View(IndexView, mediator.Send(message));
     }
 }

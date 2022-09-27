@@ -38,7 +38,8 @@
         IRequestHandler<CardClubResultQuery, ThirdPartyProductViewModel>,
         IRequestHandler<PPResultQuery, ThirdPartyProductViewModel>,
         IRequestHandler<FGGResultQuery, ThirdPartyProductViewModel>,
-        IRequestHandler<VirtualGamesDetailResultQuery, ThirdPartyProductViewModel>
+        IRequestHandler<VirtualGamesDetailResultQuery, ThirdPartyProductViewModel>,
+        IRequestHandler<SEALResultQuery, ThirdPartyProductViewModel>
     {
         private readonly ICacheRefService cacheRefService;
         private readonly IMaxGameResult maxGameService;
@@ -66,6 +67,7 @@
         private readonly IFGGResult fggResult;
         private readonly IPService ipService;
         private readonly IVirtualGamesDetailResult virtualGamesResult;
+        private readonly ISEALResult sealResult;
         private readonly ProductResultServiceFactory serviceFactory;
         private readonly IPHelper ipHelper;
 
@@ -96,6 +98,7 @@
             IFGGResult fggResult,
             IPService ipService,
             IVirtualGamesDetailResult virtualGamesResult,
+            ISEALResult sealResult,
             BrowserHelper browserHelper,
             IPHelper ipHelper)
         {
@@ -126,6 +129,7 @@
             this.ipService = ipService;
             this.sportsLotteryResult = sportsLotteryResult;
             this.virtualGamesResult = virtualGamesResult;
+            this.sealResult = sealResult;
             this.ipHelper = ipHelper;
         }
 
@@ -245,6 +249,9 @@
 
         public ThirdPartyProductViewModel Handle(RNGCasinoResultQuery message)
             => Handle(message, rngCasinoResult);
+
+        public ThirdPartyProductViewModel Handle(SEALResultQuery message)
+            => Handle(message, sealResult);
 
         private ThirdPartyProductViewModel Handle(Result3rdQuery message, IThirdPartyResult resultService)
         {

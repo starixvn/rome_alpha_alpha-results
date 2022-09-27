@@ -309,5 +309,18 @@
             // Assert
             mediator.Received().Send(Arg.Any<FGGResultQuery>());
         }
+
+        [Test]
+        public void SEALResult_Always_CallsMediatorSendSEALResultQuery()
+        {
+            // Arrange
+            var query = new SEALResultQuery(userSession);
+
+            // Act
+            controller.SEALResult(query);
+
+            // Assert
+            mediator.Received().Send(Arg.Any<SEALResultQuery>());
+        }
     }
 }
