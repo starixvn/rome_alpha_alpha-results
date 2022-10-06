@@ -4,7 +4,7 @@
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
-    using Alpha.Web.Helpers;
+    using Alpha.PartialUM.Services;
     using Fanex.Data.Repository;
     using NSubstitute;
     using NUnit.Framework;
@@ -20,14 +20,14 @@
         private IDynamicRepository _dynamicRepository;
         private NormalResultService _resultService;
         private IResultServiceFactory _resultServiceFactory;
-        private PartialUMService _partialUMService;
+        private IPartialUMService _partialUMService;
 
         [SetUp]
         public void SetUp()
         {
             _dynamicRepository = Substitute.For<IDynamicRepository>();
             _resultServiceFactory = Substitute.For<IResultServiceFactory>();
-            _partialUMService= Substitute.For<PartialUMService>();
+            _partialUMService= Substitute.For<IPartialUMService>();
             _resultService = new NormalResultService(_dynamicRepository, _resultServiceFactory, _partialUMService);
         }
 

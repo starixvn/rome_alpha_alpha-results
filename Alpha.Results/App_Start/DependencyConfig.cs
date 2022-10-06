@@ -9,10 +9,10 @@
     using Alpha.NetThrottling.Models;
     using Alpha.NetThrottling.Resolvers;
     using Alpha.NetThrottling.Utils;
+    using Alpha.PartialUM.DataAccess;
+    using Alpha.PartialUM.Services;
     using Alpha.Results.Site.Helpers;
     using Alpha.Utilities.IP;
-    using Alpha.Web.Helpers;
-    using Alpha.Web.Helpers.Impl;
     using DataAccesses;
     using DataAccesses.Impl;
     using Fanex.Caching;
@@ -144,9 +144,9 @@
             container.Register<IFGGResult>(() => new FGGResult("FGGResultConfigs"), Lifestyle.Scoped);
             container.Register<IVirtualGamesDetailResult>(() => new VirtualGamesDetailResult("VirtualGamesDetailResultConfigs"), Lifestyle.Scoped);
             container.Register<ISEALResult>(() => new SEALResult("SEALResultConfigs"), Lifestyle.Scoped);
-            container.RegisterSingleton<PartialUMService, PartialUMServiceImpl>();
             container.Register<IPService, IPServiceImpl>();
             container.Register<IPHelper, IPHelperImpl>();
+            container.RegisterPerWebRequest<IPartialUMService, PartialUMService>();
         }
 
         private static void RegisterDataAccesses(Container container)
@@ -157,6 +157,7 @@
             container.Register<IParlayResultDataAccess, ParlayResultDataAccess>(Lifestyle.Scoped);
             container.Register<ISportsbookResultDataAccess, SportsbookResultDataAccess>(Lifestyle.Scoped);
             container.Register<IVirtualRacingResultDataAccess, VirtualRacingResultDataAccess>(Lifestyle.Scoped);
+            container.RegisterPerWebRequest<IPartialUMDataAccess, PartialUMDataAccess>();
         }
 
         private static void RegisterNetThrottling(Container container)

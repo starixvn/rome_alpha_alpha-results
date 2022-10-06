@@ -4,7 +4,7 @@
     using System.Collections.Generic;
     using System.Collections.Specialized;
     using System.Linq;
-    using Alpha.Web.Helpers;
+    using Alpha.PartialUM.Services;
     using Constants;
     using Fanex.Data.Repository;
     using Fanex.Result.Core.Base;
@@ -26,7 +26,7 @@
         private OutrightResultService _resultService;
         private CompareLogic compareLogic;
         private ICacheRefService _cacheRefService;
-        private PartialUMService _partialUMService;
+        private IPartialUMService _partialUMService;
 
         [SetUp]
         public void SetUp()
@@ -34,7 +34,7 @@
             _dynamicRepository = Substitute.For<IDynamicRepository>();
             _resultEngineAdatper = Substitute.For<IResultEngineAdapter>();
             _cacheRefService = Substitute.For<ICacheRefService>();
-            _partialUMService = Substitute.For<PartialUMService>();
+            _partialUMService = Substitute.For<IPartialUMService>();
 
             _resultService = new OutrightResultService(_dynamicRepository, _resultEngineAdatper, _cacheRefService, _partialUMService);
 

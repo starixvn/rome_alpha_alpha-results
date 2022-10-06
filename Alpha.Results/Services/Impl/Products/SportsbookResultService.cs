@@ -4,10 +4,10 @@
     using System.Diagnostics.CodeAnalysis;
     using System.IO;
     using System.Linq;
+    using Alpha.PartialUM.DataAccess;
+    using Alpha.PartialUM.Services;
     using Alpha.Results.Site.Criteria;
     using Alpha.Results.Site.DataAccesses;
-    using Alpha.Web.Helpers;
-    using Alpha.Web.Helpers.Impl;
     using Constants;
     using DataAccesses.Impl;
     using Fanex.Common.Helper;
@@ -22,17 +22,17 @@
     {
         private readonly ISportsbookResultDataAccess _dataAccess;
         private readonly IResultEngineAdapter _resultEngineAdapter;
-        private readonly PartialUMService _partialUMService;
+        private readonly IPartialUMService _partialUMService;
 
         public SportsbookResultService(
             ISportsbookResultDataAccess dataAccess = null,
             IResultEngineAdapter resultEngineAdapter = null,
-            PartialUMService partialUMService = null)
+            IPartialUMService partialUMService = null)
         {
             //// Still using poorman DI here because result service factory need to create it manual
             _dataAccess = dataAccess ?? new SportsbookResultDataAccess();
             _resultEngineAdapter = resultEngineAdapter ?? new ResultEngineAdapter();
-            _partialUMService = partialUMService ?? new PartialUMServiceImpl();
+            _partialUMService = partialUMService ?? new PartialUMService(new PartialUMDataAccess());
         }
 
         [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0", Justification = "Reviewed")]
@@ -42,7 +42,7 @@
 
             var criteria = GetCriteria(request);
 
-            _partialUMService.CheckPartialUM(criteria.GetSettingKey());
+            _partialUMService.ThrowIfUM(criteria.GetSettingKey());
 
             var results = request.SportId == 0
                 ? new List<Sportsbook>()
@@ -82,7 +82,7 @@
 
             var criteria = GetCriteria(request);
 
-            _partialUMService.CheckPartialUM(criteria.GetSettingKey());
+            _partialUMService.ThrowIfUM(criteria.GetSettingKey());
 
             var results = _dataAccess.GetSportbookResults(criteria).ToList();
 

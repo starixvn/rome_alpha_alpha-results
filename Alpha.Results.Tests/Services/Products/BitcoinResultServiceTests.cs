@@ -3,12 +3,11 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Alpha.Web.Helpers;
+    using Alpha.PartialUM.Services;
     using Constants;
     using Fanex.Data.Repository;
     using Fanex.Result.Core.Base;
     using Fanex.Result.Core.Bitcoin.DTO;
-    using Fanex.Result.Core.GoldDeluxe.DTO;
     using NSubstitute;
     using NUnit.Framework;
     using Site.Criteria;
@@ -22,14 +21,14 @@
         private IDynamicRepository _dynamicRepository;
         private IResultEngineAdapter _resultEngineAdapter;
         private BitcoinResultService _resultService;
-        private PartialUMService _partialUMService;
+        private IPartialUMService _partialUMService;
 
         [SetUp]
         public void SetUp()
         {
             _dynamicRepository = Substitute.For<IDynamicRepository>();
             _resultEngineAdapter = Substitute.For<IResultEngineAdapter>();
-            _partialUMService = Substitute.For<PartialUMService>();
+            _partialUMService = Substitute.For<IPartialUMService>();
             _resultService = new BitcoinResultService(_dynamicRepository, _resultEngineAdapter, _partialUMService);
         }
 

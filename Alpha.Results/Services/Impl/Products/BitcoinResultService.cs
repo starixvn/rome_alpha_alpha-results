@@ -4,9 +4,9 @@
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
+    using Alpha.PartialUM.DataAccess;
+    using Alpha.PartialUM.Services;
     using Alpha.Results.Site.Criteria;
-    using Alpha.Web.Helpers;
-    using Alpha.Web.Helpers.Impl;
     using Fanex.Data.Repository;
     using Fanex.Result.Core.Base;
     using Fanex.Result.Core.Bitcoin.DTO;
@@ -16,16 +16,16 @@
     {
         private readonly IDynamicRepository _dynamicRepository;
         private readonly IResultEngineAdapter _resultEngineAdapter;
-        private readonly PartialUMService _partialUMService;
+        private readonly IPartialUMService _partialUMService;
 
         public BitcoinResultService(
             IDynamicRepository dynamicRepository = null,
             IResultEngineAdapter resultEngineAdapter = null,
-            PartialUMService partialUMService = null)
+            IPartialUMService partialUMService = null)
         {
             _dynamicRepository = dynamicRepository ?? new DynamicRepository();
             _resultEngineAdapter = resultEngineAdapter ?? new ResultEngineAdapter();
-            _partialUMService = partialUMService ?? new PartialUMServiceImpl();
+            _partialUMService = partialUMService ?? new PartialUMService(new PartialUMDataAccess());
         }
 
         public MemoryStream ExportExcel(ExcelNormalResultQuery request)
@@ -53,7 +53,7 @@
                 MoveBetsDay = request.MoveBetsDate
             };
 
-            _partialUMService.CheckPartialUM(criteria.GetSettingKey());
+            _partialUMService.ThrowIfUM(criteria.GetSettingKey());
             var result = _dynamicRepository.FetchMultiple<Bitcoin, GameDetail>(criteria);
             var bitcoins = BindingGameDetail(result);
             var resultSetting = CreateSetting(isPopup: false, language: request.Language);
