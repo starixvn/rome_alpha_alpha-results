@@ -226,8 +226,8 @@
     <Reference Include="Fanex.Result.Core.SportsLottery, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core.SportsLottery.1.0.3\lib\net461\Fanex.Result.Core.SportsLottery.dll</HintPath>
     </Reference>
-    <Reference Include="Fanex.Result.Core.ThirdParty, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Result.Core.ThirdPartyResult.1.0.0.2\lib\net461\Fanex.Result.Core.ThirdParty.dll</HintPath>
+    <Reference Include="Fanex.Result.Core.ThirdParty, Version=1.0.0.3, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Result.Core.ThirdPartyResult.1.0.0.3\lib\net461\Fanex.Result.Core.ThirdParty.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.Result.Core.VGaming, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core.VGaming.1.0.0\lib\net40\Fanex.Result.Core.VGaming.dll</HintPath>
@@ -1244,6 +1244,7 @@
     <Compile Include="Models\Requests\AdvantPlayMiniResultQuery.cs" />
     <Compile Include="Models\Requests\BBINResultQuery.cs" />
     <Compile Include="Models\Requests\SEALResultQuery.cs" />
+    <Compile Include="Models\Requests\MGResultQuery.cs" />
     <Compile Include="Models\Requests\FGGResultQuery.cs" />
     <Compile Include="Models\Requests\FishingWorldResultQuery.cs" />
     <Compile Include="Models\Requests\SpadeGamingResultQuery.cs" />
@@ -1292,6 +1293,7 @@
     <Compile Include="Services\ICacheRefService.cs" />
     <Compile Include="Services\Impl\AdvantPlayMiniResult.cs" />
     <Compile Include="Services\Impl\SEALResult.cs" />
+    <Compile Include="Services\Impl\MGResult.cs" />
     <Compile Include="Services\Impl\FGGResult.cs" />
     <Compile Include="Services\Impl\MacauGamesResult.cs" />
     <Compile Include="Services\Impl\VirtualGamesResult.cs" />

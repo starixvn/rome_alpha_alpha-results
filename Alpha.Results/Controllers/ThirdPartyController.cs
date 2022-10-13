@@ -89,5 +89,7 @@
 
         public ActionResult SEALResult(SEALResultQuery message)
         => View(IndexView, mediator.Send(message));
+        public ActionResult MGResult(MGResultQuery message)
+        => View(IndexView, mediator.Send(message));
     }
 }

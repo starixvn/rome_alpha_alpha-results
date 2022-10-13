@@ -39,7 +39,8 @@
         IRequestHandler<PPResultQuery, ThirdPartyProductViewModel>,
         IRequestHandler<FGGResultQuery, ThirdPartyProductViewModel>,
         IRequestHandler<VirtualGamesDetailResultQuery, ThirdPartyProductViewModel>,
-        IRequestHandler<SEALResultQuery, ThirdPartyProductViewModel>
+        IRequestHandler<SEALResultQuery, ThirdPartyProductViewModel>,
+        IRequestHandler<MGResultQuery, ThirdPartyProductViewModel>
     {
         private readonly ICacheRefService cacheRefService;
         private readonly IMaxGameResult maxGameService;
@@ -69,6 +70,7 @@
         private readonly IVirtualGamesDetailResult virtualGamesResult;
         private readonly ISEALResult sealResult;
         private readonly ProductResultServiceFactory serviceFactory;
+        private readonly IMGResult mgResult;
         private readonly IPHelper ipHelper;
 
         public ThirdPartyResultHandler(
@@ -99,6 +101,7 @@
             IPService ipService,
             IVirtualGamesDetailResult virtualGamesResult,
             ISEALResult sealResult,
+            IMGResult mgResult,
             BrowserHelper browserHelper,
             IPHelper ipHelper)
         {
@@ -131,7 +134,11 @@
             this.virtualGamesResult = virtualGamesResult;
             this.sealResult = sealResult;
             this.ipHelper = ipHelper;
+            this.mgResult = mgResult;
         }
+
+        public ThirdPartyProductViewModel Handle(MGResultQuery message)
+            => Handle(message, mgResult);
 
         public ThirdPartyProductViewModel Handle(FishingWorldResultQuery message)
         {

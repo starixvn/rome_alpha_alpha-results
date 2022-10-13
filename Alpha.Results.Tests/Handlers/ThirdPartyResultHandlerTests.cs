@@ -43,6 +43,7 @@
         private IBBINResult bbinResult;
         private IGDGResult gdgResult;
         private IFGGResult fggResult;
+        private IMGResult mgResult;
         private IPService ipService;
         private IVirtualGamesDetailResult virtualGamesDetailResult;
         private ISEALResult sealResult;
@@ -78,6 +79,8 @@
             bbinResult = Substitute.For<IBBINResult>();
             gdgResult = Substitute.For<IGDGResult>();
             fggResult = Substitute.For<IFGGResult>();
+            sealResult = Substitute.For<ISEALResult>();
+            mgResult = Substitute.For<IMGResult>();
             virtualGamesDetailResult = Substitute.For<IVirtualGamesDetailResult>();
             serviceFactory = Substitute.For<ProductResultServiceFactory>();
             ipHelper = Substitute.For<IPHelper>();
@@ -104,10 +107,11 @@
                  ppResult,
                  gdgResult,
                  sportsLotteryResult,
-                 fggResult,
+                 fggResult,                 
                  ipService,
                  virtualGamesDetailResult,
                  sealResult,
+                 mgResult,
                  browserHelper,
                  ipHelper);
 
@@ -574,6 +578,26 @@
                 Arg.Any<int>(),
                 Arg.Any<string>(),
                 Arg.Any<string>()).Returns("Url result");
+
+            // Act
+            var act = handler.Handle(query);
+
+            // Assert
+            Assert.AreEqual("Product1 Result", act.Title);
+            Assert.AreEqual("Url result", act.Result);
+        }
+
+        [Test]
+        public void MGResultQuery_Always_CallGetResult()
+        {
+            // Arrange
+            var query = new MGResultQuery(userSession)
+            {
+                ProductId = 1,
+                BetType = 1,
+                EndTime = DateTime.Today.ToString()
+            };
+            mgResult.GetResultGET(Arg.Any<ResultRequest>()).Returns("Url result");
 
             // Act
             var act = handler.Handle(query);
