@@ -28,19 +28,6 @@
         }
 
         [Test]
-        public void Detail_Always_CallsMediatorSendFishingWorldResultQuery()
-        {
-            // Arrange
-            var query = new FishingWorldResultQuery();
-
-            // Act
-            controller.Detail(query);
-
-            // Assert
-            mediator.Received().Send(Arg.Any<FishingWorldResultQuery>());
-        }
-
-        [Test]
         public void MaxGameResult_Always_CallsMediatorSendMaxGameResultQuery()
         {
             // Arrange

@@ -16,7 +16,6 @@
     using Sunplus.Agent.Model.Common;
 
     public class ThirdPartyResultHandler :
-        IRequestHandler<FishingWorldResultQuery, ThirdPartyProductViewModel>,
         IRequestHandler<MaxGameResultQuery, ThirdPartyProductViewModel>,
         IRequestHandler<SportsLotteryDetailResultQuery, ThirdPartyProductViewModel>,
         IRequestHandler<PPLiveCasinoResultQuery, ThirdPartyProductViewModel>,
@@ -140,18 +139,6 @@
 
         public ThirdPartyProductViewModel Handle(MGResultQuery message)
             => Handle(message, mgResult);
-
-        public ThirdPartyProductViewModel Handle(FishingWorldResultQuery message)
-        {
-            Check.Argument.IsNotNull(message, "message");
-
-            var productName = cacheRefService.GetProductName(message.ProductId);
-
-            var productResultService = serviceFactory.CreateProductResultService(message.ProductId);
-            var result = productResultService.GetDetailLink(message);
-
-            return new ThirdPartyProductViewModel(string.Format(Resources.ResultPopupTitle, productName), result.Value);
-        }
 
         public ThirdPartyProductViewModel Handle(VirtualGamesDetailResultQuery message)
             => Handle(message, virtualGamesResult);

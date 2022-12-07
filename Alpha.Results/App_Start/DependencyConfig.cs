@@ -21,7 +21,6 @@
     using Fanex.Result.Core.AllBetCasino;
     using Fanex.Result.Core.Base.Models;
     using Fanex.Result.Core.Base.Utilities;
-    using Fanex.Result.Core.GlobalGaming;
     using Fanex.Result.Core.LinkedGames;
     using Fanex.Result.Core.RemotingRef;
     using Fanex.Result.Core.SportsLottery;
@@ -108,7 +107,6 @@
 
             container.Register<IResultEngineAdapter, ResultEngineAdapter>(Lifestyle.Scoped);
             container.Register<IAllbetResultBuilder, AllbetResultBuilder>(Lifestyle.Scoped);
-            container.Register<Base3rdResultApi, GlobalGamingResultApi>(Lifestyle.Scoped);
             container.Register<IRestClient>(() => new RestClient());
             container.Register<ProductResultServiceFactory, ProductResultServiceFactoryImpl>();
             container.Register<IVirtualGamesResult>(() => new VirtualGamesResult("VirtualGamesResultConfigs"), Lifestyle.Scoped);
