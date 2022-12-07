@@ -249,18 +249,6 @@
             mediator.Received().Send(Arg.Any<JokerResultQuery>());
         }
         [Test]
-        public void GDGResult_Always_CallsMediatorSendGDGResultQuery()
-        {
-            // Arrange
-            var query = new GDGResultQuery(userSession);
-
-            // Act
-            controller.GDGResult(query);
-
-            // Assert
-            mediator.Received().Send(Arg.Any<GDGResultQuery>());
-        }
-        [Test]
         public void LinkedGamesResult_Always_CallsMediatorSendLinkedGamesResultQuery()
         {
             // Arrange

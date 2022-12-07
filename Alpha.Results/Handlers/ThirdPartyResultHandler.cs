@@ -65,7 +65,6 @@
         private readonly ICardClubResult cardClubResult;
         private readonly IPPResult ppResult;
         private readonly IBBINResult bbinResult;
-        private readonly IGDGResult gdgResult;
         private readonly IFGGResult fggResult;
         private readonly IPService ipService;
         private readonly IVirtualGamesDetailResult virtualGamesResult;
@@ -97,7 +96,6 @@
             IBGResult bgResult,
             ICardClubResult cardClubResult,
             IPPResult ppResult,
-            IGDGResult gdgResult,
             ISportsLotteryDetailResult sportsLotteryResult,
             IFGGResult fggResult,
             IPService ipService,
@@ -130,7 +128,6 @@
             this.bgResult = bgResult;
             this.cardClubResult = cardClubResult;
             this.ppResult = ppResult;
-            this.gdgResult = gdgResult;
             this.fggResult = fggResult;
             this.ipService = ipService;
             this.sportsLotteryResult = sportsLotteryResult;
@@ -201,9 +198,6 @@
 
         public ThirdPartyProductViewModel Handle(BGResultQuery message)
             => Handle(message, bgResult);
-
-        public ThirdPartyProductViewModel Handle(GDGResultQuery message)
-            => Handle(message, gdgResult);
 
         public ThirdPartyProductViewModel Handle(JokerResultQuery message)
             => Handle(message, jokerResult);

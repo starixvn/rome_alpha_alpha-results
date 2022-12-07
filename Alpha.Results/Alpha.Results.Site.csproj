@@ -1036,12 +1036,15 @@
     </Content>
     <Content Include="Web.backupMNL.config">
       <DependentUpon>Web.local.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.backupMNL2.config">
       <DependentUpon>Web.local.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.backupMNLNap2.config">
       <DependentUpon>Web.local.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.uati7.config">
       <DependentUpon>Web.local.config</DependentUpon>
@@ -1112,6 +1115,7 @@
     </Content>
     <Content Include="Web.napinternali7.config">
       <DependentUpon>Web.local.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.siti7.config">
       <DependentUpon>Web.local.config</DependentUpon>
@@ -1141,15 +1145,19 @@
     </Content>
     <Content Include="Web.aws.config">
       <DependentUpon>Web.local.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.aws2.config">
       <DependentUpon>Web.local.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.napaws.config">
       <DependentUpon>Web.local.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.napaws2.config">
       <DependentUpon>Web.local.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Views\Shared\PartialUM.cshtml" />
     <Content Include="Views\ThirdParty\Index.cshtml" />
@@ -1260,7 +1268,6 @@
     <Compile Include="Models\Requests\MacauGamesResultQuery.cs" />
     <Compile Include="Models\Requests\JokerResultQuery.cs" />
     <Compile Include="Models\Requests\IONCasinoResultQuery.cs" />
-    <Compile Include="Models\Requests\GDGResultQuery.cs" />
     <Compile Include="Models\Requests\BGResultQuery.cs" />
     <Compile Include="Models\Requests\PPResultQuery.cs" />
     <Compile Include="Models\Requests\Soccer5ResultQuery.cs" />
@@ -1317,7 +1324,6 @@
     <Compile Include="Services\Impl\JokerResult.cs" />
     <Compile Include="Services\Impl\IONCasinoResult.cs" />
     <Compile Include="Services\Impl\HabaneroResult.cs" />
-    <Compile Include="Services\Impl\GDGResult.cs" />
     <Compile Include="Services\Impl\CardClubResult.cs" />
     <Compile Include="Services\Impl\BGResult.cs" />
     <Compile Include="Services\Impl\BBINResult.cs" />
@@ -1427,6 +1433,7 @@
     </Content>
     <Content Include="Web.backupMNLNap.config">
       <DependentUpon>Web.local.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -1436,6 +1443,7 @@
     </Content>
     <Content Include="Web.local2.config">
       <DependentUpon>Web.local.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>

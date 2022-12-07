@@ -70,9 +70,6 @@
         public ActionResult JokerResult(JokerResultQuery message)
         => View(IndexView, mediator.Send(message));
 
-        public ActionResult GDGResult(GDGResultQuery message)
-        => View(IndexView, mediator.Send(message));
-
         public ActionResult LinkedGamesResult(LinkedGamesResultQuery message)
         => View(IndexView, mediator.Send(message));
 

@@ -132,7 +132,6 @@
             container.Register<IHappy5LinkedGamesResult>(() => new Happy5LinkedGamesResult("LinkedGamesResultConfigs"), Lifestyle.Scoped);
             container.Register<IMaxGameResult>(() => new MaxGameResult("MaxGameResultConfigs"), Lifestyle.Scoped);
             container.Register<IBGResult>(() => new BGResult("BGResultConfigs"), Lifestyle.Scoped);
-            container.Register<IGDGResult>(() => new GDGResult("GDGResultConfigs"), Lifestyle.Scoped);
             container.Register<IJokerResult>(() => new JokerResult("JokerResultConfigs"), Lifestyle.Scoped);
             container.Register<IPGSoftResult>(() => new PGSoftResult("PGSoftResultConfigs"), Lifestyle.Scoped);
             container.Register<IRNGWarResult>(() => new RNGWarResult("RNGWarResultConfigs"), Lifestyle.Scoped);

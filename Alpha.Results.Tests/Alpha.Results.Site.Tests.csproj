@@ -456,7 +456,6 @@
     <Compile Include="Models\Views\JokerResultQueryTests.cs" />
     <Compile Include="Models\Views\IONCasinoResultQueryTests.cs" />
     <Compile Include="Models\Views\HabaneroResultQueryTest.cs" />
-    <Compile Include="Models\Views\GDGResultQueryTests.cs" />
     <Compile Include="Models\Views\CardClubResultQueryTests.cs" />
     <Compile Include="Models\Views\BGResultQueryTests.cs" />
     <Compile Include="Models\Views\BBINResultQueryTests.cs" />
@@ -483,7 +482,6 @@
     <Compile Include="Services\Products\JokerResultTests.cs" />
     <Compile Include="Services\Products\IONCasinoResultTests.cs" />
     <Compile Include="Services\Products\HabaneroResultTests.cs" />
-    <Compile Include="Services\Products\GDGResultTests.cs" />
     <Compile Include="Services\Products\CardClubResultTests.cs" />
     <Compile Include="Services\Products\BGResultTests.cs" />
     <Compile Include="Services\Products\BBINResultTests.cs" />
