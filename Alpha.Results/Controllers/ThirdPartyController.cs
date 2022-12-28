@@ -27,7 +27,8 @@
         => View(IndexView, mediator.Send(message));
 
         public ActionResult PPLiveCasinoResult(PPLiveCasinoResultQuery message)
-        => View(IndexView, mediator.Send(message));
+        => Json(mediator.Send(message), JsonRequestBehavior.AllowGet);
+
         public ActionResult HabaneroResult(HabaneroResultQuery message)
         => View(IndexView, mediator.Send(message));
 
