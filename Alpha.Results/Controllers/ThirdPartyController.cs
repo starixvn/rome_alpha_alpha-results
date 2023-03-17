@@ -92,5 +92,7 @@
         => View(IndexView, mediator.Send(message));
         public ActionResult MGResult(MGResultQuery message)
         => View(IndexView, mediator.Send(message));
+        public ActionResult JiliResult(JiliResultQuery message)
+        => View(IndexView, mediator.Send(message));
     }
 }

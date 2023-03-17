@@ -40,7 +40,8 @@
         IRequestHandler<FGGResultQuery, ThirdPartyProductViewModel>,
         IRequestHandler<VirtualGamesDetailResultQuery, ThirdPartyProductViewModel>,
         IRequestHandler<SEALResultQuery, ThirdPartyProductViewModel>,
-        IRequestHandler<MGResultQuery, ThirdPartyProductViewModel>
+        IRequestHandler<MGResultQuery, ThirdPartyProductViewModel>,
+        IRequestHandler<JiliResultQuery, ThirdPartyProductViewModel>
     {
         private readonly ICacheRefService cacheRefService;
         private readonly IMaxGameResult maxGameService;
@@ -71,6 +72,7 @@
         private readonly ISEALResult sealResult;
         private readonly ProductResultServiceFactory serviceFactory;
         private readonly IMGResult mgResult;
+        private readonly IJiliResult jiliResult;
         private readonly IPHelper ipHelper;
 
         public ThirdPartyResultHandler(
@@ -102,6 +104,7 @@
             IVirtualGamesDetailResult virtualGamesResult,
             ISEALResult sealResult,
             IMGResult mgResult,
+            IJiliResult jiliResult,
             BrowserHelper browserHelper,
             IPHelper ipHelper)
         {
@@ -135,6 +138,7 @@
             this.sealResult = sealResult;
             this.ipHelper = ipHelper;
             this.mgResult = mgResult;
+            this.jiliResult = jiliResult;
         }
 
         public ThirdPartyProductViewModel Handle(MGResultQuery message)
@@ -277,5 +281,8 @@
 
             return new ThirdPartyProductViewModel(string.Format(Resources.ResultPopupTitle, productName), result);
         }
+
+        public ThirdPartyProductViewModel Handle(JiliResultQuery message)
+            => Handle(message, jiliResult);
     }
 }

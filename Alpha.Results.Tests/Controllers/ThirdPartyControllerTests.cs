@@ -334,5 +334,18 @@
             // Assert
             mediator.Received().Send(Arg.Any<MGResultQuery>());
         }
+
+        [Test]
+        public void JiliResult_Always_CallsMediatorSendMGResultQuery()
+        {
+            // Arrange
+            var query = new JiliResultQuery(userSession);
+
+            // Act
+            controller.JiliResult(query);
+
+            // Assert
+            mediator.Received().Send(Arg.Any<JiliResultQuery>());
+        }
     }
 }
