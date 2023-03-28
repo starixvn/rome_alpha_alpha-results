@@ -44,6 +44,7 @@
         private IGDGResult gdgResult;
         private IFGGResult fggResult;
         private IMGResult mgResult;
+        private IJiliResult jiliResult;
         private IPService ipService;
         private IVirtualGamesDetailResult virtualGamesDetailResult;
         private ISEALResult sealResult;
@@ -81,6 +82,7 @@
             fggResult = Substitute.For<IFGGResult>();
             sealResult = Substitute.For<ISEALResult>();
             mgResult = Substitute.For<IMGResult>();
+            jiliResult = Substitute.For<IJiliResult>();
             virtualGamesDetailResult = Substitute.For<IVirtualGamesDetailResult>();
             serviceFactory = Substitute.For<ProductResultServiceFactory>();
             ipHelper = Substitute.For<IPHelper>();
@@ -112,6 +114,7 @@
                  virtualGamesDetailResult,
                  sealResult,
                  mgResult,
+                 jiliResult,
                  browserHelper,
                  ipHelper);
 
@@ -592,6 +595,26 @@
         {
             // Arrange
             var query = new MGResultQuery(userSession)
+            {
+                ProductId = 1,
+                BetType = 1,
+                EndTime = DateTime.Today.ToString()
+            };
+            mgResult.GetResultGET(Arg.Any<ResultRequest>()).Returns("Url result");
+
+            // Act
+            var act = handler.Handle(query);
+
+            // Assert
+            Assert.AreEqual("Product1 Result", act.Title);
+            Assert.AreEqual("Url result", act.Result);
+        }
+
+        [Test]
+        public void JiliResultQuery_Always_CallGetResult()
+        {
+            // Arrange
+            var query = new JiliResultQuery(userSession)
             {
                 ProductId = 1,
                 BetType = 1,
