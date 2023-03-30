@@ -217,8 +217,8 @@
     <Reference Include="Fanex.Result.Core.SAGaming, Version=1.0.0.5, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core.SAGaming.1.0.0.5\lib\net40\Fanex.Result.Core.SAGaming.dll</HintPath>
     </Reference>
-    <Reference Include="Fanex.Result.Core.SexyGaming, Version=1.0.0.3, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Result.Core.SexyGaming.1.0.0.3\lib\net40\Fanex.Result.Core.SexyGaming.dll</HintPath>
+    <Reference Include="Fanex.Result.Core.SexyGaming, Version=1.0.0.4, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Result.Core.SexyGaming.1.0.0.4\lib\net40\Fanex.Result.Core.SexyGaming.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.Result.Core.Sportsbook, Version=1.2.9.3, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core-Sportsbook.1.2.9.3\lib\net40\Fanex.Result.Core.Sportsbook.dll</HintPath>
@@ -752,6 +752,12 @@
     <Content Include="Content\Fanex.Result\SexyGaming\css\menu.css" />
     <Content Include="Content\Fanex.Result\SexyGaming\css\oddsFamily.css" />
     <Content Include="Content\Fanex.Result\SexyGaming\css\table_w.css" />
+    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\FishPrawnCrab\1_FPC_TH.png" />
+    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\FishPrawnCrab\2_FPC_TH.png" />
+    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\FishPrawnCrab\3_FPC_TH.png" />
+    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\FishPrawnCrab\4_FPC_TH.png" />
+    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\FishPrawnCrab\5_FPC_TH.png" />
+    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\FishPrawnCrab\6_FPC_TH.png" />
     <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Poker\C1.png" />
     <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Poker\C2.png" />
     <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Poker\C3.png" />

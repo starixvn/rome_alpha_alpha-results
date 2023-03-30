@@ -31,7 +31,7 @@
         {
             Check.Argument.IsNotNull(detailsRequest, "detailsRequest");
 
-            return resultBuilder.Render(detailsRequest.TransDesc, detailsRequest.BetCheck, detailsRequest.BetTypeId.ToString(), detailsRequest.Language);
+            return resultBuilder.Render(detailsRequest.TransDesc, detailsRequest.BetCheck, detailsRequest.BetTypeId, detailsRequest.Language);
         }
     }
 }
