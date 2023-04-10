@@ -55,7 +55,7 @@
             ShareSession.Init();
             StaticResources.Init(StaticResources.GetBuildVersion());
 
-            GlobalFilters.Filters.Add(new NetThrottlingFilterAttribute());
+            GlobalFilters.Filters.Add(new NetThrottlingFilterAttribute(isUsedRedis: false));
 
             var umConfig = new UMClientConfiguration().Initialize();
             UMClientManager
