@@ -51,14 +51,14 @@
                 BetTypeId = 1
             };
 
-            // Act
+            // Acts
             service.GetResultDetails(request);
 
             // Assert
             builder.Received().Render(
                 Arg.Is(request.TransDesc),
                 Arg.Is(request.BetCheck),
-                Arg.Is(request.BetTypeId.ToString()),
+                Arg.Is(request.BetTypeId),
                 Arg.Is(request.Language));
         }
     }
