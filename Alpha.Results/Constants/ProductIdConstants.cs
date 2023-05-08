@@ -2,6 +2,7 @@
 {
     public static class ProductIdConstants
     {
+        public const int NumberGame = 3;
         public const int VirtualSports = 5;
         public const int Keno = 8;
         public const int NG2 = 23;
