@@ -53,7 +53,7 @@
             {
                 var sportsStatus = _sportsStatus ?? new Dictionary<int, bool>
                 {
-                    { SportTypeIdConstants.NumberGame,  UserPermission.IsShowNumberGame },
+                    { SportTypeIdConstants.NumberGame,  UserPermission.IsEnableProduct(ProductIdConstants.NumberGame) },
                     { SportTypeIdConstants.VirtualSports, UserPermission.HasPermissionOnProduct(ProductIdConstants.VirtualSports) }
                 };
 

@@ -24,7 +24,7 @@
 
             var viewModel = new TabViewModel(
                 tabName,
-                UserPermission.EnableKeno,
+                UserPermission.IsEnableProduct(ProductIdConstants.Keno),
                 isEnableNG2,
                 UserPermission.IsEnableProduct(ProductIdConstants.Lottery),
                 UserPermission.IsEnableProduct(ProductIdConstants.VirtualGames),
