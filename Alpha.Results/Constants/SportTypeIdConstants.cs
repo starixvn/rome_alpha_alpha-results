@@ -34,6 +34,7 @@ namespace Alpha.Results.Site.Constants
         public const int Wrestling = 42;
         public const int ESports = 43;
 
+        public const int YeeBet = 159;
         public const int NumberGame = 161;
         public const int Happy5 = 164;
         public const int Bitcoin = 175;
