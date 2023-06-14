@@ -48,6 +48,7 @@
                 case SportTypeIdConstants.GTCasino:
                     return new GTCasinoResultService();
                 case SportTypeIdConstants.WM:
+                case SportTypeIdConstants.YeeBet:
                     return new WMResultService();
 
                 case SportTypeIdConstants.VirtualHorsesRacing:
