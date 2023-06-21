@@ -8,26 +8,11 @@
     public static class UrlHelper
     {
         [ThreadStatic]
-        private static string ng2ResultPath;
-
-        [ThreadStatic]
         private static string currentAppPath;
 
         [ThreadStatic]
         private static string resultTemplatePath;
 
-        public static string NG2ResultPath
-        {
-            get
-            {
-                return ng2ResultPath ?? AppPathHelper.GetAppPath(AppSettings.NG2SiteAppPath, "~/Result");
-            }
-
-            internal set
-            {
-                ng2ResultPath = value;
-            }
-        }
 
         public static string CurrentAppPath
         {

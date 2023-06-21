@@ -5,7 +5,6 @@
         public const int NumberGame = 3;
         public const int VirtualSports = 5;
         public const int Keno = 8;
-        public const int NG2 = 23;
         public const int Lottery = 28;
         public const int VirtualGames = 38;
         public const int TableGames = 40;

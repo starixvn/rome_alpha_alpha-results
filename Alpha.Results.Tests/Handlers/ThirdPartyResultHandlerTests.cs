@@ -620,7 +620,7 @@
                 BetType = 1,
                 EndTime = DateTime.Today.ToString()
             };
-            mgResult.GetResultGET(Arg.Any<ResultRequest>()).Returns("Url result");
+            jiliResult.GetResultGET(Arg.Any<ResultRequest>()).Returns("Url result");
 
             // Act
             var act = handler.Handle(query);

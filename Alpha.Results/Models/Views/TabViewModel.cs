@@ -9,7 +9,6 @@
         public TabViewModel(
             string selectedTabName,
             bool isEnabledKenoTab,
-            bool isEnableNG2,
             bool isEnableLottery,
             bool isEnableVirtualGames,
             bool isEnableTableGames,
@@ -18,7 +17,6 @@
         {
             _selectedTabName = selectedTabName;
             IsEnabledKenoTab = isEnabledKenoTab;            
-            IsEnableNG2 = isEnableNG2;
             IsEnableLottery = isEnableLottery;
             IsEnableVirtualGames = isEnableVirtualGames;
             IsEnableTableGames = isEnableTableGames;
@@ -35,8 +33,6 @@
         }
 
         public bool IsEnabledKenoTab { get; set; }        
-
-        public bool IsEnableNG2 { get; }
 
         public bool IsEnableLottery { get; }
 

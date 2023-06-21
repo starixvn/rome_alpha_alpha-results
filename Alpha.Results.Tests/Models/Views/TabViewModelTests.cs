@@ -17,8 +17,6 @@
             {
                 switch (productId)
                 {
-                    case ProductIdConstants.NG2:
-                        return "NG2";
 
                     case ProductIdConstants.Lottery:
                         return "Lottery";
@@ -26,7 +24,7 @@
 
                 return string.Empty;
             };
-            var viewModel = new TabViewModel(tabName, false, false, false, false, false, false, getProductName);
+            var viewModel = new TabViewModel(tabName, false, false, false, false, false, getProductName);
             var expectedValue = "tabname";
 
             // Act
