@@ -19,13 +19,9 @@
         [ChildActionOnly]
         public ActionResult Index(string tabName = "Normal")
         {
-            var product = ProductManager.GetProduct(ProductIdConstants.NG2);
-            var isEnableNG2 = product != null && product.ShowSettings;
-
             var viewModel = new TabViewModel(
                 tabName,
                 UserPermission.IsEnableProduct(ProductIdConstants.Keno),
-                isEnableNG2,
                 UserPermission.IsEnableProduct(ProductIdConstants.Lottery),
                 UserPermission.IsEnableProduct(ProductIdConstants.VirtualGames),
                 UserPermission.IsEnableProduct(ProductIdConstants.TableGames),

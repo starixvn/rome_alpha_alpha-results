@@ -21,10 +21,6 @@ body {
     }
 }
 
-.ng2-container {
-    overflow: hidden;
-}
-
 .tab-content {
     padding: 16px 0;
 
@@ -93,14 +89,6 @@ body {
         cursor: pointer;
         font-size: 20px;
         color: #1f7244;
-    }
-
-    .ng2 {
-        position: absolute;
-        left: 0;
-        top: 42px;
-        bottom: 0;
-        right: 0;
     }
 }
 

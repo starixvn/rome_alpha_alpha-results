@@ -132,13 +132,13 @@
         }
 
         [Test]
-        public void HandleNormalResultQuery_SportsStatusIsNull_ThrowArgumentNullException()
+        public void HandleNormalResultQuery_SportsStatusIsNull_ResultIsEmpty()
         {
             //// Arrange
             var query = new NormalResultQuery(null, DefaultLanguage);
 
             //// Assert
-            Assert.Throws<ArgumentNullException>(() => _normalResultHandler.Handle(query));
+            Assert.IsTrue(_normalResultHandler.Handle(query).HtmlResults.Equals(string.Empty));
         }
 
         [Test]

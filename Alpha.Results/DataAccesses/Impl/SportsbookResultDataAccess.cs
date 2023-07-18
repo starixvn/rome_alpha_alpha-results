@@ -262,7 +262,7 @@
                 GameDetails = new List<GameDetail>(),
                 Handicap2 = criteria.Handicap2,
                 SettlementStatus = reader["SettlementStatus"] != DBNull.Value ? Convert.ToByte(reader["SettlementStatus"]) : default(byte),
-                NoHTScore = reader["NoHTScore"] != DBNull.Value ? Convert.ToBoolean(reader["NoHTScore"]) : false,
+                NoHTScore = ColumnExisted(reader, "NoHTScore") && reader["NoHTScore"] != DBNull.Value ? Convert.ToBoolean(reader["NoHTScore"]) : false,
             };
 
             if (ColumnExisted(reader, "livehomescore") && ColumnExisted(reader, "liveawayscore"))

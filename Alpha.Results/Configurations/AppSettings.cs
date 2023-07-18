@@ -18,8 +18,6 @@
 
         public static string StoredProcedurePath => GetConfigValue("StoredProcedurePath");
 
-        public static string NG2SiteAppPath => GetConfigValue("NG2SiteVirtualPath");
-
         public static bool LocalTest => GetConfigValue("LocalTest") == "1";
 
         public static bool Disable151_31 => GetConfigValue("Disable151_31") == "1";
