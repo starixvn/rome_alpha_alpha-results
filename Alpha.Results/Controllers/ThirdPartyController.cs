@@ -1,9 +1,9 @@
 ﻿namespace Alpha.Results.Site.Controllers
 {
     using System.Web.Mvc;
+    using AlphaPlus.User.Models;
     using MediatR;
     using Models.Requests;
-    using Sunplus.Agent.Model.Entities;
 
     public class ThirdPartyController : ResultBaseController
     {

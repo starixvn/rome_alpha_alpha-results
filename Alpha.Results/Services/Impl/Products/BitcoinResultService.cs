@@ -4,9 +4,10 @@
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
-    using Alpha.PartialUM.DataAccess;
-    using Alpha.PartialUM.Services;
+    using Alpha.PartialUM.Helpers;
     using Alpha.Results.Site.Criteria;
+    using AlphaPlus.PartialUM.DataAccess;
+    using AlphaPlus.PartialUM.Services;
     using Fanex.Data.Repository;
     using Fanex.Result.Core.Base;
     using Fanex.Result.Core.Bitcoin.DTO;
@@ -25,7 +26,7 @@
         {
             _dynamicRepository = dynamicRepository ?? new DynamicRepository();
             _resultEngineAdapter = resultEngineAdapter ?? new ResultEngineAdapter();
-            _partialUMService = partialUMService ?? new PartialUMService(new PartialUMDataAccess());
+            _partialUMService = partialUMService ?? new PartialUMService(new PartialUMDataAccess(), new PartialUMSectionHelper());
         }
 
         public MemoryStream ExportExcel(ExcelNormalResultQuery request)

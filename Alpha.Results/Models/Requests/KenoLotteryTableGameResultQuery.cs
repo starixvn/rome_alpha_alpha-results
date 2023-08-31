@@ -2,10 +2,12 @@
 {
     using System;
     using Alpha.Results.Site.Helpers;
-    using Sunplus.Agent.Model.Entities;
+    using AlphaPlus.User.Models;
 
     public class KenoLotteryTableGameResultQuery
     {
+        private IUserSession userSession;
+
         public KenoLotteryTableGameResultQuery(IUserSession userSession)
         {
             CustId = userSession.CustId;

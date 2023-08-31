@@ -9,10 +9,13 @@
     using Alpha.NetThrottling.Models;
     using Alpha.NetThrottling.Resolvers;
     using Alpha.NetThrottling.Utils;
-    using Alpha.PartialUM.DataAccess;
-    using Alpha.PartialUM.Services;
     using Alpha.Results.Site.Helpers;
     using Alpha.Utilities.IP;
+    using Alpha.Web.Helpers;
+    using AlphaPlus.Configurations;
+    using AlphaPlus.PartialUM.DataAccess;
+    using AlphaPlus.PartialUM.Services;
+    using AlphaPlus.User.Models;
     using DataAccesses;
     using DataAccesses.Impl;
     using Fanex.Caching;
@@ -35,8 +38,6 @@
     using SimpleInjector;
     using SimpleInjector.Integration.Web;
     using SimpleInjector.Integration.Web.Mvc;
-    using Sunplus.Agent.Model.Base;
-    using Sunplus.Agent.Model.Entities;
     using ILogger = NetThrottling.Utils.ILogger;
     using Logger = NetThrottling.Utils.Logger;
 
@@ -45,6 +46,9 @@
         [SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", Justification = "Reviewed")]
         public static void Init()
         {
+            ConfigurationManager.Init(new ConfigurationHelper());
+            UserSession.Init(new HttpContextHelper());
+
             var container = new Container();
             container.Options.DefaultScopedLifestyle = new WebRequestLifestyle();
 
@@ -144,7 +148,7 @@
             container.Register<IMGResult>(() => new MGResult("MGResultConfigs"), Lifestyle.Scoped);
             container.Register<IJiliResult>(() => new JiliResult("JiliResultConfigs"), Lifestyle.Scoped);
             container.Register<IPService, IPServiceImpl>();
-            container.Register<IPHelper, IPHelperImpl>();
+            container.Register<Helpers.IPHelper, IPHelperImpl>();
             container.RegisterPerWebRequest<IPartialUMService, PartialUMService>();
         }
 

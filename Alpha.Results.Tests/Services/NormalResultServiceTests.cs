@@ -4,7 +4,7 @@
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
-    using Alpha.PartialUM.Services;
+    using AlphaPlus.PartialUM.Services;
     using Fanex.Data.Repository;
     using NSubstitute;
     using NUnit.Framework;

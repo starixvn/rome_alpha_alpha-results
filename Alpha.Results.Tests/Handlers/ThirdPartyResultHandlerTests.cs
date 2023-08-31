@@ -5,6 +5,7 @@
     using Alpha.Results.Site.Services;
     using Alpha.Results.Site.Services.Impl;
     using Alpha.Utilities.IP;
+    using AlphaPlus.User.Models;
     using Fanex.Result.Core.ThirdParty.Models;
     using Fanex.Result.Core.VGaming;
     using Fanex.Result.ThirdParty.Services;
@@ -12,7 +13,6 @@
     using NUnit.Framework;
     using Site.Handlers;
     using Site.Models.Requests;
-    using Sunplus.Agent.Model.Entities;
 
     [TestFixture]
     public class ThirdPartyResultHandlerTests

@@ -2,8 +2,8 @@
 {
     using Alpha.Results.Site.Helpers;
     using Alpha.Results.Site.Models.Views;
+    using AlphaPlus.User.Models;
     using MediatR;
-    using Sunplus.Agent.Model.Entities;
 
     public class BBINResultQuery : Result3rdQuery, IRequest<ThirdPartyProductViewModel>
     {
@@ -16,7 +16,7 @@
         public Result3rdQuery(IUserSession userSession)
         {
             Language = userSession.Language;
-            IsDarkMode = DarkModeHelper.IsDarkMode();
+            IsDarkMode = new DarkModeHelper(userSession).IsDarkMode();
         }
 
         public bool IsDarkMode { get; }

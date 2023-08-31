@@ -1,11 +1,10 @@
 ﻿namespace Alpha.Results.Site.Controllers
 {
     using System.Web.Mvc;
-    using Fanex.Products;
     using Models.Views;
     using Services;
     using Alpha.Results.Site.Constants;
-    using Sunplus.Agent.Model.Entities.Permission;
+    using AlphaPlus.User.Models;
 
     public class TabController : Controller
     {
@@ -21,11 +20,11 @@
         {
             var viewModel = new TabViewModel(
                 tabName,
-                UserPermission.IsEnableProduct(ProductIdConstants.Keno),
-                UserPermission.IsEnableProduct(ProductIdConstants.Lottery),
-                UserPermission.IsEnableProduct(ProductIdConstants.VirtualGames),
-                UserPermission.IsEnableProduct(ProductIdConstants.TableGames),
-                UserPermission.IsEnableProduct(ProductIdConstants.SportsLottery),
+                UserPermission.IsEnableProduct(Constants.ProductIdConstants.Keno),
+                UserPermission.IsEnableProduct(Constants.ProductIdConstants.Lottery),
+                UserPermission.IsEnableProduct(Constants.ProductIdConstants.VirtualGames),
+                UserPermission.IsEnableProduct(Constants.ProductIdConstants.TableGames),
+                UserPermission.IsEnableProduct(Constants.ProductIdConstants.SportsLottery),
                 cacheRefService.GetProductName);
 
             return PartialView(viewModel);

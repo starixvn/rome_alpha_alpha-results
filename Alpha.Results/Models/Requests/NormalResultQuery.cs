@@ -2,11 +2,9 @@
 {
     using System;
     using System.Collections.Generic;
-    using Configurations;
+    using AlphaPlus.User.Models;
     using Constants;
     using MediatR;
-    using Sunplus.Agent.Model.Entities;
-    using Sunplus.Agent.Model.Entities.Permission;
     using Views;
 
     public class NormalResultQuery : IRequest<NormalResultViewModel>
@@ -53,8 +51,8 @@
             {
                 var sportsStatus = _sportsStatus ?? new Dictionary<int, bool>
                 {
-                    { SportTypeIdConstants.NumberGame,  UserPermission.IsEnableProduct(ProductIdConstants.NumberGame) },
-                    { SportTypeIdConstants.VirtualSports, UserPermission.HasPermissionOnProduct(ProductIdConstants.VirtualSports) }
+                    { SportTypeIdConstants.NumberGame,  UserPermission.IsEnableProduct(Constants.ProductIdConstants.NumberGame) },
+                    { SportTypeIdConstants.VirtualSports, UserPermission.HasPermissionOnProduct(Constants.ProductIdConstants.VirtualSports) }
                 };
 
                 return sportsStatus;

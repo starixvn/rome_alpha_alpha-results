@@ -13,7 +13,6 @@
     using MediatR;
     using Models.Requests;
     using Services;
-    using Sunplus.Agent.Model.Common;
 
     public class ThirdPartyResultHandler :
         IRequestHandler<MaxGameResultQuery, ThirdPartyProductViewModel>,

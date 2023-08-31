@@ -1,8 +1,8 @@
 ﻿namespace Alpha.Results.Site.Models.Requests
 {
     using System;
+    using AlphaPlus.User.Models;
     using MediatR;
-    using Sunplus.Agent.Model.Entities;
     using Views;
 
     public class OutrightResultQuery : IRequest<OutrightResultViewModel>
