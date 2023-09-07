@@ -9,11 +9,13 @@
     using Alpha.NetThrottling.Models;
     using Alpha.NetThrottling.Resolvers;
     using Alpha.NetThrottling.Utils;
+    using Alpha.PartialUM.Helpers;
     using Alpha.Results.Site.Helpers;
     using Alpha.Utilities.IP;
     using Alpha.Web.Helpers;
     using AlphaPlus.Configurations;
     using AlphaPlus.PartialUM.DataAccess;
+    using AlphaPlus.PartialUM.Helpers;
     using AlphaPlus.PartialUM.Services;
     using AlphaPlus.User.Models;
     using DataAccesses;
@@ -104,6 +106,7 @@
             container.RegisterSingleton<IRefDataHelper, RefDataHelper>();
             container.RegisterSingleton<ICacheRefService, CacheRefService>();
 
+            container.RegisterSingleton<IPartialUMSectionHelper, PartialUMSectionHelper>();
             container.Register<IResultServiceFactory, ResultServiceFactory>(Lifestyle.Scoped);
             container.Register<IReportDateService, ReportDateService>(Lifestyle.Scoped);
             container.Register<IOutrightResultService, OutrightResultService>(Lifestyle.Scoped);

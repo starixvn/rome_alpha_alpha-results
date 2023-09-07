@@ -16,7 +16,7 @@
         public Result3rdQuery(IUserSession userSession)
         {
             Language = userSession.Language;
-            IsDarkMode = new DarkModeHelper(userSession).IsDarkMode();
+            IsDarkMode = DarkModeHelper.IsDarkMode();
         }
 
         public bool IsDarkMode { get; }

@@ -162,12 +162,12 @@
 
             //// Assert
             _sportsbookResultDataAccess.Received().GetScoreInformation(
-                Arg.Is<GetSportsbookResultDetailsCriteria>(
-                    criteria => criteria.MatchId == query.MatchId
-                            && criteria.BetType == query.BetTypeId
-                            && criteria.SportType == query.SportId
-                            && criteria.BetId == query.BetId
-                            && criteria.IsViewResultFromBetList == query.IsViewResultFromBetList));
+                Arg.Is<NormalResultDetailsQuery>(
+                    request => request.MatchId == query.MatchId
+                            && request.BetTypeId == query.BetTypeId
+                            && request.SportId == query.SportId
+                            && request.BetId == query.BetId
+                            && request.IsViewResultFromBetList == query.IsViewResultFromBetList));
         }
 
         [Test]
@@ -185,7 +185,7 @@
                 new Sportsbook()
             };
 
-            _sportsbookResultDataAccess.GetScoreInformation(Arg.Any<GetSportsbookResultDetailsCriteria>()).Returns(results);
+            _sportsbookResultDataAccess.GetScoreInformation(Arg.Any<NormalResultDetailsQuery>()).Returns(results);
 
             //// Act
             _sportsbookResultService.GetResultDetails(query);
@@ -239,7 +239,7 @@
                 new Sportsbook()
             };
 
-            _sportsbookResultDataAccess.GetScoreInformation(Arg.Any<GetSportsbookResultDetailsCriteria>()).Returns(results);
+            _sportsbookResultDataAccess.GetScoreInformation(Arg.Any<NormalResultDetailsQuery>()).Returns(results);
 
             //// Act
             _sportsbookResultService.GetResultDetails(query);
@@ -274,7 +274,7 @@
                 new Sportsbook { Bettype = BetTypeIdConstants.BetBuilder }
             };
 
-            _sportsbookResultDataAccess.GetScoreInformation(Arg.Any<GetSportsbookResultDetailsCriteria>()).Returns(results);
+            _sportsbookResultDataAccess.GetScoreInformation(Arg.Any<NormalResultDetailsQuery>()).Returns(results);
 
             //// Act
             _sportsbookResultService.GetResultDetails(query);

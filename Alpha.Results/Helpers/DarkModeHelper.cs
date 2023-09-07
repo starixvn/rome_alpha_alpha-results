@@ -3,19 +3,12 @@ using System.Web.Mvc;
 
 namespace Alpha.Results.Site.Helpers
 {
-    public class DarkModeHelper
+    public static class DarkModeHelper
     {
-        private readonly IUserSession userSession;
+        public static string GetDarkModeName()
+            => UserSession.Current.DarkModeName;
 
-        public DarkModeHelper(IUserSession userSession)
-        {
-            this.userSession = userSession;
-        }
-
-        public string GetDarkModeName()
-            => userSession.DarkModeName;
-
-        public bool IsDarkMode()
-            => !string.IsNullOrWhiteSpace(userSession.DarkModeName);
+        public static bool IsDarkMode()
+            => !string.IsNullOrWhiteSpace(GetDarkModeName());
     }
 }

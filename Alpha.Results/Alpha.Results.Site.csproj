@@ -121,9 +121,8 @@
       <HintPath>..\packages\Fanex.Data.OldConnectionStringProvider.1.0.1\lib\net461\Fanex.Data.OldConnectionStringProvider.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Fanex.Data.Repository, Version=1.0.2.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Data.Repository.1.0.2.1\lib\net461\Fanex.Data.Repository.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Fanex.Data.Repository, Version=4.2.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Data.Repository.4.2.2\lib\net461\Fanex.Data.Repository.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.Data.SqlServer, Version=4.2.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Data.SqlServer.4.2.3-beta1\lib\net461\Fanex.Data.SqlServer.dll</HintPath>
@@ -1190,6 +1189,7 @@
     <Compile Include="Criteria\GetResultSportsByDateCriteria.cs" />
     <Compile Include="Criteria\Products\GetRacingResultDetailsCriteria.cs" />
     <Compile Include="Criteria\Products\GetBetBuidlerResultDetailsCriteria.cs" />
+    <Compile Include="Criteria\Products\GetSportsbookResultBetListCriteria.cs" />
     <Compile Include="Criteria\Products\GetSportsbookResultDetailsCriteria.cs" />
     <Compile Include="Criteria\Products\GetSportsbookResultCriteria.cs" />
     <Compile Include="Criteria\Products\GetVirtualRacingResultCriteria.cs" />

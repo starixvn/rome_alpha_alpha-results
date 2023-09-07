@@ -1,13 +1,14 @@
 ﻿namespace Alpha.Results.Site.DataAccesses.Impl
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Data;
-    using System.Linq;
+    using Alpha.Results.Site.Models.Requests;
     using Criteria;
     using DataAccesses;
     using Fanex.Data;
     using Fanex.Result.Core.Sportsbook.DTO;
+    using System;
+    using System.Collections.Generic;
+    using System.Data;
+    using System.Linq;
 
     /// <summary>
     /// The class SportsBookResultDataAccess.
@@ -19,11 +20,11 @@
             var results = new Sportsbook();
             using (var db = ObjectDbFactory.CreateInstance(criteria.GetSettingKey()))
             {
-                using (var reader = db.ExecuteReader(criteria.GetSpParams()))
+                using (var reader = db.ExecuteReader(criteria))
                 {
                     while (reader.Read())
                     {
-                        results= BindSportbook(reader);
+                        results = BindSportbook(reader);
                     }
 
                     if (reader.NextResult())
@@ -33,15 +34,16 @@
                             results.BetBuilderDetails.Add(new BetBuilderDetail
                             {
                                 SelectionType = int.Parse(reader["SelectionType"].ToString()),
-                                Result= reader["Result"].ToString()
+                                Result = reader["Result"].ToString()
                             });
                         }
                     }
                 }
-            }            
+            }
 
             return results;
         }
+
         /// <summary>
         /// Get SPORTBOOK result.
         /// </summary>
@@ -58,7 +60,7 @@
             var gameDetails = new List<GameDetail>();
             using (var db = ObjectDbFactory.CreateInstance(criteria.GetSettingKey()))
             {
-                using (var reader = db.ExecuteReader(criteria.GetSpParams()))
+                using (var reader = db.ExecuteReader(criteria))
                 {
                     while (reader.Read())
                     {
@@ -163,22 +165,36 @@
             return string.Empty;
         }
 
-        public List<Sportsbook> GetScoreInformation(GetSportsbookResultDetailsCriteria criteria)
+        public List<Sportsbook> GetScoreInformation(NormalResultDetailsQuery request)
         {
-            if (criteria == null)
+            if (request == null)
             {
-                throw new ArgumentNullException(nameof(criteria), "Criteria cannot be null");
+                throw new ArgumentNullException(nameof(request), "Request cannot be null");
             }
+
+            var criteria = request.IsViewResultFromBetList ? new GetSportsbookResultBetListCriteria
+            {
+                MatchId = request.MatchId,
+                BetType = request.BetTypeId,
+                SportType = request.SportId,
+                BetId = request.BetId,
+                Handicap2 = request.Hdp2,
+                Transdesc = request.TransDesc
+            } :
+            new GetSportsbookResultDetailsCriteria
+            {
+                MatchId = request.MatchId
+            };
 
             var result = new List<Sportsbook>();
 
             using (var objDb = ObjectDbFactory.CreateInstance(criteria.GetSettingKey()))
             {
-                using (var reader = objDb.ExecuteReader(criteria.GetSpParams()))
+                using (var reader = objDb.ExecuteReader(criteria))
                 {
                     if (reader.Read())
                     {
-                        result.Add(BindSportsbookDetails(reader, criteria));
+                        result.Add(BindSportsbookDetails(reader, request));
 
                         if (reader.NextResult())
                         {
@@ -227,9 +243,9 @@
         /// <returns>
         /// The object of SPORTSBOOK.
         /// </returns>
-        private Sportsbook BindSportsbookDetails(IDataReader reader, GetSportsbookResultDetailsCriteria criteria)
+        private Sportsbook BindSportsbookDetails(IDataReader reader, NormalResultDetailsQuery request)
         {
-            criteria.SportType = reader["sporttype"] != DBNull.Value ? Convert.ToInt32(reader["sporttype"]) : 0;
+            request.SportId = reader["sporttype"] != DBNull.Value ? Convert.ToInt32(reader["sporttype"]) : 0;
 
             var sportsbook = new Sportsbook
             {
@@ -245,17 +261,17 @@
                 IsNeutral = reader["IsNeutral"] != DBNull.Value ? Convert.ToBoolean(reader["IsNeutral"]) : false,
                 BetStatus = reader["betstatus"] != DBNull.Value ? Convert.ToString(reader["betstatus"]) : string.Empty,
                 LeagueId = reader["LeagueID"] != DBNull.Value ? Convert.ToInt32(reader["LeagueID"]) : 0,
-                MatchId = criteria.MatchId,
+                MatchId = request.MatchId,
                 Color = string.Empty,
                 MatchCode = reader["matchcode"] != DBNull.Value ? Convert.ToString(reader["matchcode"]) : string.Empty,
                 GoalRecord = reader["goalrecord"] != DBNull.Value ? reader["goalrecord"].ToString() : string.Empty,
                 IsHTCal = reader["IsHTCal"] != DBNull.Value ? Convert.ToBoolean(reader["IsHTCal"]) : false,
                 Calculate = reader["Calculate"] != DBNull.Value ? Convert.ToBoolean(reader["Calculate"]) : false,
                 RefNo = string.Empty,
-                BetID = criteria.BetId.ToString(),
-                Bettype = criteria.BetType,
+                BetID = request.BetId.ToString(),
+                Bettype = request.BetTypeId,
                 GameDetails = new List<GameDetail>(),
-                Handicap2 = criteria.Handicap2,
+                Handicap2 = request.Hdp2,
                 SettlementStatus = reader["SettlementStatus"] != DBNull.Value ? Convert.ToByte(reader["SettlementStatus"]) : default(byte),
                 NoHTScore = ColumnExisted(reader, "NoHTScore") && reader["NoHTScore"] != DBNull.Value ? Convert.ToBoolean(reader["NoHTScore"]) : false,
             };

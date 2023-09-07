@@ -6,41 +6,6 @@
     [TestFixture]
     public class GetSportsbookResultDetailsCriteriaTests
     {
-        [Test]
-        public void GetSettingKey_ViewResultFromBetList_ReturnsCorrectKey()
-        {
-            // Arrange
-            var criteria = new GetSportsbookResultDetailsCriteria
-            {
-                IsViewResultFromBetList = true
-            };
-
-            var expectedSettingKey = "Age_BetList_SelMatchResult";
-
-            // Act
-            var actualSettingKey = criteria.GetSettingKey();
-
-            // Assert
-            Assert.AreEqual(expectedSettingKey, actualSettingKey);
-        }
-
-        [Test]
-        public void GetSettingKey_ViewResultNotFromBetList_ReturnsCorrectKey()
-        {
-            // Arrange
-            var criteria = new GetSportsbookResultDetailsCriteria
-            {
-                IsViewResultFromBetList = false
-            };
-
-            var expectedSettingKey = "Age_Result_MatchSelResultDetail";
-
-            // Act
-            var actualSettingKey = criteria.GetSettingKey();
-
-            // Assert
-            Assert.AreEqual(expectedSettingKey, actualSettingKey);
-        }
 
         [TestCase(-1)]
         [TestCase(0)]
@@ -73,23 +38,6 @@
 
             // Assert
             Assert.IsTrue(isValid);
-        }
-
-        [Test]
-        public void GetSpParamViewFromBetList_Always_Returns4Params()
-        {
-            // Arrange
-            var criteria = new GetSportsbookResultDetailsCriteria
-            {
-                MatchId = 1,
-                IsViewResultFromBetList = true
-            };
-
-            // Act
-            var act = criteria.GetSpParams().Count;
-
-            // Assert
-            Assert.AreEqual(4, act);
-        }
+        }       
     }
 }

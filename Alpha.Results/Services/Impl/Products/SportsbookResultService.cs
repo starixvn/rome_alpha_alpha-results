@@ -144,18 +144,7 @@
 
         private List<Sportsbook> GetScoreInformation(NormalResultDetailsQuery detailsRequest)
         {
-            var criteria = new GetSportsbookResultDetailsCriteria
-            {
-                MatchId = detailsRequest.MatchId,
-                BetType = detailsRequest.BetTypeId,
-                SportType = detailsRequest.SportId,
-                BetId = detailsRequest.BetId,
-                IsViewResultFromBetList = detailsRequest.IsViewResultFromBetList,
-                Handicap2 = detailsRequest.Hdp2,
-                Transdesc = detailsRequest.TransDesc
-            };
-
-            return _dataAccess.GetScoreInformation(criteria);
+            return _dataAccess.GetScoreInformation(detailsRequest);
         }
 
         private static bool HasDetailResult(SportType sportType)

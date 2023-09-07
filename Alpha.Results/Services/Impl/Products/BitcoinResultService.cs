@@ -38,7 +38,7 @@
                 MoveBetsDay = request.MoveBetsDate
             });
 
-            var bitcoins = BindingGameDetail(result);
+            var bitcoins = BindingGameDetail(result.ToTuple());
             var resultSetting = CreateSetting(isPopup: false, language: request.Language);
             resultSetting.ExcelTitle = request.ExcelTitle;
 
@@ -56,7 +56,7 @@
 
             _partialUMService.ThrowIfUM(criteria.GetSettingKey());
             var result = _dynamicRepository.FetchMultiple<Bitcoin, GameDetail>(criteria);
-            var bitcoins = BindingGameDetail(result);
+            var bitcoins = BindingGameDetail(result.ToTuple());
             var resultSetting = CreateSetting(isPopup: false, language: request.Language);
 
             return _resultEngineAdapter.HtmlParser(bitcoins.ToList(), resultSetting);
@@ -69,7 +69,7 @@
                 MatchId = detailsRequest.MatchId
             });
 
-            var bitcoins = BindingGameDetail(result);
+            var bitcoins = BindingGameDetail(result.ToTuple());
             var resultSetting = CreateSetting(isPopup: true, language: detailsRequest.Language);
 
             return _resultEngineAdapter.HtmlParser(bitcoins.ToList(), resultSetting);
