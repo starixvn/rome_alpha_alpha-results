@@ -172,9 +172,6 @@
     <Reference Include="Fanex.Result.Core.Casino, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core.Casino.1.0.0.1\lib\Fanex.Result.Core.Casino.dll</HintPath>
     </Reference>
-    <Reference Include="Fanex.Result.Core.GoldDeluxe, Version=1.0.5.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Result.Core-GoldDeluxe.1.0.5.1\lib\net40\Fanex.Result.Core.GoldDeluxe.dll</HintPath>
-    </Reference>
     <Reference Include="Fanex.Result.Core.GTCasino, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core.GTCasino.1.0.1\lib\net40\Fanex.Result.Core.GTCasino.dll</HintPath>
     </Reference>
@@ -1192,7 +1189,6 @@
     <Compile Include="Criteria\GetBalanceUpDateCriteria.cs" />
     <Compile Include="Criteria\Products\GetBitcoinResultCriteria.cs" />
     <Compile Include="Criteria\Products\GetBitcoinResultDetailsCriteria.cs" />
-    <Compile Include="Criteria\Products\GetGoldDeluxeResultCriteria.cs" />
     <Compile Include="Criteria\Products\GetMetricGamingResultCriteria.cs" />
     <Compile Include="Criteria\Products\GetNumberGameResultDetailsCriteria.cs" />
     <Compile Include="Criteria\Products\GetNumberGameResultCriteria.cs" />
@@ -1341,7 +1337,6 @@
     <Compile Include="Services\Impl\Products\SAGamingResultService.cs" />
     <Compile Include="Services\Impl\Products\SexyGamingResultService.cs" />
     <Compile Include="Services\Impl\Products\AllBetCasinoResultService.cs" />
-    <Compile Include="Services\Impl\Products\GoldDeluxeResultService.cs" />
     <Compile Include="Services\Impl\Products\MetricGamingResultService.cs" />
     <Compile Include="Services\Impl\Products\Happy5ResultService.cs" />
     <Compile Include="Services\Impl\Products\NumberGameResultService.cs" />
