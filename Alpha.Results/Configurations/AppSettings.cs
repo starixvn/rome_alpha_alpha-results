@@ -1,29 +1,15 @@
-﻿namespace Alpha.Results.Site.Configurations
-{
-    using System;
-    using System.Collections.Specialized;
-    using System.Configuration;
+﻿using AlphaPlus.Configurations;
 
+namespace Alpha.Results.Site.Configurations
+{
     public static class AppSettings
     {
-        [ThreadStatic]
-        private static NameValueCollection appSettingValues;
+        public static string StoredProcedurePath => ConfigurationManager.GetValue<string>("StoredProcedurePath");
 
-        internal static NameValueCollection AppSettingValues
-        {
-            get { return appSettingValues ?? ConfigurationManager.AppSettings; }
+        public static bool LocalTest => ConfigurationManager.GetValue<string>("LocalTest") == "1";
 
-            set { appSettingValues = value; }
-        }
+        public static bool Disable151_31 => ConfigurationManager.GetValue<string>("Disable151_31") == "1";
 
-        public static string StoredProcedurePath => GetConfigValue("StoredProcedurePath");
-
-        public static bool LocalTest => GetConfigValue("LocalTest") == "1";
-
-        public static bool Disable151_31 => GetConfigValue("Disable151_31") == "1";
-
-        public static string RemoteRefURL => GetConfigValue("RemoteRefURL");
-
-        public static string GetConfigValue(string configName) => AppSettingValues[configName];
+        public static string RemoteRefURL => ConfigurationManager.GetValue<string>("RemoteRefURL");
     }
 }

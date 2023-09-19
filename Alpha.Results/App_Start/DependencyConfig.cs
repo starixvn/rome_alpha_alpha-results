@@ -48,7 +48,6 @@
         [SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", Justification = "Reviewed")]
         public static void Init()
         {
-            ConfigurationManager.Init(new ConfigurationHelper());
             UserSession.Init(new HttpContextHelper());
 
             var container = new Container();

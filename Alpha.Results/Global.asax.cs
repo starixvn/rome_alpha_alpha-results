@@ -36,6 +36,7 @@
     {
         protected void Application_Start()
         {
+            AlphaPlus.Configurations.ConfigurationManager.Init(new ConfigurationHelper());
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
