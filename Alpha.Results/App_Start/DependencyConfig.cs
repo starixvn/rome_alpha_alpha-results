@@ -42,6 +42,7 @@
     using SimpleInjector.Integration.Web.Mvc;
     using ILogger = NetThrottling.Utils.ILogger;
     using Logger = NetThrottling.Utils.Logger;
+    using ResultConfiguration = Fanex.Result.Core.ConfigurationHelper;
 
     public static class DependencyConfig
     {
@@ -110,12 +111,12 @@
             container.Register<IReportDateService, ReportDateService>(Lifestyle.Scoped);
             container.Register<IOutrightResultService, OutrightResultService>(Lifestyle.Scoped);
             container.Register<INormalResultService, NormalResultService>(Lifestyle.Scoped);
-
+            container.Register<ResultConfiguration.IConfigurationHelper, ResultConfiguration.ConfigurationHelper>(Lifestyle.Scoped);
             container.Register<IResultEngineAdapter, ResultEngineAdapter>(Lifestyle.Scoped);
             container.Register<IAllbetResultBuilder, AllbetResultBuilder>(Lifestyle.Scoped);
             container.Register<IRestClient>(() => new RestClient());
             container.Register<ProductResultServiceFactory, ProductResultServiceFactoryImpl>();
-            container.Register<IVirtualGamesResult>(() => new VirtualGamesResult("VirtualGamesResultConfigs"), Lifestyle.Scoped);
+            container.Register<IVirtualGamesResult>(() => new VirtualGamesResult("VirtualGamesResultConfigs", new Fanex.Result.Core.ConfigurationHelper.ConfigurationHelper()), Lifestyle.Scoped);
             container.Register<Helpers.BrowserHelper, Helpers.BrowserHelperImpl>(Lifestyle.Singleton);
             container.Register<ILinkedGamesResult, LinkedGamesResult>(Lifestyle.Scoped);
             container.Register<ISportsLotteryResult, SportsLotteryResult>(Lifestyle.Scoped);
@@ -126,9 +127,9 @@
             container.Register<IAdvantPlayResult>(() => new AdvantPlayResult("AdvantPlayResultConfigs"), Lifestyle.Scoped);
             container.Register<ISerializer, JsonSerializer>(Lifestyle.Scoped);
             container.Register<IVGamingResult, VGamingResult>(Lifestyle.Scoped);
-            container.Register<IKenoResult>(() => new KenoResult("KenoResultConfigs"), Lifestyle.Scoped);
-            container.Register<ILotteryResult>(() => new LotteryResult("LotteryResultConfigs"), Lifestyle.Scoped);
-            container.Register<ITableGameResult>(() => new TableGameResult("TableGameResultConfigs"), Lifestyle.Scoped);
+            container.Register<IKenoResult>(() => new KenoResult("KenoResultConfigs", new Fanex.Result.Core.ConfigurationHelper.ConfigurationHelper()), Lifestyle.Scoped);
+            container.Register<ILotteryResult>(() => new LotteryResult("LotteryResultConfigs", new Fanex.Result.Core.ConfigurationHelper.ConfigurationHelper()), Lifestyle.Scoped);
+            container.Register<ITableGameResult>(() => new TableGameResult("TableGameResultConfigs", new Fanex.Result.Core.ConfigurationHelper.ConfigurationHelper()), Lifestyle.Scoped);
             container.Register<IAdvantPlayMiniResult>(() => new AdvantPlayMiniResult("AdvantPlayMiniResultConfigs"), Lifestyle.Scoped);
             container.Register<IBBINResult>(() => new BBINResult("BBINResultConfigs"), Lifestyle.Scoped);
             container.Register<IRNGCasinoResult>(() => new RNGCasinoResult("RNGCasinoResultConfigs"), Lifestyle.Scoped);
