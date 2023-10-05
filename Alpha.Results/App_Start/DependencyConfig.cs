@@ -21,7 +21,6 @@
     using Fanex.Result.Core.AllBetCasino;
     using Fanex.Result.Core.Base.Models;
     using Fanex.Result.Core.Base.Utilities;
-    using Fanex.Result.Core.GlobalGaming;
     using Fanex.Result.Core.LinkedGames;
     using Fanex.Result.Core.RemotingRef;
     using Fanex.Result.Core.SportsLottery;
@@ -108,7 +107,6 @@
 
             container.Register<IResultEngineAdapter, ResultEngineAdapter>(Lifestyle.Scoped);
             container.Register<IAllbetResultBuilder, AllbetResultBuilder>(Lifestyle.Scoped);
-            container.Register<Base3rdResultApi, GlobalGamingResultApi>(Lifestyle.Scoped);
             container.Register<IRestClient>(() => new RestClient());
             container.Register<ProductResultServiceFactory, ProductResultServiceFactoryImpl>();
             container.Register<IVirtualGamesResult>(() => new VirtualGamesResult("VirtualGamesResultConfigs"), Lifestyle.Scoped);
@@ -132,7 +130,6 @@
             container.Register<IHappy5LinkedGamesResult>(() => new Happy5LinkedGamesResult("LinkedGamesResultConfigs"), Lifestyle.Scoped);
             container.Register<IMaxGameResult>(() => new MaxGameResult("MaxGameResultConfigs"), Lifestyle.Scoped);
             container.Register<IBGResult>(() => new BGResult("BGResultConfigs"), Lifestyle.Scoped);
-            container.Register<IGDGResult>(() => new GDGResult("GDGResultConfigs"), Lifestyle.Scoped);
             container.Register<IJokerResult>(() => new JokerResult("JokerResultConfigs"), Lifestyle.Scoped);
             container.Register<IPGSoftResult>(() => new PGSoftResult("PGSoftResultConfigs"), Lifestyle.Scoped);
             container.Register<IRNGWarResult>(() => new RNGWarResult("RNGWarResultConfigs"), Lifestyle.Scoped);

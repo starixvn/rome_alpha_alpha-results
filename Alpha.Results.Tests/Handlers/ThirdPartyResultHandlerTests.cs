@@ -41,7 +41,6 @@
         private ICardClubResult cardClubResult;
         private IPPResult ppResult;
         private IBBINResult bbinResult;
-        private IGDGResult gdgResult;
         private IFGGResult fggResult;
         private IMGResult mgResult;
         private IJiliResult jiliResult;
@@ -78,7 +77,6 @@
             cardClubResult = Substitute.For<ICardClubResult>();
             ppResult = Substitute.For<IPPResult>();
             bbinResult = Substitute.For<IBBINResult>();
-            gdgResult = Substitute.For<IGDGResult>();
             fggResult = Substitute.For<IFGGResult>();
             sealResult = Substitute.For<ISEALResult>();
             mgResult = Substitute.For<IMGResult>();
@@ -107,7 +105,6 @@
                  bgResult,
                  cardClubResult,
                  ppResult,
-                 gdgResult,
                  sportsLotteryResult,
                  fggResult,                 
                  ipService,
@@ -334,26 +331,6 @@
                 EndTime = DateTime.Today.ToString()
             };
             bgResult.GetResultGET(Arg.Any<ResultRequest>()).Returns("Url result");
-
-            // Act
-            var act = handler.Handle(query);
-
-            // Assert
-            Assert.AreEqual("Product1 Result", act.Title);
-            Assert.AreEqual("Url result", act.Result);
-        }
-
-        [Test]
-        public void GDGResultQuery_Always_CallGetResult()
-        {
-            // Arrange
-            var query = new GDGResultQuery(userSession)
-            {
-                ProductId = 1,
-                BetType = 1,
-                EndTime = DateTime.Today.ToString()
-            };
-            gdgResult.GetResultGET(Arg.Any<ResultRequest>()).Returns("Url result");
 
             // Act
             var act = handler.Handle(query);

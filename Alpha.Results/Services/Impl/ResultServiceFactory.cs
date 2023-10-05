@@ -57,9 +57,7 @@
                 case SportTypeIdConstants.VirtualCycling:
                 case SportTypeIdConstants.VirtualSpeedway:
                     return new VirtualRacingResultService();
-
-                case SportTypeIdConstants.GoldDeluxe:
-                    return new GoldDeluxeResultService();
+                    
                 case SportTypeIdConstants.LGVirtualSports:
                     return new LeapGamingResultService();
                 case SportTypeIdConstants.Bitcoin:

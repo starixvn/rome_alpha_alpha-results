@@ -131,12 +131,6 @@
     <Reference Include="Fanex.Result.Core.Casino, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core.Casino.1.0.0.1\lib\Fanex.Result.Core.Casino.dll</HintPath>
     </Reference>
-    <Reference Include="Fanex.Result.Core.GlobalGaming, Version=1.0.0.4, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Result.Core.GlobalGaming.1.0.0.4\lib\net40\Fanex.Result.Core.GlobalGaming.dll</HintPath>
-    </Reference>
-    <Reference Include="Fanex.Result.Core.GoldDeluxe, Version=1.0.5.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Result.Core-GoldDeluxe.1.0.5.1\lib\net40\Fanex.Result.Core.GoldDeluxe.dll</HintPath>
-    </Reference>
     <Reference Include="Fanex.Result.Core.GTCasino, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core.GTCasino.1.0.1\lib\net40\Fanex.Result.Core.GTCasino.dll</HintPath>
     </Reference>
@@ -402,7 +396,6 @@
     <Compile Include="Controllers\VirtualGamesControllerTests.cs" />
     <Compile Include="Criteria\GetBalanceUpAndMoveBetsDayCriteriaTests.cs" />
     <Compile Include="Criteria\GetBetBuilderResultDetailsCriteriaTests.cs" />
-    <Compile Include="Criteria\GetGoldDeluxeResultCriteriaTests.cs" />
     <Compile Include="Criteria\GetMetricGamingResultCriteriaTests.cs" />
     <Compile Include="Criteria\GetBitcoinResultCriteriaTests.cs" />
     <Compile Include="Criteria\GetNumberGameResultCriteriaTests.cs" />
@@ -456,7 +449,6 @@
     <Compile Include="Models\Views\JokerResultQueryTests.cs" />
     <Compile Include="Models\Views\IONCasinoResultQueryTests.cs" />
     <Compile Include="Models\Views\HabaneroResultQueryTest.cs" />
-    <Compile Include="Models\Views\GDGResultQueryTests.cs" />
     <Compile Include="Models\Views\CardClubResultQueryTests.cs" />
     <Compile Include="Models\Views\BGResultQueryTests.cs" />
     <Compile Include="Models\Views\BBINResultQueryTests.cs" />
@@ -483,7 +475,6 @@
     <Compile Include="Services\Products\JokerResultTests.cs" />
     <Compile Include="Services\Products\IONCasinoResultTests.cs" />
     <Compile Include="Services\Products\HabaneroResultTests.cs" />
-    <Compile Include="Services\Products\GDGResultTests.cs" />
     <Compile Include="Services\Products\CardClubResultTests.cs" />
     <Compile Include="Services\Products\BGResultTests.cs" />
     <Compile Include="Services\Products\BBINResultTests.cs" />
@@ -501,7 +492,6 @@
     <Compile Include="Services\Products\SAGamingResultServiceTests.cs" />
     <Compile Include="Services\Products\AllBetCasinoResultServiceTests.cs" />
     <Compile Include="Services\Products\BetBuilderResultServiceTests.cs" />
-    <Compile Include="Services\Products\GoldDeluxeResultServiceTests.cs" />
     <Compile Include="Services\Products\MetricGamingResultServiceTests.cs" />
     <Compile Include="Services\Products\Happy5ResultServiceTests.cs" />
     <Compile Include="Services\Products\NumberGameResultServiceTests.cs" />

@@ -14,12 +14,6 @@
         {
         }
 
-        public ActionResult Detail(FishingWorldResultQuery message)
-        {
-            message.Language = userSession.Language;
-            return View(IndexView, message);
-        }
-
         public ActionResult MaxGameResult(MaxGameResultQuery message)
             => View(IndexView, mediator.Send(message));
 
@@ -68,9 +62,6 @@
         public ActionResult PGSoftResult(PGSoftResultQuery message)
         => View(IndexView, mediator.Send(message));
         public ActionResult JokerResult(JokerResultQuery message)
-        => View(IndexView, mediator.Send(message));
-
-        public ActionResult GDGResult(GDGResultQuery message)
         => View(IndexView, mediator.Send(message));
 
         public ActionResult LinkedGamesResult(LinkedGamesResultQuery message)

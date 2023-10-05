@@ -172,12 +172,6 @@
     <Reference Include="Fanex.Result.Core.Casino, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core.Casino.1.0.0.1\lib\Fanex.Result.Core.Casino.dll</HintPath>
     </Reference>
-    <Reference Include="Fanex.Result.Core.GlobalGaming, Version=1.0.0.4, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Result.Core.GlobalGaming.1.0.0.4\lib\net40\Fanex.Result.Core.GlobalGaming.dll</HintPath>
-    </Reference>
-    <Reference Include="Fanex.Result.Core.GoldDeluxe, Version=1.0.5.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Result.Core-GoldDeluxe.1.0.5.1\lib\net40\Fanex.Result.Core.GoldDeluxe.dll</HintPath>
-    </Reference>
     <Reference Include="Fanex.Result.Core.GTCasino, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core.GTCasino.1.0.1\lib\net40\Fanex.Result.Core.GTCasino.dll</HintPath>
     </Reference>
@@ -1036,12 +1030,15 @@
     </Content>
     <Content Include="Web.backupMNL.config">
       <DependentUpon>Web.local.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.backupMNL2.config">
       <DependentUpon>Web.local.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.backupMNLNap2.config">
       <DependentUpon>Web.local.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.uati7.config">
       <DependentUpon>Web.local.config</DependentUpon>
@@ -1112,6 +1109,7 @@
     </Content>
     <Content Include="Web.napinternali7.config">
       <DependentUpon>Web.local.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.siti7.config">
       <DependentUpon>Web.local.config</DependentUpon>
@@ -1141,15 +1139,19 @@
     </Content>
     <Content Include="Web.aws.config">
       <DependentUpon>Web.local.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.aws2.config">
       <DependentUpon>Web.local.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.napaws.config">
       <DependentUpon>Web.local.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.napaws2.config">
       <DependentUpon>Web.local.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Views\Shared\PartialUM.cshtml" />
     <Content Include="Views\ThirdParty\Index.cshtml" />
@@ -1187,7 +1189,6 @@
     <Compile Include="Criteria\GetBalanceUpDateCriteria.cs" />
     <Compile Include="Criteria\Products\GetBitcoinResultCriteria.cs" />
     <Compile Include="Criteria\Products\GetBitcoinResultDetailsCriteria.cs" />
-    <Compile Include="Criteria\Products\GetGoldDeluxeResultCriteria.cs" />
     <Compile Include="Criteria\Products\GetMetricGamingResultCriteria.cs" />
     <Compile Include="Criteria\Products\GetNumberGameResultDetailsCriteria.cs" />
     <Compile Include="Criteria\Products\GetNumberGameResultCriteria.cs" />
@@ -1252,7 +1253,6 @@
     <Compile Include="Models\Requests\SEALResultQuery.cs" />
     <Compile Include="Models\Requests\MGResultQuery.cs" />
     <Compile Include="Models\Requests\FGGResultQuery.cs" />
-    <Compile Include="Models\Requests\FishingWorldResultQuery.cs" />
     <Compile Include="Models\Requests\SpadeGamingResultQuery.cs" />
     <Compile Include="Models\Requests\RNGWarResultQuery.cs" />
     <Compile Include="Models\Requests\RNGCasinoResultQuery.cs" />
@@ -1260,7 +1260,6 @@
     <Compile Include="Models\Requests\MacauGamesResultQuery.cs" />
     <Compile Include="Models\Requests\JokerResultQuery.cs" />
     <Compile Include="Models\Requests\IONCasinoResultQuery.cs" />
-    <Compile Include="Models\Requests\GDGResultQuery.cs" />
     <Compile Include="Models\Requests\BGResultQuery.cs" />
     <Compile Include="Models\Requests\PPResultQuery.cs" />
     <Compile Include="Models\Requests\Soccer5ResultQuery.cs" />
@@ -1317,7 +1316,6 @@
     <Compile Include="Services\Impl\JokerResult.cs" />
     <Compile Include="Services\Impl\IONCasinoResult.cs" />
     <Compile Include="Services\Impl\HabaneroResult.cs" />
-    <Compile Include="Services\Impl\GDGResult.cs" />
     <Compile Include="Services\Impl\CardClubResult.cs" />
     <Compile Include="Services\Impl\BGResult.cs" />
     <Compile Include="Services\Impl\BBINResult.cs" />
@@ -1339,7 +1337,6 @@
     <Compile Include="Services\Impl\Products\SAGamingResultService.cs" />
     <Compile Include="Services\Impl\Products\SexyGamingResultService.cs" />
     <Compile Include="Services\Impl\Products\AllBetCasinoResultService.cs" />
-    <Compile Include="Services\Impl\Products\GoldDeluxeResultService.cs" />
     <Compile Include="Services\Impl\Products\MetricGamingResultService.cs" />
     <Compile Include="Services\Impl\Products\Happy5ResultService.cs" />
     <Compile Include="Services\Impl\Products\NumberGameResultService.cs" />
@@ -1427,6 +1424,7 @@
     </Content>
     <Content Include="Web.backupMNLNap.config">
       <DependentUpon>Web.local.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -1436,6 +1434,7 @@
     </Content>
     <Content Include="Web.local2.config">
       <DependentUpon>Web.local.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>

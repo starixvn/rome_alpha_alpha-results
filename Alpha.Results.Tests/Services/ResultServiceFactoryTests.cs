@@ -113,16 +113,6 @@
             Assert.IsTrue(resultService is VirtualRacingResultService);
         }
 
-        [Test]
-        public void CreateProductResultService_SportIsGoldDeluxe_ReturnGoldDeluxeResultService()
-        {
-            //// Act
-            var resultService = _resultServiceFactory.CreateProductResultService(SportTypeIdConstants.GoldDeluxe, 0);
-
-            //// Assert
-            Assert.IsTrue(resultService is GoldDeluxeResultService);
-        }
-
         [TestCase(SportTypeIdConstants.Athletics)]
         [TestCase(SportTypeIdConstants.Equestrian)]
         public void CreateProductResultService_OtherSports_ReturnSportsbookResultService(int sportId)

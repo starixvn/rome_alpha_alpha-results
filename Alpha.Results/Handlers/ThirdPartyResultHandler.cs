@@ -16,7 +16,6 @@
     using Sunplus.Agent.Model.Common;
 
     public class ThirdPartyResultHandler :
-        IRequestHandler<FishingWorldResultQuery, ThirdPartyProductViewModel>,
         IRequestHandler<MaxGameResultQuery, ThirdPartyProductViewModel>,
         IRequestHandler<SportsLotteryDetailResultQuery, ThirdPartyProductViewModel>,
         IRequestHandler<PPLiveCasinoResultQuery, ThirdPartyProductViewModel>,
@@ -65,7 +64,6 @@
         private readonly ICardClubResult cardClubResult;
         private readonly IPPResult ppResult;
         private readonly IBBINResult bbinResult;
-        private readonly IGDGResult gdgResult;
         private readonly IFGGResult fggResult;
         private readonly IPService ipService;
         private readonly IVirtualGamesDetailResult virtualGamesResult;
@@ -97,7 +95,6 @@
             IBGResult bgResult,
             ICardClubResult cardClubResult,
             IPPResult ppResult,
-            IGDGResult gdgResult,
             ISportsLotteryDetailResult sportsLotteryResult,
             IFGGResult fggResult,
             IPService ipService,
@@ -130,7 +127,6 @@
             this.bgResult = bgResult;
             this.cardClubResult = cardClubResult;
             this.ppResult = ppResult;
-            this.gdgResult = gdgResult;
             this.fggResult = fggResult;
             this.ipService = ipService;
             this.sportsLotteryResult = sportsLotteryResult;
@@ -143,18 +139,6 @@
 
         public ThirdPartyProductViewModel Handle(MGResultQuery message)
             => Handle(message, mgResult);
-
-        public ThirdPartyProductViewModel Handle(FishingWorldResultQuery message)
-        {
-            Check.Argument.IsNotNull(message, "message");
-
-            var productName = cacheRefService.GetProductName(message.ProductId);
-
-            var productResultService = serviceFactory.CreateProductResultService(message.ProductId);
-            var result = productResultService.GetDetailLink(message);
-
-            return new ThirdPartyProductViewModel(string.Format(Resources.ResultPopupTitle, productName), result.Value);
-        }
 
         public ThirdPartyProductViewModel Handle(VirtualGamesDetailResultQuery message)
             => Handle(message, virtualGamesResult);
@@ -201,9 +185,6 @@
 
         public ThirdPartyProductViewModel Handle(BGResultQuery message)
             => Handle(message, bgResult);
-
-        public ThirdPartyProductViewModel Handle(GDGResultQuery message)
-            => Handle(message, gdgResult);
 
         public ThirdPartyProductViewModel Handle(JokerResultQuery message)
             => Handle(message, jokerResult);
