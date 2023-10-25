@@ -186,12 +186,7 @@
                             {
                                 result[0].GameDetails.Add(BindGameDetail(reader, criteria.MatchId));
                             }
-                        }
-
-                        if (!result[0].GameDetails.Any())
-                        {
-                            result[0].GameDetails.Add(new GameDetail());
-                        }
+                        }                        
                     }
                 }
             }

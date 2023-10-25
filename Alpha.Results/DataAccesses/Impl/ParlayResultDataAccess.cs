@@ -176,7 +176,9 @@
                 RefNo = string.Empty,
                 GameDetails = new List<GameDetail>(),
                 Bettype = GetBetTypeFromToken(reader),
-                BetID = GetBetIDFromToken(reader)
+                BetID = GetBetIDFromToken(reader),
+                LiveHomeScore = reader["livehomescore"] != DBNull.Value ? int.Parse(reader["livehomescore"].ToString()) : new int?(),
+                LiveAwayScore = reader["liveawayscore"] != DBNull.Value ? int.Parse(reader["liveawayscore"].ToString()) : new int?()
             };
 
             return item;
