@@ -215,7 +215,7 @@
       <HintPath>..\packages\Fanex.Result.Core.SexyGaming.2.0.0-beta-02\lib\net461\Fanex.Result.Core.SexyGaming.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.Result.Core.Sportsbook, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Result.Core-Sportsbook.2.0.0-beta-07\lib\net461\Fanex.Result.Core.Sportsbook.dll</HintPath>
+      <HintPath>..\packages\Fanex.Result.Core-Sportsbook.2.0.0-beta-08\lib\net461\Fanex.Result.Core.Sportsbook.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.Result.Core.SportsLottery, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core.SportsLottery.1.0.3\lib\net461\Fanex.Result.Core.SportsLottery.dll</HintPath>
@@ -227,7 +227,7 @@
       <HintPath>..\packages\Fanex.Result.Core.VGaming.1.0.0\lib\net40\Fanex.Result.Core.VGaming.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.Result.Core.WM, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Result.Core.WM.2.0.0-beta-04\lib\net461\Fanex.Result.Core.WM.dll</HintPath>
+      <HintPath>..\packages\Fanex.Result.Core.WM.2.0.0-beta-05\lib\net461\Fanex.Result.Core.WM.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.Result.ThirdParty, Version=1.1.0.8, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.ThirdParty.1.1.0.8\lib\net461\Fanex.Result.ThirdParty.dll</HintPath>
