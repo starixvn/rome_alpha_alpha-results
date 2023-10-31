@@ -6,10 +6,11 @@
     using System.Web.Mvc;
     using System.Web.Optimization;
     using System.Web.Routing;
-    using Alpha.Logging;
     using Alpha.NetThrottling.Mvc;
     using Alpha.NetThrottling.Utils;
     using Alpha.Results.Site.Helpers;
+    using AlphaPlus.Logging;
+    using AlphaPlus.Logging.Web;
     using AlphaPlus.User.Models;
     using App_Start;
     using Auth.Filters;

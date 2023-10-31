@@ -53,9 +53,6 @@
     <Reference Include="Alpha.Auth, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Alpha.Auth.4.0.0-standard2\lib\net461\Alpha.Auth.dll</HintPath>
     </Reference>
-    <Reference Include="Alpha.Logging, Version=1.0.1.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Alpha.Logging.1.0.1.1\lib\net461\Alpha.Logging.dll</HintPath>
-    </Reference>
     <Reference Include="Alpha.NetThrottling, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Alpha.NetThrottling.2.0.0-standard2\lib\net461\Alpha.NetThrottling.dll</HintPath>
     </Reference>
@@ -76,6 +73,12 @@
     </Reference>
     <Reference Include="AlphaPlus.Configurations, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\AlphaPlus.Configurations.1.0.0-beta5\lib\netstandard2.0\AlphaPlus.Configurations.dll</HintPath>
+    </Reference>
+    <Reference Include="AlphaPlus.Logging, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AlphaPlus.Logging.1.0.0-beta2\lib\netstandard2.0\AlphaPlus.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="AlphaPlus.Logging.Web, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AlphaPlus.Logging.Web.1.0.0-beta2\lib\net461\AlphaPlus.Logging.Web.dll</HintPath>
     </Reference>
     <Reference Include="AlphaPlus.PartialUM, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\AlphaPlus.PartialUM.1.0.0-beta2\lib\netstandard2.0\AlphaPlus.PartialUM.dll</HintPath>

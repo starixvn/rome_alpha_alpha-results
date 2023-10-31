@@ -1,12 +1,9 @@
-﻿using Alpha.Logging;
-using Alpha.Results.Site.Handlers;
-using Alpha.Results.Site.Models.Requests;
+﻿using Alpha.Results.Site.Handlers;
 using Alpha.Results.Site.Services;
+using AlphaPlus.Logging;
 using Fanex.Logging.Extensions.Database;
-using Fanex.Result.Core.SabaClub;
 using NSubstitute;
 using NUnit.Framework;
-using System;
 
 namespace Alpha.Results.Site.Tests.Handlers
 {
