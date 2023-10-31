@@ -134,7 +134,7 @@
       <HintPath>..\packages\Fanex.Result.Core-NPOI.2.0.6.2.3.9.5\lib\net40\Fanex.Result.Core.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.Result.Core.Allbet, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Result.Core.AllBetCasino.2.0.0-beta-04\lib\net461\Fanex.Result.Core.Allbet.dll</HintPath>
+      <HintPath>..\packages\Fanex.Result.Core.AllBetCasino.2.0.0-beta-05\lib\net461\Fanex.Result.Core.Allbet.dll</HintPath>
     </Reference>
     </Reference>
     <Reference Include="Fanex.Result.Core.Base, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
