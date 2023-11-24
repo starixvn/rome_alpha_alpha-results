@@ -4,7 +4,7 @@
     using Alpha.Results.Site.Helpers;
     using Alpha.Results.Site.Models.Views;
     using Alpha.Results.Site.Services.Impl;
-    using Alpha.Utilities.IP;
+    using AlphaPlus.Utilities.IP;
     using Fanex.Common.Helper;
     using Fanex.Result.Core.ThirdParty;
     using Fanex.Result.Core.ThirdParty.Models;
