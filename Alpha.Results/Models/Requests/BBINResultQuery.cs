@@ -2,8 +2,8 @@
 {
     using Alpha.Results.Site.Helpers;
     using Alpha.Results.Site.Models.Views;
+    using AlphaPlus.User.Models;
     using MediatR;
-    using Sunplus.Agent.Model.Entities;
 
     public class BBINResultQuery : Result3rdQuery, IRequest<ThirdPartyProductViewModel>
     {

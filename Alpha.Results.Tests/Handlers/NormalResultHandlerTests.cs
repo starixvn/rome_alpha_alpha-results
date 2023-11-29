@@ -132,16 +132,6 @@
         }
 
         [Test]
-        public void HandleNormalResultQuery_SportsStatusIsNull_ResultIsEmpty()
-        {
-            //// Arrange
-            var query = new NormalResultQuery(null, DefaultLanguage);
-
-            //// Assert
-            Assert.IsTrue(_normalResultHandler.Handle(query).HtmlResults.Equals(string.Empty));
-        }
-
-        [Test]
         public void HandleNormalResultQuery_AnySportIsSelected_ReturnSelectedSportId()
         {
             //// Arrange

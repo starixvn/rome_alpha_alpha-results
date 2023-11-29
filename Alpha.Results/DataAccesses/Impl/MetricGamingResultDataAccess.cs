@@ -20,7 +20,7 @@
 
             using (var objDb = ObjectDbFactory.CreateInstance(criteria.GetSettingKey()))
             {
-                using (var reader = objDb.ExecuteReader(criteria.GetSpParams()))
+                using (var reader = objDb.ExecuteReader(criteria))
                 {
                     while (reader.Read())
                     {

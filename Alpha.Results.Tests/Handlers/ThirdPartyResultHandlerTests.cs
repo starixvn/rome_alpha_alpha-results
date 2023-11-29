@@ -4,7 +4,8 @@
     using Alpha.Results.Site.Helpers;
     using Alpha.Results.Site.Services;
     using Alpha.Results.Site.Services.Impl;
-    using Alpha.Utilities.IP;
+    using AlphaPlus.User.Models;
+    using AlphaPlus.Utilities.IP;
     using Fanex.Result.Core.ThirdParty.Models;
     using Fanex.Result.Core.VGaming;
     using Fanex.Result.ThirdParty.Services;
@@ -12,7 +13,6 @@
     using NUnit.Framework;
     using Site.Handlers;
     using Site.Models.Requests;
-    using Sunplus.Agent.Model.Entities;
 
     [TestFixture]
     public class ThirdPartyResultHandlerTests
@@ -106,7 +106,7 @@
                  cardClubResult,
                  ppResult,
                  sportsLotteryResult,
-                 fggResult,                 
+                 fggResult,
                  ipService,
                  virtualGamesDetailResult,
                  sealResult,
@@ -372,7 +372,7 @@
             };
             pgSoftResult.GetResultGET(Arg.Any<ResultRequest>()).Returns("Url result");
             ipHelper.GetClientIP().Returns("172.168.0.0");
-            ipService.GetIPInformation(Arg.Any<string>()).Returns(new Utilities.IP.Models.IPInformationModel());
+            ipService.GetIPInformation(Arg.Any<string>()).Returns(new AlphaPlus.Utilities.IP.Models.IPInformationModel());
             // Act
             var act = handler.Handle(query);
 

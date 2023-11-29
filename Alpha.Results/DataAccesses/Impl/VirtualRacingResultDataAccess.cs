@@ -25,7 +25,7 @@
             var result = new List<Racing>();
             using (var db = ObjectDbFactory.CreateInstance(criteria.GetSettingKey()))
             {
-                using (var reader = db.ExecuteReader(criteria.GetSpParams()))
+                using (var reader = db.ExecuteReader(criteria))
                 {
                     while (reader.Read())
                     {
@@ -48,7 +48,7 @@
 
             using (var db = ObjectDbFactory.CreateInstance(criteria.GetSettingKey()))
             {
-                using (var reader = db.ExecuteReader(criteria.GetSpParams()))
+                using (var reader = db.ExecuteReader(criteria))
                 {
                     while (reader.Read())
                     {

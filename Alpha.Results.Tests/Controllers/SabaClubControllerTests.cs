@@ -1,11 +1,11 @@
 ﻿using System.Web.Mvc;
 using Alpha.Results.Site.Controllers;
 using Alpha.Results.Site.Models.Requests;
+using AlphaPlus.User.Models;
 using MediatR;
 using NSubstitute;
 using NUnit.Core;
 using NUnit.Framework;
-using Sunplus.Agent.Model.Entities;
 
 namespace Alpha.Results.Site.Tests.Controllers
 {

@@ -4,9 +4,10 @@
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
-    using Alpha.PartialUM.DataAccess;
-    using Alpha.PartialUM.Services;
+    using Alpha.PartialUM.Helpers;
     using Alpha.Results.Site.Criteria;
+    using AlphaPlus.PartialUM.DataAccess;
+    using AlphaPlus.PartialUM.Services;
     using Fanex.Data.Repository;
     using Fanex.Result.Core.Base;
     using Fanex.Result.Core.Bitcoin.DTO;
@@ -25,7 +26,7 @@
         {
             _dynamicRepository = dynamicRepository ?? new DynamicRepository();
             _resultEngineAdapter = resultEngineAdapter ?? new ResultEngineAdapter();
-            _partialUMService = partialUMService ?? new PartialUMService(new PartialUMDataAccess());
+            _partialUMService = partialUMService ?? new PartialUMService(new PartialUMDataAccess(), new PartialUMSectionHelper());
         }
 
         public MemoryStream ExportExcel(ExcelNormalResultQuery request)
@@ -37,7 +38,7 @@
                 MoveBetsDay = request.MoveBetsDate
             });
 
-            var bitcoins = BindingGameDetail(result);
+            var bitcoins = BindingGameDetail(result.ToTuple());
             var resultSetting = CreateSetting(isPopup: false, language: request.Language);
             resultSetting.ExcelTitle = request.ExcelTitle;
 
@@ -55,7 +56,7 @@
 
             _partialUMService.ThrowIfUM(criteria.GetSettingKey());
             var result = _dynamicRepository.FetchMultiple<Bitcoin, GameDetail>(criteria);
-            var bitcoins = BindingGameDetail(result);
+            var bitcoins = BindingGameDetail(result.ToTuple());
             var resultSetting = CreateSetting(isPopup: false, language: request.Language);
 
             return _resultEngineAdapter.HtmlParser(bitcoins.ToList(), resultSetting);
@@ -68,7 +69,7 @@
                 MatchId = detailsRequest.MatchId
             });
 
-            var bitcoins = BindingGameDetail(result);
+            var bitcoins = BindingGameDetail(result.ToTuple());
             var resultSetting = CreateSetting(isPopup: true, language: detailsRequest.Language);
 
             return _resultEngineAdapter.HtmlParser(bitcoins.ToList(), resultSetting);

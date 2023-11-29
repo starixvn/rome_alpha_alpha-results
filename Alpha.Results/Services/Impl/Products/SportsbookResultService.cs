@@ -4,10 +4,11 @@
     using System.Diagnostics.CodeAnalysis;
     using System.IO;
     using System.Linq;
-    using Alpha.PartialUM.DataAccess;
-    using Alpha.PartialUM.Services;
+    using Alpha.PartialUM.Helpers;
     using Alpha.Results.Site.Criteria;
     using Alpha.Results.Site.DataAccesses;
+    using AlphaPlus.PartialUM.DataAccess;
+    using AlphaPlus.PartialUM.Services;
     using Constants;
     using DataAccesses.Impl;
     using Fanex.Common.Helper;
@@ -32,7 +33,7 @@
             //// Still using poorman DI here because result service factory need to create it manual
             _dataAccess = dataAccess ?? new SportsbookResultDataAccess();
             _resultEngineAdapter = resultEngineAdapter ?? new ResultEngineAdapter();
-            _partialUMService = partialUMService ?? new PartialUMService(new PartialUMDataAccess());
+            _partialUMService = partialUMService ?? new PartialUMService(new PartialUMDataAccess(), new PartialUMSectionHelper());
         }
 
         [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0", Justification = "Reviewed")]
@@ -143,18 +144,7 @@
 
         private List<Sportsbook> GetScoreInformation(NormalResultDetailsQuery detailsRequest)
         {
-            var criteria = new GetSportsbookResultDetailsCriteria
-            {
-                MatchId = detailsRequest.MatchId,
-                BetType = detailsRequest.BetTypeId,
-                SportType = detailsRequest.SportId,
-                BetId = detailsRequest.BetId,
-                IsViewResultFromBetList = detailsRequest.IsViewResultFromBetList,
-                Handicap2 = detailsRequest.Hdp2,
-                Transdesc = detailsRequest.TransDesc
-            };
-
-            return _dataAccess.GetScoreInformation(criteria);
+            return _dataAccess.GetScoreInformation(detailsRequest);
         }
 
         private static bool HasDetailResult(SportType sportType)

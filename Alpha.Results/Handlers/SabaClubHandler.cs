@@ -27,7 +27,7 @@
             try
             {
                 var service = new SabaClubResult();
-                result = service.GetResult(message.CustId, message.GameRoundId, message.GameId, message.SiteId, message.Language);
+                result = service.GetResult(message.CustId, message.GameRoundId, message.GameId, message.SiteId, message.SportId, message.Language);
                 isSuccess = true;
             }
             catch (Exception ex)

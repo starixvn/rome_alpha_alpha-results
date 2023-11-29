@@ -1,13 +1,13 @@
 ﻿namespace Alpha.Results.Site.Tests.Controllers
 {
     using System;
+    using AlphaPlus.User.Models;
     using MediatR;
     using NSubstitute;
     using NUnit.Framework;
     using Site.Controllers;
     using Site.Helpers;
     using Site.Models.Requests;
-    using Sunplus.Agent.Model.Entities;
 
     [TestFixture]
     public class LotteryControllerTests

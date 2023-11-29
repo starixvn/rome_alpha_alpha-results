@@ -1,6 +1,6 @@
 ﻿using Alpha.Results.Site.Models.Views;
+using AlphaPlus.User.Models;
 using MediatR;
-using Sunplus.Agent.Model.Entities;
 
 namespace Alpha.Results.Site.Models.Requests
 {

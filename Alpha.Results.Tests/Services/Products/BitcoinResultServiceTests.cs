@@ -3,7 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Alpha.PartialUM.Services;
+    using AlphaPlus.PartialUM.Services;
     using Constants;
     using Fanex.Data.Repository;
     using Fanex.Result.Core.Base;
@@ -43,7 +43,7 @@
             var bitcoin = new List<Bitcoin> { new Bitcoin { Match3rdId = 1 } };
             var gameDetails = new List<GameDetail> { new GameDetail { Match3rdId = 1 }, new GameDetail { Match3rdId = 2 } };
             _dynamicRepository.FetchMultiple<Bitcoin, GameDetail>(Arg.Any<GetBitcoinResultDetailsCriteria>()).
-                Returns(new Tuple<IEnumerable<Bitcoin>, IEnumerable<GameDetail>>(bitcoin, gameDetails));
+                Returns((bitcoin, gameDetails));
 
             // Act
             _resultService.GetResultDetails(request);
@@ -63,7 +63,7 @@
             var bitcoin = new List<Bitcoin> { new Bitcoin() };
             var gameDetails = new List<GameDetail>();
             _dynamicRepository.FetchMultiple<Bitcoin, GameDetail>(Arg.Any<GetBitcoinResultDetailsCriteria>()).
-                Returns(new Tuple<IEnumerable<Bitcoin>, IEnumerable<GameDetail>>(bitcoin, gameDetails));
+                Returns((bitcoin, gameDetails));
 
             // Act
             _resultService.GetResultDetails(request);
@@ -82,7 +82,7 @@
             var bitcoin = new List<Bitcoin> { new Bitcoin { Match3rdId = 1 } };
             var gameDetails = new List<GameDetail> { new GameDetail { Match3rdId = 1 }, new GameDetail { Match3rdId = 2 } };
             _dynamicRepository.FetchMultiple<Bitcoin, GameDetail>(Arg.Any<GetBitcoinResultCriteria>()).
-                Returns(new Tuple<IEnumerable<Bitcoin>, IEnumerable<GameDetail>>(bitcoin, gameDetails));
+                Returns((bitcoin, gameDetails));
 
             // Act
             _resultService.GetResult(request);
@@ -100,7 +100,7 @@
             var bitcoin = new List<Bitcoin> { new Bitcoin() };
             var gameDetails = new List<GameDetail>();
             _dynamicRepository.FetchMultiple<Bitcoin, GameDetail>(Arg.Any<GetBitcoinResultCriteria>()).
-                Returns(new Tuple<IEnumerable<Bitcoin>, IEnumerable<GameDetail>>(bitcoin, gameDetails));
+                Returns((bitcoin, gameDetails));
 
             // Act
             _resultService.GetResult(request);
@@ -119,7 +119,7 @@
             var bitcoin = new List<Bitcoin> { new Bitcoin() };
             var gameDetails = new List<GameDetail>();
             _dynamicRepository.FetchMultiple<Bitcoin, GameDetail>(Arg.Any<GetBitcoinResultCriteria>()).
-                Returns(new Tuple<IEnumerable<Bitcoin>, IEnumerable<GameDetail>>(bitcoin, gameDetails));
+                Returns((bitcoin, gameDetails));
 
             // Act
             _resultService.ExportExcel(request);
@@ -138,7 +138,7 @@
             var bitcoin = new List<Bitcoin> { new Bitcoin { Match3rdId = 1 } };
             var gameDetails = new List<GameDetail> { new GameDetail { Match3rdId = 1 }, new GameDetail { Match3rdId = 2 } };
             _dynamicRepository.FetchMultiple<Bitcoin, GameDetail>(Arg.Any<GetBitcoinResultCriteria>()).
-                Returns(new Tuple<IEnumerable<Bitcoin>, IEnumerable<GameDetail>>(bitcoin, gameDetails));
+                Returns((bitcoin, gameDetails));
 
             // Act
             _resultService.ExportExcel(request);

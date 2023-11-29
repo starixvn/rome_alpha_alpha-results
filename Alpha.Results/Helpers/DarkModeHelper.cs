@@ -1,14 +1,14 @@
-﻿namespace Alpha.Results.Site.Helpers
-{
-    using Sunplus.Agent.Model.Entities;
-    using Web.Configurations;
+﻿using AlphaPlus.User.Models;
+using System.Web.Mvc;
 
+namespace Alpha.Results.Site.Helpers
+{
     public static class DarkModeHelper
     {
         public static string GetDarkModeName()
-            => AppSettings.IsOfferDarkMode ? UserSession.Current.DarkModeName : string.Empty;
+            => UserSession.Current.DarkModeName;
 
         public static bool IsDarkMode()
-            => AppSettings.IsOfferDarkMode && !string.IsNullOrWhiteSpace(UserSession.Current.DarkModeName);
+            => !string.IsNullOrWhiteSpace(GetDarkModeName());
     }
 }

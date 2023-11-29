@@ -9,17 +9,20 @@
     using Alpha.NetThrottling.Models;
     using Alpha.NetThrottling.Resolvers;
     using Alpha.NetThrottling.Utils;
-    using Alpha.PartialUM.DataAccess;
-    using Alpha.PartialUM.Services;
+    using Alpha.PartialUM.Helpers;
     using Alpha.Results.Site.Helpers;
-    using Alpha.Utilities.IP;
+    using Alpha.Web.Helpers;
+    using AlphaPlus.PartialUM.DataAccess;
+    using AlphaPlus.PartialUM.Helpers;
+    using AlphaPlus.PartialUM.Services;
+    using AlphaPlus.User.Models;
+    using AlphaPlus.Utilities.IP;
     using DataAccesses;
     using DataAccesses.Impl;
     using Fanex.Caching;
     using Fanex.Data.Repository;
     using Fanex.RemotingRef;
     using Fanex.Result.Core.AllBetCasino;
-    using Fanex.Result.Core.Base.Models;
     using Fanex.Result.Core.Base.Utilities;
     using Fanex.Result.Core.LinkedGames;
     using Fanex.Result.Core.RemotingRef;
@@ -35,16 +38,17 @@
     using SimpleInjector;
     using SimpleInjector.Integration.Web;
     using SimpleInjector.Integration.Web.Mvc;
-    using Sunplus.Agent.Model.Base;
-    using Sunplus.Agent.Model.Entities;
     using ILogger = NetThrottling.Utils.ILogger;
     using Logger = NetThrottling.Utils.Logger;
+    using ResultConfiguration = Fanex.Result.Core.ConfigurationHelper;
 
     public static class DependencyConfig
     {
         [SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", Justification = "Reviewed")]
         public static void Init()
         {
+            UserSession.Init(new HttpContextHelper());
+
             var container = new Container();
             container.Options.DefaultScopedLifestyle = new WebRequestLifestyle();
 
@@ -100,16 +104,17 @@
             container.RegisterSingleton<IRefDataHelper, RefDataHelper>();
             container.RegisterSingleton<ICacheRefService, CacheRefService>();
 
+            container.RegisterSingleton<IPartialUMSectionHelper, PartialUMSectionHelper>();
             container.Register<IResultServiceFactory, ResultServiceFactory>(Lifestyle.Scoped);
             container.Register<IReportDateService, ReportDateService>(Lifestyle.Scoped);
             container.Register<IOutrightResultService, OutrightResultService>(Lifestyle.Scoped);
             container.Register<INormalResultService, NormalResultService>(Lifestyle.Scoped);
-
+            container.Register<ResultConfiguration.IConfigurationHelper, ResultConfiguration.ConfigurationHelper>(Lifestyle.Scoped);
             container.Register<IResultEngineAdapter, ResultEngineAdapter>(Lifestyle.Scoped);
             container.Register<IAllbetResultBuilder, AllbetResultBuilder>(Lifestyle.Scoped);
             container.Register<IRestClient>(() => new RestClient());
             container.Register<ProductResultServiceFactory, ProductResultServiceFactoryImpl>();
-            container.Register<IVirtualGamesResult>(() => new VirtualGamesResult("VirtualGamesResultConfigs"), Lifestyle.Scoped);
+            container.Register<IVirtualGamesResult>(() => new VirtualGamesResult("VirtualGamesResultConfigs", new Fanex.Result.Core.ConfigurationHelper.ConfigurationHelper()), Lifestyle.Scoped);
             container.Register<Helpers.BrowserHelper, Helpers.BrowserHelperImpl>(Lifestyle.Singleton);
             container.Register<ILinkedGamesResult, LinkedGamesResult>(Lifestyle.Scoped);
             container.Register<ISportsLotteryResult, SportsLotteryResult>(Lifestyle.Scoped);
@@ -120,9 +125,9 @@
             container.Register<IAdvantPlayResult>(() => new AdvantPlayResult("AdvantPlayResultConfigs"), Lifestyle.Scoped);
             container.Register<ISerializer, JsonSerializer>(Lifestyle.Scoped);
             container.Register<IVGamingResult, VGamingResult>(Lifestyle.Scoped);
-            container.Register<IKenoResult>(() => new KenoResult("KenoResultConfigs"), Lifestyle.Scoped);
-            container.Register<ILotteryResult>(() => new LotteryResult("LotteryResultConfigs"), Lifestyle.Scoped);
-            container.Register<ITableGameResult>(() => new TableGameResult("TableGameResultConfigs"), Lifestyle.Scoped);
+            container.Register<IKenoResult>(() => new KenoResult("KenoResultConfigs", new Fanex.Result.Core.ConfigurationHelper.ConfigurationHelper()), Lifestyle.Scoped);
+            container.Register<ILotteryResult>(() => new LotteryResult("LotteryResultConfigs", new Fanex.Result.Core.ConfigurationHelper.ConfigurationHelper()), Lifestyle.Scoped);
+            container.Register<ITableGameResult>(() => new TableGameResult("TableGameResultConfigs", new Fanex.Result.Core.ConfigurationHelper.ConfigurationHelper()), Lifestyle.Scoped);
             container.Register<IAdvantPlayMiniResult>(() => new AdvantPlayMiniResult("AdvantPlayMiniResultConfigs"), Lifestyle.Scoped);
             container.Register<IBBINResult>(() => new BBINResult("BBINResultConfigs"), Lifestyle.Scoped);
             container.Register<IRNGCasinoResult>(() => new RNGCasinoResult("RNGCasinoResultConfigs"), Lifestyle.Scoped);
@@ -144,7 +149,7 @@
             container.Register<IMGResult>(() => new MGResult("MGResultConfigs"), Lifestyle.Scoped);
             container.Register<IJiliResult>(() => new JiliResult("JiliResultConfigs"), Lifestyle.Scoped);
             container.Register<IPService, IPServiceImpl>();
-            container.Register<IPHelper, IPHelperImpl>();
+            container.Register<Helpers.IPHelper, IPHelperImpl>();
             container.RegisterPerWebRequest<IPartialUMService, PartialUMService>();
         }
 

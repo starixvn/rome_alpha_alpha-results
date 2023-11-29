@@ -4,6 +4,7 @@
     using System.Collections;
     using System.Collections.Generic;
     using System.Data;
+    using Alpha.Results.Site.Models.Requests;
     using Database.SportsBook;
     using Fanex.Data;
     using Fanex.Result.Core.Sportsbook.DTO;
@@ -149,7 +150,7 @@
         public void GetScoreInformation_EmptyDataReturnFromDb_ReturnsDefaultData()
         {
             // Arrange
-            var criteria = new GetSportsbookResultDetailsCriteria();
+            var request = new NormalResultDetailsQuery();
 
             var dataTable = new DataTable();
             objectDb.ExecuteReader(Arg.Any<Hashtable>()).Returns(dataTable.CreateDataReader());
@@ -157,7 +158,7 @@
             var expectedData = new List<Sportsbook>();
 
             // Act
-            var actualData = dataAccess.GetScoreInformation(criteria);
+            var actualData = dataAccess.GetScoreInformation(request);
 
             // Assert
             Assert.IsTrue(compareLogic.Compare(expectedData, actualData).AreEqual);
@@ -167,10 +168,10 @@
         public void GetScoreInformation_HasData_ReturnsDataFromObjectDb()
         {
             // Arrange
-            var criteria = new GetSportsbookResultDetailsCriteria
+            var request = new NormalResultDetailsQuery
             {
                 BetId = 1,
-                BetType = 1,
+                BetTypeId = 1,
                 MatchId = 70000112,
             };
 
@@ -212,7 +213,7 @@
             };
 
             // Act
-            var actualData = dataAccess.GetScoreInformation(criteria);
+            var actualData = dataAccess.GetScoreInformation(request);
 
             // Assert
             Assert.IsTrue(compareLogic.Compare(expectedData, actualData).AreEqual);

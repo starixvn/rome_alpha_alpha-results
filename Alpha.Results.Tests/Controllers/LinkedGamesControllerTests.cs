@@ -1,11 +1,11 @@
 ﻿namespace Alpha.Results.Site.Tests.Controllers
 {
+    using AlphaPlus.User.Models;
     using MediatR;
     using NSubstitute;
     using NUnit.Framework;
     using Site.Controllers;
     using Site.Models.Requests;
-    using Sunplus.Agent.Model.Entities;
 
     [TestFixture]
     public class LinkedGamesControllerTests

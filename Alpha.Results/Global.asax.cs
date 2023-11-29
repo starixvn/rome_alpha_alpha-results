@@ -6,17 +6,18 @@
     using System.Web.Mvc;
     using System.Web.Optimization;
     using System.Web.Routing;
-    using Alpha.Logging;
     using Alpha.NetThrottling.Mvc;
     using Alpha.NetThrottling.Utils;
     using Alpha.Results.Site.Helpers;
+    using AlphaPlus.Logging;
+    using AlphaPlus.Logging.Web;
+    using AlphaPlus.User.Models;
     using App_Start;
     using Auth.Filters;
     using Configurations;
     using Fanex.Caching;
     using Fanex.Data;
-    using Fanex.Data.CrossCutting.WrappingException;
-    using Fanex.Data.OldConnectionStringProvider;
+    using Fanex.Data.SqlServer;
     using Fanex.Logging.Extensions.Database;
     using Fanex.Logging.Extensions.Web;
     using Fanex.RemotingRef;
@@ -25,11 +26,9 @@
     using ONEbook.UM;
     using ONEbook.UM.AspNetMVC.Filters;
     using ONEbook.UM.Configurations;
-    using ONEbook.UM.Helpers;
     using ONEbook.UM.NETFramework;
     using ONEbook.UM.Services;
     using ONEbook.UM.Transport;
-    using Sunplus.Agent.Model.Entities;
     using Web;
     using Web.Filters;
     using Web.Helpers;
@@ -38,18 +37,18 @@
     {
         protected void Application_Start()
         {
+            AlphaPlus.Configurations.ConfigurationManager.Init(new ConfigurationHelper());
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
+            LoggingConfig.ExceptionHandler = new ExceptionHandlerAdapter();
             LoggingConfig.Init(getDbExceptionInfo: DatabaseInfoGetters.GetDbExceptionInfo);
             DependencyConfig.Init();
 
             DbSettingProviderManager
                 .StartNewSession()
-                .Use(new OldConnectionStringProvider())
-                .UseDefaultDbSettingProvider(resourcePath: AppSettings.StoredProcedurePath, enableWatching: true)
-                .Use((settingKey, commandTimeout) => new WrappingExceptionObjectDb(settingKey, commandTimeout))
+                .WithSqlServer(resourcePath: AppSettings.StoredProcedurePath)
                 .Run();
 
             ShareSession.Init();
@@ -62,7 +61,7 @@
                 .UseConfig(umConfig)
                 .UseCacheService(new UMCacheService(new CacheService()))
                 .UseRestClient(new UMRestClient(umConfig))
-                .UseHttpContext(new HttpContextHelper());
+                .UseHttpContext(new ONEbook.UM.Helpers.HttpContextHelper());
             GlobalFilters.Filters.Add(new CheckUMFilterAttribute(
                 new MaintenanceService(UMClientManager.RestClient, UMClientManager.CacheService, UMClientManager.UMClientConfigs, UMClientManager.HttpContext), null));
 

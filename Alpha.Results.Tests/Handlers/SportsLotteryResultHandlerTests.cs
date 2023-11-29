@@ -2,12 +2,12 @@
 {
     using Alpha.Results.Site.Helpers;
     using Alpha.Results.Site.Services;
+    using AlphaPlus.User.Models;
     using Fanex.Result.Core.SportsLottery;
     using NSubstitute;
     using NUnit.Framework;
     using Site.Handlers;
     using Site.Models.Requests;
-    using Sunplus.Agent.Model.Entities;
 
     [TestFixture]
     public class SportsLotteryResultHandlerTests

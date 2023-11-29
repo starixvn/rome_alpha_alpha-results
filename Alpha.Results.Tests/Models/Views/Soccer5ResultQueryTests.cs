@@ -1,9 +1,8 @@
 ﻿namespace Alpha.Results.Site.Tests.Models.Views
 {
-    using Alpha.Results.Site.Models.Requests;
+    using AlphaPlus.User.Models;
     using NSubstitute;
     using NUnit.Framework;
-    using Sunplus.Agent.Model.Entities;
 
     [TestFixture]
     public class Soccer5ResultQueryTests

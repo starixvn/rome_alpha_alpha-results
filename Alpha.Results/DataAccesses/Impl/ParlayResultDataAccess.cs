@@ -30,7 +30,7 @@
 
             using (var db = ObjectDbFactory.CreateInstance(criteria.GetSettingKey(), 600))
             {
-                using (var reader = db.ExecuteReader(criteria.GetSpParams()))
+                using (var reader = db.ExecuteReader(criteria))
                 {
                     results = GetParlays(reader);
                     List<GameDetail> gameDetails = GetGameDetails(reader);

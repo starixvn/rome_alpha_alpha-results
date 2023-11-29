@@ -1,11 +1,10 @@
 ﻿namespace Alpha.Results.Site.Controllers
 {
     using System.Web.Mvc;
-    using Alpha.Results.Site.Models.Views;
     using Alpha.Results.Site.Services;
+    using AlphaPlus.User.Models;
     using MediatR;
     using Models.Requests;
-    using Sunplus.Agent.Model.Entities;
 
     public class VirtualGamesController : ResultBaseController
     {

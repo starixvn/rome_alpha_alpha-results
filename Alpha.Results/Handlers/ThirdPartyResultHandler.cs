@@ -4,7 +4,7 @@
     using Alpha.Results.Site.Helpers;
     using Alpha.Results.Site.Models.Views;
     using Alpha.Results.Site.Services.Impl;
-    using Alpha.Utilities.IP;
+    using AlphaPlus.Utilities.IP;
     using Fanex.Common.Helper;
     using Fanex.Result.Core.ThirdParty;
     using Fanex.Result.Core.ThirdParty.Models;
@@ -13,7 +13,6 @@
     using MediatR;
     using Models.Requests;
     using Services;
-    using Sunplus.Agent.Model.Common;
 
     public class ThirdPartyResultHandler :
         IRequestHandler<MaxGameResultQuery, ThirdPartyProductViewModel>,
