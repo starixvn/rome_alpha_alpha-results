@@ -43,7 +43,7 @@
                     <div class="form-group">
                         <label class="txt">@Resources.League</label>
                         <div class="dropdown control league-content">
-                            @Html.DropDownListFor(model => model.LeagueId, Model.Leagues, Resources.ShowAllLeagues, new { @class = "form-control", @onchange = "this.form.submit()" })
+                            @Html.DropDownListFor(model => model.LeagueId, Model.Leagues, new { @class = "form-control", @onchange = "this.form.submit()" })
                         </div>
                     </div>
                     <span class="icon-excel" id="excel-btn"></span>
