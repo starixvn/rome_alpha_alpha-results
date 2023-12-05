@@ -1,12 +1,10 @@
 ﻿namespace Alpha.Results.Site.Tests.DataAccesses
 {
     using System;
-    using System.Collections;
     using System.Collections.Generic;
-    using System.Data;
+    using Alpha.Results.Site.Models.Entities;
     using Alpha.Results.Site.Models.Requests;
-    using Database.SportsBook;
-    using Fanex.Data;
+    using Fanex.Data.Repository;
     using Fanex.Result.Core.Sportsbook.DTO;
     using KellermanSoftware.CompareNetObjects;
     using Newtonsoft.Json;
@@ -19,15 +17,12 @@
     public class SportsbookResultDataAccessTests
     {
         private CompareLogic compareLogic;
-        private IObjectDb objectDb;
+        private IDynamicRepository repository;
         private SportsbookResultDataAccess dataAccess;
 
         [OneTimeSetUp]
         public void OneTimeSetUp()
         {
-            DbSettingProviderManager
-                .StartTestingSession()
-                .Run();
         }
 
         [SetUp]
@@ -35,10 +30,8 @@
         {
             compareLogic = new CompareLogic();
 
-            objectDb = Substitute.For<IObjectDb>();
-            ObjectDbFactory.Mock((key, commandTimeout) => objectDb);
-
-            dataAccess = new SportsbookResultDataAccess();
+            repository = Substitute.For<IDynamicRepository>();
+            dataAccess = new SportsbookResultDataAccess(repository);
         }
 
         [Test]
@@ -53,8 +46,11 @@
             // Arrange
             var criteria = new GetSportsbookResultCriteria(DateTime.Now);
 
-            var dataTable = new DataTable();
-            objectDb.ExecuteReader(Arg.Any<Hashtable>()).Returns(dataTable.CreateDataReader());
+            var dataTable = (
+                new List<SportsbookEntity>(),
+                new List<GameDetail>()
+            );
+            repository.FetchMultiple<SportsbookEntity, GameDetail>(Arg.Any<ICriteria>()).Returns(dataTable);
 
             var expectedData = new List<Sportsbook>();
 
@@ -71,8 +67,11 @@
             // Arrange
             var criteria = new GetSportsbookResultCriteria(DateTime.Now);
 
-            var dataReader = SportsBookDatabase.SportsBookResultData.CreateDataReader();
-            objectDb.ExecuteReader(Arg.Any<Hashtable>()).Returns(dataReader);
+            var dataTable = (
+                new List<SportsbookEntity>(),
+                new List<GameDetail>()
+            );
+            repository.FetchMultiple<SportsbookEntity, GameDetail>(Arg.Any<ICriteria>()).Returns(dataTable);
 
             var expectedData = new List<Sportsbook>
             {
@@ -152,8 +151,11 @@
             // Arrange
             var request = new NormalResultDetailsQuery();
 
-            var dataTable = new DataTable();
-            objectDb.ExecuteReader(Arg.Any<Hashtable>()).Returns(dataTable.CreateDataReader());
+            var dataTable = (
+                new List<SportsbookEntity>(),
+                new List<GameDetail>()
+            );
+            repository.FetchMultiple<SportsbookEntity, GameDetail>(Arg.Any<ICriteria>()).Returns(dataTable);
 
             var expectedData = new List<Sportsbook>();
 
@@ -175,8 +177,11 @@
                 MatchId = 70000112,
             };
 
-            var dataReader = SportsBookDatabase.SportsBookResultDetailsData.CreateDataReader();
-            objectDb.ExecuteReader(Arg.Any<Hashtable>()).Returns(dataReader);
+            var dataTable = (
+                new List<SportsbookEntity>(),
+                new List<GameDetail>()
+            );
+            repository.FetchMultiple<SportsbookEntity, GameDetail>(Arg.Any<ICriteria>()).Returns(dataTable);
 
             var expectedData = new List<Sportsbook>
             {
@@ -225,8 +230,11 @@
             // Arrange
             var criteria = new GetBetBuidlerResultDetailsCriteria();
 
-            var dataReader = SportsBookDatabase.BetBuilderResultDetailsData.CreateDataReader();
-            objectDb.ExecuteReader(Arg.Any<Hashtable>()).Returns(dataReader);
+            var dataTable = (
+                new List<SportsbookEntity>(),
+                new List<BetBuilderDetail>()
+            );
+            repository.FetchMultiple<SportsbookEntity, BetBuilderDetail>(Arg.Any<ICriteria>()).Returns(dataTable);
 
             var expectedData = new Sportsbook
             {

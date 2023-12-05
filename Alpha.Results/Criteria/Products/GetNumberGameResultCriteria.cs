@@ -32,7 +32,7 @@ namespace Alpha.Results.Site.Criteria
 
         public override bool IsValid()
         {
-            return FromDate > DateTime.MinValue && LeagueId > 0 && SportType > 0;
+            return FromDate > DateTime.MinValue && LeagueId >= 0 && SportType > 0;
         }
     }
 }

@@ -37,8 +37,7 @@
 
         public override bool IsValid()
         {
-            return FromDate > DateTime.MinValue && SportType
-                > 0 && LeagueId > 0;
+            return FromDate > DateTime.MinValue && SportType > 0 && LeagueId >= 0;
         }
     }
 }

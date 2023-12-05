@@ -26,7 +26,7 @@
         {
             _dynamicRepository = dynamicRepository ?? new DynamicRepository();
             _resultEngineAdapter = resultEngineAdapter ?? new ResultEngineAdapter();
-            _partialUMService = partialUMService ?? new PartialUMService(new PartialUMDataAccess(), new PartialUMSectionHelper());
+            _partialUMService = partialUMService ?? new PartialUMService(new PartialUMDataAccess(_dynamicRepository), new PartialUMSectionHelper());
         }
 
         public MemoryStream ExportExcel(ExcelNormalResultQuery request)

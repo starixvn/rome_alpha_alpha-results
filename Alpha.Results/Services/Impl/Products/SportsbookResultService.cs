@@ -12,6 +12,7 @@
     using Constants;
     using DataAccesses.Impl;
     using Fanex.Common.Helper;
+    using Fanex.Data.Repository;
     using Fanex.Result.Core.Base;
     using Fanex.Result.Core.Sportsbook.DTO;
     using Models.Requests;
@@ -33,7 +34,7 @@
             //// Still using poorman DI here because result service factory need to create it manual
             _dataAccess = dataAccess ?? new SportsbookResultDataAccess();
             _resultEngineAdapter = resultEngineAdapter ?? new ResultEngineAdapter();
-            _partialUMService = partialUMService ?? new PartialUMService(new PartialUMDataAccess(), new PartialUMSectionHelper());
+            _partialUMService = partialUMService ?? new PartialUMService(new PartialUMDataAccess(new DynamicRepository()), new PartialUMSectionHelper());
         }
 
         [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0", Justification = "Reviewed")]

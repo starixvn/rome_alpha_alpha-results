@@ -1,11 +1,9 @@
 ﻿namespace Alpha.Results.Site.Tests.DataAccesses
 {
     using System;
-    using System.Collections;
     using System.Collections.Generic;
-    using System.Data;
-    using Database.Parlay;
-    using Fanex.Data;
+    using Alpha.Results.Site.Models.Entities;
+    using Fanex.Data.Repository;
     using Fanex.Result.Core.Sportsbook.DTO;
     using KellermanSoftware.CompareNetObjects;
     using NSubstitute;
@@ -17,15 +15,12 @@
     public class ParlayResultDataAccessTests
     {
         private CompareLogic compareLogic;
-        private IObjectDb objectDb;
+        private IDynamicRepository repository;
         private ParlayResultDataAccess dataAccess;
 
         [OneTimeSetUp]
         public void OneTimeSetUp()
         {
-            DbSettingProviderManager
-                .StartTestingSession()
-                .Run();
         }
 
         [SetUp]
@@ -33,10 +28,8 @@
         {
             compareLogic = new CompareLogic();
 
-            objectDb = Substitute.For<IObjectDb>();
-            ObjectDbFactory.Mock((key, commandTimeout) => objectDb);
-
-            dataAccess = new ParlayResultDataAccess();
+            repository = Substitute.For<IDynamicRepository>();
+            dataAccess = new ParlayResultDataAccess(repository);
         }
 
         [Test]
@@ -51,8 +44,11 @@
             // Arrange
             var criteria = new GetParlayResultCriteria();
 
-            var dataTable = new DataTable();
-            objectDb.ExecuteReader(Arg.Any<Hashtable>()).Returns(dataTable.CreateDataReader());
+            var rawdata = (
+                new List<SportsbookEntity>(),
+                new List<GameDetail>()
+            );
+            repository.FetchMultiple<SportsbookEntity, GameDetail>(Arg.Any<ICriteria>()).Returns(rawdata);
 
             var expectedData = new List<Parlay> {
                 new Parlay {
@@ -75,8 +71,11 @@
             // Arrange
             var criteria = new GetParlayResultCriteria();
 
-            var dataReader = ParlayDatabase.ParlayResultData.CreateDataReader();
-            objectDb.ExecuteReader(Arg.Any<Hashtable>()).Returns(dataReader);
+            var rawdata = (
+                new List<SportsbookEntity>(),
+                new List<GameDetail>()
+            );
+            repository.FetchMultiple<SportsbookEntity, GameDetail>(Arg.Any<ICriteria>()).Returns(rawdata);
 
             var expectedData = new List<Parlay> {
                 new Parlay {

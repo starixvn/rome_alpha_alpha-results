@@ -2,12 +2,12 @@
 {
     using System;
     using System.Collections.Generic;
+    using Fanex.Data.Repository;
     using Fanex.Result.Core.Base;
     using Fanex.Result.Core.MetricGaming.DTO;
     using NSubstitute;
     using NUnit.Framework;
     using Site.Criteria;
-    using Site.DataAccesses;
     using Site.Models.Requests;
     using Site.Services;
     using Site.Services.Impl.Products;
@@ -16,15 +16,15 @@
     public class MetricGamingResultServiceTests
     {
         private MetricGamingResultService _metricGamingResultService;
-        private IMetricGamingResultDataAccess _metricGamingResultDataAccess;
+        private IDynamicRepository _repository;
         private IResultEngineAdapter _resultEngineAdapter;
 
         [SetUp]
         public void SetUp()
         {
-            _metricGamingResultDataAccess = Substitute.For<IMetricGamingResultDataAccess>();
+            _repository = Substitute.For<IDynamicRepository>();
             _resultEngineAdapter = Substitute.For<IResultEngineAdapter>();
-            _metricGamingResultService = new MetricGamingResultService(_metricGamingResultDataAccess, _resultEngineAdapter);
+            _metricGamingResultService = new MetricGamingResultService(_repository, _resultEngineAdapter);
         }
 
         [Test]
@@ -49,7 +49,7 @@
             _metricGamingResultService.GetResultDetails(query);
 
             //// Assert
-            _metricGamingResultDataAccess.Received().GetResults(
+            _repository.Received().Fetch<MetricGaming>(
                 Arg.Is<GetMetricGamingResultCriteria>(criteria => criteria.BetId == query.BetId
                             && criteria.SportType == query.SportId
                             && criteria.BetType == query.BetTypeId
@@ -73,7 +73,7 @@
                 new MetricGaming()
             };
 
-            _metricGamingResultDataAccess.GetResults(Arg.Any<GetMetricGamingResultCriteria>()).Returns(metricGamingTickets);
+            _repository.Fetch<MetricGaming>(Arg.Any<GetMetricGamingResultCriteria>()).Returns(metricGamingTickets);
 
             //// Act
             _metricGamingResultService.GetResultDetails(query);

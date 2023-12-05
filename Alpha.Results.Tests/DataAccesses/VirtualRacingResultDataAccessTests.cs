@@ -1,11 +1,8 @@
 ﻿namespace Alpha.Results.Site.Tests.DataAccesses
 {
     using System;
-    using System.Collections;
     using System.Collections.Generic;
-    using System.Data;
-    using Alpha.Results.Site.Tests.Database.SportsBook;
-    using Fanex.Data;
+    using Fanex.Data.Repository;
     using Fanex.Result.Core.Racing.DTO;
     using KellermanSoftware.CompareNetObjects;
     using NSubstitute;
@@ -17,15 +14,12 @@
     public class VirtualRacingResultDataAccessTests
     {
         private CompareLogic compareLogic;
-        private IObjectDb objectDb;
+        private IDynamicRepository repository;
         private VirtualRacingResultDataAccess dataAccess;
 
         [OneTimeSetUp]
         public void OneTimeSetUp()
         {
-            DbSettingProviderManager
-                .StartTestingSession()
-                .Run();
         }
 
         [SetUp]
@@ -33,10 +27,8 @@
         {
             compareLogic = new CompareLogic();
 
-            objectDb = Substitute.For<IObjectDb>();
-            ObjectDbFactory.Mock((key, commandTimeout) => objectDb);
-
-            dataAccess = new VirtualRacingResultDataAccess();
+            repository = Substitute.For<IDynamicRepository>();
+            dataAccess = new VirtualRacingResultDataAccess(repository);
         }
 
         [Test]
@@ -51,8 +43,8 @@
             // Arrange
             var criteria = new GetVirtualRacingResultCriteria();
 
-            var dataTable = new DataTable();
-            objectDb.ExecuteReader(Arg.Any<Hashtable>()).Returns(dataTable.CreateDataReader());
+            var dataTable = new List<Racing>();
+            repository.Fetch<Racing>(Arg.Any<ICriteria>()).Returns(dataTable);
 
             var expectedData = new List<Racing>();
 
@@ -75,8 +67,8 @@
             // Arrange
             var criteria = new GetRacingResultDetailsCriteria();
 
-            var dataTable = new DataTable();
-            objectDb.ExecuteReader(Arg.Any<Hashtable>()).Returns(dataTable.CreateDataReader());
+            var dataTable = new List<Racing>();
+            repository.Fetch<Racing>(Arg.Any<ICriteria>()).Returns(dataTable);
 
             var expectedData = new List<Racing>();
 
@@ -93,8 +85,8 @@
             // Arrange
             var criteria = new GetVirtualRacingResultCriteria();
 
-            var dataReader = VirtualRacingDatabase.SportsBookResultData.CreateDataReader();
-            objectDb.ExecuteReader(Arg.Any<Hashtable>()).Returns(dataReader);
+            var dataTable = new List<Racing>();
+            repository.Fetch<Racing>(Arg.Any<ICriteria>()).Returns(dataTable);
 
             var expectedData = new List<Racing>
             {
@@ -131,8 +123,8 @@
             // Arrange
             var criteria = new GetRacingResultDetailsCriteria();
 
-            var dataReader = VirtualRacingDatabase.SportsBookResultDetailData.CreateDataReader();
-            objectDb.ExecuteReader(Arg.Any<Hashtable>()).Returns(dataReader);
+            var dataTable = new List<Racing>();
+            repository.Fetch<Racing>(Arg.Any<ICriteria>()).Returns(dataTable);
 
             var expectedData = new List<Racing>
             {

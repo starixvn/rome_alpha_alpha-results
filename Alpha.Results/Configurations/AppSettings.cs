@@ -6,6 +6,8 @@ namespace Alpha.Results.Site.Configurations
     {
         public static string StoredProcedurePath => ConfigurationManager.GetValue<string>("StoredProcedurePath");
 
+        public static string FanexDataServiceApi => ConfigurationManager.GetValue<string>("FanexDataServiceApi");
+
         public static bool LocalTest => ConfigurationManager.GetValue<string>("LocalTest") == "1";
 
         public static bool Disable151_31 => ConfigurationManager.GetValue<string>("Disable151_31") == "1";
