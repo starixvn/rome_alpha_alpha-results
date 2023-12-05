@@ -1,4 +1,6 @@
-﻿namespace Alpha.Results.Site.Handlers
+﻿using System.Diagnostics.Eventing.Reader;
+
+namespace Alpha.Results.Site.Handlers
 {
     using System;
     using System.Collections.Generic;
@@ -57,11 +59,19 @@
                     : int.Parse(sports.First().Value);
 
                 viewModel.Leagues = GetLeaguesResult(message.ResultDate, viewModel.SportId, moveBetsDate);
-
+              
                 if (viewModel.Leagues.Any(selectItem => selectItem.Value == message.LeagueId.ToString()))
                 {
                     viewModel.LeagueId = message.LeagueId;
                 }
+                else
+                {
+                    int leagueId;
+                    bool tryInt = int.TryParse(viewModel.Leagues.FirstOrDefault().Value, out leagueId);
+                    viewModel.LeagueId = tryInt ? leagueId : 0;
+                }
+              
+              
             }
 
             viewModel.HtmlResults = _normalResultService.GetResults(new NormalResultQuery
