@@ -44,43 +44,30 @@ namespace Alpha.Results.Site.Handlers
             var balanceUpDate = _reportService.GetBalanceUpDate();
             var moveBetsDate = _reportService.GetMoveBetsDate();
             var sports = GetSportsResult(message.ResultDate, message.SportsStatus, moveBetsDate);
+            var leagues = message.SportId > 0 ?
+                    GetLeaguesResult(message.ResultDate, message.SportId, moveBetsDate) :
+                    new List<SelectListItem>();
 
             var viewModel = new NormalResultViewModel
             {
+                SportId = message.SportId,
+                LeagueId = message.LeagueId,
                 ResultDate = message.ResultDate.Date,
                 MinResultDate = balanceUpDate,
-                Sports = sports
+                Sports = sports,
+                Leagues = leagues
             };
-
-            if (viewModel.Sports.Any())
+            
+            if (message.SportId > 0 && message.LeagueId > 0)
             {
-                viewModel.SportId = message.SportId > 0 && sports.Any(sport => sport.Value == message.SportId.ToString())
-                    ? message.SportId
-                    : int.Parse(sports.First().Value);
-
-                viewModel.Leagues = GetLeaguesResult(message.ResultDate, viewModel.SportId, moveBetsDate);
-              
-                if (viewModel.Leagues.Any(selectItem => selectItem.Value == message.LeagueId.ToString()))
+                viewModel.HtmlResults = _normalResultService.GetResults(new NormalResultQuery
                 {
-                    viewModel.LeagueId = message.LeagueId;
-                }
-                else
-                {
-                    int leagueId;
-                    bool tryInt = int.TryParse(viewModel.Leagues.FirstOrDefault().Value, out leagueId);
-                    viewModel.LeagueId = tryInt ? leagueId : 0;
-                }
-              
-              
+                    ResultDate = viewModel.ResultDate,
+                    SportId = viewModel.SportId,
+                    LeagueId = viewModel.LeagueId,
+                    MoveBetsDate = moveBetsDate
+                });
             }
-
-            viewModel.HtmlResults = _normalResultService.GetResults(new NormalResultQuery
-            {
-                ResultDate = viewModel.ResultDate,
-                SportId = viewModel.SportId,
-                LeagueId = viewModel.LeagueId,
-                MoveBetsDate = moveBetsDate
-            });
 
             return viewModel;
         }

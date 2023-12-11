@@ -180,4 +180,7 @@
   <data name="PartialUMAnnouncement" xml:space="preserve">
     <value>เรากำลังอัปเดตฟังก์ชันนี้เพื่อประสบการณ์ที่ดีขึ้น ดังนั้น ฟังก์ชันนี้จึงถูกปิดชั่วคราว ({0} - {1} (GMT+8)) โปรดลองอีกครั้งในภายหลังและขออภัยในความไม่สะดวก</value>
   </data>
+  <data name="PleaseSelect" xml:space="preserve">
+    <value>กรุณาเลือก</value>
+  </data>
 </root>
