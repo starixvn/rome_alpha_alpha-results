@@ -1167,6 +1167,12 @@
     </Content>
     <Content Include="Views\Shared\PartialUM.cshtml" />
     <Content Include="Views\ThirdParty\Index.cshtml" />
+    <Content Include="Web.AppSettings.dr.config">
+      <DependentUpon>Web.AppSettings.config</DependentUpon>
+    </Content>
+    <Content Include="Web.dr.config">
+      <DependentUpon>Web.local.config</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs">
