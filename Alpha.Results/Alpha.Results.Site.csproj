@@ -1332,6 +1332,7 @@
     <Compile Include="Models\Requests\NormalResultDetailsQuery.cs" />
     <Compile Include="Models\Requests\NormalResultQuery.cs" />
     <Compile Include="Models\Requests\OutrightResultQuery.cs" />
+    <Compile Include="Models\Requests\WEResultQuery.cs" />
     <Compile Include="Models\ResultDetailModel.cs" />
     <Compile Include="Models\Sport.cs" />
     <Compile Include="Models\Views\Happy5LinkedGamesViewModel.cs" />
@@ -1371,6 +1372,7 @@
     <Compile Include="Services\Impl\Products\BitcoinResultService.cs" />
     <Compile Include="Services\Impl\TableGameResult.cs" />
     <Compile Include="Services\Impl\LotteryResult.cs" />
+    <Compile Include="Services\Impl\WEResult.cs" />
     <Compile Include="Services\IVirtualGamesResult.cs" />
     <Compile Include="Services\ITableGamesResult.cs" />
     <Compile Include="Services\ILotteryResult.cs" />
