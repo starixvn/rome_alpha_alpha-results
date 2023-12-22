@@ -1172,6 +1172,7 @@
     </Content>
     <Content Include="Web.dr.config">
       <DependentUpon>Web.local.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
