@@ -1174,6 +1174,12 @@
       <DependentUpon>Web.local.config</DependentUpon>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Web.AppSettings.drinternal.config">
+      <DependentUpon>Web.AppSettings.config</DependentUpon>
+    </Content>
+    <Content Include="Web.drinternal.config">
+      <DependentUpon>Web.local.config</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs">
