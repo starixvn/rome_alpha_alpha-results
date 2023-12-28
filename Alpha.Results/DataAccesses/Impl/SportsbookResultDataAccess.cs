@@ -143,6 +143,7 @@
                 IsNeutral = entity.IsNeutral,
                 BetStatus = entity.BetStatus ?? string.Empty,
                 LeagueId = entity.LeagueId,
+                LeagueGroupId = ColumnExisted(reader, "leaguegroupid") ? int.Parse(reader["leaguegroupid"].ToString()) : 0,
                 MatchId = request.MatchId,
                 Color = string.Empty,
                 MatchCode = entity.MatchCode ?? string.Empty,

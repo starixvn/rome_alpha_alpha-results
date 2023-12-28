@@ -88,7 +88,7 @@
         }
 
         [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0", Justification = "Reviewed")]
-        public string GetResultDetails(NormalResultDetailsQuery detailRequest)
+        public ResultDetailModel GetResultDetails(NormalResultDetailsQuery detailRequest)
         {
             Check.Argument.IsNotNull(detailRequest, "detailRequest");
 

@@ -2,6 +2,7 @@
 {
     using System;
     using System.IO;
+    using Alpha.Results.Site.Models;
     using Fanex.Common.Helper;
     using Fanex.Result.Core.WM;
     using Models.Requests;
@@ -25,11 +26,11 @@
             throw new NotImplementedException();
         }
 
-        public string GetResultDetails(NormalResultDetailsQuery detailsRequest)
+        public ResultDetailModel GetResultDetails(NormalResultDetailsQuery detailsRequest)
         {
             Check.Argument.IsNotNull(detailsRequest, "detailsRequest");
 
-            return resultBuilder.Render(detailsRequest.TransDesc, detailsRequest.BetCheck, detailsRequest.BetTypeId, detailsRequest.Language);
+            return new ResultDetailModel(resultBuilder.Render(detailsRequest.TransDesc, detailsRequest.BetCheck, detailsRequest.BetTypeId, detailsRequest.Language));
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿namespace Alpha.Results.Site.Services
 {
     using System.IO;
+    using Alpha.Results.Site.Models;
     using Models.Requests;
 
     public interface IProductResultService
@@ -9,6 +10,6 @@
 
         MemoryStream ExportExcel(ExcelNormalResultQuery request);
 
-        string GetResultDetails(NormalResultDetailsQuery detailsRequest);
+        ResultDetailModel GetResultDetails(NormalResultDetailsQuery detailsRequest);
     }
 }

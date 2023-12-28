@@ -6,6 +6,7 @@
     using System.Linq;
     using Alpha.Results.Site.Criteria;
     using Alpha.Results.Site.DataAccesses;
+    using Alpha.Results.Site.Models;
     using DataAccesses.Impl;
     using Fanex.Common.Helper;
     using Fanex.Result.Core.Base;
@@ -81,7 +82,7 @@
         }
 
         [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0", Justification = "Reviewed")]
-        public string GetResultDetails(NormalResultDetailsQuery detailsRequest)
+        public ResultDetailModel GetResultDetails(NormalResultDetailsQuery detailsRequest)
         {
             Check.Argument.IsNotNull(detailsRequest, "detailsRequest");
 
@@ -105,7 +106,7 @@
             };
             var results = _racingResultDataAccess.GetVirtualRacingResultDetails(criteria);
 
-            return _resultEngineAdapter.HtmlParser(results, resultSetting);
+            return new ResultDetailModel(_resultEngineAdapter.HtmlParser(results, resultSetting));
         }
     }
 }

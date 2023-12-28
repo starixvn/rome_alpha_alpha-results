@@ -33,7 +33,7 @@ namespace Alpha.Results.Site.Services.Impl.Products
             throw new NotImplementedException();
         }
 
-        public string GetResultDetails(NormalResultDetailsQuery detailsRequest)
+        public ResultDetailModel GetResultDetails(NormalResultDetailsQuery detailsRequest)
         {
             if (detailsRequest == null)
             {
@@ -62,7 +62,7 @@ namespace Alpha.Results.Site.Services.Impl.Products
                 HighlightWinnerTeam = true
             };
 
-            return _resultEngineAdapter.HtmlParser(results, resultSetting);
+            return new ResultDetailModel(_resultEngineAdapter.HtmlParser(results, resultSetting));
         }
     }
 }

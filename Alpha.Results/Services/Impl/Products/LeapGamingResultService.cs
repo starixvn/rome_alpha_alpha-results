@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.IO;
+    using Alpha.Results.Site.Models;
     using Fanex.Common.Helper;
     using Fanex.Data.Repository;
     using Fanex.Result.Core.Base;
@@ -30,7 +31,7 @@
             throw new NotImplementedException();
         }
 
-        public string GetResultDetails(NormalResultDetailsQuery detailsRequest)
+        public ResultDetailModel GetResultDetails(NormalResultDetailsQuery detailsRequest)
         {
             Check.Argument.IsNotNull(detailsRequest, "detailsRequest");
 
@@ -42,7 +43,7 @@
             };
 
             var leapgamings = new List<LeapGaming> { new LeapGaming { TransDesc = detailsRequest.TransDesc } };
-            return _resultEngineAdapter.HtmlParser(leapgamings, resultSetting);
+            return new ResultDetailModel(_resultEngineAdapter.HtmlParser(leapgamings, resultSetting));
         }
     }
 }

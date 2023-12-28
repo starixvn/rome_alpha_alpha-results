@@ -5,6 +5,7 @@
     using System.IO;
     using Alpha.Results.Site.Criteria;
     using Alpha.Results.Site.DataAccesses;
+    using Alpha.Results.Site.Models;
     using DataAccesses.Impl;
     using Fanex.Common.Helper;
     using Fanex.Result.Core.Base;
@@ -35,7 +36,7 @@
             throw new NotImplementedException();
         }
 
-        public string GetResultDetails(NormalResultDetailsQuery detailsRequest)
+        public ResultDetailModel GetResultDetails(NormalResultDetailsQuery detailsRequest)
         {
             Check.Argument.IsNotNull(detailsRequest, "detailsRequest");
             var results = new List<Sportsbook> { GetBetBuilder(detailsRequest) };
@@ -52,7 +53,7 @@
                 HighlightWinnerTeam = true
             };
 
-            return _resultEngineAdapter.HtmlParser(results, resultSetting).Replace("original-title", " title ");
+            return new ResultDetailModel(_resultEngineAdapter.HtmlParser(results, resultSetting).Replace("original-title", " title "));
         }
 
         private Sportsbook GetBetBuilder(NormalResultDetailsQuery detailsRequest)

@@ -7,6 +7,8 @@
     using Alpha.PartialUM.Helpers;
     using Alpha.Results.Site.Criteria;
     using Alpha.Results.Site.DataAccesses;
+    using Alpha.Results.Site.Models;
+    using AlphaPlus.Configurations;
     using AlphaPlus.PartialUM.DataAccess;
     using AlphaPlus.PartialUM.Services;
     using Constants;
@@ -61,7 +63,8 @@
                 VisibleDetailedLink = HasDetailResult(sportType),
                 VisibleFreeHeader = true,
                 VisibleMatchCodeIDColumn = false,
-                HighlightWinnerTeam = true
+                HighlightWinnerTeam = true,
+                SupportHideSabaText = AppSettings.IsSiteLabel777
             };
 
             return _resultEngineAdapter.HtmlParser(results, resultSetting).Replace("original-title", " title ");
@@ -102,18 +105,18 @@
         }
 
         [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0", Justification = "Reviewed")]
-        public string GetResultDetails(NormalResultDetailsQuery detailsRequest)
+        public ResultDetailModel GetResultDetails(NormalResultDetailsQuery detailsRequest)
         {
             Check.Argument.IsNotNull(detailsRequest, "detailsRequest");
             List<Sportsbook> results = new List<Sportsbook>();
-            if(detailsRequest.BetTypeId == BetTypeIdConstants.BetBuilder)
+            if (detailsRequest.BetTypeId == BetTypeIdConstants.BetBuilder)
             {
                 results.Add(GetBetBuilder(detailsRequest));
             }
             else
             {
                 results = GetScoreInformation(detailsRequest);
-            }            
+            }
 
             var resultSetting = new ResultSetting
             {
@@ -127,9 +130,10 @@
                 HighlightWinnerTeam = true
             };
 
-            return detailsRequest.IsViewResultFromBetList
+            return new ResultDetailModel(detailsRequest.IsViewResultFromBetList
                 ? _resultEngineAdapter.HtmlParser(results, resultSetting).Replace("original-title", " title ")
-                : _resultEngineAdapter.HtmlGameDetailParser(results[0], resultSetting).Replace("original-title", " title ");
+                : _resultEngineAdapter.HtmlGameDetailParser(results[0], resultSetting).Replace("original-title", " title "),
+                results);
         }
 
         private Sportsbook GetBetBuilder(NormalResultDetailsQuery detailsRequest)

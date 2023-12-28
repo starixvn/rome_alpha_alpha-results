@@ -84,6 +84,7 @@
                 BetStatus = entity.BetStatus ?? string.Empty,
                 LeagueId = entity.LeagueId,
                 MatchId = entity.MatchId,
+                LeagueGroupId = entity.LeagueGroupid,
                 EventStatus = entity.EventStatus ?? string.Empty,
                 FinalAwayScore = entity.FinalAwayScore,
                 HtAwayScore = entity.HtAwayScore,

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
+using Alpha.Results.Site.Models;
 using Alpha.Results.Site.Models.Requests;
 using Fanex.Common.Helper;
 using Fanex.Result.Core.GTCasino;
@@ -27,11 +28,11 @@ namespace Alpha.Results.Site.Services.Impl.Products
         }
 
         [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0", Justification = "Reviewed")]
-        public string GetResultDetails(NormalResultDetailsQuery detailsRequest)
+        public ResultDetailModel GetResultDetails(NormalResultDetailsQuery detailsRequest)
         {
             Check.Argument.IsNotNull(detailsRequest, "detailsRequest");
 
-            return gTCasinoResultBuilder.Render(detailsRequest.TransDesc, detailsRequest.BetCheck, detailsRequest.BetTypeId.ToString(), detailsRequest.Language);
+            return new ResultDetailModel(gTCasinoResultBuilder.Render(detailsRequest.TransDesc, detailsRequest.BetCheck, detailsRequest.BetTypeId.ToString(), detailsRequest.Language));
         }
     }
 }
