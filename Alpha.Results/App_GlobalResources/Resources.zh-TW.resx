@@ -180,4 +180,7 @@
   <data name="PartialUMAnnouncement" xml:space="preserve">
     <value>我們正在更新此功能以獲得更好的體驗。因此，此功能將暫時關閉（{0} - {1}）。請稍後再試，給您帶來不便,敬請諒解。</value>
   </data>
+  <data name="PleaseSelect" xml:space="preserve">
+    <value>請選擇</value>
+  </data>
 </root>

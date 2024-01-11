@@ -183,4 +183,7 @@
   <data name="PartialUMAnnouncement" xml:space="preserve">
     <value>We're updating this function for a better experience. Thus, this function is turned off temporarily ({0} - {1} (GMT+8)). Please try again later and sorry for the inconvenience.</value>
   </data>
+  <data name="PleaseSelect" xml:space="preserve">
+    <value>Please Select</value>
+  </data>
 </root>

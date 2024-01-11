@@ -46,5 +46,7 @@
         public int LeagueId { get; set; }
 
         public string HtmlResults { get; set; }
+
+        public bool HasInformation => !string.IsNullOrEmpty(HtmlResults);
     }
 }
