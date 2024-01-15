@@ -1072,6 +1072,7 @@
     <Content Include="App_Data\Fanex.Result\Football.xls" />
     <Content Include="App_Data\Fanex.Result\Bandy.xls" />
     <Content Include="App_Data\Fanex.Result\BeachSoccer.xls" />
+    <Content Include="App_Data\Fanex.Result\Kabaddi.xls" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
