@@ -12,7 +12,6 @@ var normalResult =
     {
         txtResultDate: null,
         btnOtherDay: null,
-        btnSubmit: null,
         txtToday: null,
         txtMinResultDate: null,
         dpkContainer: null,
@@ -28,8 +27,8 @@ var normalResult =
         resultDetailTitle: null,
         loadingImage: null
     },
+    
     init: function () {
-
         normalResult.cacheElements();
         normalResult.registerEvents();
 
@@ -61,7 +60,6 @@ var normalResult =
     cacheElements: function () {
         normalResult.domElements.txtResultDate = $('#ResultDate');
         normalResult.domElements.btnOtherDay = $('.btn-other-day');
-        normalResult.domElements.btnSubmit = $('.btn-submit');
         normalResult.domElements.txtMinResultDate = $('#MinResultDate');
         normalResult.domElements.dpkContainer = $('#dpkContainer');
         normalResult.domElements.mainResult = $('#main-result');
@@ -81,20 +79,20 @@ var normalResult =
             minDate: normalResult.domElements.txtMinResultDate.val(),
             allowInputToggle: true
         }).data("DateTimePicker").maxDate(normalResult.domElements.txtToday.val());
-
-        normalResult.domElements.ddlSports.select2();
-        normalResult.domElements.ddlLeagues.select2();
         
-        normalResult.domElements.btnSubmit
-            .off('click.normalResult')
-            .on('click.normalResult', function () {
-                normalResult.domElements.ddlLeagues.val("");
-                normalResult.domElements.ddlSports.val("");
-            });
-
+        normalResult.domElements.dpkContainer.on('dp.change', function (e) {
+            $.blockUI();
+            normalResult.domElements.ddlLeagues.val("");
+            normalResult.domElements.ddlSports.val("");
+            normalResult.domElements.filterForm.submit();
+        });
+        normalResult.domElements.ddlSports.select2();
+        normalResult.domElements.ddlLeagues.select2();        
+       
         normalResult.domElements.btnOtherDay
             .off('click.normalResult')
             .on('click.normalResult', function () {
+                $.blockUI();
                 var $this = $(this);
 
                 normalResult.domElements.dpkContainer.data("DateTimePicker").date($this.attr('value'));
@@ -105,7 +103,15 @@ var normalResult =
         normalResult.domElements.ddlSports
             .off('change.normalResult')
             .on('change.normalResult', function () {
+                $.blockUI();
                 normalResult.domElements.ddlLeagues.val(normalResult.domElements.ddlLeagues.find('option:first').val());
+                normalResult.domElements.filterForm.submit();
+            });
+
+        normalResult.domElements.ddlLeagues
+            .off('change.normalResult')
+            .on('change.normalResult', function () {
+                $.blockUI();                
                 normalResult.domElements.filterForm.submit();
             });
 
