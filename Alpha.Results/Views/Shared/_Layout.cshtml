@@ -3,6 +3,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@Html.Raw(ViewBag.Title)</title>
+    @StaticResources.AssetStyles.RenderCommonWithDarkMode("/bundles/common/common")
     @Alpha.Web.Helpers.StaticResources.AssetStyles.RenderWithRoleAndDarkMode("/bundles/site-results/")
     @Styles.Render($"~/bundle/styles/resultcore{Alpha.Results.Site.Helpers.DarkModeHelper.GetDarkModeName()}")
     @RenderSection("Styles", false)
@@ -26,7 +27,7 @@
     </div>
 
     @Html.Hidden("RootURL", HttpContext.Current.Response.ApplyAppPathModifier("~/"))
-
+    @StaticResources.AssetScripts.RenderCommon("/bundles/common/common")
     @Alpha.Web.Helpers.StaticResources.AssetScripts.Render("/bundles/site-results/default")
     @Alpha.Web.Helpers.StaticResources.AssetScripts.RenderCommon("/bundles/common/ajaxSetup")
     @RenderSection("Scripts", false)

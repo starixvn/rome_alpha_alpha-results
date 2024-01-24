@@ -9,9 +9,6 @@
   .ifr-result > body {
     background: #171717; }
 
-.ng2-container {
-  overflow: hidden; }
-
 .tab-content {
   padding: 16px 0; }
   .tab-content .control {
@@ -42,6 +39,8 @@
       position: absolute;
       right: 10px;
       top: 13px; }
+  .tab-content .filter .form-group .league-content {
+    width: 300px; }
   .tab-content .dropdown .btn {
     font-weight: normal; }
   .tab-content .league-content {
@@ -55,12 +54,6 @@
     cursor: pointer;
     font-size: 20px;
     color: #1f7244; }
-  .tab-content .ng2 {
-    position: absolute;
-    left: 0;
-    top: 42px;
-    bottom: 0;
-    right: 0; }
 
 .main-content .fn-rs-content-header {
   padding-right: 0;
@@ -320,6 +313,10 @@ table {
   background-size: cover;
   display: inline-block;
   cursor: pointer; }
+
+.filter {
+  z-index: unset;
+  padding-top: 0; }
 
 @media only screen and (max-device-width: 768px) {
   .partial-um-announcement {

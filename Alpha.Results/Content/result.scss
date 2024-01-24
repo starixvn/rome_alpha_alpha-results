@@ -34,7 +34,7 @@ body {
             width: 130px;
         }
     }
-    
+
     .btn {
         font-size: 13px;
     }
@@ -43,7 +43,10 @@ body {
         [class^="col-"] {
             margin-bottom: 15px;
         }
-        .main-option { margin-bottom: 0; }
+
+        .main-option {
+            margin-bottom: 0;
+        }
 
         .txt-red {
             color: #f00;
@@ -51,7 +54,10 @@ body {
 
         .form-group {
             display: inline-block;
-            label { font-weight: normal; }
+
+            label {
+                font-weight: normal;
+            }
         }
 
         .sport-info {
@@ -67,6 +73,10 @@ body {
                     top: 13px;
                 }
             }
+        }
+
+        .form-group .league-content {
+            width: 300px
         }
     }
 
@@ -413,6 +423,10 @@ table {
     cursor: pointer;
 }
 
+.filter {
+    z-index: unset;
+    padding-top: 0;
+}
 @media only screen and (max-device-width: 768px) {
     .partial-um-announcement {
         font-size: $font-size + 7;
