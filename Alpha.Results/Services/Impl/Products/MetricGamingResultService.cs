@@ -4,6 +4,7 @@ namespace Alpha.Results.Site.Services.Impl.Products
     using System.IO;
     using System.Linq;
     using Alpha.Results.Site.Criteria;
+    using Alpha.Results.Site.Models;
     using Fanex.Data.Repository;
     using Fanex.Result.Core.Base;
     using Fanex.Result.Core.MetricGaming.DTO;

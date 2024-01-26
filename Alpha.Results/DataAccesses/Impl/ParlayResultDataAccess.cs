@@ -40,6 +40,7 @@
         {
             var results = new List<Parlay>();
             var leagueId = 0;
+            var leagueGroupId = 0;
             var sportId = 0;
             var sportbooks = new List<Sportsbook>();
 
@@ -47,6 +48,7 @@
             {
                 var newLeagueId = entity.LeagueId;
                 var newsportId = entity.SportType;
+                var newLeagueGroupId = entity.LeagueGroupId;
 
                 if (leagueId != newLeagueId && leagueId > 0)
                 {
@@ -55,6 +57,7 @@
                         SportId = sportId,
                         LeagueId = leagueId,
                         Sportbook = sportbooks,
+                        LeagueGroupId = leagueGroupId
                     });
                     sportbooks = new List<Sportsbook>();
                 }
@@ -63,12 +66,14 @@
 
                 leagueId = newLeagueId;
                 sportId = newsportId;
+                leagueGroupId = newLeagueGroupId;
             }
 
             results.Add(new Parlay
             {
                 SportId = sportId,
                 LeagueId = leagueId,
+                LeagueGroupId = leagueGroupId,
                 Sportbook = sportbooks
             });
 
@@ -84,7 +89,7 @@
                 BetStatus = entity.BetStatus ?? string.Empty,
                 LeagueId = entity.LeagueId,
                 MatchId = entity.MatchId,
-                LeagueGroupId = entity.LeagueGroupid,
+                LeagueGroupId = entity.LeagueGroupId,
                 EventStatus = entity.EventStatus ?? string.Empty,
                 FinalAwayScore = entity.FinalAwayScore,
                 HtAwayScore = entity.HtAwayScore,

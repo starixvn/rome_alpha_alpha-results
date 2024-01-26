@@ -28,6 +28,7 @@
         public string Lcolor { get; set; }
         public int MatchId { get; set; }
         public int LeagueId { get; set; }
+        public int LeagueGroupId { get; set; }        
         public string BetStatus { get; set; }
         public int? FinalAwayScore { get; set; }
         public bool NoHTScore { get; set; }
