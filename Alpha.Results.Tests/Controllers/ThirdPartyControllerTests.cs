@@ -321,5 +321,18 @@
             // Assert
             mediator.Received().Send(Arg.Any<JiliResultQuery>());
         }
+
+        [Test]
+        public void Live22Result_Always_CallsMediatorSendLive22ResultQuery()
+        {
+            // Arrange
+            var query = new Live22ResultQuery(userSession);
+
+            // Act
+            controller.Live22Result(query);
+
+            // Assert
+            mediator.Received().Send(Arg.Any<Live22ResultQuery>());
+        }
     }
 }

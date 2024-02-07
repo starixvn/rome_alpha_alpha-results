@@ -85,5 +85,8 @@
         => View(IndexView, mediator.Send(message));
         public ActionResult JiliResult(JiliResultQuery message)
         => View(IndexView, mediator.Send(message));
+
+        public ActionResult Live22Result(Live22ResultQuery message)
+            => View(IndexView, mediator.Send(message));
     }
 }

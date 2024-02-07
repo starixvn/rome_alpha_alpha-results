@@ -39,7 +39,8 @@
         IRequestHandler<VirtualGamesDetailResultQuery, ThirdPartyProductViewModel>,
         IRequestHandler<SEALResultQuery, ThirdPartyProductViewModel>,
         IRequestHandler<MGResultQuery, ThirdPartyProductViewModel>,
-        IRequestHandler<JiliResultQuery, ThirdPartyProductViewModel>
+        IRequestHandler<JiliResultQuery, ThirdPartyProductViewModel>,
+        IRequestHandler<Live22ResultQuery, ThirdPartyProductViewModel>
     {
         private readonly ICacheRefService cacheRefService;
         private readonly IMaxGameResult maxGameService;
@@ -70,6 +71,7 @@
         private readonly ProductResultServiceFactory serviceFactory;
         private readonly IMGResult mgResult;
         private readonly IJiliResult jiliResult;
+        private readonly ILive22Result live22Result;
         private readonly IPHelper ipHelper;
 
         public ThirdPartyResultHandler(
@@ -101,6 +103,7 @@
             ISEALResult sealResult,
             IMGResult mgResult,
             IJiliResult jiliResult,
+            ILive22Result live22Result,
             BrowserHelper browserHelper,
             IPHelper ipHelper)
         {
@@ -134,6 +137,7 @@
             this.ipHelper = ipHelper;
             this.mgResult = mgResult;
             this.jiliResult = jiliResult;
+            this.live22Result = live22Result;
         }
 
         public ThirdPartyProductViewModel Handle(MGResultQuery message)
@@ -264,5 +268,8 @@
 
         public ThirdPartyProductViewModel Handle(JiliResultQuery message)
             => Handle(message, jiliResult);
+
+        public ThirdPartyProductViewModel Handle(Live22ResultQuery message)
+            => Handle(message, live22Result);
     }
 }

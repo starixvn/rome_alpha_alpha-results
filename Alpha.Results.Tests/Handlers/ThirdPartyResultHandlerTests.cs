@@ -44,6 +44,7 @@
         private IFGGResult fggResult;
         private IMGResult mgResult;
         private IJiliResult jiliResult;
+        private ILive22Result live22Result;
         private IPService ipService;
         private IVirtualGamesDetailResult virtualGamesDetailResult;
         private ISEALResult sealResult;
@@ -81,6 +82,7 @@
             sealResult = Substitute.For<ISEALResult>();
             mgResult = Substitute.For<IMGResult>();
             jiliResult = Substitute.For<IJiliResult>();
+            live22Result = Substitute.For<ILive22Result>();
             virtualGamesDetailResult = Substitute.For<IVirtualGamesDetailResult>();
             serviceFactory = Substitute.For<ProductResultServiceFactory>();
             ipHelper = Substitute.For<IPHelper>();
@@ -112,6 +114,7 @@
                  sealResult,
                  mgResult,
                  jiliResult,
+                 live22Result,
                  browserHelper,
                  ipHelper);
 
@@ -598,6 +601,27 @@
                 EndTime = DateTime.Today.ToString()
             };
             jiliResult.GetResultGET(Arg.Any<ResultRequest>()).Returns("Url result");
+
+            // Act
+            var act = handler.Handle(query);
+
+            // Assert
+            Assert.AreEqual("Product1 Result", act.Title);
+            Assert.AreEqual("Url result", act.Result);
+        }
+
+        [Test]
+        public void Live22ResultQuery_Always_CallGetResult()
+        {
+            // Arrange
+            var query = new Live22ResultQuery(userSession)
+            {
+                ProductId = 1,
+                BetType = 1,
+                EndTime = DateTime.Today.ToString()
+            };
+
+            live22Result.GetResultGET(Arg.Any<ResultRequest>()).Returns("Url result");
 
             // Act
             var act = handler.Handle(query);
