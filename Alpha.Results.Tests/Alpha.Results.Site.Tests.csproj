@@ -72,13 +72,13 @@
       <HintPath>..\packages\AlphaPlus.Logging.Web.1.0.0\lib\net461\AlphaPlus.Logging.Web.dll</HintPath>
     </Reference>
     <Reference Include="AlphaPlus.PartialUM, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\AlphaPlus.PartialUM.1.0.0\lib\netstandard2.0\AlphaPlus.PartialUM.dll</HintPath>
+      <HintPath>..\packages\AlphaPlus.PartialUM.1.0.0.1\lib\netstandard2.0\AlphaPlus.PartialUM.dll</HintPath>
     </Reference>
-    <Reference Include="AlphaPlus.User.Models, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\AlphaPlus.User.Models.1.0.0\lib\netstandard2.0\AlphaPlus.User.Models.dll</HintPath>
+    <Reference Include="AlphaPlus.User.Models, Version=1.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AlphaPlus.User.Models.1.1.1\lib\netstandard2.0\AlphaPlus.User.Models.dll</HintPath>
     </Reference>
     <Reference Include="AlphaPlus.Utilities.IP, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\AlphaPlus.Utilities.IP.1.0.0\lib\netstandard2.0\AlphaPlus.Utilities.IP.dll</HintPath>
+      <HintPath>..\packages\AlphaPlus.Utilities.IP.1.0.0.1\lib\netstandard2.0\AlphaPlus.Utilities.IP.dll</HintPath>
     </Reference>
     <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
       <HintPath>..\packages\BouncyCastle.Cryptography.2.2.1\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
@@ -102,11 +102,8 @@
     <Reference Include="Fanex.Common, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Common.1.1.0.1\lib\net40\Fanex.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Fanex.Data, Version=4.2.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Data.4.2.2\lib\net461\Fanex.Data.dll</HintPath>
-    </Reference>
-    <Reference Include="Fanex.Data.Repository, Version=4.2.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Data.Repository.4.2.2\lib\net461\Fanex.Data.Repository.dll</HintPath>
+    <Reference Include="Fanex.Data.ProxyClient, Version=0.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Data.ProxyClient.0.0.3-alpha02\lib\netstandard2.0\Fanex.Data.ProxyClient.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.Logging, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Logging.2.0.1\lib\net461\Fanex.Logging.dll</HintPath>
@@ -114,9 +111,6 @@
     <Reference Include="Fanex.Logging.Extensions, Version=1.0.6.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Logging.Extensions.1.0.6\lib\net461\Fanex.Logging.Extensions.dll</HintPath>
       <Private>True</Private>
-    </Reference>
-    <Reference Include="Fanex.Logging.Extensions.Database, Version=1.0.8.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Logging.Extensions.Database.1.0.8\lib\net461\Fanex.Logging.Extensions.Database.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.Logging.Extensions.Web, Version=1.0.8.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Logging.Extensions.Web.1.0.8\lib\net461\Fanex.Logging.Extensions.Web.dll</HintPath>
@@ -257,8 +251,8 @@
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="NPOI.Core, Version=2.6.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
       <HintPath>..\packages\NPOI.2.6.1\lib\netstandard2.0\NPOI.Core.dll</HintPath>
@@ -463,7 +457,6 @@
     <Compile Include="Criteria\GetParlayResultCriteriaTests.cs" />
     <Compile Include="Criteria\GetRacingResultDetailsCriteriaTests.cs" />
     <Compile Include="Criteria\GetSportsbookResultDetailsCriteriaTests.cs" />
-    <Compile Include="DataAccesses\MetricGamingResultDataAccessTests.cs" />
     <Compile Include="DataAccesses\NumberGameResultDataAccessTests.cs" />
     <Compile Include="DataAccesses\ParlayResultDataAccessTests.cs" />
     <Compile Include="DataAccesses\SportsbookResultDataAccessTests.cs" />

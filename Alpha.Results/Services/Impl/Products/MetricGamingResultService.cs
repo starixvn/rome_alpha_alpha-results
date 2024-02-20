@@ -2,24 +2,24 @@ namespace Alpha.Results.Site.Services.Impl.Products
 {
     using System;
     using System.IO;
+    using System.Linq;
     using Alpha.Results.Site.Criteria;
-    using DataAccesses;
-    using DataAccesses.Impl;
-    using Fanex.Result.Core;
+    using Fanex.Data.Repository;
     using Fanex.Result.Core.Base;
+    using Fanex.Result.Core.MetricGaming.DTO;
     using Models.Requests;
 
     public class MetricGamingResultService : IProductResultService
     {
-        private readonly IMetricGamingResultDataAccess _dataAccess;
+        private readonly IDynamicRepository _repository;
         private readonly IResultEngineAdapter _resultEngineAdapter;
 
         public MetricGamingResultService(
-            IMetricGamingResultDataAccess dataAccess = null,
+            IDynamicRepository repository = null,
             IResultEngineAdapter resultEngineAdapter = null)
         {
             //// Still using poorman DI here because result service factory need to create it manual
-            _dataAccess = dataAccess ?? new MetricGamingResultDataAccess();
+            _repository = repository ?? new DynamicRepository();
             _resultEngineAdapter = resultEngineAdapter ?? new ResultEngineAdapter();
         }
 
@@ -48,7 +48,7 @@ namespace Alpha.Results.Site.Services.Impl.Products
                 SportType = detailsRequest.SportId
             };
 
-            var results = _dataAccess.GetResults(criteria);
+            var results = _repository.Fetch<MetricGaming>(criteria).ToList();
 
             var resultSetting = new ResultSetting
             {

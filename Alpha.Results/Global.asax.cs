@@ -2,6 +2,8 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Configuration;
+    using System.Linq;
     using System.Web;
     using System.Web.Mvc;
     using System.Web.Optimization;
@@ -17,8 +19,6 @@
     using Configurations;
     using Fanex.Caching;
     using Fanex.Data;
-    using Fanex.Data.SqlServer;
-    using Fanex.Logging.Extensions.Database;
     using Fanex.Logging.Extensions.Web;
     using Fanex.RemotingRef;
     using Fanex.Result.Core.Base;
@@ -42,18 +42,25 @@
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            LoggingConfig.ExceptionHandler = new ExceptionHandlerAdapter();
-            LoggingConfig.Init(getDbExceptionInfo: DatabaseInfoGetters.GetDbExceptionInfo);
-            DependencyConfig.Init();
-
+            var connectionStrings = ConfigurationManager.ConnectionStrings
+                .Cast<ConnectionStringSettings>()
+                .ToDictionary(
+                    connection => connection.Name,
+                    connection => new ConnectionConfiguration(connection.Name, connection.ConnectionString, connection.ProviderName),
+                    StringComparer.OrdinalIgnoreCase);
             DbSettingProviderManager
                 .StartNewSession()
-                .WithSqlServer(resourcePath: AppSettings.StoredProcedurePath)
+                .Use(connectionStrings)
+                .Use(AppSettings.FanexDataServiceApi)
+                .Register(resourcePath: AppSettings.StoredProcedurePath)
                 .Run();
 
+            LoggingConfig.ExceptionHandler = new ExceptionHandlerAdapter();
+            LoggingConfig.Init();
+
+            DependencyConfig.Init();
             ShareSession.Init();
             StaticResources.Init(StaticResources.GetBuildVersion());
-
             GlobalFilters.Filters.Add(new NetThrottlingFilterAttribute(isUsedRedis: false));
 
             var umConfig = new UMClientConfiguration().Initialize();

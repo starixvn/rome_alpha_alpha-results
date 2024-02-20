@@ -1,54 +1,38 @@
 ﻿namespace Alpha.Results.Site.DataAccesses.Impl
 {
-    using Alpha.Results.Site.Models.Requests;
-    using Criteria;
-    using DataAccesses;
-    using Fanex.Data;
-    using Fanex.Result.Core.Sportsbook.DTO;
     using System;
     using System.Collections.Generic;
     using System.Data;
     using System.Linq;
+    using Alpha.Results.Site.Models.Entities;
+    using Alpha.Results.Site.Models.Requests;
+    using Criteria;
+    using DataAccesses;
+    using Fanex.Data.Repository;
+    using Fanex.Result.Core.Sportsbook.DTO;
 
-    /// <summary>
-    /// The class SportsBookResultDataAccess.
-    /// </summary>
     public class SportsbookResultDataAccess : ISportsbookResultDataAccess
     {
-        public Sportsbook GetBetBuilderInformation(GetBetBuidlerResultDetailsCriteria criteria)
+        private readonly IDynamicRepository _repository;
+
+        public SportsbookResultDataAccess(IDynamicRepository repository = null)
         {
-            var results = new Sportsbook();
-            using (var db = ObjectDbFactory.CreateInstance(criteria.GetSettingKey()))
-            {
-                using (var reader = db.ExecuteReader(criteria))
-                {
-                    while (reader.Read())
-                    {
-                        results = BindSportbook(reader);
-                    }
-
-                    if (reader.NextResult())
-                    {
-                        while (reader.Read())
-                        {
-                            results.BetBuilderDetails.Add(new BetBuilderDetail
-                            {
-                                SelectionType = int.Parse(reader["SelectionType"].ToString()),
-                                Result = reader["Result"].ToString()
-                            });
-                        }
-                    }
-                }
-            }
-
-            return results;
+            _repository = repository ?? new DynamicRepository();
         }
 
-        /// <summary>
-        /// Get SPORTBOOK result.
-        /// </summary>
-        /// <param name="criteria">The criterion.</param>
-        /// <returns>The SPORTBOOK data.</returns>
+        public Sportsbook GetBetBuilderInformation(GetBetBuidlerResultDetailsCriteria criteria)
+        {
+            var rawdata = _repository.FetchMultiple<SportsbookEntity, BetBuilderDetail>(criteria);
+            var sportsbook = rawdata.Item1.Select(sb => BindSportbook(sb)).FirstOrDefault();
+
+            if (sportsbook != null)
+            {
+                sportsbook.BetBuilderDetails = rawdata.Item2.ToList();
+            }
+
+            return sportsbook;
+        }
+
         public IList<Sportsbook> GetSportbookResults(GetSportsbookResultCriteria criteria)
         {
             if (criteria == null)
@@ -57,112 +41,48 @@
             }
 
             var results = new List<Sportsbook>();
-            var gameDetails = new List<GameDetail>();
-            using (var db = ObjectDbFactory.CreateInstance(criteria.GetSettingKey()))
-            {
-                using (var reader = db.ExecuteReader(criteria))
-                {
-                    while (reader.Read())
-                    {
-                        results.Add(BindSportbook(reader));
-                    }
+            var rawdata = _repository.FetchMultiple<SportsbookEntity, GameDetail>(criteria);
+            var sportsbooks = rawdata.Item1;
+            var gameDetails = rawdata.Item2;
 
-                    if (reader.NextResult())
-                    {
-                        while (reader.Read())
-                        {
-                            gameDetails.Add(new GameDetail
-                            {
-                                MatchId = reader["matchid"] != DBNull.Value ? int.Parse(reader["matchid"].ToString()) : 0,
-                                ResourceId = reader["ResourceId"] != DBNull.Value ? reader["ResourceId"].ToString() : string.Empty,
-                                HomeValue = reader["HomeValue"] != DBNull.Value ? reader["HomeValue"].ToString() : string.Empty,
-                                AwayValue = reader["AwayValue"] != DBNull.Value ? reader["AwayValue"].ToString() : string.Empty,
-                                SettlementStatusID = reader["SettlementStatusID"] != DBNull.Value ? int.Parse(reader["SettlementStatusID"].ToString()) : 0
-                            });
-                        }
-                    }
-                }
-            }
-
-            foreach (var result in results)
+            rawdata.Item1.Select(sb => BindSportbook(sb)).ToList().ForEach(sb =>
             {
-                result.GameDetails = gameDetails
-                    .Where(i => i.MatchId == result.MatchId)
-                    .ToList();
-            }
+                sb.GameDetails = gameDetails.Where(i => i.MatchId == sb.MatchId).ToList();
+                results.Add(sb);
+            });
 
             return results;
         }
 
-        /// <summary>
-        /// Bind data from IDATAREADER to DTO.
-        /// </summary>
-        /// <param name="reader">The IDATAREADER.</param>
-        /// <returns>The SPORTBOOK DTO.</returns>
-        private Sportsbook BindSportbook(IDataReader reader)
+        private static Sportsbook BindSportbook(SportsbookEntity entity)
         {
-            var item = new Sportsbook
+            return new Sportsbook
             {
-                HomeId = reader["homeID"] != DBNull.Value ? Convert.ToInt32(reader["homeID"]) : 0,
-                AwayId = reader["awayID"] != DBNull.Value ? Convert.ToInt32(reader["awayID"]) : 0,
-                BetStatus =
-                    reader["betstatus"] != DBNull.Value ? reader["betstatus"].ToString() : string.Empty,
-                LeagueId = reader["leagueid"] != DBNull.Value ? int.Parse(reader["leagueid"].ToString()) : 0,
-                MatchId = reader["matchid"] != DBNull.Value ? int.Parse(reader["matchid"].ToString()) : 0,
-                EventStatus = reader["eventstatus"] != DBNull.Value ? reader["eventstatus"].ToString() : string.Empty,
-                FinalAwayScore =
-                    reader["finalawayscore"] != DBNull.Value
-                        ? int.Parse(reader["finalawayscore"].ToString())
-                        : new int?(),
-                HtAwayScore =
-                    reader["htawayscore"] != DBNull.Value ? int.Parse(reader["htawayscore"].ToString()) : new int?(),
-                Color = ColumnExisted(reader, "lcolor") && reader["lcolor"] != DBNull.Value ? reader["lcolor"].ToString() : string.Empty,
-                FinalHomeScore =
-                    reader["finalhomescore"] != DBNull.Value
-                        ? int.Parse(reader["finalhomescore"].ToString())
-                        : new int?(),
-                HtHomeScore =
-                    reader["hthomescore"] != DBNull.Value
-                        ? int.Parse(reader["hthomescore"].ToString())
-                        : new int?(),
-                EventDate = reader["eventdate"] != DBNull.Value ? DateTime.Parse(reader["eventdate"].ToString()) : DateTime.MinValue,
-                IsNeutral = reader["IsNeutral"] != DBNull.Value ? bool.Parse(reader["IsNeutral"].ToString()) : false,
-                KickOffTime = reader["kickofftime"] != DBNull.Value ? DateTime.Parse(reader["kickofftime"].ToString()) : DateTime.MinValue,
-                MatchCode = reader["matchcode"] != DBNull.Value ? reader["matchcode"].ToString() : string.Empty,
-                GoalRecord = reader["goalrecord"] != DBNull.Value ? reader["goalrecord"].ToString() : string.Empty,
-                IsHTCal = reader["IsHTCal"] != DBNull.Value ? Convert.ToBoolean(reader["IsHTCal"]) : false,
-                Calculate = reader["Calculate"] != DBNull.Value ? Convert.ToBoolean(reader["Calculate"]) : false,
+                HomeId = entity.HomeId,
+                AwayId = entity.AwayId,
+                BetStatus = entity.BetStatus ?? string.Empty,
+                LeagueId = entity.LeagueId,
+                MatchId = entity.MatchId,
+                EventStatus = entity.EventStatus ?? string.Empty,
+                FinalAwayScore = entity.FinalAwayScore,
+                HtAwayScore = entity.HtAwayScore,
+                Color = entity.Lcolor ?? string.Empty,
+                FinalHomeScore = entity.FinalHomeScore,
+                HtHomeScore = entity.HtHomeScore,
+                EventDate = entity.EventDate,
+                IsNeutral = entity.IsNeutral,
+                KickOffTime = entity.KickOffTime,
+                MatchCode = entity.MatchCode ?? string.Empty,
+                GoalRecord = entity.GoalRecord ?? string.Empty,
+                IsHTCal = entity.IsHTCal,
+                Calculate = entity.Calculate,
                 RefNo = string.Empty,
                 GameDetails = new List<GameDetail>(),
-                Bettype = GetBetTypeFromToken(reader),
-                BetID = GetBetIDFromToken(reader),
-                SettlementStatus = reader["SettlementStatus"] != DBNull.Value ? Convert.ToByte(reader["SettlementStatus"]) : default(byte),
-                NoHTScore = ColumnExisted(reader, "NoHTScore") && reader["NoHTScore"] != DBNull.Value ? Convert.ToBoolean(reader["NoHTScore"]) : false,
+                Bettype = entity.Bettype,
+                BetID = entity.BetCheck,
+                SettlementStatus = entity.SettlementStatus,
+                NoHTScore = entity.NoHTScore
             };
-
-            return item;
-        }
-
-        private int GetBetTypeFromToken(IDataReader reader)
-        {
-            const string BettypeColumn = "bettype";
-            if (ColumnExisted(reader, BettypeColumn) && reader[BettypeColumn] != DBNull.Value)
-            {
-                return int.Parse(reader[BettypeColumn].ToString());
-            }
-
-            return 0;
-        }
-
-        private string GetBetIDFromToken(IDataReader reader)
-        {
-            const string BetcheckColumn = "betcheck";
-            if (ColumnExisted(reader, BetcheckColumn) && reader[BetcheckColumn] != DBNull.Value)
-            {
-                return reader[BetcheckColumn].ToString();
-            }
-
-            return string.Empty;
         }
 
         public List<Sportsbook> GetScoreInformation(NormalResultDetailsQuery request)
@@ -186,116 +106,59 @@
                 MatchId = request.MatchId
             };
 
-            var result = new List<Sportsbook>();
+            var results = new List<Sportsbook>();
+            var rawdata = _repository.FetchMultiple<SportsbookEntity, GameDetail>(criteria);
+            var result = rawdata.Item1.Select(sb => BindSportsbookDetails(sb, request)).FirstOrDefault();
 
-            using (var objDb = ObjectDbFactory.CreateInstance(criteria.GetSettingKey()))
+            if (result != null)
             {
-                using (var reader = objDb.ExecuteReader(criteria))
+                var gameDetails = rawdata.Item2;
+                result.GameDetails.AddRange(gameDetails.Select(gd =>
                 {
-                    if (reader.Read())
-                    {
-                        result.Add(BindSportsbookDetails(reader, request));
+                    gd.MatchId = request.MatchId;
+                    return gd;
+                }));
 
-                        if (reader.NextResult())
-                        {
-                            while (reader.Read())
-                            {
-                                result[0].GameDetails.Add(BindGameDetail(reader, criteria.MatchId));
-                            }
-                        }                        
-                    }
-                }
+                results.Add(result);
             }
 
-            return result;
+            return results;
         }
 
-        /// <summary>
-        /// Bind game detail value.
-        /// </summary>
-        /// <param name="reader">The data reader.</param>
-        /// <param name="matchId">The match identifier.</param>
-        /// <returns>
-        /// The game detail value.
-        /// </returns>
-        private GameDetail BindGameDetail(IDataReader reader, int matchId)
+        private static Sportsbook BindSportsbookDetails(SportsbookEntity entity, NormalResultDetailsQuery request)
         {
-            var bettypeId = ColumnExisted(reader, "BetType") && reader["BetType"] != DBNull.Value ?
-                int.Parse(reader["BetType"].ToString()) : 0;
-            return new GameDetail
-            {
-                MatchId = matchId,
-                ResourceId = reader["ResourceId"] != DBNull.Value ? reader["ResourceId"].ToString() : string.Empty,
-                HomeValue = reader["HomeValue"] != DBNull.Value ? reader["HomeValue"].ToString() : string.Empty,
-                AwayValue = reader["AwayValue"] != DBNull.Value ? reader["AwayValue"].ToString() : string.Empty,
-                ResultStatusID = reader["ResultStatusID"] != DBNull.Value ? int.Parse(reader["ResultStatusID"].ToString()) : 0,
-                SettlementStatusID = reader["SettlementStatusID"] != DBNull.Value ? int.Parse(reader["SettlementStatusID"].ToString()) : 0,
-                OtherInfo = reader["OtherInfo"] != DBNull.Value ? reader["OtherInfo"].ToString() : string.Empty,
-                BettypeId = bettypeId
-            };
-        }
+            request.SportId = entity.SportType;
 
-        /// <summary>
-        /// Binds the SPORTSBOOK.
-        /// </summary>
-        /// <param name="reader">The reader.</param>
-        /// <param name="criteria">The criteria.</param>
-        /// <returns>
-        /// The object of SPORTSBOOK.
-        /// </returns>
-        private Sportsbook BindSportsbookDetails(IDataReader reader, NormalResultDetailsQuery request)
-        {
-            request.SportId = reader["sporttype"] != DBNull.Value ? Convert.ToInt32(reader["sporttype"]) : 0;
-
-            var sportsbook = new Sportsbook
+            return new Sportsbook
             {
-                HomeId = reader["homeID"] != DBNull.Value ? Convert.ToInt32(reader["homeID"]) : 0,
-                AwayId = reader["awayID"] != DBNull.Value ? Convert.ToInt32(reader["awayID"]) : 0,
-                HtHomeScore = reader["hthomescore"] != DBNull.Value ? Convert.ToInt32(reader["hthomescore"]) : new int?(),
-                FinalHomeScore = reader["finalhomescore"] != DBNull.Value ? Convert.ToInt32(reader["finalhomescore"]) : new int?(),
-                HtAwayScore = reader["htawayscore"] != DBNull.Value ? Convert.ToInt32(reader["htawayscore"]) : new int?(),
-                FinalAwayScore = reader["finalawayscore"] != DBNull.Value ? Convert.ToInt32(reader["finalawayscore"]) : new int?(),
-                EventStatus = reader["eventstatus"] != DBNull.Value ? Convert.ToString(reader["eventstatus"]) : string.Empty,
-                KickOffTime = reader["kickofftime"] != DBNull.Value ? Convert.ToDateTime(reader["kickofftime"].ToString()) : DateTime.MinValue,
-                EventDate = reader["eventdate"] != DBNull.Value ? Convert.ToDateTime(reader["eventdate"].ToString()) : DateTime.MinValue,
-                IsNeutral = reader["IsNeutral"] != DBNull.Value ? Convert.ToBoolean(reader["IsNeutral"]) : false,
-                BetStatus = reader["betstatus"] != DBNull.Value ? Convert.ToString(reader["betstatus"]) : string.Empty,
-                LeagueId = reader["LeagueID"] != DBNull.Value ? Convert.ToInt32(reader["LeagueID"]) : 0,
+                HomeId = entity.HomeId,
+                AwayId = entity.AwayId,
+                HtHomeScore = entity.HtHomeScore,
+                FinalHomeScore = entity.FinalHomeScore,
+                HtAwayScore = entity.HtAwayScore,
+                FinalAwayScore = entity.FinalAwayScore,
+                EventStatus = entity.EventStatus ?? string.Empty,
+                KickOffTime = entity.KickOffTime,
+                EventDate = entity.EventDate,
+                IsNeutral = entity.IsNeutral,
+                BetStatus = entity.BetStatus ?? string.Empty,
+                LeagueId = entity.LeagueId,
                 MatchId = request.MatchId,
                 Color = string.Empty,
-                MatchCode = reader["matchcode"] != DBNull.Value ? Convert.ToString(reader["matchcode"]) : string.Empty,
-                GoalRecord = reader["goalrecord"] != DBNull.Value ? reader["goalrecord"].ToString() : string.Empty,
-                IsHTCal = reader["IsHTCal"] != DBNull.Value ? Convert.ToBoolean(reader["IsHTCal"]) : false,
-                Calculate = reader["Calculate"] != DBNull.Value ? Convert.ToBoolean(reader["Calculate"]) : false,
+                MatchCode = entity.MatchCode ?? string.Empty,
+                GoalRecord = entity.GoalRecord ?? string.Empty,
+                IsHTCal = entity.IsHTCal,
+                Calculate = entity.Calculate,
                 RefNo = string.Empty,
                 BetID = request.BetId.ToString(),
                 Bettype = request.BetTypeId,
                 GameDetails = new List<GameDetail>(),
                 Handicap2 = request.Hdp2,
-                SettlementStatus = reader["SettlementStatus"] != DBNull.Value ? Convert.ToByte(reader["SettlementStatus"]) : default(byte),
-                NoHTScore = ColumnExisted(reader, "NoHTScore") && reader["NoHTScore"] != DBNull.Value ? Convert.ToBoolean(reader["NoHTScore"]) : false,
+                SettlementStatus = entity.SettlementStatus,
+                NoHTScore = entity.NoHTScore,
+                LiveHomeScore = entity.LiveHomeScore,
+                LiveAwayScore = entity.LiveAwayScore
             };
-
-            if (ColumnExisted(reader, "livehomescore") && ColumnExisted(reader, "liveawayscore"))
-            {
-                sportsbook.LiveHomeScore = reader["livehomescore"] != DBNull.Value ? Convert.ToInt32(reader["livehomescore"]) : new int?();
-                sportsbook.LiveAwayScore = reader["liveawayscore"] != DBNull.Value ? Convert.ToInt32(reader["liveawayscore"]) : new int?();
-            }
-
-            return sportsbook;
-        }
-
-        private bool ColumnExisted(IDataReader reader, string columnName)
-        {
-            for (int i = 0; i < reader.FieldCount; i++)
-            {
-                if (reader.GetName(i).Equals(columnName, StringComparison.OrdinalIgnoreCase))
-                {
-                    return true;
-                }
-            }
-
-            return false;
         }
     }
 }

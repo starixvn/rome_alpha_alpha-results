@@ -1,7 +1,6 @@
 ﻿using Alpha.Results.Site.Handlers;
 using Alpha.Results.Site.Services;
 using AlphaPlus.Logging;
-using Fanex.Logging.Extensions.Database;
 using NSubstitute;
 using NUnit.Framework;
 
@@ -20,7 +19,7 @@ namespace Alpha.Results.Site.Tests.Handlers
             cacheRefService.GetSportName(1).Returns("SportType1");
             cacheRefService.GetBetTypeName(1).Returns("BetType1");
             handler = new SabaClubHandler(cacheRefService);
-            LoggingConfig.Init(getDbExceptionInfo: DatabaseInfoGetters.GetDbExceptionInfo);
+            LoggingConfig.Init();
         }
 
         //[Test]

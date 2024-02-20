@@ -2,98 +2,64 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Data;
     using System.Linq;
+    using Alpha.Results.Site.Models.Entities;
     using Criteria;
     using DataAccesses;
-    using Fanex.Data;
+    using Fanex.Data.Repository;
     using Fanex.Result.Core.NumberGame.DTO;
 
-    /// <summary>
-    /// The class NumberGameResultDataAccess.
-    /// </summary>
     public class NumberGameResultDataAccess : INumberGameResultDataAccess
     {
-        /// <summary>
-        /// Get number game result.
-        /// </summary>
-        /// <param name="criteria">The criterion.</param>
-        /// <returns>The number game data.</returns>
+        private readonly IDynamicRepository _repository;
+
+        public NumberGameResultDataAccess(IDynamicRepository repository = null)
+        {
+            _repository = repository ?? new DynamicRepository();
+        }
+
         public IList<NumberGame> GetNumberGameResults(GetNumberGameResultCriteria criteria)
-        {
-            if (criteria == null)
-            {
-                throw new ArgumentNullException(nameof(criteria), "Criteria cannot be null");
-            }
+            => BuildNumberGameResults(criteria);
 
-            var result = new List<NumberGame>();
-            using (var db = ObjectDbFactory.CreateInstance(criteria.GetSettingKey()))
-            {
-                using (var reader = db.ExecuteReader(criteria))
-                {
-                    while (reader.Read())
-                    {
-                        BindNumberGame(result, reader);
-                    }
-                }
-            }
-
-            return result;
-        }
-
-        /// <summary>
-        /// Gets the number game popup result.
-        /// </summary>
-        /// <param name="criteria">The criteria.</param>
-        /// <returns>The list of number games.</returns>
         public IList<NumberGame> GetNumberGameResultDetails(GetNumberGameResultDetailsCriteria criteria)
+            => BuildNumberGameResults(criteria);
+
+        private IList<NumberGame> BuildNumberGameResults(ICriteria criteria)
         {
             if (criteria == null)
             {
                 throw new ArgumentNullException(nameof(criteria), "Criteria cannot be null");
             }
 
-            var result = new List<NumberGame>();
-            using (var db = ObjectDbFactory.CreateInstance(criteria.GetSettingKey()))
-            {
-                using (var reader = db.ExecuteReader(criteria))
-                {
-                    while (reader.Read())
-                    {
-                        BindNumberGame(result, reader);
-                    }
-                }
-            }
+            var results = new List<NumberGame>();
+            _repository
+                .Fetch<NumberGameEntity>(criteria)
+                .ToList()
+                .ForEach(entity => BindNumberGame(results, entity));
 
-            return result;
+            return results;
         }
 
-        /// <summary>
-        /// Bind data from IDATAREADER to DTO.
-        /// </summary>
-        /// <param name="result">The result list.</param>
-        /// <param name="reader">The IDATAREADER.</param>
-        private static void BindNumberGame(List<NumberGame> result, IDataReader reader)
+        private static void BindNumberGame(List<NumberGame> results, NumberGameEntity entity)
         {
-            var matchId = reader["matchid"] != DBNull.Value ? int.Parse(reader["matchid"].ToString()) : 0;
-            var existMatch = result.SingleOrDefault(i => i.MatchId == matchId);
+            var existMatch = results.SingleOrDefault(i => i.MatchId == entity.MatchId);
             if (existMatch != null)
             {
-                existMatch.Seg.Add(reader["seq"] != DBNull.Value ? int.Parse(reader["seq"].ToString()) : 0);
-                existMatch.Ball.Add(reader["number"] != DBNull.Value ? int.Parse(reader["number"].ToString()) : 0);
+                existMatch.Seg.Add(entity.Seg);
+                existMatch.Ball.Add(entity.Number);
             }
             else
             {
-                result.Add(new NumberGame
+                results.Add(new NumberGame
                 {
-                    LeagueId = reader["leagueid"] != DBNull.Value ? int.Parse(reader["leagueid"].ToString()) : 0,
-                    MatchId = reader["matchid"] != DBNull.Value ? int.Parse(reader["matchid"].ToString()) : 0,
-                    EventStatus = reader["eventstatus"] != DBNull.Value ? reader["eventstatus"].ToString() : string.Empty,
-                    EventDate = reader["eventdate"] != DBNull.Value ? DateTime.Parse(reader["eventdate"].ToString()) : DateTime.MinValue,
-                    KickOffTime = reader["kickofftime"] != DBNull.Value ? DateTime.Parse(reader["kickofftime"].ToString()) : DateTime.MinValue,
-                    MatchCode = reader["matchcode"] != DBNull.Value ? reader["matchcode"].ToString() : string.Empty,
-                    Seg = new List<int> { reader["seq"] != DBNull.Value ? int.Parse(reader["seq"].ToString()) : 0 },
-                    Ball = new List<int> { reader["number"] != DBNull.Value ? int.Parse(reader["number"].ToString()) : 0 }
+                    LeagueId = entity.LeagueId,
+                    MatchId = entity.MatchId,
+                    EventStatus = entity.EventStatus,
+                    EventDate = entity.EventDate,
+                    KickOffTime = entity.KickOffTime,
+                    MatchCode = entity.MatchCode,
+                    Seg = new List<int> { entity.Seg },
+                    Ball = new List<int> { entity.Number }
                 });
             }
         }

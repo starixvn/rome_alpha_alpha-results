@@ -1,11 +1,9 @@
 ﻿namespace Alpha.Results.Site.Tests.DataAccesses
 {
     using System;
-    using System.Collections;
     using System.Collections.Generic;
-    using System.Data;
-    using Alpha.Results.Site.Tests.Database.SportsBook;
-    using Fanex.Data;
+    using Alpha.Results.Site.Models.Entities;
+    using Fanex.Data.Repository;
     using Fanex.Result.Core.NumberGame.DTO;
     using KellermanSoftware.CompareNetObjects;
     using NSubstitute;
@@ -17,15 +15,12 @@
     public class NumberGameResultDataAccessTests
     {
         private CompareLogic compareLogic;
-        private IObjectDb objectDb;
+        private IDynamicRepository repository;
         private NumberGameResultDataAccess dataAccess;
 
         [OneTimeSetUp]
         public void OneTimeSetUp()
         {
-            DbSettingProviderManager
-                .StartTestingSession()
-                .Run();
         }
 
         [SetUp]
@@ -33,10 +28,8 @@
         {
             compareLogic = new CompareLogic();
 
-            objectDb = Substitute.For<IObjectDb>();
-            ObjectDbFactory.Mock((key, commandTimeout) => objectDb);
-
-            dataAccess = new NumberGameResultDataAccess();
+            repository = Substitute.For<IDynamicRepository>();
+            dataAccess = new NumberGameResultDataAccess(repository);
         }
 
         [Test]
@@ -51,8 +44,8 @@
             // Arrange
             var criteria = new GetNumberGameResultCriteria();
 
-            var dataTable = new DataTable();
-            objectDb.ExecuteReader(Arg.Any<Hashtable>()).Returns(dataTable.CreateDataReader());
+            var dataTable = new List<NumberGameEntity>();
+            repository.Fetch<NumberGameEntity>(Arg.Any<ICriteria>()).Returns(dataTable);
 
             var expectedData = new List<NumberGame>();
 
@@ -75,8 +68,8 @@
             // Arrange
             var criteria = new GetNumberGameResultDetailsCriteria();
 
-            var dataTable = new DataTable();
-            objectDb.ExecuteReader(Arg.Any<Hashtable>()).Returns(dataTable.CreateDataReader());
+            var dataTable = new List<NumberGameEntity>();
+            repository.Fetch<NumberGameEntity>(Arg.Any<ICriteria>()).Returns(dataTable);
 
             var expectedData = new List<NumberGame>();
 
@@ -93,8 +86,8 @@
             // Arrange
             var criteria = new GetNumberGameResultCriteria();
 
-            var dataReader = NumberGameDatabase.ResultData.CreateDataReader();
-            objectDb.ExecuteReader(Arg.Any<Hashtable>()).Returns(dataReader);
+            var dataTable = new List<NumberGameEntity>();
+            repository.Fetch<NumberGameEntity>(Arg.Any<ICriteria>()).Returns(dataTable);
 
             var expectedData = new List<NumberGame>
             {
@@ -124,8 +117,8 @@
             // Arrange
             var criteria = new GetNumberGameResultDetailsCriteria();
 
-            var dataReader = NumberGameDatabase.ResultData.CreateDataReader();
-            objectDb.ExecuteReader(Arg.Any<Hashtable>()).Returns(dataReader);
+            var dataTable = new List<NumberGameEntity>();
+            repository.Fetch<NumberGameEntity>(Arg.Any<ICriteria>()).Returns(dataTable);
 
             var expectedData = new List<NumberGame>
             {

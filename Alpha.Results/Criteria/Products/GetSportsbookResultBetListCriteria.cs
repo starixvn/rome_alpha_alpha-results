@@ -15,6 +15,5 @@
         public long BetId { get; set; }
 
         public string Transdesc { get; set; }
-       
     }
 }

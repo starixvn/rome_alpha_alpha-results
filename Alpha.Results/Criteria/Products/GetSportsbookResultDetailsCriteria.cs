@@ -20,6 +20,6 @@
             => "Age_Result_MatchSelResultDetail";
 
         public override bool IsValid()
-            => MatchId > 0;
+            => MatchId >= 0;
     }
 }
