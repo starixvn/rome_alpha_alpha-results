@@ -1296,6 +1296,7 @@
     <Compile Include="Models\Requests\AdvantPlayMiniResultQuery.cs" />
     <Compile Include="Models\Requests\BBINResultQuery.cs" />
     <Compile Include="Models\Requests\JiliResultQuery.cs" />
+    <Compile Include="Models\Requests\Live22ResultQuery.cs" />
     <Compile Include="Models\Requests\SEALResultQuery.cs" />
     <Compile Include="Models\Requests\MGResultQuery.cs" />
     <Compile Include="Models\Requests\FGGResultQuery.cs" />
@@ -1344,6 +1345,7 @@
     <Compile Include="Services\ICacheRefService.cs" />
     <Compile Include="Services\Impl\AdvantPlayMiniResult.cs" />
     <Compile Include="Services\Impl\JiliResult.cs" />
+    <Compile Include="Services\Impl\Live22Result.cs" />
     <Compile Include="Services\Impl\SEALResult.cs" />
     <Compile Include="Services\Impl\MGResult.cs" />
     <Compile Include="Services\Impl\FGGResult.cs" />

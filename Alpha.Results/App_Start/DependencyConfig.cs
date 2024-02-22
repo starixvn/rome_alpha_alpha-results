@@ -148,6 +148,7 @@
             container.Register<ISEALResult>(() => new SEALResult("SEALResultConfigs"), Lifestyle.Scoped);
             container.Register<IMGResult>(() => new MGResult("MGResultConfigs"), Lifestyle.Scoped);
             container.Register<IJiliResult>(() => new JiliResult("JiliResultConfigs"), Lifestyle.Scoped);
+            container.Register<ILive22Result>(() => new Live22Result("Live22ResultConfigs"), Lifestyle.Scoped);
             container.Register<IPService, IPServiceImpl>();
             container.Register<Helpers.IPHelper, IPHelperImpl>();
             container.RegisterPerWebRequest<IPartialUMService, PartialUMService>();
