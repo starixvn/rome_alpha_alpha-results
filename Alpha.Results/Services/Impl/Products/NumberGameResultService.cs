@@ -5,6 +5,7 @@
     using System.Linq;
     using Alpha.Results.Site.Criteria;
     using Alpha.Results.Site.DataAccesses;
+    using Alpha.Results.Site.Models;
     using Constants;
     using DataAccesses.Impl;
     using Fanex.Common.Helper;
@@ -80,7 +81,7 @@
         }
 
         [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0", Justification = "Reviewed")]
-        public string GetResultDetails(NormalResultDetailsQuery detailsRequest)
+        public ResultDetailModel GetResultDetails(NormalResultDetailsQuery detailsRequest)
         {
             Check.Argument.IsNotNull(detailsRequest, "detailsRequest");
 
@@ -105,7 +106,7 @@
 
             var results = _numberGameResultDataAccess.GetNumberGameResultDetails(criteria);
 
-            return _resultEngineAdapter.HtmlParser(results, resultSetting);
+            return new ResultDetailModel(_resultEngineAdapter.HtmlParser(results, resultSetting));
         }
     }
 }

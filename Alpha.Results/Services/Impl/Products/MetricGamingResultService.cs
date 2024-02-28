@@ -4,6 +4,7 @@ namespace Alpha.Results.Site.Services.Impl.Products
     using System.IO;
     using System.Linq;
     using Alpha.Results.Site.Criteria;
+    using Alpha.Results.Site.Models;
     using Fanex.Data.Repository;
     using Fanex.Result.Core.Base;
     using Fanex.Result.Core.MetricGaming.DTO;
@@ -33,7 +34,7 @@ namespace Alpha.Results.Site.Services.Impl.Products
             throw new NotImplementedException();
         }
 
-        public string GetResultDetails(NormalResultDetailsQuery detailsRequest)
+        public ResultDetailModel GetResultDetails(NormalResultDetailsQuery detailsRequest)
         {
             if (detailsRequest == null)
             {
@@ -62,7 +63,7 @@ namespace Alpha.Results.Site.Services.Impl.Products
                 HighlightWinnerTeam = true
             };
 
-            return _resultEngineAdapter.HtmlParser(results, resultSetting);
+            return new ResultDetailModel(_resultEngineAdapter.HtmlParser(results, resultSetting));
         }
     }
 }

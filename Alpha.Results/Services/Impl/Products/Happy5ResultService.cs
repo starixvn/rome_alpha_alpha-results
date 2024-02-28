@@ -5,6 +5,7 @@
     using System.Linq;
     using Alpha.Results.Site.Criteria;
     using Alpha.Results.Site.DataAccesses;
+    using Alpha.Results.Site.Models;
     using Constants;
     using DataAccesses.Impl;
     using Fanex.Common.Helper;
@@ -103,7 +104,7 @@
             };
         }
 
-        public string GetResultDetails(NormalResultDetailsQuery detailsRequest)
+        public ResultDetailModel GetResultDetails(NormalResultDetailsQuery detailsRequest)
         {
             Check.Argument.IsNotNull(detailsRequest, "detailsRequest");
 
@@ -142,7 +143,7 @@
                     Seq = i.Seg
                 }).ToList();
 
-            return _resultEngineAdapter.HtmlParser(happy5Results, resultSetting);
+            return new ResultDetailModel(_resultEngineAdapter.HtmlParser(happy5Results, resultSetting));
         }
     }
 }

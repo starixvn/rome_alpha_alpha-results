@@ -5,6 +5,8 @@ namespace Alpha.Results.Site.Services.Impl.Products
     using System.Linq;
     using Alpha.Results.Site.Criteria;
     using Alpha.Results.Site.DataAccesses;
+    using Alpha.Results.Site.Models;
+    using AlphaPlus.Configurations;
     using DataAccesses.Impl;
     using Fanex.Result.Core.Base;
     using Impl;
@@ -24,7 +26,7 @@ namespace Alpha.Results.Site.Services.Impl.Products
             _resultEngineAdapter = resultEngineAdapter ?? new ResultEngineAdapter();
         }
 
-        public string GetResultDetails(NormalResultDetailsQuery detailsRequest)
+        public ResultDetailModel GetResultDetails(NormalResultDetailsQuery detailsRequest)
         {
             if (detailsRequest == null)
             {
@@ -47,10 +49,11 @@ namespace Alpha.Results.Site.Services.Impl.Products
                 VisibleMatchCodeIDColumn = false,
                 VisibleFreeHeader = true,
                 VisibleDetailedLink = true,
-                HighlightWinnerTeam = true
+                HighlightWinnerTeam = true,
+                SupportHideSabaText = AppSettings.IsSiteLabel777
             };
 
-            return _resultEngineAdapter.HtmlParser(results, resultSetting);
+            return new ResultDetailModel(_resultEngineAdapter.HtmlParser(results, resultSetting));
         }
 
         public string GetResult(NormalResultQuery request)

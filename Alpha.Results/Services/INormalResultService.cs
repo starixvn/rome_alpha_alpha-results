@@ -13,7 +13,7 @@
 
         string GetResults(NormalResultQuery request);
 
-        string GetResultDetails(NormalResultDetailsQuery detailRequest);
+        ResultDetailModel GetResultDetails(NormalResultDetailsQuery detailRequest);
 
         byte[] GetExcelResults(ExcelNormalResultQuery request);
     }

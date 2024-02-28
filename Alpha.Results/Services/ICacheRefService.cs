@@ -8,6 +8,8 @@
 
         string GetLeagueName(int leagueId);
 
+        string GetLeagueName(int leagueId, int leagueGroupId);
+
         string GetLeague3rdName(int league3rdId);
 
         string GetProductName(int productId);

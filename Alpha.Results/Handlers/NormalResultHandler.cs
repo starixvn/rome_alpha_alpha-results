@@ -15,6 +15,7 @@ namespace Alpha.Results.Site.Handlers
     using Services;
     using Alpha.Utilities.Extensions;
     using Alpha.Results.Site.Constants;
+    using AlphaPlus.Configurations;
 
     public class NormalResultHandler :
         IRequestHandler<NormalResultQuery, NormalResultViewModel>,
@@ -107,18 +108,22 @@ namespace Alpha.Results.Site.Handlers
             Check.Argument.IsNotNull(message, "message");
 
             var sportName = _cacheRefService.GetSportName(message.SportId);
+            var details = _normalResultService.GetResultDetails(message);
+            var firstDetail = details.Matchs.FirstOrDefault();
+            var leagueId = firstDetail == null ? message.LeagueId : firstDetail.LeagueId;
+            var leagueGroupId = firstDetail == null ? 0 : firstDetail.LeagueGroupId;
 
             var leagueName = message.LeagueId > 0
-                ? _cacheRefService.GetLeagueName(message.LeagueId)
+                ? GetLeagueName(leagueId, leagueGroupId)
                 : _cacheRefService.GetBetTypeName(message.BetTypeId);
 
             var title = !string.IsNullOrEmpty(leagueName) && !string.IsNullOrEmpty(sportName) ?
                 $"{sportName} - {leagueName}" : $"{sportName} {leagueName}";
-
+            
             var viewModel = new NormalDetailViewModel
             {
                 Title = title,
-                HtmlResults = _normalResultService.GetResultDetails(message)
+                HtmlResults = details.Html
             };
 
             return viewModel;
@@ -143,9 +148,9 @@ namespace Alpha.Results.Site.Handlers
             };
         }
 
-        private string GetLeagueName(int leagueId, int sportType)
-            => SportTypeIdConstants.SportListUsingLeague3rd.Any(i => i == sportType) ?
-            _cacheRefService.GetLeague3rdName(leagueId) :
-            _cacheRefService.GetLeagueName(leagueId);
+        private string GetLeagueName(int leagueId, int leagueGroupId)
+        => AppSettings.IsSiteLabel777 ?
+                _cacheRefService.GetLeagueName(leagueId, leagueGroupId) :
+                _cacheRefService.GetLeagueName(leagueId);
     }
 }

@@ -6,6 +6,7 @@
     using System.Linq;
     using Alpha.PartialUM.Helpers;
     using Alpha.Results.Site.Criteria;
+    using Alpha.Results.Site.Models;
     using AlphaPlus.PartialUM.DataAccess;
     using AlphaPlus.PartialUM.Services;
     using Fanex.Data.Repository;
@@ -62,7 +63,7 @@
             return _resultEngineAdapter.HtmlParser(bitcoins.ToList(), resultSetting);
         }
 
-        public string GetResultDetails(NormalResultDetailsQuery detailsRequest)
+        public ResultDetailModel GetResultDetails(NormalResultDetailsQuery detailsRequest)
         {
             var result = _dynamicRepository.FetchMultiple<Bitcoin, GameDetail>(new GetBitcoinResultDetailsCriteria
             {
@@ -72,7 +73,7 @@
             var bitcoins = BindingGameDetail(result.ToTuple());
             var resultSetting = CreateSetting(isPopup: true, language: detailsRequest.Language);
 
-            return _resultEngineAdapter.HtmlParser(bitcoins.ToList(), resultSetting);
+            return new ResultDetailModel(_resultEngineAdapter.HtmlParser(bitcoins.ToList(), resultSetting));
         }
 
         private static IEnumerable<Bitcoin> BindingGameDetail(Tuple<IEnumerable<Bitcoin>, IEnumerable<GameDetail>> result)
