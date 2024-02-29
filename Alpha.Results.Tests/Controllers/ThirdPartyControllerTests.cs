@@ -334,5 +334,18 @@
             // Assert
             mediator.Received().Send(Arg.Any<Live22ResultQuery>());
         }
+
+        [Test]
+        public void WEResult_Always_CallsMediatorSendWEResultQuery()
+        {
+            // Arrange
+            var query = new WEResultQuery(userSession);
+
+            // Act
+            controller.WEResult(query);
+
+            // Assert
+            mediator.Received().Send(Arg.Any<WEResultQuery>());
+        }
     }
 }
