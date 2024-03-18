@@ -14,7 +14,8 @@
         {
             if (betTypeId == BetTypeIdConstants.MixParlay
                 || betTypeId == BetTypeIdConstants.CombineMixParlay
-                || betTypeId == BetTypeIdConstants.MixParlayBetRadarVirtualSports)
+                || betTypeId == BetTypeIdConstants.MixParlayBetRadarVirtualSports
+                || betTypeId == BetTypeIdConstants.MixParlayEdgeGamingVirtualSports)
             {
                 return new ParlayResultService();
             }
