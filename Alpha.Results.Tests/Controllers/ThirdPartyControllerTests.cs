@@ -347,5 +347,18 @@
             // Assert
             mediator.Received().Send(Arg.Any<WEResultQuery>());
         }
+
+        [Test]
+        public void UUSlotsResult_Always_CallsMediatorSendUUSlotsResultQuery()
+        {
+            // Arrange
+            var query = new UUSlotsResultQuery(userSession);
+
+            // Act
+            controller.UUSlotsResult(query);
+
+            // Assert
+            mediator.Received().Send(Arg.Any<UUSlotsResultQuery>());
+        }
     }
 }

@@ -41,7 +41,8 @@
         IRequestHandler<MGResultQuery, ThirdPartyProductViewModel>,
         IRequestHandler<JiliResultQuery, ThirdPartyProductViewModel>,
         IRequestHandler<Live22ResultQuery, ThirdPartyProductViewModel>,
-        IRequestHandler<WEResultQuery, ThirdPartyProductViewModel>
+        IRequestHandler<WEResultQuery, ThirdPartyProductViewModel>,
+        IRequestHandler<UUSlotsResultQuery, ThirdPartyProductViewModel>
     {
         private readonly ICacheRefService cacheRefService;
         private readonly IMaxGameResult maxGameService;
@@ -74,6 +75,7 @@
         private readonly IJiliResult jiliResult;
         private readonly ILive22Result live22Result;
         private readonly IWEResult weResult;
+        private readonly IUUSlotsResult uUSlotsResult;
         private readonly IPHelper ipHelper;
 
         public ThirdPartyResultHandler(
@@ -107,6 +109,7 @@
             IJiliResult jiliResult,
             ILive22Result live22Result,
             IWEResult weResult,
+            IUUSlotsResult uUSlotsResult,
             BrowserHelper browserHelper,
             IPHelper ipHelper)
         {
@@ -142,6 +145,7 @@
             this.jiliResult = jiliResult;
             this.live22Result = live22Result;
             this.weResult = weResult;
+            this.uUSlotsResult = uUSlotsResult;
         }
 
         public ThirdPartyProductViewModel Handle(MGResultQuery message)
@@ -278,5 +282,8 @@
             
         public ThirdPartyProductViewModel Handle(WEResultQuery message)
             => Handle(message, weResult);
+
+        public ThirdPartyProductViewModel Handle(UUSlotsResultQuery message)
+            => Handle(message, uUSlotsResult);
     }
 }
