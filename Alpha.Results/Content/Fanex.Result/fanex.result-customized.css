@@ -226,3 +226,8 @@ table.casino .cl-match .player {
         padding: 4px;
     }
 }
+
+table.fn-rs .cl-winner {
+    text-align: center;
+    width: 200px;
+}
