@@ -1355,6 +1355,7 @@
     <Compile Include="Services\Impl\FGGResult.cs" />
     <Compile Include="Services\Impl\MacauGamesResult.cs" />
     <Compile Include="Services\Impl\UUSlotsResult.cs" />
+    <Compile Include="Services\Impl\VGamingResult.cs" />
     <Compile Include="Services\Impl\VirtualGamesResult.cs" />
     <Compile Include="Services\Impl\VirtualGamesDetailResult.cs" />
     <Compile Include="Services\Impl\SportsLotteryDetailResult.cs" />

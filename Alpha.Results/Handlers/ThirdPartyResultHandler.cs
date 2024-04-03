@@ -8,7 +8,6 @@
     using Fanex.Common.Helper;
     using Fanex.Result.Core.ThirdParty;
     using Fanex.Result.Core.ThirdParty.Models;
-    using Fanex.Result.Core.VGaming;
     using Fanex.Result.ThirdParty.Services;
     using MediatR;
     using Models.Requests;
@@ -173,14 +172,7 @@
             => Handle(message, cgResult);
 
         public ThirdPartyProductViewModel Handle(VGamingResultQuery message)
-        {
-            Check.Argument.IsNotNull(message, "message");
-
-            var productName = cacheRefService.GetProductName(message.ProductId);
-            var result = vGamingResultService.GetResult(message.CustId.ToString(), message.GameRoundId, message.GameId, message.SiteId, message.SportId, message.CurrencyName, message.Language);
-
-            return new ThirdPartyProductViewModel(string.Format(Resources.ResultPopupTitle, productName), result);
-        }
+            => Handle(message, vGamingResultService);
 
         public ThirdPartyProductViewModel Handle(AdvantPlayResultQuery message)
             => Handle(message, advantPlayResult);
