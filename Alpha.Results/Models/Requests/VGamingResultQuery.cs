@@ -9,13 +9,5 @@
         public VGamingResultQuery(IUserSession userSession) : base(userSession)
         {
         }
-
-        public string CurrencyName { get; set; }
-
-        public string GameRoundId { get; set; }
-
-        public string GameId { get; set; }
-
-        public int SportId { get; set; }
     }
 }

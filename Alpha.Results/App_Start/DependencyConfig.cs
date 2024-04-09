@@ -27,7 +27,6 @@
     using Fanex.Result.Core.LinkedGames;
     using Fanex.Result.Core.RemotingRef;
     using Fanex.Result.Core.SportsLottery;
-    using Fanex.Result.Core.VGaming;
     using Fanex.Result.ThirdParty.Services;
     using Fanex.Result.ThirdParty.Services.Impl;
     using Handlers;
@@ -124,7 +123,7 @@
             container.Register<IWebClient, JsonWebClient>(Lifestyle.Scoped);
             container.Register<IAdvantPlayResult>(() => new AdvantPlayResult("AdvantPlayResultConfigs"), Lifestyle.Scoped);
             container.Register<ISerializer, JsonSerializer>(Lifestyle.Scoped);
-            container.Register<IVGamingResult, VGamingResult>(Lifestyle.Scoped);
+            container.Register<IVGamingResult>(() => new VGamingResult("VGamingConfigs"), Lifestyle.Scoped);
             container.Register<IKenoResult>(() => new KenoResult("KenoResultConfigs", new Fanex.Result.Core.ConfigurationHelper.ConfigurationHelper()), Lifestyle.Scoped);
             container.Register<ILotteryResult>(() => new LotteryResult("LotteryResultConfigs", new Fanex.Result.Core.ConfigurationHelper.ConfigurationHelper()), Lifestyle.Scoped);
             container.Register<ITableGameResult>(() => new TableGameResult("TableGameResultConfigs", new Fanex.Result.Core.ConfigurationHelper.ConfigurationHelper()), Lifestyle.Scoped);

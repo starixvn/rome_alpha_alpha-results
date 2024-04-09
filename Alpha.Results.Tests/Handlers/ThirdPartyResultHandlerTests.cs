@@ -7,7 +7,6 @@
     using AlphaPlus.User.Models;
     using AlphaPlus.Utilities.IP;
     using Fanex.Result.Core.ThirdParty.Models;
-    using Fanex.Result.Core.VGaming;
     using Fanex.Result.ThirdParty.Services;
     using NSubstitute;
     using NUnit.Framework;
@@ -560,13 +559,8 @@
                 BetType = 1,
                 EndTime = DateTime.Today.ToString()
             };
-            vGamingResultService.GetResult(Arg.Any<string>(),
-                Arg.Any<string>(),
-                Arg.Any<string>(),
-                Arg.Any<string>(),
-                Arg.Any<int>(),
-                Arg.Any<string>(),
-                Arg.Any<string>()).Returns("Url result");
+            vGamingResultService.GetResultGET(Arg.Any<ResultRequest>()).Returns("Url result");
+
 
             // Act
             var act = handler.Handle(query);
