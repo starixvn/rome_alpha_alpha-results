@@ -91,5 +91,8 @@
             
         public ActionResult WEResult(WEResultQuery message)
         => View(IndexView, mediator.Send(message));
+
+        public ActionResult UUSlotsResult(UUSlotsResultQuery message)
+        => View(IndexView, mediator.Send(message));
     }
 }
