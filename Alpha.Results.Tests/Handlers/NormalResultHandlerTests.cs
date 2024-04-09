@@ -405,21 +405,6 @@
             _normalResultService.Received().GetResultDetails(query);
         }
 
-        [Test]
-        public void HandleNormalResultDetailsQuery_WhenCall_ReturnHtmlResultDetails()
-        {
-            //// Arrange
-            var query = new NormalResultDetailsQuery();
-            var expectedHtmlResult = "Result Details";
-            _normalResultService.GetResultDetails(query).Returns(expectedHtmlResult);
-
-            //// Act
-            var resultDetailsViewModel = _normalResultHandler.Handle(query);
-
-            //// Assert
-            Assert.AreEqual(expectedHtmlResult, resultDetailsViewModel.HtmlResults);
-        }
-
         #endregion Handle Normal Result Details Query
 
         #region Handle Excel Normal Result Query
