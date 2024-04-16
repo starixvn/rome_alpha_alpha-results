@@ -88,11 +88,14 @@
 
         public ActionResult Live22Result(Live22ResultQuery message)
             => View(IndexView, mediator.Send(message));
-            
+                
         public ActionResult WEResult(WEResultQuery message)
         => View(IndexView, mediator.Send(message));
 
         public ActionResult UUSlotsResult(UUSlotsResultQuery message)
         => View(IndexView, mediator.Send(message));
+        public ActionResult SabaxDResult(SabaxDResultQuery message)
+        => View(IndexView, mediator.Send(message));
+
     }
 }
