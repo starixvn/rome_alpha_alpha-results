@@ -32,5 +32,7 @@
         public string BetStatus { get; set; }
         public int? FinalAwayScore { get; set; }
         public bool NoHTScore { get; set; }
+        public byte MainType { get; set; }
+        public int SubType { get; set; }
     }
 }

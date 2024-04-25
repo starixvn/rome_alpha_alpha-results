@@ -110,7 +110,9 @@
                 Bettype = entity.Bettype,
                 BetID = entity.BetCheck,
                 LiveHomeScore = entity.LiveHomeScore,
-                LiveAwayScore = entity.LiveAwayScore
+                LiveAwayScore = entity.LiveAwayScore,
+                MainType = entity.MainType,
+                SubType = entity.SubType
             };
         }
 

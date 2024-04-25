@@ -81,7 +81,9 @@
                 Bettype = entity.Bettype,
                 BetID = entity.BetCheck,
                 SettlementStatus = entity.SettlementStatus,
-                NoHTScore = entity.NoHTScore
+                NoHTScore = entity.NoHTScore,
+                MainType = entity.MainType,
+                SubType = entity.SubType
             };
         }
 
@@ -158,7 +160,9 @@
                 SettlementStatus = entity.SettlementStatus,
                 NoHTScore = entity.NoHTScore,
                 LiveHomeScore = entity.LiveHomeScore,
-                LiveAwayScore = entity.LiveAwayScore
+                LiveAwayScore = entity.LiveAwayScore,
+                MainType = entity.MainType,
+                SubType = entity.SubType
             };
         }
     }
