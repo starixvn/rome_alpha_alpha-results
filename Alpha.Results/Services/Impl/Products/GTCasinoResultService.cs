@@ -32,7 +32,20 @@ namespace Alpha.Results.Site.Services.Impl.Products
         {
             Check.Argument.IsNotNull(detailsRequest, "detailsRequest");
 
-            return new ResultDetailModel(gTCasinoResultBuilder.Render(detailsRequest.TransDesc, detailsRequest.BetCheck, detailsRequest.BetTypeId.ToString(), detailsRequest.Language));
+            return new ResultDetailModel(gTCasinoResultBuilder.Render(detailsRequest.TransDesc, ParseTranId3rd(detailsRequest.BetCheck), detailsRequest.BetTypeId.ToString(), detailsRequest.Language));
+        }
+
+        private static string ParseTranId3rd(string transId3rd)
+        {
+            const string transId3rdSeparator = "|$|";
+            if (transId3rd == null || !transId3rd.Contains(transId3rdSeparator))
+            {
+                return transId3rd;
+            }
+
+            var transIdParts = transId3rd.Split(new string[] { transId3rdSeparator }, StringSplitOptions.RemoveEmptyEntries);
+
+            return transIdParts[transIdParts.Length - 1];
         }
     }
 }
