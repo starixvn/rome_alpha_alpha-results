@@ -1005,6 +1005,7 @@
     <Content Include="Content\Images\lotto_ball.png" />
     <Content Include="Content\Images\sprite.png" />
     <Content Include="Global.asax" />
+    <Compile Include="Models\Requests\SabaxDResultQuery.cs" />
     <Compile Include="Models\Requests\UUSlotsResultQuery.cs" />
     <Content Include="Scripts\CardClub\index.js" />
     <Content Include="Scripts\TableGames\index.js" />
@@ -1351,6 +1352,7 @@
     <Compile Include="Services\Impl\MGResult.cs" />
     <Compile Include="Services\Impl\FGGResult.cs" />
     <Compile Include="Services\Impl\MacauGamesResult.cs" />
+    <Compile Include="Services\Impl\SabaxDResult.cs" />
     <Compile Include="Services\Impl\UUSlotsResult.cs" />
     <Compile Include="Services\Impl\VGamingResult.cs" />
     <Compile Include="Services\Impl\VirtualGamesResult.cs" />

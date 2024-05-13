@@ -1,6 +1,7 @@
 ﻿namespace Alpha.Results.Site.Services.Impl
 {
     using System.Threading;
+    using AlphaPlus.Configurations;
     using Fanex.RemotingRef;
 
     public class CacheRefService : ICacheRefService
@@ -28,11 +29,22 @@
             => remotingRefService.GetLeagueName3rd(league3rdId.ToString(), LanguageCode);
 
         public string GetProductName(int productId)
-            => remotingRefService.GetResourceDataByRefIdAndResourceId(
+        {
+            if (AppSettings.IsSiteLabel777)
+            {
+                var productNameFor777 = remotingRefService.GetResourceDataByRefIdAndResourceId("Product_Saba", productId.ToString(), LanguageCode, string.Empty);
+
+                return string.IsNullOrEmpty(productNameFor777) ?
+                    remotingRefService.GetResourceDataByRefIdAndResourceId("Product", productId.ToString(), LanguageCode, string.Empty) :
+                    productNameFor777;
+            }
+
+            return remotingRefService.GetResourceDataByRefIdAndResourceId(
                 "Product",
                 productId.ToString(),
                 LanguageCode,
                 string.Empty);
+        }
 
         private static string LanguageCode
             => Thread.CurrentThread.CurrentCulture.Name;
