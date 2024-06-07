@@ -85,3 +85,7 @@ table.fn-rs tbody .cl-group-name {
     height: 21px;
     text-align: center;
 }
+table.fn-rs .cl-winner {
+    text-align: center;
+    width: 200px;
+}
