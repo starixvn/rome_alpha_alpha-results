@@ -151,6 +151,7 @@
             container.Register<IWEResult>(() => new WEResult("WEResultConfigs"), Lifestyle.Scoped);
             container.Register<IUUSlotsResult>(() => new UUSlotsResult("UUSlotsResultConfigs"), Lifestyle.Scoped);
             container.Register<ISabaxDResult>(() => new SabaxDResult("SabaxDResultConfigs"), Lifestyle.Scoped);
+            container.Register<IFastSpinResult>(() => new FastSpinResult("FastSpinResultConfigs"), Lifestyle.Scoped);
             container.Register<IPService, IPServiceImpl>();
             container.Register<Helpers.IPHelper, IPHelperImpl>();
             container.RegisterPerWebRequest<IPartialUMService, PartialUMService>();

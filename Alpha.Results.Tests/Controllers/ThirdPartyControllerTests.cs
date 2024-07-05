@@ -360,5 +360,18 @@
             // Assert
             mediator.Received().Send(Arg.Any<UUSlotsResultQuery>());
         }
+
+        [Test]
+        public void UUSlotsResult_Always_CallsMediatorSendFastSpinResultQuery()
+        {
+            // Arrange
+            var query = new FastSpinResultQuery(userSession);
+
+            // Act
+            controller.FastSpinResult(query);
+
+            // Assert
+            mediator.Received().Send(Arg.Any<FastSpinResultQuery>());
+        }
     }
 }
