@@ -42,7 +42,8 @@
         IRequestHandler<Live22ResultQuery, ThirdPartyProductViewModel>,
         IRequestHandler<WEResultQuery, ThirdPartyProductViewModel>,
         IRequestHandler<UUSlotsResultQuery, ThirdPartyProductViewModel>,
-        IRequestHandler<SabaxDResultQuery, ThirdPartyProductViewModel>
+        IRequestHandler<SabaxDResultQuery, ThirdPartyProductViewModel>,
+        IRequestHandler<FastSpinResultQuery, ThirdPartyProductViewModel>
     {
         private readonly ICacheRefService cacheRefService;
         private readonly IMaxGameResult maxGameService;
@@ -77,6 +78,7 @@
         private readonly IWEResult weResult;
         private readonly IUUSlotsResult uUSlotsResult;
         private readonly ISabaxDResult sabaxDResult;
+        private readonly IFastSpinResult fastSpinResult;
         private readonly IPHelper ipHelper;
 
         public ThirdPartyResultHandler(
@@ -112,6 +114,7 @@
             IWEResult weResult,
             IUUSlotsResult uUSlotsResult,
             ISabaxDResult sabaxDResult,
+            IFastSpinResult fastSpinResult,
             BrowserHelper browserHelper,
             IPHelper ipHelper)
         {
@@ -149,6 +152,7 @@
             this.weResult = weResult;
             this.uUSlotsResult = uUSlotsResult;
             this.sabaxDResult = sabaxDResult;
+            this.fastSpinResult = fastSpinResult;
         }
 
         public ThirdPartyProductViewModel Handle(MGResultQuery message)
@@ -284,5 +288,8 @@
 
         public ThirdPartyProductViewModel Handle(SabaxDResultQuery message)
         => Handle(message, sabaxDResult);
+
+        public ThirdPartyProductViewModel Handle(FastSpinResultQuery message)
+        => Handle(message, fastSpinResult);
     }
 }

@@ -46,6 +46,7 @@
         private ILive22Result live22Result;
         private IWEResult weResult;
         private IUUSlotsResult uUSlotsResult;
+        private IFastSpinResult fastSpinResult;
         private IPService ipService;
         private IVirtualGamesDetailResult virtualGamesDetailResult;
         private ISEALResult sealResult;
@@ -86,6 +87,7 @@
             live22Result = Substitute.For<ILive22Result>();
             weResult = Substitute.For<IWEResult>();
             uUSlotsResult = Substitute.For<IUUSlotsResult>();
+            fastSpinResult = Substitute.For<IFastSpinResult>();
             virtualGamesDetailResult = Substitute.For<IVirtualGamesDetailResult>();
             serviceFactory = Substitute.For<ProductResultServiceFactory>();
             ipHelper = Substitute.For<IPHelper>();
@@ -120,6 +122,7 @@
                  live22Result,
                  weResult,
                  uUSlotsResult,
+                 fastSpinResult,
                  browserHelper,
                  ipHelper);
 
@@ -663,6 +666,27 @@
                 EndTime = DateTime.Today.ToString()
             };
             uUSlotsResult.GetResultGET(Arg.Any<ResultRequest>()).Returns("Url result");
+
+
+            // Act
+            var act = handler.Handle(query);
+
+            // Assert
+            Assert.AreEqual("Product1 Result", act.Title);
+            Assert.AreEqual("Url result", act.Result);
+        }
+
+        [Test]
+        public void FastSpinResultQuery_Always_CallGetResult()
+        {
+            // Arrange
+            var query = new FastSpinResultQuery(userSession)
+            {
+                ProductId = 1,
+                BetType = 1,
+                EndTime = DateTime.Today.ToString()
+            };
+            fastSpinResult.GetResultGET(Arg.Any<ResultRequest>()).Returns("Url result");
 
 
             // Act

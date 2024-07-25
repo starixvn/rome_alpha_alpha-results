@@ -1005,6 +1005,7 @@
     <Content Include="Content\Images\lotto_ball.png" />
     <Content Include="Content\Images\sprite.png" />
     <Content Include="Global.asax" />
+    <Compile Include="Models\Requests\FastSpinResultQuery.cs" />
     <Compile Include="Models\Requests\SabaxDResultQuery.cs" />
     <Compile Include="Models\Requests\UUSlotsResultQuery.cs" />
     <Content Include="Scripts\CardClub\index.js" />
@@ -1346,6 +1347,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ICacheRefService.cs" />
     <Compile Include="Services\Impl\AdvantPlayMiniResult.cs" />
+    <Compile Include="Services\Impl\FastSpinResult.cs" />
     <Compile Include="Services\Impl\JiliResult.cs" />
     <Compile Include="Services\Impl\Live22Result.cs" />
     <Compile Include="Services\Impl\SEALResult.cs" />
