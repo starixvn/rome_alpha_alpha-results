@@ -99,6 +99,9 @@
 
         public ActionResult FastSpinResult(FastSpinResultQuery message)
         => View(IndexView, mediator.Send(message));
+        
+        public ActionResult FACHAIResult(FACHAIResultQuery message)
+        => View(IndexView, mediator.Send(message));
 
     }
 }

@@ -1006,11 +1006,13 @@
     <Content Include="Content\Images\sprite.png" />
     <Content Include="Global.asax" />
     <Compile Include="Models\Requests\FastSpinResultQuery.cs" />
+    <Compile Include="Models\Requests\FACHAIResultQuery.cs" />
     <Compile Include="Models\Requests\SabaxDResultQuery.cs" />
     <Compile Include="Models\Requests\UUSlotsResultQuery.cs" />
     <Content Include="Scripts\CardClub\index.js" />
     <Content Include="Scripts\TableGames\index.js" />
     <Content Include="Scripts\Lottery\index.js" />
+    <Compile Include="Services\Impl\FACHAIResult.cs" />
     <Content Include="Views\Lottery\Index.cshtml" />
     <Content Include="Content\ThirdParty\third-party.scss" />
     <Content Include="Content\ThirdParty\third-party-dark.scss" />
