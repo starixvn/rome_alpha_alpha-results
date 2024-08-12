@@ -20,6 +20,11 @@
                 return new ParlayResultService();
             }
 
+            if (betTypeId == BetTypeIdConstants.MixParlayVirtuallySports)
+            {
+                return new Parlay3rdResultService();
+            }
+
             switch (sportId)
             {
                 case SportTypeIdConstants.Soccer:

@@ -10,5 +10,7 @@ namespace Alpha.Results.Site.DataAccesses
     public interface IParlayResultDataAccess
     {
         IList<Parlay> GetParlayResults(GetParlayResultCriteria criteria);
+
+        IList<Parlay> GetParlay3rdResults(GetParlay3rdResultCriteria criteria);
     }
 }

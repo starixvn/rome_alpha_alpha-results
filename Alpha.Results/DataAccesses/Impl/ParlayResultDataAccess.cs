@@ -19,6 +19,21 @@
             _repository = repository ?? new DynamicRepository();
         }
 
+        public IList<Parlay> GetParlay3rdResults(GetParlay3rdResultCriteria criteria)
+        {
+            if (criteria == null)
+            {
+                throw new ArgumentNullException(nameof(criteria), "Criteria cannot be null");
+            }
+
+            var sportsbooks = _repository.Fetch<SportsbookEntity>(criteria);
+            
+
+            var results = GetParlays(sportsbooks);            
+
+            return results;
+        }
+
         public IList<Parlay> GetParlayResults(GetParlayResultCriteria criteria)
         {
             if (criteria == null)
