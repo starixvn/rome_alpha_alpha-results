@@ -112,10 +112,8 @@ namespace Alpha.Results.Site.Handlers
             var firstDetail = details.Matchs.FirstOrDefault();
             var leagueId = firstDetail == null ? message.LeagueId : firstDetail.LeagueId;
             var leagueGroupId = firstDetail == null ? 0 : firstDetail.LeagueGroupId;
-
-            var leagueName = message.LeagueId > 0
-                ? GetLeagueName(leagueId, leagueGroupId)
-                : _cacheRefService.GetBetTypeName(message.BetTypeId);
+            
+            var leagueName = message.LeagueId > 0 ? GetReportDetailLeagueName(message.SportId, leagueId, leagueGroupId) : _cacheRefService.GetBetTypeName(message.BetTypeId);
 
             var title = !string.IsNullOrEmpty(leagueName) && !string.IsNullOrEmpty(sportName) ?
                 $"{sportName} - {leagueName}" : $"{sportName} {leagueName}";
@@ -147,6 +145,11 @@ namespace Alpha.Results.Site.Handlers
                 ExcelResults = excelResults
             };
         }
+
+        private string GetReportDetailLeagueName(int sportType, int leagueId, int leagueGroupId)
+            => SportTypeIdConstants.SportListUsingLeague3rd.Any(i => i == sportType) ?
+                                _cacheRefService.GetLeague3rdName(leagueId) :
+                                GetLeagueName(leagueId, leagueGroupId);
 
         private string GetLeagueName(int leagueId, int leagueGroupId)
         => AppSettings.IsSiteLabel777 ?

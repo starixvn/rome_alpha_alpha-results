@@ -65,6 +65,8 @@
                     return new LeapGamingResultService();
                 case SportTypeIdConstants.Bitcoin:
                     return new BitcoinResultService();
+                case SportTypeIdConstants.VirtuallySports:
+                    return new VirtuallySportsResultService();
                 default:
                     if (betTypeId == BetTypeIdConstants.BetBuilder)
                     {
