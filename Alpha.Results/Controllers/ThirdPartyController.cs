@@ -103,5 +103,8 @@
         public ActionResult FACHAIResult(FACHAIResultQuery message)
         => View(IndexView, mediator.Send(message));
 
+        public ActionResult NextspinResult(NextspinResultQuery message)
+        => View(IndexView, mediator.Send(message));
+
     }
 }
