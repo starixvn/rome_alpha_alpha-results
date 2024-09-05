@@ -163,7 +163,8 @@
                 SportType.ESport,
                 SportType.Badminton,
                 SportType.Cricket,
-                SportType.VolleyBall
+                SportType.VolleyBall,
+                SportType.BaseBall
             };
 
             return sportHasDetail.Contains(sportType);
