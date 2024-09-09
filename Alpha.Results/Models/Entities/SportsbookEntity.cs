@@ -34,5 +34,7 @@
         public bool NoHTScore { get; set; }
         public byte MainType { get; set; }
         public int SubType { get; set; }
+
+        public int SessionTime { get; set; }
     }
 }

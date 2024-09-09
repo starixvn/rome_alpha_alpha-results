@@ -112,7 +112,8 @@
                 LiveHomeScore = entity.LiveHomeScore,
                 LiveAwayScore = entity.LiveAwayScore,
                 MainType = entity.MainType,
-                SubType = entity.SubType
+                SubType = entity.SubType,
+                SessionTime = entity.SessionTime
             };
         }
 
