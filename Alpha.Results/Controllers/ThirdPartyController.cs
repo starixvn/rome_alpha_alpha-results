@@ -106,5 +106,8 @@
         public ActionResult NextspinResult(NextspinResultQuery message)
         => View(IndexView, mediator.Send(message));
 
+        public ActionResult ONCasinoResult(ONCasinoResultQuery message)
+        => View(IndexView, mediator.Send(message));
+
     }
 }

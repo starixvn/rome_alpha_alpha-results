@@ -1013,6 +1013,7 @@
     <Content Include="Scripts\CardClub\index.js" />
     <Content Include="Scripts\TableGames\index.js" />
     <Content Include="Scripts\Lottery\index.js" />
+    <Compile Include="Models\Requests\ONCasinoResultQuery.cs" />
     <Compile Include="Services\Impl\FACHAIResult.cs" />
     <Content Include="Views\Lottery\Index.cshtml" />
     <Content Include="Content\ThirdParty\third-party.scss" />
@@ -1381,6 +1382,7 @@
     <Compile Include="Services\Impl\Products\BitcoinResultService.cs" />
     <Compile Include="Services\Impl\TableGameResult.cs" />
     <Compile Include="Services\Impl\LotteryResult.cs" />
+    <Compile Include="Services\Impl\ONCasinoResult.cs" />
     <Compile Include="Services\Impl\WEResult.cs" />
     <Compile Include="Services\IVirtualGamesResult.cs" />
     <Compile Include="Services\ITableGamesResult.cs" />
