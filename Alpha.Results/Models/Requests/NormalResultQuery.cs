@@ -27,6 +27,8 @@
 
         public DateTime ResultDate { get; set; }
 
+        public DateTime EndTime { get; set; }
+
         public string TransDesc { get; set; }
 
         public string BetCheck { get; set; }
@@ -60,5 +62,6 @@
         }       
 
         public DateTime MoveBetsDate { get; set; }
+        public DateTime BalanceUpDate { get; set; }
     }
 }

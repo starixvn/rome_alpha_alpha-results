@@ -45,7 +45,7 @@
             };
 
             var criteria = GetCriteria(request);
-            var results = _racingResultDataAccess.GetVirtualRacingResults(criteria).ToList();
+            var results = _racingResultDataAccess.GetVirtualRacingResultDetails(criteria).ToList();
 
             return _resultEngineAdapter.HtmlParser(results, resultSetting);
         }
@@ -55,7 +55,7 @@
         {
             Check.Argument.IsNotNull(request, "request");
 
-            var results = _racingResultDataAccess.GetVirtualRacingResults(GetCriteria(request)).ToList();
+            var results = _racingResultDataAccess.GetVirtualRacingResultDetails(GetCriteria(request)).ToList();
 
             var resultSetting = new ResultSetting
             {
@@ -74,7 +74,7 @@
         {
             return new GetVirtualRacingResultCriteria
             {
-                FromDate = request.ResultDate,
+                EventDate = request.ResultDate,
                 SportType = request.SportId,
                 LeagueId = request.LeagueId,
                 MoveBetsDay = request.MoveBetsDate
@@ -102,7 +102,10 @@
 
             var criteria = new GetRacingResultDetailsCriteria
             {
-                MatchId = detailsRequest.MatchId
+                EventId = detailsRequest.MatchId,
+                EventDate = detailsRequest.EndTime,
+                BalanceUpDay = detailsRequest.BalanceUpDate,
+                MoveBetsDay = detailsRequest.MoveBetsDate
             };
             var results = _racingResultDataAccess.GetVirtualRacingResultDetails(criteria);
 
