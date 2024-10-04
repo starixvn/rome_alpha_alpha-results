@@ -97,12 +97,9 @@
             //// Assert
             Assert.IsTrue(resultService is AllBetCasinoResultService);
         }
-
-        [TestCase(SportTypeIdConstants.VirtualHorsesRacing)]
-        [TestCase(SportTypeIdConstants.VirtualGreyhounds)]
-        [TestCase(SportTypeIdConstants.VirtualMotors)]
-        [TestCase(SportTypeIdConstants.VirtualCycling)]
-        [TestCase(SportTypeIdConstants.VirtualSpeedway)]
+        
+        [TestCase(SportTypeIdConstants.VS2HorseRacing)]
+        [TestCase(SportTypeIdConstants.VS2DogRacing)]
         public void CreateProductResultService_SportIsBelongToVirtualRacing_ReturnVirtualRacingResultService(
             int sportId)
         {

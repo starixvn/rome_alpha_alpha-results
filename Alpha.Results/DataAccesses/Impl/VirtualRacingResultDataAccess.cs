@@ -4,10 +4,9 @@
     using System.Collections.Generic;
     using System.Data;
     using System.Linq;
-    using Criteria;
     using DataAccesses;
     using Fanex.Data.Repository;
-    using Fanex.Result.Core.Racing.DTO;
+    using Fanex.Result.Core.VirtualRacing.DTO;
 
     public class VirtualRacingResultDataAccess : IVirtualRacingResultDataAccess
     {
@@ -18,35 +17,31 @@
             _repository = repository ?? new DynamicRepository();
         }
 
-        public IList<Racing> GetVirtualRacingResults(GetVirtualRacingResultCriteria criteria)
-            => BuildVirtualRacingResults(criteria);
-
-        public IList<Racing> GetVirtualRacingResultDetails(GetRacingResultDetailsCriteria criteria)
-            => BuildVirtualRacingResults(criteria);
-
-        private IList<Racing> BuildVirtualRacingResults(ICriteria criteria)
+        public IList<VirtualRacing> GetVirtualRacingResultDetails(ICriteria criteria)
         {
             if (criteria == null)
             {
                 throw new ArgumentNullException(nameof(criteria), "Criteria cannot be null");
             }
 
-            return _repository.Fetch<Racing>(criteria).Select(item =>
-            {
-                item.SCROfMatch = GetSRCValue(item.SCROfMatch);
-                return item;
-            }).ToList();
+            var rawdata = _repository.FetchMultiple<VirtualRacing, VirtualRacingDetail>(criteria);
+            var results = rawdata.Item1;
+            var gameDetails = rawdata.Item2;
+
+            AddGameDetailsToResults(gameDetails, results);
+
+            return results.ToList();
         }
 
-        private static string GetSRCValue(string src)
+        private static void AddGameDetailsToResults(IEnumerable<VirtualRacingDetail> gameDetails, IEnumerable<VirtualRacing> results)
         {
-            if (!string.IsNullOrWhiteSpace(src)
-                && src.EndsWith(",", StringComparison.Ordinal))
+            if (gameDetails.Any())
             {
-                return src.Remove(src.Length - 1);
+                foreach (var result in results)
+                {
+                    result.Details.AddRange(gameDetails.Where(i => i.EventId == result.EventId));
+                }
             }
-
-            return src;
         }
     }
 }

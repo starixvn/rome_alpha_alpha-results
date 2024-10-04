@@ -53,13 +53,13 @@
                 case SportTypeIdConstants.WM:
                 case SportTypeIdConstants.YeeBet:
                     return new WMResultService();
-
-                case SportTypeIdConstants.VirtualHorsesRacing:
-                case SportTypeIdConstants.VirtualGreyhounds:
-                case SportTypeIdConstants.VirtualMotors:
-                case SportTypeIdConstants.VirtualCycling:
-                case SportTypeIdConstants.VirtualSpeedway:
-                    return new VirtualRacingResultService();
+                //remove old Virtual Racing
+                //case SportTypeIdConstants.VirtualHorsesRacing:
+                //case SportTypeIdConstants.VirtualGreyhounds:
+                //case SportTypeIdConstants.VirtualMotors:
+                //case SportTypeIdConstants.VirtualCycling:
+                //case SportTypeIdConstants.VirtualSpeedway:
+                //    return new VirtualRacingResultService();
                     
                 case SportTypeIdConstants.LGVirtualSports:
                     return new LeapGamingResultService();
@@ -67,6 +67,10 @@
                     return new BitcoinResultService();
                 case SportTypeIdConstants.VirtuallySports:
                     return new VirtuallySportsResultService();
+
+                case SportTypeIdConstants.VS2HorseRacing:
+                case SportTypeIdConstants.VS2DogRacing:
+                    return new VirtualRacingResultService();
                 default:
                     if (betTypeId == BetTypeIdConstants.BetBuilder)
                     {
