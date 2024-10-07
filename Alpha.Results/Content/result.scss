@@ -432,3 +432,9 @@ table {
         font-size: $font-size + 7;
     }
 }
+
+table.racing {
+    .cl-race-name {
+        width: 300px;
+    }
+}

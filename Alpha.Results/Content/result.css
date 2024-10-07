@@ -332,3 +332,6 @@ table {
 @media only screen and (max-device-width: 768px) {
   .partial-um-announcement {
     font-size: 20px; } }
+
+table.racing .cl-race-name {
+  width: 300px; }
