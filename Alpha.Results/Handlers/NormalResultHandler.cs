@@ -118,7 +118,6 @@ namespace Alpha.Results.Site.Handlers
             var leagueGroupId = firstDetail == null ? 0 : firstDetail.LeagueGroupId;
             
             var leagueName = message.LeagueId > 0 ? GetReportDetailLeagueName(message.SportId, leagueId, leagueGroupId) : _cacheRefService.GetBetTypeName(message.BetTypeId);
-                ? GetLeagueName(leagueId, leagueGroupId, message.SportId)
 
             var title = !string.IsNullOrEmpty(leagueName) && !string.IsNullOrEmpty(sportName) ?
                 $"{sportName} - {leagueName}" : $"{sportName} {leagueName}";
@@ -137,7 +136,7 @@ namespace Alpha.Results.Site.Handlers
         {
             Check.Argument.IsNotNull(message, "message");
 
-            var leagueName = message.LeagueId == 0 ? Resources.ShowAllLeaguesExcelTitle : GetLeagueName(message.LeagueId, message.SportId, message.SportId);
+            var leagueName = message.LeagueId == 0 ? Resources.ShowAllLeaguesExcelTitle : GetLeagueName(message.LeagueId, message.SportId);
             var resultDate = message.ResultDate.ToShortDateFormatWithSlash();
             message.MoveBetsDate = _reportService.GetMoveBetsDate();
 
@@ -156,14 +155,9 @@ namespace Alpha.Results.Site.Handlers
                                 _cacheRefService.GetLeague3rdName(leagueId) :
                                 GetLeagueName(leagueId, leagueGroupId);
 
-        private string GetLeagueName(int leagueId, int leagueGroupId, int sportType)
+        private string GetLeagueName(int leagueId, int leagueGroupId)
         => AppSettings.IsSiteLabel777 ?
                 _cacheRefService.GetLeagueName(leagueId, leagueGroupId) :
-                GetLeagueNameWithoutLeagueGroup(leagueId, sportType);
-
-        private string GetLeagueNameWithoutLeagueGroup(int leagueId, int sportType)
-            => SportTypeIdConstants.SportListUsingLeague3rd.Any(i => i == sportType) ?
-                _cacheRefService.GetLeague3rdName(leagueId) :
                 _cacheRefService.GetLeagueName(leagueId);
     }
 }

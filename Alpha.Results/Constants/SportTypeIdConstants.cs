@@ -56,9 +56,8 @@ namespace Alpha.Results.Site.Constants
         public const int VirtuallySports = 147;
 
         public const int VS2HorseRacing = 198;
-        public static readonly List<int> SportListUsingLeague3rd = new List<int> { Bitcoin, VirtuallySports };
         public const int VS2DogRacing = 177;
 
-        public static readonly List<int> SportListUsingLeague3rd = new List<int> { Bitcoin, VS2HorseRacing, VS2DogRacing };
+        public static readonly List<int> SportListUsingLeague3rd = new List<int> { Bitcoin, VirtuallySports, VS2HorseRacing, VS2DogRacing };
     }
 }
