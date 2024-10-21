@@ -130,10 +130,15 @@
                 HighlightWinnerTeam = true
             };
 
-            return new ResultDetailModel(detailsRequest.IsViewResultFromBetList
+            if (results.Count > 0)
+            {
+                return new ResultDetailModel(detailsRequest.IsViewResultFromBetList
                 ? _resultEngineAdapter.HtmlParser(results, resultSetting).Replace("original-title", " title ")
                 : _resultEngineAdapter.HtmlGameDetailParser(results[0], resultSetting).Replace("original-title", " title "),
                 results);
+            }
+
+            return new ResultDetailModel(string.Empty);
         }
 
         private Sportsbook GetBetBuilder(NormalResultDetailsQuery detailsRequest)
