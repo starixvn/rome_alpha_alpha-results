@@ -112,5 +112,8 @@
         public ActionResult ONCasinoResult(ONCasinoResultQuery message)
         => View(IndexView, mediator.Send(message));
 
+        public ActionResult PlaytechResult(PlaytechResultQuery message)
+        => View(IndexView, mediator.Send(message));
+
     }
 }
