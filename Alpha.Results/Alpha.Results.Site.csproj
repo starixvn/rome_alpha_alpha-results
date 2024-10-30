@@ -1005,6 +1005,8 @@
     <Content Include="Content\Images\lotto_ball.png" />
     <Content Include="Content\Images\sprite.png" />
     <Content Include="Global.asax" />
+    <Compile Include="Criteria\Products\GetBetByResultCriteria.cs" />
+    <Compile Include="Criteria\Products\GetBetByResultDetailsCriteria.cs" />
     <Compile Include="Models\Requests\FastSpinResultQuery.cs" />
     <Compile Include="Models\Requests\FACHAIResultQuery.cs" />
     <Compile Include="Models\Requests\NextspinResultQuery.cs" />
@@ -1355,6 +1357,7 @@
     <Compile Include="Services\Impl\JiliResult.cs" />
     <Compile Include="Services\Impl\Live22Result.cs" />
     <Compile Include="Services\Impl\NextspinResult.cs" />
+    <Compile Include="Services\Impl\Products\BetByResultService.cs" />
     <Compile Include="Services\Impl\SEALResult.cs" />
     <Compile Include="Services\Impl\MGResult.cs" />
     <Compile Include="Services\Impl\FGGResult.cs" />

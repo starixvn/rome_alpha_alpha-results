@@ -51,9 +51,10 @@ namespace Alpha.Results.Site.Constants
         public const int WM = 233;
         public const int BBin = 241;
         public const int SexyGaming = 243;
-        public const int SAGaming = 244;
+        public const int SAGaming = 244; 
         public const int GTCasino = 242;
+        public const int BetBy = 134;
 
-        public static readonly List<int> SportListUsingLeague3rd = new List<int> { Bitcoin };
+        public static readonly List<int> SportListUsingLeague3rd = new List<int> { Bitcoin, BetBy };
     }
 }
