@@ -291,7 +291,20 @@
         }
 
         public ThirdPartyProductViewModel Handle(JiliResultQuery message)
-            => Handle(message, jiliResult);
+        {
+            Check.Argument.IsNotNull(message, "message");
+
+            var productName = cacheRefService.GetProductName(message.ProductId);
+            var request = new ResultRequest(message.CustId, message.TransId3rd, message.GameId3rd, message.CurrencyId, message.SiteId, message.Language)
+            {                
+                BetTypeId = message.BetType,
+                TransDesc = message.TransDesc
+            };
+
+            var result = jiliResult.GetResultGET(request);
+
+            return new ThirdPartyProductViewModel(string.Format(Resources.ResultPopupTitle, productName), result);
+        } 
 
         public ThirdPartyProductViewModel Handle(Live22ResultQuery message)
             => Handle(message, live22Result);

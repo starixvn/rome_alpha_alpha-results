@@ -8,6 +8,9 @@
     public class JiliResultQuery : Result3rdQuery, IRequest<ThirdPartyProductViewModel>
     {
         public JiliResultQuery(IUserSession userSession) : base(userSession)
-        { }
+        { 
+        }
+
+        public string TransDesc { get; set; }
     }
 }
