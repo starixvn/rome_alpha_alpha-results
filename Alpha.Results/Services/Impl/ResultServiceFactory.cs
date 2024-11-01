@@ -43,9 +43,6 @@
                 case SportTypeIdConstants.SAGaming:
                     return new SAGamingResultService();
 
-                case SportTypeIdConstants.SexyGaming:
-                    return new SexyGamingResultService();
-
                 case SportTypeIdConstants.GTCasino:
                     return new GTCasinoResultService();
                 case SportTypeIdConstants.WM:

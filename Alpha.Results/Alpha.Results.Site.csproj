@@ -201,17 +201,14 @@
     <Reference Include="Fanex.Result.Core.SAGaming, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core.SAGaming.2.0.0\lib\net461\Fanex.Result.Core.SAGaming.dll</HintPath>
     </Reference>
-    <Reference Include="Fanex.Result.Core.SexyGaming, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Result.Core.SexyGaming.2.0.0\lib\net461\Fanex.Result.Core.SexyGaming.dll</HintPath>
-    </Reference>
     <Reference Include="Fanex.Result.Core.Sportsbook, Version=2.0.1.4, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core-Sportsbook.2.0.1.4\lib\net461\Fanex.Result.Core.Sportsbook.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.Result.Core.SportsLottery, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core.SportsLottery.1.0.3\lib\net461\Fanex.Result.Core.SportsLottery.dll</HintPath>
     </Reference>
-    <Reference Include="Fanex.Result.Core.ThirdParty, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Result.Core.ThirdPartyResult.2.0.0\lib\net461\Fanex.Result.Core.ThirdParty.dll</HintPath>
+    <Reference Include="Fanex.Result.Core.ThirdParty, Version=2.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.Result.Core.ThirdPartyResult.2.0.0.1\lib\net461\Fanex.Result.Core.ThirdParty.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.Result.Core.WM, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core.WM.2.0.0\lib\net461\Fanex.Result.Core.WM.dll</HintPath>
@@ -730,127 +727,6 @@
     <Content Include="Content\Fanex.Result\SAGaming\template\public\game_result\Sicbo\dice-4.png" />
     <Content Include="Content\Fanex.Result\SAGaming\template\public\game_result\Sicbo\dice-5.png" />
     <Content Include="Content\Fanex.Result\SAGaming\template\public\game_result\Sicbo\dice-6.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\css\button.css" />
-    <Content Include="Content\Fanex.Result\SexyGaming\css\images\layout\btn_UI04.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\css\images\layout\icon_UI02.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\css\images\layout\oddsTable_th.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\css\images\layout\popup.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\css\menu.css" />
-    <Content Include="Content\Fanex.Result\SexyGaming\css\oddsFamily.css" />
-    <Content Include="Content\Fanex.Result\SexyGaming\css\table_w.css" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\FishPrawnCrab\1_FPC_TH.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\FishPrawnCrab\2_FPC_TH.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\FishPrawnCrab\3_FPC_TH.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\FishPrawnCrab\4_FPC_TH.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\FishPrawnCrab\5_FPC_TH.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\FishPrawnCrab\6_FPC_TH.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Poker\C1.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Poker\C2.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Poker\C3.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Poker\C4.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Poker\C5.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Poker\C6.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Poker\C7.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Poker\C8.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Poker\C9.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Poker\CA.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Poker\CJ.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Poker\CK.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Poker\CQ.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Poker\D1.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Poker\D2.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Poker\D3.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Poker\D4.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Poker\D5.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Poker\D6.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Poker\D7.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Poker\D8.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Poker\D9.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Poker\DA.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Poker\DJ.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Poker\DK.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Poker\DQ.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Poker\H1.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Poker\H2.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Poker\H3.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Poker\H4.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Poker\H5.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Poker\H6.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Poker\H7.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Poker\H8.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Poker\H9.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Poker\HA.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Poker\HJ.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Poker\HK.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Poker\HQ.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Poker\S1.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Poker\S2.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Poker\S3.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Poker\S4.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Poker\S5.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Poker\S6.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Poker\S7.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Poker\S8.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Poker\S9.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Poker\SA.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Poker\SJ.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Poker\SK.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Poker\SQ.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\RedBlueDuel\ScoreBoard_b1.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\RedBlueDuel\ScoreBoard_b2.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\RedBlueDuel\ScoreBoard_b3.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\RedBlueDuel\ScoreBoard_b4.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\RedBlueDuel\ScoreBoard_b5.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\RedBlueDuel\ScoreBoard_b6.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\RedBlueDuel\ScoreBoard_d1.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\RedBlueDuel\ScoreBoard_d2.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\RedBlueDuel\ScoreBoard_d3.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\RedBlueDuel\ScoreBoard_d4.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\RedBlueDuel\ScoreBoard_d5.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\RedBlueDuel\ScoreBoard_d6.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Roulette\0.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Roulette\1.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Roulette\10.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Roulette\11.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Roulette\12.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Roulette\13.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Roulette\14.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Roulette\15.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Roulette\16.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Roulette\17.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Roulette\18.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Roulette\19.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Roulette\2.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Roulette\20.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Roulette\21.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Roulette\22.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Roulette\23.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Roulette\24.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Roulette\25.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Roulette\26.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Roulette\27.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Roulette\28.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Roulette\29.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Roulette\3.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Roulette\30.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Roulette\31.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Roulette\32.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Roulette\33.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Roulette\34.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Roulette\35.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Roulette\36.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Roulette\4.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Roulette\5.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Roulette\6.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Roulette\7.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Roulette\8.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Roulette\9.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Sicbo\dice-1.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Sicbo\dice-2.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Sicbo\dice-3.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Sicbo\dice-4.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Sicbo\dice-5.png" />
-    <Content Include="Content\Fanex.Result\SexyGaming\template\public\game_result\Sicbo\dice-6.png" />
     <Content Include="Content\Fanex.Result\WM\css\table_w.css" />
     <Content Include="Content\Fanex.Result\WM\images\FanTan\ball.png" />
     <Content Include="Content\Fanex.Result\WM\images\FishPrawnCrab\1.png" />
@@ -1014,6 +890,7 @@
     <Content Include="Scripts\TableGames\index.js" />
     <Content Include="Scripts\Lottery\index.js" />
     <Compile Include="Models\Requests\ONCasinoResultQuery.cs" />
+    <Compile Include="Models\Requests\SexyGamingResultQuery.cs" />
     <Compile Include="Services\Impl\FACHAIResult.cs" />
     <Content Include="Views\Lottery\Index.cshtml" />
     <Content Include="Content\ThirdParty\third-party.scss" />
@@ -1383,6 +1260,7 @@
     <Compile Include="Services\Impl\TableGameResult.cs" />
     <Compile Include="Services\Impl\LotteryResult.cs" />
     <Compile Include="Services\Impl\ONCasinoResult.cs" />
+    <Compile Include="Services\Impl\SexyGamingResult.cs" />
     <Compile Include="Services\Impl\WEResult.cs" />
     <Compile Include="Services\IVirtualGamesResult.cs" />
     <Compile Include="Services\ITableGamesResult.cs" />
@@ -1397,7 +1275,6 @@
     <Compile Include="Services\Impl\Products\GTCasinoResultService.cs" />
     <Compile Include="Services\Impl\Products\WMResultService.cs" />
     <Compile Include="Services\Impl\Products\SAGamingResultService.cs" />
-    <Compile Include="Services\Impl\Products\SexyGamingResultService.cs" />
     <Compile Include="Services\Impl\Products\AllBetCasinoResultService.cs" />
     <Compile Include="Services\Impl\Products\MetricGamingResultService.cs" />
     <Compile Include="Services\Impl\Products\Happy5ResultService.cs" />

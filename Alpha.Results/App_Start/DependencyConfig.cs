@@ -155,6 +155,7 @@
             container.Register<IFACHAIResult>(() => new FACHAIResult("FACHAIResultConfigs"), Lifestyle.Scoped);
             container.Register<INextspinResult>(() => new NextspinResult("NextspinResultConfigs"), Lifestyle.Scoped);
             container.Register<IONLiveCasinoResult>(() => new ONLiveCasinoResult("ONCasinoResultConfigs"), Lifestyle.Scoped);
+            container.Register<ISexyGamingResult>(() => new SexyGamingResult("SexyGamingResultConfigs"), Lifestyle.Scoped);
             container.Register<IPService, IPServiceImpl>();
             container.Register<Helpers.IPHelper, IPHelperImpl>();
             container.RegisterPerWebRequest<IPartialUMService, PartialUMService>();

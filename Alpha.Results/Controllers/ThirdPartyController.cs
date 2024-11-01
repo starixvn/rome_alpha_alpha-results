@@ -14,6 +14,9 @@
         {
         }
 
+        public ActionResult SexyGamingResult(SexyGamingResultQuery message)
+        => View(IndexView, mediator.Send(message));
+
         public ActionResult MaxGameResult(MaxGameResultQuery message)
             => View(IndexView, mediator.Send(message));
 

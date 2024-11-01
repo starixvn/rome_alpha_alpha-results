@@ -46,7 +46,8 @@
         IRequestHandler<FastSpinResultQuery, ThirdPartyProductViewModel>,
         IRequestHandler<FACHAIResultQuery, ThirdPartyProductViewModel>,
         IRequestHandler<NextspinResultQuery, ThirdPartyProductViewModel>,
-        IRequestHandler<ONCasinoResultQuery, ThirdPartyProductViewModel>
+        IRequestHandler<ONCasinoResultQuery, ThirdPartyProductViewModel>,
+        IRequestHandler<SexyGamingResultQuery, ThirdPartyProductViewModel>
     {
         private readonly ICacheRefService cacheRefService;
         private readonly IMaxGameResult maxGameService;
@@ -85,6 +86,7 @@
         private readonly IFACHAIResult faCHAIResult;
         private readonly INextspinResult nextspinResult;
         private readonly IONLiveCasinoResult onCasinoResult;
+        private readonly ISexyGamingResult sexyGamingResult;
         private readonly IPHelper ipHelper;
 
         public ThirdPartyResultHandler(
@@ -124,6 +126,7 @@
             IFACHAIResult faCHAIResult,
             INextspinResult nextspinResult,
             IONLiveCasinoResult onCasinoResult,
+            ISexyGamingResult sexyGamingResult,
             BrowserHelper browserHelper,
             IPHelper ipHelper)
         {
@@ -165,6 +168,7 @@
             this.faCHAIResult = faCHAIResult;
             this.nextspinResult = nextspinResult;
             this.onCasinoResult = onCasinoResult;
+            this.sexyGamingResult = sexyGamingResult;
         }
 
         public ThirdPartyProductViewModel Handle(MGResultQuery message)
@@ -312,5 +316,20 @@
 
         public ThirdPartyProductViewModel Handle(ONCasinoResultQuery message)
         => Handle(message, onCasinoResult);
+
+        public ThirdPartyProductViewModel Handle(SexyGamingResultQuery message)
+        {
+            Check.Argument.IsNotNull(message, "message");
+
+            var productName = cacheRefService.GetProductName(message.ProductId);
+            var request = new ResultRequest(message.CustId, message.TransId3rd, message.GameId3rd, message.CurrencyId, message.SiteId, message.Language)
+            {
+                Site = message.Site
+            };
+
+            var result = sexyGamingResult.GetResultGET(request);
+
+            return new ThirdPartyProductViewModel(string.Format(Resources.ResultPopupTitle, productName), result);
+        }
     }
 }
