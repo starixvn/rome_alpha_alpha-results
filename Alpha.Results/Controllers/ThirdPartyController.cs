@@ -114,6 +114,9 @@
 
         public ActionResult PlaytechResult(PlaytechResultQuery message)
         => View(IndexView, mediator.Send(message));
+        
+        public ActionResult GPIResult(GPIResultQuery message)
+        => View(IndexView, mediator.Send(message));
 
     }
 }
