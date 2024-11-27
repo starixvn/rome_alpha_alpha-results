@@ -193,7 +193,7 @@
       <HintPath>..\packages\Fanex.Result.Core-Racing.2.0.0\lib\net461\Fanex.Result.Core.Racing.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.Result.Core.RemotingRef, Version=2.0.0.4, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Result.Core.RemotingRef.2.0.0.4-vs5-02\lib\net461\Fanex.Result.Core.RemotingRef.dll</HintPath>
+      <HintPath>..\packages\Fanex.Result.Core.RemotingRef.2.0.0.4\lib\net461\Fanex.Result.Core.RemotingRef.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.Result.Core.SabaClub, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Result.Core.SabaClub.2.0.0\lib\net461\Fanex.Result.Core.SabaClub.dll</HintPath>
