@@ -48,7 +48,8 @@
         IRequestHandler<NextspinResultQuery, ThirdPartyProductViewModel>,
         IRequestHandler<ONCasinoResultQuery, ThirdPartyProductViewModel>,
         IRequestHandler<SexyGamingResultQuery, ThirdPartyProductViewModel>,
-        IRequestHandler<PlaytechResultQuery, ThirdPartyProductViewModel>
+        IRequestHandler<PlaytechResultQuery, ThirdPartyProductViewModel>,
+        IRequestHandler<GPIResultQuery, ThirdPartyProductViewModel>
     {
         private readonly ICacheRefService cacheRefService;
         private readonly IMaxGameResult maxGameService;
@@ -89,6 +90,7 @@
         private readonly IONLiveCasinoResult onCasinoResult;
         private readonly ISexyGamingResult sexyGamingResult;
         private readonly IPlaytechResult playtechResult;
+        private readonly IGPIRNGResult gpiRNGResult;
         private readonly IPHelper ipHelper;
 
         public ThirdPartyResultHandler(
@@ -130,6 +132,7 @@
             IONLiveCasinoResult onCasinoResult,
             ISexyGamingResult sexyGamingResult,
             IPlaytechResult playtechResult,
+            IGPIRNGResult gpiRNGResult,
             BrowserHelper browserHelper,
             IPHelper ipHelper)
         {
@@ -173,6 +176,7 @@
             this.onCasinoResult = onCasinoResult;
             this.sexyGamingResult = sexyGamingResult;
             this.playtechResult = playtechResult;
+            this.gpiRNGResult = gpiRNGResult;
         }
 
         public ThirdPartyProductViewModel Handle(MGResultQuery message)
@@ -333,6 +337,9 @@
 
         public ThirdPartyProductViewModel Handle(ONCasinoResultQuery message)
         => Handle(message, onCasinoResult);
+
+        public ThirdPartyProductViewModel Handle(GPIResultQuery message)
+        => Handle(message, gpiRNGResult);
 
         public ThirdPartyProductViewModel Handle(SexyGamingResultQuery message)
         {
