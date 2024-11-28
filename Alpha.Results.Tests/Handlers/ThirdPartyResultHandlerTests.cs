@@ -47,6 +47,7 @@
         private IWEResult weResult;
         private IUUSlotsResult uUSlotsResult;
         private IFastSpinResult fastSpinResult;
+        private IFACHAIResult fACHAIResult;
         private IPService ipService;
         private IVirtualGamesDetailResult virtualGamesDetailResult;
         private ISEALResult sealResult;
@@ -88,6 +89,7 @@
             weResult = Substitute.For<IWEResult>();
             uUSlotsResult = Substitute.For<IUUSlotsResult>();
             fastSpinResult = Substitute.For<IFastSpinResult>();
+            fACHAIResult = Substitute.For<IFACHAIResult>();
             virtualGamesDetailResult = Substitute.For<IVirtualGamesDetailResult>();
             serviceFactory = Substitute.For<ProductResultServiceFactory>();
             ipHelper = Substitute.For<IPHelper>();
@@ -123,6 +125,7 @@
                  weResult,
                  uUSlotsResult,
                  fastSpinResult,
+                 fACHAIResult,
                  browserHelper,
                  ipHelper);
 

@@ -20,6 +20,11 @@
                 return new ParlayResultService();
             }
 
+            if (betTypeId == BetTypeIdConstants.MixParlayVirtuallySports)
+            {
+                return new Parlay3rdResultService();
+            }
+
             switch (sportId)
             {
                 case SportTypeIdConstants.Soccer:
@@ -60,6 +65,8 @@
                     return new LeapGamingResultService();
                 case SportTypeIdConstants.Bitcoin:
                     return new BitcoinResultService();
+                case SportTypeIdConstants.VirtuallySports:
+                    return new VirtuallySportsResultService();
                 default:
                     if (betTypeId == BetTypeIdConstants.BetBuilder)
                     {
