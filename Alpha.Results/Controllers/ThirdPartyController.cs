@@ -118,5 +118,8 @@
         public ActionResult GPIResult(GPIResultQuery message)
         => View(IndexView, mediator.Send(message));
 
+        public ActionResult GPILiveCasinoResult(GPILiveCasinoResultQuery message)
+        => View(IndexView, mediator.Send(message));
+
     }
 }
