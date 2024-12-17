@@ -886,6 +886,7 @@
     <Compile Include="Criteria\Products\GetVirtuallySportResultDetailsCriteria.cs" />
     <Compile Include="Models\Requests\FastSpinResultQuery.cs" />
     <Compile Include="Models\Requests\FACHAIResultQuery.cs" />
+    <Compile Include="Models\Requests\GPILiveCasinoResultQuery.cs" />
     <Compile Include="Models\Requests\GPIResultQuery.cs" />
     <Compile Include="Models\Requests\NextspinResultQuery.cs" />
     <Compile Include="Models\Requests\PlaytechResultQuery.cs" />
@@ -1235,6 +1236,7 @@
     <Compile Include="Services\ICacheRefService.cs" />
     <Compile Include="Services\Impl\AdvantPlayMiniResult.cs" />
     <Compile Include="Services\Impl\FastSpinResult.cs" />
+    <Compile Include="Services\Impl\GPILCResult.cs" />
     <Compile Include="Services\Impl\GPIRNGResult.cs" />
     <Compile Include="Services\Impl\JiliResult.cs" />
     <Compile Include="Services\Impl\Live22Result.cs" />
