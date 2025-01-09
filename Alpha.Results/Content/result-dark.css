@@ -65,6 +65,8 @@
 
 #detail-result-body {
   text-align: center; }
+  #detail-result-body .tabtitle {
+    text-align: left; }
 
 /********************** Table ***************************/
 table {
