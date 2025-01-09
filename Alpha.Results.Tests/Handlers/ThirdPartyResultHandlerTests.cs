@@ -93,6 +93,15 @@
             virtualGamesDetailResult = Substitute.For<IVirtualGamesDetailResult>();
             serviceFactory = Substitute.For<ProductResultServiceFactory>();
             ipHelper = Substitute.For<IPHelper>();
+
+            var sabaxDResult = Substitute.For<ISabaxDResult>();
+            var nextspinResult = Substitute.For<INextspinResult>();
+            var onCasinoResult = Substitute.For<IONLiveCasinoResult>();
+            var sexyGamingResult = Substitute.For<ISexyGamingResult>();
+            var playtechResult = Substitute.For<IPlaytechResult>();
+            var gpiRNGResult = Substitute.For<IGPIRNGResult>();
+            var gpiLCResult = Substitute.For<IGPILCResult>();
+            var playStarResult = Substitute.For<IPlayStarResult>();
             handler = new ThirdPartyResultHandler(serviceFactory,
                 cacheRefService,
                  maxGameService,
@@ -124,8 +133,16 @@
                  live22Result,
                  weResult,
                  uUSlotsResult,
+                 sabaxDResult,
                  fastSpinResult,
                  fACHAIResult,
+                 nextspinResult,
+                 onCasinoResult,
+                 sexyGamingResult,
+                 playtechResult,
+                 gpiRNGResult,
+                 gpiLCResult,
+                 playStarResult,
                  browserHelper,
                  ipHelper);
 
@@ -636,7 +653,7 @@
             Assert.AreEqual("Product1 Result", act.Title);
             Assert.AreEqual("Url result", act.Result);
         }
-        
+
         [Test]
         public void WEResultQuery_Always_CallGetResult()
         {
