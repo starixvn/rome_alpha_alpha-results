@@ -52,7 +52,8 @@
         IRequestHandler<GPIResultQuery, ThirdPartyProductViewModel>,
         IRequestHandler<GPILiveCasinoResultQuery, ThirdPartyProductViewModel>,
         IRequestHandler<PlayStarResultQuery, ThirdPartyProductViewModel>,
-        IRequestHandler<ASKMESLOTResultQuery, ThirdPartyProductViewModel>
+        IRequestHandler<ASKMESLOTResultQuery, ThirdPartyProductViewModel>,
+        IRequestHandler<SabaKenoResultQuery, ThirdPartyProductViewModel>
     {
         private readonly ICacheRefService cacheRefService;
         private readonly IMaxGameResult maxGameService;
@@ -94,6 +95,7 @@
         private readonly ISexyGamingResult sexyGamingResult;
         private readonly IPlaytechResult playtechResult;
         private readonly IPlayStarResult playStarResult;
+        private readonly ISabaKenoResult sabaKenoResult;
         private readonly IGPIRNGResult gpiRNGResult;
         private readonly IGPILCResult gpiLCResult;
         private readonly IASKMESLOTResult askmeslotResult;
@@ -142,6 +144,7 @@
             IGPILCResult gpiLCResult,
             IPlayStarResult playStarResult,
             IASKMESLOTResult askmeslotResult,
+            ISabaKenoResult sabaKenoResult,
             BrowserHelper browserHelper,
             IPHelper ipHelper)
         {
@@ -189,7 +192,11 @@
             this.gpiLCResult = gpiLCResult;
             this.playStarResult = playStarResult;
             this.askmeslotResult = askmeslotResult;
+            this.sabaKenoResult = sabaKenoResult;
         }
+
+        public ThirdPartyProductViewModel Handle(SabaKenoResultQuery message)
+        => Handle(message, sabaKenoResult);
 
         public ThirdPartyProductViewModel Handle(MGResultQuery message)
             => Handle(message, mgResult);

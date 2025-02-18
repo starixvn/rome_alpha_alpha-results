@@ -888,6 +888,7 @@
     <Compile Include="Models\Requests\FastSpinResultQuery.cs" />
     <Compile Include="Models\Requests\FACHAIResultQuery.cs" />
     <Compile Include="Models\Requests\GPILiveCasinoResultQuery.cs" />
+    <Compile Include="Models\Requests\SabaKenoResultQuery.cs" />
     <Compile Include="Models\Requests\PlayStarResultQuery.cs" />
     <Compile Include="Models\Requests\GPIResultQuery.cs" />
     <Compile Include="Models\Requests\NextspinResultQuery.cs" />
@@ -1244,6 +1245,7 @@
     <Compile Include="Services\Impl\JiliResult.cs" />
     <Compile Include="Services\Impl\Live22Result.cs" />
     <Compile Include="Services\Impl\NextspinResult.cs" />
+    <Compile Include="Services\Impl\SabaKenoResult.cs" />
     <Compile Include="Services\Impl\PlayStarResult.cs" />
     <Compile Include="Services\Impl\PlaytechResult.cs" />
     <Compile Include="Services\Impl\Products\Parlay3rdResultService.cs" />
