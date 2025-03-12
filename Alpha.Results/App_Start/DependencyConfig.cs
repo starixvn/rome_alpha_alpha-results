@@ -162,7 +162,8 @@
             container.Register<IPlayStarResult>(() => new PlayStarResult("PlayStarResultConfigs"), Lifestyle.Scoped);
             container.Register<IASKMESLOTResult>(() => new ASKMESLOTResult("ASKMESLOTResultConfigs"), Lifestyle.Scoped);
             container.Register<ISabaKenoResult>(() => new SabaKenoResult("SabaKenoResultConfigs"), Lifestyle.Scoped);
-            container.Register<IPService, IPServiceImpl>();
+            container.Register<IFunkyGamesResult>(() => new FunkyGamesResult("FunkyGamesResultConfigs"), Lifestyle.Scoped);
+      container.Register<IPService, IPServiceImpl>();
             container.Register<Helpers.IPHelper, IPHelperImpl>();
             container.RegisterPerWebRequest<IPartialUMService, PartialUMService>();
         }

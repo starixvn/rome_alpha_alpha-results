@@ -53,7 +53,8 @@
         IRequestHandler<GPILiveCasinoResultQuery, ThirdPartyProductViewModel>,
         IRequestHandler<PlayStarResultQuery, ThirdPartyProductViewModel>,
         IRequestHandler<ASKMESLOTResultQuery, ThirdPartyProductViewModel>,
-        IRequestHandler<SabaKenoResultQuery, ThirdPartyProductViewModel>
+        IRequestHandler<SabaKenoResultQuery, ThirdPartyProductViewModel>,
+        IRequestHandler<FunkyGamesResultQuery, ThirdPartyProductViewModel>
     {
         private readonly ICacheRefService cacheRefService;
         private readonly IMaxGameResult maxGameService;
@@ -99,6 +100,7 @@
         private readonly IGPIRNGResult gpiRNGResult;
         private readonly IGPILCResult gpiLCResult;
         private readonly IASKMESLOTResult askmeslotResult;
+        private readonly IFunkyGamesResult funkyGamesResult;
         private readonly IPHelper ipHelper;
 
         public ThirdPartyResultHandler(
@@ -145,6 +147,7 @@
             IPlayStarResult playStarResult,
             IASKMESLOTResult askmeslotResult,
             ISabaKenoResult sabaKenoResult,
+            IFunkyGamesResult funkyGamesResult,
             BrowserHelper browserHelper,
             IPHelper ipHelper)
         {
@@ -193,6 +196,7 @@
             this.playStarResult = playStarResult;
             this.askmeslotResult = askmeslotResult;
             this.sabaKenoResult = sabaKenoResult;
+            this.funkyGamesResult = funkyGamesResult;
         }
 
         public ThirdPartyProductViewModel Handle(SabaKenoResultQuery message)
@@ -386,5 +390,8 @@
 
         public ThirdPartyProductViewModel Handle(ASKMESLOTResultQuery message)
         => Handle(message, askmeslotResult);
+        
+        public ThirdPartyProductViewModel Handle(FunkyGamesResultQuery message)
+        => Handle(message, funkyGamesResult);
     }
 }

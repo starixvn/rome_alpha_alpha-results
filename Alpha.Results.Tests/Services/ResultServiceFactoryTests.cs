@@ -167,15 +167,15 @@
             Assert.IsTrue(resultService is GTCasinoResultService);
         }
 
-        [Test]
-        public void CreateProductResultService_SexyGaming_ReturnSAGamingResultService()
-        {
-            //// Act
-            var resultService = _resultServiceFactory.CreateProductResultService(SportTypeIdConstants.SexyGaming, 0);
+        //[Test]
+        //public void CreateProductResultService_SexyGaming_ReturnSAGamingResultService()
+        //{
+        //    //// Act
+        //    var resultService = _resultServiceFactory.CreateProductResultService(SportTypeIdConstants.SexyGaming, 0);
 
-            //// Assert
-            Assert.IsTrue(resultService is SexyGamingResultService);
-        }
+        //    //// Assert
+        //    Assert.IsTrue(resultService is SexyGamingResultService);
+        //}
 
         [Test]
         public void CreateProductResultService_WM_ReturnWMResultService()

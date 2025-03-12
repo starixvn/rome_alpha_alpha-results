@@ -51,6 +51,7 @@
         private IPService ipService;
         private IVirtualGamesDetailResult virtualGamesDetailResult;
         private ISEALResult sealResult;
+        private IONCasinoResult onCasinoResult;
         private ProductResultServiceFactory serviceFactory;
         private IPHelper ipHelper;
 
@@ -91,6 +92,7 @@
             fastSpinResult = Substitute.For<IFastSpinResult>();
             fACHAIResult = Substitute.For<IFACHAIResult>();
             virtualGamesDetailResult = Substitute.For<IVirtualGamesDetailResult>();
+            onCasinoResult = Substitute.For<IONCasinoResult>();
             serviceFactory = Substitute.For<ProductResultServiceFactory>();
             ipHelper = Substitute.For<IPHelper>();
             handler = new ThirdPartyResultHandler(serviceFactory,
@@ -124,8 +126,17 @@
                  live22Result,
                  weResult,
                  uUSlotsResult,
+                 null,
                  fastSpinResult,
                  fACHAIResult,
+                 null,
+                 null,
+                 null,
+                 null,
+                 null,
+                 null,
+                 null,
+                 null,
                  browserHelper,
                  ipHelper);
 
