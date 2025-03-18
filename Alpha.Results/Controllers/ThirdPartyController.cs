@@ -124,5 +124,8 @@
         public ActionResult GPILiveCasinoResult(GPILiveCasinoResultQuery message)
         => View(IndexView, mediator.Send(message));
 
+        public ActionResult ASKMESLOTResult(ASKMESLOTResultQuery message)
+        => View(IndexView, mediator.Send(message));
+
     }
 }

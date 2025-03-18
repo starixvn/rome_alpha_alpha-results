@@ -51,7 +51,8 @@
         IRequestHandler<PlaytechResultQuery, ThirdPartyProductViewModel>,
         IRequestHandler<GPIResultQuery, ThirdPartyProductViewModel>,
         IRequestHandler<GPILiveCasinoResultQuery, ThirdPartyProductViewModel>,
-        IRequestHandler<PlayStarResultQuery, ThirdPartyProductViewModel>
+        IRequestHandler<PlayStarResultQuery, ThirdPartyProductViewModel>,
+        IRequestHandler<ASKMESLOTResultQuery, ThirdPartyProductViewModel>
     {
         private readonly ICacheRefService cacheRefService;
         private readonly IMaxGameResult maxGameService;
@@ -95,6 +96,7 @@
         private readonly IPlayStarResult playStarResult;
         private readonly IGPIRNGResult gpiRNGResult;
         private readonly IGPILCResult gpiLCResult;
+        private readonly IASKMESLOTResult askmeslotResult;
         private readonly IPHelper ipHelper;
 
         public ThirdPartyResultHandler(
@@ -139,6 +141,7 @@
             IGPIRNGResult gpiRNGResult,
             IGPILCResult gpiLCResult,
             IPlayStarResult playStarResult,
+            IASKMESLOTResult askmeslotResult,
             BrowserHelper browserHelper,
             IPHelper ipHelper)
         {
@@ -185,6 +188,7 @@
             this.gpiRNGResult = gpiRNGResult;
             this.gpiLCResult = gpiLCResult;
             this.playStarResult = playStarResult;
+            this.askmeslotResult = askmeslotResult;
         }
 
         public ThirdPartyProductViewModel Handle(MGResultQuery message)
@@ -372,5 +376,8 @@
         
         public ThirdPartyProductViewModel Handle(PlaytechResultQuery message)
         => Handle(message, playtechResult);
+
+        public ThirdPartyProductViewModel Handle(ASKMESLOTResultQuery message)
+        => Handle(message, askmeslotResult);
     }
 }

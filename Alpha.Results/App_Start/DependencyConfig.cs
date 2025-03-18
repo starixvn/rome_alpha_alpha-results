@@ -160,6 +160,7 @@
             container.Register<IGPIRNGResult>(() => new GPIRNGResult("GPIRNGResultConfigs"), Lifestyle.Scoped);
             container.Register<IGPILCResult>(() => new GPILCResult("GPILiveCasinoResultConfigs"), Lifestyle.Scoped);
             container.Register<IPlayStarResult>(() => new PlayStarResult("PlayStarResultConfigs"), Lifestyle.Scoped);
+            container.Register<IASKMESLOTResult>(() => new ASKMESLOTResult("ASKMESLOTResultConfigs"), Lifestyle.Scoped);
             container.Register<IPService, IPServiceImpl>();
             container.Register<Helpers.IPHelper, IPHelperImpl>();
             container.RegisterPerWebRequest<IPartialUMService, PartialUMService>();
