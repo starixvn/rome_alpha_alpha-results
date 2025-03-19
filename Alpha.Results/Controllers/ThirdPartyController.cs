@@ -14,6 +14,9 @@
         {
         }
 
+        public ActionResult SabaKenoResult(SabaKenoResultQuery message)
+        => View(IndexView, mediator.Send(message));
+
         public ActionResult SexyGamingResult(SexyGamingResultQuery message)
         => View(IndexView, mediator.Send(message));
 
