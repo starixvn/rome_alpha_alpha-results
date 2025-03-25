@@ -129,6 +129,9 @@
 
         public ActionResult ASKMESLOTResult(ASKMESLOTResultQuery message)
         => View(IndexView, mediator.Send(message));
+        
+        public ActionResult FunkyGamesResult(FunkyGamesResultQuery message)
+        => View(IndexView, mediator.Send(message));
 
     }
 }
